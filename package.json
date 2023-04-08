@@ -1,0 +1,13 @@
+{
+  "name": "chatall",
+  "version": "0.1.0",
+  "description": "A cross-platform chatbot comparison and voting application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^15.3.0"
+  }
+}
+
