@@ -4,8 +4,8 @@ const path = require("path");
 function createWindow() {
   const iconPath =
     process.platform === "darwin"
-      ? path.join(__dirname, "assets/chatall.icns")
-      : path.join(__dirname, "assets/chatall.ico");
+      ? path.join(__dirname, "assets/icon.icns")
+      : path.join(__dirname, "assets/icon.ico");
 
   const mainWindow = new BrowserWindow({
     width: 800,
