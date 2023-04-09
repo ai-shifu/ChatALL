@@ -13,16 +13,18 @@
         <main class="content">
             <!-- Content goes here -->
         </main>
-        <footer>
-            <div class="footer-content">
-                <textarea class="prompt-input" placeholder="Type your message..."></textarea>
-                <button class="send-button">{{ $t("footer.sendPrompt") }}</button>
-                <div class="icons">
-                    <img src="assets/chatgpt-icon.png" alt="ChatGPT" />
-                    <img src="assets/bingchat-icon.png" alt="Bing Chat" />
-                    <img src="assets/wenxin-icon.png" alt="文心一言" />
-                    <img src="assets/bard-icon.png" alt="Bard" />
-                </div>
+        <footer :style="{ height: footerHeight + 'px' }">
+            <textarea class="prompt-input"
+                ref="textarea"
+                placeholder="Type your message here..."
+                @input="resizeFooter"
+            ></textarea>
+            <button class="send-button">{{ $t("footer.sendPrompt") }}</button>
+            <div class="icons">
+                <img src="assets/chatgpt-icon.png" alt="ChatGPT" />
+                <img src="assets/bingchat-icon.png" alt="Bing Chat" />
+                <img src="assets/wenxin-icon.png" alt="文心一言" />
+                <img src="assets/bard-icon.png" alt="Bard" />
             </div>
         </footer>
     </div>
@@ -31,6 +33,28 @@
 <script>
 export default {
     name: "App",
+    data() {
+        return {
+            footerHeight: 60,
+        };
+    },
+    methods: {
+        resizeFooter() {
+            const lineHeight = 20; // Adjust this value according to your desired line height
+            const minRows = 1;
+            const maxRows = 10;
+
+            const textarea = this.$refs.textarea;
+            textarea.style.height = "auto";
+            const numRows = Math.min(
+                Math.max(textarea.scrollHeight / lineHeight, minRows),
+                maxRows
+            );
+            textarea.style.height = numRows * lineHeight + "px";
+
+            this.footerHeight = numRows * lineHeight + 40; // Adjust this value based on your desired padding and button height
+        },
+    },
 };
 </script>
 
@@ -78,19 +102,16 @@ header {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  box-sizing: border-box;
-}
-
-.footer-content {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    box-sizing: border-box;
     display: flex;
     gap: 8px;
     align-items: center;
