@@ -2,7 +2,7 @@
     <div id="app">
         <header>
             <div class="header-content">
-                <img class="logo" src="assets/logo.png" alt="ChatALL" />
+                <img class="logo" src="@/assets/logo.png" alt="ChatALL" />
                 <div class="view-buttons">
                     <button>{{ $t("header.singleColumn") }}</button>
                     <button>{{ $t("header.doubleColumn") }}</button>
