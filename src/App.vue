@@ -4,9 +4,9 @@
             <div class="header-content">
                 <img class="logo" src="assets/logo.png" alt="ChatALL" />
                 <div class="view-buttons">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
+                    <button>{{ $t("header.singleColumn") }}</button>
+                    <button>{{ $t("header.doubleColumn") }}</button>
+                    <button>{{ $t("header.tripleColumn") }}</button>
                 </div>
             </div>
         </header>
@@ -16,7 +16,7 @@
         <footer>
             <div class="footer-content">
                 <textarea class="prompt-input" placeholder="Type your message..."></textarea>
-                <button class="send-button">Send</button>
+                <button class="send-button">{{ $t("footer.sendPrompt") }}</button>
                 <div class="icons">
                     <img src="assets/chatgpt-icon.png" alt="ChatGPT" />
                     <img src="assets/bingchat-icon.png" alt="Bing Chat" />
@@ -52,8 +52,12 @@ body {
 }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: white;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     padding: 16px;
 }
 
@@ -63,14 +67,27 @@ header {
     align-items: center;
 }
 
+.logo {
+  height: 40px;
+}
+
 .content {
     flex: 1;
     background-color: #f3f3f3;
+    padding: 16px;
 }
 
 footer {
-    background-color: white;
-    padding: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  box-sizing: border-box;
 }
 
 .footer-content {
@@ -80,11 +97,14 @@ footer {
 }
 
 .prompt-input {
-    flex: 1;
+    width: 100%;
+    height: 40px;
     resize: none;
-    padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
+    padding: 4px;
+    box-sizing: border-box;
+    outline: none;
 }
 
 .send-button {
