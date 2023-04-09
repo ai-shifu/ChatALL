@@ -11,7 +11,9 @@
             </div>
         </header>
         <main class="content">
-            <!-- Content goes here -->
+            <div id="content">
+                <messages :columns="columns"></messages>
+            </div>
         </main>
         <footer :style="{ height: footerHeight + 'px' }">
             <textarea class="prompt-input"
@@ -31,11 +33,17 @@
 </template>
 
 <script>
+import Messages from "@/components/Messages/ChatMessages.vue";
+
 export default {
     name: "App",
+    components: {
+        Messages
+    },
     data() {
         return {
             footerHeight: 60,
+            columns: 1,
         };
     },
     methods: {
