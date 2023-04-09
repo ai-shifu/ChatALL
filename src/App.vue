@@ -3,20 +3,32 @@
         <header>
             <div class="header-content">
                 <img class="logo" src="@/assets/logo.png" alt="ChatALL" />
-                <div class="view-buttons">
-                    <button>{{ $t("header.singleColumn") }}</button>
-                    <button>{{ $t("header.doubleColumn") }}</button>
-                    <button>{{ $t("header.tripleColumn") }}</button>
+                <div class="column-icons">
+                    <img
+                        src="@/assets/column-1.svg"
+                        @click="changeColumns(1)"
+                        :class="{ 'selected': columns === 1 }"
+                    />
+                    <img
+                        src="@/assets/column-2.svg"
+                        @click="changeColumns(2)"
+                        :class="{ 'selected': columns === 2 }"
+                    />
+                    <img
+                        src="@/assets/column-3.svg"
+                        @click="changeColumns(3)"
+                        :class="{ 'selected': columns === 3 }"
+                    />
                 </div>
             </div>
         </header>
-        <main class="content">
-            <div id="content">
-                <messages :columns="columns"></messages>
-            </div>
-        </main>
-        <footer :style="{ height: footerHeight + 'px' }">
-            <textarea class="prompt-input"
+            <main class="content">
+                <div id="content">
+                    <ChatMessages :columns="columns"></ChatMessages>
+                </div>
+            </main>
+            <footer :style="{ height: footerHeight + 'px' }">
+                <textarea class="prompt-input"
                 ref="textarea"
                 placeholder="Type your message here..."
                 @input="resizeFooter"
@@ -33,12 +45,12 @@
 </template>
 
 <script>
-import Messages from "@/components/Messages/ChatMessages.vue";
+import ChatMessages from "@/components/Messages/ChatMessages.vue";
 
 export default {
     name: "App",
     components: {
-        Messages
+        ChatMessages
     },
     data() {
         return {
@@ -61,6 +73,9 @@ export default {
             textarea.style.height = numRows * lineHeight + "px";
 
             this.footerHeight = numRows * lineHeight + 40; // Adjust this value based on your desired padding and button height
+        },
+        changeColumns(n) {
+            this.columns = n;
         },
     },
 };
@@ -103,6 +118,19 @@ header {
   height: 40px;
 }
 
+.column-icons img{
+    opacity: 0.5;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    margin: 4px;
+}
+
+.column-icons img.selected {
+    opacity: 1;
+    color: #062AAA;
+}
+
 .content {
     flex: 1;
     background-color: #f3f3f3;
@@ -119,10 +147,8 @@ footer {
     align-items: center;
     justify-content: space-between;
     padding: 8px 16px;
-    box-sizing: border-box;
-    display: flex;
     gap: 8px;
-    align-items: center;
+    box-sizing: border-box;
 }
 
 .prompt-input {
@@ -138,7 +164,7 @@ footer {
 
 .send-button {
     padding: 8px 16px;
-    background-color: #007bff;
+    background-color: #062AAA;
     color: white;
     border: none;
     border-radius: 4px;

@@ -24,9 +24,14 @@ export default {
     components: {
         Bubble
     },
+    props: {
+        columns: {
+            type: Number,
+            default: 3,
+        },
+    },
     data() {
         return {
-            columns: 3,
             messages: [
                 {
                     type: "prompt",
