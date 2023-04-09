@@ -2,18 +2,54 @@
   "name": "chatall",
   "version": "0.1.0",
   "description": "Chat with multiple AI bots and discover the best.",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "build": "electron-builder"
-  },
   "author": "Sunner",
-  "license": "Apache-2.0",
-  "dependencies": {},
-  "devDependencies": {
-    "electron": "^24.0.0",
-    "electron-builder": "^23.6.0"
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "start": "electron ."
   },
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "electron-builder": "^23.6.0",
+    "vue": "^3.2.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "electron": "^13.0.0",
+    "electron-devtools-installer": "^3.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "vue-cli-plugin-electron-builder": "~2.1.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
   "build": {
     "appId": "ai.chatall",
     "productName": "ChatALL",
@@ -32,5 +68,6 @@
       "target": "AppImage",
       "icon": "assets/icon.png"
     }
-  }
+  },
+  "license": "Apache-2.0"
 }
