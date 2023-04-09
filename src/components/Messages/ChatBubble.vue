@@ -1,5 +1,5 @@
 <template>
-    <div :class="['bubble', type]" :style="bubbleStyle">
+    <div :class="['bubble', type]">
         <div v-if="type === 'response'" class="title">
             <img :src="bot.icon" alt="Bot Icon" />
             <span>{{ bot.name }}</span>
@@ -28,32 +28,24 @@ export default {
             default: 1
         }
     },
-    computed: {
-        bubbleStyle() {
-            return {
-                width: this.type === 'response' ? `calc(100% / ${this.columns} - 16px)` : 'auto',
-                backgroundColor: this.type === "prompt" ? "#95EC69" : "#FFFFFF"
-            };
-        }
-    }
 };
 </script>
 
 <style scoped>
 .bubble {
     border-radius: 8px;
-    padding: 8px;
-    margin-bottom: 8px;
+    padding: 16px;
     word-wrap: break-word;
-    max-width: 100%;
+    text-align: left;
 }
 
 .prompt {
-    text-align: left;
+    background-color: #95EC69;
+    width: auto;
 }
 
 .response {
-    text-align: left;
+    background-color: #FFF;
 }
 
 .title {
