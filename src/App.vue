@@ -50,6 +50,7 @@ import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import ChatGPTBot from "./bots/ChatGPTBot";
 import BingChatBot from "./bots/BingChatBot";
 import BardBot from "./bots/BardBot";
+import ERNIEBot from "./bots/ERNIEBot";
 
 export default {
     name: "App",
@@ -64,6 +65,7 @@ export default {
                 ChatGPTBot.getInstance(),
                 BingChatBot.getInstance(),
                 BardBot.getInstance(),
+                ERNIEBot.getInstance(),
             ],
         };
     },

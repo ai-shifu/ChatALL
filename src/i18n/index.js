@@ -15,6 +15,7 @@ const messages = {
       ChatGPT: "ChatGPT",
       BingChat: "Bing Chat",
       Bard: "Bard",
+      ERNIE: "ERNIE",
     },
   },
   zh: {
@@ -28,6 +29,7 @@ const messages = {
     },
     bot: {
       nullBot: "虚无",
+      ERNIE: "文心一言",
     },
   },
 };
