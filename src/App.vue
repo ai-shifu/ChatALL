@@ -48,6 +48,7 @@
 <script>
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import ChatGPTBot from "./bots/ChatGPTBot";
+import BingChatBot from "./bots/BingChatBot";
 
 export default {
     name: "App",
@@ -60,6 +61,7 @@ export default {
             columns: 1,
             bots: [
                 ChatGPTBot.getInstance(),
+                BingChatBot.getInstance(),
             ],
         };
     },
