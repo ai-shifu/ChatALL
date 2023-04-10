@@ -1,7 +1,30 @@
+// To get actual logo path of the bot, we need to use Webpack 4's require.context()
+// to get the context of the logo files, and then use the context to get the actual
+// path of the logo file.
+const botLogoContext = require.context(
+  "../assets/bots/",
+  false,
+  /\.(png|jpg|jpeg|svg)$/
+);
+
 export default class Bot {
   static _instance;
+  static _id = "Bot"; // ID of the bot, should be unique
+  static _name = "bot.nullBot"; // String of the bot's name, should be unique
+  static _logoFilename = "default-logo.svg";
+  static _logoPackedPaths = null;
 
   constructor() {
+    // Compute the logo paths after packing by Webpack 4
+    if (!this.constructor._logoPackedPaths) {
+      this.constructor._logoPackedPaths = botLogoContext
+        .keys()
+        .reduce((logos, logoPath) => {
+          logos[logoPath.replace("./", "")] = botLogoContext(logoPath);
+          return logos;
+        }, {});
+    }
+
     if (this.constructor._instance) {
       return this.constructor._instance;
     }
@@ -12,19 +35,24 @@ export default class Bot {
     return new this();
   }
 
-  getIcon() {
-    throw new Error("Method 'getIcon()' must be implemented.");
+  getLogo() {
+    return this.constructor._logoPackedPaths[this.constructor._logoFilename];
   }
 
-  getName(lang = "en") {
-    throw new Error("Method 'getName()' must be implemented.");
+  getId() {
+    return this.constructor._id;
   }
 
-  getConfigComponent() {
-    throw new Error("Method 'getConfigComponent()' must be implemented.");
+  getDisplayName() {
+    return this.constructor._name;
+  }
+
+  getSettingsComponent() {
+    return `${this.constructor._id}Settings`;
   }
 
   async sendPrompt(prompt) {
+    prompt.trim();
     throw new Error("Method 'sendPrompt()' must be implemented.");
   }
 }

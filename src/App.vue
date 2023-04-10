@@ -34,18 +34,20 @@
                 @input="resizeFooter"
             ></textarea>
             <button class="send-button">{{ $t("footer.sendPrompt") }}</button>
-            <div class="icons">
-                <img src="assets/chatgpt-icon.png" alt="ChatGPT" />
-                <img src="assets/bingchat-icon.png" alt="Bing Chat" />
-                <img src="assets/wenxin-icon.png" alt="文心一言" />
-                <img src="assets/bard-icon.png" alt="Bard" />
-            </div>
+            <img class="bot-logo"
+                v-for="(bot, index) in bots"
+                :key="index"
+                :src="bot.getLogo()"
+                :alt="$t(bot.getDisplayName())"
+                :title="$t(bot.getDisplayName())"
+            />
         </footer>
     </div>
 </template>
 
 <script>
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
+import ChatGPTBot from "./bots/ChatGPTBot";
 
 export default {
     name: "App",
@@ -56,6 +58,9 @@ export default {
         return {
             footerHeight: 60,
             columns: 1,
+            bots: [
+                ChatGPTBot.getInstance(),
+            ]
         };
     },
     methods: {
@@ -76,6 +81,11 @@ export default {
         },
         changeColumns(n) {
             this.columns = n;
+        },
+    },
+    computed: {
+        botLogos() {
+            return this.bots.map(bot => require(bot.getLogo()));
         },
     },
 };
@@ -171,7 +181,7 @@ footer {
     cursor: pointer;
 }
 
-.icons img {
+.bot-logo {
     width: 32px;
     height: 32px;
     cursor: pointer;

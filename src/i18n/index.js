@@ -10,6 +10,10 @@ const messages = {
     footer: {
       sendPrompt: "Send",
     },
+    bot: {
+      nullBot: "Null Bot",
+      ChatGPT: "ChatGPT",
+    },
   },
   zh: {
     header: {
@@ -19,6 +23,9 @@ const messages = {
     },
     footer: {
       sendPrompt: "发送",
+    },
+    bot: {
+      nullBot: "虚无",
     },
   },
 };

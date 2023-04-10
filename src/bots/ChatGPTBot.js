@@ -1,25 +1,12 @@
 import Bot from "./Bot";
-import ChatGPTBotConfig from "../components/ChatGPTBotConfig.vue";
 
 export default class ChatGPTBot extends Bot {
+  static _id = "ChatGPTBot"; // ID of the bot, should be unique
+  static _name = "bot.ChatGPT"; // String of the bot's name, should be unique
+  static _logoFilename = "chatgpt-logo.svg";
+
   constructor() {
     super();
-    if (this.constructor._instance) {
-      return this.constructor._instance;
-    }
-    this.constructor._instance = this;
-  }
-
-  getIcon() {
-    return "chat-gpt-icon.svg";
-  }
-
-  getName(lang = "en") {
-    return lang === "en" ? "ChatGPT" : "聊天GPT";
-  }
-
-  getConfigComponent() {
-    return ChatGPTBotConfig;
   }
 
   async sendPrompt(prompt) {
