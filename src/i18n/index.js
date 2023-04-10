@@ -14,6 +14,7 @@ const messages = {
       nullBot: "Null Bot",
       ChatGPT: "ChatGPT",
       BingChat: "Bing Chat",
+      Bard: "Bard",
     },
   },
   zh: {
