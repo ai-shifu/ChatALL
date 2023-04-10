@@ -1,6 +1,7 @@
 {
   "name": "chatall",
   "version": "0.1.0",
+  "main": "background.js",
   "description": "Chat with multiple AI bots and discover the best.",
   "author": "Sunner",
   "scripts": {
@@ -29,7 +30,7 @@
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.38.0",
     "eslint-plugin-vue": "^9.10.0",
-    "vue-cli-plugin-electron-builder": "~2.1.1"
+    "vue-cli-plugin-electron-builder": "^2.1.1"
   },
   "eslintConfig": {
     "root": true,
@@ -51,24 +52,5 @@
     "not dead",
     "not ie 11"
   ],
-  "build": {
-    "appId": "ai.chatall",
-    "productName": "ChatALL",
-    "directories": {
-      "buildResources": "assets"
-    },
-    "mac": {
-      "target": "dmg",
-      "icon": "assets/icon.icns"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico"
-    },
-    "linux": {
-      "target": "AppImage",
-      "icon": "assets/icon.png"
-    }
-  },
   "license": "Apache-2.0"
 }
