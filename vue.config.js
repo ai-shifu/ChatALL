@@ -26,4 +26,10 @@ module.exports = defineConfig({
       },
     },
   },
+  chainWebpack: (config) => {
+    config.plugin("html").tap((args) => {
+      args[0].title = "";
+      return args;
+    });
+  },
 });
