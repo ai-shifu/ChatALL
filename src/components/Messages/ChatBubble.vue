@@ -1,7 +1,7 @@
 <template>
     <div :class="['bubble', type]">
         <div v-if="type === 'response'" class="title">
-            <img :src="bot.icon" alt="Bot Icon" />
+            <img :src="bot.logo" alt="Bot Icon" />
             <span>{{ bot.name }}</span>
         </div>
         <p>{{ text }}</p>

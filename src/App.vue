@@ -22,18 +22,18 @@
                 </div>
             </div>
         </header>
-            <main class="content">
-                <div id="content">
-                    <ChatMessages :columns="columns"></ChatMessages>
-                </div>
-            </main>
-            <footer :style="{ height: footerHeight + 'px' }">
-                <textarea class="prompt-input"
+        <main class="content">
+            <div id="content">
+                <ChatMessages :columns="columns" ref="chatMessages"></ChatMessages>
+            </div>
+        </main>
+        <footer :style="{ height: footerHeight + 'px' }">
+            <textarea class="prompt-input"
                 ref="textarea"
                 placeholder="Type your message here..."
                 @input="resizeFooter"
             ></textarea>
-            <button class="send-button">{{ $t("footer.sendPrompt") }}</button>
+            <button class="send-button" @click="sendPromptToBots">{{ $t("footer.sendPrompt") }}</button>
             <img class="bot-logo"
                 v-for="(bot, index) in bots"
                 :key="index"
@@ -60,7 +60,7 @@ export default {
             columns: 1,
             bots: [
                 ChatGPTBot.getInstance(),
-            ]
+            ],
         };
     },
     methods: {
@@ -81,6 +81,26 @@ export default {
         },
         changeColumns(n) {
             this.columns = n;
+        },
+        async sendPromptToBots() {
+            const prompt = this.$refs.textarea.value;
+
+            // Add a new prompt message to the messages array
+            this.$refs.chatMessages.addMessage({ type: "prompt", content: prompt });
+
+            for (const bot of this.bots) {
+                const response = await bot.sendPrompt(prompt);
+                this.$refs.chatMessages.addMessage({
+                    type: "response",
+                    content: response,
+                    logo: bot.getLogo(),
+                    name: this.$t(bot.getDisplayName()),
+                });
+            }
+
+
+            // Clear the textarea after sending the prompt
+            this.$refs.textarea.value = "";
         },
     },
     computed: {

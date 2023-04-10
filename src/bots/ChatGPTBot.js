@@ -10,11 +10,11 @@ export default class ChatGPTBot extends Bot {
   }
 
   async sendPrompt(prompt) {
-    // 实现发送 prompt 的逻辑，以下仅为示例
-    const response = await fetch(
-      `https://example.com/api/chat?prompt=${encodeURIComponent(prompt)}`
-    );
-    const data = await response.json();
-    return data.response;
+    prompt.trim();
+    return new Promise((resolve) => {
+      resolve(
+        "当然可以，妈妈和爸爸通常是在相爱并决定共度一生后结婚的。在许多文化中，婚姻是一种公认的、合法的制度，用以确认两人之间的关系、权利和义务。结婚有助于为夫妻之间建立家庭提供稳定的基础，并为子女的成长提供良好的环境。当然，每个人的婚姻观念和选择可能因文化、信仰和个人经历的不同而有所差异。"
+      );
+    });
   }
 }

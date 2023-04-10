@@ -32,43 +32,32 @@ export default {
     },
     data() {
         return {
-            messages: [
-                {
-                    type: "prompt",
-                    content: "你好，我想知道今天的天气。"
-                },
-                {
-                    type: "response",
-                    bots: [
-                        {
-                            icon: "path/to/icon.png",
-                            name: "ChatGPT",
-                            content: "今天是晴天，气温适中",
-                        },
-                        {
-                            icon: "path/to/icon.png",
-                            name: "ChatGPT",
-                            content: "今天是晴天，气温适中",
-                        },
-                        {
-                            icon: "path/to/icon.png",
-                            name: "ChatGPT",
-                            content: "今天是晴天，气温适中",
-                        },
-                        {
-                            icon: "path/to/icon.png",
-                            name: "ChatGPT",
-                            content: "暴风骤雨！",
-                        }
-                    ],
-                }
-                // 更多消息...
-            ]
+            messages: [],
         };
     },
     computed: {
         gridTemplateColumns() {
             return `repeat(${this.columns}, 1fr)`;
+        },
+    },
+    methods: {
+        addMessage(message) {
+            if (message.type === "prompt") {
+                this.messages.push(message);
+                return;
+            } else {
+                // Check if the last element of messages is a response
+                if (this.messages.length > 0 && this.messages[this.messages.length - 1].type === "response") {
+                    // Add the new response to the bots array of the last element
+                    this.messages[this.messages.length - 1].bots.push(message);
+                } else {
+                    // Create a new response message
+                    this.messages.push({
+                        type: "response",
+                        bots: [message],
+                    });
+                }
+            }
         },
     },
 };
