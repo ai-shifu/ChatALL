@@ -10,6 +10,8 @@ export default class BingChatBot extends Bot {
     super();
   }
 
+  async checkLoginStatus() {}
+
   async sendPrompt(prompt) {
     prompt.trim();
     return new Promise((resolve) => {

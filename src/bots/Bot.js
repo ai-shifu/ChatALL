@@ -33,6 +33,8 @@ export default class Bot {
       return this.constructor._instance;
     }
     this.constructor._instance = this;
+
+    this.checkLoginStatus();
   }
 
   static getInstance() {
@@ -78,5 +80,9 @@ export default class Bot {
   async sendPrompt(prompt) {
     prompt.trim();
     throw new Error("Method 'sendPrompt()' must be implemented.");
+  }
+
+  async checkLoginStatus() {
+    throw new Error("Method 'checkLoginStatus()' must be implemented.");
   }
 }

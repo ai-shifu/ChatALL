@@ -4,10 +4,33 @@ export default class ChatGPTBot extends Bot {
   static _id = "ChatGPTBot"; // ID of the bot, should be unique
   static _name = "bot.ChatGPT"; // String of the bot's name, should be unique
   static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
-  static _loginUrl = "https://chat.openai.com/auth/login";
+  static _loginUrl = "https://chat.openai.com/";
 
   constructor() {
     super();
+  }
+
+  async checkLoginStatus() {
+    try {
+      const response = await fetch("https://chat.openai.com/api/auth/session", {
+        credentials: "include", // Send cookies with the request
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data && data.accessToken) {
+          this.accessToken = data.accessToken;
+          this.constructor._isLoggedIn = true;
+        } else {
+          this.constructor._isLoggedIn = false;
+        }
+      } else {
+        this.constructor._isLoggedIn = false;
+      }
+    } catch (error) {
+      console.error("Error checking login status:", error);
+      this.constructor._isLoggedIn = false;
+    }
   }
 
   async sendPrompt(prompt) {
