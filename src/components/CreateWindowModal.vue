@@ -20,6 +20,7 @@ export default {
         },
         bot: {
             type: Object,
+            default: null,
         },
     },
     methods: {

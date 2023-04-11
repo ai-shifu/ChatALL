@@ -73,7 +73,7 @@ export default {
             footerHeight: 60,
             columns: 1,
             showCreateWindowModal: false,
-            clickedBot: Object,
+            clickedBot: {},
             bots: [
                 ChatGPTBot.getInstance(),
                 BingChatBot.getInstance(),
