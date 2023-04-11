@@ -34,18 +34,28 @@
                 @input="resizeFooter"
             ></textarea>
             <button class="send-button" @click="sendPromptToBots">{{ $t("footer.sendPrompt") }}</button>
-            <img class="bot-logo"
-                v-for="(bot, index) in bots"
-                :key="index"
-                :src="bot.getLogo()"
-                :alt="$t(bot.getDisplayName())"
-                :title="$t(bot.getDisplayName())"
-            />
+            <div class="bot-logos">
+                <img
+                    :class="{ 'selected': bot.isActive() }"
+                    v-for="(bot, index) in bots"
+                    :key="index"
+                    :src="bot.getLogo()"
+                    :alt="$t(bot.getDisplayName())"
+                    :title="$t(bot.getDisplayName())"
+                    @click="toggleSelected(bot)"
+                />
+            </div>
         </footer>
+        <CreateWindowModal
+            :show="showCreateWindowModal"
+            :bot="clickedBot"
+            @close="showCreateWindowModal = false"
+        ></CreateWindowModal>
     </div>
 </template>
 
 <script>
+import CreateWindowModal from "@/components/CreateWindowModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import ChatGPTBot from "./bots/ChatGPTBot";
 import BingChatBot from "./bots/BingChatBot";
@@ -55,12 +65,15 @@ import ERNIEBot from "./bots/ERNIEBot";
 export default {
     name: "App",
     components: {
-        ChatMessages
+        ChatMessages,
+        CreateWindowModal,
     },
     data() {
         return {
             footerHeight: 60,
             columns: 1,
+            showCreateWindowModal: false,
+            clickedBot: Object,
             bots: [
                 ChatGPTBot.getInstance(),
                 BingChatBot.getInstance(),
@@ -108,6 +121,14 @@ export default {
             // Clear the textarea after sending the prompt
             this.$refs.textarea.value = "";
         },
+        toggleSelected(bot) {
+            if (!bot.isLoggedIn()) {
+                // Open the login window
+                this.clickedBot = bot;
+                this.showCreateWindowModal = true;
+            }
+            bot.toggleSelected();
+        },
     },
     computed: {
         botLogos() {
@@ -154,7 +175,7 @@ header {
   height: 40px;
 }
 
-.column-icons img{
+.column-icons img {
     opacity: 0.5;
     cursor: pointer;
     width: 24px;
@@ -162,9 +183,20 @@ header {
     margin: 4px;
 }
 
-.column-icons img.selected {
+.bot-logos {
+    display: flex;
+    gap: 4px;
+}
+
+.bot-logos img {
+    opacity: 0.5;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+img.selected {
     opacity: 1;
-    color: #062AAA;
 }
 
 .content {
@@ -207,9 +239,7 @@ footer {
     cursor: pointer;
 }
 
-.bot-logo {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
+.send-button:hover {
+    background-color: #3559D9;
 }
 </style>

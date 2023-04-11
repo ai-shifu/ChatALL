@@ -17,6 +17,10 @@ const messages = {
       Bard: "Bard",
       ERNIE: "ERNIE",
     },
+    modal: {
+      loginPrompt:
+        "Click the link below, log in to { botName } in the new window, and then close the window.",
+    },
   },
   zh: {
     header: {
@@ -30,6 +34,9 @@ const messages = {
     bot: {
       nullBot: "虚无",
       ERNIE: "文心一言",
+    },
+    modal: {
+      loginPrompt: "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口",
     },
   },
 };

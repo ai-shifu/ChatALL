@@ -3,7 +3,8 @@ import Bot from "./Bot";
 export default class ChatGPTBot extends Bot {
   static _id = "ChatGPTBot"; // ID of the bot, should be unique
   static _name = "bot.ChatGPT"; // String of the bot's name, should be unique
-  static _logoFilename = "chatgpt-logo.svg";
+  static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
+  static _loginUrl = "https://chat.openai.com/auth/login";
 
   constructor() {
     super();
