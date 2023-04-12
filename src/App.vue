@@ -37,7 +37,7 @@
             <div class="bot-logos">
                 <img
                     v-for="(bot, index) in bots"
-                    :class="{ 'selected': selectedBots[bot.getId()] }"
+                    :class="{ 'selected': activeBots[bot.getId()] }"
                     :key="index"
                     :src="bot.getLogo()"
                     :alt="$t(bot.getDisplayName())"
@@ -127,14 +127,22 @@ export default {
                 // Open the login window
                 this.clickedBot = bot;
                 this.showCreateWindowModal = true;
-                return;
+                this.selectedBots[bot.getId()] = true;
+            } else {
+                this.selectedBots[bot.getId()] = !this.selectedBots[bot.getId()];
             }
-            this.selectedBots[bot.getId()] = !this.selectedBots[bot.getId()];
         },
         ...mapMutations(["changeColumns"]),
     },
     computed: {
         ...mapState(["columns"]),
+        activeBots() {
+            // Return an object with the bot id as key and a boolean as value
+            return this.bots.reduce((active, bot) => {
+                active[bot.getId()] = bot.isLoggedIn() && this.selectedBots[bot.getId()];
+                return active;
+            }, {});
+        },
     },
 };
 </script>
