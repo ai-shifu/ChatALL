@@ -10,10 +10,15 @@ const vuexPersist = new VuexPersist({
 export default createStore({
   state: {
     columns: 1,
+    selectedBots: {},
   },
   mutations: {
     changeColumns(state, n) {
       state.columns = n;
+    },
+    SET_BOT_SELECTED(state, payload) {
+      const { botId, selected } = payload;
+      state.selectedBots[botId] = selected;
     },
   },
   actions: {

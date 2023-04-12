@@ -32,8 +32,6 @@ export default class Bot {
       return this.constructor._instance;
     }
     this.constructor._instance = this;
-
-    this.checkLoginStatus();
   }
 
   static getInstance() {

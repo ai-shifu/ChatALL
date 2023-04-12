@@ -80,7 +80,7 @@ export default {
                 BardBot.getInstance(),
                 ERNIEBot.getInstance(),
             ],
-            selectedBots: {},
+            activeBots: {},
         };
     },
     methods: {
@@ -99,9 +99,7 @@ export default {
 
             this.footerHeight = numRows * lineHeight + 40; // Adjust this value based on your desired padding and button height
         },
-        changeColumns(n) {
-            this.columns = n;
-        },
+        ...mapMutations(["changeColumns"]),
         async sendPromptToBots() {
             const prompt = this.$refs.textarea.value;
 
@@ -109,6 +107,8 @@ export default {
             this.$refs.chatMessages.addMessage({ type: "prompt", content: prompt });
 
             for (const bot of this.bots) {
+                if (!this.activeBots[bot.getId()])
+                    continue;
                 const response = await bot.sendPrompt(prompt);
                 this.$refs.chatMessages.addMessage({
                     type: "response",
@@ -118,31 +118,45 @@ export default {
                 });
             }
 
-
             // Clear the textarea after sending the prompt
             this.$refs.textarea.value = "";
         },
+        ...mapMutations(["SET_BOT_SELECTED"]),
         toggleSelected(bot) {
+            const botId = bot.getId();
+            var selected = false;
             if (!bot.isLoggedIn()) {
                 // Open the login window
                 this.clickedBot = bot;
                 this.showCreateWindowModal = true;
-                this.selectedBots[bot.getId()] = true;
+                selected = true;
             } else {
-                this.selectedBots[bot.getId()] = !this.selectedBots[bot.getId()];
+                selected = !this.selectedBots[bot.getId()];
+            }
+            this.SET_BOT_SELECTED({ botId, selected});
+            this.updateActiveBots();
+        },
+        updateActiveBots() {
+            for (const bot of this.bots) {
+                this.activeBots[bot.getId()] = bot.isLoggedIn() && this.selectedBots[bot.getId()];
             }
         },
-        ...mapMutations(["changeColumns"]),
+        async checkAllBotsLoginStatus() {
+            try {
+                const checkLoginPromises = this.bots.map(bot => bot.checkLoginStatus());
+                await Promise.all(checkLoginPromises);
+                this.updateActiveBots();
+            } catch (error) {
+                console.error("Error checking login status for all bots:", error);
+            }
+        },
     },
     computed: {
         ...mapState(["columns"]),
-        activeBots() {
-            // Return an object with the bot id as key and a boolean as value
-            return this.bots.reduce((active, bot) => {
-                active[bot.getId()] = bot.isLoggedIn() && this.selectedBots[bot.getId()];
-                return active;
-            }, {});
-        },
+        ...mapState(["selectedBots"]),
+    },
+    created() {
+        this.checkAllBotsLoginStatus();
     },
 };
 </script>
