@@ -135,9 +135,6 @@ export default {
     },
     computed: {
         ...mapState(["columns"]),
-        botLogos() {
-            return this.bots.map(bot => require(bot.getLogo()));
-        },
     },
 };
 </script>
