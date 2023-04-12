@@ -36,8 +36,8 @@
             <button class="send-button" @click="sendPromptToBots">{{ $t("footer.sendPrompt") }}</button>
             <div class="bot-logos">
                 <img
-                    :class="{ 'selected': bot.isActive() }"
                     v-for="(bot, index) in bots"
+                    :class="{ 'selected': selectedBots[bot.getId()] }"
                     :key="index"
                     :src="bot.getLogo()"
                     :alt="$t(bot.getDisplayName())"
@@ -80,6 +80,7 @@ export default {
                 BardBot.getInstance(),
                 ERNIEBot.getInstance(),
             ],
+            selectedBots: {},
         };
     },
     methods: {
@@ -126,8 +127,9 @@ export default {
                 // Open the login window
                 this.clickedBot = bot;
                 this.showCreateWindowModal = true;
+                return;
             }
-            bot.toggleSelected();
+            this.selectedBots[bot.getId()] = !this.selectedBots[bot.getId()];
         },
     },
     computed: {

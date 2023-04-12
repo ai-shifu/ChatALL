@@ -11,7 +11,6 @@ export default class Bot {
   static _instance;
   static _logoPackedPaths = null;
   static _isLoggedIn = false;
-  static _isSelected = true;
 
   static _id = "Bot"; // ID of the bot, should be unique
   static _name = "bot.nullBot"; // String of the bot's name, should be unique
@@ -67,14 +66,6 @@ export default class Bot {
 
   isLoggedIn() {
     return this.constructor._isLoggedIn;
-  }
-
-  isActive() {
-    return this.isSelected() && this.isLoggedIn();
-  }
-
-  toggleSelected() {
-    this.constructor._isSelected = !this.constructor._isSelected;
   }
 
   async sendPrompt(prompt) {
