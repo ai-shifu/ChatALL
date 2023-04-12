@@ -1,4 +1,5 @@
 "use strict";
+import axios from "axios";
 
 import { app, protocol, BrowserWindow } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
@@ -22,28 +23,13 @@ async function createWindow() {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: true,
-      contextIsolation: true,
+      contextIsolation: false,
       userAgent: EDGE_USER_AGENT,
       webSecurity: false,
     },
   });
 
-  win.webContents.session.webRequest.onBeforeSendHeaders(
-    (details, callback) => {
-      callback({
-        requestHeaders: { Origin: "*", ...details.requestHeaders },
-      });
-    }
-  );
-
-  win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
-    callback({
-      responseHeaders: {
-        "Access-Control-Allow-Origin": ["*"],
-        ...details.responseHeaders,
-      },
-    });
-  });
+  win.webContents.setUserAgent(EDGE_USER_AGENT);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -54,6 +40,26 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL("app://./index.html");
   }
+
+  // Force the SameSite attribute to None for all cookies
+  // This is required for the cross-origin request to work
+  win.webContents.session.webRequest.onHeadersReceived(
+    { urls: ["*://*/*"] },
+    (details, callback) => {
+      const newHeaders = details.responseHeaders;
+      const cookies = newHeaders["set-cookie"];
+
+      if (cookies) {
+        const updatedCookies = cookies.map((cookie) => {
+          return cookie.replace("; SameSite=Lax", "; SameSite=None");
+        });
+
+        newHeaders["set-cookie"] = updatedCookies;
+      }
+
+      callback({ cancel: false, responseHeaders: newHeaders });
+    }
+  );
 }
 
 // Quit when all windows are closed.

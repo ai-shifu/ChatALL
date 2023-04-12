@@ -1,4 +1,5 @@
 import Bot from "./Bot";
+import axios from "axios";
 
 export default class ChatGPTBot extends Bot {
   static _id = "ChatGPTBot"; // ID of the bot, should be unique
@@ -12,18 +13,12 @@ export default class ChatGPTBot extends Bot {
 
   async checkLoginStatus() {
     try {
-      const response = await fetch("https://chat.openai.com/api/auth/session", {
-        credentials: "include", // Send cookies with the request
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data && data.accessToken) {
-          this.accessToken = data.accessToken;
-          this.constructor._isLoggedIn = true;
-        } else {
-          this.constructor._isLoggedIn = false;
-        }
+      const response = await axios.get(
+        "https://chat.openai.com/api/auth/session"
+      );
+      if (response.data && response.data.accessToken) {
+        this.accessToken = response.data.accessToken;
+        this.constructor._isLoggedIn = true;
       } else {
         this.constructor._isLoggedIn = false;
       }
