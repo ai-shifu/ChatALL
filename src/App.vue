@@ -61,6 +61,7 @@ import ChatGPTBot from "./bots/ChatGPTBot";
 import BingChatBot from "./bots/BingChatBot";
 import BardBot from "./bots/BardBot";
 import ERNIEBot from "./bots/ERNIEBot";
+import { mapState, mapMutations } from "vuex";
 
 export default {
     name: "App",
@@ -71,7 +72,6 @@ export default {
     data() {
         return {
             footerHeight: 60,
-            columns: 1,
             showCreateWindowModal: false,
             clickedBot: {},
             bots: [
@@ -131,8 +131,10 @@ export default {
             }
             this.selectedBots[bot.getId()] = !this.selectedBots[bot.getId()];
         },
+        ...mapMutations(["changeColumns"]),
     },
     computed: {
+        ...mapState(["columns"]),
         botLogos() {
             return this.bots.map(bot => require(bot.getLogo()));
         },
