@@ -23,7 +23,7 @@ export default class ChatGPTBot extends Bot {
         this.constructor._isLoggedIn = false;
       }
     } catch (error) {
-      console.error("Error checking login status:", error);
+      console.error("Error checking ChatGPT login status:", error);
       this.constructor._isLoggedIn = false;
     }
   }
