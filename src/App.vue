@@ -108,13 +108,18 @@ export default {
             for (const bot of this.bots) {
                 if (!this.activeBots[bot.getId()])
                     continue;
-                const response = await bot.sendPrompt(prompt);
-                this.$refs.chatMessages.addMessage({
+
+                var message = {
                     type: "response",
-                    content: response,
+                    content: "",
                     logo: bot.getLogo(),
                     name: this.$t(bot.getDisplayName()),
-                });
+                };
+                bot.sendPrompt(
+                    prompt,
+                    this.$refs.chatMessages.updateBubble,
+                    this.$refs.chatMessages.addMessage(message)
+                );
             }
 
             // Clear the textarea after sending the prompt

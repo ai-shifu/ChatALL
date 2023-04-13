@@ -4,7 +4,7 @@
             <img :src="bot.logo" alt="Bot Icon" />
             <span>{{ bot.name }}</span>
         </div>
-        <p>{{ text }}</p>
+        <p ref="text">{{ text }}</p>
     </div>
 </template>
 
@@ -26,6 +26,11 @@ export default {
         columns: {
             type: Number,
             default: 1
+        }
+    },
+    methods: {
+        updateText(text) {
+            this.$refs.text.innerText = text;
         }
     },
 };

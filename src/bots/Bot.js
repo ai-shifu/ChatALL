@@ -66,8 +66,17 @@ export default class Bot {
     return this.constructor._isLoggedIn;
   }
 
-  async sendPrompt(prompt) {
-    prompt.trim();
+  /**
+   * Send a prompt to the bot and call onResponse(response, callbackParam)
+   * when the response is ready.
+   * @param {string} prompt
+   * @param {object} refMessage
+   * @param {function} onResponse
+   */
+  async sendPrompt(prompt, onResponse, callbackParam) {
+    // Surpress the warning of unused variables
+    prompt;
+    onResponse("", callbackParam);
     throw new Error("Method 'sendPrompt()' must be implemented.");
   }
 

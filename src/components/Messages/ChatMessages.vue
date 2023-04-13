@@ -42,23 +42,32 @@ export default {
     },
     methods: {
         addMessage(message) {
+            var index = -1;
+            var botIndex = -1;
+
             if (message.type === "prompt") {
-                this.messages.push(message);
-                return;
+                index = this.messages.push(message) - 1;
             } else {
                 // Check if the last element of messages is a response
                 if (this.messages.length > 0 && this.messages[this.messages.length - 1].type === "response") {
                     // Add the new response to the bots array of the last element
-                    this.messages[this.messages.length - 1].bots.push(message);
+                    botIndex = this.messages[this.messages.length - 1].bots.push(message) - 1;
+                    index = this.messages.length - 1;
                 } else {
                     // Create a new response message
-                    this.messages.push({
+                    index = this.messages.push({
                         type: "response",
                         bots: [message],
-                    });
+                    }) - 1;
+                    botIndex = 0;
                 }
             }
+            return {index, botIndex};
         },
+        // Update the bubble with the new message
+        updateBubble(response, index) {
+            this.messages[index.index].bots[index.botIndex].content = response;
+        }
     },
 };
 </script>
