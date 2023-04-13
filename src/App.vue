@@ -49,7 +49,7 @@
         <CreateWindowModal
             :show="showCreateWindowModal"
             :bot="clickedBot"
-            @close="showCreateWindowModal = false"
+            @close="updateActiveBots(); showCreateWindowModal = false"
         ></CreateWindowModal>
     </div>
 </template>
@@ -99,7 +99,6 @@ export default {
 
             this.footerHeight = numRows * lineHeight + 40; // Adjust this value based on your desired padding and button height
         },
-        ...mapMutations(["changeColumns"]),
         async sendPromptToBots() {
             const prompt = this.$refs.textarea.value;
 
@@ -121,6 +120,7 @@ export default {
             // Clear the textarea after sending the prompt
             this.$refs.textarea.value = "";
         },
+        ...mapMutations(["changeColumns"]),
         ...mapMutations(["SET_BOT_SELECTED"]),
         toggleSelected(bot) {
             const botId = bot.getId();
