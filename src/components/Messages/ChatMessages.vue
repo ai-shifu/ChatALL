@@ -1,21 +1,21 @@
 <template>
     <div class="messages">
         <div class="message-grid" :style="{ gridTemplateColumns: gridTemplateColumns }" >
-            <bubble v-for="(message, index) in messages" 
+            <chat-message v-for="(message, index) in messages" 
                 :key="index"
                 :columns="columns"
                 :message="message">
-            </bubble>
+            </chat-message>
         </div>
     </div>
 </template>
 
 <script>
-import Bubble from "./ChatBubble.vue";
+import ChatMessage from "./ChatMessage.vue";
 
 export default {
     components: {
-        Bubble
+        ChatMessage
     },
     props: {
         columns: {
@@ -34,8 +34,8 @@ export default {
         },
     },
     methods: {
-        // Update the bubble with the new message
-        updateBubble(response, index) {
+        // Update the chat-message with the new message
+        updateMessage(response, index) {
             this.messages[index].content = response;
         }
     },

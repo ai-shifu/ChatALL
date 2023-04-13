@@ -105,7 +105,7 @@ export default {
             // Add a new prompt message to the messages array
             this.$refs.chatMessages.messages.push({ type: "prompt", content: prompt });
 
-            // Send the prompt to all the bots and update the message bubble with the response
+            // Send the prompt to all the bots and update the message with the response
             for (const bot of this.bots) {
                 if (!this.activeBots[bot.getId()])
                     continue;
@@ -118,7 +118,7 @@ export default {
                 };
                 bot.sendPrompt(
                     prompt,
-                    this.$refs.chatMessages.updateBubble,
+                    this.$refs.chatMessages.updateMessage,
                     this.$refs.chatMessages.messages.push(message) - 1 // The index of the message in the messages array
                 );
             }

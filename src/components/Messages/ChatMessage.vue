@@ -1,5 +1,5 @@
 <template>
-    <div :class="['bubble', message.type]">
+    <div :class="['message', message.type]">
         <div v-if="message.type === 'response'" class="title">
             <img :src="message.logo" alt="Bot Icon" />
             <span>{{ message.name }}</span>
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped>
-.bubble {
+.message {
     border-radius: 8px;
     padding: 16px;
     word-wrap: break-word;
