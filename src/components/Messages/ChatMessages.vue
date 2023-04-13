@@ -1,18 +1,11 @@
 <template>
     <div class="messages">
-        <div v-for="(message, index) in messages" :key="index" :class="message.type">
-            <bubble v-if="message.type === 'prompt'"
-                :type="message.type"
-                :text="message.content">
+        <div class="message-grid" :style="{ gridTemplateColumns: gridTemplateColumns }" >
+            <bubble v-for="(message, index) in messages" 
+                :key="index"
+                :columns="columns"
+                :message="message">
             </bubble>
-            <div class="response-messages" v-else :style="{ gridTemplateColumns: gridTemplateColumns }" >
-                <bubble v-for="(bot, index) in message.bots" 
-                    :key="index"
-                    :type="message.type"
-                    :bot="bot"
-                    :text="bot.content">
-                </bubble>
-            </div>
         </div>
     </div>
 </template>
@@ -41,32 +34,9 @@ export default {
         },
     },
     methods: {
-        addMessage(message) {
-            var index = -1;
-            var botIndex = -1;
-
-            if (message.type === "prompt") {
-                index = this.messages.push(message) - 1;
-            } else {
-                // Check if the last element of messages is a response
-                if (this.messages.length > 0 && this.messages[this.messages.length - 1].type === "response") {
-                    // Add the new response to the bots array of the last element
-                    botIndex = this.messages[this.messages.length - 1].bots.push(message) - 1;
-                    index = this.messages.length - 1;
-                } else {
-                    // Create a new response message
-                    index = this.messages.push({
-                        type: "response",
-                        bots: [message],
-                    }) - 1;
-                    botIndex = 0;
-                }
-            }
-            return {index, botIndex};
-        },
         // Update the bubble with the new message
         updateBubble(response, index) {
-            this.messages[index.index].bots[index.botIndex].content = response;
+            this.messages[index].content = response;
         }
     },
 };
@@ -84,11 +54,9 @@ export default {
     margin: 68px 32px;
 }
 
-.response {
-    width: 100%;
-}
-.response-messages {
+.message-grid {
     display: grid;
     grid-gap: 16px;
+    width: 100%;
 }
 </style>

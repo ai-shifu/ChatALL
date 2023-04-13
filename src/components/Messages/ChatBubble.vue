@@ -1,25 +1,17 @@
 <template>
-    <div :class="['bubble', type]">
-        <div v-if="type === 'response'" class="title">
-            <img :src="bot.logo" alt="Bot Icon" />
-            <span>{{ bot.name }}</span>
+    <div :class="['bubble', message.type]">
+        <div v-if="message.type === 'response'" class="title">
+            <img :src="message.logo" alt="Bot Icon" />
+            <span>{{ message.name }}</span>
         </div>
-        <p ref="text">{{ text }}</p>
+        <p >{{ message.content }}</p>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        type: {
-            type: String,
-            default: "prompt"
-        },
-        text: {
-            type: String,
-            default: ""
-        },
-        bot: {
+        message: {
             type: Object,
             default: () => ({})
         },
@@ -28,9 +20,12 @@ export default {
             default: 1
         }
     },
-    methods: {
-        updateText(text) {
-            this.$refs.text.innerText = text;
+    mounted() {
+        this.$el.style.setProperty('--columns', this.columns);
+    },
+    watch: {
+        columns() {
+            this.$el.style.setProperty('--columns', this.columns);
         }
     },
 };
@@ -46,11 +41,14 @@ export default {
 
 .prompt {
     background-color: #95EC69;
-    width: auto;
+    width: fit-content;
+    grid-column: 1 / span var(--columns);
 }
 
 .response {
     background-color: #FFF;
+    width: 100%;
+    grid-column: auto / span 1;
 }
 
 .title {
@@ -64,4 +62,5 @@ export default {
     width: 24px;
     height: 24px;
     margin-right: 4px;
-}</style>
+}
+</style>
