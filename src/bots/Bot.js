@@ -70,14 +70,11 @@ export default class Bot {
    * Send a prompt to the bot and call onResponse(response, callbackParam)
    * when the response is ready.
    * @param {string} prompt
-   * @param {object} refMessage
-   * @param {function} onResponse
+   * @param {function} onUpdateResponse
+   * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
-  async sendPrompt(prompt, onResponse, callbackParam) {
-    // Surpress the warning of unused variables
-    prompt;
-    onResponse("", callbackParam);
-    throw new Error("Method 'sendPrompt()' must be implemented.");
+  async sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    onUpdateResponse("Not implemented yet...", callbackParam);
   }
 
   async checkLoginStatus() {
