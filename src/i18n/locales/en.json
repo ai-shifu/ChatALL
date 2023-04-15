@@ -1,0 +1,23 @@
+{
+    "settings": "Settings",
+    "general": "General",
+    "save": "Save",
+    "header": {
+        "singleColumn": "Single Column",
+        "doubleColumn": "Double Column",
+        "tripleColumn": "Triple Column"
+    },
+    "footer": {
+        "sendPrompt": "Send"
+    },
+    "bot": {
+        "nullBot": "Null Bot",
+        "ChatGPT": "ChatGPT",
+        "BingChat": "Bing Chat",
+        "Bard": "Bard",
+        "ERNIE": "ERNIE"
+    },
+    "modal": {
+        "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close the window."
+    }
+}
