@@ -17,6 +17,22 @@ const vuetify = createVuetify({
   locale: {
     adapter: createVueI18nAdapter({ i18n, useI18n }),
   },
+  theme: {
+    defaultTheme: "light",
+    themes: {
+      light: {
+        colors: {
+          primary: "#062AAA",
+        },
+      },
+      dark: {
+        dark: true,
+        colors: {
+          primary: "#062AAA",
+        },
+      },
+    },
+  },
 });
 
 createApp(App).use(i18n).use(store).use(vuetify).mount("#app");

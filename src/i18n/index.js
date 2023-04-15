@@ -2,6 +2,9 @@ import { createI18n } from "vue-i18n";
 
 const messages = {
   en: {
+    settings: "Settings",
+    general: "General",
+    save: "Save",
     header: {
       singleColumn: "Single Column",
       doubleColumn: "Double Column",
@@ -23,6 +26,9 @@ const messages = {
     },
   },
   zh: {
+    settings: "设置",
+    general: "通用",
+    save: "保存",
     header: {
       singleColumn: "单列",
       doubleColumn: "双列",

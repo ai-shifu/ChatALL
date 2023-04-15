@@ -20,6 +20,13 @@
                         :class="{ 'selected': columns === 3 }"
                     />
                 </div>
+                <v-icon 
+                    class="cursor-pointer" 
+                    color="primary" 
+                    icon="mdi-cog" 
+                    size="x-large"
+                    @click="openSettingsModal()"
+                ></v-icon>
             </div>
         </header>
         <main class="content">
@@ -51,28 +58,39 @@
             :bot="clickedBot"
             @close="updateActiveBots(); showCreateWindowModal = false"
         ></CreateWindowModal>
+        <SettingsModal
+            ref="settingsModal"
+        ></SettingsModal>
     </div>
 </template>
 
 <script>
+import '@mdi/font/css/materialdesignicons.css'
+import { mapState, mapMutations } from "vuex";
+
+// Components
 import CreateWindowModal from "@/components/CreateWindowModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
+import SettingsModal from '@/components/SettingsModal.vue';
+
+// Bots
 import ChatGPTBot from "./bots/ChatGPTBot";
 import BingChatBot from "./bots/BingChatBot";
 import BardBot from "./bots/BardBot";
 import ERNIEBot from "./bots/ERNIEBot";
-import { mapState, mapMutations } from "vuex";
 
 export default {
     name: "App",
     components: {
         ChatMessages,
         CreateWindowModal,
+        SettingsModal,
     },
     data() {
         return {
             footerHeight: 60,
             showCreateWindowModal: false,
+            showSettingsModal: false,
             clickedBot: {},
             bots: [
                 ChatGPTBot.getInstance(),
@@ -155,6 +173,9 @@ export default {
             } catch (error) {
                 console.error("Error checking login status for all bots:", error);
             }
+        },
+        openSettingsModal() {
+            this.$refs.settingsModal.open();
         },
     },
     computed: {
@@ -270,5 +291,9 @@ footer {
 
 .send-button:hover {
     background-color: #3559D9;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 </style>
