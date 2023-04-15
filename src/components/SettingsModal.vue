@@ -13,9 +13,9 @@
                 <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn
-                icon
-                dark
-                @click="dialog = false"
+                    icon
+                    dark
+                    @click="dialog = false"
                 >
                     <v-icon>mdi-close</v-icon>
                 </v-btn>
@@ -26,8 +26,8 @@
             >
                 <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
                 <v-list-item width="fit-content">
-                <v-list-item-title>{{ $t('settings.language') }}</v-list-item-title>
-                <v-list-item-subtitle>{{ $t("settings.languagePrompt") }}</v-list-item-subtitle>
+                    <v-list-item-title>{{ $t('settings.language') }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ $t("settings.languagePrompt") }}</v-list-item-subtitle>
                     <v-select
                         v-model="lang"
                         :items="languages"
