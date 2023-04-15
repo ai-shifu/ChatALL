@@ -10,6 +10,8 @@
                 dark
                 color="primary"
             >
+                <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title>
+                <v-spacer></v-spacer>
                 <v-btn
                 icon
                 dark
@@ -17,24 +19,24 @@
                 >
                     <v-icon>mdi-close</v-icon>
                 </v-btn>
-                <v-toolbar-title>{{ $t("settings") }}</v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-toolbar-items>
-                    <v-btn
-                        variant="text"
-                        @click="dialog = false"
-                    >
-                        {{ $t("save") }}
-                    </v-btn>
-                </v-toolbar-items>
             </v-toolbar>
             <v-list
                 lines="two"
                 subheader
             >
-                <v-list-subheader>{{ $t("general") }}</v-list-subheader>
-                <v-list-item title="Content filtering" subtitle="Set the content filtering level to restrict apps that can be downloaded"></v-list-item>
-                <v-list-item title="Password" subtitle="Require password for purchase or use password to restrict purchase"></v-list-item>
+                <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
+                <v-list-item width="fit-content">
+                <v-list-item-title>{{ $t('settings.language') }}</v-list-item-title>
+                <v-list-item-subtitle>{{ $t("settings.languagePrompt") }}</v-list-item-subtitle>
+                    <v-select
+                        v-model="lang"
+                        :items="languages"
+                        item-title="name"
+                        item-value="code"
+                        hide-details
+                        @update:model-value="setCurrentLanguage($event)"
+                    ></v-select>
+                </v-list-item>
             </v-list>
             <v-divider></v-divider>
             <ChatGPTBotSettings></ChatGPTBotSettings>
@@ -43,6 +45,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
 import ChatGPTBotSettings from '@/components/BotSettings/ChatGPTBotSettings.vue';
 // Import more bot settings components here
 
@@ -54,12 +58,21 @@ export default {
     data() {
         return {
             dialog: false,
+            languages: [
+                { name: this.$t("settings.auto"), code: "auto" },
+                { name: "English", code: "en" },
+                { name: "中文", code: "zh" },
+            ],
         };
     },
     methods: {
         open() {
             this.dialog = true;
         },
+        ...mapMutations(["setCurrentLanguage"]),
     },
+    computed: {
+        ...mapState(["lang"]),
+    }
 };
 </script>

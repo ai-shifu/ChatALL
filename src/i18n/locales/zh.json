@@ -1,7 +1,11 @@
 {
-    "settings": "设置",
-    "general": "通用",
-    "save": "保存",
+    "settings": {
+        "title": "设置",
+        "general": "通用",
+        "auto": "自动",
+        "language": "语言",
+        "languagePrompt": "新语言将在程序重新启动后生效"
+    },
     "header": {
         "singleColumn": "单列",
         "doubleColumn": "双列",

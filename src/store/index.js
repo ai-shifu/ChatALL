@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import VuexPersist from "vuex-persist";
+import i18n from "../i18n";
 
 // 初始化 VuexPersist 实例
 const vuexPersist = new VuexPersist({
@@ -23,6 +24,7 @@ export default createStore({
     },
     setCurrentLanguage(state, language) {
       state.lang = language;
+      i18n.global.locale = language;
     },
   },
   actions: {
