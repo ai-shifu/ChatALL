@@ -1,7 +1,7 @@
 <template>
     <div v-if="show" class="modal-overlay">
         <div class="modal">
-            <p>{{ $t("modal.loginPrompt", {botName: $t(bot.getDisplayName())}) }}</p>
+            <p>{{ $t("modal.loginPrompt", {botName: bot.getDisplayName()}) }}</p>
             <a :href="bot.getLoginUrl()" target="_blank">{{ bot.getLoginUrl() }}</a>
             <div class="buttons">
                 <button @click="onSuccess">登录成功</button>

@@ -1,11 +1,15 @@
-import Bot from "./Bot";
+// @vue/component
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { SSE } from "sse.js";
 
+import Bot from "./Bot";
+import store from "@/store";
+import i18n from "@/i18n";
+
 export default class ChatGPTBot extends Bot {
   static _id = "ChatGPTBot"; // ID of the bot, should be unique
-  static _name = "bot.ChatGPT"; // String of the bot's name, should be unique
+  static _name = "chatGpt.name"; // String of the bot's name, should be unique
   static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://chat.openai.com/";
 
@@ -14,9 +18,20 @@ export default class ChatGPTBot extends Bot {
     conversationId: "",
     parentMessageId: "",
   };
+  model = "text-davinci-002-render-sha";
 
   constructor() {
     super();
+    this.model = store.state.chatgptModel;
+  }
+
+  getDisplayName() {
+    const modelNames = {
+      "text-davinci-002-render-sha": i18n.global.t("chatGpt.default35"),
+      "text-davinci-002-render-paid": i18n.global.t("chatGpt.legacy35"),
+      "gpt-4": i18n.global.t("chatGpt.gpt4"),
+    };
+    return `${super.getDisplayName()} (${modelNames[this.model]})`;
   }
 
   async checkLoginStatus() {

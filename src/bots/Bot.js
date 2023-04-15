@@ -49,7 +49,7 @@ export default class Bot {
   }
 
   getDisplayName() {
-    return this.constructor._name;
+    return i18n.global.t(this.constructor._name);
   }
 
   getSettingsComponent() {
@@ -76,7 +76,7 @@ export default class Bot {
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    onUpdateResponse(i18n.t("bot.notImplemented"), callbackParam);
+    onUpdateResponse(i18n.global.t("bot.notImplemented"), callbackParam);
   }
 
   async checkLoginStatus() {

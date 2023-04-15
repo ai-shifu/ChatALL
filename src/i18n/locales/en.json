@@ -4,7 +4,9 @@
         "general": "General",
         "auto": "Automatic",
         "language": "Language",
-        "languagePrompt": "Relaunch the app to apply the new language"
+        "languagePrompt": "Relaunch the app to apply the new language",
+        "loginOrOut": "Login/Logout",
+        "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it"
     },
     "header": {
         "singleColumn": "Single Column",
@@ -14,15 +16,22 @@
     "footer": {
         "sendPrompt": "Send"
     },
+    "modal": {
+        "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it."
+    },
     "bot": {
         "nullBot": "Null Bot",
-        "ChatGPT": "ChatGPT",
         "BingChat": "Bing Chat",
         "Bard": "Bard",
         "ERNIE": "ERNIE",
         "notImplemented": "Under construction..."
     },
-    "modal": {
-        "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close the window."
+    "chatGpt": {
+        "name": "ChatGPT",
+        "chooseModel": "Model",
+        "chooseModelPrompt": "If you are not a ChatGPT Plus member, the default model will always be used",
+        "default35": "Default (GPT-3.5)",
+        "legacy35": "Legacy (GPT-3.5)",
+        "gpt4": "GPT-4"
     }
 }

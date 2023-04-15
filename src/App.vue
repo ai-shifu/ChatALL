@@ -47,8 +47,8 @@
                     :class="{ 'selected': activeBots[bot.getId()] }"
                     :key="index"
                     :src="bot.getLogo()"
-                    :alt="$t(bot.getDisplayName())"
-                    :title="$t(bot.getDisplayName())"
+                    :alt="bot.getDisplayName()"
+                    :title="bot.getDisplayName()"
                     @click="toggleSelected(bot)"
                 />
             </div>
@@ -132,7 +132,7 @@ export default {
                     type: "response",
                     content: "",
                     logo: bot.getLogo(),
-                    name: this.$t(bot.getDisplayName()),
+                    name: bot.getDisplayName(),
                 };
                 bot.sendPrompt(
                     prompt,
