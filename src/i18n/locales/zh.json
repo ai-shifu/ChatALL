@@ -16,7 +16,8 @@
     },
     "bot": {
         "nullBot": "虚无",
-        "ERNIE": "文心一言"
+        "ERNIE": "文心一言",
+        "notImplemented": "建设中..."
     },
     "modal": {
         "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口"

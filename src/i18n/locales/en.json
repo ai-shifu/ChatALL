@@ -19,7 +19,8 @@
         "ChatGPT": "ChatGPT",
         "BingChat": "Bing Chat",
         "Bard": "Bard",
-        "ERNIE": "ERNIE"
+        "ERNIE": "ERNIE",
+        "notImplemented": "Under construction..."
     },
     "modal": {
         "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close the window."

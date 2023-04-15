@@ -1,3 +1,5 @@
+import i18n from "@/i18n";
+
 // To get actual logo path of the bot, we need to use Webpack 4's require.context()
 // to get the context of the logo files, and then use the context to get the actual
 // path of the logo file.
@@ -74,7 +76,7 @@ export default class Bot {
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    onUpdateResponse("Not implemented yet...", callbackParam);
+    onUpdateResponse(i18n.t("bot.notImplemented"), callbackParam);
   }
 
   async checkLoginStatus() {
