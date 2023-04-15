@@ -24,12 +24,9 @@ async function createWindow() {
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: true,
       contextIsolation: false,
-      userAgent: EDGE_USER_AGENT,
       webSecurity: false,
     },
   });
-
-  win.webContents.setUserAgent(EDGE_USER_AGENT);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -89,6 +86,7 @@ app.on("ready", async () => {
       console.error("Vue Devtools failed to install:", e.toString());
     }
   }
+  app.userAgentFallback = EDGE_USER_AGENT;
   createWindow();
 });
 
