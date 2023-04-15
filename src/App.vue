@@ -167,9 +167,15 @@ export default {
         },
         async checkAllBotsLoginStatus() {
             try {
-                const checkLoginPromises = this.bots.map(bot => bot.checkLoginStatus());
-                await Promise.all(checkLoginPromises);
-                this.updateActiveBots();
+                const checkLoginPromises = this.bots.map(bot =>
+                    bot
+                        .checkLoginStatus()
+                        .then(() => this.updateActiveBots())
+                        .catch(error => {
+                            console.error(`Error checking login status for ${ bot.getDisplayName() }`, error);
+                        })
+                );
+                await Promise.allSettled(checkLoginPromises);
             } catch (error) {
                 console.error("Error checking login status for all bots:", error);
             }
