@@ -9,6 +9,7 @@ const vuexPersist = new VuexPersist({
 
 export default createStore({
   state: {
+    lang: "auto",
     columns: 1,
     selectedBots: {},
   },
@@ -19,6 +20,9 @@ export default createStore({
     SET_BOT_SELECTED(state, payload) {
       const { botId, selected } = payload;
       state.selectedBots[botId] = selected;
+    },
+    setCurrentLanguage(state, language) {
+      state.lang = language;
     },
   },
   actions: {
