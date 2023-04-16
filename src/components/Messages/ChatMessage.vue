@@ -4,12 +4,18 @@
             <img :src="message.logo" alt="Bot Icon" />
             <span>{{ message.name }}</span>
         </div>
-        <p >{{ message.content }}</p>
+        <Markdown :source="message.content" />
     </div>
 </template>
 
 <script>
+import Markdown from 'vue3-markdown-it';
+import 'highlight.js/styles/github.css';
+
 export default {
+    components: {
+        Markdown,
+    },
     props: {
         message: {
             type: Object,
