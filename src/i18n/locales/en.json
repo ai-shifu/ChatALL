@@ -14,7 +14,8 @@
         "tripleColumn": "Triple Column"
     },
     "footer": {
-        "sendPrompt": "Send"
+        "sendPrompt": "Send to:",
+        "promptPlaceholder": "Send a message..."
     },
     "modal": {
         "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it."

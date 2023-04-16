@@ -34,14 +34,30 @@
                 <ChatMessages :columns="columns" ref="chatMessages"></ChatMessages>
             </div>
         </main>
-        <footer :style="{ height: footerHeight + 'px' }">
-            <textarea class="prompt-input"
-                ref="textarea"
-                placeholder="Type your message here..."
-                @input="resizeFooter"
-            ></textarea>
-            <button class="send-button" @click="sendPromptToBots">{{ $t("footer.sendPrompt") }}</button>
-            <div class="bot-logos">
+        <footer class="footer">
+            <v-textarea
+                v-model="prompt"
+                auto-grow
+                max-rows=8.5
+                rows=1
+                density="comfortable"
+                hide-details
+                variant="solo"
+                :placeholder="$t('footer.promptPlaceholder')"
+                autofocus
+                @keyup.enter.exact="sendPromptToBots"
+            >
+            </v-textarea>
+            <v-btn
+                color="primary"
+                elevation="2"
+                class="margin-bottom"
+                :disabled="prompt.trim() === '' || Object.values(activeBots).every(bot => !bot)"
+                @click="sendPromptToBots"
+            >
+                {{ $t("footer.sendPrompt") }}
+            </v-btn>
+            <div class="bot-logos margin-bottom">
                 <img
                     v-for="(bot, index) in bots"
                     :class="{ 'selected': activeBots[bot.getId()] }"
@@ -88,7 +104,7 @@ export default {
     },
     data() {
         return {
-            footerHeight: 60,
+            prompt: "",
             showCreateWindowModal: false,
             showSettingsModal: false,
             clickedBot: {},
@@ -102,26 +118,11 @@ export default {
         };
     },
     methods: {
-        resizeFooter() {
-            const lineHeight = 20; // Adjust this value according to your desired line height
-            const minRows = 1;
-            const maxRows = 10;
-
-            const textarea = this.$refs.textarea;
-            textarea.style.height = "auto";
-            const numRows = Math.min(
-                Math.max(textarea.scrollHeight / lineHeight, minRows),
-                maxRows
-            );
-            textarea.style.height = numRows * lineHeight + "px";
-
-            this.footerHeight = numRows * lineHeight + 40; // Adjust this value based on your desired padding and button height
-        },
         async sendPromptToBots() {
-            const prompt = this.$refs.textarea.value;
+            if (this.prompt.trim() === "") return;
 
             // Add a new prompt message to the messages array
-            this.$refs.chatMessages.messages.push({ type: "prompt", content: prompt });
+            this.$refs.chatMessages.messages.push({ type: "prompt", content: this.prompt });
 
             // Send the prompt to all the bots and update the message with the response
             for (const bot of this.bots) {
@@ -135,14 +136,14 @@ export default {
                     name: bot.getDisplayName(),
                 };
                 bot.sendPrompt(
-                    prompt,
+                    this.prompt,
                     this.$refs.chatMessages.updateMessage,
                     this.$refs.chatMessages.messages.push(message) - 1 // The index of the message in the messages array
                 );
             }
 
             // Clear the textarea after sending the prompt
-            this.$refs.textarea.value = "";
+            this.prompt = "";
         },
         ...mapMutations(["changeColumns"]),
         ...mapMutations(["SET_BOT_SELECTED"]),
@@ -245,9 +246,9 @@ header {
 }
 
 .bot-logos img {
-    opacity: 0.5;
-    width: 32px;
-    height: 32px;
+    opacity: 0.3;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
 }
 
@@ -266,37 +267,17 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: transparent;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     padding: 8px 16px;
     gap: 8px;
     box-sizing: border-box;
 }
 
-.prompt-input {
-    width: 100%;
-    height: 40px;
-    resize: none;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    padding: 4px;
-    box-sizing: border-box;
-    outline: none;
-}
-
-.send-button {
-    padding: 8px 16px;
-    background-color: #062AAA;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.send-button:hover {
-    background-color: #3559D9;
+.margin-bottom {
+    margin-bottom: 4px;
 }
 
 .cursor-pointer {

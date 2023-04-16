@@ -14,7 +14,8 @@
         "tripleColumn": "三列"
     },
     "footer": {
-        "sendPrompt": "发送"
+        "sendPrompt": "发送到:",
+        "promptPlaceholder": "发送消息..."
     },
     "modal": {
         "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口"
