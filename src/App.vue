@@ -34,7 +34,7 @@
                 <ChatMessages :columns="columns" ref="chatMessages"></ChatMessages>
             </div>
         </main>
-        <footer class="footer">
+        <footer>
             <v-textarea
                 v-model="prompt"
                 auto-grow
@@ -45,7 +45,7 @@
                 variant="solo"
                 :placeholder="$t('footer.promptPlaceholder')"
                 autofocus
-                @keyup.enter.exact="sendPromptToBots"
+                @keydown.enter.exact="sendPromptToBots"
             >
             </v-textarea>
             <v-btn
