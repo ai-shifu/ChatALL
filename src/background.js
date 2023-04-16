@@ -47,11 +47,9 @@ async function createWindow() {
       const cookies = newHeaders["set-cookie"];
 
       if (cookies) {
-        console.log(cookies);
         const updatedCookies = cookies.map((cookie) => {
-          return cookie.replace("; SameSite=Lax", "; SameSite=None");
+          return cookie.replace(/; SameSite=Lax/i, "; SameSite=None");
         });
-        console.log(updatedCookies);
 
         newHeaders["set-cookie"] = updatedCookies;
       }
