@@ -111,8 +111,8 @@ export default {
             bots: [
                 ChatGPTBot.getInstance(),
                 BingChatBot.getInstance(),
-                BardBot.getInstance(),
                 ERNIEBot.getInstance(),
+                BardBot.getInstance(),
             ],
             activeBots: {},
         };
