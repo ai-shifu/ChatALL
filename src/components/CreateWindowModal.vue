@@ -3,10 +3,7 @@
         <div class="modal">
             <p>{{ $t("modal.loginPrompt", {botName: bot.getDisplayName()}) }}</p>
             <a :href="bot.getLoginUrl()" target="_blank">{{ bot.getLoginUrl() }}</a>
-            <div class="buttons">
-                <button @click="onSuccess">登录成功</button>
-                <button @click="onFailure">登录失败</button>
-            </div>
+            <button @click="onDone">{{ $t("modal.done") }}</button>
         </div>
     </div>
 </template>
@@ -24,11 +21,8 @@ export default {
         },
     },
     methods: {
-        onSuccess() {
-            this.$emit('close', 'success');
-        },
-        onFailure() {
-            this.$emit('close', 'failure');
+        onDone() {
+            this.$emit('done');
         },
     },
 };
@@ -56,13 +50,7 @@ export default {
         padding: 20px;
         border-radius: 4px;
         text-align: center;
-    }
-
-    .buttons {
-        display: flex;
-        gap: 24px;
-        justify-content: center; 
-        margin-top: 12px;
+        align-items: center;
     }
 
     button {
@@ -71,6 +59,7 @@ export default {
         border: none;
         padding: 10px 20px;
         border-radius: 4px;
+        width: fit-content;
         cursor: pointer;
     }
 

@@ -72,7 +72,7 @@
         <CreateWindowModal
             :show="showCreateWindowModal"
             :bot="clickedBot"
-            @close="updateActiveBots(); showCreateWindowModal = false"
+            @done="checkAllBotsLoginStatus(bot); showCreateWindowModal = false"
         ></CreateWindowModal>
         <SettingsModal
             ref="settingsModal"
@@ -166,9 +166,11 @@ export default {
                 this.activeBots[bot.getId()] = bot.isLoggedIn() && this.selectedBots[bot.getId()];
             }
         },
-        async checkAllBotsLoginStatus() {
+        async checkAllBotsLoginStatus(specifiedBot) {
             try {
-                const checkLoginPromises = this.bots.map(bot =>
+                let botsToCheck = specifiedBot ? [specifiedBot] : this.bots;
+
+                const checkLoginPromises = botsToCheck.map(bot =>
                     bot
                         .checkLoginStatus()
                         .then(() => this.updateActiveBots())
@@ -178,7 +180,7 @@ export default {
                 );
                 await Promise.allSettled(checkLoginPromises);
             } catch (error) {
-                console.error("Error checking login status for all bots:", error);
+                console.error("Error checking login status for bots:", error);
             }
         },
         openSettingsModal() {

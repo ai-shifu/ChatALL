@@ -18,7 +18,8 @@
         "promptPlaceholder": "Send a message..."
     },
     "modal": {
-        "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it."
+        "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it.",
+        "done": "Done"
     },
     "bot": {
         "nullBot": "Null Bot",
