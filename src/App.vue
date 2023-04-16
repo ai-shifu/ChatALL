@@ -91,7 +91,9 @@ import SettingsModal from '@/components/SettingsModal.vue';
 
 // Bots
 import ChatGPTBot from "./bots/ChatGPTBot";
-import BingChatBot from "./bots/BingChatBot";
+import BingChatPreciseBot from "./bots/BingChatPreciseBot";
+import BingChatBalancedBot from "./bots/BingChatBalancedBot";
+import BingChatCreativeBot from "./bots/BingChatCreativeBot";
 import BardBot from "./bots/BardBot";
 import ERNIEBot from "./bots/ERNIEBot";
 
@@ -110,7 +112,9 @@ export default {
             clickedBot: {},
             bots: [
                 ChatGPTBot.getInstance(),
-                BingChatBot.getInstance(),
+                BingChatCreativeBot.getInstance(),
+                BingChatBalancedBot.getInstance(),
+                BingChatPreciseBot.getInstance(),
                 ERNIEBot.getInstance(),
                 BardBot.getInstance(),
             ],

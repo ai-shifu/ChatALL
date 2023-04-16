@@ -13,10 +13,10 @@ function randomIP() {
     Math.floor(Math.random() * 255)
   );
 }
-export default class BingChatBot extends Bot {
+export default class BingChatPreciseBot extends Bot {
   static _id = "BingChatBot"; // ID of the bot, should be unique
-  static _name = "bot.BingChat"; // String of the bot's name, should be unique
-  static _logoFilename = "bing-logo.svg"; // Place it in assets/bots/
+  static _name = "bingChat.namePrecise"; // String of the bot's name, should be unique
+  static _logoFilename = "bing-precise-logo.png"; // Place it in assets/bots/
   static _loginUrl = "https://www.bing.com/new";
 
   static _style = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise

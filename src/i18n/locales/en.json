@@ -23,7 +23,6 @@
     },
     "bot": {
         "nullBot": "Null Bot",
-        "BingChat": "Bing Chat",
         "Bard": "Bard",
         "ERNIE": "ERNIE",
         "notImplemented": "Under construction..."
@@ -35,5 +34,10 @@
         "default35": "Default (GPT-3.5)",
         "legacy35": "Legacy (GPT-3.5)",
         "gpt4": "GPT-4"
+    },
+    "bingChat": {
+        "nameCreative": "Bing Chat (Creative)",
+        "nameBalanced": "Bing Chat (Balanced)",
+        "namePrecise": "Bing Chat (Precise)"
     }
 }

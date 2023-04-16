@@ -33,5 +33,10 @@
         "default35": "默认版 (GPT-3.5)",
         "legacy35": "遗留版 (GPT-3.5)",
         "gpt4": "GPT-4"
+    },
+    "bingChat": {
+        "nameCreative": "Bing Chat（创造型）",
+        "nameBalanced": "Bing Chat（平衡型）",
+        "namePrecise": "Bing Chat（精确型）"
     }
 }
