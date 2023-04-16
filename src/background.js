@@ -7,7 +7,7 @@ import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const EDGE_USER_AGENT =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.59";
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -47,9 +47,11 @@ async function createWindow() {
       const cookies = newHeaders["set-cookie"];
 
       if (cookies) {
+        console.log(cookies);
         const updatedCookies = cookies.map((cookie) => {
           return cookie.replace("; SameSite=Lax", "; SameSite=None");
         });
+        console.log(updatedCookies);
 
         newHeaders["set-cookie"] = updatedCookies;
       }
