@@ -79,7 +79,7 @@ export default class ChatGPTBot extends Bot {
             },
           },
         ],
-        model: "text-davinci-002-render-sha", // You can replace this with a dynamic model name if needed
+        model: this.model,
         conversation_id: this.conversationContext.conversationId || undefined,
         parent_message_id: this.conversationContext.parentMessageId || uuidv4(),
       });
