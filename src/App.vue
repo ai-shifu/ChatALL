@@ -279,7 +279,7 @@ footer {
 }
 
 .margin-bottom {
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .cursor-pointer {
