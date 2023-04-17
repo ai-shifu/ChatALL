@@ -57,6 +57,18 @@ async function createWindow() {
       callback({ cancel: false, responseHeaders: newHeaders });
     }
   );
+
+  // Modify the Referer header for each request.
+  win.webContents.session.webRequest.onBeforeSendHeaders(
+    (details, callback) => {
+      const { url, requestHeaders } = details;
+      const urlObj = new URL(url);
+      const referer = `${urlObj.protocol}//${urlObj.host}`;
+      requestHeaders["Referer"] = referer;
+
+      callback({ requestHeaders });
+    }
+  );
 }
 
 // Quit when all windows are closed.
