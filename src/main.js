@@ -4,6 +4,7 @@ import i18n from "./i18n";
 import store from "./store";
 import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { useI18n } from "vue-i18n";
+import "material-design-icons/iconfont/material-icons.css";
 
 // Vuetify
 import "vuetify/styles";

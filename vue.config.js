@@ -1,7 +1,7 @@
 const { defineConfig } = require("@vue/cli-service");
 
 module.exports = defineConfig({
-  transpileDependencies: true,
+  transpileDependencies: ["vuetify"],
   pluginOptions: {
     electronBuilder: {
       builderOptions: {
@@ -12,6 +12,7 @@ module.exports = defineConfig({
           buildResources: "src/assets",
         },
         mac: {
+          category: "public.app-category.utilities",
           target: "dmg",
           icon: "src/assets/icon.icns",
         },
