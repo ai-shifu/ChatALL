@@ -45,7 +45,7 @@
                 variant="solo"
                 :placeholder="$t('footer.promptPlaceholder')"
                 autofocus
-                @keydown.enter.exact="sendPromptToBots"
+                @keydown="filterEnterKey"
             >
             </v-textarea>
             <v-btn
@@ -189,6 +189,14 @@ export default {
         },
         openSettingsModal() {
             this.$refs.settingsModal.open();
+        },
+        // Send the prompt when the user presses enter and prevent the default behavior
+        // But if the shift, ctrl, alt, or meta keys are pressed, do as default
+        filterEnterKey(event) {
+            if (event.key === "Enter" && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+                event.preventDefault();
+                this.sendPromptToBots();
+            }
         },
     },
     computed: {
