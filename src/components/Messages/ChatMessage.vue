@@ -4,7 +4,7 @@
             <img :src="message.logo" alt="Bot Icon" />
             <span>{{ message.name }}</span>
         </div>
-        <Markdown :source="message.content" />
+        <Markdown :breaks="true" :source="message.content" />
     </div>
 </template>
 
