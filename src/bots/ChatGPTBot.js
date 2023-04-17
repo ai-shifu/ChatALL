@@ -89,17 +89,26 @@ export default class ChatGPTBot extends Bot {
         { headers, payload }
       );
       source.addEventListener("message", (event) => {
+        const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
         if (event.data === "[DONE]") {
           source.close();
-        } else {
-          const data = JSON.parse(event.data);
-          this.conversationContext.conversationId = data.conversation_id;
-          this.conversationContext.parentMessageId = data.message.id;
-          const partialText = data.message?.content?.parts?.[0];
-          if (partialText) {
-            onUpdateResponse(partialText, callbackParam);
+        } else if (regex.test(event.data)) {
+          // Ignore the timestamp
+          return;
+        } else
+          try {
+            const data = JSON.parse(event.data);
+            this.conversationContext.conversationId = data.conversation_id;
+            this.conversationContext.parentMessageId = data.message.id;
+            const partialText = data.message?.content?.parts?.[0];
+            if (partialText) {
+              onUpdateResponse(partialText, callbackParam);
+            }
+          } catch (error) {
+            console.error("Error parsing ChatGPT response:", error);
+            console.error("ChatGPT response:", event);
+            return;
           }
-        }
       });
       source.addEventListener("error", (error) => {
         console.error("Error handling real-time updates:", error);
