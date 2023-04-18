@@ -25,6 +25,12 @@ module.exports = defineConfig({
           icon: "src/assets/icon.png",
         },
       },
+      /**
+       * work around to fix this issue: https://github.com/nklayman/vue-cli-plugin-electron-builder/issues/1647#issuecomment-1019400838
+       * some resources is defined by url in css file can't be loaded on production build (urls start with app:///)
+       * docs of package related to this issue: https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/configuration.html#changing-the-file-loading-protocol
+       * */
+      customFileProtocol: "./",
     },
   },
   chainWebpack: (config) => {
