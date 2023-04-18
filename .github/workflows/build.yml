@@ -19,8 +19,8 @@ jobs:
         with:
           node-version: 16
 
-      - name: Z Electron Builder
-        uses: 0fatal/z-electron-builder@v0.0.2
+      - name: Macro Electron Builder Action
+        uses: coparse-inc/action-electron-builder@v1.0.0
 
         with:
           # GitHub token, automatically provided to the action
