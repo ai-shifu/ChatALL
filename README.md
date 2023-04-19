@@ -33,7 +33,15 @@ And more...
 * [TODO] Keep ChatGPT session alive
 * [TODO] Best recommendations
 
+## Prerequirements
+
+ChatALL is a client, not a proxy. So that you must:
+
+1. Having working accounts and/or API tokens of the bots.
+2. Having reliable network connections to the bots.
+
 ## Download / install
+
 
 Download from https://github.com/sunner/ChatALL/releases
 
