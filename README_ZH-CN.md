@@ -45,14 +45,19 @@ ChatALL 是一个客户端，而不是代理。因此，您必须：
 
 从 https://github.com/sunner/ChatALL/releases 下载
 
-### macOS
+### Windows 系统
 
-安装后，运行以下命令：
+直接下载 .exe 安装文件并运行之。
 
-```bash
-xattr -d com.apple.quarantine /Applications/ChatALL.app
+### macOS 系统
 
-```
+对于苹果硅芯片 Mac（M1，M2 CPU），请下载 *-arm64.dmg 文件。
+
+对于其他 Mac，下载另一个 .dmg 文件。
+
+### Linux 系统
+
+下载 .AppImage 文件，将其设置为可执行，然后双击就可运行。
 
 ## 开发者
 

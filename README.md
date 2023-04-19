@@ -47,13 +47,19 @@ ChatALL is a client, not a proxy. Therefore, you must:
 
 Download from https://github.com/sunner/ChatALL/releases
 
-### macOS
+### On Windows
 
-After installation, run this command:
+Just download the .exe file and proceed with the setup.
 
-```bash
-xattr -d com.apple.quarantine /Applications/ChatALL.app
-```
+### On macOS
+
+For Apple Silicon Mac (M1, M2 CPU), download the *-arm64.dmg file.
+
+For other Macs, download another .dmg file.
+
+### On Linux
+
+Download the .AppImage file, make it executable, and enjoy the click-to-run experience.
 
 ## For developers
 
