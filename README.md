@@ -41,6 +41,7 @@ ChatALL is a client, not a proxy. Therefore, you must:
 
 1. Have working accounts and/or API tokens for the bots.
 2. Have reliable network connections to the bots.
+3. If you are using a proxy, it must be set as system proxy.
 
 ## Download / Install
 
