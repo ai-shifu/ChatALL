@@ -5,8 +5,8 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
-const EDGE_USER_AGENT =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
+// Bing Chat requires the user agent to be Edge
+const EDGE_USER_AGENT_SUFFIX = "Edg/112.0.1722.48";
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -97,7 +97,7 @@ app.on("ready", async () => {
       console.error("Vue Devtools failed to install:", e.toString());
     }
   }
-  app.userAgentFallback = EDGE_USER_AGENT;
+  app.userAgentFallback += ` ${EDGE_USER_AGENT_SUFFIX}`;
   createWindow();
 });
 
