@@ -1,6 +1,6 @@
 <div align="center">
    <img src="src/assets/logo-cover.png" width=128></img>
-   <p><strong>Chat with ALL AI Bots Cocurrently, Discover the Best</strong></p>
+   <p><strong>Chat with ALL AI Bots Concurrently, Discover the Best</strong></p>
 </div>
 
 ## Screenshots
@@ -9,39 +9,38 @@
 
 ## Features
 
-The LLMs-based AI bots are amazing. But their behaviors are random and different bots are good at differt tasks. If you always want the best, don't try them one by one. ChatALL gives you the best one.
+Large Language Models (LLMs)-based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL may help you to discover the best option.
 
 ### Supported bots
 
-| AI Bots     | Web Access  | API         | Notes                                 |
-|-------------|-------------|-------------|---------------------------------------|
-| ChatGPT     | Yes         | Coming soon | Supports multiple models              |
-| Bing Chat   | Yes         | No          | Chat with three styles concurrently   |
-| Baidu ERNIE | Coming soon | Coming soon | Who can hack its Web API?             |
-| Bard        | Coming soon | No          |                                       |
-| Claude      | Coming soon | Coming soon |                                       |
-| Tongyi Qianwen | Coming soon | Coming soon | Who can provide invitation? |
+| AI Bots        | Web Access  | API         | Notes                                 |
+|----------------|-------------|-------------|---------------------------------------|
+| ChatGPT        | Yes         | Coming soon | Supports multiple models              |
+| Bing Chat      | Yes         | No          | Chat with three styles concurrently   |
+| Baidu ERNIE    | Coming soon | Coming soon | Who can hack its Web API?             |
+| Bard           | Coming soon | No          |                                       |
+| Claude         | Coming soon | Coming soon |                                       |
+| Tongyi Qianwen | Coming soon | Coming soon | Who can provide an invitation?        |
 
 And more...
 
 ### Other features
 
-* Login the bots with your own accounts
-* Turn on/off any bots at any time
-* Switch to one, two or three columns view
-* Supports multiply languages (en, zh)
+* Log in with your own bot accounts
+* Enable/disable any bots at any time
+* Switch between one, two, or three-column view
+* Supports multiple languages (en, zh)
 * [TODO] Keep ChatGPT session alive
 * [TODO] Best recommendations
 
-## Prerequirements
+## Prerequisites
 
-ChatALL is a client, not a proxy. So that you must:
+ChatALL is a client, not a proxy. Therefore, you must:
 
-1. Having working accounts and/or API tokens of the bots.
-2. Having reliable network connections to the bots.
+1. Have working accounts and/or API tokens for the bots.
+2. Have reliable network connections to the bots.
 
-## Download / install
-
+## Download / Install
 
 Download from https://github.com/sunner/ChatALL/releases
 
@@ -69,13 +68,13 @@ Build for your current platform:
 npm run electron:build
 ```
 
-Build for your all platform:
+Build for all platforms:
 ```bash
 npm run electron:build -- -wml --x64 --arm64
 ```
 
 ### Credits
 
-* GPT-4 wrote much code
-* ChatGPT, Bing Chat and Google provide many solutons (ranked by order)
+* GPT-4 contributed much of the code
+* ChatGPT, Bing Chat and Google provide many solutons (ranked in order)
 * Inspired by [ChatHub](https://github.com/chathub-dev/chathub). Regards!
