@@ -7,6 +7,9 @@ import Bot from "./Bot";
 import store from "@/store";
 import i18n from "@/i18n";
 
+const REFRESH_SESSION_URL = "https://chat.openai.com/api/auth/session";
+const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
+
 export default class ChatGPTBot extends Bot {
   static _id = "ChatGPTBot"; // ID of the bot, should be unique
   static _name = "chatGpt.name"; // String of the bot's name, should be unique
@@ -49,8 +52,30 @@ export default class ChatGPTBot extends Bot {
       console.error("Error checking ChatGPT login status:", error);
       this.constructor._isLoggedIn = false;
     }
+    // Toggle periodic session refreshing based on login status
+    this.toggleSessionRefreshing(this.constructor._isLoggedIn);
   }
 
+  refreshSession() {
+    axios.get(REFRESH_SESSION_URL).catch((error) => {
+      console.error("Error refreshing session:", error.message);
+      this.constructor._isLoggedIn = false;
+      this.toggleSessionRefreshing(false);
+    });
+  }
+
+  toggleSessionRefreshing(shouldRefresh) {
+    if (shouldRefresh && !this.sessionRefreshInterval) {
+      this.refreshSession();
+      this.sessionRefreshInterval = setInterval(
+        this.refreshSession.bind(this),
+        REFRESH_SESSION_INTERVAL
+      );
+    } else if (!shouldRefresh && this.sessionRefreshInterval) {
+      clearInterval(this.sessionRefreshInterval);
+      this.sessionRefreshInterval = null;
+    }
+  }
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Make sure the access token is available
     if (!this.accessToken) await this.checkLoginStatus();
