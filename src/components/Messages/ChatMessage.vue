@@ -11,7 +11,7 @@
 <script>
 import Markdown from 'vue3-markdown-it';
 import 'highlight.js/styles/github.css';
-import 'github-markdown-css'
+import 'github-markdown-css/github-markdown-light.css'
 
 export default {
     components: {
@@ -69,5 +69,9 @@ export default {
     width: 24px;
     height: 24px;
     margin-right: 4px;
+}
+
+.markdown-body {
+    background-color: inherit;
 }
 </style>
