@@ -2,7 +2,7 @@
     <div id="app">
         <header>
             <div class="header-content">
-                <img class="logo" src="@/assets/logo.png" alt="ChatALL" />
+                <img class="logo" src="@/assets/logo-banner.png" alt="ChatALL" />
                 <div class="column-icons">
                     <img
                         src="@/assets/column-1.svg"
