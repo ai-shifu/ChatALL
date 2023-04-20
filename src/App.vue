@@ -125,7 +125,11 @@ export default {
             if (this.prompt.trim() === "") return;
 
             // Add a new prompt message to the messages array
-            this.$refs.chatMessages.messages.push({ type: "prompt", content: this.prompt });
+            this.$refs.chatMessages.messages.push({
+                type: "prompt",
+                content: this.prompt,
+                done: true
+            });
 
             // Send the prompt to all the bots and update the message with the response
             for (const bot of this.bots) {
@@ -137,6 +141,7 @@ export default {
                     content: "",
                     logo: bot.getLogo(),
                     name: bot.getFullname(),
+                    done: false,
                 };
                 bot.sendPrompt(
                     this.prompt,

@@ -35,8 +35,10 @@ export default {
     },
     methods: {
         // Update the chat-message with the new message
-        updateMessage(response, index) {
-            this.messages[index].content = response;
+        updateMessage(response, index, done) {
+            if (response !== null)
+                this.messages[index].content = response;
+            this.messages[index].done = done;
         }
     },
 };

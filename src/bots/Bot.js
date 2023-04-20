@@ -83,11 +83,11 @@ export default class Bot {
    * Send a prompt to the bot and call onResponse(response, callbackParam)
    * when the response is ready.
    * @param {string} prompt
-   * @param {function} onUpdateResponse
+   * @param {function} onUpdateResponse params: response, callbackParam, isDone
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    onUpdateResponse(i18n.global.t("bot.notImplemented"), callbackParam);
+    onUpdateResponse(i18n.global.t("bot.notImplemented"), callbackParam, true);
   }
 
   async checkLoginStatus() {

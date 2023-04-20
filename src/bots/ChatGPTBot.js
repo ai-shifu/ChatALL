@@ -77,6 +77,7 @@ export default class ChatGPTBot extends Bot {
       this.sessionRefreshInterval = null;
     }
   }
+
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Make sure the access token is available
     if (!this.accessToken) await this.checkLoginStatus();
@@ -117,6 +118,7 @@ export default class ChatGPTBot extends Bot {
       source.addEventListener("message", (event) => {
         const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
         if (event.data === "[DONE]") {
+          onUpdateResponse(null, callbackParam, true);
           source.close();
         } else if (regex.test(event.data)) {
           // Ignore the timestamp
@@ -128,7 +130,7 @@ export default class ChatGPTBot extends Bot {
             this.conversationContext.parentMessageId = data.message.id;
             const partialText = data.message?.content?.parts?.[0];
             if (partialText) {
-              onUpdateResponse(partialText, callbackParam);
+              onUpdateResponse(partialText, callbackParam, false);
             }
           } catch (error) {
             console.error("Error parsing ChatGPT response:", error);

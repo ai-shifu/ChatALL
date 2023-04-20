@@ -1,11 +1,15 @@
 <template>
-    <div :class="['message', message.type]">
-        <div v-if="message.type === 'response'" class="title">
+    <v-card 
+        :class="['message', message.type]"
+        flat
+        :loading="message.done ? false : 'primary'"
+    >
+        <v-card-title v-if="message.type === 'response'" class="title">
             <img :src="message.logo" alt="Bot Icon" />
-            <span>{{ message.name }}</span>
-        </div>
+            {{ message.name }}
+        </v-card-title>
         <Markdown class="markdown-body" :breaks="true" :source="message.content" />
-    </div>
+    </v-card>
 </template>
 
 <script>
@@ -62,12 +66,14 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1rem;
+    padding: 0;
     margin-bottom: 8px;
 }
 
 .title img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     margin-right: 4px;
 }
 

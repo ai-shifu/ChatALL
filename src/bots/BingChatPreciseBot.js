@@ -133,13 +133,13 @@ export default class BingChatPreciseBot extends Bot {
         } else if (event.type === 6) {
           wsp.sendPacked({ type: 6 });
         } else if (event.type === 3) {
-          // onUpdateResponse(null, callbackParam);
+          onUpdateResponse(null, callbackParam, true);
           wsp.removeAllListeners();
           wsp.close();
         } else if (event.type === 1) {
           if (event.arguments[0].messages?.length > 0) {
             const response = event.arguments[0].messages[0].text;
-            onUpdateResponse(response, callbackParam);
+            onUpdateResponse(response, callbackParam, false);
           }
         }
       }
