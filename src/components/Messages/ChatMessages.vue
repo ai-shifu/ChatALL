@@ -4,8 +4,8 @@
             <chat-message v-for="(message, index) in messages" 
                 :key="index"
                 :columns="columns"
-                :message="message">
-            </chat-message>
+                :message="message"
+            ></chat-message>
         </div>
     </div>
 </template>
@@ -26,11 +26,24 @@ export default {
     data() {
         return {
             messages: [],
+            autoScroll: true,
         };
     },
     computed: {
         gridTemplateColumns() {
             return `repeat(${this.columns}, 1fr)`;
+        },
+    },
+    created() {
+        window.addEventListener('scroll', this.onScroll);
+    },
+    watch: {
+        'messages.length'() {
+            this.$nextTick(() => {
+                if (this.autoScroll) {
+                    this.scrollToBottom();
+                }
+            });
         },
     },
     methods: {
@@ -39,7 +52,20 @@ export default {
             if (response !== null)
                 this.messages[index].content = response;
             this.messages[index].done = done;
-        }
+
+            this.$nextTick(() => {
+                if (this.autoScroll) {
+                    this.scrollToBottom();
+                }
+            });
+        },
+        onScroll() {
+            const scrollPosition = window.pageYOffset + window.innerHeight;
+            this.autoScroll = scrollPosition >= document.documentElement.scrollHeight;
+        },
+        scrollToBottom() {
+            window.scrollTo(0, document.documentElement.scrollHeight);
+        },
     },
 };
 </script>
