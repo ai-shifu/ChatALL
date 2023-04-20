@@ -140,7 +140,7 @@ export default class ChatGPTBot extends Bot {
       });
       source.addEventListener("error", (error) => {
         console.error("Error handling real-time updates:", error);
-        onUpdateResponse(error.data.detail, callbackParam, false);
+        onUpdateResponse(error.data.detail, callbackParam, true);
         source.close();
       });
       source.addEventListener("done", (event) => {
