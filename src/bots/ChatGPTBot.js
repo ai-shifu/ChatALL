@@ -5,7 +5,6 @@ import { SSE } from "sse.js";
 
 import Bot from "./Bot";
 import store from "@/store";
-import i18n from "@/i18n";
 
 const REFRESH_SESSION_URL = "https://chat.openai.com/api/auth/session";
 const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
@@ -31,11 +30,12 @@ export default class ChatGPTBot extends Bot {
 
   getVersion() {
     const modelNames = {
-      "text-davinci-002-render-sha": i18n.global.t("chatGpt.default35"),
-      "text-davinci-002-render-paid": i18n.global.t("chatGpt.legacy35"),
-      "gpt-4": i18n.global.t("chatGpt.gpt4"),
+      "text-davinci-002-render-sha": "chatGpt.default35",
+      "text-davinci-002-render-paid": "chatGpt.legacy35",
+      "gpt-4": "chatGpt.gpt4",
     };
-    return modelNames[this.model];
+    this.constructor._version = modelNames[this.model];
+    return super.getVersion();
   }
 
   async checkLoginStatus() {
@@ -140,6 +140,7 @@ export default class ChatGPTBot extends Bot {
       });
       source.addEventListener("error", (error) => {
         console.error("Error handling real-time updates:", error);
+        onUpdateResponse(error.data.detail, callbackParam, false);
         source.close();
       });
       source.addEventListener("done", (event) => {
