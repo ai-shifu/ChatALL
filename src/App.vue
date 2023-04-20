@@ -238,6 +238,7 @@ header {
     background-color: white;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     padding: 16px;
+    z-index: 999;
 }
 
 .header-content {
