@@ -46,8 +46,7 @@
                 :placeholder="$t('footer.promptPlaceholder')"
                 autofocus
                 @keydown="filterEnterKey"
-            >
-            </v-textarea>
+            ></v-textarea>
             <v-btn
                 color="primary"
                 elevation="2"
@@ -296,5 +295,10 @@ footer {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+/* Override default style of vuetify v-textarea */
+.v-textarea--auto-grow textarea{
+    overflow: auto !important;
 }
 </style>
