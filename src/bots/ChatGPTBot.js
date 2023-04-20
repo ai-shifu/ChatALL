@@ -6,7 +6,9 @@ import { SSE } from "sse.js";
 import Bot from "./Bot";
 import store from "@/store";
 
-const REFRESH_SESSION_URL = "https://chat.openai.com/api/auth/session";
+// Inspired by https://v2ex.com/t/926890
+const REFRESH_SESSION_URL =
+  "https://chat.openai.com/_next/static/k9OKjvwgjWES7JT3k-6g9/_ssgManifest.js";
 const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
 
 export default class ChatGPTBot extends Bot {
@@ -59,9 +61,12 @@ export default class ChatGPTBot extends Bot {
 
   refreshSession() {
     axios.get(REFRESH_SESSION_URL).catch((error) => {
-      console.error("Error refreshing session:", error.message);
-      this.constructor._isLoggedIn = false;
-      this.toggleSessionRefreshing(false);
+      // the REFRESH_SESSION_URL always returns a 404 error
+      // if 403, then the session has expired
+      if (error.response && error.response.status === 403) {
+        this.constructor._isLoggedIn = false;
+        this.toggleSessionRefreshing(false);
+      }
     });
   }
 
