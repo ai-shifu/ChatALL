@@ -28,11 +28,11 @@ And more...
 
 ### Other features
 
-* Log in with your own bot accounts
+* No register needed. Log in with your own bot accounts
 * Enable/disable any bots at any time
 * Switch between one, two, or three-column view
 * Supports multiple languages (en, zh)
-* [TODO] Keep ChatGPT session alive
+* Keep ChatGPT session alive in background
 * [TODO] Best recommendations
 
 ## Prerequisites
