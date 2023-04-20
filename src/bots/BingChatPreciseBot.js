@@ -137,8 +137,9 @@ export default class BingChatPreciseBot extends Bot {
           wsp.removeAllListeners();
           wsp.close();
         } else if (event.type === 2) {
-          console.error("Error sending prompt to Bing Chat:", event);
           if (event.item.result.value !== "Success") {
+            console.error("Error sending prompt to Bing Chat:", event);
+            // Print the error message to bubble
             const message = event.item.result.message;
             onUpdateResponse(message, callbackParam, true);
           }
