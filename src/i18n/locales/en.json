@@ -31,13 +31,14 @@
         "name": "ChatGPT",
         "chooseModel": "Model",
         "chooseModelPrompt": "If you are not a ChatGPT Plus member, the default model will always be used",
-        "default35": "Default (GPT-3.5)",
-        "legacy35": "Legacy (GPT-3.5)",
+        "default35": "Default GPT-3.5",
+        "legacy35": "Legacy GPT-3.5",
         "gpt4": "GPT-4"
     },
     "bingChat": {
-        "nameCreative": "Bing Chat (Creative)",
-        "nameBalanced": "Bing Chat (Balanced)",
-        "namePrecise": "Bing Chat (Precise)"
+        "name": "Bing Chat",
+        "creative": "Creative",
+        "balanced": "Balanced",
+        "precise": "Precise"
     }
 }

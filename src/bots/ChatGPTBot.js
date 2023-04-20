@@ -12,7 +12,8 @@ const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
 
 export default class ChatGPTBot extends Bot {
   static _id = "ChatGPTBot"; // ID of the bot, should be unique
-  static _name = "chatGpt.name"; // String of the bot's name, should be unique
+  static _name = "chatGpt.name"; // String of the bot's name
+  static _version = ""; // Version or style of the bot (eg. "GPT-4")
   static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://chat.openai.com/";
 
@@ -28,13 +29,13 @@ export default class ChatGPTBot extends Bot {
     this.model = store.state.chatgptModel;
   }
 
-  getDisplayName() {
+  getVersion() {
     const modelNames = {
       "text-davinci-002-render-sha": i18n.global.t("chatGpt.default35"),
       "text-davinci-002-render-paid": i18n.global.t("chatGpt.legacy35"),
       "gpt-4": i18n.global.t("chatGpt.gpt4"),
     };
-    return `${super.getDisplayName()} (${modelNames[this.model]})`;
+    return modelNames[this.model];
   }
 
   async checkLoginStatus() {

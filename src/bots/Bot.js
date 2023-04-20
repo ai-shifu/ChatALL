@@ -15,7 +15,8 @@ export default class Bot {
   static _isLoggedIn = false;
 
   static _id = "Bot"; // ID of the bot, should be unique
-  static _name = "bot.nullBot"; // String of the bot's name, should be unique
+  static _name = "bot.nullBot"; // String of the bot's brand name
+  static _version = ""; // Version or style of the bot (eg. "GPT-4")
   static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "undefined";
 
@@ -48,10 +49,20 @@ export default class Bot {
     return this.constructor._id;
   }
 
-  getDisplayName() {
+  getBrandName() {
     return i18n.global.t(this.constructor._name);
   }
 
+  getVersion() {
+    if (!this.constructor._version) return "";
+    return i18n.global.t(this.constructor._version);
+  }
+
+  getFullname() {
+    if (this.getVersion())
+      return `${this.getBrandName()} (${this.getVersion()})`;
+    else return this.getBrandName();
+  }
   getSettingsComponent() {
     return `${this.constructor._id}Settings`;
   }

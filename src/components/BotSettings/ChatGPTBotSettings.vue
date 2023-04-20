@@ -3,7 +3,7 @@
         lines="two"
         subheader
     >
-        <v-list-subheader>{{ bot.getDisplayName() }}</v-list-subheader>
+        <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
         <v-list-item>
             <v-list-item-title>{{ $t('settings.loginOrOut') }}</v-list-item-title>
             <v-list-item-subtitle>{{ $t("settings.loginOrOutPrompt") }}</v-list-item-subtitle>

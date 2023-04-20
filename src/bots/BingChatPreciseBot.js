@@ -15,7 +15,8 @@ function randomIP() {
 }
 export default class BingChatPreciseBot extends Bot {
   static _id = "BingChatBot"; // ID of the bot, should be unique
-  static _name = "bingChat.namePrecise"; // String of the bot's name, should be unique
+  static _name = "bingChat.name"; // String of the bot's brand name
+  static _version = "bingChat.precise"; // Version or style of the bot (eg. "GPT-4")
   static _logoFilename = "bing-precise-logo.png"; // Place it in assets/bots/
   static _loginUrl = "https://www.bing.com/new";
 

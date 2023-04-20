@@ -62,8 +62,8 @@
                     :class="{ 'selected': activeBots[bot.getId()] }"
                     :key="index"
                     :src="bot.getLogo()"
-                    :alt="bot.getDisplayName()"
-                    :title="bot.getDisplayName()"
+                    :alt="bot.getFullname()"
+                    :title="bot.getFullname()"
                     @click="toggleSelected(bot)"
                 />
             </div>
@@ -136,7 +136,7 @@ export default {
                     type: "response",
                     content: "",
                     logo: bot.getLogo(),
-                    name: bot.getDisplayName(),
+                    name: bot.getFullname(),
                 };
                 bot.sendPrompt(
                     this.prompt,
@@ -178,7 +178,7 @@ export default {
                         .checkLoginStatus()
                         .then(() => this.updateActiveBots())
                         .catch(error => {
-                            console.error(`Error checking login status for ${ bot.getDisplayName() }`, error);
+                            console.error(`Error checking login status for ${ bot.getFullname() }`, error);
                         })
                 );
                 await Promise.allSettled(checkLoginPromises);

@@ -30,13 +30,14 @@
         "name": "ChatGPT",
         "chooseModel": "模型",
         "chooseModelPrompt": "如果你不是 ChatGPT Plus 会员，那么只会使用默认模型",
-        "default35": "默认版 (GPT-3.5)",
-        "legacy35": "遗留版 (GPT-3.5)",
+        "default35": "默认版 GPT-3.5",
+        "legacy35": "传统版 GPT-3.5",
         "gpt4": "GPT-4"
     },
     "bingChat": {
-        "nameCreative": "Bing Chat（创造型）",
-        "nameBalanced": "Bing Chat（平衡型）",
-        "namePrecise": "Bing Chat（精确型）"
+        "name": "Bing Chat",
+        "creative": "创造力",
+        "balanced": "平衡",
+        "precise": "精确"
     }
 }
