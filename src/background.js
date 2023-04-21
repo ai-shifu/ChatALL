@@ -1,12 +1,9 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, BrowserWindow, ipcMain } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
-
-// Bing Chat requires the user agent to be Edge
-const EDGE_USER_AGENT_SUFFIX = "Edg/112.0.1722.48";
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -24,6 +21,7 @@ async function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       webSecurity: false,
+      preload: "./preload.js",
     },
   });
 
@@ -70,6 +68,27 @@ async function createWindow() {
   );
 }
 
+function createNewWindow(url, userAgent = "") {
+  const newWin = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      webSecurity: false,
+    },
+  });
+
+  if (userAgent) {
+    newWin.webContents.setUserAgent(userAgent);
+  }
+  newWin.loadURL(url);
+}
+
+ipcMain.handle("create-new-window", (event, url, userAgent) => {
+  createNewWindow(url, userAgent);
+});
+
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
   // On macOS it is common for applications and their menu bar
@@ -97,7 +116,6 @@ app.on("ready", async () => {
       console.error("Vue Devtools failed to install:", e.toString());
     }
   }
-  app.userAgentFallback += ` ${EDGE_USER_AGENT_SUFFIX}`;
   createWindow();
 });
 

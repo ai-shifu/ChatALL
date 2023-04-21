@@ -2,13 +2,16 @@
     <div v-if="show" class="modal-overlay">
         <div class="modal">
             <p>{{ $t("modal.loginPrompt", {botName: bot.getBrandName()}) }}</p>
-            <a :href="bot.getLoginUrl()" target="_blank">{{ bot.getLoginUrl() }}</a>
+            <a :href="bot.getLoginUrl()" target="_blank" @click="createWindow">{{ bot.getLoginUrl() }}</a>
             <button @click="onDone">{{ $t("modal.done") }}</button>
         </div>
     </div>
 </template>
 
 <script>
+const electron = window.require('electron');
+const ipcRenderer = electron.ipcRenderer;
+
 export default {
     props: {
         show: {
@@ -23,6 +26,10 @@ export default {
     methods: {
         onDone() {
             this.$emit('done');
+        },
+        createWindow(event) {
+            ipcRenderer.invoke('create-new-window', this.bot.getLoginUrl(), this.bot.getUserAgent());
+            event.preventDefault();
         },
     },
 };

@@ -19,6 +19,8 @@ export default class BingChatPreciseBot extends Bot {
   static _version = "bingChat.precise"; // Version or style of the bot (eg. "GPT-4")
   static _logoFilename = "bing-precise-logo.png"; // Place it in assets/bots/
   static _loginUrl = "https://www.bing.com/new";
+  static _userAgent =
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
 
   static _style = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
 

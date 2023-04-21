@@ -19,6 +19,7 @@ export default class Bot {
   static _version = ""; // Version or style of the bot (eg. "GPT-4")
   static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "undefined";
+  static _userAgent = ""; // Empty string means using the default user agent
 
   constructor() {
     // Compute the logo paths after packing by Webpack 4
@@ -69,6 +70,10 @@ export default class Bot {
 
   getLoginUrl() {
     return this.constructor._loginUrl;
+  }
+
+  getUserAgent() {
+    return this.constructor._userAgent;
   }
 
   isSelected() {
