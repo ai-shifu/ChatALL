@@ -94,7 +94,6 @@ import BingChatPreciseBot from "./bots/BingChatPreciseBot";
 import BingChatBalancedBot from "./bots/BingChatBalancedBot";
 import BingChatCreativeBot from "./bots/BingChatCreativeBot";
 import BardBot from "./bots/BardBot";
-import ERNIEBot from "./bots/ERNIEBot";
 
 export default {
     name: "App",
@@ -114,7 +113,6 @@ export default {
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),
-                ERNIEBot.getInstance(),
                 BardBot.getInstance(),
             ],
             activeBots: {},
