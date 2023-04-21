@@ -12,8 +12,8 @@
             </a>
         </v-list-item>
         <v-list-item>
-            <v-list-item-title>{{ $t('chatGpt.chooseModel') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ $t("chatGpt.chooseModelPrompt") }}</v-list-item-subtitle>
+            <v-list-item-title>{{ $t('ChatGPTBot.chooseModel') }}</v-list-item-title>
+            <v-list-item-subtitle>{{ $t("ChatGPTBot.chooseModelPrompt") }}</v-list-item-subtitle>
                 <v-select
                     v-model="chatgptModel"
                     :items="models"
@@ -37,9 +37,9 @@ export default {
         return {
             bot: ChatGPTBot.getInstance(),
             models: [
-                { name: this.$t("chatGpt.default35"), slug: "text-davinci-002-render-sha" },
-                { name: this.$t("chatGpt.legacy35"), slug: "text-davinci-002-render-paid" },
-                { name: this.$t("chatGpt.gpt4"), slug: "gpt-4" },
+                { name: this.$t("ChatGPTBot.text-davinci-002-render-sha"), slug: "text-davinci-002-render-sha" },
+                { name: this.$t("ChatGPTBot.text-davinci-002-render-paid"), slug: "text-davinci-002-render-paid" },
+                { name: this.$t("ChatGPTBot.gpt-4"), slug: "gpt-4" },
             ],
         };
     },

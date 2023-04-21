@@ -2,8 +2,7 @@ import Bot from "./Bot";
 import axios from "axios";
 
 export default class ERNIEBot extends Bot {
-  static _id = "ERNIEBot"; // ID of the bot, should be unique
-  static _name = "bot.ERNIE"; // String of the bot's name, should be unique
+  static _brandId = "ERNIEBot"; // ID of the bot, should be unique
   static _logoFilename = "ernie-logo.png"; // Place it in assets/bots/
   static _loginUrl = "https://yiyan.baidu.com/";
 

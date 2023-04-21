@@ -14,9 +14,8 @@ export default class Bot {
   static _logoPackedPaths = null;
   static _isLoggedIn = false;
 
-  static _id = "Bot"; // ID of the bot, should be unique
-  static _name = "bot.nullBot"; // String of the bot's brand name
-  static _version = ""; // Version or style of the bot (eg. "GPT-4")
+  static _brandId = "Bot"; // Brand id of the bot, should be unique. Used in i18n.
+  static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
   static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
@@ -46,26 +45,20 @@ export default class Bot {
     return this.constructor._logoPackedPaths[this.constructor._logoFilename];
   }
 
-  getId() {
-    return this.constructor._id;
-  }
-
   getBrandName() {
-    return i18n.global.t(this.constructor._name);
+    const c = this.constructor;
+    return i18n.global.t(`${c._brandId}.name`);
   }
 
-  getVersion() {
-    if (!this.constructor._version) return "";
-    return i18n.global.t(this.constructor._version);
+  getModelName() {
+    const c = this.constructor;
+    return c._model ? "" : i18n.global.t(`${c._brandId}.${c._model}`);
   }
 
   getFullname() {
-    if (this.getVersion())
-      return `${this.getBrandName()} (${this.getVersion()})`;
+    if (this.getModelName())
+      return `${this.getBrandName()} (${this.getModelName()})`;
     else return this.getBrandName();
-  }
-  getSettingsComponent() {
-    return `${this.constructor._id}Settings`;
   }
 
   getLoginUrl() {
@@ -74,10 +67,6 @@ export default class Bot {
 
   getUserAgent() {
     return this.constructor._userAgent;
-  }
-
-  isSelected() {
-    return this.constructor._isSelected;
   }
 
   isLoggedIn() {
@@ -92,7 +81,7 @@ export default class Bot {
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    onUpdateResponse(i18n.global.t("bot.notImplemented"), callbackParam, true);
+    onUpdateResponse(i18n.global.t("Bot.notImplemented"), callbackParam, true);
   }
 
   async checkLoginStatus() {

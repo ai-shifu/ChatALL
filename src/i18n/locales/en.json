@@ -21,24 +21,28 @@
         "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it.",
         "done": "Done"
     },
-    "bot": {
-        "nullBot": "Null Bot",
-        "Bard": "Bard",
-        "ERNIE": "ERNIE",
+    "Bot": {
+        "name": "Null Bot",
         "notImplemented": "Under construction..."
     },
-    "chatGpt": {
+    "ChatGPTBot": {
         "name": "ChatGPT",
         "chooseModel": "Model",
         "chooseModelPrompt": "If you are not a ChatGPT Plus member, the default model will always be used",
-        "default35": "Default GPT-3.5",
-        "legacy35": "Legacy GPT-3.5",
-        "gpt4": "GPT-4"
+        "text-davinci-002-render-sha": "Default GPT-3.5",
+        "text-davinci-002-render-paid": "Legacy GPT-3.5",
+        "gpt-4": "GPT-4"
     },
-    "bingChat": {
+    "BingChatBot": {
         "name": "Bing Chat",
-        "creative": "Creative",
-        "balanced": "Balanced",
-        "precise": "Precise"
+        "h3imaginative": "Creative",
+        "harmonyv3": "Balanced",
+        "h3precise": "Precise"
+    },
+    "BardBot": {
+        "name": "Bard"
+    },
+    "ERNIEBot": {
+        "name": "ERNIE"
     }
 }

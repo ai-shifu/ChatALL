@@ -21,23 +21,28 @@
         "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口",
         "done": "完成"
     },
-    "bot": {
+    "Bot": {
         "nullBot": "虚无",
-        "ERNIE": "文心一言",
         "notImplemented": "建设中..."
     },
-    "chatGpt": {
+    "ChatGPTBot": {
         "name": "ChatGPT",
         "chooseModel": "模型",
         "chooseModelPrompt": "如果你不是 ChatGPT Plus 会员，那么只会使用默认模型",
-        "default35": "默认版 GPT-3.5",
-        "legacy35": "传统版 GPT-3.5",
-        "gpt4": "GPT-4"
+        "text-davinci-002-render-sha": "默认版 GPT-3.5",
+        "text-davinci-002-render-paid": "传统版 GPT-3.5",
+        "gpt-4": "GPT-4"
     },
-    "bingChat": {
+    "BingChatBot": {
         "name": "Bing Chat",
-        "creative": "创造力",
-        "balanced": "平衡",
-        "precise": "精确"
+        "h3imaginative": "创造力",
+        "harmonyv3": "平衡",
+        "h3precise": "精确"
+    },
+    "BardBot": {
+        "name": "Bard"
+    },
+    "ERNIEBot": {
+        "name": "文心一言"
     }
 }

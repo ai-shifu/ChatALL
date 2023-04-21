@@ -59,7 +59,7 @@
             <div class="bot-logos margin-bottom">
                 <img
                     v-for="(bot, index) in bots"
-                    :class="{ 'selected': activeBots[bot.getId()] }"
+                    :class="{ 'selected': activeBots[bot.constructor.name] }"
                     :key="index"
                     :src="bot.getLogo()"
                     :alt="bot.getFullname()"
@@ -131,7 +131,7 @@ export default {
 
             // Send the prompt to all the bots and update the message with the response
             for (const bot of this.bots) {
-                if (!this.activeBots[bot.getId()])
+                if (!this.activeBots[bot.constructor.name])
                     continue;
 
                 var message = {
@@ -154,7 +154,7 @@ export default {
         ...mapMutations(["changeColumns"]),
         ...mapMutations(["SET_BOT_SELECTED"]),
         toggleSelected(bot) {
-            const botId = bot.getId();
+            const botId = bot.constructor.name;
             var selected = false;
             if (!bot.isLoggedIn()) {
                 // Open the login window
@@ -162,14 +162,14 @@ export default {
                 this.showCreateWindowModal = true;
                 selected = true;
             } else {
-                selected = !this.selectedBots[bot.getId()];
+                selected = !this.selectedBots[bot.constructor.name];
             }
             this.SET_BOT_SELECTED({ botId, selected});
             this.updateActiveBots();
         },
         updateActiveBots() {
             for (const bot of this.bots) {
-                this.activeBots[bot.getId()] = bot.isLoggedIn() && this.selectedBots[bot.getId()];
+                this.activeBots[bot.constructor.name] = bot.isLoggedIn() && this.selectedBots[bot.constructor.name];
             }
         },
         async checkAllBotsLoginStatus(specifiedBot) {

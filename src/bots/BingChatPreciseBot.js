@@ -14,15 +14,12 @@ function randomIP() {
   );
 }
 export default class BingChatPreciseBot extends Bot {
-  static _id = "BingChatBot"; // ID of the bot, should be unique
-  static _name = "bingChat.name"; // String of the bot's brand name
-  static _version = "bingChat.precise"; // Version or style of the bot (eg. "GPT-4")
+  static _brandId = "BingChatBot";
+  static _model = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _logoFilename = "bing-precise-logo.png"; // Place it in assets/bots/
   static _loginUrl = "https://www.bing.com/new";
   static _userAgent =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
-
-  static _style = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
 
   conversationContext = {
     clientId: "",
@@ -80,7 +77,7 @@ export default class BingChatPreciseBot extends Bot {
             "disable_emoji_spoken_text",
             "responsible_ai_policy_235",
             "enablemm",
-            this.constructor._style,
+            this.constructor._model,
             "responseos",
             "nourldedupe",
             "healthansgnd",

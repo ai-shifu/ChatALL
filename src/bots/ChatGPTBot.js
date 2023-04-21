@@ -12,32 +12,20 @@ const REFRESH_SESSION_URL =
 const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
 
 export default class ChatGPTBot extends Bot {
-  static _id = "ChatGPTBot"; // ID of the bot, should be unique
-  static _name = "chatGpt.name"; // String of the bot's name
-  static _version = ""; // Version or style of the bot (eg. "GPT-4")
+  static _brandId = "ChatGPTBot";
   static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://chat.openai.com/";
+  static _model = "text-davinci-002-render-sha";
 
   accessToken = "";
   conversationContext = {
     conversationId: "",
     parentMessageId: "",
   };
-  model = "text-davinci-002-render-sha";
 
   constructor() {
     super();
-    this.model = store.state.chatgptModel;
-  }
-
-  getVersion() {
-    const modelNames = {
-      "text-davinci-002-render-sha": "chatGpt.default35",
-      "text-davinci-002-render-paid": "chatGpt.legacy35",
-      "gpt-4": "chatGpt.gpt4",
-    };
-    this.constructor._version = modelNames[this.model];
-    return super.getVersion();
+    this.constructor._model = store.state.chatgptModel;
   }
 
   async checkLoginStatus() {
@@ -111,7 +99,7 @@ export default class ChatGPTBot extends Bot {
             },
           },
         ],
-        model: this.model,
+        model: this.constructor._model,
         conversation_id: this.conversationContext.conversationId || undefined,
         parent_message_id: this.conversationContext.parentMessageId || uuidv4(),
       });

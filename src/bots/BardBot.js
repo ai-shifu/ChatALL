@@ -1,8 +1,7 @@
 import Bot from "./Bot";
 
 export default class BardBot extends Bot {
-  static _id = "BardBot"; // ID of the bot, should be unique
-  static _name = "bot.Bard"; // String of the bot's name, should be unique
+  static _brandId = "BardBot";
   static _logoFilename = "bard-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://bard.google.com/";
 
