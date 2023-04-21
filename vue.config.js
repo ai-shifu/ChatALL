@@ -8,6 +8,7 @@ module.exports = defineConfig({
         // options placed here will be merged with default configuration and passed to electron-builder
         appId: "ai.chatall",
         productName: "ChatALL",
+        artifactName: "${productName}-${version}-${os}-${arch}.${ext}",
         directories: {
           buildResources: "src/assets",
         },
