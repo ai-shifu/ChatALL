@@ -5,9 +5,7 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
-// This ua is copied from https://github.com/lencx/ChatGPT
-const DEFAULT_USER_AGENT =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)";
+const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
