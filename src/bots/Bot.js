@@ -52,7 +52,7 @@ export default class Bot {
 
   getModelName() {
     const c = this.constructor;
-    return c._model ? "" : i18n.global.t(`${c._brandId}.${c._model}`);
+    return c._model ? i18n.global.t(`${c._brandId}.${c._model}`) : "";
   }
 
   getFullname() {
