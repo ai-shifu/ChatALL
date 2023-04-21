@@ -60,8 +60,19 @@ async function createWindow() {
     (details, callback) => {
       const { url, requestHeaders } = details;
       const urlObj = new URL(url);
-      const referer = `${urlObj.protocol}//${urlObj.host}`;
-      requestHeaders["Referer"] = referer;
+
+      // Only replace outbound access and electron origin
+      if (
+        ["http:", "https:"].includes(urlObj.protocol) &&
+        !["localhost", "127.0.0.1"].includes(urlObj.hostname) &&
+        requestHeaders["Referer"]
+      ) {
+        const refererObj = new URL(requestHeaders["Referer"]);
+        if (["localhost", "127.0.0.1"].includes(refererObj.hostname)) {
+          const referer = `${urlObj.protocol}//${urlObj.host}/`;
+          requestHeaders["Referer"] = referer;
+        }
+      }
 
       callback({ requestHeaders });
     }
