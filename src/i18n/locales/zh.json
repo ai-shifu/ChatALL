@@ -33,7 +33,7 @@
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },
-    "BingChatBot": {
+    "bingChatBot": {
         "name": "Bing Chat",
         "h3imaginative": "创造力",
         "harmonyv3": "平衡",
