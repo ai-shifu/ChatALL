@@ -88,7 +88,7 @@ function createNewWindow(url, userAgent = "") {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      webSecurity: false,
+      // webSecurity: false,  // false will break Cloudflare captcha challenge
     },
   });
 
