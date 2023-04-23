@@ -13,7 +13,6 @@ export default createStore({
     lang: "auto",
     columns: 1,
     selectedBots: {},
-    chatgptModel: "text-davinci-002-render-sha",
   },
   mutations: {
     changeColumns(state, n) {
@@ -26,9 +25,6 @@ export default createStore({
     setCurrentLanguage(state, language) {
       state.lang = language;
       i18n.global.locale = language;
-    },
-    setChatGPTModel(state, model) {
-      state.chatgptModel = model;
     },
   },
   actions: {

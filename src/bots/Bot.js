@@ -14,11 +14,12 @@ export default class Bot {
   static _logoPackedPaths = null;
   static _isLoggedIn = false;
 
-  static _brandId = "Bot"; // Brand id of the bot, should be unique. Used in i18n.
+  static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
   static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
   static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
+  static _lock = null; // AsyncLock for network requests. `new AsyncLock()` in the subclass as needed.
 
   constructor() {
     // Compute the logo paths after packing by Webpack 4
@@ -74,14 +75,39 @@ export default class Bot {
   }
 
   /**
+   * Acquire a lock for the given key and call lockedFn() when the lock is acquired.
+   * If the lock is not available, call onLockUnavailable() and then try to acquire
+   * the lock again.
+   * @param {string} key
+   * @param {function} lockedFn
+   * @param {function} onLockUnavailable
+   */
+  async acquireLock(key, lockedFn, onLockUnavailable) {
+    const self = this;
+    await this.constructor._lock.acquire(
+      key,
+      lockedFn,
+      async function (err, ret) {
+        if (err) {
+          // The lock is not available
+          onLockUnavailable();
+          await self.constructor._lock.acquire(key, lockedFn); // Wait forever
+        }
+        return ret;
+      },
+      { timeout: 1 } // Wait for only 1ms. Don't use 0 here.
+    );
+  }
+
+  /**
    * Send a prompt to the bot and call onResponse(response, callbackParam)
    * when the response is ready.
    * @param {string} prompt
-   * @param {function} onUpdateResponse params: response, callbackParam, isDone
+   * @param {function} onUpdateResponse params: response, callbackParam, done
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    onUpdateResponse(i18n.global.t("Bot.notImplemented"), callbackParam, true);
+    onUpdateResponse(i18n.global.t("bot.notImplemented"), callbackParam, true);
   }
 
   async checkLoginStatus() {

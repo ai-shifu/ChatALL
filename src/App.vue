@@ -89,7 +89,8 @@ import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from '@/components/SettingsModal.vue';
 
 // Bots
-import ChatGPTBot from "./bots/ChatGPTBot";
+import ChatGPT35Bot from "./bots/ChatGPT35Bot";
+import ChatGPT4Bot from "./bots/ChatGPT4Bot";
 import BingChatPreciseBot from "./bots/BingChatPreciseBot";
 import BingChatBalancedBot from "./bots/BingChatBalancedBot";
 import BingChatCreativeBot from "./bots/BingChatCreativeBot";
@@ -109,7 +110,8 @@ export default {
             showSettingsModal: false,
             clickedBot: {},
             bots: [
-                ChatGPTBot.getInstance(),
+                ChatGPT35Bot.getInstance(),
+                ChatGPT4Bot.getInstance(),
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),

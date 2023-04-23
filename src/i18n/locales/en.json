@@ -21,16 +21,16 @@
         "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it.",
         "done": "Done"
     },
-    "Bot": {
+    "bot": {
         "name": "Null Bot",
-        "notImplemented": "Under construction..."
+        "notImplemented": "Under construction...",
+        "waiting": "Waiting for other { botName } request(s) to complete..."
     },
-    "ChatGPTBot": {
+    "chatGpt": {
         "name": "ChatGPT",
         "chooseModel": "Model",
         "chooseModelPrompt": "If you are not a ChatGPT Plus member, the default model will always be used",
-        "text-davinci-002-render-sha": "Default GPT-3.5",
-        "text-davinci-002-render-paid": "Legacy GPT-3.5",
+        "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },
     "BingChatBot": {

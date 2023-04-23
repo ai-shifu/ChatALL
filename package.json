@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.2.96",
+    "async-lock": "^1.4.0",
     "axios": "^1.3.6",
     "core-js": "^3.30.1",
     "electron-builder": "^23.6.0",

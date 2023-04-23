@@ -1,21 +1,23 @@
-// @vue/component
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { SSE } from "sse.js";
+import AsyncLock from "async-lock";
 
 import Bot from "./Bot";
-import store from "@/store";
+import i18n from "@/i18n";
 
 // Inspired by https://v2ex.com/t/926890
 const REFRESH_SESSION_URL =
   "https://chat.openai.com/_next/static/k9OKjvwgjWES7JT3k-6g9/_ssgManifest.js";
 const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
 
+// This is a abstract class. Never use it directly.
 export default class ChatGPTBot extends Bot {
-  static _brandId = "ChatGPTBot";
+  static _brandId = "chatGpt";
   static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://chat.openai.com/";
-  static _model = "text-davinci-002-render-sha";
+  static _model = "";
+  static _lock = new AsyncLock();
 
   accessToken = "";
   conversationContext = {
@@ -25,7 +27,6 @@ export default class ChatGPTBot extends Bot {
 
   constructor() {
     super();
-    this.constructor._model = store.state.chatgptModel;
   }
 
   async checkLoginStatus() {
@@ -71,48 +72,41 @@ export default class ChatGPTBot extends Bot {
     }
   }
 
-  async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    // Make sure the access token is available
-    if (!this.accessToken) await this.checkLoginStatus();
-
-    // If not logged in, handle the error
-    if (!this.isLoggedIn()) {
-      console.error("Not logged in to ChatGPT.");
-      return;
-    }
-
+  async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Send the prompt to the ChatGPT API
-    try {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.accessToken}`,
-      };
-      const payload = JSON.stringify({
-        action: "next",
-        messages: [
-          {
-            id: uuidv4(),
-            author: { role: "user" },
-            content: {
-              content_type: "text",
-              parts: [prompt],
-            },
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${this.accessToken}`,
+    };
+    const payload = JSON.stringify({
+      action: "next",
+      messages: [
+        {
+          id: uuidv4(),
+          author: { role: "user" },
+          content: {
+            content_type: "text",
+            parts: [prompt],
           },
-        ],
-        model: this.constructor._model,
-        conversation_id: this.conversationContext.conversationId || undefined,
-        parent_message_id: this.conversationContext.parentMessageId || uuidv4(),
-      });
+        },
+      ],
+      model: this.constructor._model,
+      conversation_id: this.conversationContext.conversationId || undefined,
+      parent_message_id: this.conversationContext.parentMessageId || uuidv4(),
+    });
 
+    return new Promise((resolve, reject) => {
       const source = new SSE(
         "https://chat.openai.com/backend-api/conversation",
         { headers, payload }
       );
+
       source.addEventListener("message", (event) => {
         const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
         if (event.data === "[DONE]") {
           onUpdateResponse(null, callbackParam, true);
           source.close();
+          resolve();
         } else if (regex.test(event.data)) {
           // Ignore the timestamp
           return;
@@ -131,18 +125,49 @@ export default class ChatGPTBot extends Bot {
             return;
           }
       });
+
       source.addEventListener("error", (error) => {
         console.error("Error handling real-time updates:", error);
         onUpdateResponse(error.data.detail, callbackParam, true);
         source.close();
+        reject(error);
       });
-      source.addEventListener("done", (event) => {
-        console.log("done", event);
+
+      source.addEventListener("done", () => {
         source.close();
+        resolve();
       });
-      source.stream();
-    } catch (error) {
-      console.error("Error sending prompt to ChatGPT:", error);
+
+      try {
+        source.stream();
+      } catch (error) {
+        console.error("Error sending prompt to ChatGPT:", error);
+      }
+    });
+  }
+
+  async sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    // Make sure the access token is available
+    if (!this.accessToken) await this.checkLoginStatus();
+
+    // If not logged in, handle the error
+    if (!this.isLoggedIn()) {
+      console.error("Not logged in to ChatGPT.");
+      return;
     }
+
+    await this.acquireLock(
+      this.constructor._brandId,
+      async () => {
+        await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+      },
+      () => {
+        onUpdateResponse(
+          i18n.global.t("bot.waiting", { botName: this.getBrandName() }),
+          callbackParam,
+          false
+        );
+      }
+    );
   }
 }

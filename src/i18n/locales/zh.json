@@ -21,16 +21,16 @@
         "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口",
         "done": "完成"
     },
-    "Bot": {
+    "bot": {
         "nullBot": "虚无",
-        "notImplemented": "建设中..."
+        "notImplemented": "建设中...",
+        "waiting": "等待其它 { botName } 请求结束..."
     },
-    "ChatGPTBot": {
+    "chatGpt": {
         "name": "ChatGPT",
         "chooseModel": "模型",
         "chooseModelPrompt": "如果你不是 ChatGPT Plus 会员，那么只会使用默认模型",
-        "text-davinci-002-render-sha": "默认版 GPT-3.5",
-        "text-davinci-002-render-paid": "传统版 GPT-3.5",
+        "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },
     "BingChatBot": {
