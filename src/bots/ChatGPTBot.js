@@ -64,7 +64,7 @@ export default class ChatGPTBot extends Bot {
       this.refreshSession();
       this.sessionRefreshInterval = setInterval(
         this.refreshSession.bind(this),
-        REFRESH_SESSION_INTERVAL
+        REFRESH_SESSION_INTERVAL - Math.random() * 1000 * 10 // Randomize the interval a bit
       );
     } else if (!shouldRefresh && this.sessionRefreshInterval) {
       clearInterval(this.sessionRefreshInterval);
