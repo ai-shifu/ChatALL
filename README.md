@@ -19,10 +19,11 @@ Large Language Models (LLMs)-based AI bots are amazing. However, their behavior 
 |----------------|-------------|-------------|---------------------------------------|
 | ChatGPT        | Yes         | Coming soon | Supports multiple models              |
 | Bing Chat      | Yes         | No          | Chat with three styles concurrently   |
-| Baidu ERNIE    | Coming soon | Coming soon | Who can hack its Web API?             |
+| Baidu ERNIE    | No | Coming soon | Who can hack its Web API?             |
 | Bard           | Coming soon | No          |                                       |
 | Claude         | Coming soon | Coming soon |                                       |
 | Tongyi Qianwen | Coming soon | Coming soon | Who can provide an invitation?        |
+| Dedao Learning Assistant | Coming soon | No | |
 
 And more...
 
@@ -33,6 +34,7 @@ And more...
 * Switch between one, two, or three-column view
 * Supports multiple languages (en, zh)
 * Keep ChatGPT session alive in background
+* Batch mode: You can send the next prompt without waiting for the previous request to complete
 * [TODO] Best recommendations
 
 ## Prerequisites
@@ -49,13 +51,13 @@ Download from https://github.com/sunner/ChatALL/releases
 
 ### On Windows
 
-Just download the .exe file and proceed with the setup.
+Just download the *-win-x64.exe (mostly) or *-win-arm64.exe file and proceed with the setup.
 
 ### On macOS
 
-For Apple Silicon Mac (M1, M2 CPU), download the *-arm64.dmg file.
+For Apple Silicon Mac (M1, M2 CPU), download the *-mac-arm64.dmg file.
 
-For other Macs, download another .dmg file.
+For other Macs, download *-mac-x64.dmg file.
 
 ### On Linux
 
