@@ -123,6 +123,7 @@ export default {
     methods: {
         async sendPromptToBots() {
             if (this.prompt.trim() === "") return;
+            if (Object.values(this.activeBots).every(bot => !bot)) return;
 
             // Add a new prompt message to the messages array
             this.$refs.chatMessages.messages.push({
