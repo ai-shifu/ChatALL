@@ -1,16 +1,25 @@
 import Bot from "./Bot";
 // import axios from "axios";
 import { SSE } from "sse.js";
+// import { v4 as uuidv4 } from "uuid";
+import store from "@/store";
 export default class OpenAIAPIBots extends Bot {
     static apiKey = "";
     static apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
     static _id = "OpenAIAPIBots"; // ID of the bot, should be unique
     static _name = "openAIApiBot.name"; // String of the bot's name, should be unique
-    static _loginUrl = ""; // URL for the login button on the bots page
+    static _logoFilename = "openai-logo.svg";
+    static _loginUrl = "openai-logo.svg"; // URL for the login button on the bots page
     model = "davinci";
     constructor() {
         super();
+        this.apiKey = store.state.apiKey;
     }
+
+    conversationContext = {
+        conversationId: "",
+        parentMessageId: "",
+      };
 
     setApiKey(key) {
         this.apiKey = key
@@ -35,9 +44,14 @@ export default class OpenAIAPIBots extends Bot {
     }
 
     async checkLoginStatus() {
-        if(this.constructor.apiKey && this.constructor.apiUrl && this.constructor.model){
+        console.log("checkLoginStatus openai api")
+        console.log("apiKey: " + this.apiKey)
+        console.log("apiUrl: " + this.constructor.apiUrl)
+        if(this.apiKey && this.constructor.apiUrl && this.model){
+            console.log("checkLoginStatus openai api true")
             this.constructor._isLoggedIn = true;
         }else{
+            console.log("checkLoginStatus openai api false")
             this.constructor._isLoggedIn = false;
         }
     }
@@ -45,22 +59,29 @@ export default class OpenAIAPIBots extends Bot {
 
 
     async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-       
+        console.log("sendPrompt openai api",callbackParam)
+        let res = ""
         // Send the prompt to the OpenAI API
         try {
           const headers = {
             "Content-Type": "application/json",
             Authorization: `Bearer ${this.apiKey}`,
           };
-          const payload = JSON.stringify({
+          
+            let payload = JSON.stringify({
+                model: "text-davinci-003",
                 prompt: prompt,
-                temperature: 0.5,
-                max_tokens: 100
+                temperature: 0,
+                max_tokens: 1000,
+                top_p: 1,
+                frequency_penalty: 1,
+                presence_penalty: 1,
+                stream: true
             });
     
           const source = new SSE(
-            `https://api.openai.com/v1/engines/${this.model}/completions`,
-            { headers, payload }
+           "https://api.openai.com/v1/completions",
+            {headers, payload}
           );
           source.addEventListener("message", (event) => {
             const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
@@ -72,12 +93,10 @@ export default class OpenAIAPIBots extends Bot {
             } else
               try {
                 const data = JSON.parse(event.data);
-                this.conversationContext.conversationId = data.conversation_id;
-                this.conversationContext.parentMessageId = data.message.id;
-                const partialText = data.message?.content?.parts?.[0];
-                if (partialText) {
-                  onUpdateResponse(partialText, callbackParam);
-                }
+                const partialText = data.choices?.[0]?.text;
+                res += partialText;
+                console.log("data",res)
+                onUpdateResponse(res, callbackParam);
               } catch (error) {
                 console.error("Error parsing ChatGPT response:", error);
                 console.error("ChatGPT response:", event);
@@ -96,7 +115,9 @@ export default class OpenAIAPIBots extends Bot {
         } catch (error) {
           console.error("Error sending prompt to OpenAIAPI:", error);
         }
+    
       }
+      
 
 
 }
