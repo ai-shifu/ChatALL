@@ -13,6 +13,10 @@ export default createStore({
     lang: "auto",
     columns: 1,
     selectedBots: {},
+    chatgptModel: "text-davinci-002-render-sha",
+    gptAPIModel: "davinci",
+    gptAPIUrl: "https://api.openai.com/v1/engines/davinci/completions",
+    apiKey: ""
   },
   mutations: {
     changeColumns(state, n) {
@@ -26,6 +30,18 @@ export default createStore({
       state.lang = language;
       i18n.global.locale = language;
     },
+    setChatGPTModel(state, model) {
+      state.chatgptModel = model;
+    },
+    setGPTAPIModel(state, model) {
+      state.gptAPIModel = model;
+    },
+    setGPTAPIUrl(state, url) {
+      state.gptAPIUrl = url;
+    },
+    setGPTAPIKey(state, apiKey) {
+      state.apiKey = apiKey;
+    }
   },
   actions: {
     // ...你的 actions

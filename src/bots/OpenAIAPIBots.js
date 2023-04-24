@@ -2,13 +2,12 @@ import Bot from "./Bot";
 // import axios from "axios";
 import { SSE } from "sse.js";
 export default class OpenAIAPIBots extends Bot {
-    static model = ["davinci", "curie", "babbage", "ada", "content-filter-alpha-c4", "content-filter-dev"];
     static apiKey = "";
     static apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
     static _id = "OpenAIAPIBots"; // ID of the bot, should be unique
     static _name = "openAIApiBot.name"; // String of the bot's name, should be unique
     static _loginUrl = ""; // URL for the login button on the bots page
-
+    model = "davinci";
     constructor() {
         super();
     }
