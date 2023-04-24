@@ -19,6 +19,7 @@
     },
     "modal": {
         "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口",
+        "openAIApiBot" :"请先到设置中【设置】功能中配置{botName}API",
         "done": "完成"
     },
     "bot": {
@@ -33,16 +34,12 @@
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },
-    "bingChatBot": {
-        "name": "Bing Chat",
-        "h3imaginative": "创造力",
-        "harmonyv3": "平衡",
-        "h3precise": "精确"
+    "bingChat": {
+        "nameCreative": "Bing Chat（创造型）",
+        "nameBalanced": "Bing Chat（平衡型）",
+        "namePrecise": "Bing Chat（精确型）"
     },
-    "BardBot": {
-        "name": "Bard"
-    },
-    "ERNIEBot": {
-        "name": "文心一言"
+    "openAIApiBot":{
+        "name": "OpenAI API"
     }
 }
