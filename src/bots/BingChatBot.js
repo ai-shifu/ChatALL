@@ -105,59 +105,66 @@ export default class BingChatBot extends Bot {
     };
   }
 
-  async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    const RecordSeparator = String.fromCharCode(30);
-    const wsp = new WebSocketAsPromised(
-      "wss://sydney.bing.com/sydney/ChatHub",
-      {
-        packMessage: (data) => {
-          return JSON.stringify(data) + RecordSeparator;
-        },
-        unpackMessage: (data) => {
-          return data
-            .toString()
-            .split(RecordSeparator)
-            .filter(Boolean)
-            .map((d) => JSON.parse(d));
-        },
-      }
-    );
+  async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    return new Promise((resolve, reject) => {
+      const RecordSeparator = String.fromCharCode(30);
+      const wsp = new WebSocketAsPromised(
+        "wss://sydney.bing.com/sydney/ChatHub",
+        {
+          packMessage: (data) => {
+            return JSON.stringify(data) + RecordSeparator;
+          },
+          unpackMessage: (data) => {
+            return data
+              .toString()
+              .split(RecordSeparator)
+              .filter(Boolean)
+              .map((d) => JSON.parse(d));
+          },
+        }
+      );
 
-    wsp.onUnpackedMessage.addListener((events) => {
-      for (const event of events) {
-        if (JSON.stringify(event) === "{}") {
-          wsp.sendPacked({ type: 6 });
-          wsp.sendPacked(this.buildChatRequest(prompt));
-          this.conversationContext.invocationId += 1;
-        } else if (event.type === 6) {
-          wsp.sendPacked({ type: 6 });
-        } else if (event.type === 3) {
-          onUpdateResponse(null, callbackParam, true);
-          wsp.removeAllListeners();
-          wsp.close();
-        } else if (event.type === 2) {
-          if (event.item.result.value !== "Success") {
-            console.error("Error sending prompt to Bing Chat:", event);
-            // Print the error message to bubble
-            const message = event.item.result.message;
-            onUpdateResponse(message, callbackParam, true);
-          }
-          wsp.removeAllListeners();
-          wsp.close();
-        } else if (event.type === 1) {
-          if (event.arguments[0].messages?.length > 0) {
-            const response = event.arguments[0].messages[0].text;
-            onUpdateResponse(response, callbackParam, false);
+      wsp.onOpen.addListener(() => {
+        wsp.sendPacked({ protocol: "json", version: 1 });
+      });
+
+      wsp.onUnpackedMessage.addListener((events) => {
+        for (const event of events) {
+          if (JSON.stringify(event) === "{}") {
+            wsp.sendPacked({ type: 6 });
+            wsp.sendPacked(this.buildChatRequest(prompt));
+            this.conversationContext.invocationId += 1;
+          } else if (event.type === 6) {
+            wsp.sendPacked({ type: 6 });
+          } else if (event.type === 3) {
+            onUpdateResponse(null, callbackParam, true);
+            wsp.removeAllListeners();
+            wsp.close();
+            resolve();
+          } else if (event.type === 2) {
+            if (event.item.result.value !== "Success") {
+              console.error("Error sending prompt to Bing Chat:", event);
+              // Print the error message to bubble
+              const message = event.item.result.message;
+              onUpdateResponse(message, callbackParam, true);
+            }
+            wsp.removeAllListeners();
+            wsp.close();
+            reject();
+          } else if (event.type === 1) {
+            if (event.arguments[0].messages?.length > 0) {
+              const response = event.arguments[0].messages[0].text;
+              onUpdateResponse(response, callbackParam, false);
+            }
           }
         }
-      }
-    });
+      });
 
-    wsp.onClose.addListener(() => {
-      // onUpdateResponse(null, callbackParam);
-    });
+      wsp.onClose.addListener(() => {
+        // onUpdateResponse(null, callbackParam);
+      });
 
-    await wsp.open();
-    wsp.sendPacked({ protocol: "json", version: 1 });
+      wsp.open();
+    });
   }
 }

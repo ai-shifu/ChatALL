@@ -4,7 +4,6 @@ import { SSE } from "sse.js";
 import AsyncLock from "async-lock";
 
 import Bot from "./Bot";
-import i18n from "@/i18n";
 
 // Inspired by https://v2ex.com/t/926890
 const REFRESH_SESSION_URL =
@@ -17,7 +16,7 @@ export default class ChatGPTBot extends Bot {
   static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://chat.openai.com/";
   static _model = "";
-  static _lock = new AsyncLock();
+  static _lock = new AsyncLock(); // All ChatGPT bots share the same lock
 
   accessToken = "";
   conversationContext = {
@@ -73,6 +72,15 @@ export default class ChatGPTBot extends Bot {
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    // Make sure the access token is available
+    if (!this.accessToken) await this.checkLoginStatus();
+
+    // If not logged in, handle the error
+    if (!this.isLoggedIn()) {
+      console.error("Not logged in to ChatGPT.");
+      return;
+    }
+
     // Send the prompt to the ChatGPT API
     const headers = {
       "Content-Type": "application/json",
@@ -144,30 +152,5 @@ export default class ChatGPTBot extends Bot {
         console.error("Error sending prompt to ChatGPT:", error);
       }
     });
-  }
-
-  async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    // Make sure the access token is available
-    if (!this.accessToken) await this.checkLoginStatus();
-
-    // If not logged in, handle the error
-    if (!this.isLoggedIn()) {
-      console.error("Not logged in to ChatGPT.");
-      return;
-    }
-
-    await this.acquireLock(
-      this.constructor._brandId,
-      async () => {
-        await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
-      },
-      () => {
-        onUpdateResponse(
-          i18n.global.t("bot.waiting", { botName: this.getBrandName() }),
-          callbackParam,
-          false
-        );
-      }
-    );
   }
 }

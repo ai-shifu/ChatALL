@@ -100,14 +100,43 @@ export default class Bot {
   }
 
   /**
+   * Subclass should implement this method, not sendPrompt().
    * Send a prompt to the bot and call onResponse(response, callbackParam)
    * when the response is ready.
    * @param {string} prompt
    * @param {function} onUpdateResponse params: response, callbackParam, done
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
+  async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    return new Promise((resolve, reject) => {
+      onUpdateResponse(
+        i18n.global.t("bot.notImplemented"),
+        callbackParam,
+        true
+      );
+      resolve();
+      reject();
+    });
+  }
+
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    onUpdateResponse(i18n.global.t("bot.notImplemented"), callbackParam, true);
+    if (!this.constructor._lock) {
+      await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+    } else {
+      await this.acquireLock(
+        this.constructor._brandId,
+        async () => {
+          await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+        },
+        () => {
+          onUpdateResponse(
+            i18n.global.t("bot.waiting", { botName: this.getBrandName() }),
+            callbackParam,
+            false
+          );
+        }
+      );
+    }
   }
 
   async checkLoginStatus() {
