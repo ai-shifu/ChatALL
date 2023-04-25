@@ -63,25 +63,26 @@ export default class OpenAIAPIBots extends Bot {
         let res = ""
         // Send the prompt to the OpenAI API
         try {
+
           const headers = {
             "Content-Type": "application/json",
             Authorization: `Bearer ${this.apiKey}`,
           };
           
             let payload = JSON.stringify({
-                model: "text-davinci-003",
-                prompt: prompt,
-                temperature: 0,
-                max_tokens: 1000,
-                top_p: 1,
-                frequency_penalty: 1,
-                presence_penalty: 1,
+                model: "gpt-3.5-turbo",
+                ['messages']:[{ role: 'user', content: `"${prompt}"` }],
+                temperature: 0.9,
                 stream: true
             });
-    
+      
           const source = new SSE(
-           "https://api.openai.com/v1/completions",
-            {headers, payload}
+           "https://api.openai.com/v1/chat/completions",
+            {
+              headers, 
+              method: "POST",
+              payload
+            }
           );
           source.addEventListener("message", (event) => {
             const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
@@ -90,21 +91,22 @@ export default class OpenAIAPIBots extends Bot {
             } else if (regex.test(event.data)) {
               // Ignore the timestamp
               return;
-            } else
-              try {
+            } else {
                 const data = JSON.parse(event.data);
-                const partialText = data.choices?.[0]?.text;
+                console.log("data",data)
+                const partialText = data.choices?.[0]?.delta?.content;
+                if (!partialText) {
+                  console.warn("No partial text in ChatGPT response:", data);
+                  return;
+                }
                 res += partialText;
-                console.log("data",res)
                 onUpdateResponse(res, callbackParam);
-              } catch (error) {
-                console.error("Error parsing ChatGPT response:", error);
-                console.error("ChatGPT response:", event);
-                return;
               }
           });
           source.addEventListener("error", (error) => {
-            console.error("Error handling real-time updates:", error);
+            const data = JSON.parse(error.data);
+            console.error("Error handling real-time updates:",data.error.message);
+            onUpdateResponse(data.error.message, callbackParam);
             source.close();
           });
           source.addEventListener("done", (event) => {
