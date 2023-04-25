@@ -59,7 +59,6 @@ export default class OpenAIAPIBots extends Bot {
 
 
     async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-        console.log("sendPrompt openai api",callbackParam)
         let res = ""
         // Send the prompt to the OpenAI API
         try {
@@ -93,7 +92,6 @@ export default class OpenAIAPIBots extends Bot {
               return;
             } else {
                 const data = JSON.parse(event.data);
-                console.log("data",data)
                 const partialText = data.choices?.[0]?.delta?.content;
                 if (!partialText) {
                   console.warn("No partial text in ChatGPT response:", data);
