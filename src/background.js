@@ -27,15 +27,36 @@ async function createWindow() {
     },
   });
 
-  if (process.env.WEBPACK_DEV_SERVER_URL) {
-    // Load the url of the dev server if in development mode
-    await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
-    if (!process.env.IS_TEST) win.webContents.openDevTools();
-  } else {
-    createProtocol("app");
-    // Load the index.html when not in development
-    win.loadURL("app://./index.html");
-  }
+  // // Add this block to modify the sameSite attribute for all cookies
+  // win.webContents.session.cookies.on(
+  //   "changed",
+  //   async (event, cookie, cause, removed) => {
+  //     if (cookie.sameSite !== "no_restriction") {
+  //       // Check if the domain is valid
+  //       const domain = cookie.domain.startsWith(".")
+  //         ? cookie.domain.substring(1)
+  //         : cookie.domain;
+  //       if (domain.split(".").length >= 2) {
+  //         try {
+  //           const url = `https://${domain}${cookie.path}`;
+  //           console.log(cookie);
+  //           console.log(url);
+
+  //           await win.webContents.session.cookies.set({
+  //             url: url,
+  //             name: cookie.name,
+  //             value: cookie.value,
+  //             domain: cookie.domain,
+  //             sameSite: "no_restriction",
+  //           });
+  //           console.log("成功修改一个 cookie 的 sameSite 属性");
+  //         } catch (error) {
+  //           console.error("设置 cookie 时出错:", error);
+  //         }
+  //       }
+  //     }
+  //   }
+  // );
 
   // Force the SameSite attribute to None for all cookies
   // This is required for the cross-origin request to work
@@ -76,9 +97,27 @@ async function createWindow() {
         }
       }
 
+      // To depress the 403 error
+      if (url === "https://bard.google.com/faq") {
+        requestHeaders["sec-fetch-mode"] = "navigate";
+      } else if (url.search("BardChatUi")) {
+        requestHeaders["origin"] = "https://bard.google.com";
+        requestHeaders["sec-fetch-site"] = "same-origin";
+      }
+
       callback({ requestHeaders });
     }
   );
+
+  if (process.env.WEBPACK_DEV_SERVER_URL) {
+    // Load the url of the dev server if in development mode
+    await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
+    if (!process.env.IS_TEST) win.webContents.openDevTools();
+  } else {
+    createProtocol("app");
+    // Load the index.html when not in development
+    win.loadURL("app://./index.html");
+  }
 }
 
 function createNewWindow(url, userAgent = "") {
@@ -86,7 +125,7 @@ function createNewWindow(url, userAgent = "") {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       contextIsolation: true,
       // webSecurity: false,  // false will break Cloudflare captcha challenge
     },

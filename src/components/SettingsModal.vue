@@ -42,6 +42,8 @@
                 <ChatGPTBotSettings></ChatGPTBotSettings>
                 <v-divider></v-divider>
                 <BingChatBotSettings></BingChatBotSettings>
+                <v-divider></v-divider>
+                <BardBotSettings></BardBotSettings>
 
             </v-list>
         </v-card>
@@ -53,12 +55,14 @@ import { mapState, mapMutations } from "vuex";
 
 import ChatGPTBotSettings from '@/components/BotSettings/ChatGPTBotSettings.vue';
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
+import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
 // Import more bot settings components here
 
 export default {
     components: {
         ChatGPTBotSettings,
         BingChatBotSettings,
+        BardBotSettings,
         // Add more bot settings components here
     },
     data() {
