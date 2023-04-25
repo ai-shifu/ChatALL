@@ -120,6 +120,12 @@ export default class Bot {
   }
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    // If not logged in, handle the error
+    if (!this.isLoggedIn()) {
+      console.error(`Not logged in to ${this.getFullname()}.`);
+      return;
+    }
+
     if (!this.constructor._lock) {
       await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
     } else {

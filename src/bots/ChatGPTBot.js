@@ -75,12 +75,6 @@ export default class ChatGPTBot extends Bot {
     // Make sure the access token is available
     if (!this.accessToken) await this.checkLoginStatus();
 
-    // If not logged in, handle the error
-    if (!this.isLoggedIn()) {
-      console.error("Not logged in to ChatGPT.");
-      return;
-    }
-
     // Send the prompt to the ChatGPT API
     const headers = {
       "Content-Type": "application/json",
