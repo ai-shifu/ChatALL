@@ -100,7 +100,7 @@ async function createWindow() {
       // To depress the 403 error
       if (url === "https://bard.google.com/faq") {
         requestHeaders["sec-fetch-mode"] = "navigate";
-      } else if (url.search("BardChatUi")) {
+      } else if (url.includes("BardChatUi")) {
         requestHeaders["origin"] = "https://bard.google.com";
         requestHeaders["sec-fetch-site"] = "same-origin";
       }
