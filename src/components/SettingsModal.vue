@@ -37,12 +37,13 @@
                         @update:model-value="setCurrentLanguage($event)"
                     ></v-select>
                 </v-list-item>
+
+                <v-divider></v-divider>
+                <ChatGPTBotSettings></ChatGPTBotSettings>
+                <v-divider></v-divider>
+                <BingChatBotSettings></BingChatBotSettings>
+
             </v-list>
-
-            <v-divider></v-divider>
-
-            <ChatGPTBotSettings></ChatGPTBotSettings>
-            <BingChatBotSettings></BingChatBotSettings>
         </v-card>
     </v-dialog>
 </template>
