@@ -12,12 +12,12 @@
 <script>
 const electron = window.require('electron');
 const ipcRenderer = electron.ipcRenderer;
-import BingChatPreciseBot from "@/bots/BingChatPreciseBot";
+import BingChatBot from "@/bots/BingChatBot";
 
 export default {
     data() {
         return {
-            bot: BingChatPreciseBot.getInstance(),
+            bot: BingChatBot.getInstance(),
         };
     },
     methods: {
