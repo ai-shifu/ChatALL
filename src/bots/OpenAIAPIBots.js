@@ -1,17 +1,15 @@
 import Bot from "./Bot";
-// import axios from "axios";
 import { SSE } from "sse.js";
-// import { v4 as uuidv4 } from "uuid";
 import store from "@/store";
 export default class OpenAIAPIBots extends Bot {
-    static apiKey = "";
-    static apiUrl = "";
     static _brandId = "OpenAIAPI";
     static _id = "OpenAIAPIBots"; // ID of the bot, should be unique
     static _name = "openAIApiBot.name"; // String of the bot's name, should be unique
     static _logoFilename = "openai-logo.svg";
     static _loginUrl = ""; // URL for the login button on the bots page
     static _model = "";
+    static apiKey = "";
+    static apiUrl = "";
     constructor() {
         super();
         this.apiKey = store.state.apiKey;
@@ -19,20 +17,10 @@ export default class OpenAIAPIBots extends Bot {
         this.apiUrl = store.state.gptAPIUrl;
     }
 
-    // getDisplayName() {
-    //   return `${super.getDisplayName()} (默认版 (GPT-3.5))`;
-    // }
-
     async checkLoginStatus() {
-        console.log("checkLoginStatus openai api")
-        console.log("apiKey: " + this.apiKey)
-        console.log("apiUrl: " + this.apiUrl)
-        console.log("model: " + this._model)
         if(this.apiKey && this.apiUrl && this._model){
-            console.log("checkLoginStatus openai api true")
             this.constructor._isLoggedIn = true;
         }else{
-            console.log("checkLoginStatus openai api false")
             this.constructor._isLoggedIn = false;
         }
     }
@@ -99,7 +87,4 @@ export default class OpenAIAPIBots extends Bot {
       console.error("Error sending prompt to OpenAIAPI:", error);
     }
   }
-      
-
-
 }
