@@ -39,7 +39,7 @@
         "nameBalanced": "Bing Chat（平衡型）",
         "namePrecise": "Bing Chat（精确型）"
     },
-    "openAIApiBot":{
+    "OpenAIAPI":{
         "name": "OpenAI API"
     }
 }

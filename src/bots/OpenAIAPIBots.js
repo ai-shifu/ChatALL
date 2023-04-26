@@ -6,6 +6,7 @@ import store from "@/store";
 export default class OpenAIAPIBots extends Bot {
     static apiKey = "";
     static apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
+    static _brandId = "OpenAIAPI";
     static _id = "OpenAIAPIBots"; // ID of the bot, should be unique
     static _name = "openAIApiBot.name"; // String of the bot's name, should be unique
     static _logoFilename = "openai-logo.svg";

@@ -45,5 +45,8 @@
     },
     "ERNIEBot": {
         "name": "ERNIE"
+    },
+    "OpenAIAPI":{
+        "name": "OpenAI API"
     }
 }
