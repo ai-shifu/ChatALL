@@ -58,65 +58,68 @@ export default class OpenAIAPIBots extends Bot {
 
 
 
-    async sendPrompt(prompt, onUpdateResponse, callbackParam) {
-        let res = ""
-        // Send the prompt to the OpenAI API
-        try {
+  async sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    let res = ""
+    // Send the prompt to the OpenAI API
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.apiKey}`,
+      };
 
-          const headers = {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.apiKey}`,
-          };
-          
-            let payload = JSON.stringify({
-                model: "gpt-3.5-turbo",
-                ['messages']:[{ role: 'user', content: `"${prompt}"` }],
-                temperature: 0.9,
-                stream: true
-            });
-      
-          const source = new SSE(
-           "https://api.openai.com/v1/chat/completions",
-            {
-              headers, 
-              method: "POST",
-              payload
-            }
-          );
-          source.addEventListener("message", (event) => {
-            const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
-            if (event.data === "[DONE]") {
-              source.close();
-            } else if (regex.test(event.data)) {
-              // Ignore the timestamp
+      let payload = JSON.stringify({
+        model: "gpt-3.5-turbo",
+        ['messages']: [{ role: 'user', content: `"${prompt}"` }],
+        temperature: 0.9,
+        stream: true
+      });
+      return new Promise((resolve, reject) => {
+        const source = new SSE(
+          "https://api.openai.com/v1/chat/completions",
+          {
+            headers,
+            method: "POST",
+            payload
+          }
+        );
+        source.addEventListener("message", (event) => {
+          const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
+          if (event.data === "[DONE]") {
+            onUpdateResponse(null, callbackParam, true);
+            source.close();
+            resolve();
+          } else if (regex.test(event.data)) {
+            // Ignore the timestamp
+            return;
+          } else {
+            const data = JSON.parse(event.data);
+            const partialText = data.choices?.[0]?.delta?.content;
+            if (!partialText) {
+              console.warn("No partial text in ChatGPT response:", data);
               return;
-            } else {
-                const data = JSON.parse(event.data);
-                const partialText = data.choices?.[0]?.delta?.content;
-                if (!partialText) {
-                  console.warn("No partial text in ChatGPT response:", data);
-                  return;
-                }
-                res += partialText;
-                onUpdateResponse(res, callbackParam);
-              }
-          });
-          source.addEventListener("error", (error) => {
-            const data = JSON.parse(error.data);
-            console.error("Error handling real-time updates:",data.error.message);
-            onUpdateResponse(data.error.message, callbackParam);
-            source.close();
-          });
-          source.addEventListener("done", (event) => {
-            console.log("done", event);
-            source.close();
-          });
-          source.stream();
-        } catch (error) {
-          console.error("Error sending prompt to OpenAIAPI:", error);
-        }
-    
-      }
+            }
+            res += partialText;
+            onUpdateResponse(res, callbackParam);
+          }
+        });
+        source.addEventListener("error", (error) => {
+          const data = JSON.parse(error.data);
+          console.error("Error handling real-time updates:", data.error.message);
+          onUpdateResponse(data.error.message, callbackParam);
+          source.close();
+          reject(error);
+        });
+        source.addEventListener("done", (event) => {
+          console.log("done", event);
+          source.close();
+          resolve();
+        });
+        source.stream();
+      });
+    } catch (error) {
+      console.error("Error sending prompt to OpenAIAPI:", error);
+    }
+  }
       
 
 
