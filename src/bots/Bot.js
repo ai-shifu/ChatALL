@@ -74,6 +74,10 @@ export default class Bot {
     return this.constructor._isLoggedIn;
   }
 
+  getBotType() {
+    return this.constructor._botType;
+  }
+
   /**
    * Acquire a lock for the given key and call lockedFn() when the lock is acquired.
    * If the lock is not available, call onLockUnavailable() and then try to acquire

@@ -19,6 +19,7 @@
     },
     "modal": {
         "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it.",
+        "apiConfigPrompt" :"Please go to the settings and configure { botName } first.",
         "done": "Done"
     },
     "bot": {
@@ -44,5 +45,16 @@
     },
     "ERNIEBot": {
         "name": "ERNIE"
+    },
+    "OpenAIAPI": {
+        "name": "OpenAIAPI",
+        "gpt-3": {
+            "5-turbo": "GPT-3.5"
+        },
+        "gpt-4": "GPT-4",
+        "settings": {
+            "title": "OpenAI API",
+            "openaiApiKey": "API Key"
+        }
     }
 }

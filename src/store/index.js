@@ -13,6 +13,7 @@ export default createStore({
     lang: "auto",
     columns: 1,
     selectedBots: {},
+    openaiApiKey: ""
   },
   mutations: {
     changeColumns(state, n) {
@@ -26,6 +27,9 @@ export default createStore({
       state.lang = language;
       i18n.global.locale = language;
     },
+    setOpenaiApiKey(state, openaiApiKey) {
+      state.openaiApiKey = openaiApiKey;
+    }
   },
   actions: {
     // ...你的 actions
