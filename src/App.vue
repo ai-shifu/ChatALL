@@ -73,6 +73,11 @@
             :bot="clickedBot"
             @done="checkAllBotsLoginStatus(bot); showCreateWindowModal = false"
         ></CreateWindowModal>
+        <APICreateWindowModal
+            :show="showAPICreateWindowModal"
+            :bot="clickedBot"
+            @done="checkAllBotsLoginStatus(bot); showAPICreateWindowModal = false"
+        ></APICreateWindowModal>
         <SettingsModal
             ref="settingsModal"
         ></SettingsModal>
@@ -87,6 +92,7 @@ import { mapState, mapMutations } from "vuex";
 import CreateWindowModal from "@/components/CreateWindowModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from '@/components/SettingsModal.vue';
+import APICreateWindowModal from "@/components/APICreateWindowModal.vue";
 
 // Bots
 import ChatGPT35Bot from "./bots/ChatGPT35Bot";
@@ -96,6 +102,8 @@ import BingChatBalancedBot from "./bots/BingChatBalancedBot";
 import BingChatCreativeBot from "./bots/BingChatCreativeBot";
 import SparkBot from "./bots/SparkBot";
 import BardBot from "./bots/BardBot";
+import OpenAIAPI35Bot from './bots/OpenAIAPI35Bot';
+import OPenAIAPI4Bot from './bots/OpenAIAPI4Bot';
 
 export default {
     name: "App",
@@ -103,16 +111,20 @@ export default {
         ChatMessages,
         CreateWindowModal,
         SettingsModal,
+        APICreateWindowModal
     },
     data() {
         return {
             prompt: "",
             showCreateWindowModal: false,
+            showAPICreateWindowModal:false,
             showSettingsModal: false,
             clickedBot: {},
             bots: [
                 ChatGPT35Bot.getInstance(),
                 ChatGPT4Bot.getInstance(),
+                OpenAIAPI35Bot.getInstance(),
+                OPenAIAPI4Bot.getInstance(),
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),
@@ -162,9 +174,13 @@ export default {
             const botId = bot.constructor.name;
             var selected = false;
             if (!bot.isLoggedIn()) {
-                // Open the login window
+                if(bot.getBotType() === 'API') {
+                    this.showAPICreateWindowModal = true;
+                } else {
+                    // Open the login window
+                    this.showCreateWindowModal = true;
+                }
                 this.clickedBot = bot;
-                this.showCreateWindowModal = true;
                 selected = true;
             } else {
                 selected = !this.selectedBots[bot.constructor.name];

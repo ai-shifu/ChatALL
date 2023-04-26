@@ -41,6 +41,8 @@
                 <v-divider></v-divider>
                 <ChatGPTBotSettings></ChatGPTBotSettings>
                 <v-divider></v-divider>
+                <OpenAIApiBotSettings></OpenAIApiBotSettings>
+                <v-divider></v-divider>
                 <BingChatBotSettings></BingChatBotSettings>
                 <v-divider></v-divider>
                 <BardBotSettings></BardBotSettings>
@@ -57,6 +59,7 @@ import ChatGPTBotSettings from '@/components/BotSettings/ChatGPTBotSettings.vue'
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
 import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
 // Import more bot settings components here
+import OpenAIApiBotSettings from "@/components/BotSettings/OpenAIApiBotSettings.vue";
 
 export default {
     components: {
@@ -64,6 +67,7 @@ export default {
         BingChatBotSettings,
         BardBotSettings,
         // Add more bot settings components here
+        OpenAIApiBotSettings
     },
     data() {
         return {
