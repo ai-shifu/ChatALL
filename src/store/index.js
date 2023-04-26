@@ -14,7 +14,7 @@ export default createStore({
     columns: 1,
     selectedBots: {},
     chatgptModel: "text-davinci-002-render-sha",
-    gptAPIModel: "davinci",
+    gptAPIModel: "gpt-3.5-turbo",
     gptAPIUrl: "https://api.openai.com/v1/engines/davinci/completions",
     apiKey: ""
   },

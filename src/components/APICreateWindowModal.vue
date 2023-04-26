@@ -1,7 +1,7 @@
 <template>
     <div v-if="show" class="modal-overlay">
         <div class="modal">
-            <p>{{ $t("modal.openAIApiBot", {botName: bot.getDisplayName()}) }}</p>
+            <p>{{ $t("modal.openAIApiBot", {botName: bot.getBrandName()}) }}</p>
             <a :href="bot.getLoginUrl()" target="_blank">{{ bot.getLoginUrl() }}</a>
             <button @click="onDone">{{ $t("modal.done") }}</button>
         </div>

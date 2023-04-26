@@ -19,7 +19,7 @@
     },
     "modal": {
         "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口",
-        "openAIApiBot" :"请先到设置中【设置】功能中配置{botName}API",
+        "openAIApiBot" :"请先到设置中【设置】功能中配置{botName}",
         "done": "完成"
     },
     "bot": {

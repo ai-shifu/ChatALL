@@ -26,7 +26,7 @@
                 label="选择一个模型"
                 item-value="slug"
                 hide-details
-                @update:model-value="setGPTAPIModel($event.target.value)"></v-select>
+                @update:model-value="setGPTAPIModel($event)"></v-select>
         </v-list-item>
 
     </v-list>
@@ -39,7 +39,12 @@ export default {
         return {
             bot: OpenAIAPIBots.getInstance(),
             models: [
-                { name: this.$t("chatGpt.default35"), slug: "davinci" }
+                { name: "gpt-3.5-turbo", slug: "gpt-3.5-turbo"},
+                { name: "gpt-3.5-turbo-0301", slug: "gpt-3.5-turbo-0301" },
+                { name: "gpt-4", slug: "gpt-4" },
+                { name: "gpt-4-0314", slug: "gpt-4-0314" },
+                { name: "gpt-4-32k", slug: "gpt-4-32k" },
+                { name: "gpt-4-32k-0314", slug: "gpt-4-32k-0314" }
             ]
         }
     },
