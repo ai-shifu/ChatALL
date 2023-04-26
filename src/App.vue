@@ -121,11 +121,11 @@ export default {
             bots: [
                 ChatGPT35Bot.getInstance(),
                 ChatGPT4Bot.getInstance(),
+                OpenAIAPIBots.getInstance(),
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),
-                BardBot.getInstance(),
-                OpenAIAPIBots.getInstance()
+                BardBot.getInstance()
             ],
             activeBots: {},
         };
