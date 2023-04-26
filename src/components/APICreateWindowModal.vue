@@ -3,7 +3,7 @@
         <div class="modal">
             <p>{{ $t("modal.openAIApiBot", {botName: bot.getBrandName()}) }}</p>
             <a :href="bot.getLoginUrl()" target="_blank">{{ bot.getLoginUrl() }}</a>
-            <button @click="onDone">{{ $t("modal.done") }}</button>
+            <button @click="onDone">{{ $t("modal.ok") }}</button>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     methods: {
         onDone() {
             this.$emit('done');
-        },
+        }
     },
 };
 </script>
