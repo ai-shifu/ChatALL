@@ -101,7 +101,6 @@ import BingChatPreciseBot from "./bots/BingChatPreciseBot";
 import BingChatBalancedBot from "./bots/BingChatBalancedBot";
 import BingChatCreativeBot from "./bots/BingChatCreativeBot";
 import BardBot from "./bots/BardBot";
-import ERNIEBot from "./bots/ERNIEBot";
 import OpenAIAPIBots from './bots/OpenAIAPIBots';
 
 export default {
