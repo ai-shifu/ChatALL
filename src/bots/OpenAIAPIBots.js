@@ -5,50 +5,30 @@ import { SSE } from "sse.js";
 import store from "@/store";
 export default class OpenAIAPIBots extends Bot {
     static apiKey = "";
-    static apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
+    static apiUrl = "";
     static _brandId = "OpenAIAPI";
     static _id = "OpenAIAPIBots"; // ID of the bot, should be unique
     static _name = "openAIApiBot.name"; // String of the bot's name, should be unique
     static _logoFilename = "openai-logo.svg";
-    static _loginUrl = "openai-logo.svg"; // URL for the login button on the bots page
-    model = "davinci";
+    static _loginUrl = ""; // URL for the login button on the bots page
+    static _model = "";
     constructor() {
         super();
         this.apiKey = store.state.apiKey;
+        this._model = store.state.gptAPIModel;
+        this.apiUrl = store.state.gptAPIUrl;
     }
 
-    conversationContext = {
-        conversationId: "",
-        parentMessageId: "",
-      };
-
-    setApiKey(key) {
-        this.apiKey = key
-    }
-
-    getDisplayName() {
-       return `${super.getDisplayName()} (默认版 (GPT-3.5))`;
-    }
-
-    setModel(m) {
-        if (this.constructor.model.includes(m)) {
-          this.model = m 
-        } else {
-          console.log('Invalid model!')
-        }
-    }
-
-    setApiUrlPath(url){
-        if(url){
-            this.apiUrl = url
-        }
-    }
+    // getDisplayName() {
+    //   return `${super.getDisplayName()} (默认版 (GPT-3.5))`;
+    // }
 
     async checkLoginStatus() {
         console.log("checkLoginStatus openai api")
         console.log("apiKey: " + this.apiKey)
-        console.log("apiUrl: " + this.constructor.apiUrl)
-        if(this.apiKey && this.constructor.apiUrl && this.model){
+        console.log("apiUrl: " + this.apiUrl)
+        console.log("model: " + this._model)
+        if(this.apiKey && this.apiUrl && this._model){
             console.log("checkLoginStatus openai api true")
             this.constructor._isLoggedIn = true;
         }else{
@@ -56,8 +36,6 @@ export default class OpenAIAPIBots extends Bot {
             this.constructor._isLoggedIn = false;
         }
     }
-
-
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     let res = ""
@@ -69,14 +47,14 @@ export default class OpenAIAPIBots extends Bot {
       };
 
       let payload = JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: this._model,
         ['messages']: [{ role: 'user', content: `"${prompt}"` }],
         temperature: 0.9,
         stream: true
       });
       return new Promise((resolve, reject) => {
         const source = new SSE(
-          "https://api.openai.com/v1/chat/completions",
+          this.apiUrl,
           {
             headers,
             method: "POST",
