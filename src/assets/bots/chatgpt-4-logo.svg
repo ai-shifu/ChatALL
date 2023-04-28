@@ -2,7 +2,7 @@
 <svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>chatgpt-4-logo</title>
     <defs>
-        <rect id="path-1" x="0" y="0" width="2406" height="2406"></rect>
+        <rect id="path-1" x="0" y="0" width="256" height="256"></rect>
         <rect id="path-3" x="0" y="0" width="190.323495" height="192.452393"></rect>
         <rect id="path-5" x="0" y="0" width="190.323495" height="192.452393"></rect>
         <rect id="path-7" x="0" y="0" width="783.115186" height="192.452393"></rect>
@@ -14,7 +14,7 @@
             </mask>
             <g id="Rectangle"></g>
             <g id="Group" mask="url(#mask-2)">
-                <g transform="translate(1.000030, 1.000030)">
+                <g transform="translate(0.106404, 0.106404)">
                     <rect id="Rectangle" fill="#74AA9C" fill-rule="nonzero" x="127.946776" y="127.946776" width="128.053224" height="128.053224"></rect>
                     <path d="M8.05971147e-15,61.4654379 C8.05971147e-15,27.5189859 27.5190924,8.05971147e-15 61.4655444,8.05971147e-15 L194.428008,8.05971147e-15 C228.374353,8.05971147e-15 255.893555,27.5189859 255.893555,61.4654379 L255.893555,194.534452 C255.893555,228.480798 228.374353,256 194.428008,256 L61.4655444,256 C27.5190924,256 8.05971147e-15,228.480798 8.05971147e-15,194.534452 L8.05971147e-15,61.4654379 Z" id="Path" fill="#74AA9C" fill-rule="evenodd"></path>
                     <g id="Clipped" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(32.785028, 31.720579)">
@@ -39,7 +39,7 @@
                 </g>
             </g>
         </g>
-        <text id="4" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="104" font-weight="bold" fill="#104E25">
+        <text id="4" stroke="#FFFFFF" stroke-width="4" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="104" font-weight="bold" fill="#104E25">
             <tspan x="198.176" y="255">4</tspan>
         </text>
     </g>
