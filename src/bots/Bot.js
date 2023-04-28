@@ -122,7 +122,11 @@ export default class Bot {
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // If not logged in, handle the error
     if (!this.isLoggedIn()) {
-      console.error(`Not logged in to ${this.getFullname()}.`);
+      onUpdateResponse(
+        i18n.global.t("bot.noLogin", { botName: this.getFullname() }),
+        callbackParam,
+        true
+      );
       return;
     }
 

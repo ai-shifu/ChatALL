@@ -24,6 +24,7 @@
     "bot": {
         "nullBot": "虚无",
         "notImplemented": "建设中...",
+        "noLogin": "未登录。",
         "waiting": "等待其它 { botName } 请求结束..."
     },
     "chatGpt": {

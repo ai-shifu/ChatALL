@@ -24,6 +24,7 @@
     "bot": {
         "name": "Null Bot",
         "notImplemented": "Under construction...",
+        "noLogin": "Not logged in.",
         "waiting": "Waiting for other { botName } request(s) to complete..."
     },
     "chatGpt": {
