@@ -10,7 +10,6 @@ const REFRESH_SESSION_URL =
   "https://chat.openai.com/_next/static/k9OKjvwgjWES7JT3k-6g9/_ssgManifest.js";
 const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
 
-// This is a abstract class. Never use it directly.
 export default class ChatGPTBot extends Bot {
   static _brandId = "chatGpt";
   static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
