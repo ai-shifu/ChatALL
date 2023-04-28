@@ -11,7 +11,7 @@
 
 ## Features
 
-Large Language Models (LLMs)-based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL may help you to discover the best option.
+Large Language Models (LLMs)-based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) may help you to discover the best option.
 
 ### Supported bots
 
