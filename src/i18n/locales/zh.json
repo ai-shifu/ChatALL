@@ -22,6 +22,7 @@
         "done": "完成"
     },
     "bot": {
+        "failedToCreateConversation": "创建对话失败。",
         "nullBot": "虚无",
         "notImplemented": "建设中...",
         "noLogin": "未登录。",
@@ -39,6 +40,9 @@
         "h3imaginative": "创造力",
         "harmonyv3": "平衡",
         "h3precise": "精确"
+    },
+    "spark": {
+        "name": "讯飞星火"
     },
     "BardBot": {
         "name": "Bard"

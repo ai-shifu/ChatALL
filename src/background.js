@@ -27,36 +27,33 @@ async function createWindow() {
     },
   });
 
-  // // Add this block to modify the sameSite attribute for all cookies
-  // win.webContents.session.cookies.on(
-  //   "changed",
-  //   async (event, cookie, cause, removed) => {
-  //     if (cookie.sameSite !== "no_restriction") {
-  //       // Check if the domain is valid
-  //       const domain = cookie.domain.startsWith(".")
-  //         ? cookie.domain.substring(1)
-  //         : cookie.domain;
-  //       if (domain.split(".").length >= 2) {
-  //         try {
-  //           const url = `https://${domain}${cookie.path}`;
-  //           console.log(cookie);
-  //           console.log(url);
+  // Modify the SameSite attribute for all cookies
+  win.webContents.session.cookies.on(
+    "changed",
+    async (event, cookie, cause, removed) => {
+      if (cookie.sameSite !== "no_restriction") {
+        // Check if the domain is valid
+        const domain = cookie.domain.startsWith(".")
+          ? cookie.domain.substring(1)
+          : cookie.domain;
+        if (domain.split(".").length >= 2) {
+          try {
+            const url = `https://${domain}${cookie.path}`;
 
-  //           await win.webContents.session.cookies.set({
-  //             url: url,
-  //             name: cookie.name,
-  //             value: cookie.value,
-  //             domain: cookie.domain,
-  //             sameSite: "no_restriction",
-  //           });
-  //           console.log("成功修改一个 cookie 的 sameSite 属性");
-  //         } catch (error) {
-  //           console.error("设置 cookie 时出错:", error);
-  //         }
-  //       }
-  //     }
-  //   }
-  // );
+            await win.webContents.session.cookies.set({
+              url: url,
+              name: cookie.name,
+              value: cookie.value,
+              domain: cookie.domain,
+              sameSite: "no_restriction",
+            });
+          } catch (error) {
+            console.error("Set cookie SameSite error:", error);
+          }
+        }
+      }
+    }
+  );
 
   // Force the SameSite attribute to None for all cookies
   // This is required for the cross-origin request to work

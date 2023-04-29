@@ -94,6 +94,7 @@ import ChatGPT4Bot from "./bots/ChatGPT4Bot";
 import BingChatPreciseBot from "./bots/BingChatPreciseBot";
 import BingChatBalancedBot from "./bots/BingChatBalancedBot";
 import BingChatCreativeBot from "./bots/BingChatCreativeBot";
+import SparkBot from "./bots/SparkBot";
 import BardBot from "./bots/BardBot";
 
 export default {
@@ -115,6 +116,7 @@ export default {
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),
+                SparkBot.getInstance(),
                 BardBot.getInstance(),
             ],
             activeBots: {},

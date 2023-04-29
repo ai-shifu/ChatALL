@@ -22,6 +22,7 @@
         "done": "Done"
     },
     "bot": {
+        "failedToCreateConversation": "Failed to create conversation.",
         "name": "Null Bot",
         "notImplemented": "Under construction...",
         "noLogin": "Not logged in.",
@@ -39,6 +40,9 @@
         "h3imaginative": "Creative",
         "harmonyv3": "Balanced",
         "h3precise": "Precise"
+    },
+    "spark": {
+        "name": "iFlytek Spark"
     },
     "BardBot": {
         "name": "Bard"
