@@ -12,7 +12,7 @@ const botLogoContext = require.context(
 export default class Bot {
   static _instance;
   static _logoPackedPaths = null;
-  static _isLoggedIn = false;
+  static _isAvailable = false;
 
   static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
   static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
@@ -70,8 +70,8 @@ export default class Bot {
     return this.constructor._userAgent;
   }
 
-  isLoggedIn() {
-    return this.constructor._isLoggedIn;
+  isAvailable() {
+    return this.constructor._isAvailable;
   }
 
   getBotType() {
@@ -125,9 +125,9 @@ export default class Bot {
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // If not logged in, handle the error
-    if (!this.isLoggedIn()) {
+    if (!this.isAvailable()) {
       onUpdateResponse(
-        i18n.global.t("bot.noLogin", { botName: this.getFullname() }),
+        i18n.global.t("bot.notAvailable", { botName: this.getFullname() }),
         callbackParam,
         true
       );
@@ -153,8 +153,14 @@ export default class Bot {
     }
   }
 
-  async checkLoginStatus() {
-    throw new Error("Method 'checkLoginStatus()' must be implemented.");
+  /**
+   * Subclass must implement this method.
+   * Check if the bot is logged in, settings are correct, etc.
+   * @returns {boolean} - true if the bot is available, false otherwise.
+   * @sideeffect - Set this.constructor._isAvailable
+   */
+  async checkAvailability() {
+    return false;
   }
 
   /**

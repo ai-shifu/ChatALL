@@ -14,12 +14,13 @@ export default class OpenAIAPIBot extends Bot {
     super();
   }
 
-  async checkLoginStatus() {
+  async checkAvailability() {
     if (!store.state.openaiApiKey) {
-      this.constructor._isLoggedIn = false;
+      this.constructor._isAvailable = false;
     } else {
-      this.constructor._isLoggedIn = true;
+      this.constructor._isAvailable = true;
     }
+    return this.isAvailable();
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {

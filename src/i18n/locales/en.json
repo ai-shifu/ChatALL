@@ -26,13 +26,12 @@
         "failedToCreateConversation": "Failed to create conversation.",
         "name": "Null Bot",
         "notImplemented": "Under construction...",
-        "noLogin": "Not logged in.",
+        "notAvailable": "The bot is not available because not login or not configured correctly.",
         "waiting": "Waiting for other { botName } request(s) to complete..."
     },
     "chatGpt": {
         "name": "ChatGPT",
         "chooseModel": "Model",
-        "chooseModelPrompt": "If you are not a ChatGPT Plus member, the default model will always be used",
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },

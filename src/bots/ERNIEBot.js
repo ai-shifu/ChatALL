@@ -10,18 +10,19 @@ export default class ERNIEBot extends Bot {
     super();
   }
 
-  async checkLoginStatus() {
+  async checkAvailability() {
     try {
       const res = await axios.get("https://yiyan.baidu.com/eb/user/info");
       if (res.data.content.isLogin) {
-        this.constructor._isLoggedIn = true;
+        this.constructor._isAvailable = true;
       } else {
-        this.constructor._isLoggedIn = false;
+        this.constructor._isAvailable = false;
       }
     } catch (err) {
       console.log(err);
-      this.constructor._isLoggedIn = false;
+      this.constructor._isAvailable = false;
     }
+    return this.isAvailable();
   }
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {

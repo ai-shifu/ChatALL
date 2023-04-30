@@ -27,23 +27,24 @@ export default class ChatGPTBot extends Bot {
     super();
   }
 
-  async checkLoginStatus() {
+  async checkAvailability() {
     try {
       const response = await axios.get(
         "https://chat.openai.com/api/auth/session"
       );
       if (response.data && response.data.accessToken) {
         this.accessToken = response.data.accessToken;
-        this.constructor._isLoggedIn = true;
+        this.constructor._isAvailable = true;
       } else {
-        this.constructor._isLoggedIn = false;
+        this.constructor._isAvailable = false;
       }
     } catch (error) {
       console.error("Error checking ChatGPT login status:", error);
-      this.constructor._isLoggedIn = false;
+      this.constructor._isAvailable = false;
     }
     // Toggle periodic session refreshing based on login status
-    this.toggleSessionRefreshing(this.constructor._isLoggedIn);
+    this.toggleSessionRefreshing(this.isAvailable());
+    return this.isAvailable();
   }
 
   refreshSession() {
@@ -51,7 +52,7 @@ export default class ChatGPTBot extends Bot {
       // the REFRESH_SESSION_URL always returns a 404 error
       // if 403, then the session has expired
       if (error.response && error.response.status === 403) {
-        this.constructor._isLoggedIn = false;
+        this.constructor._isAvailable = false;
         this.toggleSessionRefreshing(false);
       }
     });
@@ -72,7 +73,7 @@ export default class ChatGPTBot extends Bot {
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Make sure the access token is available
-    if (!this.accessToken) await this.checkLoginStatus();
+    if (!this.accessToken) await this.checkAvailability();
 
     // Send the prompt to the ChatGPT API
     const headers = {

@@ -71,12 +71,12 @@
         <CreateWindowModal
             :show="showCreateWindowModal"
             :bot="clickedBot"
-            @done="checkAllBotsLoginStatus(bot); showCreateWindowModal = false"
+            @done="checkAllBotsAvailability(bot); showCreateWindowModal = false"
         ></CreateWindowModal>
         <APICreateWindowModal
             :show="showAPICreateWindowModal"
             :bot="clickedBot"
-            @done="checkAllBotsLoginStatus(bot); showAPICreateWindowModal = false"
+            @done="checkAllBotsAvailability(bot); showAPICreateWindowModal = false"
         ></APICreateWindowModal>
         <SettingsModal
             ref="settingsModal"
@@ -173,7 +173,7 @@ export default {
         toggleSelected(bot) {
             const botId = bot.constructor.name;
             var selected = false;
-            if (!bot.isLoggedIn()) {
+            if (!bot.isAvailable()) {
                 if(bot.getBotType() === 'API') {
                     this.showAPICreateWindowModal = true;
                 } else {
@@ -190,22 +190,22 @@ export default {
         },
         updateActiveBots() {
             for (const bot of this.bots) {
-                this.activeBots[bot.constructor.name] = bot.isLoggedIn() && this.selectedBots[bot.constructor.name];
+                this.activeBots[bot.constructor.name] = bot.isAvailable() && this.selectedBots[bot.constructor.name];
             }
         },
-        async checkAllBotsLoginStatus(specifiedBot) {
+        async checkAllBotsAvailability(specifiedBot) {
             try {
                 let botsToCheck = specifiedBot ? [specifiedBot] : this.bots;
 
-                const checkLoginPromises = botsToCheck.map(bot =>
+                const checkAvailabilityPromises = botsToCheck.map(bot =>
                     bot
-                        .checkLoginStatus()
+                        .checkAvailability()
                         .then(() => this.updateActiveBots())
                         .catch(error => {
                             console.error(`Error checking login status for ${ bot.getFullname() }`, error);
                         })
                 );
-                await Promise.allSettled(checkLoginPromises);
+                await Promise.allSettled(checkAvailabilityPromises);
             } catch (error) {
                 console.error("Error checking login status for bots:", error);
             }
@@ -227,7 +227,7 @@ export default {
         ...mapState(["selectedBots"]),
     },
     created() {
-        this.checkAllBotsLoginStatus();
+        this.checkAllBotsAvailability();
     },
 };
 </script>

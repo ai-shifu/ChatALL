@@ -14,7 +14,7 @@ function randomIP() {
   );
 }
 export default class BingChatBot extends Bot {
-  static _brandId = "bingChatBot";
+  static _brandId = "bingChat";
   static _model = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _logoFilename = "bing-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://www.bing.com/new";
@@ -59,11 +59,15 @@ export default class BingChatBot extends Bot {
     return conversation;
   }
 
-  async checkLoginStatus() {
+  async checkAvailability() {
     // Bing Chat does not have a login status API
     // So we just check if we can create a conversation
-    this.constructor._conversation = await this.createConversation();
-    this.constructor._isLoggedIn = !!this.constructor._conversation;
+    const conversation = await this.createConversation();
+    this.constructor._isAvailable = !!conversation;
+    if (this.constructor._conversation === null) {
+      this.constructor._conversation = conversation;
+    }
+    return this.isAvailable();
   }
 
   buildChatRequest(prompt) {

@@ -41,13 +41,14 @@ export default class BardBot extends Bot {
     super();
   }
 
-  async checkLoginStatus() {
+  async checkAvailability() {
     this.conversationContext.requestParams = await fetchRequestParams();
     if (this.conversationContext.requestParams.atValue) {
-      this.constructor._isLoggedIn = true;
+      this.constructor._isAvailable = true;
     } else {
-      this.constructor._isLoggedIn = false;
+      this.constructor._isAvailable = false;
     }
+    return this.isAvailable();
   }
 
   _sendPrompt(prompt, onUpdateResponse, callbackParam) {
