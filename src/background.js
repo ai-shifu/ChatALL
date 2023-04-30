@@ -45,6 +45,8 @@ async function createWindow() {
               name: cookie.name,
               value: cookie.value,
               domain: cookie.domain,
+              expirationDate: cookie.expirationDate,
+              secure: cookie.secure,
               sameSite: "no_restriction",
             });
           } catch (error) {
