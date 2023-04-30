@@ -3,7 +3,7 @@ import { SSE } from "sse.js";
 import store from "@/store";
 
 export default class OpenAIAPIBot extends Bot {
-  static _brandId = "OpenAIAPI";
+  static _brandId = "openaiApi";
   static _logoFilename = "";
   static _loginUrl = ""; // URL for the login button on the bots page
   static _apiUrl = "https://api.openai.com/v1/chat/completions";
@@ -15,7 +15,7 @@ export default class OpenAIAPIBot extends Bot {
   }
 
   async checkLoginStatus() {
-    if(!store.state.openaiApiKey) {
+    if (!store.state.openaiApiKey) {
       this.constructor._isLoggedIn = false;
     } else {
       this.constructor._isLoggedIn = true;
@@ -25,29 +25,28 @@ export default class OpenAIAPIBot extends Bot {
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Send the prompt to the OpenAI API
     try {
-
       const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${store.state.openaiApiKey}`,
       };
-  
+
       const payload = JSON.stringify({
         model: this.constructor._model,
-        messages: [{ role: 'user', content: `‘${prompt}’` }],
+        messages: [{ role: "user", content: `‘${prompt}’` }],
         temperature: 0.9,
         stream: true,
       });
-  
+
       const requestConfig = {
         headers,
         method: "POST",
-        payload
+        payload,
       };
 
       let res = "";
       return new Promise((resolve, reject) => {
         // call OpenAI API
-        const source = new SSE(this.constructor._apiUrl,requestConfig);
+        const source = new SSE(this.constructor._apiUrl, requestConfig);
 
         source.addEventListener("message", (event) => {
           const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;

@@ -28,7 +28,7 @@ function parseBartResponse(resp) {
 }
 
 export default class BardBot extends Bot {
-  static _brandId = "BardBot";
+  static _brandId = "bard";
   static _logoFilename = "bard-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://bard.google.com/";
 

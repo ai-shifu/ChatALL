@@ -36,7 +36,7 @@
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },
-    "bingChatBot": {
+    "bingChat": {
         "name": "Bing Chat",
         "h3imaginative": "Creative",
         "harmonyv3": "Balanced",
@@ -45,13 +45,13 @@
     "spark": {
         "name": "iFlytek Spark"
     },
-    "BardBot": {
+    "bard": {
         "name": "Bard"
     },
-    "ERNIEBot": {
+    "ernie": {
         "name": "ERNIE"
     },
-    "OpenAIAPI": {
+    "openaiApi": {
         "name": "OpenAI API",
         "gpt-3": {
             "5-turbo": "GPT-3.5"
