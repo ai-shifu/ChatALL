@@ -36,19 +36,6 @@ const vuetify = createVuetify({
   },
 });
 
-// Baidu Analytics
-const script = document.createElement("script");
-script.innerHTML = `
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?db971892d9d031557ecf01c6dc0bfe44";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-  `;
-document.head.appendChild(script);
-
 // Inject geetest script for iFlytek Spark
 fetch("https://static.geetest.com/g5/gd.js")
   .then((response) => response.text())
