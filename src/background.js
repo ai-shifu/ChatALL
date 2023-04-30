@@ -31,7 +31,11 @@ async function createWindow() {
   win.webContents.session.cookies.on(
     "changed",
     async (event, cookie, cause, removed) => {
-      if (cookie.sameSite !== "no_restriction") {
+      if (
+        !removed &&
+        cause === "explicit" &&
+        cookie.sameSite !== "no_restriction"
+      ) {
         // Check if the domain is valid
         const domain = cookie.domain.startsWith(".")
           ? cookie.domain.substring(1)
@@ -45,12 +49,14 @@ async function createWindow() {
               name: cookie.name,
               value: cookie.value,
               domain: cookie.domain,
+              path: cookie.path,
+              httpOnly: cookie.httpOnly,
               expirationDate: cookie.expirationDate,
-              secure: cookie.secure,
+              // secure: cookie.secure, // This will throw an error
               sameSite: "no_restriction",
             });
           } catch (error) {
-            console.error("Set cookie SameSite error:", error);
+            console.error(error, cookie);
           }
         }
       }
