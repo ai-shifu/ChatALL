@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="src/assets/logo-cover.png" width=128></img>
+   <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>同时与所有 AI 机器人聊天，发现最佳选择</strong></p>
 </div>
 

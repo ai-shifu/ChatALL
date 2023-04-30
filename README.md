@@ -1,7 +1,7 @@
 [简体中文](README_ZH-CN.md)
 
 <div align="center">
-   <img src="src/assets/logo-cover.png" width=128></img>
+   <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>Chat with ALL AI Bots Concurrently, Discover the Best</strong></p>
 </div>
 
