@@ -19,7 +19,7 @@
     },
     "modal": {
         "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口",
-        "apiConfigPrompt" :"请先到设置功能中配置{ botName }的配置信息",
+        "apiConfigPrompt": "请先到设置功能中配置{ botName }的配置信息",
         "done": "完成"
     },
     "bot": {
@@ -52,14 +52,11 @@
         "name": "文心一言"
     },
     "OpenAIAPI": {
-        "name": "OpenAIAPI",
+        "name": "OpenAI API",
         "gpt-3": {
             "5-turbo": "GPT-3.5"
         },
         "gpt-4": "GPT-4",
-        "settings": {
-            "title": "OpenAI API",
-            "openaiApiKey": "API密钥"
-        }
+        "apiKey": "API 密钥"
     }
 }
