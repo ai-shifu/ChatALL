@@ -13,15 +13,6 @@ export default class SparkBot extends Bot {
 
   static _chatId = 0; // ID of the chat session
 
-  geetest = {
-    gt: "",
-    challenge: "",
-    offline: false,
-    new_captcha: true,
-    product: "bind",
-    width: "300px",
-  };
-
   constructor() {
     super();
   }
@@ -29,20 +20,9 @@ export default class SparkBot extends Bot {
   async checkLoginStatus() {
     try {
       const response = await axios.get(
-        "https://xinghuo.xfyun.cn/iflygpt/chat/gee-captcha"
+        "https://xinghuo.xfyun.cn/iflygpt/userInfo"
       );
-      if (response.data.code === 0) {
-        this.geetest.gt = response.data.gt;
-        this.geetest.challenge = response.data.challenge;
-        this.geetest.offline = !response.data.success;
-        this.geetest.new_captcha = response.data.new_captcha;
-        this.geetest.product = response.data.product;
-
-        this.constructor._isLoggedIn = true;
-      } else {
-        console.error("Error checking Spark login status:", response);
-        this.constructor._isLoggedIn = false;
-      }
+      this.constructor._isLoggedIn = response.data.flag;
     } catch (error) {
       console.error("Error checking Spark login status:", error);
       this.constructor._isLoggedIn = false;
