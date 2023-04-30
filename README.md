@@ -15,9 +15,9 @@ Large Language Models (LLMs)-based AI bots are amazing. However, their behavior 
 
 ### Supported bots
 
-| AI Bots        | Web Access  | API         | Notes                                 |
+| AI Bots        | Web Access  | API         | Highlight Features                                 |
 |----------------|-------------|-------------|---------------------------------------|
-| [ChatGPT](https://chat.openai.com)        | Yes         | Coming soon | Supports multiple models              |
+| [ChatGPT](https://chat.openai.com)        | Yes         | Yes | Chat with GPT-3.5 & GPT-4 concurrently          |
 | [Bing Chat](https://www.bing.com/new)      | Yes         | No API         | Chat with three styles concurrently   |
 | [Baidu ERNIE](https://yiyan.baidu.com/)   | No | Coming soon | Who can hack its Web API?             |
 | [Bard](https://bard.google.com/)           | Yes | No API         |                                       |

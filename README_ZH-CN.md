@@ -13,9 +13,9 @@
 
 ### 支持的机器人
 
-| AI机器人       | 网页访问  | API         | 备注                                    |
+| AI机器人       | 网页访问  | API         | 亮点功能                                    |
 |----------------|-------------|-------------|---------------------------------------|
-| [ChatGPT](https://chat.openai.com)        | 支持          | 即将推出     | 支持多个模型                           |
+| [ChatGPT](https://chat.openai.com)        | 支持          | 支持     | 可同时和 GPT-3.5、GPT-4 聊天                 |
 | [Bing Chat](https://www.bing.com/new)      | 支持          | 无 API          | 可同时和三种风格聊天                       |
 | [文心一言](https://yiyan.baidu.com/)   |  否     | 即将推出     | 谁能破解它的 Web API？                   |
 | [Bard](https://bard.google.com/)           | 支持     | 无 API          |                                       |
