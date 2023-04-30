@@ -152,4 +152,14 @@ export default class Bot {
   async checkLoginStatus() {
     throw new Error("Method 'checkLoginStatus()' must be implemented.");
   }
+
+  /**
+   * Subclass should implement this method if the bot supports conversation.
+   * The conversation structure is defined by the subclass.
+   * @param null
+   * @returns {any} - Conversation structure. null if not supported.
+   */
+  async createConversation() {
+    return null;
+  }
 }
