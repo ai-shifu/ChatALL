@@ -1,5 +1,6 @@
 {
     "settings": {
+        "enable": "启用",
         "title": "设置",
         "general": "通用",
         "auto": "自动",
@@ -29,7 +30,8 @@
     },
     "chatGpt": {
         "name": "ChatGPT",
-        "chooseModel": "模型",
+        "autoRefresh": "自动防掉线",
+        "autoRefreshPrompt": "如果没有被要求频繁登录，不需要启用此功能",
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },

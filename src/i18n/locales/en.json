@@ -1,5 +1,6 @@
 {
     "settings": {
+        "enable": "Enable",
         "title": "Settings",
         "general": "General",
         "auto": "Automatic",
@@ -29,7 +30,8 @@
     },
     "chatGpt": {
         "name": "ChatGPT",
-        "chooseModel": "Model",
+        "autoRefresh": "Automatic anti-disconnection",
+        "autoRefreshPrompt": "If you're NOT being asked to log in frequently, do NOT enable this feature",
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },

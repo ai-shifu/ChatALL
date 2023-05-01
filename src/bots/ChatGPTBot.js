@@ -4,11 +4,11 @@ import { SSE } from "sse.js";
 import AsyncLock from "async-lock";
 
 import Bot from "./Bot";
+import store from "@/store";
 
 // Inspired by https://v2ex.com/t/926890
 const REFRESH_SESSION_URL =
   "https://chat.openai.com/_next/static/k9OKjvwgjWES7JT3k-6g9/_ssgManifest.js";
-const REFRESH_SESSION_INTERVAL = 1000 * 45; // 45 seconds
 
 export default class ChatGPTBot extends Bot {
   static _brandId = "chatGpt";
@@ -16,6 +16,11 @@ export default class ChatGPTBot extends Bot {
   static _loginUrl = "https://chat.openai.com/";
   static _model = "";
   static _lock = new AsyncLock(); // All ChatGPT bots share the same lock
+
+  static _sessionRefreshing = {
+    interval: 0,
+    id: null,
+  };
 
   accessToken = "";
   conversationContext = {
@@ -25,6 +30,7 @@ export default class ChatGPTBot extends Bot {
 
   constructor() {
     super();
+    this.setRefreshCycle(store.state.chatgpt.refreshCycle);
   }
 
   async checkAvailability() {
@@ -58,16 +64,26 @@ export default class ChatGPTBot extends Bot {
     });
   }
 
+  /**
+   * @param {int} cycle - Refresh cycle in seconds
+   */
+  setRefreshCycle(cycle) {
+    const sr = this.constructor._sessionRefreshing;
+    sr.interval = cycle * 1000;
+    this.toggleSessionRefreshing(sr.interval > 0);
+  }
+
   toggleSessionRefreshing(shouldRefresh) {
-    if (shouldRefresh && !this.sessionRefreshInterval) {
+    const sr = this.constructor._sessionRefreshing;
+
+    if (sr.id) {
+      clearInterval(sr.id);
+      sr.id = null;
+    }
+
+    if (shouldRefresh && sr.interval > 0) {
       this.refreshSession();
-      this.sessionRefreshInterval = setInterval(
-        this.refreshSession.bind(this),
-        REFRESH_SESSION_INTERVAL - Math.random() * 1000 * 10 // Randomize the interval a bit
-      );
-    } else if (!shouldRefresh && this.sessionRefreshInterval) {
-      clearInterval(this.sessionRefreshInterval);
-      this.sessionRefreshInterval = null;
+      sr.id = setInterval(this.refreshSession.bind(this), sr.interval);
     }
   }
 
