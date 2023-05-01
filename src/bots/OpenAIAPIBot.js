@@ -8,7 +8,6 @@ export default class OpenAIAPIBot extends Bot {
   static _loginUrl = ""; // URL for the login button on the bots page
   static _apiUrl = "https://api.openai.com/v1/chat/completions";
   static _model = "";
-  static _botType = "API"; // API Bot or Web Bot
 
   constructor() {
     super();

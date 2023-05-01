@@ -18,8 +18,6 @@
         "promptPlaceholder": "Send a message..."
     },
     "modal": {
-        "loginPrompt": "Click the link below, log in to { botName } in the new window, and then close it.",
-        "apiConfigPrompt": "Please go to the settings and configure { botName } first.",
         "done": "Done"
     },
     "bot": {

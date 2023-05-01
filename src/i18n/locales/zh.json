@@ -18,8 +18,6 @@
         "promptPlaceholder": "发送消息..."
     },
     "modal": {
-        "loginPrompt": "点击下面链接，在新窗口内登录{ botName }，然后关闭窗口",
-        "apiConfigPrompt": "请先到设置功能中配置{ botName }的配置信息",
         "done": "完成"
     },
     "bot": {

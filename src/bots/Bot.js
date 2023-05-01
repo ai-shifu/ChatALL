@@ -20,6 +20,7 @@ export default class Bot {
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
   static _lock = null; // AsyncLock for network requests. `new AsyncLock()` in the subclass as needed.
+  static _settingsComponent = ""; // Vue component filename for settings
 
   constructor() {
     // Compute the logo paths after packing by Webpack 4
@@ -70,12 +71,29 @@ export default class Bot {
     return this.constructor._userAgent;
   }
 
-  isAvailable() {
-    return this.constructor._isAvailable;
+  async getSettingsComponent() {
+    let component;
+
+    if (this.constructor._settingsComponent) {
+      component = await import(
+        `@/components/BotSettings/${this.constructor._settingsComponent}`
+      );
+    } else {
+      let currentClass = this.constructor;
+      let parentClass = Object.getPrototypeOf(currentClass);
+      while (parentClass && parentClass.name !== "Bot") {
+        currentClass = parentClass;
+        parentClass = Object.getPrototypeOf(currentClass);
+      }
+      const componentName = currentClass.name + "Settings";
+      component = await import(`@/components/BotSettings/${componentName}.vue`);
+    }
+
+    return component.default;
   }
 
-  getBotType() {
-    return this.constructor._botType;
+  isAvailable() {
+    return this.constructor._isAvailable;
   }
 
   /**

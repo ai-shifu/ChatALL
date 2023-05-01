@@ -68,16 +68,11 @@
                 />
             </div>
         </footer>
-        <CreateWindowModal
-            :show="showCreateWindowModal"
+        <MakeAvailableModal
             :bot="clickedBot"
-            @done="checkAllBotsAvailability(bot); showCreateWindowModal = false"
-        ></CreateWindowModal>
-        <APICreateWindowModal
-            :show="showAPICreateWindowModal"
-            :bot="clickedBot"
-            @done="checkAllBotsAvailability(bot); showAPICreateWindowModal = false"
-        ></APICreateWindowModal>
+            ref="makeAvailableModal"
+            @done="checkAllBotsAvailability(clickedBot)"
+        ></MakeAvailableModal>
         <SettingsModal
             ref="settingsModal"
         ></SettingsModal>
@@ -89,10 +84,9 @@ import '@mdi/font/css/materialdesignicons.css'
 import { mapState, mapMutations } from "vuex";
 
 // Components
-import CreateWindowModal from "@/components/CreateWindowModal.vue";
+import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from '@/components/SettingsModal.vue';
-import APICreateWindowModal from "@/components/APICreateWindowModal.vue";
 
 // Bots
 import ChatGPT35Bot from "./bots/ChatGPT35Bot";
@@ -109,16 +103,12 @@ export default {
     name: "App",
     components: {
         ChatMessages,
-        CreateWindowModal,
+        MakeAvailableModal,
         SettingsModal,
-        APICreateWindowModal
     },
     data() {
         return {
             prompt: "",
-            showCreateWindowModal: false,
-            showAPICreateWindowModal:false,
-            showSettingsModal: false,
             clickedBot: {},
             bots: [
                 ChatGPT35Bot.getInstance(),
@@ -174,13 +164,9 @@ export default {
             const botId = bot.constructor.name;
             var selected = false;
             if (!bot.isAvailable()) {
-                if(bot.getBotType() === 'API') {
-                    this.showAPICreateWindowModal = true;
-                } else {
-                    // Open the login window
-                    this.showCreateWindowModal = true;
-                }
                 this.clickedBot = bot;
+                // Open the bot's settings dialog
+                this.$refs.makeAvailableModal.open();
                 selected = true;
             } else {
                 selected = !this.selectedBots[bot.constructor.name];
