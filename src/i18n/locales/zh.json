@@ -6,7 +6,7 @@
         "auto": "自动",
         "language": "语言",
         "languagePrompt": "新语言将在程序重新启动后生效",
-        "loginOrOut": "登录/登出",
+        "loginOrOut": "登入/登出",
         "loginOrOutPrompt": "点击下面链接，在新窗口内登录或登出。然后关闭此窗口"
     },
     "header": {
