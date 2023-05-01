@@ -40,7 +40,9 @@ async function createWindow() {
         const domain = cookie.domain.startsWith(".")
           ? cookie.domain.substring(1)
           : cookie.domain;
-        if (domain.split(".").length >= 2) {
+        const domainsToFilter = ["xfyun.cn"];
+
+        if (domainsToFilter.some((d) => domain.includes(d))) {
           try {
             const url = `https://${domain}${cookie.path}`;
 
