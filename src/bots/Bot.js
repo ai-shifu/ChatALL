@@ -54,7 +54,8 @@ export default class Bot {
 
   getModelName() {
     const c = this.constructor;
-    return c._model ? i18n.global.t(`${c._brandId}.${c._model}`) : "";
+    const model = c._model.replace(/[^a-zA-Z0-9-_]/g, "");
+    return model ? i18n.global.t(`${c._brandId}.${model}`) : "";
   }
 
   getFullname() {
