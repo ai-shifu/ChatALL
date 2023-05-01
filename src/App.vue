@@ -71,7 +71,7 @@
         <MakeAvailableModal
             :bot="clickedBot"
             ref="makeAvailableModal"
-            @done="checkAllBotsAvailability(clickedBot)"
+            @done="checkAllBotsAvailability()"
         ></MakeAvailableModal>
         <SettingsModal
             ref="settingsModal"
