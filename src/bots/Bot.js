@@ -15,6 +15,7 @@ export default class Bot {
   static _isAvailable = false;
 
   static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
+  static _className = "Bot"; // Class name of the bot
   static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
   static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "undefined";
@@ -82,11 +83,11 @@ export default class Bot {
     } else {
       let currentClass = this.constructor;
       let parentClass = Object.getPrototypeOf(currentClass);
-      while (parentClass && parentClass.name !== "Bot") {
+      while (parentClass && parentClass._className !== "Bot") {
         currentClass = parentClass;
         parentClass = Object.getPrototypeOf(currentClass);
       }
-      const componentName = currentClass.name + "Settings";
+      const componentName = currentClass._className + "Settings";
       component = await import(`@/components/BotSettings/${componentName}.vue`);
     }
 

@@ -4,6 +4,7 @@ import store from "@/store";
 
 export default class OpenAIAPIBot extends Bot {
   static _brandId = "openaiApi";
+  static _className = "OpenAIAPIBot";
   static _logoFilename = "";
   static _loginUrl = ""; // URL for the login button on the bots page
   static _apiUrl = "https://api.openai.com/v1/chat/completions";

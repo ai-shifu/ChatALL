@@ -59,7 +59,7 @@
             <div class="bot-logos margin-bottom">
                 <img
                     v-for="(bot, index) in bots"
-                    :class="{ 'selected': activeBots[bot.constructor.name] }"
+                    :class="{ 'selected': activeBots[bot.constructor._className] }"
                     :key="index"
                     :src="bot.getLogo()"
                     :alt="bot.getFullname()"
@@ -138,7 +138,7 @@ export default {
 
             // Send the prompt to all the bots and update the message with the response
             for (const bot of this.bots) {
-                if (!this.activeBots[bot.constructor.name])
+                if (!this.activeBots[bot.constructor._className])
                     continue;
 
                 var message = {
@@ -161,7 +161,7 @@ export default {
         ...mapMutations(["changeColumns"]),
         ...mapMutations(["SET_BOT_SELECTED"]),
         toggleSelected(bot) {
-            const botId = bot.constructor.name;
+            const botId = bot.constructor._className;
             var selected = false;
             if (!bot.isAvailable()) {
                 this.clickedBot = bot;
@@ -169,14 +169,14 @@ export default {
                 this.$refs.makeAvailableModal.open();
                 selected = true;
             } else {
-                selected = !this.selectedBots[bot.constructor.name];
+                selected = !this.selectedBots[bot.constructor._className];
             }
             this.SET_BOT_SELECTED({ botId, selected});
             this.updateActiveBots();
         },
         updateActiveBots() {
             for (const bot of this.bots) {
-                this.activeBots[bot.constructor.name] = bot.isAvailable() && this.selectedBots[bot.constructor.name];
+                this.activeBots[bot.constructor._className] = bot.isAvailable() && this.selectedBots[bot.constructor._className];
             }
         },
         async checkAllBotsAvailability(specifiedBot) {

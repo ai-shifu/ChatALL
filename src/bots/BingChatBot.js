@@ -15,6 +15,7 @@ function randomIP() {
 }
 export default class BingChatBot extends Bot {
   static _brandId = "bingChat";
+  static _className = "BingChatBot"; // Class name of the bot
   static _model = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _logoFilename = "bing-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://www.bing.com/new";
