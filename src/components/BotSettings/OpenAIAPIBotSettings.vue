@@ -1,7 +1,13 @@
 <template>
     <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
     <v-list-item>
-        <v-text-field v-model="openaiApiKey" :label="$t('openaiApi.apiKey')" outlined dense
+        <v-list-item-title>{{ $t("openaiApi.apiKey") }}</v-list-item-title>
+        <v-list-item-subtitle>{{ $t("openaiApi.apiKeyPrompt") }}</v-list-item-subtitle>
+        <v-text-field
+            v-model="openaiApiKey"
+            outlined
+            dense
+            placeholder="sk-..."
             @change="setOpenaiApiKey($event.target.value)"></v-text-field>
     </v-list-item>
 </template>

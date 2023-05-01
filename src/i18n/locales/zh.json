@@ -54,6 +54,7 @@
             "5-turbo": "GPT-3.5"
         },
         "gpt-4": "GPT-4",
-        "apiKey": "API 密钥"
+        "apiKey": "API 密钥",
+        "apiKeyPrompt": "你的安全密钥只会在本地保存和使用。"
     }
 }
