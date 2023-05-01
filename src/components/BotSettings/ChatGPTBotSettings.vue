@@ -1,30 +1,20 @@
 <template>
     <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
-    <v-list-item>
-        <v-list-item-title>{{ $t('settings.loginOrOut') }}</v-list-item-title>
-        <v-list-item-subtitle>{{ $t("settings.loginOrOutPrompt") }}</v-list-item-subtitle>
-        <a :href="bot.getLoginUrl()" target="_blank" @click="createWindow">
-            {{ bot.getLoginUrl() }}
-        </a>
-    </v-list-item>
+    <login-setting :bot="bot"></login-setting>
 </template>
 
 <script>
-const electron = window.require('electron');
-const ipcRenderer = electron.ipcRenderer;
-import ChatGPTBot from "@/bots/ChatGPTBot";
+import Bot from "@/bots/ChatGPTBot";
+import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
 
 export default {
+    components: {
+        LoginSetting,
+    },
     data() {
         return {
-            bot: ChatGPTBot.getInstance(),
+            bot: Bot.getInstance(),
         };
-    },
-    methods: {
-        createWindow(event) {
-            ipcRenderer.invoke('create-new-window', this.bot.getLoginUrl(), this.bot.getUserAgent());
-            event.preventDefault();
-        },
     },
 };
 </script>
