@@ -54,6 +54,7 @@ export default class SparkBot extends Bot {
       window.initGeeGuard(
         {
           appId: "ihuqg3dmuzcr2kmghumvivsk7c3l4joe",
+          https: true,
         },
         function (t) {
           if (t.status === "success") {
