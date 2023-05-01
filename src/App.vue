@@ -202,7 +202,7 @@ export default {
         // Send the prompt when the user presses enter and prevent the default behavior
         // But if the shift, ctrl, alt, or meta keys are pressed, do as default
         filterEnterKey(event) {
-            if (event.key === "Enter" && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+            if (event.keyCode == 13 && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
                 event.preventDefault();
                 this.sendPromptToBots();
             }
