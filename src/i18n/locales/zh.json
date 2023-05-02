@@ -22,7 +22,7 @@
         "done": "完成"
     },
     "bot": {
-        "failedToCreateConversation": "创建对话失败。",
+        "failedToCreateConversation": "创建对话失败",
         "nullBot": "虚无",
         "notImplemented": "建设中...",
         "notAvailable": "这个对话机器人现在不可用。可能因为未登录，或者配置不正确。",
@@ -55,6 +55,9 @@
         "gpt-35-turbo": "gpt-3.5-turbo",
         "gpt-4": "gpt-4",
         "apiKey": "API 密钥",
-        "apiKeyPrompt": "你的安全密钥只会在本地保存和使用"
+        "apiKeyPrompt": "你的安全密钥只会保存在本地，其他任何人都无法访问"
+    },
+    "moss": {
+        "name": "MOSS"
     }
 }

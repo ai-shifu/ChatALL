@@ -17,6 +17,9 @@ export default createStore({
     chatgpt: {
       refreshCycle: "",
     },
+    moss: {
+      token: "",
+    },
   },
   mutations: {
     changeColumns(state, n) {
@@ -35,6 +38,9 @@ export default createStore({
     },
     setOpenaiApiKey(state, openaiApiKey) {
       state.openaiApiKey = openaiApiKey;
+    },
+    setMoss(state, token) {
+      state.moss.token = token;
     },
   },
   actions: {

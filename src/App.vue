@@ -96,8 +96,9 @@ import BingChatBalancedBot from "./bots/BingChatBalancedBot";
 import BingChatCreativeBot from "./bots/BingChatCreativeBot";
 import SparkBot from "./bots/SparkBot";
 import BardBot from "./bots/BardBot";
-import OpenAIAPI35Bot from './bots/OpenAIAPI35Bot';
-import OPenAIAPI4Bot from './bots/OpenAIAPI4Bot';
+import OpenAIAPI35Bot from "./bots/OpenAIAPI35Bot";
+import OpenAIAPI4Bot from "./bots/OpenAIAPI4Bot";
+import MOSSBot from "./bots/MOSSBot";
 
 export default {
     name: "App",
@@ -114,11 +115,12 @@ export default {
                 ChatGPT35Bot.getInstance(),
                 ChatGPT4Bot.getInstance(),
                 OpenAIAPI35Bot.getInstance(),
-                OPenAIAPI4Bot.getInstance(),
+                OpenAIAPI4Bot.getInstance(),
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),
                 SparkBot.getInstance(),
+                MOSSBot.getInstance(),
                 BardBot.getInstance(),
             ],
             activeBots: {},

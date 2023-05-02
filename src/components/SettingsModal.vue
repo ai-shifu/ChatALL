@@ -47,6 +47,8 @@
                 <v-divider></v-divider>
                 <SparkBotSettings></SparkBotSettings>
                 <v-divider></v-divider>
+                <MOSSBotSettings></MOSSBotSettings>
+                <v-divider></v-divider>
                 <BardBotSettings></BardBotSettings>
 
             </v-list>
@@ -62,6 +64,7 @@ import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
 import SparkBotSettings from "./BotSettings/SparkBotSettings.vue";
 import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
+import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 
 export default {
     components: {
@@ -69,6 +72,7 @@ export default {
         OpenAIAPIBotSettings,
         BingChatBotSettings,
         SparkBotSettings,
+        MOSSBotSettings,
         BardBotSettings,
     },
     data() {
