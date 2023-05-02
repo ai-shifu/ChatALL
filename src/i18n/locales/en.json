@@ -16,7 +16,7 @@
     },
     "footer": {
         "sendPrompt": "Send to:",
-        "promptPlaceholder": "Send a message..."
+        "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
     },
     "modal": {
         "done": "Done"

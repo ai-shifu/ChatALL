@@ -16,7 +16,7 @@
     },
     "footer": {
         "sendPrompt": "发送到:",
-        "promptPlaceholder": "发送消息..."
+        "promptPlaceholder": "输入消息。（Shift+Enter 换行）"
     },
     "modal": {
         "done": "完成"
