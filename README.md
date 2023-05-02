@@ -22,7 +22,7 @@ Large Language Models (LLMs)-based AI bots are amazing. However, their behavior 
 | [Baidu ERNIE](https://yiyan.baidu.com/)   | No | Coming soon | Who can hack its Web API?             |
 | [Bard](https://bard.google.com/)           | Yes | No API         |                                       |
 | [Poe](https://poe.com/)         | Coming soon | Coming soon |                                       |
-| [MOSS](https://moss.fastnlp.top/)           | Coming soon | No API      | |
+| [MOSS](https://moss.fastnlp.top/)           | Yes | No API      | |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/) | Coming soon | Coming soon | Who can provide an invitation?        |
 | [Dedao Learning Assistant](https://ai.dedao.cn/) | Coming soon | No | |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)  | Yes | Coming soon     | |
