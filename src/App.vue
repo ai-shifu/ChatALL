@@ -138,11 +138,13 @@ export default {
                 done: true
             });
 
+            let count = 0;
             // Send the prompt to all the bots and update the message with the response
             for (const bot of this.bots) {
                 if (!this.activeBots[bot.constructor._className])
                     continue;
 
+                count++;
                 var message = {
                     type: "response",
                     content: "",
@@ -155,7 +157,9 @@ export default {
                     this.$refs.chatMessages.updateMessage,
                     this.$refs.chatMessages.messages.push(message) - 1 // The index of the message in the messages array
                 );
+                this.$matomo.trackEvent("prompt", "sendTo", bot.getFullname());
             }
+            this.$matomo.trackEvent("prompt", "send", "Active bots count", count);
 
             // Clear the textarea after sending the prompt
             this.prompt = "";
@@ -216,6 +220,9 @@ export default {
     },
     created() {
         this.checkAllBotsAvailability();
+    },
+    mounted() {
+        this.$matomo && this.$matomo.trackPageView();
     },
 };
 </script>
