@@ -154,22 +154,27 @@ export default class Bot {
       return;
     }
 
-    if (!this.constructor._lock) {
-      await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
-    } else {
-      await this.acquireLock(
-        this.constructor._brandId,
-        async () => {
-          await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
-        },
-        () => {
-          onUpdateResponse(
-            i18n.global.t("bot.waiting", { botName: this.getBrandName() }),
-            callbackParam,
-            false
-          );
-        }
-      );
+    try {
+      if (!this.constructor._lock) {
+        await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+      } else {
+        await this.acquireLock(
+          this.constructor._brandId,
+          async () => {
+            await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+          },
+          () => {
+            onUpdateResponse(
+              i18n.global.t("bot.waiting", { botName: this.getBrandName() }),
+              callbackParam,
+              false
+            );
+          }
+        );
+      }
+    } catch (err) {
+      console.error(`Error send prompt to ${this.getFullname()}:`, err);
+      onUpdateResponse(err.toString(), callbackParam, true); // Make sure stop loading
     }
   }
 

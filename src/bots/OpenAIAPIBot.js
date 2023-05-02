@@ -71,9 +71,8 @@ export default class OpenAIAPIBot extends Bot {
         });
         source.addEventListener("error", (error) => {
           const data = JSON.parse(error.data);
-          onUpdateResponse(data.error.message, callbackParam, true);
           source.close();
-          reject(error);
+          reject(data.error.message);
         });
         source.addEventListener("done", () => {
           source.close();

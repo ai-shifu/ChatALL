@@ -115,52 +115,50 @@ export default class ChatGPTBot extends Bot {
     });
 
     return new Promise((resolve, reject) => {
-      const source = new SSE(
-        "https://chat.openai.com/backend-api/conversation",
-        { headers, payload }
-      );
+      try {
+        const source = new SSE(
+          "https://chat.openai.com/backend-api/conversation",
+          { headers, payload }
+        );
 
-      source.addEventListener("message", (event) => {
-        const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
-        if (event.data === "[DONE]") {
-          onUpdateResponse(null, callbackParam, true);
+        source.addEventListener("message", (event) => {
+          const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
+          if (event.data === "[DONE]") {
+            onUpdateResponse(null, callbackParam, true);
+            source.close();
+            resolve();
+          } else if (regex.test(event.data)) {
+            // Ignore the timestamp
+            return;
+          } else
+            try {
+              const data = JSON.parse(event.data);
+              this.conversationContext.conversationId = data.conversation_id;
+              this.conversationContext.parentMessageId = data.message.id;
+              const partialText = data.message?.content?.parts?.[0];
+              if (partialText) {
+                onUpdateResponse(partialText, callbackParam, false);
+              }
+            } catch (error) {
+              console.error("Error parsing ChatGPT response:", error);
+              console.error("ChatGPT response:", event);
+              return;
+            }
+        });
+
+        source.addEventListener("error", (error) => {
+          source.close();
+          reject(error.data.detail);
+        });
+
+        source.addEventListener("done", () => {
           source.close();
           resolve();
-        } else if (regex.test(event.data)) {
-          // Ignore the timestamp
-          return;
-        } else
-          try {
-            const data = JSON.parse(event.data);
-            this.conversationContext.conversationId = data.conversation_id;
-            this.conversationContext.parentMessageId = data.message.id;
-            const partialText = data.message?.content?.parts?.[0];
-            if (partialText) {
-              onUpdateResponse(partialText, callbackParam, false);
-            }
-          } catch (error) {
-            console.error("Error parsing ChatGPT response:", error);
-            console.error("ChatGPT response:", event);
-            return;
-          }
-      });
+        });
 
-      source.addEventListener("error", (error) => {
-        console.error("Error handling real-time updates:", error);
-        onUpdateResponse(error.data.detail, callbackParam, true);
-        source.close();
-        reject(error);
-      });
-
-      source.addEventListener("done", () => {
-        source.close();
-        resolve();
-      });
-
-      try {
         source.stream();
       } catch (error) {
-        console.error("Error sending prompt to ChatGPT:", error);
+        reject(error);
       }
     });
   }

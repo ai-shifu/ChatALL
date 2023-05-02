@@ -83,8 +83,7 @@ export default class BardBot extends Bot {
           resolve();
         })
         .catch((error) => {
-          onUpdateResponse(error.message, callbackParam, true);
-          reject(error);
+          reject(error.message);
         });
     });
   }

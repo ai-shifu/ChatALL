@@ -32,21 +32,16 @@ export default class SparkBot extends Bot {
   }
 
   async createConversation() {
-    try {
-      const response = await axios.post(
-        "https://xinghuo.xfyun.cn/iflygpt/u/chat-list/v1/create-chat-list",
-        {}
-      );
+    const response = await axios.post(
+      "https://xinghuo.xfyun.cn/iflygpt/u/chat-list/v1/create-chat-list",
+      {}
+    );
 
-      if (response.data.flag && response.data.code === 0) {
-        return response.data.data.id;
-      } else {
-        throw new Error(`Error creating conversation: ${response.data.desc}`);
-      }
-    } catch (error) {
-      console.error("Error:", error.message);
+    if (response.data.flag && response.data.code === 0) {
+      return response.data.data.id;
+    } else {
+      throw new Error(`Error creating conversation: ${response.data.desc}`);
     }
-    return null; // Return null if there's an error
   }
 
   async getGtToken() {
@@ -70,75 +65,62 @@ export default class SparkBot extends Bot {
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     return new Promise((resolve, reject) => {
       (async () => {
-        try {
-          // If there's no chat session, create one
-          if (this.constructor._chatId === 0) {
-            var chatId = await this.createConversation();
-            if (chatId) {
-              this.constructor._chatId = chatId;
-            } else {
-              onUpdateResponse(
-                i18n.global.t("bot.failedToCreateConversation"),
-                callbackParam,
-                true
-              );
-              reject();
-            }
+        // If there's no chat session, create one
+        if (this.constructor._chatId === 0) {
+          var chatId = await this.createConversation();
+          if (chatId) {
+            this.constructor._chatId = chatId;
+          } else {
+            reject(i18n.global.t("bot.failedToCreateConversation"));
           }
+        }
 
-          // Create FormData payload
-          const GtToken = await this.getGtToken();
-          const formData = new FormData();
-          formData.append("fd", String(+new Date()).slice(-6));
-          formData.append("chatId", this.constructor._chatId);
-          formData.append("text", prompt);
-          formData.append("GtToken", GtToken);
-          formData.append("clientType", "1");
+        // Create FormData payload
+        const GtToken = await this.getGtToken();
+        const formData = new FormData();
+        formData.append("fd", String(+new Date()).slice(-6));
+        formData.append("chatId", this.constructor._chatId);
+        formData.append("text", prompt);
+        formData.append("GtToken", GtToken);
+        formData.append("clientType", "1");
 
-          const source = new SSE(
-            "https://xinghuo.xfyun.cn/iflygpt/u/chat_message/chat",
-            { payload: formData }
-          );
+        const source = new SSE(
+          "https://xinghuo.xfyun.cn/iflygpt/u/chat_message/chat",
+          { payload: formData }
+        );
 
-          var text = "";
-          source.addEventListener("message", (event) => {
-            if (event.data === "<end>") {
-              onUpdateResponse(null, callbackParam, true);
-              source.close();
-              resolve();
-            } else if (event.data.slice(-5) === "<sid>") {
-              // ignore <sid> message
-              return;
-            } else {
-              try {
-                text += Buffer.from(event.data, "base64").toString("utf8");
-                onUpdateResponse(text, callbackParam, false);
-              } catch (error) {
-                console.error("Error decoding Spark response:", error);
-                onUpdateResponse(error.data, callbackParam, true);
-                source.close();
-                reject(error);
-              }
-            }
-          });
-
-          source.addEventListener("error", (error) => {
-            console.error("Error handling real-time updates:", error);
-            onUpdateResponse(error.data, callbackParam, true);
-            source.close();
-            reject(error);
-          });
-
-          source.addEventListener("done", () => {
+        var text = "";
+        source.addEventListener("message", (event) => {
+          if (event.data === "<end>") {
+            onUpdateResponse(null, callbackParam, true);
             source.close();
             resolve();
-          });
+          } else if (event.data.slice(-5) === "<sid>") {
+            // ignore <sid> message
+            return;
+          } else {
+            try {
+              text += Buffer.from(event.data, "base64").toString("utf8");
+              onUpdateResponse(text, callbackParam, false);
+            } catch (error) {
+              console.error("Error decoding Spark response:", error);
+              source.close();
+              reject(error.data);
+            }
+          }
+        });
 
-          source.stream();
-        } catch (error) {
-          console.error("Error sending prompt to Spark:", error);
-          reject(error);
-        }
+        source.addEventListener("error", (error) => {
+          source.close();
+          reject(error.data);
+        });
+
+        source.addEventListener("done", () => {
+          source.close();
+          resolve();
+        });
+
+        source.stream();
       })();
     });
   }

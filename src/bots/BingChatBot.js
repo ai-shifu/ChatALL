@@ -151,9 +151,7 @@ export default class BingChatBot extends Bot {
             } else if (event.type === 2) {
               if (event.item.result.value !== "Success") {
                 console.error("Error sending prompt to Bing Chat:", event);
-                // Print the error message to bubble
-                const message = event.item.result.message;
-                onUpdateResponse(message, callbackParam, true);
+                reject(event.item.result.message);
               } else if (
                 event.item.throttling.maxNumUserMessagesInConversation ===
                 event.item.throttling.numUserMessagesInConversation
@@ -176,7 +174,6 @@ export default class BingChatBot extends Bot {
 
         wsp.open();
       } catch (error) {
-        console.error("Error sending prompt to Bing Chat:", error);
         reject(error);
       }
     });
