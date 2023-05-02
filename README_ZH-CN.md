@@ -5,6 +5,7 @@
 
 ## 屏幕截图
 
+![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## 功能
@@ -22,7 +23,7 @@
 | [Poe](https://poe.com/) | 即将推出     | 即将推出     |                                       |
 | [MOSS](https://moss.fastnlp.top/)           | 支持 | 无 API      | |
 | [通义千问](http://tongyi.aliyun.com/) | 即将推出     | 即将推出     | 谁能提供邀请码？                         |
-| [得到学习助手](https://ai.dedao.cn/) | 即将推出     |  否     |                          |
+| [得到学习助手](https://ai.dedao.cn/) | 即将推出     |  无 API     |                          |
 | [讯飞星火](http://xinghuo.xfyun.cn/)  | 支持 | 即将推出     | |
 
 更多...

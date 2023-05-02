@@ -7,11 +7,12 @@
 
 ## Screenshots
 
+![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## Features
 
-Large Language Models (LLMs)-based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) may help you to discover the best option.
+Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can help you to discover the best option.
 
 ### Supported bots
 
@@ -24,7 +25,7 @@ Large Language Models (LLMs)-based AI bots are amazing. However, their behavior 
 | [Poe](https://poe.com/)         | Coming soon | Coming soon |                                       |
 | [MOSS](https://moss.fastnlp.top/)           | Yes | No API      | |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/) | Coming soon | Coming soon | Who can provide an invitation?        |
-| [Dedao Learning Assistant](https://ai.dedao.cn/) | Coming soon | No | |
+| [Dedao Learning Assistant](https://ai.dedao.cn/) | Coming soon | No API | |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)  | Yes | Coming soon     | |
 
 And more...
