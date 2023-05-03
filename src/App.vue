@@ -157,7 +157,7 @@ export default {
                     this.$refs.chatMessages.updateMessage,
                     this.$refs.chatMessages.messages.push(message) - 1 // The index of the message in the messages array
                 );
-                this.$matomo.trackEvent("prompt", "sendTo", bot.getFullname());
+                this.$matomo.trackEvent("prompt", "sendTo", bot.constructor._className);
             }
             this.$matomo.trackEvent("prompt", "send", "Active bots count", count);
 
