@@ -49,9 +49,14 @@ export default {
     methods: {
         // Update the chat-message with the new message
         updateMessage(response, index, done) {
+            const message = this.messages[index];
             if (response !== null)
-                this.messages[index].content = response;
-            this.messages[index].done = done;
+                message.content = response;
+            message.done = done;
+
+            if (done) {
+                this.$matomo.trackEvent("prompt", "received", message.className, message.content.length);
+            }
 
             this.$nextTick(() => {
                 if (this.autoScroll) {
