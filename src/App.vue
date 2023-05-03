@@ -71,7 +71,7 @@
         <MakeAvailableModal
             :bot="clickedBot"
             ref="makeAvailableModal"
-            @done="checkAllBotsAvailability()"
+            @done="checkAllBotsAvailability(clickedBot)"
         ></MakeAvailableModal>
         <SettingsModal
             ref="settingsModal"
@@ -111,7 +111,7 @@ export default {
     data() {
         return {
             prompt: "",
-            clickedBot: {},
+            clickedBot: null,
             bots: [
                 ChatGPT35Bot.getInstance(),
                 ChatGPT4Bot.getInstance(),
@@ -187,9 +187,15 @@ export default {
                 this.activeBots[bot.constructor._className] = bot.isAvailable() && this.selectedBots[bot.constructor._className];
             }
         },
-        async checkAllBotsAvailability(specifiedBot) {
+        async checkAllBotsAvailability(specifiedBot = null) {
             try {
-                let botsToCheck = specifiedBot ? [specifiedBot] : this.bots;
+                let botsToCheck = this.bots;
+                if (specifiedBot) {
+                    // If a bot is specified, only check bots of the same brand
+                    botsToCheck = this.bots.filter(
+                        bot => bot.constructor._brandId === specifiedBot.constructor._brandId
+                    );
+                }
 
                 const checkAvailabilityPromises = botsToCheck.map(bot =>
                     bot
