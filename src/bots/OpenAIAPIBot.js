@@ -10,6 +10,8 @@ export default class OpenAIAPIBot extends Bot {
   static _apiUrl = "https://api.openai.com/v1/chat/completions";
   static _model = "";
 
+  messages = [];
+
   constructor() {
     super();
   }
@@ -31,9 +33,10 @@ export default class OpenAIAPIBot extends Bot {
         Authorization: `Bearer ${store.state.openaiApiKey}`,
       };
 
+      this.messages.push({ role: "user", content: `‘${prompt}’` });
       const payload = JSON.stringify({
         model: this.constructor._model,
-        messages: [{ role: "user", content: `‘${prompt}’` }],
+        messages:this.messages,
         temperature: 0.9,
         stream: true,
       });
@@ -53,6 +56,7 @@ export default class OpenAIAPIBot extends Bot {
           const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
           if (event.data === "[DONE]") {
             onUpdateResponse(null, callbackParam, true);
+            this.messages.push({ role: "assistant", content: res })
             source.close();
             resolve();
           } else if (regex.test(event.data)) {
