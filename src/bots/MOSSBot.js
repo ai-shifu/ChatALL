@@ -1,5 +1,6 @@
 import WebSocketAsPromised from "websocket-as-promised";
 import axios from "axios";
+import AsyncLock from "async-lock";
 
 import Bot from "./Bot";
 import store from "@/store";
@@ -10,6 +11,7 @@ export default class MOSSBot extends Bot {
   static _className = "MOSSBot";
   static _logoFilename = "moss-logo.png"; // Place it in assets/bots/
   static _loginUrl = "https://moss.fastnlp.top/moss/";
+  static _lock = new AsyncLock();
 
   static _chat_id = 0;
 
