@@ -3,7 +3,6 @@
         v-model="show"
         persistent
         width="auto"
-        min-width="50%"
     >
         <v-list v-if="botSettings !== null">
             <component :is="botSettings" />
