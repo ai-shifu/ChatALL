@@ -1,5 +1,11 @@
 <template>
     <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
+    <v-list-item>
+        <v-list-item-title><span class="text-warning font-weight-bold">{{ $t("settings.notice") }}</span></v-list-item-title>
+        <v-list-item-subtitle>
+            <span class="text-warning font-weight-bold">{{ $t("chatGpt.notice") }}</span>
+        </v-list-item-subtitle>
+    </v-list-item>
     <login-setting :bot="bot"></login-setting>
     <v-list-item>
         <v-list-item-title>{{ $t("chatGpt.autoRefresh") }}</v-list-item-title>

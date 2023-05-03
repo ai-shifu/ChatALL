@@ -7,7 +7,8 @@
         "language": "Language",
         "languagePrompt": "Relaunch the app to apply the new language",
         "loginOrOut": "Login/Logout",
-        "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it"
+        "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it",
+        "notice": "Notice"
     },
     "header": {
         "singleColumn": "Single Column",
@@ -32,6 +33,7 @@
         "name": "ChatGPT",
         "autoRefresh": "Automatic anti-disconnection",
         "autoRefreshPrompt": "If you're NOT being asked to log in frequently, do NOT enable this feature",
+        "notice": "Only paid Plus members can use GPT-4",
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },

@@ -7,7 +7,8 @@
         "language": "语言",
         "languagePrompt": "新语言将在程序重新启动后生效",
         "loginOrOut": "登入/登出",
-        "loginOrOutPrompt": "点击下面链接，在新窗口内登录或登出。然后关闭此窗口"
+        "loginOrOutPrompt": "点击下面链接，在新窗口内登录或登出。然后关闭此窗口",
+        "notice": "注意"
     },
     "header": {
         "singleColumn": "单列",
@@ -32,6 +33,7 @@
         "name": "ChatGPT",
         "autoRefresh": "自动防掉线",
         "autoRefreshPrompt": "如果没有被要求频繁登录，不需要启用此功能",
+        "notice": "只有付费的 Plus 用户才能使用 GPT-4",
         "text-davinci-002-render-sha": "GPT-3.5",
         "gpt-4": "GPT-4"
     },
