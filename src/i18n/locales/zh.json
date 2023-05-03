@@ -8,7 +8,8 @@
         "languagePrompt": "新语言将在程序重新启动后生效",
         "loginOrOut": "登入/登出",
         "loginOrOutPrompt": "点击下面链接，在新窗口内登录或登出。然后关闭此窗口",
-        "notice": "注意"
+        "notice": "注意",
+        "secretPrompt": "你的私密 token 只会保存在本地，任何其他人都无法访问"
     },
     "header": {
         "singleColumn": "单列",
@@ -56,10 +57,12 @@
         "name": "OpenAI API",
         "gpt-35-turbo": "gpt-3.5-turbo",
         "gpt-4": "gpt-4",
-        "apiKey": "API 密钥",
-        "apiKeyPrompt": "你的安全密钥只会保存在本地，其他任何人都无法访问"
+        "apiKey": "API 密钥"
     },
     "moss": {
         "name": "MOSS"
+    },
+    "wenxinQianfan": {
+        "name": "文心千帆"
     }
 }

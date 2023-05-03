@@ -2,7 +2,7 @@
     <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
     <v-list-item>
         <v-list-item-title>{{ $t("openaiApi.apiKey") }}</v-list-item-title>
-        <v-list-item-subtitle>{{ $t("openaiApi.apiKeyPrompt") }}</v-list-item-subtitle>
+        <v-list-item-subtitle>{{ $t("settings.secretPrompt") }}</v-list-item-subtitle>
         <v-text-field
             v-model="openaiApiKey"
             outlined
@@ -15,11 +15,11 @@
 
 <script>
 import { mapState , mapMutations} from "vuex";
-import OpenAIAPIBot from "@/bots/OpenAIAPIBot";
+import Bot from "@/bots/OpenAIAPIBot";
 export default {
     data(){
         return {
-            bot: OpenAIAPIBot.getInstance()
+            bot: Bot.getInstance()
         }
     },
     methods: {

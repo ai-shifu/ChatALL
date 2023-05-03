@@ -45,12 +45,13 @@
                 <v-divider></v-divider>
                 <BingChatBotSettings></BingChatBotSettings>
                 <v-divider></v-divider>
+                <WenxinQianfanBotSettings></WenxinQianfanBotSettings>
+                <v-divider></v-divider>
                 <SparkBotSettings></SparkBotSettings>
                 <v-divider></v-divider>
                 <MOSSBotSettings></MOSSBotSettings>
                 <v-divider></v-divider>
                 <BardBotSettings></BardBotSettings>
-
             </v-list>
         </v-card>
     </v-dialog>
@@ -59,12 +60,13 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 
-import ChatGPTBotSettings from '@/components/BotSettings/ChatGPTBotSettings.vue';
+import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
 import SparkBotSettings from "./BotSettings/SparkBotSettings.vue";
 import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
 import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
+import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 
 export default {
     components: {
@@ -74,6 +76,7 @@ export default {
         SparkBotSettings,
         MOSSBotSettings,
         BardBotSettings,
+        WenxinQianfanBotSettings,
     },
     data() {
         return {

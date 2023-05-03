@@ -20,6 +20,10 @@ export default createStore({
     moss: {
       token: "",
     },
+    wenxinQianfan: {
+      apiKey: "",
+      secretKey: "",
+    },
   },
   mutations: {
     changeColumns(state, n) {
@@ -41,6 +45,9 @@ export default createStore({
     },
     setMoss(state, token) {
       state.moss.token = token;
+    },
+    setWenxinQianfan(state, { apiKey, secretKey }) {
+      state.wenxinQianfan = { apiKey, secretKey };
     },
   },
   actions: {

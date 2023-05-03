@@ -8,7 +8,8 @@
         "languagePrompt": "Relaunch the app to apply the new language",
         "loginOrOut": "Login/Logout",
         "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it",
-        "notice": "Notice"
+        "notice": "Notice",
+        "secretPrompt": "Your secret token will remain on your device and will not be shared with anyone else"
     },
     "header": {
         "singleColumn": "Single Column",
@@ -56,10 +57,12 @@
         "name": "OpenAI API",
         "gpt-35-turbo": "gpt-3.5-turbo",
         "gpt-4": "gpt-4",
-        "apiKey": "API Key",
-        "apiKeyPrompt": "Your secret key will remain on your device and will not be shared with anyone else"
+        "apiKey": "API Key"
     },
     "moss": {
         "name": "MOSS"
+    },
+    "wenxinQianfan": {
+        "name": "Wenxin Qianfan"
     }
 }
