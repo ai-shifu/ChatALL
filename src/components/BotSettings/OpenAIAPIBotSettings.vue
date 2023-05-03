@@ -8,9 +8,11 @@
             outlined
             dense
             placeholder="sk-..."
-            @change="setOpenaiApiKey($event.target.value)"></v-text-field>
+            @change="setOpenaiApiKey($event.target.value)"
+        ></v-text-field>
     </v-list-item>
 </template>
+
 <script>
 import { mapState , mapMutations} from "vuex";
 import OpenAIAPIBot from "@/bots/OpenAIAPIBot";
@@ -28,7 +30,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>
