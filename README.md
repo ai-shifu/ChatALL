@@ -12,32 +12,32 @@
 
 ## Features
 
-Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can help you to discover the best option.
+Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can send prompt to severl AI bots concurrently, help you to discover the best results.
 
 ### Supported bots
 
-| AI Bots        | Web Access  | API         | Highlight Features                                 |
-|----------------|-------------|-------------|---------------------------------------|
-| [ChatGPT](https://chat.openai.com)        | Yes         | Yes | Chat with GPT-3.5 & GPT-4 concurrently          |
-| [Bing Chat](https://www.bing.com/new)      | Yes         | No API         | Chat with three styles concurrently   |
-| [Baidu ERNIE](https://yiyan.baidu.com/)   | No | Coming soon | Who can hack its Web API?             |
-| [Bard](https://bard.google.com/)           | Yes | No API         |                                       |
-| [Poe](https://poe.com/)         | Coming soon | Coming soon |                                       |
-| [MOSS](https://moss.fastnlp.top/)           | Yes | No API      | |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/) | Coming soon | Coming soon | Who can provide an invitation?        |
-| [Dedao Learning Assistant](https://ai.dedao.cn/) | Coming soon | No API | |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)  | Yes | Coming soon     | |
+| AI Bots                                      | Web Access     | API            |
+|----------------------------------------------|----------------|----------------|
+| [ChatGPT](https://chat.openai.com)            | Yes            | Yes            |
+| [Bing Chat](https://www.bing.com/new)         | Yes            | No API         |
+| [Baidu ERNIE](https://yiyan.baidu.com/)       | No             | Yes            |
+| [Bard](https://bard.google.com/)              | Yes            | No API         |
+| [Poe](https://poe.com/)                       | Coming soon    | Coming soon    |
+| [MOSS](https://moss.fastnlp.top/)             | Yes            | No API         |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)   | Coming soon    | Coming soon    |
+| [Dedao Learning Assistant](https://ai.dedao.cn/) | Coming soon | No API         |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)     | Yes            | Coming soon    |
 
 And more...
 
 ### Other features
 
-* No register needed. Log in with your own bot accounts
+* Log in with your own AI bot accounts, or API token
+* Automatically keep ChatGPT session alive
+* Batch mode: You can send the next prompt without waiting for the previous request to complete
 * Enable/disable any bots at any time
 * Switch between one, two, or three-column view
 * Supports multiple languages (en, zh)
-* Keep ChatGPT session alive in background
-* Batch mode: You can send the next prompt without waiting for the previous request to complete
 * [TODO] Best recommendations
 
 ## Prerequisites
@@ -46,7 +46,7 @@ ChatALL is a client, not a proxy. Therefore, you must:
 
 1. Have working accounts and/or API tokens for the bots.
 2. Have reliable network connections to the bots.
-3. If you are using a proxy, it must be set as system proxy.
+3. If you are using a VPN, it must be set as system/global proxy.
 
 ## Download / Install
 
