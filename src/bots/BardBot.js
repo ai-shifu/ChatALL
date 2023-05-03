@@ -1,5 +1,6 @@
 import axios from "axios";
 import Bot from "./Bot";
+import AsyncLock from "async-lock";
 
 function extractFromHTML(variableName, html) {
   const regex = new RegExp(`"${variableName}":"([^"]+)"`);
@@ -32,6 +33,7 @@ export default class BardBot extends Bot {
   static _className = "BardBot"; // Class name of the bot
   static _logoFilename = "bard-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "https://bard.google.com/";
+  static _lock = new AsyncLock();
 
   conversationContext = {
     requestParams: null,
@@ -52,7 +54,7 @@ export default class BardBot extends Bot {
     return this.isAvailable();
   }
 
-  _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+  async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     return new Promise((resolve, reject) => {
       const { requestParams, contextIds } = this.conversationContext;
 
@@ -83,7 +85,7 @@ export default class BardBot extends Bot {
           resolve();
         })
         .catch((error) => {
-          reject(error.message);
+          reject(error);
         });
     });
   }

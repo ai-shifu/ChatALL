@@ -108,21 +108,39 @@ export default class Bot {
    */
   async acquireLock(key, lockedFn, onLockUnavailable) {
     const self = this;
-    await this.constructor._lock.acquire(
-      key,
-      lockedFn,
-      async function (err, ret) {
-        if (err) {
-          // The lock is not available
-          onLockUnavailable();
-          await self.constructor._lock.acquire(key, lockedFn); // Wait forever
-        }
-        return ret;
-      },
-      { timeout: 1 } // Wait for only 1ms. Don't use 0 here.
-    );
+    return new Promise((resolve, reject) => {
+      (async () => {
+        await this.constructor._lock.acquire(
+          key,
+          async () => {
+            try {
+              const ret = await lockedFn();
+              resolve(ret);
+            } catch (err) {
+              reject(err);
+            }
+          },
+          async function (err, ret) {
+            if (err) {
+              // The lock is not available
+              onLockUnavailable();
+              try {
+                const ret = await self.constructor._lock.acquire(key, lockedFn); // Wait forever
+                resolve(ret);
+              } catch (err) {
+                reject(err);
+              }
+            } else {
+              resolve(ret);
+            }
+          },
+          { timeout: 1 } // Wait for only 1ms. Don't use 0 here.
+        );
+      })();
+    });
   }
 
+  /* eslint-disable no-unused-vars */
   /**
    * Subclass should implement this method, not sendPrompt().
    * Send a prompt to the bot and call onResponse(response, callbackParam)
@@ -132,16 +150,9 @@ export default class Bot {
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    return new Promise((resolve, reject) => {
-      onUpdateResponse(
-        i18n.global.t("bot.notImplemented"),
-        callbackParam,
-        true
-      );
-      resolve();
-      reject();
-    });
+    throw new Error(i18n.global.t("bot.notImplemented"));
   }
+  /* eslint-enable no-unused-vars */
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // If not logged in, handle the error
@@ -154,15 +165,17 @@ export default class Bot {
       return;
     }
 
+    const executeSendPrompt = async () => {
+      await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+    };
+
     try {
       if (!this.constructor._lock) {
-        await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+        await executeSendPrompt();
       } else {
         await this.acquireLock(
           this.constructor._brandId,
-          async () => {
-            await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
-          },
+          executeSendPrompt,
           () => {
             onUpdateResponse(
               i18n.global.t("bot.waiting", { botName: this.getBrandName() }),
