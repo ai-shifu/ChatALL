@@ -194,7 +194,7 @@ export default {
                         .checkAvailability()
                         .then(() => this.updateActiveBots())
                         .catch(error => {
-                            console.error(`Error checking login status for ${ bot.getFullname() }`, error);
+                            console.error(`Error checking login status for ${ bot.getFullname() }:`, error);
                         })
                 );
                 await Promise.allSettled(checkAvailabilityPromises);
