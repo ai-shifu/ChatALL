@@ -87,8 +87,13 @@ Build for all platforms:
 npm run electron:build -- -wml --x64 --arm64
 ```
 
-### Credits
+## Credits
+### Contributors
+<a href="https://github.com/sunner/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+</a>
 
+### Others
 * GPT-4 contributed much of the code
 * ChatGPT, Bing Chat and Google provide many solutons (ranked in order)
-* Inspired by [ChatHub](https://github.com/chathub-dev/chathub). Regards!
+* Inspired by [ChatHub](https://github.com/chathub-dev/chathub). Respect!
