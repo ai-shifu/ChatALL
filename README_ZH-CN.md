@@ -85,8 +85,14 @@ npm run electron:build
 npm run electron:build -- -wml --x64 --arm64
 ```
 
-###  致谢
+##  致谢
 
+### 贡献者
+<a href="https://github.com/sunner/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+</a>
+
+### 其它
 * GPT-4 贡献了大部分代码
 * ChatGPT，Bing Chat 和 Google 提供了许多解决方案（排名分先后）
 * 受 [ChatHub](https://github.com/chathub-dev/chathub) 启发。致敬！
