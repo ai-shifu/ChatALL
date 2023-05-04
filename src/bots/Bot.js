@@ -20,7 +20,7 @@ export default class Bot {
   static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
-  static _lock = null; // AsyncLock for network requests. `new AsyncLock()` in the subclass as needed.
+  static _lock = null; // AsyncLock for prompt requests. `new AsyncLock()` in the subclass as needed.
   static _settingsComponent = ""; // Vue component filename for settings
 
   constructor() {

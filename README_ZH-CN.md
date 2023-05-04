@@ -14,29 +14,29 @@
 
 ### 支持的 AI
 
-| AI 机器人                            | 网页访问 | API     |
-|-------------------------------------|----------|---------|
-| [ChatGPT](https://chat.openai.com)  | 支持     | 支持    |
-| [Bing Chat](https://www.bing.com/new)| 支持     | 无 API  |
-| [文心一言](https://yiyan.baidu.com/) | 否       | 支持    |
-| [Bard](https://bard.google.com/)    | 支持     | 无 API  |
-| [Poe](https://poe.com/)             | 即将推出 | 即将推出|
-| [MOSS](https://moss.fastnlp.top/)   | 支持     | 无 API  |
-| [通义千问](http://tongyi.aliyun.com/)| 即将推出 | 即将推出|
-| [得到学习助手](https://ai.dedao.cn/) | 即将推出 | 无 API |
-| [讯飞星火](http://xinghuo.xfyun.cn/) | 支持     | 即将推出|
+| AI 机器人                             | 网页访问 | API      |
+| ------------------------------------- | -------- | -------- |
+| [ChatGPT](https://chat.openai.com)    | 支持     | 支持     |
+| [Bing Chat](https://www.bing.com/new) | 支持     | 无 API   |
+| [文心一言](https://yiyan.baidu.com/)  | 否       | 支持     |
+| [Bard](https://bard.google.com/)      | 支持     | 无 API   |
+| [Poe](https://poe.com/)               | 即将推出 | 即将推出 |
+| [MOSS](https://moss.fastnlp.top/)     | 支持     | 无 API   |
+| [通义千问](http://tongyi.aliyun.com/) | 即将推出 | 即将推出 |
+| [得到学习助手](https://ai.dedao.cn/)  | 即将推出 | 无 API   |
+| [讯飞星火](http://xinghuo.xfyun.cn/)  | 支持     | 即将推出 |
 
 更多...
 
 ### 其他功能
 
-* 使用您自己的 AI 机器人帐号登录，或您自己的 API token
-* 自动保持 ChatGPT 不掉线
-* 批处理模式，不需要等待前面的请求完成，就可以发下一条指令
-* 随时启用/禁用任何机器人
-* 在一列、两列或三列视图之间切换
-* 支持多种语言（中文，英文）
-* [TODO] 推荐最佳答案
+- 使用您自己的 AI 机器人帐号登录，或您自己的 API token
+- 自动保持 ChatGPT 不掉线
+- 批处理模式，不需要等待前面的请求完成，就可以发下一条指令
+- 随时启用/禁用任何机器人
+- 在一列、两列或三列视图之间切换
+- 支持多种语言（中文，英文）
+- [TODO] 推荐最佳答案
 
 ## 先决条件
 
@@ -52,19 +52,23 @@ ChatALL 是一个客户端，而不是代理。因此，您必须：
 
 ### Windows 系统
 
-直接下载 *-win-x64.exe （多数情况下） 或 *-win-arm64.exe 安装文件并运行之。
+直接下载 _-win-x64.exe （多数情况下） 或 _-win-arm64.exe 安装文件并运行之。
 
 ### macOS 系统
 
-对于苹果硅芯片 Mac（M1，M2 CPU），请下载 *-mac-arm64.dmg 文件。
+对于苹果硅芯片 Mac（M1，M2 CPU），请下载 \*-mac-arm64.dmg 文件。
 
-对于其他 Mac，下载 *-mac-x64.dmg 文件。
+对于其他 Mac，下载 \*-mac-x64.dmg 文件。
 
 ### Linux 系统
 
 下载 .AppImage 文件，将其设置为可执行，然后双击就可运行。
 
 ## 给开发者
+
+### 贡献新的 AI 机器人
+
+[这份文档](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)能提供一些帮助。
 
 ### Run
 
@@ -76,23 +80,27 @@ npm run electron:serve
 ### Build
 
 为您当前的平台构建：
+
 ```bash
 npm run electron:build
 ```
 
 为所有平台构建：
+
 ```bash
 npm run electron:build -- -wml --x64 --arm64
 ```
 
-##  致谢
+## 致谢
 
 ### 贡献者
+
 <a href="https://github.com/sunner/ChatALL/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
 </a>
 
 ### 其它
-* GPT-4 贡献了大部分代码
-* ChatGPT，Bing Chat 和 Google 提供了许多解决方案（排名分先后）
-* 受 [ChatHub](https://github.com/chathub-dev/chathub) 启发。致敬！
+
+- GPT-4 贡献了大部分代码
+- ChatGPT，Bing Chat 和 Google 提供了许多解决方案（排名分先后）
+- 受 [ChatHub](https://github.com/chathub-dev/chathub) 启发。致敬！
