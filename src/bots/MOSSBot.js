@@ -113,6 +113,11 @@ export default class MOSSBot extends Bot {
               if (event.stage === "start") {
                 beginning += `${event.type} ${event.output}\n`;
               }
+            } else if (event.status === -1) {
+              wsp.removeAllListeners();
+              wsp.close();
+              reject(new Error(event.output));
+              return;
             }
             onUpdateResponse(
               `${beginning}\n${body}\n${ending}`,
