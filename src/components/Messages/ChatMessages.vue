@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
 import ChatMessage from "./ChatMessage.vue";
 
 export default {
@@ -25,7 +26,6 @@ export default {
     },
     data() {
         return {
-            messages: [],
             autoScroll: true,
         };
     },
@@ -33,6 +33,7 @@ export default {
         gridTemplateColumns() {
             return `repeat(${this.columns}, 1fr)`;
         },
+        ...mapState(["messages"]),
     },
     created() {
         window.addEventListener('scroll', this.onScroll);
@@ -56,6 +57,7 @@ export default {
 
             if (done) {
                 this.$matomo.trackEvent("prompt", "received", message.className, message.content.length);
+                this.setMessages(this.messages);
             }
 
             this.$nextTick(() => {
@@ -71,6 +73,7 @@ export default {
         scrollToBottom() {
             window.scrollTo(0, document.documentElement.scrollHeight);
         },
+        ...mapMutations(["setMessages"]),
     },
 };
 </script>

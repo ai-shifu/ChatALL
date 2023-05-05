@@ -24,6 +24,7 @@ export default createStore({
       apiKey: "",
       secretKey: "",
     },
+    messages: [],
   },
   mutations: {
     changeColumns(state, n) {
@@ -48,6 +49,9 @@ export default createStore({
     },
     setWenxinQianfan(state, { apiKey, secretKey }) {
       state.wenxinQianfan = { apiKey, secretKey };
+    },
+    setMessages(state, messages) {
+      state.messages = messages;
     },
   },
   actions: {

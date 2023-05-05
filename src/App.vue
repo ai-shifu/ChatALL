@@ -152,7 +152,7 @@ export default {
                     content: "",
                     logo: bot.getLogo(),
                     name: bot.getFullname(),
-                    model: bot.getModelName(),
+                    model: bot.constructor._model,
                     done: false,
                     className: bot.constructor._className,
                 };
