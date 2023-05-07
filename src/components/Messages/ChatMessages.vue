@@ -42,6 +42,11 @@ export default {
     created() {
         window.addEventListener('scroll', this.onScroll);
     },
+    mounted() {
+        this.$nextTick(() => {
+            this.scrollToBottom();
+        });
+    },
     watch: {
         'messages.length'() {
             this.$nextTick(() => {
