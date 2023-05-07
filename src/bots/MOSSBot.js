@@ -98,11 +98,10 @@ export default class MOSSBot extends Bot {
           wsp.onUnpackedMessage.addListener(async (event) => {
             if (!("status" in event)) {
               // The last message
-              onUpdateResponse(
-                `${beginning}\n${body}\n${ending}`,
-                callbackParam,
-                true
-              );
+              onUpdateResponse(callbackParam, {
+                content: `${beginning}\n${body}\n${ending}`,
+                done: true,
+              });
               wsp.removeAllListeners();
               wsp.close();
               resolve();
@@ -119,11 +118,10 @@ export default class MOSSBot extends Bot {
               reject(new Error(event.output));
               return;
             }
-            onUpdateResponse(
-              `${beginning}\n${body}\n${ending}`,
-              callbackParam,
-              false
-            );
+            onUpdateResponse(callbackParam, {
+              content: `${beginning}\n${body}\n${ending}`,
+              done: false,
+            });
           });
 
           wsp.open();

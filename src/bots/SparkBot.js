@@ -92,7 +92,7 @@ export default class SparkBot extends Bot {
         var text = "";
         source.addEventListener("message", (event) => {
           if (event.data === "<end>") {
-            onUpdateResponse(null, callbackParam, true);
+            onUpdateResponse(callbackParam, { done: true });
             source.close();
             resolve();
           } else if (event.data.slice(-5) === "<sid>") {
@@ -101,7 +101,7 @@ export default class SparkBot extends Bot {
           } else {
             try {
               text += Buffer.from(event.data, "base64").toString("utf8");
-              onUpdateResponse(text, callbackParam, false);
+              onUpdateResponse(callbackParam, { content: text, done: false });
             } catch (error) {
               console.error("Error decoding Spark response:", error);
               source.close();

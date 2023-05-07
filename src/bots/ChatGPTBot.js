@@ -124,7 +124,7 @@ export default class ChatGPTBot extends Bot {
         source.addEventListener("message", (event) => {
           const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
           if (event.data === "[DONE]") {
-            onUpdateResponse(null, callbackParam, true);
+            onUpdateResponse(callbackParam, { done: true });
             source.close();
             resolve();
           } else if (regex.test(event.data)) {
@@ -137,7 +137,10 @@ export default class ChatGPTBot extends Bot {
               this.conversationContext.parentMessageId = data.message.id;
               const partialText = data.message?.content?.parts?.[0];
               if (partialText) {
-                onUpdateResponse(partialText, callbackParam, false);
+                onUpdateResponse(callbackParam, {
+                  content: partialText,
+                  done: false,
+                });
               }
             } catch (error) {
               console.error("Error parsing ChatGPT response:", error);

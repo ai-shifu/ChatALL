@@ -36,7 +36,7 @@ export default class OpenAIAPIBot extends Bot {
       this.messages.push({ role: "user", content: `‘${prompt}’` });
       const payload = JSON.stringify({
         model: this.constructor._model,
-        messages:this.messages,
+        messages: this.messages,
         temperature: 0.9,
         stream: true,
       });
@@ -55,8 +55,8 @@ export default class OpenAIAPIBot extends Bot {
         source.addEventListener("message", (event) => {
           const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
           if (event.data === "[DONE]") {
-            onUpdateResponse(null, callbackParam, true);
-            this.messages.push({ role: "assistant", content: res })
+            onUpdateResponse(callbackParam, { done: true });
+            this.messages.push({ role: "assistant", content: res });
             source.close();
             resolve();
           } else if (regex.test(event.data)) {
@@ -70,7 +70,7 @@ export default class OpenAIAPIBot extends Bot {
               return;
             }
             res += partialText;
-            onUpdateResponse(res, callbackParam);
+            onUpdateResponse(callbackParam, { content: res, done: false });
           }
         });
         source.addEventListener("error", (error) => {

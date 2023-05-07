@@ -1,12 +1,21 @@
 <template>
     <v-card 
         :class="['message', message.type]"
-        flat
         :loading="message.done ? false : 'primary'"
     >
         <v-card-title v-if="message.type === 'response'" class="title">
             <img :src="message.logo" alt="Bot Icon" />
             {{ message.name }}
+            <v-spacer></v-spacer>
+            <v-btn flat size="x-small" icon @click="toggleHighlight" :color="message.highlight ? 'primary' : ''">
+                <v-icon>mdi-lightbulb-on-outline</v-icon>
+            </v-btn>
+            <v-btn flat size="x-small" icon @click="copyToClipboard">
+                <v-icon>mdi-content-copy</v-icon>
+            </v-btn>
+            <v-btn flat size="x-small" icon @click="hide">
+                <v-icon>mdi-delete</v-icon>
+            </v-btn>
         </v-card-title>
         <Markdown class="markdown-body" :breaks="true" :source="message.content" />
     </v-card>
@@ -16,6 +25,7 @@
 import Markdown from 'vue3-markdown-it';
 import 'highlight.js/styles/github.css';
 import 'github-markdown-css/github-markdown-light.css'
+import i18n from '@/i18n';
 
 export default {
     components: {
@@ -29,7 +39,7 @@ export default {
         columns: {
             type: Number,
             default: 1
-        }
+        },
     },
     mounted() {
         this.$el.style.setProperty('--columns', this.columns);
@@ -37,6 +47,19 @@ export default {
     watch: {
         columns() {
             this.$el.style.setProperty('--columns', this.columns);
+        }
+    },
+    methods: {
+        copyToClipboard() {
+            navigator.clipboard.writeText(this.message.content);
+        },
+        toggleHighlight() {
+            this.$emit("update-message", this.message.index, {highlight: !this.message.highlight});
+        },
+        hide() {
+            if (window.confirm(i18n.global.t("modal.confirmHide"))) {
+                this.$emit("update-message", this.message.index, { hide: true });
+            }
         }
     },
 };

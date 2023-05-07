@@ -144,7 +144,7 @@ export default class BingChatBot extends Bot {
             } else if (event.type === 6) {
               wsp.sendPacked({ type: 6 });
             } else if (event.type === 3) {
-              onUpdateResponse(null, callbackParam, true);
+              onUpdateResponse(callbackParam, { done: true });
               wsp.removeAllListeners();
               wsp.close();
               resolve();
@@ -166,7 +166,10 @@ export default class BingChatBot extends Bot {
             } else if (event.type === 1) {
               if (event.arguments[0].messages?.length > 0) {
                 const response = event.arguments[0].messages[0].text;
-                onUpdateResponse(response, callbackParam, false);
+                onUpdateResponse(callbackParam, {
+                  content: response,
+                  done: false,
+                });
               }
             }
           }

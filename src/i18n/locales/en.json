@@ -21,6 +21,7 @@
         "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
     },
     "modal": {
+        "confirmHide": "Delete this message?",
         "done": "Done"
     },
     "bot": {

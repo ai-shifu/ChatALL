@@ -146,7 +146,7 @@ export default class Bot {
    * Send a prompt to the bot and call onResponse(response, callbackParam)
    * when the response is ready.
    * @param {string} prompt
-   * @param {function} onUpdateResponse params: response, callbackParam, done
+   * @param {function} onUpdateResponse params: callbackParam, Object {content, done}
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
@@ -157,11 +157,12 @@ export default class Bot {
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // If not logged in, handle the error
     if (!this.isAvailable()) {
-      onUpdateResponse(
-        i18n.global.t("bot.notAvailable", { botName: this.getFullname() }),
-        callbackParam,
-        true
-      );
+      onUpdateResponse(callbackParam, {
+        content: i18n.global.t("bot.notAvailable", {
+          botName: this.getFullname(),
+        }),
+        done: true,
+      });
       return;
     }
 
@@ -177,17 +178,18 @@ export default class Bot {
           this.constructor._brandId,
           executeSendPrompt,
           () => {
-            onUpdateResponse(
-              i18n.global.t("bot.waiting", { botName: this.getBrandName() }),
-              callbackParam,
-              false
-            );
+            onUpdateResponse(callbackParam, {
+              content: i18n.global.t("bot.waiting", {
+                botName: this.getBrandName(),
+              }),
+              done: false,
+            });
           }
         );
       }
     } catch (err) {
       console.error(`Error send prompt to ${this.getFullname()}:`, err);
-      onUpdateResponse(err.toString(), callbackParam, true); // Make sure stop loading
+      onUpdateResponse(callbackParam, { content: err.toString(), done: true }); // Make sure stop loading
     }
   }
 

@@ -34,22 +34,25 @@ export default class YourAIBot extends Bot {
    * Send a prompt to the bot and call onResponse(response, callbackParam)
    * when the response is ready.
    * @param {string} prompt
-   * @param {function} onUpdateResponse params: response, callbackParam, done
+   * @param {function} onUpdateResponse params: callbackParam, Object {content, done}
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     return new Promise((resolve, reject) => {
       // Send the prompt to the bot and call onUpdateResponse() when the response is ready
-      // onUpdateResponse(response, callbackParam, done)
-      //   response: Response text from the bot, even if it's not fully complete
+      // onUpdateResponse(callbackParam, {content, done})
       //   callbackParam: Just pass it to onUpdateResponse() as is
-      //   done: true if the response is completed, false otherwise
+      //   Object.content: Response text from the bot, even if it's not fully complete
+      //   Object.done: true if the response is completed, false otherwise
       //
       // When everything is done, call resolve()
       // If there is an error, call reject(error)
 
       try {
-        onUpdateResponse("Hello, world!", callbackParam, true);
+        onUpdateResponse(callbackParam, {
+          content: "Hello, world!",
+          done: true,
+        });
         resolve();
       } catch (error) {
         reject(error);

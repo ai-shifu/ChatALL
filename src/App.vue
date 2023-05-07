@@ -137,7 +137,8 @@ export default {
             this.$refs.chatMessages.messages.push({
                 type: "prompt",
                 content: this.prompt,
-                done: true
+                done: true,
+                hide: false,
             });
 
             let count = 0;
@@ -154,12 +155,15 @@ export default {
                     name: bot.getFullname(),
                     model: bot.constructor._model,
                     done: false,
+                    highlight: false,
+                    hide: false,
                     className: bot.constructor._className,
                 };
+                message.index = this.$refs.chatMessages.messages.push(message) - 1; // The index of the message in the messages array
                 bot.sendPrompt(
                     this.prompt,
                     this.$refs.chatMessages.updateMessage,
-                    this.$refs.chatMessages.messages.push(message) - 1 // The index of the message in the messages array
+                    message.index,
                 );
                 this.$matomo.trackEvent("prompt", "sendTo", bot.constructor._className, this.prompt.length);
             }

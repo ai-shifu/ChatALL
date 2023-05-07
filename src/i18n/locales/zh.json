@@ -21,6 +21,7 @@
         "promptPlaceholder": "输入消息。（Shift+Enter 换行）"
     },
     "modal": {
+        "confirmHide": "删除这条消息？",
         "done": "完成"
     },
     "bot": {

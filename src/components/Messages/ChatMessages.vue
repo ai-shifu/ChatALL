@@ -1,10 +1,11 @@
 <template>
     <div class="messages">
         <div class="message-grid" :style="{ gridTemplateColumns: gridTemplateColumns }" >
-            <chat-message v-for="(message, index) in messages" 
+            <chat-message v-for="(message, index) in this.filteredMessages" 
                 :key="index"
                 :columns="columns"
                 :message="message"
+                @update-message="updateMessage"
             ></chat-message>
         </div>
     </div>
@@ -33,6 +34,9 @@ export default {
         gridTemplateColumns() {
             return `repeat(${this.columns}, 1fr)`;
         },
+        filteredMessages() {
+            return this.messages.filter(message => !message.hide);
+        },
         ...mapState(["messages"]),
     },
     created() {
@@ -49,14 +53,25 @@ export default {
     },
     methods: {
         // Update the chat-message with the new message
-        updateMessage(response, index, done) {
+        updateMessage(index, values) {
             const message = this.messages[index];
-            if (response !== null)
-                message.content = response;
-            message.done = done;
+            this.messages[index] = {
+                ...message,
+                ...values,
+            };
 
-            if (done) {
+            if (values.done) {
                 this.$matomo.trackEvent("prompt", "received", message.className, message.content.length);
+                this.setMessages(this.messages);
+            }
+
+            if (values.hide !== undefined) {
+                this.$matomo.trackEvent("vote", "hide", message.className, values.hide ? 1 : -1);
+                this.setMessages(this.messages);
+            }
+
+            if (values.highlight !== undefined) {
+                this.$matomo.trackEvent("vote", "highlight", message.className, values.highlight ? 1 : -1);
                 this.setMessages(this.messages);
             }
 

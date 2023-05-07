@@ -69,7 +69,10 @@ export default class WenxinQianfanBot extends Bot {
           const data = JSON.parse(event.data);
           const partialResult = data.result;
           fullResult += partialResult;
-          onUpdateResponse(fullResult, callbackParam, data.is_end);
+          onUpdateResponse(callbackParam, {
+            content: fullResult,
+            done: data.is_end,
+          });
 
           if (data.is_end) {
             this.messages.push({ role: "assistant", content: fullResult });
