@@ -55,7 +55,7 @@ Download from https://github.com/sunner/ChatALL/releases
 
 ### On Windows
 
-Just download the _-win-x64.exe (mostly) or _-win-arm64.exe file and proceed with the setup.
+Just download the \*-win.exe file and proceed with the setup.
 
 ### On macOS
 
