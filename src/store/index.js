@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import VuexPersist from "vuex-persist";
 import i18n from "../i18n";
+import messagesPersist from "./messagesPersist";
 
 // 初始化 VuexPersist 实例
 const vuexPersist = new VuexPersist({
@@ -60,5 +61,5 @@ export default createStore({
   modules: {
     // ...你的模块
   },
-  plugins: [vuexPersist.plugin], // 添加插件到 store
+  plugins: [vuexPersist.plugin, messagesPersist.plugin], // 添加插件到 store
 });
