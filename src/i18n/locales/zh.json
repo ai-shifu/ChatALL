@@ -12,6 +12,7 @@
         "secretPrompt": "你的私密 token 只会保存在本地，任何其他人都无法访问"
     },
     "header": {
+        "clearMessages": "清空所有消息？",
         "singleColumn": "单列",
         "doubleColumn": "双列",
         "tripleColumn": "三列"

@@ -20,20 +20,31 @@
                         :class="{ 'selected': columns === 3 }"
                     />
                 </div>
-                <v-icon 
-                    class="cursor-pointer" 
-                    color="primary" 
-                    icon="mdi-cog" 
-                    size="x-large"
-                    @click="openSettingsModal()"
-                ></v-icon>
+                <div>
+                    <v-icon 
+                        class="cursor-pointer"
+                        color="primary"
+                        icon="mdi-broom"
+                        size="x-large"
+                        @click="clearMessages()"
+                    ></v-icon>
+                    <v-icon 
+                        class="cursor-pointer" 
+                        color="primary" 
+                        icon="mdi-cog" 
+                        size="x-large"
+                        @click="openSettingsModal()"
+                    ></v-icon>
+                </div>
             </div>
         </header>
+
         <main class="content">
             <div id="content">
                 <ChatMessages :columns="columns" ref="chatMessages"></ChatMessages>
             </div>
         </main>
+
         <footer>
             <v-textarea
                 v-model="prompt"
@@ -82,6 +93,8 @@
 <script>
 import '@mdi/font/css/materialdesignicons.css'
 import { mapState, mapMutations } from "vuex";
+
+import i18n from './i18n';
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
@@ -225,6 +238,11 @@ export default {
             if (event.keyCode == 13 && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
                 event.preventDefault();
                 this.sendPromptToBots();
+            }
+        },
+        clearMessages() {
+            if (window.confirm(i18n.global.t("header.clearMessages"))) {
+                this.$refs.chatMessages.clearMessages();
             }
         },
     },

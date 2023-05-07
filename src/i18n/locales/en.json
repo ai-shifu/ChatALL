@@ -12,6 +12,7 @@
         "secretPrompt": "Your secret token will remain on your device and will not be shared with anyone else"
     },
     "header": {
+        "clearMessages": "Clear all messages?",
         "singleColumn": "Single Column",
         "doubleColumn": "Double Column",
         "tripleColumn": "Triple Column"
