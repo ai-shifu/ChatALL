@@ -32,9 +32,10 @@ And more...
 
 ### Other features
 
-- Log in with your own AI bot accounts, or API token
+- Quick-prompt mode: send the next prompt without waiting for the previous request to complete
+- Store chat history locally, protect your privacy
+- Highlight the response you like, delete the bad
 - Automatically keep ChatGPT session alive
-- Batch mode: You can send the next prompt without waiting for the previous request to complete
 - Enable/disable any bots at any time
 - Switch between one, two, or three-column view
 - Supports multiple languages (en, zh)
