@@ -88,7 +88,7 @@ export default {
         },
         onScroll() {
             const scrollPosition = window.pageYOffset + window.innerHeight;
-            this.autoScroll = scrollPosition >= document.documentElement.scrollHeight;
+            this.autoScroll = scrollPosition >= document.documentElement.scrollHeight - 10;
         },
         scrollToBottom() {
             window.scrollTo(0, document.documentElement.scrollHeight);
