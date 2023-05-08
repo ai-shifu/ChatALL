@@ -14,9 +14,13 @@ export default createStore({
     lang: "auto",
     columns: 1,
     selectedBots: {},
-    openaiApiKey: "",
+    openaiApi: {
+      apiKey: "",
+      temperature: 1,
+      alterUrl: "",
+    },
     chatgpt: {
-      refreshCycle: "",
+      refreshCycle: 0,
     },
     moss: {
       token: "",
@@ -42,8 +46,8 @@ export default createStore({
     setChatgpt(state, refreshCycle) {
       state.chatgpt.refreshCycle = refreshCycle;
     },
-    setOpenaiApiKey(state, openaiApiKey) {
-      state.openaiApiKey = openaiApiKey;
+    setOpenaiApi(state, values) {
+      state.openaiApi = { ...state.openaiApi, ...values };
     },
     setMoss(state, token) {
       state.moss.token = token;

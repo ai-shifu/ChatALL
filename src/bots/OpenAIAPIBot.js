@@ -7,7 +7,6 @@ export default class OpenAIAPIBot extends Bot {
   static _className = "OpenAIAPIBot";
   static _logoFilename = "";
   static _loginUrl = ""; // URL for the login button on the bots page
-  static _apiUrl = "https://api.openai.com/v1/chat/completions";
   static _model = "";
 
   messages = [];
@@ -17,7 +16,7 @@ export default class OpenAIAPIBot extends Bot {
   }
 
   async checkAvailability() {
-    if (!store.state.openaiApiKey) {
+    if (!store.state.openaiApi.apiKey) {
       this.constructor._isAvailable = false;
     } else {
       this.constructor._isAvailable = true;
@@ -30,14 +29,14 @@ export default class OpenAIAPIBot extends Bot {
     try {
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${store.state.openaiApiKey}`,
+        Authorization: `Bearer ${store.state.openaiApi.apiKey}`,
       };
 
       this.messages.push({ role: "user", content: `‘${prompt}’` });
       const payload = JSON.stringify({
         model: this.constructor._model,
         messages: this.messages,
-        temperature: 0.9,
+        temperature: store.state.openaiApi.temperature,
         stream: true,
       });
 
@@ -50,8 +49,10 @@ export default class OpenAIAPIBot extends Bot {
       let res = "";
       return new Promise((resolve, reject) => {
         // call OpenAI API
-        const source = new SSE(this.constructor._apiUrl, requestConfig);
-
+        const apiUrl =
+          store.state.openaiApi.alterUrl ||
+          "https://api.openai.com/v1/chat/completions";
+        const source = new SSE(apiUrl, requestConfig);
         source.addEventListener("message", (event) => {
           const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
           if (event.data === "[DONE]") {
