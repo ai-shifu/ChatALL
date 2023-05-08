@@ -58,7 +58,7 @@
     "openaiApi": {
         "name": "OpenAI API",
         "alterUrl": "Alternate API URL",
-        "alterUrlPrompt": "If you have a custom API URL, you can enter it here",
+        "alterUrlPrompt": "If you are using a custom API URL, you can enter it here",
         "gpt-35-turbo": "gpt-3.5-turbo",
         "gpt-4": "gpt-4",
         "temperature": "Temperature",
