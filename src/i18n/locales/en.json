@@ -21,6 +21,9 @@
         "sendPrompt": "Send to:",
         "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
     },
+    "error": {
+        "failedConnectUrl": "Failed to connect { url }"
+    },
     "modal": {
         "confirmHide": "Delete this message?",
         "done": "Done"

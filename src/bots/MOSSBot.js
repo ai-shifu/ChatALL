@@ -124,6 +124,14 @@ export default class MOSSBot extends Bot {
             });
           });
 
+          wsp.onError.addListener((event) => {
+            wsp.removeAllListeners();
+            wsp.close();
+            reject(
+              i18n.global.t("error.failedConnectUrl", { url: event.target.url })
+            );
+          });
+
           wsp.open();
         } catch (err) {
           reject(err);
