@@ -73,5 +73,10 @@
     },
     "wenxinQianfan": {
         "name": "文心千帆"
+    },
+    "gradio": {
+        "name": "Gradio",
+        "queueFull": "队列已满，请稍后再试",
+        "waiting": "当前有 { queue_size } 个请求在队列中，你在第 { rank } 位，预计还要等待 { queue_eta } 秒"
     }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>gradio-logo</title>
+    <g id="gradio-logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(0.000000, 2.000000)" fill="#FF7C00" fill-rule="nonzero" id="Path">
+            <polygon fill-opacity="0.75" points="129 0 256 70.1363394 256 111 129 40.8639086"></polygon>
+            <polygon points="256 70 128 140.067553 128 181 256 110.932447"></polygon>
+            <polygon fill-opacity="0.75" points="0 70 128 140.067397 128 181 0 110.932603"></polygon>
+            <polygon points="128 0 0 70.0671241 0 111 128 40.9331227"></polygon>
+            <polygon fill-opacity="0.75" points="129 71 256 141.136 256 182 129 111.864"></polygon>
+            <polygon points="256 141 128 211.067086 128 252 256 181.932174"></polygon>
+            <polygon fill-opacity="0.75" points="0 141 128 211.067086 128 252 0 181.932421"></polygon>
+            <polygon points="128 71 0 141.067033 0 182 128 111.933214"></polygon>
+        </g>
+    </g>
+</svg>

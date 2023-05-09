@@ -73,5 +73,10 @@
     },
     "wenxinQianfan": {
         "name": "Wenxin Qianfan"
+    },
+    "gradio": {
+        "name": "Gradio",
+        "queueFull": "The queue is full, please try again later",
+        "waiting": "There are { queue_size } requests in the queue, you are in { rank }th place, and you are expected to wait for { queue_eta } seconds"
     }
 }
