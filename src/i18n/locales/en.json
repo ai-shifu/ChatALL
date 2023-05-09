@@ -78,5 +78,16 @@
         "name": "Gradio",
         "queueFull": "The queue is full, please try again later",
         "waiting": "There are { queue_size } requests in the queue, you are in { rank }th place, and you are expected to wait for { queue_eta } seconds"
+    },
+    "lmsys": {
+        "name": "LMSYS"
+    },
+    "vicuna": {
+        "name": "Vicuna",
+        "vicuna-13b": "vicuna-13b"
+    },
+    "chatGlm": {
+        "name": "ChatGLM",
+        "chatglm-6b": "chatglm-6b"
     }
 }

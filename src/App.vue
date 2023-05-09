@@ -113,7 +113,8 @@ import OpenAIAPI35Bot from "./bots/OpenAIAPI35Bot";
 import OpenAIAPI4Bot from "./bots/OpenAIAPI4Bot";
 import MOSSBot from "./bots/MOSSBot";
 import WenxinQianfanBot from './bots/WenxinQianfanBot';
-import GradioBot from './bots/GradioBot';
+import VicunaBot from './bots/VicunaBot';
+import ChatGLMBot from './bots/ChatGLMBot';
 
 export default {
     name: "App",
@@ -134,9 +135,10 @@ export default {
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),
+                ChatGLMBot.getInstance(),
                 WenxinQianfanBot.getInstance(),
                 SparkBot.getInstance(),
-                GradioBot.getInstance(),
+                VicunaBot.getInstance(),
                 MOSSBot.getInstance(),
                 BardBot.getInstance(),
             ],

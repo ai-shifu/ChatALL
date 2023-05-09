@@ -55,6 +55,18 @@ export default class GradioBot extends Bot {
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    for (const key in this.constructor._fnIndexes) {
+      const fn_index = this.constructor._fnIndexes[key];
+      await this._sendFnIndex(
+        fn_index,
+        prompt,
+        onUpdateResponse,
+        callbackParam
+      );
+    }
+  }
+
+  async _sendFnIndex(fn_index, prompt, onUpdateResponse, callbackParam) {
     const config = this.config;
     return new Promise((resolve, reject) => {
       try {
@@ -62,61 +74,64 @@ export default class GradioBot extends Bot {
         url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
         const session_hash = this.session_hash;
 
-        for (const key in this.constructor._fnIndexes) {
-          const fn_index = this.constructor._fnIndexes[key];
-          const data = this.makeData(fn_index, prompt);
+        const data = this.makeData(fn_index, prompt);
 
-          const wsp = new WebSocketAsPromised(url.toString(), {
-            packMessage: (data) => {
-              return JSON.stringify(data);
-            },
-            unpackMessage: (data) => {
-              return JSON.parse(data);
-            },
-          });
+        const wsp = new WebSocketAsPromised(url.toString(), {
+          packMessage: (data) => {
+            return JSON.stringify(data);
+          },
+          unpackMessage: (data) => {
+            return JSON.parse(data);
+          },
+        });
 
-          wsp.onUnpackedMessage.addListener(async (event) => {
-            if (event.msg === "send_hash") {
-              wsp.sendPacked({ fn_index, session_hash });
-            } else if (event.msg === "send_data") {
-              // Requested to send data
-              wsp.sendPacked({
-                data,
-                event_data: null,
-                fn_index,
-                session_hash,
-              });
-            } else if (event.msg === "estimation") {
-              if (event.rank > 0) {
-                // Waiting in queue
-                event.rank_eta = Math.floor(event.rank_eta);
-                onUpdateResponse(callbackParam, {
-                  content: i18n.global.t("gradio.waiting", { ...event }),
-                  done: false,
-                });
-              }
-            } else if (event.msg === "process_generating") {
-              // Generating data
+        wsp.onUnpackedMessage.addListener(async (event) => {
+          if (event.msg === "send_hash") {
+            wsp.sendPacked({ fn_index, session_hash });
+          } else if (event.msg === "send_data") {
+            // Requested to send data
+            wsp.sendPacked({
+              data,
+              event_data: null,
+              fn_index,
+              session_hash,
+            });
+          } else if (event.msg === "estimation") {
+            if (event.rank > 0) {
+              // Waiting in queue
+              event.rank_eta = Math.floor(event.rank_eta);
               onUpdateResponse(callbackParam, {
-                content: this.parseData(event.output.data),
+                content: i18n.global.t("gradio.waiting", { ...event }),
                 done: false,
               });
-            } else if (event.msg === "process_completed") {
-              // Done
+            }
+          } else if (event.msg === "process_generating") {
+            // Generating data
+            onUpdateResponse(callbackParam, {
+              content: this.parseData(fn_index, event.output.data),
+              done: false,
+            });
+          } else if (event.msg === "process_completed") {
+            // Done
+            if (event.output.data) {
               onUpdateResponse(callbackParam, {
-                content: this.parseData(event.output.data),
+                content: this.parseData(fn_index, event.output.data),
+                done: fn_index != this.constructor._fnIndexes[0], // Only the last one is done
+              });
+            } else {
+              onUpdateResponse(callbackParam, {
                 done: true,
               });
-              wsp.removeAllListeners();
-              wsp.close();
-              resolve();
-            } else if (event.msg === "queue_full") {
-              reject(i18n.global.t("gradio.queueFull"));
             }
-          });
+            wsp.removeAllListeners();
+            wsp.close();
+            resolve();
+          } else if (event.msg === "queue_full") {
+            reject(i18n.global.t("gradio.queueFull"));
+          }
+        });
 
-          wsp.open();
-        }
+        wsp.open();
       } catch (error) {
         reject(error);
       }

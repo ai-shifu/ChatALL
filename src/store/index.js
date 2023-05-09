@@ -13,7 +13,10 @@ export default createStore({
   state: {
     lang: "auto",
     columns: 1,
-    selectedBots: {},
+    selectedBots: {
+      ChatGLMBot: true,
+      VicunaBot: true,
+    },
     openaiApi: {
       apiKey: "",
       temperature: 1,
