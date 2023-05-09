@@ -2,6 +2,7 @@ import Bot from "./Bot";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import WebSocketAsPromised from "websocket-as-promised";
+import i18n from "../i18n";
 
 function randomIP() {
   return (
@@ -155,11 +156,8 @@ export default class BingChatBot extends Bot {
                   // Create a new conversation and retry
                   this.constructor._conversation =
                     await this.createConversation();
-                  return this._sendPrompt(
-                    prompt,
-                    onUpdateResponse,
-                    callbackParam
-                  );
+                  this._sendPrompt(prompt, onUpdateResponse, callbackParam);
+                  reject(i18n.global.t("bot.creatingConversation"));
                 } else {
                   reject(event.item.result.message);
                 }
