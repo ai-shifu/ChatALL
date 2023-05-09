@@ -151,7 +151,18 @@ export default class BingChatBot extends Bot {
             } else if (event.type === 2) {
               if (event.item.result.value !== "Success") {
                 console.error("Error sending prompt to Bing Chat:", event);
-                reject(event.item.result.message);
+                if (event.item.result.value === "InvalidSession") {
+                  // Create a new conversation and retry
+                  this.constructor._conversation =
+                    await this.createConversation();
+                  return this._sendPrompt(
+                    prompt,
+                    onUpdateResponse,
+                    callbackParam
+                  );
+                } else {
+                  reject(event.item.result.message);
+                }
               } else if (
                 event.item.throttling.maxNumUserMessagesInConversation ===
                 event.item.throttling.numUserMessagesInConversation
