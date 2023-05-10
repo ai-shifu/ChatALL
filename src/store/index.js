@@ -17,6 +17,7 @@ export default createStore({
       ChatGLMBot: true,
       VicunaBot: true,
       AlpacaBot: true,
+      ClaudeBot: true,
     },
     openaiApi: {
       apiKey: "",
