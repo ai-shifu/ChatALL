@@ -45,6 +45,7 @@
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.39.0",
     "eslint-plugin-vue": "^9.11.0",
+    "prettier-plugin-vue": "^1.1.6",
     "sse.js": "github:mpetazzoni/sse.js",
     "vue-cli-plugin-electron-builder": "^2.1.1"
   },
