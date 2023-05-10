@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import Bot from "@/bots/LMSYSBot";
+import Bot from "@/bots/lmsys/LMSYSBot";
 import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
 
 export default {

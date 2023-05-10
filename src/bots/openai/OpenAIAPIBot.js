@@ -1,4 +1,4 @@
-import Bot from "./Bot";
+import Bot from "@/bots/Bot";
 import { SSE } from "sse.js";
 import store from "@/store";
 

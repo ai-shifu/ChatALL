@@ -22,7 +22,7 @@
 <script>
 import { mapState , mapMutations} from "vuex";
 
-import Bot from "@/bots/ChatGPTBot";
+import Bot from "@/bots/openai/ChatGPTBot";
 import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
 
 const AUTO_REFRESH_CYCLE = 45; // seconds

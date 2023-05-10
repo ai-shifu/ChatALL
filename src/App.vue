@@ -103,21 +103,21 @@ import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from '@/components/SettingsModal.vue';
 
 // Bots
-import ChatGPT35Bot from "./bots/ChatGPT35Bot";
-import ChatGPT4Bot from "./bots/ChatGPT4Bot";
-import BingChatPreciseBot from "./bots/BingChatPreciseBot";
-import BingChatBalancedBot from "./bots/BingChatBalancedBot";
-import BingChatCreativeBot from "./bots/BingChatCreativeBot";
-import SparkBot from "./bots/SparkBot";
-import BardBot from "./bots/BardBot";
-import OpenAIAPI35Bot from "./bots/OpenAIAPI35Bot";
-import OpenAIAPI4Bot from "./bots/OpenAIAPI4Bot";
-import MOSSBot from "./bots/MOSSBot";
-import WenxinQianfanBot from './bots/WenxinQianfanBot';
-import VicunaBot from './bots/VicunaBot';
-import ChatGLMBot from './bots/ChatGLMBot';
-import AlpacaBot from './bots/AlpacaBot';
-import ClaudeBot from './bots/ClaudeBot';
+import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
+import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
+import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot"
+import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot"
+import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot"
+import SparkBot from "@/bots/SparkBot";
+import BardBot from "@/bots/BardBot";
+import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
+import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
+import MOSSBot from "@/bots/MOSSBot";
+import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
+import VicunaBot from "@/bots/lmsys/VicunaBot"
+import ChatGLMBot from "@/bots/lmsys/ChatGLMBot"
+import AlpacaBot from "@/bots/lmsys/AlpacaBot"
+import ClaudeBot from "@/bots/lmsys/ClaudeBot"
 
 export default {
     name: "App",

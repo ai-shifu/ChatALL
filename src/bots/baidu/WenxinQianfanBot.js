@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SSE } from "sse.js";
 
-import Bot from "./Bot";
+import Bot from "@/bots/Bot";
 import store from "@/store";
 
 export default class WenxinQianfanBot extends Bot {

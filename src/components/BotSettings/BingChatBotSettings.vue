@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import Bot from "@/bots/BingChatBot";
+import Bot from "@/bots/microsoft/BingChatBot";
 import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
 
 export default {

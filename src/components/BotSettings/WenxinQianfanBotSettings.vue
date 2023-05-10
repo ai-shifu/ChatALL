@@ -26,7 +26,7 @@
 
 <script>
 import { mapState , mapMutations} from "vuex";
-import Bot from "@/bots/WenxinQianfanBot";
+import Bot from "@/bots/baidu/WenxinQianfanBot";
 export default {
     data(){
         return {

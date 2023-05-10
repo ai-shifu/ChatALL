@@ -1,8 +1,8 @@
-import Bot from "./Bot";
+import Bot from "@/bots/Bot";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import WebSocketAsPromised from "websocket-as-promised";
-import i18n from "../i18n";
+import i18n from "@/i18n";
 
 function randomIP() {
   return (

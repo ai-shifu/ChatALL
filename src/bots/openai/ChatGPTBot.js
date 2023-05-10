@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { SSE } from "sse.js";
 import AsyncLock from "async-lock";
 
-import Bot from "./Bot";
+import Bot from "@/bots/Bot";
 import store from "@/store";
 
 // Inspired by https://v2ex.com/t/926890

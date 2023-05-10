@@ -37,7 +37,7 @@
 
 <script>
 import { mapState , mapMutations} from "vuex";
-import Bot from "@/bots/OpenAIAPIBot";
+import Bot from "@/bots/openai/OpenAIAPIBot";
 import i18n from "@/i18n";
 export default {
     data(){

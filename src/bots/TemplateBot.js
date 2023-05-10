@@ -1,5 +1,5 @@
 import AsyncLock from "async-lock";
-import Bot from "./Bot";
+import Bot from "@/bots/Bot";
 
 export default class YourAIBot extends Bot {
   static _brandId = "yourAi"; // Brand id of the bot, should be unique. Used in i18n.

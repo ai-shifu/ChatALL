@@ -1,4 +1,4 @@
-import Bot from "./Bot";
+import Bot from "@/bots/Bot";
 import axios from "axios";
 
 export default class ERNIEBot extends Bot {
