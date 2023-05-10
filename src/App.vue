@@ -311,6 +311,7 @@ header {
 
 .bot-logos {
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
 }
 
