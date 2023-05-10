@@ -5,6 +5,7 @@ export default class VicunaBot extends LMSYSBot {
   static _className = "VicunaBot"; // Class name of the bot
   static _logoFilename = "vicuna-logo.jpeg"; // Place it in assets/bots/
   static _model = "vicuna-13b";
+  static _lock = new AsyncLock(); // Send requests in queue to save LMSYS
 
   constructor() {
     super();

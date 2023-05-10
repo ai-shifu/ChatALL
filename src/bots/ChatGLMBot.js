@@ -5,6 +5,7 @@ export default class ChatGLMBot extends LMSYSBot {
   static _className = "ChatGLMBot"; // Class name of the bot
   static _logoFilename = "chatglm-logo.svg"; // Place it in assets/bots/
   static _model = "chatglm-6b";
+  static _lock = new AsyncLock(); // Send requests in queue to save LMSYS
 
   constructor() {
     super();
