@@ -117,6 +117,7 @@ import WenxinQianfanBot from './bots/WenxinQianfanBot';
 import VicunaBot from './bots/VicunaBot';
 import ChatGLMBot from './bots/ChatGLMBot';
 import AlpacaBot from './bots/AlpacaBot';
+import ClaudeBot from './bots/ClaudeBot';
 
 export default {
     name: "App",
@@ -137,6 +138,7 @@ export default {
                 BingChatCreativeBot.getInstance(),
                 BingChatBalancedBot.getInstance(),
                 BingChatPreciseBot.getInstance(),
+                ClaudeBot.getInstance(),
                 ChatGLMBot.getInstance(),
                 WenxinQianfanBot.getInstance(),
                 SparkBot.getInstance(),

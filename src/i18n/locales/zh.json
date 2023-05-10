@@ -96,5 +96,9 @@
     "alpaca": {
         "name": "Alpaca",
         "alpaca-13b": "alpaca-13b"
+    },
+    "claude": {
+        "name": "Claude",
+        "claude-v1": "claude-v1"
     }
 }
