@@ -1,3 +1,4 @@
+import AsyncLock from "async-lock";
 import LMSYSBot from "./LMSYSBot";
 
 export default class ChatGLMBot extends LMSYSBot {
