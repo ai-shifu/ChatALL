@@ -6,7 +6,7 @@ import i18n from "@/i18n";
 const botLogoContext = require.context(
   "../assets/bots/",
   false,
-  /\.(png|jpg|jpeg|svg)$/
+  /\.(png|jpg|jpeg|svg)$/,
 );
 
 export default class Bot {
@@ -139,7 +139,7 @@ export default class Bot {
               resolve(ret);
             }
           },
-          { timeout: 1 } // Wait for only 1ms. Don't use 0 here.
+          { timeout: 1 }, // Wait for only 1ms. Don't use 0 here.
         );
       })();
     });

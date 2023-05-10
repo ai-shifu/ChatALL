@@ -66,7 +66,7 @@ export default class BardBot extends Bot {
             "f.req": JSON.stringify([
               null,
               `[[${JSON.stringify(prompt)}],null,${JSON.stringify(
-                contextIds
+                contextIds,
               )}]`,
             ]),
           }),
@@ -76,7 +76,7 @@ export default class BardBot extends Bot {
               _reqid: Math.floor(Math.random() * 900000) + 100000,
               rt: "c",
             },
-          }
+          },
         )
         .then(({ data: resp }) => {
           const { text, ids } = parseBartResponse(resp);

@@ -20,7 +20,7 @@ export default class ChatGPT4Bot extends ChatGPTBot {
         };
         const response = await axios.get(
           "https://chat.openai.com/backend-api/accounts/check",
-          { headers }
+          { headers },
         );
         const isPaidSubscriptionActive =
           response.data.account_plan.is_paid_subscription_active;

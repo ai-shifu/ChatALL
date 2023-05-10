@@ -33,13 +33,13 @@ export default class MOSSBot extends Bot {
       const res = await axios.post(
         "https://moss.fastnlp.top/api/chats",
         {},
-        this.getAuthHeader()
+        this.getAuthHeader(),
       );
       return res.data.id;
     } catch (err) {
       console.error("Error creating conversation:", err);
       throw new Error(
-        i18n.global.t("bot.failedToCreateConversation") + "\n" + err.message
+        i18n.global.t("bot.failedToCreateConversation") + "\n" + err.message,
       );
     }
   }
@@ -128,7 +128,9 @@ export default class MOSSBot extends Bot {
             wsp.removeAllListeners();
             wsp.close();
             reject(
-              i18n.global.t("error.failedConnectUrl", { url: event.target.url })
+              i18n.global.t("error.failedConnectUrl", {
+                url: event.target.url,
+              }),
             );
           });
 

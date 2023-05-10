@@ -1,93 +1,93 @@
 {
-    "settings": {
-        "enable": "Enable",
-        "title": "Settings",
-        "general": "General",
-        "auto": "Automatic",
-        "language": "Language",
-        "languagePrompt": "Relaunch the app to apply the new language",
-        "loginOrOut": "Login/Logout",
-        "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it",
-        "notice": "Notice",
-        "secretPrompt": "Your secret token will remain on your device and will not be shared with anyone else"
-    },
-    "header": {
-        "clearMessages": "Clear all messages?",
-        "singleColumn": "Single Column",
-        "doubleColumn": "Double Column",
-        "tripleColumn": "Triple Column"
-    },
-    "footer": {
-        "sendPrompt": "Send to:",
-        "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
-    },
-    "error": {
-        "failedConnectUrl": "Failed to connect { url }",
-        "closedByServer": "Connection closed by server"
-    },
-    "modal": {
-        "confirmHide": "Delete this message?",
-        "done": "Done"
-    },
-    "bot": {
-        "creatingConversation": "Creating conversation...",
-        "failedToCreateConversation": "Failed to create conversation",
-        "name": "Null Bot",
-        "notImplemented": "Under construction...",
-        "notAvailable": "The bot is not available because not login or not configured correctly.",
-        "waiting": "Waiting for other { botName } request(s) to complete..."
-    },
-    "chatGpt": {
-        "name": "ChatGPT",
-        "autoRefresh": "Automatic anti-disconnection",
-        "autoRefreshPrompt": "If you're NOT being asked to log in frequently, do NOT enable this feature",
-        "notice": "Only paid Plus members can use GPT-4",
-        "text-davinci-002-render-sha": "GPT-3.5",
-        "gpt-4": "GPT-4"
-    },
-    "bingChat": {
-        "name": "Bing Chat",
-        "h3imaginative": "Creative",
-        "harmonyv3": "Balanced",
-        "h3precise": "Precise"
-    },
-    "spark": {
-        "name": "iFlytek Spark"
-    },
-    "bard": {
-        "name": "Bard"
-    },
-    "ernie": {
-        "name": "ERNIE"
-    },
-    "openaiApi": {
-        "name": "OpenAI API",
-        "alterUrl": "Alternate API URL",
-        "alterUrlPrompt": "If you are using a custom API URL, you can enter it here",
-        "gpt-35-turbo": "gpt-3.5-turbo",
-        "gpt-4": "gpt-4",
-        "temperature": "Temperature",
-        "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
-        "temperature0": "More deterministic",
-        "temperature2": "More random",
-        "apiKey": "API Key"
-    },
-    "moss": {
-        "name": "MOSS"
-    },
-    "wenxinQianfan": {
-        "name": "Wenxin Qianfan"
-    },
-    "gradio": {
-        "name": "Gradio",
-        "queueFull": "The queue is full, please try again later",
-        "waiting": "There are { queue_size } requests in the queue, you are in { rank }th place, and you are expected to wait for { queue_eta } seconds"
-    },
-    "lmsys": {
-        "name": "LMSYS",
-        "vicuna-13b": "vicuna-13b",
-        "chatglm-6b": "chatglm-6b",
-        "alpaca-13b": "alpaca-13b",
-        "claude-v1": "claude-v1"
-    }
+  "settings": {
+    "enable": "Enable",
+    "title": "Settings",
+    "general": "General",
+    "auto": "Automatic",
+    "language": "Language",
+    "languagePrompt": "Relaunch the app to apply the new language",
+    "loginOrOut": "Login/Logout",
+    "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it",
+    "notice": "Notice",
+    "secretPrompt": "Your secret token will remain on your device and will not be shared with anyone else"
+  },
+  "header": {
+    "clearMessages": "Clear all messages?",
+    "singleColumn": "Single Column",
+    "doubleColumn": "Double Column",
+    "tripleColumn": "Triple Column"
+  },
+  "footer": {
+    "sendPrompt": "Send to:",
+    "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
+  },
+  "error": {
+    "failedConnectUrl": "Failed to connect { url }",
+    "closedByServer": "Connection closed by server"
+  },
+  "modal": {
+    "confirmHide": "Delete this message?",
+    "done": "Done"
+  },
+  "bot": {
+    "creatingConversation": "Creating conversation...",
+    "failedToCreateConversation": "Failed to create conversation",
+    "name": "Null Bot",
+    "notImplemented": "Under construction...",
+    "notAvailable": "The bot is not available because not login or not configured correctly.",
+    "waiting": "Waiting for other { botName } request(s) to complete..."
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "Automatic anti-disconnection",
+    "autoRefreshPrompt": "If you're NOT being asked to log in frequently, do NOT enable this feature",
+    "notice": "Only paid Plus members can use GPT-4",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "h3imaginative": "Creative",
+    "harmonyv3": "Balanced",
+    "h3precise": "Precise"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "Alternate API URL",
+    "alterUrlPrompt": "If you are using a custom API URL, you can enter it here",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "Temperature",
+    "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
+    "temperature0": "More deterministic",
+    "temperature2": "More random",
+    "apiKey": "API Key"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "gradio": {
+    "name": "Gradio",
+    "queueFull": "The queue is full, please try again later",
+    "waiting": "There are { queue_size } requests in the queue, you are in { rank }th place, and you are expected to wait for { queue_eta } seconds"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  }
 }

@@ -41,7 +41,7 @@ export default class BingChatBot extends Bot {
     try {
       const response = await axios.get(
         "https://www.bing.com/turing/conversation/create",
-        { headers }
+        { headers },
       );
       if (response.data && response.data.result.value == "Success") {
         // Save the conversation context
@@ -129,7 +129,7 @@ export default class BingChatBot extends Bot {
                 .filter(Boolean)
                 .map((d) => JSON.parse(d));
             },
-          }
+          },
         );
 
         wsp.onOpen.addListener(() => {
@@ -188,7 +188,7 @@ export default class BingChatBot extends Bot {
           wsp.removeAllListeners();
           wsp.close();
           reject(
-            i18n.global.t("error.failedConnectUrl", { url: event.target.url })
+            i18n.global.t("error.failedConnectUrl", { url: event.target.url }),
           );
         });
 
@@ -196,7 +196,7 @@ export default class BingChatBot extends Bot {
           wsp.removeAllListeners();
           wsp.close();
           reject(
-            i18n.global.t("error.failedConnectUrl", { url: event.target.url })
+            i18n.global.t("error.failedConnectUrl", { url: event.target.url }),
           );
         });
 

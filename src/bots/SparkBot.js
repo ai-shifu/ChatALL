@@ -21,7 +21,7 @@ export default class SparkBot extends Bot {
   async checkAvailability() {
     try {
       const response = await axios.get(
-        "https://xinghuo.xfyun.cn/iflygpt/userInfo"
+        "https://xinghuo.xfyun.cn/iflygpt/userInfo",
       );
       this.constructor._isAvailable = response.data.flag;
     } catch (error) {
@@ -34,7 +34,7 @@ export default class SparkBot extends Bot {
   async createConversation() {
     const response = await axios.post(
       "https://xinghuo.xfyun.cn/iflygpt/u/chat-list/v1/create-chat-list",
-      {}
+      {},
     );
 
     if (response.data.flag && response.data.code === 0) {
@@ -57,7 +57,7 @@ export default class SparkBot extends Bot {
           } else {
             reject(new Error("Failed to get GtToken", t));
           }
-        }
+        },
       );
     });
   }
@@ -86,7 +86,7 @@ export default class SparkBot extends Bot {
 
         const source = new SSE(
           "https://xinghuo.xfyun.cn/iflygpt/u/chat_message/chat",
-          { payload: formData }
+          { payload: formData },
         );
 
         var text = "";

@@ -27,7 +27,7 @@ export default class WenxinQianfanBot extends Bot {
         const resp = await axios.post(
           `https://aip.baidubce.com/oauth/2.0/token?client_id=${apiKey}&client_secret=${secretKey}&grant_type=client_credentials`,
           {},
-          { headers }
+          { headers },
         );
         this.accessToken = resp.data.access_token;
         this.constructor._isAvailable = true;

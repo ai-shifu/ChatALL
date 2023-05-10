@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
-import ChatMessage from './ChatMessage.vue';
+import { mapMutations, mapState } from "vuex";
+import ChatMessage from "./ChatMessage.vue";
 
 export default {
   components: {
@@ -41,13 +41,13 @@ export default {
     filteredMessages() {
       return this.messages.filter((message) => !message.hide);
     },
-    ...mapState(['messages']),
+    ...mapState(["messages"]),
   },
   created() {
     this.messages.forEach((message) => {
       message.done = true;
     });
-    window.addEventListener('scroll', this.onScroll);
+    window.addEventListener("scroll", this.onScroll);
   },
   mounted() {
     this.$nextTick(() => {
@@ -55,7 +55,7 @@ export default {
     });
   },
   watch: {
-    'messages.length'() {
+    "messages.length"() {
       this.$nextTick(() => {
         if (this.autoScroll) {
           this.scrollToBottom();
@@ -74,8 +74,8 @@ export default {
 
       if (values.done) {
         this.$matomo.trackEvent(
-          'prompt',
-          'received',
+          "prompt",
+          "received",
           message.className,
           message.content.length,
         );
@@ -84,8 +84,8 @@ export default {
 
       if (values.hide !== undefined) {
         this.$matomo.trackEvent(
-          'vote',
-          'hide',
+          "vote",
+          "hide",
           message.className,
           values.hide ? 1 : -1,
         );
@@ -94,8 +94,8 @@ export default {
 
       if (values.highlight !== undefined) {
         this.$matomo.trackEvent(
-          'vote',
-          'highlight',
+          "vote",
+          "highlight",
           message.className,
           values.highlight ? 1 : -1,
         );
@@ -119,7 +119,7 @@ export default {
     clearMessages() {
       this.setMessages([]);
     },
-    ...mapMutations(['setMessages']),
+    ...mapMutations(["setMessages"]),
   },
 };
 </script>

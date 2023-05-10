@@ -65,7 +65,7 @@ async function createWindow() {
           }
         }
       }
-    }
+    },
   );
 
   // Force the SameSite attribute to None for all cookies
@@ -85,7 +85,7 @@ async function createWindow() {
       }
 
       callback({ cancel: false, responseHeaders: newHeaders });
-    }
+    },
   );
 
   // Modify the Referer header for each request.
@@ -116,7 +116,7 @@ async function createWindow() {
       }
 
       callback({ requestHeaders });
-    }
+    },
   );
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -151,7 +151,7 @@ function createNewWindow(url, userAgent = "") {
     newWin.on("close", async (e) => {
       e.preventDefault(); // Prevent the window from closing
       const secret = await newWin.webContents.executeJavaScript(
-        'localStorage.getItem("flutter.token");'
+        'localStorage.getItem("flutter.token");',
       );
       mainWindow.webContents.send("moss-secret", secret);
       newWin.destroy(); // Destroy the window manually

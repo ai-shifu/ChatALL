@@ -27,7 +27,7 @@ export default class GradioBot extends Bot {
       // Remove trailing slash
       this.constructor._loginUrl = this.constructor._loginUrl.replace(
         /\/$/,
-        ""
+        "",
       );
 
       const response = await axios.get(this.constructor._loginUrl + "/config");
@@ -61,7 +61,7 @@ export default class GradioBot extends Bot {
         fn_index,
         prompt,
         onUpdateResponse,
-        callbackParam
+        callbackParam,
       );
     }
   }
@@ -142,7 +142,7 @@ export default class GradioBot extends Bot {
           wsp.removeAllListeners();
           wsp.close();
           reject(
-            i18n.global.t("error.failedConnectUrl", { url: event.target.url })
+            i18n.global.t("error.failedConnectUrl", { url: event.target.url }),
           );
         });
 
