@@ -57,6 +57,7 @@
                 :placeholder="$t('footer.promptPlaceholder')"
                 autofocus
                 @keydown="filterEnterKey"
+                style="min-width: 390px;"
             ></v-textarea>
             <v-btn
                 color="primary"
