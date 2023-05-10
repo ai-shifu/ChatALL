@@ -37,7 +37,7 @@ export default class ChatGPTBot extends Bot {
   async checkAvailability() {
     try {
       const response = await axios.get(
-        "https://chat.openai.com/api/auth/session"
+        "https://chat.openai.com/api/auth/session",
       );
       if (response.data && response.data.accessToken) {
         this.accessToken = response.data.accessToken;
@@ -118,7 +118,7 @@ export default class ChatGPTBot extends Bot {
       try {
         const source = new SSE(
           "https://chat.openai.com/backend-api/conversation",
-          { headers, payload }
+          { headers, payload },
         );
 
         source.addEventListener("message", (event) => {
@@ -151,11 +151,13 @@ export default class ChatGPTBot extends Bot {
 
         source.addEventListener("error", (error) => {
           source.close();
+          onUpdateResponse(callbackParam, { done: true });
           reject(error.data.detail);
         });
 
         source.addEventListener("done", () => {
           source.close();
+          onUpdateResponse(callbackParam, { done: true });
           resolve();
         });
 
