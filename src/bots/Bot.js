@@ -174,18 +174,14 @@ export default class Bot {
       if (!this.constructor._lock) {
         await executeSendPrompt();
       } else {
-        await this.acquireLock(
-          this.constructor._brandId,
-          executeSendPrompt,
-          () => {
-            onUpdateResponse(callbackParam, {
-              content: i18n.global.t("bot.waiting", {
-                botName: this.getBrandName(),
-              }),
-              done: false,
-            });
-          }
-        );
+        await this.acquireLock("sendPrompt", executeSendPrompt, () => {
+          onUpdateResponse(callbackParam, {
+            content: i18n.global.t("bot.waiting", {
+              botName: this.getBrandName(),
+            }),
+            done: false,
+          });
+        });
       }
     } catch (err) {
       console.error(`Error send prompt to ${this.getFullname()}:`, err);

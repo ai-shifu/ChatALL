@@ -83,22 +83,10 @@
         "waiting": "There are { queue_size } requests in the queue, you are in { rank }th place, and you are expected to wait for { queue_eta } seconds"
     },
     "lmsys": {
-        "name": "LMSYS"
-    },
-    "vicuna": {
-        "name": "Vicuna",
-        "vicuna-13b": "vicuna-13b"
-    },
-    "chatGlm": {
-        "name": "ChatGLM",
-        "chatglm-6b": "chatglm-6b"
-    },
-    "alpaca": {
-        "name": "Alpaca",
-        "alpaca-13b": "alpaca-13b"
-    },
-    "claude": {
-        "name": "Claude",
+        "name": "LMSYS",
+        "vicuna-13b": "vicuna-13b",
+        "chatglm-6b": "chatglm-6b",
+        "alpaca-13b": "alpaca-13b",
         "claude-v1": "claude-v1"
     }
 }
