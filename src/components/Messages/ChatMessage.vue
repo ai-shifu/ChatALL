@@ -67,7 +67,7 @@ export default {
   methods: {
     copyToClipboard() {
       navigator.clipboard.writeText(this.message.content);
-      this.$matomo.trackEvent("vote", "copy", message.className, 1);
+      this.$matomo.trackEvent("vote", "copy", this.message.className, 1);
     },
     toggleHighlight() {
       this.$emit("update-message", this.message.index, {
