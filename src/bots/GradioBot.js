@@ -131,6 +131,13 @@ export default class GradioBot extends Bot {
           }
         });
 
+        wsp.onClose.addListener((event) => {
+          console.log("WebSocket closed:", event);
+          wsp.removeAllListeners();
+          wsp.close();
+          reject(new Error(i18n.global.t("error.closedByServer")));
+        });
+
         wsp.onError.addListener((event) => {
           wsp.removeAllListeners();
           wsp.close();

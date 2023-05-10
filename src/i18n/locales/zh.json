@@ -22,7 +22,8 @@
         "promptPlaceholder": "输入消息。（Shift+Enter 换行）"
     },
     "error": {
-        "failedConnectUrl": "连接 { url } 失败"
+        "failedConnectUrl": "连接 { url } 失败",
+        "closedByServer": "连接被服务器关闭"
     },
     "modal": {
         "confirmHide": "删除这条消息？",
