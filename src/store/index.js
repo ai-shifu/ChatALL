@@ -7,6 +7,11 @@ import messagesPersist from "./messagesPersist";
 const vuexPersist = new VuexPersist({
   key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
   storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
+  reducer: (state) => {
+    // eslint-disable-next-line
+    const { messages, ...persistedState } = state;
+    return persistedState;
+  },
 });
 
 export default createStore({
