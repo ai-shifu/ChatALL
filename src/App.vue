@@ -1,271 +1,286 @@
 <template>
-    <div id="app">
-        <header>
-            <div class="header-content">
-                <img class="logo" src="@/assets/logo-banner.png" alt="ChatALL" />
-                <div class="column-icons">
-                    <img
-                        src="@/assets/column-1.svg"
-                        @click="changeColumns(1)"
-                        :class="{ 'selected': columns === 1 }"
-                    />
-                    <img
-                        src="@/assets/column-2.svg"
-                        @click="changeColumns(2)"
-                        :class="{ 'selected': columns === 2 }"
-                    />
-                    <img
-                        src="@/assets/column-3.svg"
-                        @click="changeColumns(3)"
-                        :class="{ 'selected': columns === 3 }"
-                    />
-                </div>
-                <div>
-                    <v-icon 
-                        class="cursor-pointer"
-                        color="primary"
-                        icon="mdi-broom"
-                        size="x-large"
-                        @click="clearMessages()"
-                    ></v-icon>
-                    <v-icon 
-                        class="cursor-pointer" 
-                        color="primary" 
-                        icon="mdi-cog" 
-                        size="x-large"
-                        @click="openSettingsModal()"
-                    ></v-icon>
-                </div>
-            </div>
-        </header>
+  <div id="app">
+    <header>
+      <div class="header-content">
+        <img class="logo" src="@/assets/logo-banner.png" alt="ChatALL" />
+        <div class="column-icons">
+          <img
+            src="@/assets/column-1.svg"
+            @click="changeColumns(1)"
+            :class="{ selected: columns === 1 }"
+          />
+          <img
+            src="@/assets/column-2.svg"
+            @click="changeColumns(2)"
+            :class="{ selected: columns === 2 }"
+          />
+          <img
+            src="@/assets/column-3.svg"
+            @click="changeColumns(3)"
+            :class="{ selected: columns === 3 }"
+          />
+        </div>
+        <div>
+          <v-icon
+            class="cursor-pointer"
+            color="primary"
+            icon="mdi-broom"
+            size="x-large"
+            @click="clearMessages()"
+          ></v-icon>
+          <v-icon
+            class="cursor-pointer"
+            color="primary"
+            icon="mdi-cog"
+            size="x-large"
+            @click="openSettingsModal()"
+          ></v-icon>
+        </div>
+      </div>
+    </header>
 
-        <main class="content">
-            <div id="content">
-                <ChatMessages :columns="columns" ref="chatMessages"></ChatMessages>
-            </div>
-        </main>
+    <main class="content">
+      <div id="content">
+        <ChatMessages :columns="columns" ref="chatMessages"></ChatMessages>
+      </div>
+    </main>
 
-        <footer>
-            <v-textarea
-                v-model="prompt"
-                auto-grow
-                max-rows=8.5
-                rows=1
-                density="comfortable"
-                hide-details
-                variant="solo"
-                :placeholder="$t('footer.promptPlaceholder')"
-                autofocus
-                @keydown="filterEnterKey"
-                style="min-width: 390px;"
-            ></v-textarea>
-            <v-btn
-                color="primary"
-                elevation="2"
-                class="margin-bottom"
-                :disabled="prompt.trim() === '' || Object.values(activeBots).every(bot => !bot)"
-                @click="sendPromptToBots"
-            >
-                {{ $t("footer.sendPrompt") }}
-            </v-btn>
-            <div class="bot-logos margin-bottom">
-                <img
-                    v-for="(bot, index) in bots"
-                    :class="{ 'selected': activeBots[bot.constructor._className] }"
-                    :key="index"
-                    :src="bot.getLogo()"
-                    :alt="bot.getFullname()"
-                    :title="bot.getFullname()"
-                    @click="toggleSelected(bot)"
-                />
-            </div>
-        </footer>
-        <MakeAvailableModal
-            :bot="clickedBot"
-            ref="makeAvailableModal"
-            @done="checkAllBotsAvailability(clickedBot)"
-        ></MakeAvailableModal>
-        <SettingsModal
-            ref="settingsModal"
-        ></SettingsModal>
-    </div>
+    <footer>
+      <v-textarea
+        v-model="prompt"
+        auto-grow
+        max-rows="8.5"
+        rows="1"
+        density="comfortable"
+        hide-details
+        variant="solo"
+        :placeholder="$t('footer.promptPlaceholder')"
+        autofocus
+        @keydown="filterEnterKey"
+        style="min-width: 390px"
+      ></v-textarea>
+      <v-btn
+        color="primary"
+        elevation="2"
+        class="margin-bottom"
+        :disabled="
+          prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
+        "
+        @click="sendPromptToBots"
+      >
+        {{ $t("footer.sendPrompt") }}
+      </v-btn>
+      <div class="bot-logos margin-bottom">
+        <img
+          v-for="(bot, index) in bots"
+          :class="{ selected: activeBots[bot.constructor._className] }"
+          :key="index"
+          :src="bot.getLogo()"
+          :alt="bot.getFullname()"
+          :title="bot.getFullname()"
+          @click="toggleSelected(bot)"
+        />
+      </div>
+    </footer>
+    <MakeAvailableModal
+      :bot="clickedBot"
+      ref="makeAvailableModal"
+      @done="checkAllBotsAvailability(clickedBot)"
+    ></MakeAvailableModal>
+    <SettingsModal ref="settingsModal"></SettingsModal>
+  </div>
 </template>
 
 <script>
-import '@mdi/font/css/materialdesignicons.css'
+import "@mdi/font/css/materialdesignicons.css";
 import { mapState, mapMutations } from "vuex";
 
-import i18n from './i18n';
+import i18n from "./i18n";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
-import SettingsModal from '@/components/SettingsModal.vue';
+import SettingsModal from "@/components/SettingsModal.vue";
 
 // Bots
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
-import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot"
-import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot"
-import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot"
+import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
+import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
+import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
 import SparkBot from "@/bots/SparkBot";
 import BardBot from "@/bots/BardBot";
 import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
 import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
-import VicunaBot from "@/bots/lmsys/VicunaBot"
-import ChatGLMBot from "@/bots/lmsys/ChatGLMBot"
-import AlpacaBot from "@/bots/lmsys/AlpacaBot"
-import ClaudeBot from "@/bots/lmsys/ClaudeBot"
+import VicunaBot from "@/bots/lmsys/VicunaBot";
+import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
+import AlpacaBot from "@/bots/lmsys/AlpacaBot";
+import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 
 export default {
-    name: "App",
-    components: {
-        ChatMessages,
-        MakeAvailableModal,
-        SettingsModal,
-    },
-    data() {
-        return {
-            prompt: "",
-            clickedBot: null,
-            bots: [
-                ChatGPT35Bot.getInstance(),
-                ChatGPT4Bot.getInstance(),
-                OpenAIAPI35Bot.getInstance(),
-                OpenAIAPI4Bot.getInstance(),
-                BingChatCreativeBot.getInstance(),
-                BingChatBalancedBot.getInstance(),
-                BingChatPreciseBot.getInstance(),
-                ClaudeBot.getInstance(),
-                ChatGLMBot.getInstance(),
-                WenxinQianfanBot.getInstance(),
-                SparkBot.getInstance(),
-                VicunaBot.getInstance(),
-                AlpacaBot.getInstance(),
-                MOSSBot.getInstance(),
-                BardBot.getInstance(),
-            ],
-            activeBots: {},
+  name: "App",
+  components: {
+    ChatMessages,
+    MakeAvailableModal,
+    SettingsModal,
+  },
+  data() {
+    return {
+      prompt: "",
+      clickedBot: null,
+      bots: [
+        ChatGPT35Bot.getInstance(),
+        ChatGPT4Bot.getInstance(),
+        OpenAIAPI35Bot.getInstance(),
+        OpenAIAPI4Bot.getInstance(),
+        BingChatCreativeBot.getInstance(),
+        BingChatBalancedBot.getInstance(),
+        BingChatPreciseBot.getInstance(),
+        ClaudeBot.getInstance(),
+        BardBot.getInstance(),
+        WenxinQianfanBot.getInstance(),
+        SparkBot.getInstance(),
+        VicunaBot.getInstance(),
+        AlpacaBot.getInstance(),
+        ChatGLMBot.getInstance(),
+        MOSSBot.getInstance(),
+      ],
+      activeBots: {},
+    };
+  },
+  methods: {
+    async sendPromptToBots() {
+      if (this.prompt.trim() === "") return;
+      if (Object.values(this.activeBots).every((bot) => !bot)) return;
+
+      // Add a new prompt message to the messages array
+      this.$refs.chatMessages.messages.push({
+        type: "prompt",
+        content: this.prompt,
+        done: true,
+        hide: false,
+      });
+
+      let count = 0;
+      // Send the prompt to all the bots and update the message with the response
+      for (const bot of this.bots) {
+        if (!this.activeBots[bot.constructor._className]) continue;
+
+        count++;
+        var message = {
+          type: "response",
+          content: "",
+          format: bot.getOutputFormat(),
+          logo: bot.getLogo(),
+          name: bot.getFullname(),
+          model: bot.constructor._model,
+          done: false,
+          highlight: false,
+          hide: false,
+          className: bot.constructor._className,
         };
-    },
-    methods: {
-        async sendPromptToBots() {
-            if (this.prompt.trim() === "") return;
-            if (Object.values(this.activeBots).every(bot => !bot)) return;
+        message.index = this.$refs.chatMessages.messages.push(message) - 1; // The index of the message in the messages array
+        bot.sendPrompt(
+          this.prompt,
+          this.$refs.chatMessages.updateMessage,
+          message.index,
+        );
+        this.$matomo.trackEvent(
+          "prompt",
+          "sendTo",
+          bot.constructor._className,
+          this.prompt.length,
+        );
+      }
+      this.$matomo.trackEvent("prompt", "send", "Active bots count", count);
 
-            // Add a new prompt message to the messages array
-            this.$refs.chatMessages.messages.push({
-                type: "prompt",
-                content: this.prompt,
-                done: true,
-                hide: false,
-            });
-
-            let count = 0;
-            // Send the prompt to all the bots and update the message with the response
-            for (const bot of this.bots) {
-                if (!this.activeBots[bot.constructor._className])
-                    continue;
-
-                count++;
-                var message = {
-                    type: "response",
-                    content: "",
-                    format: bot.getOutputFormat(),
-                    logo: bot.getLogo(),
-                    name: bot.getFullname(),
-                    model: bot.constructor._model,
-                    done: false,
-                    highlight: false,
-                    hide: false,
-                    className: bot.constructor._className,
-                };
-                message.index = this.$refs.chatMessages.messages.push(message) - 1; // The index of the message in the messages array
-                bot.sendPrompt(
-                    this.prompt,
-                    this.$refs.chatMessages.updateMessage,
-                    message.index,
-                );
-                this.$matomo.trackEvent("prompt", "sendTo", bot.constructor._className, this.prompt.length);
-            }
-            this.$matomo.trackEvent("prompt", "send", "Active bots count", count);
-
-            // Clear the textarea after sending the prompt
-            this.prompt = "";
-        },
-        ...mapMutations(["changeColumns"]),
-        ...mapMutations(["SET_BOT_SELECTED"]),
-        toggleSelected(bot) {
-            const botId = bot.constructor._className;
-            var selected = false;
-            if (!bot.isAvailable()) {
-                this.clickedBot = bot;
-                // Open the bot's settings dialog
-                this.$refs.makeAvailableModal.open();
-                selected = true;
-            } else {
-                selected = !this.selectedBots[bot.constructor._className];
-            }
-            this.SET_BOT_SELECTED({ botId, selected});
-            this.updateActiveBots();
-        },
-        updateActiveBots() {
-            for (const bot of this.bots) {
-                this.activeBots[bot.constructor._className] = bot.isAvailable() && this.selectedBots[bot.constructor._className];
-            }
-        },
-        async checkAllBotsAvailability(specifiedBot = null) {
-            try {
-                let botsToCheck = this.bots;
-                if (specifiedBot) {
-                    // If a bot is specified, only check bots of the same brand
-                    botsToCheck = this.bots.filter(
-                        bot => bot.constructor._brandId === specifiedBot.constructor._brandId
-                    );
-                }
-
-                const checkAvailabilityPromises = botsToCheck.map(bot =>
-                    bot
-                        .checkAvailability()
-                        .then(() => this.updateActiveBots())
-                        .catch(error => {
-                            console.error(`Error checking login status for ${ bot.getFullname() }:`, error);
-                        })
-                );
-                await Promise.allSettled(checkAvailabilityPromises);
-            } catch (error) {
-                console.error("Error checking login status for bots:", error);
-            }
-        },
-        openSettingsModal() {
-            this.$refs.settingsModal.open();
-        },
-        // Send the prompt when the user presses enter and prevent the default behavior
-        // But if the shift, ctrl, alt, or meta keys are pressed, do as default
-        filterEnterKey(event) {
-            if (event.keyCode == 13 && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-                event.preventDefault();
-                this.sendPromptToBots();
-            }
-        },
-        clearMessages() {
-            if (window.confirm(i18n.global.t("header.clearMessages"))) {
-                this.$refs.chatMessages.clearMessages();
-            }
-        },
+      // Clear the textarea after sending the prompt
+      this.prompt = "";
     },
-    computed: {
-        ...mapState(["columns"]),
-        ...mapState(["selectedBots"]),
+    ...mapMutations(["changeColumns"]),
+    ...mapMutations(["SET_BOT_SELECTED"]),
+    toggleSelected(bot) {
+      const botId = bot.constructor._className;
+      var selected = false;
+      if (!bot.isAvailable()) {
+        this.clickedBot = bot;
+        // Open the bot's settings dialog
+        this.$refs.makeAvailableModal.open();
+        selected = true;
+      } else {
+        selected = !this.selectedBots[bot.constructor._className];
+      }
+      this.SET_BOT_SELECTED({ botId, selected });
+      this.updateActiveBots();
     },
-    created() {
-        this.checkAllBotsAvailability();
+    updateActiveBots() {
+      for (const bot of this.bots) {
+        this.activeBots[bot.constructor._className] =
+          bot.isAvailable() && this.selectedBots[bot.constructor._className];
+      }
     },
-    mounted() {
-        this.$matomo && this.$matomo.trackPageView();
+    async checkAllBotsAvailability(specifiedBot = null) {
+      try {
+        let botsToCheck = this.bots;
+        if (specifiedBot) {
+          // If a bot is specified, only check bots of the same brand
+          botsToCheck = this.bots.filter(
+            (bot) =>
+              bot.constructor._brandId === specifiedBot.constructor._brandId,
+          );
+        }
+
+        const checkAvailabilityPromises = botsToCheck.map((bot) =>
+          bot
+            .checkAvailability()
+            .then(() => this.updateActiveBots())
+            .catch((error) => {
+              console.error(
+                `Error checking login status for ${bot.getFullname()}:`,
+                error,
+              );
+            }),
+        );
+        await Promise.allSettled(checkAvailabilityPromises);
+      } catch (error) {
+        console.error("Error checking login status for bots:", error);
+      }
     },
+    openSettingsModal() {
+      this.$refs.settingsModal.open();
+    },
+    // Send the prompt when the user presses enter and prevent the default behavior
+    // But if the shift, ctrl, alt, or meta keys are pressed, do as default
+    filterEnterKey(event) {
+      if (
+        event.keyCode == 13 &&
+        !event.shiftKey &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        !event.metaKey
+      ) {
+        event.preventDefault();
+        this.sendPromptToBots();
+      }
+    },
+    clearMessages() {
+      if (window.confirm(i18n.global.t("header.clearMessages"))) {
+        this.$refs.chatMessages.clearMessages();
+      }
+    },
+  },
+  computed: {
+    ...mapState(["columns"]),
+    ...mapState(["selectedBots"]),
+  },
+  created() {
+    this.checkAllBotsAvailability();
+  },
+  mounted() {
+    this.$matomo && this.$matomo.trackPageView();
+  },
 };
 </script>
 
