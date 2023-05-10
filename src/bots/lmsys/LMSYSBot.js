@@ -9,6 +9,7 @@ export default class LMSYSBot extends GradioBot {
   static _settingsComponent = "LMSYSBotSettings"; // Vue component filename for settings
   static _fnIndexes = [7, 8]; // Indexes of the APIs to call in order. Sniffer it by devtools.
   static _model = "";
+  static _outputFormat = "html"; // "markdown" or "html"
   static _lock = new AsyncLock(); // Send requests in queue to save LMSYS
 
   constructor() {

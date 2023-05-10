@@ -22,6 +22,7 @@ export default class Bot {
   static _userAgent = ""; // Empty string means using the default user agent
   static _lock = null; // AsyncLock for prompt requests. `new AsyncLock()` in the subclass as needed.
   static _settingsComponent = ""; // Vue component filename for settings
+  static _outputFormat = "markdown"; // "markdown" or "html"
 
   constructor() {
     // Compute the logo paths after packing by Webpack 4
@@ -71,6 +72,10 @@ export default class Bot {
 
   getUserAgent() {
     return this.constructor._userAgent;
+  }
+
+  getOutputFormat() {
+    return this.constructor._outputFormat;
   }
 
   async getSettingsComponent() {

@@ -173,6 +173,7 @@ export default {
                 var message = {
                     type: "response",
                     content: "",
+                    format: bot.getOutputFormat(),
                     logo: bot.getLogo(),
                     name: bot.getFullname(),
                     model: bot.constructor._model,

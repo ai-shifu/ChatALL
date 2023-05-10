@@ -17,7 +17,12 @@
                 <v-icon>mdi-delete</v-icon>
             </v-btn>
         </v-card-title>
-        <Markdown class="markdown-body" :breaks="true" :source="message.content" />
+        <div v-if="message.format === 'html'">
+            <div class="markdown-body" v-html="message.content"></div>
+        </div>
+        <div v-else>
+            <Markdown class="markdown-body" :breaks="true" :source="message.content" />
+        </div>
     </v-card>
 </template>
 
