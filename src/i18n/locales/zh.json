@@ -92,5 +92,9 @@
     "chatGlm": {
         "name": "ChatGLM",
         "chatglm-6b": "chatglm-6b"
+    },
+    "alpaca": {
+        "name": "Alpaca",
+        "alpaca-13b": "alpaca-13b"
     }
 }

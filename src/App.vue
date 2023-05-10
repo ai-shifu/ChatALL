@@ -116,6 +116,7 @@ import MOSSBot from "./bots/MOSSBot";
 import WenxinQianfanBot from './bots/WenxinQianfanBot';
 import VicunaBot from './bots/VicunaBot';
 import ChatGLMBot from './bots/ChatGLMBot';
+import AlpacaBot from './bots/AlpacaBot';
 
 export default {
     name: "App",
@@ -140,6 +141,7 @@ export default {
                 WenxinQianfanBot.getInstance(),
                 SparkBot.getInstance(),
                 VicunaBot.getInstance(),
+                AlpacaBot.getInstance(),
                 MOSSBot.getInstance(),
                 BardBot.getInstance(),
             ],

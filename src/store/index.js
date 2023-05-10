@@ -16,6 +16,7 @@ export default createStore({
     selectedBots: {
       ChatGLMBot: true,
       VicunaBot: true,
+      AlpacaBot: true,
     },
     openaiApi: {
       apiKey: "",
