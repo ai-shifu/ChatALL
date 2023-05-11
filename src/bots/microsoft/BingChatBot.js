@@ -24,6 +24,7 @@ export default class BingChatBot extends Bot {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
 
   static _conversation = null;
+  static _optionsSets = null;
 
   constructor() {
     super();
@@ -77,20 +78,7 @@ export default class BingChatBot extends Bot {
       arguments: [
         {
           source: "cib",
-          optionsSets: [
-            "nlu_direct_response_filter",
-            "deepleo",
-            "disable_emoji_spoken_text",
-            "responsible_ai_policy_235",
-            "enablemm",
-            this.constructor._model,
-            "responseos",
-            "nourldedupe",
-            "healthansgnd",
-            "dv3sugg",
-            "clgalileo",
-            "gencontentv3",
-          ],
+          optionsSets: this.constructor._optionsSets,
           allowedMessageTypes: ["Chat", "InternalSearchQuery"],
           isStartOfSession: this.constructor._conversation.invocationId === 0,
           message: {
@@ -136,6 +124,9 @@ export default class BingChatBot extends Bot {
           wsp.sendPacked({ protocol: "json", version: 1 });
         });
 
+        let beginning = "";
+        let body = "";
+        let ending = "";
         wsp.onUnpackedMessage.addListener(async (events) => {
           for (const event of events) {
             if (JSON.stringify(event) === "{}") {
@@ -157,9 +148,9 @@ export default class BingChatBot extends Bot {
                   this.constructor._conversation =
                     await this.createConversation();
                   this._sendPrompt(prompt, onUpdateResponse, callbackParam);
-                  reject(i18n.global.t("bot.creatingConversation"));
+                  reject(new Error(i18n.global.t("bot.creatingConversation")));
                 } else {
-                  reject(event.item.result.message);
+                  reject(new Error(event.item.result.message));
                 }
               } else if (
                 event.item.throttling.maxNumUserMessagesInConversation ===
@@ -173,10 +164,20 @@ export default class BingChatBot extends Bot {
               wsp.close();
               resolve();
             } else if (event.type === 1) {
+              // Content response
               if (event.arguments[0].messages?.length > 0) {
-                const response = event.arguments[0].messages[0].text;
+                const message = event.arguments[0].messages[0];
+                if (message.messageType === "InternalSearchQuery") {
+                  beginning += "> " + message.text + "\n";
+                } else {
+                  body = message.adaptiveCards[0]?.body[0]?.text;
+                  const moreLinks = message.adaptiveCards[0]?.body[1]?.text;
+                  if (moreLinks !== undefined) {
+                    ending = `> ${moreLinks}`;
+                  }
+                }
                 onUpdateResponse(callbackParam, {
-                  content: response,
+                  content: `${beginning}\n${body}\n${ending}`,
                   done: false,
                 });
               }

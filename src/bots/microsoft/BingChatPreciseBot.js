@@ -8,6 +8,22 @@ export default class BingChatPreciseBot extends BingChatBot {
   static _model = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _lock = new AsyncLock(); // Must process requests in queue
 
+  static _optionsSets = [
+    "nlu_direct_response_filter",
+    "deepleo",
+    "disable_emoji_spoken_text",
+    "responsible_ai_policy_235",
+    "enablemm",
+    "h3precise",
+    "cricketansgnd",
+    "autosave",
+    "knowimg",
+    "eiatrvlansgnd",
+    "dv3sugg",
+    "autosave",
+    "clgalileo",
+  ];
+
   constructor() {
     super();
   }

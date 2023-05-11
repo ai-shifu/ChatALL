@@ -87,12 +87,15 @@ export default {
     },
     handleClick(event) {
       const target = event.target;
-      if (target.tagName === "A") {
-        // Open in external browser
-        event.preventDefault();
-        const electron = window.require("electron");
-        electron.shell.openExternal(target.href);
+      if (target.tagName !== "A" && target.tagName !== "SUP") {
+        return;
       }
+      // Open in external browser
+      event.preventDefault();
+      const electron = window.require("electron");
+      const url =
+        target.tagName === "SUP" ? target.parentElement.href : target.href;
+      electron.shell.openExternal(url);
     },
   },
 };
