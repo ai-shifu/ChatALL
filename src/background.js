@@ -149,11 +149,15 @@ function createNewWindow(url, userAgent = "") {
   // Get the secret of MOSS
   if (url.includes("moss.fastnlp.top")) {
     newWin.on("close", async (e) => {
-      e.preventDefault(); // Prevent the window from closing
-      const secret = await newWin.webContents.executeJavaScript(
-        'localStorage.getItem("flutter.token");',
-      );
-      mainWindow.webContents.send("moss-secret", secret);
+      try {
+        e.preventDefault(); // Prevent the window from closing
+        const secret = await newWin.webContents.executeJavaScript(
+          'localStorage.getItem("flutter.token");',
+        );
+        mainWindow.webContents.send("moss-secret", secret);
+      } catch (error) {
+        console.error(error);
+      }
       newWin.destroy(); // Destroy the window manually
     });
   }
