@@ -118,6 +118,7 @@ import VicunaBot from "@/bots/lmsys/VicunaBot";
 import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
 import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import ClaudeBot from "@/bots/lmsys/ClaudeBot";
+import DevBot from "./bots/DevBot";
 
 export default {
   name: "App",
@@ -210,7 +211,7 @@ export default {
         this.$refs.makeAvailableModal.open();
         selected = true;
       } else {
-        selected = !this.selectedBots[bot.constructor._className];
+        selected = !this.selectedBots[botId];
       }
       this.SET_BOT_SELECTED({ botId, selected });
       this.updateActiveBots();
@@ -277,6 +278,9 @@ export default {
   },
   created() {
     this.checkAllBotsAvailability();
+    if (process.env.NODE_ENV !== "production") {
+      this.bots.push(DevBot.getInstance());
+    }
   },
   mounted() {
     this.$matomo && this.$matomo.trackPageView();

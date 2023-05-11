@@ -188,7 +188,11 @@ export default class BingChatBot extends Bot {
           wsp.removeAllListeners();
           wsp.close();
           reject(
-            i18n.global.t("error.failedConnectUrl", { url: event.target.url }),
+            new Error(
+              i18n.global.t("error.failedConnectUrl", {
+                url: event.target.url,
+              }),
+            ),
           );
         });
 
@@ -196,7 +200,11 @@ export default class BingChatBot extends Bot {
           wsp.removeAllListeners();
           wsp.close();
           reject(
-            i18n.global.t("error.failedConnectUrl", { url: event.target.url }),
+            new Error(
+              i18n.global.t("error.failedConnectUrl", {
+                url: event.target.url,
+              }),
+            ),
           );
         });
 
