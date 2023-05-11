@@ -107,21 +107,23 @@ export default class GradioBot extends Bot {
             }
           } else if (event.msg === "process_generating") {
             // Generating data
-            onUpdateResponse(callbackParam, {
-              content: this.parseData(fn_index, event.output.data),
-              done: false,
-            });
+            if (event.success && event.output.data) {
+              onUpdateResponse(callbackParam, {
+                content: this.parseData(fn_index, event.output.data),
+                done: false,
+              });
+            } else {
+              reject(new Error(event.output.error));
+            }
           } else if (event.msg === "process_completed") {
             // Done
-            if (event.output.data) {
+            if (event.success && event.output.data) {
               onUpdateResponse(callbackParam, {
                 content: this.parseData(fn_index, event.output.data),
                 done: fn_index != this.constructor._fnIndexes[0], // Only the last one is done
               });
             } else {
-              onUpdateResponse(callbackParam, {
-                done: true,
-              });
+              reject(new Error(event.output.error));
             }
             wsp.removeAllListeners();
             wsp.close();

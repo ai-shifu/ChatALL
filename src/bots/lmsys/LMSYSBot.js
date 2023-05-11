@@ -18,17 +18,17 @@ export default class LMSYSBot extends GradioBot {
 
   makeData(fn_index, prompt) {
     let r = null;
-    if (fn_index === 7) {
+    if (fn_index === this.constructor._fnIndexes[0]) {
       r = [null, prompt];
-    } else if (fn_index === 8) {
-      r = [null, this.constructor._model, 0.7, 512];
+    } else if (fn_index === this.constructor._fnIndexes[1]) {
+      r = [null, this.constructor._model, 0.7, 1, 512];
     }
     return r;
   }
 
   parseData(fn_index, data) {
     let r = "";
-    if (fn_index === 8) {
+    if (fn_index === this.constructor._fnIndexes[1]) {
       r = data[1][data[1].length - 1][1];
     }
     return r;
