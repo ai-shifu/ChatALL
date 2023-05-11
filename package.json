@@ -41,10 +41,10 @@
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
-    "electron": "^24.2.0",
+    "electron": "^24.3.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.40.0",
-    "eslint-plugin-vue": "^9.11.1",
+    "eslint-plugin-vue": "^9.12.0",
     "prettier-plugin-vue": "^1.1.6",
     "sse.js": "github:mpetazzoni/sse.js",
     "vue-cli-plugin-electron-builder": "^2.1.1"
