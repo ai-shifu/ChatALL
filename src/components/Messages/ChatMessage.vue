@@ -24,13 +24,19 @@
       </v-btn>
     </v-card-title>
     <div v-if="message.format === 'html'">
-      <div class="markdown-body" v-html="message.content"></div>
+      <div
+        class="markdown-body"
+        v-html="message.content"
+        ref="content"
+        @click="handleClick"
+      ></div>
     </div>
     <div v-else>
       <Markdown
         class="markdown-body"
         :breaks="true"
         :source="message.content"
+        @click="handleClick"
       />
     </div>
   </v-card>
@@ -77,6 +83,15 @@ export default {
     hide() {
       if (window.confirm(i18n.global.t("modal.confirmHide"))) {
         this.$emit("update-message", this.message.index, { hide: true });
+      }
+    },
+    handleClick(event) {
+      const target = event.target;
+      if (target.tagName === "A") {
+        // Open in external browser
+        event.preventDefault();
+        const electron = window.require("electron");
+        electron.shell.openExternal(target.href);
       }
     },
   },
