@@ -151,8 +151,7 @@ export default class ChatGPTBot extends Bot {
 
         source.addEventListener("error", (error) => {
           source.close();
-          onUpdateResponse(callbackParam, { done: true });
-          reject(error.data.detail);
+          reject(new Error(error.data.detail));
         });
 
         source.addEventListener("done", () => {
