@@ -1,0 +1,38 @@
+name: Build and Release ChatALL App
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run electron:build -- -wml --x64 --arm64
+
+      - name: Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag_prefix: "v"
+          prerelease: true
+          files: |
+            ./dist_electron/*
+          draft: true
+          overwrite: true
+          body: |
+            Release of version ${{ github.ref }}
