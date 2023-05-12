@@ -39,11 +39,8 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag_prefix: "v"
+          automatic_release_tag: "v"
           prerelease: true
           files: |
             ./dist_electron/*
           draft: true
-          overwrite: true
-          body: |
-            Release ${{ github.ref }}
