@@ -23,16 +23,16 @@ jobs:
         with:
           python-version: "2.7"
 
-      - name: Set python path
-        run: export PYTHON_PATH=`which python`
-
       - name: Install dependencies
         run: npm ci
 
       - name: Build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_LINK: ${{ secrets.MAC_CERTS }}
+          CSC_KEY_PASSWORD: ${{ secrets.MAC_CERTS_PASSWORD }}
         run: |
           export PYTHON_PATH=`which python`
-          echo $PYTHON_PATH
           npm run electron:build -- -wml --x64 --arm64
 
       - name: Release
@@ -46,4 +46,4 @@ jobs:
           draft: true
           overwrite: true
           body: |
-            Release of version ${{ github.ref }}
+            Release ${{ github.ref }}
