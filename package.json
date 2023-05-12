@@ -4,6 +4,10 @@
   "main": "background.js",
   "description": "Chat with multiple AI bots and discover the best.",
   "author": "Sunner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunner/ChatALL.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -24,6 +28,7 @@
     "github-markdown-css": "^5.2.0",
     "markdown-it-highlightjs": "^4.0.1",
     "material-design-icons": "^3.0.1",
+    "update-electron-app": "^2.0.1",
     "uuid": "^9.0.0",
     "vue": "^3.2.47",
     "vue-i18n": "^9.2.2",

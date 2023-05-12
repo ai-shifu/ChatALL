@@ -14,7 +14,7 @@ module.exports = defineConfig({
         },
         mac: {
           category: "public.app-category.utilities",
-          target: "dmg",
+          target: "default",
           icon: "src/assets/icon.icns",
         },
         win: {
