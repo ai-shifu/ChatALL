@@ -19,7 +19,7 @@ jobs:
           node-version: "16.x"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run electron:build -- -wml --x64 --arm64
