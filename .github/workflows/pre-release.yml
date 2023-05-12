@@ -30,7 +30,10 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run electron:build -- -wml --x64 --arm64
+        run: |
+          export PYTHON_PATH=`which python`
+          echo $PYTHON_PATH
+          npm run electron:build -- -wml --x64 --arm64
 
       - name: Release
         uses: marvinpinto/action-automatic-releases@latest
