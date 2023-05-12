@@ -29,6 +29,7 @@
 | [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | 支持     | 无 API   |
 | [ChatGLM](https://chatglm.cn/blog)                           | 支持     | 无 API   |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | 支持     | 无 API   |
+| [Gradio](https://gradio.app/) 用于自己部署的模型             | 支持     | 无 API   |
 
 更多...
 

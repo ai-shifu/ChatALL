@@ -31,6 +31,7 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 | [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      |
 | [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      |
+| [Gradio](https://gradio.app/) for self-deployed models       | Yes         | No API      |
 
 And more...
 
