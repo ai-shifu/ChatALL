@@ -17,7 +17,7 @@ const vuexPersist = new VuexPersist({
 export default createStore({
   state: {
     lang: "auto",
-    columns: 1,
+    columns: 2,
     selectedBots: {
       ChatGLMBot: true,
       VicunaBot: true,
