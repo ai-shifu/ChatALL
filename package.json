@@ -12,7 +12,8 @@
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
-    "start": "electron ."
+    "start": "electron .",
+    "release": "vue-cli-service electron:build -- --mac --win --linux --x64 --arm64"
   },
   "dependencies": {
     "@mdi/font": "^7.2.96",
