@@ -23,6 +23,12 @@ jobs:
         with:
           python-version: "2.7"
 
+      - name: test python
+        run: python --version
+          which python
+          whereis python
+          locate python | grep python$
+
       - name: Install dependencies
         run: npm ci
 
