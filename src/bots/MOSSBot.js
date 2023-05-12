@@ -97,7 +97,15 @@ export default class MOSSBot extends Bot {
           let ending = "";
           wsp.onUnpackedMessage.addListener(async (event) => {
             if (!("status" in event)) {
-              // The last message
+              // The last message. Parse links first
+              const links = event.processed_extra_data[0]?.data;
+              for (const key in links) {
+                if (Object.hasOwnProperty.call(links, key)) {
+                  const link = links[key];
+                  ending += `> ${key}. [${link.title}](${link.url})\n`;
+                }
+              }
+
               onUpdateResponse(callbackParam, {
                 content: `${beginning}\n${body}\n${ending}`,
                 done: true,
@@ -110,7 +118,7 @@ export default class MOSSBot extends Bot {
               body = event.output;
             } else if (event.status === 3) {
               if (event.stage === "start") {
-                beginning += `${event.type} ${event.output}\n`;
+                beginning += `> ${event.type} ${event.output}\n`;
               }
             } else if (event.status === -1) {
               wsp.removeAllListeners();
