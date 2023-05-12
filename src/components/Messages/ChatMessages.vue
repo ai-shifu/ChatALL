@@ -133,12 +133,13 @@ export default {
     height: 100%;
     overflow-y: auto;
     gap: 16px;
-    margin: 68px 32px;
+    margin: 52px 16px;
 }
 
 .message-grid {
     display: grid;
     grid-gap: 16px;
     width: 100%;
+    padding: 16px;
 }
 </style>
