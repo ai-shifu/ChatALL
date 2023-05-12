@@ -87,7 +87,10 @@
       ref="makeAvailableModal"
       @done="checkAllBotsAvailability(clickedBot)"
     ></MakeAvailableModal>
-    <SettingsModal ref="settingsModal"></SettingsModal>
+    <SettingsModal
+      ref="settingsModal"
+      @done="checkAllBotsAvailability()"
+    ></SettingsModal>
   </div>
 </template>
 
@@ -118,7 +121,8 @@ import VicunaBot from "@/bots/lmsys/VicunaBot";
 import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
 import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import ClaudeBot from "@/bots/lmsys/ClaudeBot";
-import DevBot from "./bots/DevBot";
+import DevBot from "@/bots/DevBot";
+import GradioAppBot from "@/bots/huggingface/GradioAppBot";
 
 export default {
   name: "App",
@@ -147,6 +151,7 @@ export default {
         AlpacaBot.getInstance(),
         ChatGLMBot.getInstance(),
         MOSSBot.getInstance(),
+        GradioAppBot.getInstance(),
       ],
       activeBots: {},
     };

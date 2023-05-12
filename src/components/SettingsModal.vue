@@ -9,7 +9,7 @@
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon dark @click="dialog = false">
+        <v-btn icon dark @click="onClose">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
@@ -35,9 +35,11 @@
         <v-divider></v-divider>
         <OpenAIAPIBotSettings></OpenAIAPIBotSettings>
         <v-divider></v-divider>
-        <BingChatBotSettings></BingChatBotSettings>
-        <v-divider></v-divider>
         <WenxinQianfanBotSettings></WenxinQianfanBotSettings>
+        <v-divider></v-divider>
+        <GradioAppBotSettings></GradioAppBotSettings>
+        <v-divider></v-divider>
+        <BingChatBotSettings></BingChatBotSettings>
         <v-divider></v-divider>
         <SparkBotSettings></SparkBotSettings>
         <v-divider></v-divider>
@@ -59,6 +61,7 @@ import SparkBotSettings from "./BotSettings/SparkBotSettings.vue";
 import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
 import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
+import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
 
 export default {
   components: {
@@ -69,6 +72,7 @@ export default {
     MOSSBotSettings,
     BardBotSettings,
     WenxinQianfanBotSettings,
+    GradioAppBotSettings,
   },
   data() {
     return {
@@ -83,6 +87,10 @@ export default {
   methods: {
     open() {
       this.dialog = true;
+    },
+    onClose() {
+      this.dialog = false;
+      this.$emit("done");
     },
     ...mapMutations(["setCurrentLanguage"]),
   },

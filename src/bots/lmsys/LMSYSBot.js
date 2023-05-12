@@ -1,5 +1,5 @@
 import AsyncLock from "async-lock";
-import GradioBot from "@/bots/GradioBot";
+import GradioBot from "@/bots/huggingface/GradioBot";
 
 export default class LMSYSBot extends GradioBot {
   static _brandId = "lmsys"; // Brand id of the bot, should be unique. Used in i18n.

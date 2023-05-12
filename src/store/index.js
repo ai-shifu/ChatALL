@@ -33,6 +33,10 @@ export default createStore({
     chatgpt: {
       refreshCycle: 0,
     },
+    gradio: {
+      url: "",
+      fnIndex: 0,
+    },
     moss: {
       token: "",
     },
@@ -68,6 +72,9 @@ export default createStore({
     },
     setMessages(state, messages) {
       state.messages = messages;
+    },
+    setGradio(state, values) {
+      state.gradio = { ...state.gradio, ...values };
     },
   },
   actions: {

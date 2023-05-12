@@ -1,6 +1,7 @@
 {
   "settings": {
     "enable": "Enable",
+    "forExample": "E.g. { example }",
     "title": "Settings",
     "general": "General",
     "auto": "Automatic",
@@ -79,8 +80,12 @@
     "name": "Wenxin Qianfan"
   },
   "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "The fn_index of the function you will request. Mostly it is 0",
     "name": "Gradio",
     "queueFull": "The queue is full, please try again later",
+    "url": "Gradio App URL",
+    "urlPrompt": "URL of your Gradio app. If using Hugging Face space, get the direct url by clicking the \"Embed this space\" in the upper right corner.",
     "waiting": "There are { queue_size } requests in the queue, you are in { rank }th place, and you are expected to wait for { queue_eta } seconds"
   },
   "lmsys": {

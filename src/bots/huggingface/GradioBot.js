@@ -1,13 +1,13 @@
 import axios from "axios";
 import WebSocketAsPromised from "websocket-as-promised";
-import Bot from "./Bot";
+import Bot from "@/bots/Bot";
 import i18n from "@/i18n";
 
 export default class GradioBot extends Bot {
   static _brandId = "gradio"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "GradioBot"; // Class name of the bot
   static _logoFilename = "gradio-logo.svg"; // Place it in assets/bots/
-  static _loginUrl = "https://gradio-hello-world.hf.space/"; // Any Gradio URL
+  static _loginUrl = ""; // Any Gradio URL
   static _fnIndexes = [0]; // Indexes of the APIs to call in order. Sniffer it by devtools.
 
   config = {};
@@ -23,27 +23,34 @@ export default class GradioBot extends Bot {
    * @sideeffect - Set this.constructor._isAvailable
    */
   async checkAvailability() {
-    try {
-      // Remove trailing slash
-      this.constructor._loginUrl = this.constructor._loginUrl.replace(
-        /\/$/,
-        "",
-      );
-
-      const response = await axios.get(this.constructor._loginUrl + "/config");
-      this.config = response.data;
-      this.config.path = response.data.path ?? "";
-      this.config.root = this.constructor._loginUrl;
-
-      if (this.session_hash === "") {
-        this.session_hash = await this.createConversation();
-      }
-
-      this.constructor._isAvailable = true;
-    } catch (err) {
-      console.log(err);
+    if (this.constructor._loginUrl === "") {
       this.constructor._isAvailable = false;
+    } else {
+      try {
+        // Remove trailing slash
+        this.constructor._loginUrl = this.constructor._loginUrl.replace(
+          /\/$/,
+          "",
+        );
+
+        const response = await axios.get(
+          this.constructor._loginUrl + "/config",
+        );
+        this.config = response.data;
+        this.config.path = response.data.path ?? "";
+        this.config.root = this.constructor._loginUrl;
+
+        if (this.session_hash === "") {
+          this.session_hash = await this.createConversation();
+        }
+
+        this.constructor._isAvailable = true;
+      } catch (err) {
+        console.log(err);
+        this.constructor._isAvailable = false;
+      }
     }
+
     return this.isAvailable(); // Always return like this
   }
 
@@ -120,7 +127,7 @@ export default class GradioBot extends Bot {
             if (event.success && event.output.data) {
               onUpdateResponse(callbackParam, {
                 content: this.parseData(fn_index, event.output.data),
-                done: fn_index != this.constructor._fnIndexes[0], // Only the last one is done
+                done: fn_index == this.constructor._fnIndexes.slice(-1), // Only the last one is done
               });
             } else {
               reject(new Error(event.output.error));
@@ -163,13 +170,5 @@ export default class GradioBot extends Bot {
    */
   async createConversation() {
     return Math.random().toString(36).substring(2);
-  }
-
-  makeData(fn_index, prompt) {
-    return Array(prompt);
-  }
-
-  parseData(data) {
-    return data[0];
   }
 }

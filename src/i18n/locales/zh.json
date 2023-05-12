@@ -1,6 +1,7 @@
 {
   "settings": {
     "enable": "启用",
+    "forExample": "例如：{ example }",
     "title": "设置",
     "general": "通用",
     "auto": "自动",
@@ -79,8 +80,12 @@
     "name": "文心千帆"
   },
   "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "要调用的功能的 fn_index。通常是 0",
     "name": "Gradio",
     "queueFull": "队列已满，请稍后再试",
+    "url": "Gradio App URL",
+    "urlPrompt": "您自己的 Gradio app URL。如使用 Hugging Face 的 space，点击 space 右上角的 \"Embed this space\" 获取 direct URL",
     "waiting": "当前有 { queue_size } 个请求在队列中，你在第 { rank } 位，预计还要等待 { queue_eta } 秒"
   },
   "lmsys": {
