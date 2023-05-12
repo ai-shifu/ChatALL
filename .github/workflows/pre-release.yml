@@ -33,7 +33,7 @@ jobs:
           CSC_KEY_PASSWORD: ${{ secrets.MAC_CERTS_PASSWORD }}
         run: |
           export PYTHON_PATH=`which python`
-          npm run electron:build -- -wml --x64 --arm64
+          npm run electron:build -- -wml --x64 --arm64 --publish always
 
       - name: Release
         uses: marvinpinto/action-automatic-releases@latest
