@@ -19,6 +19,7 @@ export default createStore({
     lang: "auto",
     columns: 2,
     selectedBots: {
+      // Active bots which no login required
       ChatGLMBot: true,
       VicunaBot: true,
       AlpacaBot: true,
