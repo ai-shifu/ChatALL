@@ -16,6 +16,7 @@ const vuexPersist = new VuexPersist({
 
 export default createStore({
   state: {
+    uuid: "",
     lang: "auto",
     columns: 2,
     selectedBots: {
@@ -49,6 +50,9 @@ export default createStore({
   mutations: {
     changeColumns(state, n) {
       state.columns = n;
+    },
+    setUuid(state, uuid) {
+      state.uuid = uuid;
     },
     SET_BOT_SELECTED(state, payload) {
       const { botId, selected } = payload;

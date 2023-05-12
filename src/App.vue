@@ -97,6 +97,7 @@
 <script>
 import "@mdi/font/css/materialdesignicons.css";
 import { mapState, mapMutations } from "vuex";
+import { v4 as uuidv4 } from "uuid";
 
 import i18n from "./i18n";
 
@@ -123,6 +124,7 @@ import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
+import store from "./store";
 
 export default {
   name: "App",
@@ -206,6 +208,7 @@ export default {
       this.prompt = "";
     },
     ...mapMutations(["changeColumns"]),
+    ...mapMutations(["setUuid"]),
     ...mapMutations(["SET_BOT_SELECTED"]),
     toggleSelected(bot) {
       const botId = bot.constructor._className;
@@ -288,7 +291,9 @@ export default {
     }
   },
   mounted() {
-    this.$matomo && this.$matomo.trackPageView();
+    !store.state.uuid && this.setUuid(uuidv4());
+    window._paq.push(["setUserId", store.state.uuid]);
+    window._paq.push(["trackPageView"]);
   },
 };
 </script>
