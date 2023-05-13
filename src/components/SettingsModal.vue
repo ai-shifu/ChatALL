@@ -18,9 +18,6 @@
           <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
           <v-list-item>
             <v-list-item-title>{{ $t("settings.language") }}</v-list-item-title>
-            <v-list-item-subtitle>{{
-              $t("settings.languagePrompt")
-            }}</v-list-item-subtitle>
             <v-select
               :items="languages"
               item-title="name"
@@ -44,7 +41,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
 
@@ -57,7 +54,7 @@ import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
 
-const { t: $t } = useI18n();
+const { t: $t, locale } = useI18n();
 const store = useStore();
 
 const props = defineProps(["open"]);
@@ -74,7 +71,7 @@ const settings = [
   BardBotSettings,
 ];
 
-const languages = ref([
+const languages = computed(() => [
   { name: $t("settings.auto"), code: "auto" },
   { name: "English", code: "en" },
   { name: "中文", code: "zh" },
@@ -83,6 +80,7 @@ const languages = ref([
 const lang = computed(() => store.state.lang);
 
 const setCurrentLanguage = (lang) => {
+  locale.value = lang;
   store.commit("setCurrentLanguage", lang);
 };
 const closeDialog = () => {
