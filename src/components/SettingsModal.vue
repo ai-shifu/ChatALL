@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="dialog"
+    :model-value="props.open"
     fullscreen
     :scrim="false"
     transition="dialog-bottom-transition"
@@ -9,50 +9,41 @@
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon dark @click="onClose">
+        <v-btn icon dark @click="closeDialog">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
       <v-list lines="two" subheader>
-        <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
-        <v-list-item>
-          <v-list-item-title>{{ $t("settings.language") }}</v-list-item-title>
-          <v-list-item-subtitle>{{
-            $t("settings.languagePrompt")
-          }}</v-list-item-subtitle>
-          <v-select
-            v-model="lang"
-            :items="languages"
-            item-title="name"
-            item-value="code"
-            hide-details
-            @update:model-value="setCurrentLanguage($event)"
-          ></v-select>
-        </v-list-item>
+        <div class="section">
+          <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
+          <v-list-item>
+            <v-list-item-title>{{ $t("settings.language") }}</v-list-item-title>
+            <v-select
+              :items="languages"
+              item-title="name"
+              item-value="code"
+              hide-details
+              :model-value="lang"
+              @update:model-value="setCurrentLanguage($event)"
+            ></v-select>
+          </v-list-item>
+        </div>
 
-        <v-divider></v-divider>
-        <ChatGPTBotSettings></ChatGPTBotSettings>
-        <v-divider></v-divider>
-        <OpenAIAPIBotSettings></OpenAIAPIBotSettings>
-        <v-divider></v-divider>
-        <WenxinQianfanBotSettings></WenxinQianfanBotSettings>
-        <v-divider></v-divider>
-        <GradioAppBotSettings></GradioAppBotSettings>
-        <v-divider></v-divider>
-        <BingChatBotSettings></BingChatBotSettings>
-        <v-divider></v-divider>
-        <SparkBotSettings></SparkBotSettings>
-        <v-divider></v-divider>
-        <MOSSBotSettings></MOSSBotSettings>
-        <v-divider></v-divider>
-        <BardBotSettings></BardBotSettings>
+        <template v-for="(setting, index) in settings" :key="index">
+          <v-divider></v-divider>
+          <div class="section">
+            <component :is="setting"></component>
+          </div>
+        </template>
       </v-list>
     </v-card>
   </v-dialog>
 </template>
 
-<script>
-import { mapState, mapMutations } from "vuex";
+<script setup>
+import { computed } from "vue";
+import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
@@ -63,39 +54,45 @@ import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
 
-export default {
-  components: {
-    ChatGPTBotSettings,
-    OpenAIAPIBotSettings,
-    BingChatBotSettings,
-    SparkBotSettings,
-    MOSSBotSettings,
-    BardBotSettings,
-    WenxinQianfanBotSettings,
-    GradioAppBotSettings,
-  },
-  data() {
-    return {
-      dialog: false,
-      languages: [
-        { name: this.$t("settings.auto"), code: "auto" },
-        { name: "English", code: "en" },
-        { name: "中文", code: "zh" },
-      ],
-    };
-  },
-  methods: {
-    open() {
-      this.dialog = true;
-    },
-    onClose() {
-      this.dialog = false;
-      this.$emit("done");
-    },
-    ...mapMutations(["setCurrentLanguage"]),
-  },
-  computed: {
-    ...mapState(["lang"]),
-  },
+const { t: $t, locale } = useI18n();
+const store = useStore();
+
+const props = defineProps(["open"]);
+const emit = defineEmits(["update:open", "done"]);
+
+const settings = [
+  ChatGPTBotSettings,
+  OpenAIAPIBotSettings,
+  WenxinQianfanBotSettings,
+  GradioAppBotSettings,
+  BingChatBotSettings,
+  SparkBotSettings,
+  MOSSBotSettings,
+  BardBotSettings,
+];
+
+const languages = computed(() => [
+  { name: $t("settings.auto"), code: "auto" },
+  { name: "English", code: "en" },
+  { name: "中文", code: "zh" },
+]);
+
+const lang = computed(() => store.state.lang);
+
+const setCurrentLanguage = (lang) => {
+  locale.value = lang;
+  store.commit("setCurrentLanguage", lang);
+};
+const closeDialog = () => {
+  emit("update:open", false);
+  emit("done");
 };
 </script>
+
+<style scoped>
+.section {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+</style>
