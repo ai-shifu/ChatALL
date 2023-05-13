@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { markRaw, ref, watch, defineProps, defineEmits } from "vue";
+import { markRaw, ref, watch } from "vue";
 
 const props = defineProps(["open", "bot"]);
 const emit = defineEmits(["update:open", "done"]);

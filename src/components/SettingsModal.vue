@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import { computed, ref, defineProps, defineEmits } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
 
@@ -66,12 +66,12 @@ const emit = defineEmits(["update:open", "done"]);
 const settings = [
   ChatGPTBotSettings,
   OpenAIAPIBotSettings,
-  BingChatBotSettings,
-  SparkBotSettings,
-  BardBotSettings,
-  MOSSBotSettings,
   WenxinQianfanBotSettings,
   GradioAppBotSettings,
+  BingChatBotSettings,
+  SparkBotSettings,
+  MOSSBotSettings,
+  BardBotSettings,
 ];
 
 const languages = ref([
