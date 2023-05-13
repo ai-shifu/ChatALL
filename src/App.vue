@@ -83,14 +83,14 @@
       </div>
     </footer>
     <MakeAvailableModal
+      v-model:open="isMakeAvailableOpen"
       :bot="clickedBot"
-      ref="makeAvailableModal"
       @done="checkAllBotsAvailability(clickedBot)"
-    ></MakeAvailableModal>
+    />
     <SettingsModal
-      ref="settingsModal"
+      v-model:open="isSettingsOpen"
       @done="checkAllBotsAvailability()"
-    ></SettingsModal>
+    />
   </div>
 </template>
 
@@ -136,7 +136,6 @@ export default {
   data() {
     return {
       prompt: "",
-      clickedBot: null,
       bots: [
         ChatGPT35Bot.getInstance(),
         ChatGPT4Bot.getInstance(),
@@ -156,6 +155,11 @@ export default {
         GradioAppBot.getInstance(),
       ],
       activeBots: {},
+
+      clickedBot: null,
+      isMakeAvailableOpen: false,
+
+      isSettingsOpen: false,
     };
   },
   methods: {
@@ -216,7 +220,7 @@ export default {
       if (!bot.isAvailable()) {
         this.clickedBot = bot;
         // Open the bot's settings dialog
-        this.$refs.makeAvailableModal.open();
+        this.isMakeAvailableOpen = true;
         selected = true;
       } else {
         selected = !this.selectedBots[botId];
@@ -258,7 +262,7 @@ export default {
       }
     },
     openSettingsModal() {
-      this.$refs.settingsModal.open();
+      this.isSettingsOpen = true;
     },
     // Send the prompt when the user presses enter and prevent the default behavior
     // But if the shift, ctrl, alt, or meta keys are pressed, do as default
