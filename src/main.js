@@ -125,7 +125,15 @@ createApp(App)
     //   ['appendToTrackingUrl', 'new_visit=1'],
     //   etc.
     // ]
-    preInitActions: [],
+    preInitActions: [
+      [
+        "setCustomVariable",
+        "1",
+        "AppVersion",
+        require("../package.json").version,
+        "visit",
+      ],
+    ],
 
     // A function to determine whether to track an interaction as a site search
     // instead of as a page view. If not a function, all interactions will be
