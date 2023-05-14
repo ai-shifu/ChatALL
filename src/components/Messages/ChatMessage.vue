@@ -1,6 +1,10 @@
 <template>
   <v-card
-    :class="['message', message.type]"
+    :class="[
+      'message',
+      message.type,
+      message.highlight ? 'highlight-border' : '',
+    ]"
     :loading="message.done ? false : 'primary'"
   >
     <v-card-title v-if="message.type === 'response'" class="title">
@@ -107,6 +111,10 @@ export default {
     padding: 16px;
     word-wrap: break-word;
     text-align: left;
+}
+
+.highlight-border {
+    box-shadow: 0 0 0 2px rgba(var(--v-theme-primary), 1);
 }
 
 .prompt {
