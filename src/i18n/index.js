@@ -11,10 +11,12 @@ if (lang == "auto") {
 // Import translation files here
 import enMessages from "./locales/en.json";
 import zhMessages from "./locales/zh.json";
+import deMessages from "./locales/de.json";
 
 const messages = {
   en: enMessages,
   zh: zhMessages,
+  de: deMessages,
 };
 
 const i18n = createI18n({
