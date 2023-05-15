@@ -38,6 +38,15 @@
     "notAvailable": "The bot is not available because not login or not configured correctly.",
     "waiting": "Waiting for other { botName } request(s) to complete..."
   },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "h3imaginative": "Creative",
+    "galileo": "Balanced",
+    "h3precise": "Precise"
+  },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "Automatic anti-disconnection",
@@ -46,38 +55,8 @@
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4"
   },
-  "bingChat": {
-    "name": "Bing Chat",
-    "h3imaginative": "Creative",
-    "galileo": "Balanced",
-    "h3precise": "Precise"
-  },
-  "spark": {
-    "name": "iFlytek Spark"
-  },
-  "bard": {
-    "name": "Bard"
-  },
   "ernie": {
     "name": "ERNIE"
-  },
-  "openaiApi": {
-    "name": "OpenAI API",
-    "alterUrl": "Alternate API URL",
-    "alterUrlPrompt": "If you are using a custom API URL, you can enter it here",
-    "gpt-35-turbo": "gpt-3.5-turbo",
-    "gpt-4": "gpt-4",
-    "temperature": "Temperature",
-    "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
-    "temperature0": "More deterministic",
-    "temperature2": "More random",
-    "apiKey": "API Key"
-  },
-  "moss": {
-    "name": "MOSS"
-  },
-  "wenxinQianfan": {
-    "name": "Wenxin Qianfan"
   },
   "gradio": {
     "fnIndex": "fn_index",
@@ -94,6 +73,27 @@
     "chatglm-6b": "chatglm-6b",
     "alpaca-13b": "alpaca-13b",
     "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "Alternate API URL",
+    "alterUrlPrompt": "If you are using a custom API URL, you can enter it here",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "Temperature",
+    "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
+    "temperature0": "More deterministic",
+    "temperature2": "More random",
+    "apiKey": "API Key"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
   },
   "dev": {
     "name": "Dev Bot"
