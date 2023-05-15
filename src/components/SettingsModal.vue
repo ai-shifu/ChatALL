@@ -53,6 +53,7 @@ import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
 import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
+import LMSYSBotSettings from "./BotSettings/LMSYSBotSettings.vue";
 
 const { t: $t, locale } = useI18n();
 const store = useStore();
@@ -67,6 +68,7 @@ const settings = [
   GradioAppBotSettings,
   BardBotSettings,
   BingChatBotSettings,
+  LMSYSBotSettings,
   MOSSBotSettings,
   SparkBotSettings,
 ];
