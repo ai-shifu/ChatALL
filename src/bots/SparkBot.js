@@ -12,7 +12,7 @@ export default class SparkBot extends Bot {
   static _loginUrl = "https://xinghuo.xfyun.cn/";
   static _lock = new AsyncLock(); // All Spark bots share the same lock
 
-  static _chatId = 0; // ID of the chat session
+  chatId = 0; // ID of the chat session
 
   constructor() {
     super();
@@ -40,7 +40,8 @@ export default class SparkBot extends Bot {
     if (response.data.flag && response.data.code === 0) {
       return response.data.data.id;
     } else {
-      throw new Error(`Error creating conversation: ${response.data.desc}`);
+      console.error("Error creating conversation:", response.data.desc);
+      return 0;
     }
   }
 
@@ -66,12 +67,10 @@ export default class SparkBot extends Bot {
     return new Promise((resolve, reject) => {
       (async () => {
         // If there's no chat session, create one
-        if (this.constructor._chatId === 0) {
-          var chatId = await this.createConversation();
-          if (chatId) {
-            this.constructor._chatId = chatId;
-          } else {
-            reject(i18n.global.t("bot.failedToCreateConversation"));
+        if (this.chatId === 0) {
+          this.chatId = await this.createConversation();
+          if (!this.chatId) {
+            reject(new Error(i18n.global.t("bot.failedToCreateConversation")));
           }
         }
 
@@ -79,7 +78,7 @@ export default class SparkBot extends Bot {
         const GtToken = await this.getGtToken();
         const formData = new FormData();
         formData.append("fd", String(+new Date()).slice(-6));
-        formData.append("chatId", this.constructor._chatId);
+        formData.append("chatId", this.chatId);
         formData.append("text", prompt);
         formData.append("GtToken", GtToken);
         formData.append("clientType", "1");
@@ -105,14 +104,14 @@ export default class SparkBot extends Bot {
             } catch (error) {
               console.error("Error decoding Spark response:", error);
               source.close();
-              reject(error.data);
+              reject(new Error(error.data));
             }
           }
         });
 
         source.addEventListener("error", (error) => {
           source.close();
-          reject(error.data);
+          reject(new Error(error.data));
         });
 
         source.addEventListener("done", () => {
