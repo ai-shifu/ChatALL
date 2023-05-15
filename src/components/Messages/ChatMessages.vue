@@ -5,7 +5,7 @@
       :style="{ gridTemplateColumns: gridTemplateColumns }"
     >
       <chat-message
-        v-for="(message, index) in this.filteredMessages"
+        v-for="(message, index) in filteredMessages"
         :key="index"
         :columns="columns"
         :message="message"
@@ -15,113 +15,67 @@
   </div>
 </template>
 
-<script>
-import { mapMutations, mapState } from "vuex";
+<script setup>
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import { useStore } from "vuex";
 import ChatMessage from "./ChatMessage.vue";
 
-export default {
-  components: {
-    ChatMessage,
-  },
-  props: {
-    columns: {
-      type: Number,
-      default: 3,
-    },
-  },
-  data() {
-    return {
-      autoScroll: true,
-    };
-  },
-  computed: {
-    gridTemplateColumns() {
-      return `repeat(${this.columns}, 1fr)`;
-    },
-    filteredMessages() {
-      return this.messages.filter((message) => !message.hide);
-    },
-    ...mapState(["messages"]),
-  },
-  created() {
-    this.messages.forEach((message) => {
-      message.done = true;
-    });
-    window.addEventListener("scroll", this.onScroll);
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.scrollToBottom();
-    });
-  },
-  watch: {
-    "messages.length"() {
-      this.$nextTick(() => {
-        if (this.autoScroll) {
-          this.scrollToBottom();
-        }
-      });
-    },
-  },
-  methods: {
-    // Update the chat-message with the new message
-    updateMessage(index, values) {
-      const message = this.messages[index];
-      this.messages[index] = {
-        ...message,
-        ...values,
-      };
+const store = useStore();
 
-      if (values.done) {
-        this.$matomo.trackEvent(
-          "prompt",
-          "received",
-          message.className,
-          message.content.length,
-        );
-        this.setMessages(this.messages);
-      }
-
-      if (values.hide !== undefined) {
-        this.$matomo.trackEvent(
-          "vote",
-          "hide",
-          message.className,
-          values.hide ? 1 : -1,
-        );
-        this.setMessages(this.messages);
-      }
-
-      if (values.highlight !== undefined) {
-        this.$matomo.trackEvent(
-          "vote",
-          "highlight",
-          message.className,
-          values.highlight ? 1 : -1,
-        );
-        this.setMessages(this.messages);
-      }
-
-      this.$nextTick(() => {
-        if (this.autoScroll) {
-          this.scrollToBottom();
-        }
-      });
-    },
-    onScroll() {
-      const scrollPosition = window.pageYOffset + window.innerHeight;
-      this.autoScroll =
-        scrollPosition >= document.documentElement.scrollHeight - 10;
-    },
-    scrollToBottom() {
-      window.scrollTo(0, document.documentElement.scrollHeight);
-    },
-    clearMessages() {
-      this.setMessages([]);
-    },
-    ...mapMutations(["setMessages"]),
+const props = defineProps({
+  columns: {
+    type: Number,
+    default: 3,
   },
+});
+
+const autoScroll = ref(true);
+const gridTemplateColumns = computed(() => `repeat(${props.columns}, 1fr)`);
+const filteredMessages = computed(() =>
+  store.state.messages.filter((message) => !message.hide),
+);
+
+const updateMessage = (index, values) => {
+  store.dispatch("updateMessage", {
+    index,
+    message: values,
+  });
 };
+
+const scrollToBottom = ({ immediately = false }) => {
+  nextTick(() => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: immediately ? "instant" : "smooth",
+    });
+  });
+};
+
+const autoScrollToBottom = () => {
+  if (autoScroll.value) {
+    scrollToBottom({ immediately: true });
+  }
+};
+
+watch(() => store.state.messages.length, autoScrollToBottom);
+watch(() => store.state.updateCounter, autoScrollToBottom);
+
+const onScroll = () => {
+  const scrollPosition = window.pageYOffset + window.innerHeight;
+  autoScroll.value =
+    scrollPosition >= document.documentElement.scrollHeight - 10;
+};
+
+onMounted(() => {
+  store.state.messages.forEach((message) => {
+    message.done = true;
+  });
+  window.addEventListener("scroll", onScroll);
+  scrollToBottom({ immediately: true });
+});
+onUnmounted(() => {
+  window.removeEventListener("scroll", onScroll);
+});
 </script>
 
 <style scoped>
