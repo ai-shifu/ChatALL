@@ -41,7 +41,7 @@
 
     <main class="content">
       <div id="content">
-        <ChatMessages :columns="columns" ref="chatMessages"></ChatMessages>
+        <ChatMessages :columns="columns"></ChatMessages>
       </div>
     </main>
 
@@ -169,47 +169,21 @@ export default {
       if (this.prompt.trim() === "") return;
       if (Object.values(this.activeBots).every((bot) => !bot)) return;
 
-      // Add a new prompt message to the messages array
-      this.$refs.chatMessages.messages.push({
-        type: "prompt",
-        content: this.prompt,
-        done: true,
-        hide: false,
+      const bots = this.bots.filter(
+        (bot) => this.activeBots[bot.constructor._className],
+      );
+
+      this.$store.dispatch("sendPrompt", {
+        prompt: this.prompt,
+        bots,
       });
 
-      let count = 0;
-      // Send the prompt to all the bots and update the message with the response
-      for (const bot of this.bots) {
-        if (!this.activeBots[bot.constructor._className]) continue;
-
-        count++;
-        var message = {
-          type: "response",
-          content: "",
-          format: bot.getOutputFormat(),
-          logo: bot.getLogo(),
-          name: bot.getFullname(),
-          model: bot.constructor._model,
-          done: false,
-          highlight: false,
-          hide: false,
-          className: bot.constructor._className,
-        };
-        message.index = this.$refs.chatMessages.messages.push(message) - 1; // The index of the message in the messages array
-        bot.sendPrompt(
-          this.prompt,
-          this.$refs.chatMessages.updateMessage,
-          message.index,
-        );
-        this.$matomo.trackEvent(
-          "prompt",
-          "sendTo",
-          bot.constructor._className,
-          this.prompt.length,
-        );
-      }
-      this.$matomo.trackEvent("prompt", "send", "Active bots count", count);
-
+      this.$matomo.trackEvent(
+        "prompt",
+        "send",
+        "Active bots count",
+        bots.length,
+      );
       // Clear the textarea after sending the prompt
       this.prompt = "";
     },
@@ -282,7 +256,7 @@ export default {
     },
     clearMessages() {
       if (window.confirm(i18n.global.t("header.clearMessages"))) {
-        this.$refs.chatMessages.clearMessages();
+        this.$store.dispatch("clearMessages");
       }
     },
   },

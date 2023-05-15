@@ -3,6 +3,10 @@ import VuexPersist from "vuex-persist";
 import i18n from "../i18n";
 import messagesPersist from "./messagesPersist";
 
+const getMatomo = function () {
+  return window.Piwik.getAsyncTracker();
+};
+
 // 初始化 VuexPersist 实例
 const vuexPersist = new VuexPersist({
   key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
@@ -46,6 +50,7 @@ export default createStore({
       secretKey: "",
     },
     messages: [],
+    updateCounter: 0,
   },
   mutations: {
     changeColumns(state, n) {
@@ -74,15 +79,103 @@ export default createStore({
     setWenxinQianfan(state, { apiKey, secretKey }) {
       state.wenxinQianfan = { apiKey, secretKey };
     },
-    setMessages(state, messages) {
-      state.messages = messages;
-    },
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };
     },
+
+    addMessage(state, message) {
+      state.messages.push(message);
+    },
+    updateMessage(state, { index, message }) {
+      state.messages[index] = { ...state.messages[index], ...message };
+    },
+    setMessages(state, messages) {
+      state.messages = messages;
+    },
+    incrementUpdateCounter(state) {
+      state.updateCounter += 1;
+    },
   },
   actions: {
-    // ...你的 actions
+    sendPrompt({ commit, state, dispatch }, { prompt, bots }) {
+      commit("addMessage", {
+        type: "prompt",
+        content: prompt,
+        done: true,
+        hide: false,
+      });
+
+      const $matomo = getMatomo();
+      for (const bot of bots) {
+        const message = {
+          type: "response",
+          content: "",
+          format: bot.getOutputFormat(),
+          logo: bot.getLogo(),
+          name: bot.getFullname(),
+          model: bot.constructor._model,
+          done: false,
+          highlight: false,
+          hide: false,
+          className: bot.constructor._className,
+        };
+
+        // workaround for tracking message position
+        message.index = state.messages.push(message) - 1;
+
+        bot.sendPrompt(
+          prompt,
+          (index, values) =>
+            dispatch("updateMessage", { index, message: values }),
+          message.index,
+        );
+
+        $matomo.trackEvent(
+          "prompt",
+          "sendTo",
+          bot.constructor._className,
+          prompt.length,
+        );
+      }
+    },
+    updateMessage({ commit, state }, { index, message: values }) {
+      commit("updateMessage", { index, message: values });
+
+      // workaround for notifing the message window to scroll to bottom
+      commit("incrementUpdateCounter");
+
+      const message = { ...state.messages[index], ...values };
+      const $matomo = getMatomo();
+      if (values.done) {
+        $matomo.trackEvent(
+          "prompt",
+          "received",
+          message.className,
+          message.content.length,
+        );
+      }
+
+      if (values.hide !== undefined) {
+        $matomo.trackEvent(
+          "vote",
+          "hide",
+          message.className,
+          message.hide ? 1 : -1,
+        );
+      }
+
+      if (values.highlight !== undefined) {
+        $matomo.trackEvent(
+          "vote",
+          "highlight",
+          message.className,
+          message.highlight ? 1 : -1,
+        );
+      }
+    },
+    clearMessages({ commit }) {
+      commit("setMessages", []);
+    },
   },
   modules: {
     // ...你的模块
