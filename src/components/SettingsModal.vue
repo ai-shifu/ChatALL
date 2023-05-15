@@ -65,10 +65,10 @@ const settings = [
   OpenAIAPIBotSettings,
   WenxinQianfanBotSettings,
   GradioAppBotSettings,
-  BingChatBotSettings,
-  SparkBotSettings,
-  MOSSBotSettings,
   BardBotSettings,
+  BingChatBotSettings,
+  MOSSBotSettings,
+  SparkBotSettings,
 ];
 
 const languages = computed(() => [
