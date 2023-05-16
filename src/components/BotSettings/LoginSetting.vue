@@ -1,18 +1,14 @@
 <template>
   <v-list-item>
     <v-list-item-title>{{ $t("settings.loginOrOut") }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("settings.loginOrOutPrompt")
-    }}</v-list-item-subtitle>
-    <a :href="bot.getLoginUrl()" target="_blank" @click="createWindow">
+    <v-list-item-subtitle>{{ $t("settings.loginOrOutPrompt") }}</v-list-item-subtitle>
+    <a :href="bot.getLoginUrl()" target="_blank" @click="openLoginWindow">
       {{ bot.getLoginUrl() }}
     </a>
   </v-list-item>
 </template>
-
 <script>
-const electron = window.require("electron");
-const ipcRenderer = electron.ipcRenderer;
+const { ipcRenderer } = window.require("electron");
 
 export default {
   props: {
@@ -22,13 +18,11 @@ export default {
     },
   },
   methods: {
-    createWindow(event) {
-      ipcRenderer.invoke(
-        "create-new-window",
-        this.bot.getLoginUrl(),
-        this.bot.getUserAgent(),
-      );
+    openLoginWindow(event) {
       event.preventDefault();
+      const loginUrl = this.bot.getLoginUrl();
+      const userAgent = this.bot.getUserAgent();
+      ipcRenderer.invoke("create-new-window", loginUrl, userAgent);
     },
   },
 };
