@@ -1,7 +1,9 @@
 <div align="center">
    <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>Chatten Sie mit ALLEN AI-Bots gleichzeitig, entdecken Sie die Besten</strong></p>
+
 Deutsch | [English](README.md) | [简体中文](README_ZH-CN.md)
+
 </div>
 
 ## Bilder

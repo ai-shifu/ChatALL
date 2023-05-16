@@ -1,7 +1,9 @@
 <div align="center">
    <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>同时与所有 AI 机器人聊天，发现最佳选择</strong></p>
+
 [Deutsch](README_DE-DE.md) | [English](README.md) | 简体中文
+
 </div>
 
 ## 屏幕截图
