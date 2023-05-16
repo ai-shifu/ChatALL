@@ -58,6 +58,9 @@
   "ernie": {
     "name": "ERNIE"
   },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
   "gradio": {
     "fnIndex": "fn_index",
     "fnIndexPrompt": "The fn_index of the function you will request. Mostly it is 0",

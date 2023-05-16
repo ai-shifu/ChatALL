@@ -124,6 +124,7 @@ import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
+import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import store from "./store";
 
 export default {
@@ -148,6 +149,7 @@ export default {
         BardBot.getInstance(),
         WenxinQianfanBot.getInstance(),
         SparkBot.getInstance(),
+        HuggingChatBot.getInstance(),
         VicunaBot.getInstance(),
         AlpacaBot.getInstance(),
         ChatGLMBot.getInstance(),
