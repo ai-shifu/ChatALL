@@ -380,7 +380,7 @@ footer {
     width: 100%;
     background-color: transparent;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     justify-content: space-between;
     padding: 8px 16px;
     gap: 8px;
