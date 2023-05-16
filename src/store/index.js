@@ -3,50 +3,51 @@ import VuexPersist from "vuex-persist";
 import i18n from "../i18n";
 import messagesPersist from "./messagesPersist";
 
-// 初始化 VuexPersist 实例
+// Initialize VuexPersist instance
 const vuexPersist = new VuexPersist({
-  key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
-  storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
+  key: "chatall-app", // Key for storing data, you can change it according to your application
+  storage: window.localStorage, // Use localStorage, you can choose other storage options like sessionStorage
   reducer: (state) => {
-    // eslint-disable-next-line
     const { messages, ...persistedState } = state;
     return persistedState;
   },
 });
 
-export default createStore({
-  state: {
-    uuid: "",
-    lang: "auto",
-    columns: 2,
-    selectedBots: {
-      // Active bots which no login required
-      ChatGLMBot: true,
-      VicunaBot: true,
-      AlpacaBot: true,
-      ClaudeBot: true,
-    },
-    openaiApi: {
-      apiKey: "",
-      temperature: 1,
-      alterUrl: "",
-    },
-    chatgpt: {
-      refreshCycle: 0,
-    },
-    gradio: {
-      url: "",
-      fnIndex: 0,
-    },
-    moss: {
-      token: "",
-    },
-    wenxinQianfan: {
-      apiKey: "",
-      secretKey: "",
-    },
-    messages: [],
+const getDefaultState = () => ({
+  uuid: "",
+  lang: "auto",
+  columns: 2,
+  selectedBots: {
+    // Active bots which no login required
+    ChatGLMBot: true,
+    VicunaBot: true,
+    AlpacaBot: true,
+    ClaudeBot: true,
   },
+  openaiApi: {
+    apiKey: "",
+    temperature: 1,
+    alterUrl: "",
+  },
+  chatgpt: {
+    refreshCycle: 0,
+  },
+  gradio: {
+    url: "",
+    fnIndex: 0,
+  },
+  moss: {
+    token: "",
+  },
+  wenxinQianfan: {
+    apiKey: "",
+    secretKey: "",
+  },
+  messages: [],
+});
+
+export default createStore({
+  state: getDefaultState(),
   mutations: {
     changeColumns(state, n) {
       state.columns = n;
@@ -80,12 +81,18 @@ export default createStore({
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };
     },
+    resetState(state) {
+      Object.assign(state, getDefaultState());
+    },
   },
   actions: {
-    // ...你的 actions
+    resetState({ commit }) {
+      commit("resetState");
+    },
+    // ...other actions
   },
   modules: {
-    // ...你的模块
+    // ...your modules
   },
-  plugins: [vuexPersist.plugin, messagesPersist.plugin], // 添加插件到 store
+  plugins: [vuexPersist.plugin, messagesPersist.plugin],
 });
