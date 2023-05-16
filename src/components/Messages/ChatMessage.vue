@@ -146,5 +146,6 @@ export default {
 
 .markdown-body {
     background-color: inherit;
+    font-family: inherit;
 }
 </style>
