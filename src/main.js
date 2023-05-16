@@ -1,4 +1,4 @@
-import { createApp, router } from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
 import i18n from "./i18n";
 import store from "./store";
@@ -68,7 +68,7 @@ createApp(App)
     // trackerScriptUrl: 'https://example.com/whatever/script/path/you/have',
 
     // Enables automatically registering pageviews on the router
-    router: router,
+    router: null,
 
     // Enables link tracking on regular links. Note that this won't
     // work for routing links (ie. internal Vue router links)
