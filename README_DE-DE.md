@@ -1,8 +1,7 @@
-[简体中文](README_ZH-CN.md)
-
 <div align="center">
    <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>Chatten Sie mit ALLEN AI-Bots gleichzeitig, entdecken Sie die Besten</strong></p>
+Deutsch | [English](README.md) | [简体中文](README_ZH-CN.md)
 </div>
 
 ## Bilder
@@ -37,7 +36,6 @@ Und mehr...
 
 ### Unterstützte Bots
 
-
 - Schneller Prompt-Modus: Senden Sie den nächsten Prompt, ohne auf das Ende der vorherigen Anfrage zu warten
 - Lokale Speicherung des Chatverlaufs zum Schutz Ihrer Privatsphäre
 - Markieren Sie die Antwort, die Ihnen gefällt, und löschen Sie die schlechte Antwort
@@ -57,7 +55,7 @@ ChatALL ist ein Client, nicht ein Proxy. Daher müssen Sie:
 
 ## Download / Installation
 
-Downloaden von  https://github.com/sunner/ChatALL/releases
+Downloaden von https://github.com/sunner/ChatALL/releases
 
 ### Auf Windows
 
