@@ -114,3 +114,5 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 contributed much of the code
 - ChatGPT, Bing Chat and Google provide many solutons (ranked in order)
 - Inspired by [ChatHub](https://github.com/chathub-dev/chathub). Respect!
+
+- Support Us by leaving by  ⭐️ 
