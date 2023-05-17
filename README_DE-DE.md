@@ -46,7 +46,7 @@ Und mehr...
 - Aktivieren/Deaktivieren von Bots zu jeder Zeit
 - Umschalten zwischen ein-, zwei- oder dreispaltiger Ansicht
 - Unterstützt mehrere Sprachen (en, zh)
-- TODO] Beste Empfehlungen
+- [TODO] Beste Empfehlungen
 
 ## Anforderungen
 
