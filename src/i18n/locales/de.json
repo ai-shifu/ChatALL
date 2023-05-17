@@ -1,22 +1,22 @@
 {
   "settings": {
-    "enable": "Enable",
+    "enable": "Aktivieren",
     "forExample": "zum Bsp. { example }",
     "title": "Einstellungen",
     "general": "Allgemein",
-    "auto": "Autoamtisch",
+    "auto": "Automatisch",
     "language": "Sprache",
     "languagePrompt": "Starten Sie die Anwendung neu, um die neue Sprache anzuwenden",
     "loginOrOut": "Einloggen/Ausloggen",
-    "loginOrOutPrompt": "Klicken Sie auf den nachstehenden Link, um sich in einem neuen Fenster an- oder abzumelden, und schließen Sie es dann",
+    "loginOrOutPrompt": "Klicken Sie auf den nachstehenden Link, um sich in einem neuen Fenster an- oder abzumelden und schließen Sie es dann",
     "notice": "Hinweis",
-    "secretPrompt": "Ihr geheimes Token verbleibt auf Ihrem Gerät und wird nicht an andere Personen weitergegeben"
+    "secretPrompt": "Ihr geheimer Token verbleibt auf Ihrem Gerät und wird nicht an andere Personen weitergegeben"
   },
   "header": {
     "clearMessages": "Alle Nachrichten löschen?",
-    "singleColumn": "Einzelne Säule",
-    "doubleColumn": "Doppelter Säule",
-    "tripleColumn": "Dreifach Säule"
+    "singleColumn": "Einzelne Spalte",
+    "doubleColumn": "Doppelte Spalte",
+    "tripleColumn": "Dreifache Spalte"
   },
   "footer": {
     "sendPrompt": "Senden an:",
@@ -32,7 +32,7 @@
   },
   "bot": {
     "creatingConversation": "Konversation wird erstellt ...",
-    "failedToCreateConversation": "Failed to create conversation",
+    "failedToCreateConversation": "Konversation konnte nicht erstellt werden",
     "name": "Null Bot",
     "notImplemented": "Noch in Entwicklung...",
     "notAvailable": "Der Bot ist nicht verfügbar, weil er nicht angemeldet oder nicht richtig konfiguriert ist.",
