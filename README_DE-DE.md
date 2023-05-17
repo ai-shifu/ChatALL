@@ -89,6 +89,8 @@ npm run electron:serve
 
 ### Builden
 
+Node.js must be v16.x
+
 Build for your current platform:
 
 ```bash
