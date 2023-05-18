@@ -145,31 +145,12 @@ export default createStore({
       commit("incrementUpdateCounter");
 
       const message = { ...state.messages[index], ...values };
-      const $matomo = getMatomo();
       if (values.done) {
-        $matomo.trackEvent(
+        getMatomo().trackEvent(
           "prompt",
           "received",
           message.className,
           message.content.length,
-        );
-      }
-
-      if (values.hide !== undefined) {
-        $matomo.trackEvent(
-          "vote",
-          "hide",
-          message.className,
-          message.hide ? 1 : -1,
-        );
-      }
-
-      if (values.highlight !== undefined) {
-        $matomo.trackEvent(
-          "vote",
-          "highlight",
-          message.className,
-          message.highlight ? 1 : -1,
         );
       }
     },

@@ -83,10 +83,17 @@ export default {
       this.$emit("update-message", this.message.index, {
         highlight: !this.message.highlight,
       });
+      this.$matomo.trackEvent(
+        "vote",
+        "highlight",
+        this.message.className,
+        this.message.highlight ? -1 : 1,
+      );
     },
     hide() {
       if (window.confirm(i18n.global.t("modal.confirmHide"))) {
         this.$emit("update-message", this.message.index, { hide: true });
+        this.$matomo.trackEvent("vote", "hide", this.message.className, 1);
       }
     },
     handleClick(event) {
