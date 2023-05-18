@@ -197,18 +197,6 @@ export default class BingChatBot extends Bot {
           );
         });
 
-        wsp.onError.addListener((event) => {
-          wsp.removeAllListeners();
-          wsp.close();
-          reject(
-            new Error(
-              i18n.global.t("error.failedConnectUrl", {
-                url: event.target.url,
-              }),
-            ),
-          );
-        });
-
         wsp.open();
       } catch (error) {
         reject(error);
