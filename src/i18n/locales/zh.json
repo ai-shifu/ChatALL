@@ -58,6 +58,9 @@
   "ernie": {
     "name": "文心一言"
   },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
   "gradio": {
     "fnIndex": "fn_index",
     "fnIndexPrompt": "要调用的功能的 fn_index。通常是 0",
