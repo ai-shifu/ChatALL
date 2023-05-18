@@ -88,7 +88,7 @@ export default class SparkBot extends Bot {
           { payload: formData },
         );
 
-        var text = "";
+        let text = "";
         source.addEventListener("message", (event) => {
           if (event.data === "<end>") {
             onUpdateResponse(callbackParam, { done: true });
@@ -99,7 +99,21 @@ export default class SparkBot extends Bot {
             return;
           } else {
             try {
-              text += Buffer.from(event.data, "base64").toString("utf8");
+              let partialText;
+              if (event.data[0] === "{") {
+                // JSON data
+                const data = JSON.parse(event.data);
+                partialText = data.descr;
+              } else if (event.data[0] === "[") {
+                // [error] or [geeError]
+                partialText = event.data;
+              } else {
+                // Normal data
+                partialText = Buffer.from(event.data, "base64").toString(
+                  "utf8",
+                );
+              }
+              text += partialText;
               onUpdateResponse(callbackParam, { content: text, done: false });
             } catch (error) {
               console.error("Error decoding Spark response:", error);
