@@ -1,6 +1,6 @@
 {
   "name": "ChatALL",
-  "version": "1.17.9a",
+  "version": "1.17.10",
   "main": "background.js",
   "description": "Chat with multiple AI bots and discover the best.",
   "author": "Sunner",
