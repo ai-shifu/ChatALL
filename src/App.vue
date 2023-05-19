@@ -109,6 +109,7 @@ import SettingsModal from "@/components/SettingsModal.vue";
 // Bots
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
+import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
 import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
 import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
 import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
@@ -140,6 +141,7 @@ export default {
       bots: [
         ChatGPT35Bot.getInstance(),
         ChatGPT4Bot.getInstance(),
+        ChatGPTBrowsingBot.getInstance(),
         OpenAIAPI35Bot.getInstance(),
         OpenAIAPI4Bot.getInstance(),
         BingChatCreativeBot.getInstance(),
