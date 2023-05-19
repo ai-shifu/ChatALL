@@ -2,7 +2,7 @@
    <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>Chatten Sie mit ALLEN AI-Bots gleichzeitig, entdecken Sie die Besten</strong></p>
 
-Deutsch | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md)
+Deutsch | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | [Tiếng Việt](README_VI-VN)
 
 </div>
 
