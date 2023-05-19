@@ -2,7 +2,7 @@
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>Trò chuyện đồng thời với tất cả những AI bots, Tìm ra câu trả lời tốt nhất </strong></p>
 
-[Deutsch](README_DE-DE.md) | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | Tiếng Việt
+[Deutsch](README_DE-DE.md) | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | Tiếng Việt | [Français](README_FR-FR.md)
 
 </div>
 

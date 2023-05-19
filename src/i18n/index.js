@@ -14,6 +14,7 @@ import zhMessages from "./locales/zh.json";
 import deMessages from "./locales/de.json";
 import ruMessages from "./locales/ru.json";
 import viMessages from "./locales/vi.json";
+import frMessages from "./locales/fr.json";
 
 const messages = {
   en: enMessages,
@@ -21,6 +22,7 @@ const messages = {
   de: deMessages,
   ru: ruMessages,
   vi: viMessages,
+  fr: frMessages,
 };
 
 const i18n = createI18n({
