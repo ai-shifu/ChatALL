@@ -10,7 +10,6 @@ const botLogoContext = require.context(
 );
 
 export default class Bot {
-  static _instance;
   static _logoPackedPaths = null;
   static _isAvailable = false;
 
@@ -34,11 +33,6 @@ export default class Bot {
           return logos;
         }, {});
     }
-
-    if (this.constructor._instance) {
-      return this.constructor._instance;
-    }
-    this.constructor._instance = this;
   }
 
   static getInstance() {
