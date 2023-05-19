@@ -13,12 +13,14 @@ import enMessages from "./locales/en.json";
 import zhMessages from "./locales/zh.json";
 import deMessages from "./locales/de.json";
 import ruMessages from "./locales/ru.json";
+import viMessages from "./locales/vi.json";
 
 const messages = {
   en: enMessages,
   zh: zhMessages,
   de: deMessages,
   ru: ruMessages,
+  vi: viMessages,
 };
 
 const i18n = createI18n({
