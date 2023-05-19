@@ -10,8 +10,8 @@
         </div>
         <div style="display: flex;">
           <div>
-            <input type="text" v-model="input" @change="handleSearchBar($event)" @keyup="handleSearchBar($event)"
-              placeholder="Search" />
+            <input type="text" class="search-bar" v-model="input" @change="handleSearchBar($event)"
+              @keyup="handleSearchBar($event)" placeholder="Search" />
           </div>
           <v-icon class="cursor-pointer" color="primary" icon="mdi-broom" size="x-large"
             @click="clearMessages()"></v-icon>
@@ -23,7 +23,7 @@
     </header>
 
     <main class="content">
-      <div class="searchMsg" id="content">
+      <div id="content">
         <ChatMessages :columns="columns"></ChatMessages>
       </div>
     </main>
@@ -334,6 +334,11 @@ footer {
   padding: 8px 16px;
   gap: 8px;
   box-sizing: border-box;
+}
+
+.search-bar {
+  border-style: solid;
+  border-color: rgb(35, 35, 145)
 }
 
 .margin-bottom {
