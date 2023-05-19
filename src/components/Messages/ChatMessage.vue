@@ -3,26 +3,48 @@
     'message',
     message.type,
     message.highlight ? 'highlight-border' : '',
-  ]" :loading="message.done ? false : 'primary'">
-    <v-card-title v-if="message.type === 'response'" class="title">
-      <img :src="message.logo" alt="Bot Icon" />
-      {{ message.name }}
-      <v-spacer></v-spacer>
-      <v-btn flat size="x-small" icon @click="toggleHighlight" :color="message.highlight ? 'primary' : ''">
-        <v-icon>mdi-lightbulb-on-outline</v-icon>
-      </v-btn>
-      <v-btn flat size="x-small" icon @click="copyToClipboard">
-        <v-icon>mdi-content-copy</v-icon>
-      </v-btn>
-      <v-btn flat size="x-small" icon @click="hide">
-        <v-icon>mdi-delete</v-icon>
-      </v-btn>
+  ]" 
+  :loading="message.done ? false : 'primary'">
+  <v-card-title 
+  v-if="message.type === 'response'" 
+  class="title">
+    <img 
+    :src="message.logo" 
+    alt="Bot Icon" />
+    {{ message.name }}
+     <v-spacer></v-spacer>
+    <v-btn 
+     flat size="x-small" icon 
+     @click="toggleHighlight" 
+     :color="message.highlight ? 'primary' : ''">
+     <v-icon>mdi-lightbulb-on-outline</v-icon>
+    </v-btn>
+    <v-btn 
+     flat size="x-small" icon 
+     @click="copyToClipboard">
+     <v-icon>mdi-content-copy</v-icon>
+    </v-btn>
+    <v-btn 
+     flat size="x-small" icon
+     @click="hide">
+     <v-icon>mdi-delete</v-icon>
+    </v-btn>
     </v-card-title>
-    <div v-if="message.format === 'html'">
-      <div class="markdown-body" v-html="message.content" ref="content" @click="handleClick"></div>
+    <div 
+    v-if="message.format === 'html'">
+      <div 
+       class="markdown-body" 
+       v-html="message.content" 
+       ref="content" 
+       @click="handleClick">
+      </div>
     </div>
     <div v-else>
-      <Markdown class="markdown-body" :breaks="true" :source="message.content" @click="handleClick" />
+      <Markdown 
+      class="markdown-body" 
+      :breaks="true" 
+      :source="message.content" 
+      @click="handleClick" />
     </div>
   </v-card>
 </template>

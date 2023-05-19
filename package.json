@@ -20,7 +20,6 @@
     "release": "vue-cli-service electron:build -wml --x64 --arm64"
   },
   "dependencies": {
-    "@coreui/vue": "^4.8.1",
     "@mdi/font": "^7.2.96",
     "async-lock": "^1.4.0",
     "axios": "^1.4.0",
@@ -34,7 +33,6 @@
     "vue": "^3.2.47",
     "vue-i18n": "^9.2.2",
     "vue-matomo": "^4.2.0",
-    "vue-shortkey": "^3.1.7",
     "vue3-markdown-it": "^1.0.10",
     "vuetify": "^3.2.3",
     "vuex": "^4.1.0",
