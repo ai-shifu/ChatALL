@@ -4,93 +4,47 @@
       <div class="header-content">
         <img class="logo" src="@/assets/logo-banner.png" alt="ChatALL" />
         <div class="column-icons">
-          <img
-            src="@/assets/column-1.svg"
-            @click="changeColumns(1)"
-            :class="{ selected: columns === 1 }"
-          />
-          <img
-            src="@/assets/column-2.svg"
-            @click="changeColumns(2)"
-            :class="{ selected: columns === 2 }"
-          />
-          <img
-            src="@/assets/column-3.svg"
-            @click="changeColumns(3)"
-            :class="{ selected: columns === 3 }"
-          />
+          <img src="@/assets/column-1.svg" @click="changeColumns(1)" :class="{ selected: columns === 1 }" />
+          <img src="@/assets/column-2.svg" @click="changeColumns(2)" :class="{ selected: columns === 2 }" />
+          <img src="@/assets/column-3.svg" @click="changeColumns(3)" :class="{ selected: columns === 3 }" />
         </div>
-        <div>
-          <v-icon
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-broom"
-            size="x-large"
-            @click="clearMessages()"
-          ></v-icon>
-          <v-icon
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-cog"
-            size="x-large"
-            @click="openSettingsModal()"
-          ></v-icon>
+        <div style="display: flex;">
+          <div>
+            <input type="text" v-model="input" @change="handleSearchBar($event)" @keyup="handleSearchBar($event)"
+              placeholder="Search" />
+          </div>
+          <v-icon class="cursor-pointer" color="primary" icon="mdi-broom" size="x-large"
+            @click="clearMessages()"></v-icon>
+
+          <v-icon class="cursor-pointer" color="primary" icon="mdi-cog" size="x-large"
+            @click="openSettingsModal()"></v-icon>
         </div>
       </div>
     </header>
 
     <main class="content">
-      <div id="content">
+      <div class="searchMsg" id="content">
         <ChatMessages :columns="columns"></ChatMessages>
       </div>
     </main>
 
     <footer>
-      <v-textarea
-        v-model="prompt"
-        auto-grow
-        max-rows="8.5"
-        rows="1"
-        density="comfortable"
-        hide-details
-        variant="solo"
-        :placeholder="$t('footer.promptPlaceholder')"
-        autofocus
-        @keydown="filterEnterKey"
-        style="min-width: 390px"
-      ></v-textarea>
-      <v-btn
-        color="primary"
-        elevation="2"
-        class="margin-bottom"
-        :disabled="
-          prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
-        "
-        @click="sendPromptToBots"
-      >
+      <v-textarea v-model="prompt" auto-grow max-rows="8.5" rows="1" density="comfortable" hide-details variant="solo"
+        :placeholder="$t('footer.promptPlaceholder')" autofocus @keydown="filterEnterKey"
+        style="min-width: 390px"></v-textarea>
+      <v-btn color="primary" elevation="2" class="margin-bottom" :disabled="
+        prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
+      " @click="sendPromptToBots">
         {{ $t("footer.sendPrompt") }}
       </v-btn>
       <div class="bot-logos margin-bottom">
-        <img
-          v-for="(bot, index) in bots"
-          :class="{ selected: activeBots[bot.constructor._className] }"
-          :key="index"
-          :src="bot.getLogo()"
-          :alt="bot.getFullname()"
-          :title="bot.getFullname()"
-          @click="toggleSelected(bot)"
-        />
+        <img v-for="(bot, index) in bots" :class="{ selected: activeBots[bot.constructor._className] }" :key="index"
+          :src="bot.getLogo()" :alt="bot.getFullname()" :title="bot.getFullname()" @click="toggleSelected(bot)" />
       </div>
     </footer>
-    <MakeAvailableModal
-      v-model:open="isMakeAvailableOpen"
-      :bot="clickedBot"
-      @done="checkAllBotsAvailability(clickedBot)"
-    />
-    <SettingsModal
-      v-model:open="isSettingsOpen"
-      @done="checkAllBotsAvailability()"
-    />
+    <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot"
+      @done="checkAllBotsAvailability(clickedBot)" />
+    <SettingsModal v-model:open="isSettingsOpen" @done="checkAllBotsAvailability()" />
   </div>
 </template>
 
@@ -101,10 +55,14 @@ import { v4 as uuidv4 } from "uuid";
 
 import i18n from "./i18n";
 
+
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
+//SearchBar
+
+
 
 // Bots
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
@@ -127,6 +85,7 @@ import GradioAppBot from "@/bots/huggingface/GradioAppBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import store from "./store";
 
+
 export default {
   name: "App",
   components: {
@@ -136,6 +95,7 @@ export default {
   },
   data() {
     return {
+      input: "",
       prompt: "",
       bots: [
         ChatGPT35Bot.getInstance(),
@@ -172,7 +132,6 @@ export default {
       const bots = this.bots.filter(
         (bot) => this.activeBots[bot.constructor._className],
       );
-
       this.$store.dispatch("sendPrompt", {
         prompt: this.prompt,
         bots,
@@ -210,6 +169,18 @@ export default {
           bot.isAvailable() && this.selectedBots[bot.constructor._className];
       }
     },
+    handleSearchBar(event) {
+      var searchInput = event.target.value;
+      var Texts = document.querySelectorAll('p');
+      Texts.forEach(Text => {
+        var regex = new RegExp(searchInput, 'gi')
+        var response = Text.innerText.replace(regex, function (str) {
+          return "<span style='background-color: yellow;'>" + str + "</span>"
+        });
+        Text.innerHTML = response;
+      })
+    },
+
     async checkAllBotsAvailability(specifiedBot = null) {
       try {
         let botsToCheck = this.bots;
@@ -259,6 +230,9 @@ export default {
         this.$store.dispatch("clearMessages");
       }
     },
+    searchChat() {
+
+    }
   },
   computed: {
     ...mapState(["columns"]),
@@ -274,42 +248,43 @@ export default {
     !store.state.uuid && this.setUuid(uuidv4());
     window._paq.push(["setUserId", store.state.uuid]);
     window._paq.push(["trackPageView"]);
+
   },
 };
 </script>
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Arial", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 #app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 16px;
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  z-index: 999;
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -317,60 +292,60 @@ header {
 }
 
 .column-icons img {
-    opacity: 0.5;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    margin: 4px;
+  opacity: 0.5;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin: 4px;
 }
 
 .bot-logos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .bot-logos img {
-    opacity: 0.3;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
+  opacity: 0.3;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
 }
 
 img.selected {
-    opacity: 1;
+  opacity: 1;
 }
 
 .content {
-    flex: 1;
-    background-color: #f3f3f3;
-    padding: 16px;
+  flex: 1;
+  background-color: #f3f3f3;
+  padding: 16px;
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 8px 16px;
-    gap: 8px;
-    box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 8px 16px;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
 .margin-bottom {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* Override default style of vuetify v-textarea */
-.v-textarea--auto-grow textarea{
-    overflow: auto !important;
+.v-textarea--auto-grow textarea {
+  overflow: auto !important;
 }
 </style>
