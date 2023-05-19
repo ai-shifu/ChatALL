@@ -17,23 +17,23 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 
 ### Supported bots
 
-| AI Bots                                                                   | Web Access  | API         |
-| ------------------------------------------------------------------------- | ----------- | ----------- |
-| [ChatGPT](https://chat.openai.com)                                        | Yes         | Yes         |
-| [Bing Chat](https://www.bing.com/new)                                     | Yes         | No API      |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                   | No          | Yes         |
-| [Bard](https://bard.google.com/)                                          | Yes         | No API      |
-| [Poe](https://poe.com/)                                                   | Coming soon | Coming soon |
-| [MOSS](https://moss.fastnlp.top/)                                         | Yes         | No API      |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                               | Coming soon | Coming soon |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                          | Coming soon | No API      |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                 | Yes         | Coming soon |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                | Yes         | No API      |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                       | Yes         | No API      |
-| [ChatGLM](https://chatglm.cn/blog)                                        | Yes         | No API      |
-| [Claude](https://www.anthropic.com/index/introducing-claude)              | Yes         | No API      |
-| [Gradio](https://gradio.app/) for Hugging Face space/self-deployed models | Yes         | No API      |
-| [HuggingChat](https://huggingface.co/chat/)                               | Yes         | No API      |
+| AI Bots                                                      | Web Access  | API         | Notes                                       |
+| ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web Browsing included                       |
+| [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      |                                             |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                             |
+| [Bard](https://bard.google.com/)                             | Yes         | No API      |                                             |
+| [Poe](https://poe.com/)                                      | Coming soon | Coming soon |                                             |
+| [MOSS](https://moss.fastnlp.top/)                            | Yes         | No API      |                                             |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Coming soon | Coming soon |                                             |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Coming soon | No API      |                                             |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Yes         | Coming soon |                                             |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Yes         | No API      | No account or API key needed                |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | No account or API key needed                |
+| [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | No account or API key needed                |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | No account or API key needed                |
+| [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
+| [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
 
 And more...
 
@@ -80,6 +80,10 @@ Download the .AppImage file, make it executable, and enjoy the click-to-run expe
 
 [The guide](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) may help you.
 
+### Environment Dependents
+
+Node.js must be v16.x
+
 ### Run
 
 ```bash
@@ -88,8 +92,6 @@ npm run electron:serve
 ```
 
 ### Build
-
-Node.js must be v16.x
 
 Build for your current platform:
 

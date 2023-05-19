@@ -17,23 +17,23 @@
 
 ### 支持的 AI
 
-| AI 机器人                                                               | 网页访问 | API      |
-| ----------------------------------------------------------------------- | -------- | -------- |
-| [ChatGPT](https://chat.openai.com)                                      | 支持     | 支持     |
-| [Bing Chat](https://www.bing.com/new)                                   | 支持     | 无 API   |
-| [文心一言](https://yiyan.baidu.com/)                                    | 否       | 支持     |
-| [Bard](https://bard.google.com/)                                        | 支持     | 无 API   |
-| [Poe](https://poe.com/)                                                 | 即将推出 | 即将推出 |
-| [MOSS](https://moss.fastnlp.top/)                                       | 支持     | 无 API   |
-| [通义千问](http://tongyi.aliyun.com/)                                   | 即将推出 | 即将推出 |
-| [得到学习助手](https://ai.dedao.cn/)                                    | 即将推出 | 无 API   |
-| [讯飞星火](http://xinghuo.xfyun.cn/)                                    | 支持     | 即将推出 |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)              | 支持     | 无 API   |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                     | 支持     | 无 API   |
-| [ChatGLM](https://chatglm.cn/blog)                                      | 支持     | 无 API   |
-| [Claude](https://www.anthropic.com/index/introducing-claude)            | 支持     | 无 API   |
-| [Gradio](httpps://gradio.app/) 用于 Hugging Face space 或自己部署的模型 | 支持     | 无 API   |
-| [HuggingChat](https://huggingface.co/chat/)                             | 支持     | 无 API   |
+| AI 机器人                                                    | 网页访问 | API      | 说明                                     |
+| ------------------------------------------------------------ | -------- | -------- | ---------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | 支持     | 支持     | 包含 Web Browsing                        |
+| [Bing Chat](https://www.bing.com/new)                        | 支持     | 无 API   |                                          |
+| [文心一言](https://yiyan.baidu.com/)                         | 否       | 支持     |                                          |
+| [Bard](https://bard.google.com/)                             | 支持     | 无 API   |                                          |
+| [Poe](https://poe.com/)                                      | 即将推出 | 即将推出 |                                          |
+| [MOSS](https://moss.fastnlp.top/)                            | 支持     | 无 API   |                                          |
+| [通义千问](http://tongyi.aliyun.com/)                        | 即将推出 | 即将推出 |                                          |
+| [得到学习助手](https://ai.dedao.cn/)                         | 即将推出 | 无 API   |                                          |
+| [讯飞星火](http://xinghuo.xfyun.cn/)                         | 支持     | 即将推出 |                                          |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | 支持     | 无 API   | 不需要帐号或 API key                     |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | 支持     | 无 API   | 不需要帐号或 API key                     |
+| [ChatGLM](https://chatglm.cn/blog)                           | 支持     | 无 API   | 不需要帐号或 API key                     |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | 支持     | 无 API   | 不需要帐号或 API key                     |
+| [Gradio](httpps://gradio.app/)                               | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
+| [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 
 更多...
 
@@ -82,6 +82,8 @@ ChatALL 是一个客户端，而不是代理。因此，您必须：
 
 ### 环境依赖
 
+Node.js 必须是 v16.x
+
 ### Run
 
 ```bash
@@ -90,8 +92,6 @@ npm run electron:serve
 ```
 
 ### Build
-
-Node.js 必须是 v16.x
 
 为您当前的平台构建：
 
