@@ -39,11 +39,13 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch, inject } from 'vue';
+import { onMounted, ref, watch } from 'vue';
+import i18n from "@/i18n";
 import Markdown from "vue3-markdown-it";
+import { useMatomo } from '@/composables/matomo';
+
 import "highlight.js/styles/github.css";
 import "github-markdown-css/github-markdown-light.css";
-import i18n from "@/i18n";
 
 const props = defineProps({
   message: {
@@ -58,8 +60,7 @@ const props = defineProps({
 
 const emits = defineEmits(["update-message"]);
 
-// Provided by vue-matomo
-const matomo = inject("Matomo")
+const matomo = useMatomo();
 
 const root = ref();
 
@@ -73,25 +74,25 @@ onMounted(() => {
 
 function copyToClipboard() {
   navigator.clipboard.writeText(props.message.content);
-  matomo.trackEvent("vote", "copy", this.message.className, 1);
+  matomo.value.trackEvent("vote", "copy", this.message.className, 1);
 }
 
 function toggleHighlight() {
   emits("update-message", props.message.index, {
     highlight: !props.message.highlight,
   });
-  matomo.trackEvent(
+  matomo.value.trackEvent(
     "vote",
     "highlight",
-    this.message.className,
-    this.message.highlight ? -1 : 1,
+    props.message.className,
+    props.message.highlight ? -1 : 1,
   );
 }
 
 function hide() {
   if (window.confirm(i18n.global.t("modal.confirmHide"))) {
     emits("update-message", props.message.index, { hide: true });
-    matomo.trackEvent("vote", "hide", this.message.className, 1);
+    matomo.value.trackEvent("vote", "hide", props.message.className, 1);
   }
 }
 
