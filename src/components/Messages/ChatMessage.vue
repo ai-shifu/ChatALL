@@ -28,22 +28,13 @@
         <v-icon>mdi-delete</v-icon>
       </v-btn>
     </v-card-title>
-    <div v-if="message.format === 'html'">
-      <div
-        class="markdown-body"
-        v-html="message.content"
-        ref="content"
-        @click="handleClick"
-      ></div>
-    </div>
-    <div v-else>
-      <Markdown
-        class="markdown-body"
-        :breaks="true"
-        :source="message.content"
-        @click="handleClick"
-      />
-    </div>
+    <Markdown
+      class="markdown-body"
+      :breaks="true"
+      :html="true"
+      :source="message.content"
+      @click="handleClick"
+    />
   </v-card>
 </template>
 
