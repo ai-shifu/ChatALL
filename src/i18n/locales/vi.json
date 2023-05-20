@@ -1,0 +1,105 @@
+{
+  "settings": {
+    "enable": "Cho phép",
+    "forExample": "Ví dụ. { example }",
+    "title": "Cài đặt",
+    "general": "Chung",
+    "auto": "Tự động",
+    "language": "Ngôn ngữ",
+    "languagePrompt": "Khởi động lại ứng dụng để cập nhập ngôn ngữ mới",
+    "loginOrOut": "Đăng nhập/Đăng xuất",
+    "loginOrOutPrompt": "Bấm vào đường dẫn bên dưới để đăng nhập hoặc đăng xuất trong cửa sổ mới, sau đó đóng nó lại",
+    "notice": "Thông báo",
+    "secretPrompt": "Token của bạn sẽ nằm trên thiết bị của bạn và sẽ không đươc chia sẽ tới bất kì ai khác"
+  },
+  "header": {
+    "clearMessages": "Xóa tất cả tin?",
+    "singleColumn": "1 cột",
+    "doubleColumn": "2 cột",
+    "tripleColumn": "3 cột"
+  },
+  "footer": {
+    "sendPrompt": "Gửi tới:",
+    "promptPlaceholder": "gõ tin nhắn ở đây. (Shift+Enter để thêm dòng mới)"
+  },
+  "error": {
+    "failedConnectUrl": "Kết nối lỗi đến { url }",
+    "closedByServer": "Kêt nối bị đóng bởi máy chủ"
+  },
+  "modal": {
+    "confirmHide": "Xóa tin này?",
+    "done": "Xong"
+  },
+  "bot": {
+    "creatingConversation": "Đang tạo hội thoại...",
+    "failedToCreateConversation": "Lỗi khi tạo hội thoại",
+    "name": "Hư không",
+    "notImplemented": "Đang được xây dựng...",
+    "notAvailable": "Chat bot chưa sẳn sàng vì bạn chưa đăng nhập hoặc chưa cài đặt đúng.",
+    "waiting": "Chờ các yêu cầu khác từ { botName } hoàn tất..."
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "h3imaginative": "Sáng tạo",
+    "galileo": "Cân bằng",
+    "h3precise": "Chính xác"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "Tự động làm mới",
+    "autoRefreshPrompt": "Nếu bạn không bị yêu cầu đăng nhập thường xuyên, đừng bật tính năng này",
+    "notice": "Chỉ thành viên trả phí Plus mới có thể sử dụng GPT-4",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "Web Browsing"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "fn_index của hàm bạn muốn gọi. Thường là 0",
+    "name": "Gradio",
+    "queueFull": "Hàng đợi đã đầy, vui lòng thử lại sau",
+    "url": "Gradio App URL",
+    "urlPrompt": "URL của ứng dụng Gradio của bạn. Nếu bạn đang sử dụng không gian Hugging Face, hãy lấy URL trực tiếp bằng cách nhấp vào \"Nhúng không gian này\" ở góc trên bên phải.",
+    "waiting": "Có { queue_size } yêu cầu trong hàng đợi, bạn đang ở vị trí thứ { rank }, và bạn sẽ phải đợi { queue_eta } giây"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "API URL thay thế",
+    "alterUrlPrompt": "Nếu bạn đang dùng API URL tùy chỉnh, bạn có thể nhập ở đây",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "Temperature",
+    "temperaturePrompt": "Temperature càng cao, văn bản càng sáng tạo nhưng càng có khả năng trở nên rời rạc",
+    "temperature0": "Cụ thể hơn",
+    "temperature2": "Tự nhiên hơn",
+    "apiKey": "API Key"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "dev": {
+    "name": "Dev Bot"
+  }
+}

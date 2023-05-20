@@ -121,6 +121,7 @@ export default class ChatGPTBot extends Bot {
           { headers, payload },
         );
 
+        let preInfo = [];
         source.addEventListener("message", (event) => {
           const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
           if (event.data === "[DONE]") {
@@ -135,10 +136,39 @@ export default class ChatGPTBot extends Bot {
               const data = JSON.parse(event.data);
               this.conversationContext.conversationId = data.conversation_id;
               this.conversationContext.parentMessageId = data.message.id;
-              const partialText = data.message?.content?.parts?.[0];
-              if (partialText) {
+              const content = data.message?.content;
+              if (
+                content?.content_type === "code" ||
+                content?.content_type === "system_error"
+              ) {
+                // Preprocessing info
                 onUpdateResponse(callbackParam, {
-                  content: partialText,
+                  content:
+                    "```python\n" +
+                    preInfo.join("\n") +
+                    (preInfo.length > 0 ? "\n" : "") +
+                    content.text +
+                    "\n```",
+                  done: false,
+                });
+                if (data.message.status === "finished_successfully")
+                  preInfo.push(content.text);
+              } else if (content?.content_type === "text") {
+                // The final response
+                let text = content.parts[0];
+
+                if (preInfo.length > 0)
+                  text = "```python\n" + preInfo.join("\n") + "\n```\n" + text;
+
+                const citations = data.message.metadata?.citations;
+                if (citations) {
+                  citations.forEach((element) => {
+                    text += `\n> 1. [${element.metadata.title}](${element.metadata.url})`;
+                  });
+                }
+
+                onUpdateResponse(callbackParam, {
+                  content: text,
                   done: false,
                 });
               }
@@ -151,7 +181,16 @@ export default class ChatGPTBot extends Bot {
 
         source.addEventListener("error", (error) => {
           source.close();
-          reject(new Error(error.data.detail));
+
+          let message = "";
+          if (error.data) {
+            const data = JSON.parse(error.data);
+            message = data.detail.message;
+          } else {
+            message = error.source.url;
+          }
+
+          reject(new Error(message));
         });
 
         source.addEventListener("done", () => {

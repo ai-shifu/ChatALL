@@ -53,7 +53,8 @@
     "autoRefreshPrompt": "If you're NOT being asked to log in frequently, do NOT enable this feature",
     "notice": "Only paid Plus members can use GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4"
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "Web Browsing"
   },
   "ernie": {
     "name": "ERNIE"
