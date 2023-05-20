@@ -1,51 +1,39 @@
 <template>
-  <v-card :class="[
-    'message',
-    message.type,
-    message.highlight ? 'highlight-border' : '',
-  ]" 
-  :loading="message.done ? false : 'primary'">
-  <v-card-title 
-  v-if="message.type === 'response'" 
-  class="title">
-    <img 
-    :src="message.logo" 
-    alt="Bot Icon" />
-    {{ message.name }}
-     <v-spacer></v-spacer>
-    <v-btn 
-     flat size="x-small" icon 
-     @click="toggleHighlight" 
-     :color="message.highlight ? 'primary' : ''">
-     <v-icon>mdi-lightbulb-on-outline</v-icon>
-    </v-btn>
-    <v-btn 
-     flat size="x-small" icon 
-     @click="copyToClipboard">
-     <v-icon>mdi-content-copy</v-icon>
-    </v-btn>
-    <v-btn 
-     flat size="x-small" icon
-     @click="hide">
-     <v-icon>mdi-delete</v-icon>
-    </v-btn>
+  <v-card
+    :class="[
+      'message',
+      message.type,
+      message.highlight ? 'highlight-border' : '',
+    ]"
+    :loading="message.done ? false : 'primary'"
+  >
+    <v-card-title v-if="message.type === 'response'" class="title">
+      <img :src="message.logo" alt="Bot Icon" />
+      {{ message.name }}
+      <v-spacer></v-spacer>
+      <v-btn
+        flat
+        size="x-small"
+        icon
+        @click="toggleHighlight"
+        :color="message.highlight ? 'primary' : ''"
+      >
+        <v-icon>mdi-lightbulb-on-outline</v-icon>
+      </v-btn>
+      <v-btn flat size="x-small" icon @click="copyToClipboard">
+        <v-icon>mdi-content-copy</v-icon>
+      </v-btn>
+      <v-btn flat size="x-small" icon @click="hide">
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
     </v-card-title>
-    <div 
-    v-if="message.format === 'html'">
-      <div 
-       class="markdown-body" 
-       v-html="message.content" 
-       ref="content" 
-       @click="handleClick">
-      </div>
-    </div>
-    <div v-else>
-      <Markdown 
-      class="markdown-body" 
-      :breaks="true" 
-      :source="message.content" 
-      @click="handleClick" />
-    </div>
+    <Markdown
+      class="markdown-body"
+      :breaks="true"
+      :html="true"
+      :source="message.content"
+      @click="handleClick"
+    />
   </v-card>
 </template>
 
@@ -117,45 +105,45 @@ export default {
 
 <style scoped>
 .message {
-  border-radius: 8px;
-  padding: 16px;
-  word-wrap: break-word;
-  text-align: left;
+    border-radius: 8px;
+    padding: 16px;
+    word-wrap: break-word;
+    text-align: left;
 }
 
 .highlight-border {
-  box-shadow: 0 0 0 2px rgba(var(--v-theme-primary), 1);
+    box-shadow: 0 0 0 2px rgba(var(--v-theme-primary), 1);
 }
 
 .prompt {
-  background-color: #95EC69;
-  width: fit-content;
-  grid-column: 1 / span var(--columns);
+    background-color: #95EC69;
+    width: fit-content;
+    grid-column: 1 / span var(--columns);
 }
 
 .response {
-  background-color: #FFF;
-  width: 100%;
-  grid-column: auto / span 1;
+    background-color: #FFF;
+    width: 100%;
+    grid-column: auto / span 1;
 }
 
 .title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  padding: 0;
-  margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0;
+    margin-bottom: 8px;
 }
 
 .title img {
-  width: 20px;
-  height: 20px;
-  margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
 }
 
 .markdown-body {
-  background-color: inherit;
-  font-family: inherit;
+    background-color: inherit;
+    font-family: inherit;
 }
 </style>
