@@ -1,5 +1,6 @@
 <template>
   <v-card
+    ref="root"
     :class="[
       'message',
       message.type,
@@ -37,70 +38,76 @@
   </v-card>
 </template>
 
-<script>
+<script setup>
+import { onMounted, ref, watch } from 'vue';
+import i18n from "@/i18n";
 import Markdown from "vue3-markdown-it";
+import { useMatomo } from '@/composables/matomo';
+
 import "highlight.js/styles/github.css";
 import "github-markdown-css/github-markdown-light.css";
-import i18n from "@/i18n";
 
-export default {
-  components: {
-    Markdown,
+const props = defineProps({
+  message: {
+    type: Object,
+    required: true,
   },
-  props: {
-    message: {
-      type: Object,
-      default: () => ({}),
-    },
-    columns: {
-      type: Number,
-      default: 1,
-    },
+  columns: {
+    type: Number,
+    required: true,
   },
-  mounted() {
-    this.$el.style.setProperty("--columns", this.columns);
-  },
-  watch: {
-    columns() {
-      this.$el.style.setProperty("--columns", this.columns);
-    },
-  },
-  methods: {
-    copyToClipboard() {
-      navigator.clipboard.writeText(this.message.content);
-      this.$matomo.trackEvent("vote", "copy", this.message.className, 1);
-    },
-    toggleHighlight() {
-      this.$emit("update-message", this.message.index, {
-        highlight: !this.message.highlight,
-      });
-      this.$matomo.trackEvent(
-        "vote",
-        "highlight",
-        this.message.className,
-        this.message.highlight ? -1 : 1,
-      );
-    },
-    hide() {
-      if (window.confirm(i18n.global.t("modal.confirmHide"))) {
-        this.$emit("update-message", this.message.index, { hide: true });
-        this.$matomo.trackEvent("vote", "hide", this.message.className, 1);
-      }
-    },
-    handleClick(event) {
-      const target = event.target;
-      if (target.tagName !== "A" && target.tagName !== "SUP") {
-        return;
-      }
-      // Open in external browser
-      event.preventDefault();
-      const electron = window.require("electron");
-      const url =
-        target.tagName === "SUP" ? target.parentElement.href : target.href;
-      electron.shell.openExternal(url);
-    },
-  },
-};
+})
+
+const emits = defineEmits(["update-message"]);
+
+const matomo = useMatomo();
+
+const root = ref();
+
+watch(() => props.columns, () => {
+  root.value.$el.style.setProperty("--columns", props.columns);
+})
+
+onMounted(() => {
+  root.value.$el.style.setProperty("--columns", props.columns);
+}) 
+
+function copyToClipboard() {
+  navigator.clipboard.writeText(props.message.content);
+  matomo.value.trackEvent("vote", "copy", props.message.className, 1);
+}
+
+function toggleHighlight() {
+  emits("update-message", props.message.index, {
+    highlight: !props.message.highlight,
+  });
+  matomo.value.trackEvent(
+    "vote",
+    "highlight",
+    props.message.className,
+    props.message.highlight ? -1 : 1,
+  );
+}
+
+function hide() {
+  if (window.confirm(i18n.global.t("modal.confirmHide"))) {
+    emits("update-message", props.message.index, { hide: true });
+    matomo.value.trackEvent("vote", "hide", props.message.className, 1);
+  }
+}
+
+function handleClick(event) {
+  const target = event.target;
+  if (target.tagName !== "A" && target.tagName !== "SUP") {
+    return;
+  }
+  // Open in external browser
+  event.preventDefault();
+  const electron = window.require("electron");
+  const url =
+    target.tagName === "SUP" ? target.parentElement.href : target.href;
+  electron.shell.openExternal(url);
+}
 </script>
 
 <style scoped>
