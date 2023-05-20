@@ -123,7 +123,7 @@ export default class MOSSBot extends Bot {
             } else if (event.status === -1) {
               wsp.removeAllListeners();
               wsp.close();
-              reject(new Error(event.output));
+              reject(new Error(`${event.status_code} ${event.output}`));
               return;
             }
             onUpdateResponse(callbackParam, {
