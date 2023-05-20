@@ -19,9 +19,9 @@ export default class LMSYSBot extends GradioBot {
   makeData(fn_index, prompt) {
     let r = null;
     if (fn_index === this.constructor._fnIndexes[0]) {
-      r = [null, prompt];
+      r = [null, this.constructor._model, prompt];
     } else if (fn_index === this.constructor._fnIndexes[1]) {
-      r = [null, this.constructor._model, 0.7, 1, 512];
+      r = [null, 0.7, 1, 512];
     }
     return r;
   }
