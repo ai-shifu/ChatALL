@@ -1,0 +1,105 @@
+{
+  "settings": {
+    "enable": "Activer",
+    "forExample": "Exemple :",
+    "title": "Paramètres",
+    "general": "Général",
+    "auto": "Automatique",
+    "language": "Langue",
+    "languagePrompt": "Relancez l'application pour appliquer la nouvelle langue",
+    "loginOrOut": "Connexion/Déconnexion",
+    "loginOrOutPrompt": "Cliquez sur le lien ci-dessous pour vous connecter ou vous déconnecter dans une nouvelle fenêtre, puis fermez-la",
+    "notice": "Remarque",
+    "secretPrompt": "Votre jeton secret restera sur votre appareil et ne sera partagé avec personne d'autre"
+  },
+  "header": {
+    "clearMessages": "Effacer tous les messages ?",
+    "singleColumn": "Colonne unique",
+    "doubleColumn": "Double colonne",
+    "tripleColumn": "Triple colonne"
+  },
+  "footer": {
+    "sendPrompt": "Envoyer à :",
+    "promptPlaceholder": "Tapez un message. (Maj+Entrée pour ajouter une nouvelle ligne)"
+  },
+  "error": {
+    "failedConnectUrl": "Échec de la connexion à { url }",
+    "closedByServer": "Connexion fermée par le serveur"
+  },
+  "modal": {
+    "confirmHide": "Supprimer ce message ?",
+    "done": "Terminé"
+  },
+  "bot": {
+    "creatingConversation": "Création de la conversation...",
+    "failedToCreateConversation": "Échec de la création de la conversation",
+    "name": "Bot Null",
+    "notImplemented": "En construction...",
+    "notAvailable": "Le bot n'est pas disponible car vous n'êtes pas connecté ou la configuration est incorrecte.",
+    "waiting": "En attente des autres demandes { botName } pour se terminer..."
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "h3imaginative": "Créatif",
+    "galileo": "Équilibré",
+    "h3precise": "Précis"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "Anti-déconnexion automatique",
+    "autoRefreshPrompt": "Si on ne vous demande PAS souvent de vous connecter, NE activez PAS cette fonctionnalité",
+    "notice": "Seuls les membres payants Plus peuvent utiliser GPT-4",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "Navigation Web"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "L'indice fn_index de la fonction que vous demanderez. La plupart du temps, il s'agit de 0",
+    "name": "Gradio",
+    "queueFull": "La file d'attente est pleine, veuillez réessayer plus tard",
+    "url": "URL de l'application Gradio",
+    "urlPrompt": "URL de votre application Gradio. Si vous utilisez Hugging Face, obtenez l'URL directe en cliquant sur \"Intégrer cet espace\" dans le coin supérieur droit.",
+    "waiting": "Il y a { queue_size } demandes en attente, vous êtes à la { rank }e place et il est prévu que vous attendiez { queue_eta } secondes"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "URL de l'API alternative",
+    "alterUrlPrompt": "Si vous utilisez une URL d'API personnalisée, vous pouvez la saisir ici",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "Température",
+    "temperaturePrompt": "Plus la température est élevée, plus le texte est créatif, mais il est plus susceptible d'être incohérent",
+    "temperature0": "Plus déterministe",
+    "temperature2": "Plus aléatoire",
+    "apiKey": "Clé API"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "dev": {
+    "name": "Bot Dev"
+  }
+}
