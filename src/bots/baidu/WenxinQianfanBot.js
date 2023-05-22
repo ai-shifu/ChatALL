@@ -66,18 +66,23 @@ export default class WenxinQianfanBot extends Bot {
         const source = new SSE(url, requestConfig);
 
         source.addEventListener("message", (event) => {
-          const data = JSON.parse(event.data);
-          const partialResult = data.result;
-          fullResult += partialResult;
-          onUpdateResponse(callbackParam, {
-            content: fullResult,
-            done: data.is_end,
-          });
+          if (event.data) {
+            const data = JSON.parse(event.data);
+            const partialResult = data.result;
+            fullResult += partialResult;
+            onUpdateResponse(callbackParam, {
+              content: fullResult,
+              done: data.is_end,
+            });
 
-          if (data.is_end) {
-            this.messages.push({ role: "assistant", content: fullResult });
-            source.close();
-            resolve();
+            if (data.is_end) {
+              this.messages.push({ role: "assistant", content: fullResult });
+              source.close();
+              resolve();
+            }
+          } else {
+            // To capture random errors
+            console.error("Error Wenxin Qianfan:", event);
           }
         });
         source.addEventListener("error", (error) => {
