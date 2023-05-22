@@ -33,7 +33,8 @@ async function createWindow() {
 
   mainWindow = win;
 
-  // Modify the SameSite attribute for all cookies
+  // Force the SameSite attribute to None for all cookies
+  // This is required for the cross-origin request to work
   win.webContents.session.cookies.on(
     "changed",
     async (event, cookie, cause, removed) => {
@@ -42,52 +43,32 @@ async function createWindow() {
         cause === "explicit" &&
         cookie.sameSite !== "no_restriction"
       ) {
-        // Check if the domain is valid
-        const domain = cookie.domain.startsWith(".")
-          ? cookie.domain.substring(1)
-          : cookie.domain;
-        const domainsToFilter = ["xfyun.cn"];
-
-        if (domainsToFilter.some((d) => domain.includes(d))) {
-          try {
-            const url = `https://${domain}${cookie.path}`;
-
-            await win.webContents.session.cookies.set({
-              url: url,
-              name: cookie.name,
-              value: cookie.value,
-              domain: cookie.domain,
-              path: cookie.path,
-              httpOnly: cookie.httpOnly,
-              expirationDate: cookie.expirationDate,
-              // secure: cookie.secure, // This will throw an error
-              sameSite: "no_restriction",
-            });
-          } catch (error) {
-            console.error(error, cookie);
+        try {
+          const domain = cookie.domain.startsWith(".")
+            ? cookie.domain.substring(1)
+            : cookie.domain;
+          const url = `https://${domain}${cookie.path}`;
+          let newCookie = {
+            url: url,
+            name: cookie.name,
+            value: cookie.value,
+            path: cookie.path,
+            httpOnly: cookie.httpOnly,
+            expirationDate: cookie.expirationDate,
+            secure: true, // Must be true for cross-origin cookies
+            sameSite: "no_restriction",
+          };
+          // If the domain starts with a dot, set the domain as is.
+          // Otherwise, Electron will use the url domain without the first dot as default.
+          if (cookie.domain.startsWith(".")) {
+            newCookie.domain = cookie.domain;
           }
+
+          await win.webContents.session.cookies.set(newCookie);
+        } catch (error) {
+          console.error(error, cookie);
         }
       }
-    },
-  );
-
-  // Force the SameSite attribute to None for all cookies
-  // This is required for the cross-origin request to work
-  win.webContents.session.webRequest.onHeadersReceived(
-    { urls: ["*://*/*"] },
-    (details, callback) => {
-      const newHeaders = details.responseHeaders;
-      const cookies = newHeaders["set-cookie"];
-
-      if (cookies) {
-        const updatedCookies = cookies.map((cookie) => {
-          return cookie.replace(/; SameSite=Lax/i, "; SameSite=None");
-        });
-
-        newHeaders["set-cookie"] = updatedCookies;
-      }
-
-      callback({ cancel: false, responseHeaders: newHeaders });
     },
   );
 
