@@ -97,6 +97,9 @@ export default class SparkBot extends Bot {
           } else if (event.data.slice(-5) === "<sid>") {
             // ignore <sid> message
             return;
+          } else if (event.data.startsWith("[") && event.data.endsWith("]")) {
+            source.close();
+            reject(new Error(event.data));
           } else {
             try {
               let partialText;
