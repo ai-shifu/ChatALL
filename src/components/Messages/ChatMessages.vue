@@ -1,16 +1,8 @@
 <template>
   <div class="messages">
-    <div
-      class="message-grid"
-      :style="{ gridTemplateColumns: gridTemplateColumns }"
-    >
-      <chat-message
-        v-for="(message, index) in filteredMessages"
-        :key="index"
-        :columns="columns"
-        :message="message"
-        @update-message="updateMessage"
-      ></chat-message>
+    <div class="message-grid" :style="{ gridTemplateColumns: gridTemplateColumns }">
+      <chat-message v-for="(message, index) in filteredMessages" :key="index" :columns="columns" :message="message"
+        @update-message="updateMessage"></chat-message>
     </div>
   </div>
 </template>
@@ -76,24 +68,25 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("scroll", onScroll);
 });
+
 </script>
 
 <style scoped>
 .messages {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 100%;
-    overflow-y: auto;
-    gap: 16px;
-    margin: 52px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  overflow-y: auto;
+  gap: 16px;
+  margin: 52px 16px;
 }
 
 .message-grid {
-    display: grid;
-    grid-gap: 16px;
-    width: 100%;
-    padding: 16px;
+  display: grid;
+  grid-gap: 16px;
+  width: 100%;
+  padding: 16px;
 }
 </style>
