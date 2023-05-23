@@ -33,6 +33,15 @@ export default class OpenAIAPIBot extends Bot {
       };
 
       this.messages.push({ role: "user", content: `‘${prompt}’` });
+      const is_less_than_restrict = true;
+      const maximum_context_length = 4097;
+      while (is_less_than_restrict) {
+        const mes = JSON.stringify(this.messages);
+        if (mes.length < maximum_context_length) {
+          break
+        }
+        this.messages.shift()
+      }
       const payload = JSON.stringify({
         model: this.constructor._model,
         messages: this.messages,
