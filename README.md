@@ -13,7 +13,7 @@
 
 ## Features
 
-Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can send prompt to several AI bots concurrently, help you to discover the best results.
+Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can send prompt to several AI bots concurrently, help you to discover the best results. All you need to do is [download, install](https://github.com/sunner/ChatALL/releases) and ask.
 
 ### Supported bots
 
@@ -45,7 +45,7 @@ And more...
 - Automatically keep ChatGPT session alive
 - Enable/disable any bots at any time
 - Switch between one, two, or three-column view
-- Supports multiple languages (en, zh)
+- Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese)
 - [TODO] Best recommendations
 
 ## Prerequisites
