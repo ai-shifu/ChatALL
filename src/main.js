@@ -52,7 +52,7 @@ createApp(App)
   .use(vuetify)
   .use(VueMatomo, {
     // Configure your matomo server and site by providing
-    host: "https://chatall.matomo.cloud/",
+    host: "https://matomo.chatall.ai/",
     siteId: 1,
 
     // Changes the default .js and .php endpoint's filename
