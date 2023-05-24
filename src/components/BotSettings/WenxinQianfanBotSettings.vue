@@ -12,17 +12,32 @@
       hide-details
       label="API Key"
       :placeholder="'2125NA8mQy7gC52Pq9BK3tvk'"
-      @change="setApiKey($event.target.value)"
+      @update:model-value="setWenxinQianfan({ apiKey: $event })"
     ></v-text-field>
     <v-text-field
       v-model="wenxinQianfan.secretKey"
       outlined
       dense
-      hide-details
       label="Secret Key"
       :placeholder="'IWf2pyYm26fz8GgNAHdkPkznHgazlffQ'"
-      @change="setSecretKey($event.target.value)"
+      @update:model-value="setWenxinQianfan({ secretKey: $event })"
     ></v-text-field>
+
+    <v-list-item-title>{{ $t("bot.pastRounds") }}</v-list-item-title>
+    <v-list-item-subtitle>{{
+      $t("bot.pastRoundsPrompt")
+    }}</v-list-item-subtitle>
+    <v-slider
+      v-model="setWenxinQianfan.pastRounds"
+      color="primary"
+      :min="0"
+      :max="10"
+      :step="1"
+      thumb-label
+      show-ticks
+      hide-details
+      @update:model-value="setWenxinQianfan({ pastRounds: $event })"
+    ></v-slider>
   </v-list-item>
 </template>
 
@@ -37,18 +52,6 @@ export default {
   },
   methods: {
     ...mapMutations(["setWenxinQianfan"]),
-    setApiKey(value) {
-      this.setWenxinQianfan({
-        ...this.wenxinQianfan,
-        apiKey: value,
-      });
-    },
-    setSecretKey(value) {
-      this.setWenxinQianfan({
-        ...this.wenxinQianfan,
-        secretKey: value,
-      });
-    },
   },
   computed: {
     ...mapState(["wenxinQianfan"]),
