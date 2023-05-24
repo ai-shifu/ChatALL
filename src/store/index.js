@@ -36,6 +36,7 @@ export default createStore({
     openaiApi: {
       apiKey: "",
       temperature: 1,
+      pastRounds: 5,
       alterUrl: "",
     },
     chatgpt: {

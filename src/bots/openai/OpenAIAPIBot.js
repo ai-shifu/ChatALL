@@ -25,6 +25,11 @@ export default class OpenAIAPIBot extends Bot {
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    // Remove old messages if exceeding the pastRounds limit
+    while (this.messages.length > store.state.openaiApi.pastRounds * 2) {
+      this.messages.shift();
+    }
+
     // Send the prompt to the OpenAI API
     try {
       const headers = {
