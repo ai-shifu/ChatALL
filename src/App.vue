@@ -21,6 +21,7 @@
           />
         </div>
         <div>
+          <DarkMode/>
           <v-icon
             class="cursor-pointer"
             color="primary"
@@ -98,13 +99,13 @@
 import "@mdi/font/css/materialdesignicons.css";
 import { mapState, mapMutations } from "vuex";
 import { v4 as uuidv4 } from "uuid";
-
 import i18n from "./i18n";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
+import DarkMode from "@/components/DarkMode/DarkMode.vue";
 
 // Bots
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
@@ -134,6 +135,7 @@ export default {
     ChatMessages,
     MakeAvailableModal,
     SettingsModal,
+    DarkMode,
   },
   data() {
     return {
@@ -375,4 +377,44 @@ footer {
 .v-textarea--auto-grow textarea{
     overflow: auto !important;
 }
+/*DarkMode*/
+:root{
+  --background-color-primary: #ffffff;
+  --background-color-secondary: #ffffff;
+  --text-primary-color: #000000;
+  --element-size: 4rem;
+}
+
+/* Define styles for the root window with dark - mode preference */
+:root.dark-theme {
+  --background-color-primary: #000000;
+  --background-color-secondary: #000000;
+  --text-primary-color: #ffffff;
+}
+
+p {
+  color: var(--text-primary-color);
+}
+
+ul {
+  color: var(--text-primary-color);
+}
+
+header {
+  background-color: var(--background-color-primary);
+}
+
+.content .message {
+  background-color: var(--background-color-primary);
+  color:var(--text-primary-color)
+}
+
+.v-card-title {
+  background-color: var(--background-color-primary);
+  color:var(--text-primary-color)
+}
+
+
+
+
 </style>
