@@ -14,6 +14,8 @@
   },
   "header": {
     "clearMessages": "清空所有消息？",
+    "yes": "是",
+    "no": "否",
     "singleColumn": "单列",
     "doubleColumn": "双列",
     "tripleColumn": "三列"

@@ -14,6 +14,8 @@
   },
   "header": {
     "clearMessages": "Clear all messages?",
+    "yes": "Yes",
+    "no": "No",
     "singleColumn": "Single Column",
     "doubleColumn": "Double Column",
     "tripleColumn": "Triple Column"
