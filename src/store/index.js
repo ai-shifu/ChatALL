@@ -25,6 +25,9 @@ export default createStore({
     columns: 2,
     selectedBots: {
       // Active bots which no login required
+      BingChatCreativeBot: true,
+      BingChatBalancedBot: true,
+      BingChatPreciseBot: true,
       ChatGLMBot: true,
       VicunaBot: true,
       AlpacaBot: true,

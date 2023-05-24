@@ -13,14 +13,14 @@
 
 ## Features
 
-Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can send prompt to several AI bots concurrently, help you to discover the best results.
+Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can send prompt to several AI bots concurrently, help you to discover the best results. All you need to do is [download, install](https://github.com/sunner/ChatALL/releases) and ask.
 
 ### Supported bots
 
 | AI Bots                                                      | Web Access  | API         | Notes                                       |
 | ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web Browsing included                       |
-| [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      |                                             |
+| [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      | No login required                           |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                             |
 | [Bard](https://bard.google.com/)                             | Yes         | No API      |                                             |
 | [Poe](https://poe.com/)                                      | Coming soon | Coming soon |                                             |
@@ -28,10 +28,10 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Coming soon | Coming soon |                                             |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Coming soon | No API      |                                             |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Yes         | Coming soon |                                             |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Yes         | No API      | No account or API key needed                |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | No account or API key needed                |
-| [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | No account or API key needed                |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | No account or API key needed                |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Yes         | No API      | No Login required                           |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | No Login required                           |
+| [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | No Login required                           |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | No Login required                           |
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
 
@@ -45,7 +45,7 @@ And more...
 - Automatically keep ChatGPT session alive
 - Enable/disable any bots at any time
 - Switch between one, two, or three-column view
-- Supports multiple languages (en, zh)
+- Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese)
 - [TODO] Best recommendations
 
 ## Prerequisites

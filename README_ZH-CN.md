@@ -13,14 +13,14 @@
 
 ## 功能
 
-基于大型语言模型（LLMs）的 AI 机器人非常神奇。然而，它们的行为可能是随机的，不同的机器人在不同的任务上表现也有差异。如果你想获得最佳体验，不要一个一个尝试。ChatALL（中文名：齐叨）可以把一条指令同时发给多个 AI，帮助您发现最好的回答。
+基于大型语言模型（LLMs）的 AI 机器人非常神奇。然而，它们的行为可能是随机的，不同的机器人在不同的任务上表现也有差异。如果你想获得最佳体验，不要一个一个尝试。ChatALL（中文名：齐叨）可以把一条指令同时发给多个 AI，帮助您发现最好的回答。你需要做的只是[下载、安装](https://github.com/sunner/ChatALL/releases)和提问。
 
 ### 支持的 AI
 
 | AI 机器人                                                    | 网页访问 | API      | 说明                                     |
 | ------------------------------------------------------------ | -------- | -------- | ---------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | 支持     | 支持     | 包含 Web Browsing                        |
-| [Bing Chat](https://www.bing.com/new)                        | 支持     | 无 API   |                                          |
+| [Bing Chat](https://www.bing.com/new)                        | 支持     | 无 API   | 不需要帐号                               |
 | [文心一言](https://yiyan.baidu.com/)                         | 否       | 支持     |                                          |
 | [Bard](https://bard.google.com/)                             | 支持     | 无 API   |                                          |
 | [Poe](https://poe.com/)                                      | 即将推出 | 即将推出 |                                          |
@@ -28,10 +28,10 @@
 | [通义千问](http://tongyi.aliyun.com/)                        | 即将推出 | 即将推出 |                                          |
 | [得到学习助手](https://ai.dedao.cn/)                         | 即将推出 | 无 API   |                                          |
 | [讯飞星火](http://xinghuo.xfyun.cn/)                         | 支持     | 即将推出 |                                          |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | 支持     | 无 API   | 不需要帐号或 API key                     |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | 支持     | 无 API   | 不需要帐号或 API key                     |
-| [ChatGLM](https://chatglm.cn/blog)                           | 支持     | 无 API   | 不需要帐号或 API key                     |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | 支持     | 无 API   | 不需要帐号或 API key                     |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | 支持     | 无 API   | 不需要帐号                               |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | 支持     | 无 API   | 不需要帐号                               |
+| [ChatGLM](https://chatglm.cn/blog)                           | 支持     | 无 API   | 不需要帐号                               |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | 支持     | 无 API   | 不需要帐号                               |
 | [Gradio](httpps://gradio.app/)                               | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 
@@ -45,7 +45,7 @@
 - 自动保持 ChatGPT 不掉线
 - 随时启用/禁用任何机器人
 - 在一列、两列或三列视图之间切换
-- 支持多语言（中文，英文）
+- 支持多语言（中文，英语，德语，法语，俄语，越南语）
 - [TODO] 推荐最佳答案
 
 ## 预先需要
