@@ -96,7 +96,7 @@
 
 <script>
 import "@mdi/font/css/materialdesignicons.css";
-import { mapState, mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 import { v4 as uuidv4 } from "uuid";
 
 import i18n from "./i18n";
