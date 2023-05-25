@@ -91,7 +91,7 @@
       v-model:open="isSettingsOpen"
       @done="checkAllBotsAvailability()"
     />
-    <ConfirmModal ref="confirmModal" :title="$t('header.clearMessages')" />
+    <ConfirmModal ref="confirmModal" />
   </div>
 </template>
 
