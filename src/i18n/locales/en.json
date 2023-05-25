@@ -32,6 +32,9 @@
     "confirmHide": "Delete this message?",
     "done": "Done"
   },
+  "chat":{
+    "newChat": "New Chat"
+  },
   "bot": {
     "creatingConversation": "Creating conversation...",
     "failedToCreateConversation": "Failed to create conversation",

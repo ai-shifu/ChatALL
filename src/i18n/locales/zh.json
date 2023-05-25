@@ -32,6 +32,9 @@
     "confirmHide": "删除这条消息？",
     "done": "完成"
   },
+  "chat":{
+    "newChat": "新对话"
+  },
   "bot": {
     "creatingConversation": "创建新对话...",
     "failedToCreateConversation": "创建对话失败",

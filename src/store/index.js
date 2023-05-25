@@ -13,7 +13,7 @@ const vuexPersist = new VuexPersist({
   storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
   reducer: (state) => {
     // eslint-disable-next-line
-    const { messages, ...persistedState } = state;
+    const { messages, chats, ...persistedState } = state;
     return persistedState;
   },
 });
@@ -55,6 +55,8 @@ export default createStore({
       pastRounds: 5,
     },
     messages: [],
+    chats: [{ title: "", messages: [] }],
+    currentChatIndex: 0,
     updateCounter: 0,
   },
   mutations: {
@@ -87,18 +89,36 @@ export default createStore({
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };
     },
-
     addMessage(state, message) {
-      state.messages.push(message);
+      const currentChat = state.chats[state.currentChatIndex];
+      currentChat.messages.push(message);
     },
-    updateMessage(state, { index, message }) {
-      state.messages[index] = { ...state.messages[index], ...message };
+    updateMessage(state, { indexes, message }) {
+      const { chatIndex, messageIndex } = indexes;
+      const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
+      const chat = state.chats[i];
+      chat.messages[messageIndex] = {
+        ...chat.messages[messageIndex],
+        ...message,
+      };
     },
     setMessages(state, messages) {
-      state.messages = messages;
+      const currentChat = state.chats[state.currentChatIndex];
+      currentChat.messages = messages;
     },
     incrementUpdateCounter(state) {
       state.updateCounter += 1;
+    },
+    init(state) {
+      // Upgrade messages data structure
+      if (state.messages.length > 0) {
+        const chat = {
+          title: i18n.global.t("chat.newChat"),
+          messages: state.messages,
+        };
+        state.chats[0] = chat;
+        state.messages = [];
+      }
     },
   },
   actions: {
@@ -126,13 +146,14 @@ export default createStore({
         };
 
         // workaround for tracking message position
-        message.index = state.messages.push(message) - 1;
+        const currentChat = state.chats[state.currentChatIndex];
+        message.index = currentChat.messages.push(message) - 1;
 
         bot.sendPrompt(
           prompt,
-          (index, values) =>
-            dispatch("updateMessage", { index, message: values }),
-          message.index,
+          (indexes, values) =>
+            dispatch("updateMessage", { indexes, message: values }),
+          { chatIndex: state.currentChatIndex, messageIndex: message.index },
         );
 
         $matomo.trackEvent(
@@ -143,13 +164,16 @@ export default createStore({
         );
       }
     },
-    updateMessage({ commit, state }, { index, message: values }) {
-      commit("updateMessage", { index, message: values });
+    updateMessage({ commit, state }, { indexes, message: values }) {
+      commit("updateMessage", { indexes, message: values });
 
       // workaround for notifing the message window to scroll to bottom
       commit("incrementUpdateCounter");
 
-      const message = { ...state.messages[index], ...values };
+      const i =
+        indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
+      const chat = state.chats[i];
+      const message = { ...chat.messages[indexes.messageIndex], ...values };
       if (values.done) {
         getMatomo().trackEvent(
           "prompt",
