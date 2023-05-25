@@ -70,6 +70,8 @@ For Apple Silicon Mac (M1, M2 CPU), download the \*-mac-arm64.dmg file.
 
 For other Macs, download \*-mac-x64.dmg file.
 
+If the system prompts that it cannot check whether the software is malicious, follow the [Apple official guide](https://support.apple.com/guide/mac-help/apple-cant-check-app-for-malicious-software-mchleab3a043/mac) to proceed.
+
 ### On Linux
 
 Download the .AppImage file, make it executable, and enjoy the click-to-run experience.
