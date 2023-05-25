@@ -12,6 +12,7 @@
       placeholder="sk-..."
       @update:model-value="setOpenaiApi({ apiKey: $event })"
     ></v-text-field>
+
     <v-list-item-title>{{ $t("openaiApi.temperature") }}</v-list-item-title>
     <v-list-item-subtitle>{{
       $t("openaiApi.temperaturePrompt")
@@ -27,6 +28,22 @@
       :ticks="temperatureLabels"
       @update:model-value="setOpenaiApi({ temperature: $event })"
     ></v-slider>
+
+    <v-list-item-title>{{ $t("bot.pastRounds") }}</v-list-item-title>
+    <v-list-item-subtitle>{{
+      $t("bot.pastRoundsPrompt")
+    }}</v-list-item-subtitle>
+    <v-slider
+      v-model="openaiApi.pastRounds"
+      color="primary"
+      :min="0"
+      :max="10"
+      :step="1"
+      thumb-label
+      show-ticks
+      @update:model-value="setOpenaiApi({ pastRounds: $event })"
+    ></v-slider>
+
     <v-list-item-title>{{ $t("openaiApi.alterUrl") }}</v-list-item-title>
     <v-list-item-subtitle>{{
       $t("openaiApi.alterUrlPrompt")

@@ -36,6 +36,7 @@ export default createStore({
     openaiApi: {
       apiKey: "",
       temperature: 1,
+      pastRounds: 5,
       alterUrl: "",
     },
     chatgpt: {
@@ -51,6 +52,7 @@ export default createStore({
     wenxinQianfan: {
       apiKey: "",
       secretKey: "",
+      pastRounds: 5,
     },
     messages: [],
     updateCounter: 0,
@@ -79,8 +81,8 @@ export default createStore({
     setMoss(state, token) {
       state.moss.token = token;
     },
-    setWenxinQianfan(state, { apiKey, secretKey }) {
-      state.wenxinQianfan = { apiKey, secretKey };
+    setWenxinQianfan(state, values) {
+      state.wenxinQianfan = { ...state.wenxinQianfan, ...values };
     },
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };

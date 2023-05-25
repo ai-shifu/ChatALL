@@ -14,6 +14,8 @@
   },
   "header": {
     "clearMessages": "Clear all messages?",
+    "yes": "Yes",
+    "no": "No",
     "singleColumn": "Single Column",
     "doubleColumn": "Double Column",
     "tripleColumn": "Triple Column"
@@ -36,7 +38,9 @@
     "name": "Null Bot",
     "notImplemented": "Under construction...",
     "notAvailable": "The bot is not available because not login or not configured correctly.",
-    "waiting": "Waiting for other { botName } request(s) to complete..."
+    "waiting": "Waiting for other { botName } request(s) to complete...",
+    "pastRounds": "How many rounds of past chats to carry?",
+    "pastRoundsPrompt": "The more historical chats carried, the better the effect of multi-round dialogue, but it will also consume more costs"
   },
   "bard": {
     "name": "Bard"

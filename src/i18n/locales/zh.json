@@ -14,6 +14,8 @@
   },
   "header": {
     "clearMessages": "清空所有消息？",
+    "yes": "是",
+    "no": "否",
     "singleColumn": "单列",
     "doubleColumn": "双列",
     "tripleColumn": "三列"
@@ -36,7 +38,9 @@
     "nullBot": "虚无",
     "notImplemented": "建设中...",
     "notAvailable": "这个对话机器人现在不可用。可能因为未登录，或者配置不正确。",
-    "waiting": "等待其它 { botName } 请求结束..."
+    "waiting": "等待其它 { botName } 请求结束...",
+    "pastRounds": "携带多少轮过去的会话？",
+    "pastRoundsPrompt": "带的历史会话越多，多轮对话效果越好，但也会消耗更多费用"
   },
   "bard": {
     "name": "Bard"

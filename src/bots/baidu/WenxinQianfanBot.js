@@ -42,6 +42,11 @@ export default class WenxinQianfanBot extends Bot {
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    // Remove old messages if exceeding the pastRounds limit
+    while (this.messages.length > store.state.wenxinQianfan.pastRounds * 2) {
+      this.messages.shift();
+    }
+
     try {
       const headers = {
         "Content-Type": "application/json",

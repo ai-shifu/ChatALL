@@ -92,6 +92,7 @@
       v-model:open="isSettingsOpen"
       @done="checkAllBotsAvailability()"
     />
+    <ConfirmModal ref="confirmModal" :title="$t('header.clearMessages')" />
   </div>
 </template>
 
@@ -261,8 +262,11 @@ export default {
         this.sendPromptToBots();
       }
     },
-    clearMessages() {
-      if (window.confirm(i18n.global.t("header.clearMessages"))) {
+    async clearMessages() {
+      const result = await this.$refs.confirmModal.showModal(
+        i18n.global.t("header.clearMessages"),
+      );
+      if (result) {
         this.$store.dispatch("clearMessages");
       }
     },
