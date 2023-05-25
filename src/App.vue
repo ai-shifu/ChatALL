@@ -1,96 +1,105 @@
 <template>
   <div id="app">
-    <header>
-      <div class="header-content">
-        <img class="logo" src="@/assets/logo-banner.png" alt="ChatALL" />
-        <div class="column-icons">
+    <v-layout>
+
+      <header>
+        <div class="header-content">
+          <div />
+          <div class="column-icons">
+            <img
+              src="@/assets/column-1.svg"
+              @click="changeColumns(1)"
+              :class="{ selected: columns === 1 }"
+            />
+            <img
+              src="@/assets/column-2.svg"
+              @click="changeColumns(2)"
+              :class="{ selected: columns === 2 }"
+            />
+            <img
+              src="@/assets/column-3.svg"
+              @click="changeColumns(3)"
+              :class="{ selected: columns === 3 }"
+            />
+          </div>
+          <div>
+            <v-icon
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-broom"
+              size="x-large"
+              @click="clearMessages()"
+            ></v-icon>
+            <v-icon
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-cog"
+              size="x-large"
+              @click="openSettingsModal()"
+            ></v-icon>
+          </div>
+        </div>
+      </header>
+
+      <ChatsMenuDrawer 
+        @create:chat="checkAllBotsAvailability"
+      />
+
+      <main class="content pl-10">
+        <div id="content">
+          <ChatMessages :columns="columns"></ChatMessages>
+        </div>
+      </main>
+
+      <footer class="ml-14">
+        <v-textarea
+          v-model="prompt"
+          auto-grow
+          max-rows="8.5"
+          rows="1"
+          density="comfortable"
+          hide-details
+          variant="solo"
+          :placeholder="$t('footer.promptPlaceholder')"
+          autofocus
+          @keydown="filterEnterKey"
+          style="min-width: 390px"
+        ></v-textarea>
+        <v-btn
+          color="primary"
+          elevation="2"
+          class="margin-bottom"
+          :disabled="
+            prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
+          "
+          @click="sendPromptToBots"
+        >
+          {{ $t("footer.sendPrompt") }}
+        </v-btn>
+        <div class="bot-logos margin-bottom">
           <img
-            src="@/assets/column-1.svg"
-            @click="changeColumns(1)"
-            :class="{ selected: columns === 1 }"
-          />
-          <img
-            src="@/assets/column-2.svg"
-            @click="changeColumns(2)"
-            :class="{ selected: columns === 2 }"
-          />
-          <img
-            src="@/assets/column-3.svg"
-            @click="changeColumns(3)"
-            :class="{ selected: columns === 3 }"
+            v-for="(bot, index) in bots"
+            :class="{ selected: activeBots[bot.constructor._className] }"
+            :key="index"
+            :src="bot.getLogo()"
+            :alt="bot.getFullname()"
+            :title="bot.getFullname()"
+            @click="toggleSelected(bot)"
           />
         </div>
-        <div>
-          <v-icon
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-broom"
-            size="x-large"
-            @click="clearMessages()"
-          ></v-icon>
-          <v-icon
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-cog"
-            size="x-large"
-            @click="openSettingsModal()"
-          ></v-icon>
-        </div>
-      </div>
-    </header>
+      </footer>
 
-    <main class="content">
-      <div id="content">
-        <ChatMessages :columns="columns"></ChatMessages>
-      </div>
-    </main>
-
-    <footer>
-      <v-textarea
-        v-model="prompt"
-        auto-grow
-        max-rows="8.5"
-        rows="1"
-        density="comfortable"
-        hide-details
-        variant="solo"
-        :placeholder="$t('footer.promptPlaceholder')"
-        autofocus
-        @keydown="filterEnterKey"
-        style="min-width: 390px"
-      ></v-textarea>
-      <v-btn
-        color="primary"
-        elevation="2"
-        class="margin-bottom"
-        :disabled="
-          prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
-        "
-        @click="sendPromptToBots"
-      >
-        {{ $t("footer.sendPrompt") }}
-      </v-btn>
-      <div class="bot-logos margin-bottom">
-        <img
-          v-for="(bot, index) in bots"
-          :class="{ selected: activeBots[bot.constructor._className] }"
-          :key="index"
-          :src="bot.getLogo()"
-          :alt="bot.getFullname()"
-          :title="bot.getFullname()"
-          @click="toggleSelected(bot)"
-        />
-      </div>
-    </footer>
-    <MakeAvailableModal
-      v-model:open="isMakeAvailableOpen"
-      :bot="clickedBot"
-      @done="checkAllBotsAvailability(clickedBot)"
-    />
-    <SettingsModal
-      v-model:open="isSettingsOpen"
-      @done="checkAllBotsAvailability()"
-    />
+      <MakeAvailableModal
+        v-model:open="isMakeAvailableOpen"
+        :bot="clickedBot"
+        @done="checkAllBotsAvailability(clickedBot)"
+      />
+      <SettingsModal
+        v-model:open="isSettingsOpen"
+        @done="checkAllBotsAvailability()"
+      />
+    
+    </v-layout>
   </div>
 </template>
 
@@ -105,27 +114,7 @@ import i18n from "./i18n";
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
-
-// Bots
-import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
-import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
-import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
-import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
-import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
-import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
-import SparkBot from "@/bots/SparkBot";
-import BardBot from "@/bots/BardBot";
-import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
-import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
-import MOSSBot from "@/bots/MOSSBot";
-import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
-import VicunaBot from "@/bots/lmsys/VicunaBot";
-import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
-import AlpacaBot from "@/bots/lmsys/AlpacaBot";
-import ClaudeBot from "@/bots/lmsys/ClaudeBot";
-import DevBot from "@/bots/DevBot";
-import GradioAppBot from "@/bots/huggingface/GradioAppBot";
-import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
+import ChatsMenuDrawer from "@/components/ChatsMenuDrawer.vue"
 
 export default {
   name: "App",
@@ -133,43 +122,24 @@ export default {
     ChatMessages,
     MakeAvailableModal,
     SettingsModal,
+    ChatsMenuDrawer,
   },
   data() {
     return {
       prompt: "",
-      bots: [
-        ChatGPT35Bot.getInstance(),
-        ChatGPT4Bot.getInstance(),
-        ChatGPTBrowsingBot.getInstance(),
-        OpenAIAPI35Bot.getInstance(),
-        OpenAIAPI4Bot.getInstance(),
-        BingChatCreativeBot.getInstance(),
-        BingChatBalancedBot.getInstance(),
-        BingChatPreciseBot.getInstance(),
-        ClaudeBot.getInstance(),
-        BardBot.getInstance(),
-        WenxinQianfanBot.getInstance(),
-        SparkBot.getInstance(),
-        HuggingChatBot.getInstance(),
-        VicunaBot.getInstance(),
-        AlpacaBot.getInstance(),
-        ChatGLMBot.getInstance(),
-        MOSSBot.getInstance(),
-        GradioAppBot.getInstance(),
-      ],
       activeBots: {},
-
       clickedBot: null,
       isMakeAvailableOpen: false,
-
       isSettingsOpen: false,
     };
   },
   computed: {
     ...mapGetters({
+      currentChatId: "chatsModule/getCurrentChatId",
       columns: "appModule/getColumns", 
       uuid: "appModule/getUuid", 
       selectedBots: "settingsModule/getSelectedBots",
+      bots: "chatsModule/getCurrentChatBotsAvailable",
     }),
   },
   methods: {
@@ -180,15 +150,21 @@ export default {
     }),
     async sendPromptToBots() {
       if (this.prompt.trim() === "") return;
-      if (Object.values(this.activeBots).every((bot) => !bot)) return;
 
-      const bots = this.bots.filter(
-        (bot) => this.activeBots[bot.constructor._className],
+      // TODO: implement this logic in chats.module store in order to save active bots by chats
+      const activeBotNames = Object.keys(this.activeBots).filter(
+        (botName) => this.activeBots[botName],
       );
 
-      this.$store.dispatch("sendPrompt", {
+      if (!activeBotNames.length) return;
+
+      const bots = this.bots.filter(
+        (bot) => Boolean(this.activeBots[bot.constructor._className]),
+      );
+
+      this.$store.dispatch("chatsModule/sendPrompt", {
         prompt: this.prompt,
-        bots,
+        activeBotNames,
       });
 
       this.$matomo.trackEvent(
@@ -266,19 +242,19 @@ export default {
     },
     clearMessages() {
       if (window.confirm(i18n.global.t("header.clearMessages"))) {
-        this.$store.dispatch("clearMessages");
+        this.$store.dispatch("chatsModule/clearChatMessages");
       }
     },
-  },
-  computed: {
-    ...mapState(["columns"]),
-    ...mapState(["selectedBots"]),
+    initChat() {
+      if (this.currentChatId) {
+        return;
+      }
+      this.$store.dispatch('chatsModule/createChat')
+    }
   },
   created() {
+    this.initChat();
     this.checkAllBotsAvailability();
-    if (process.env.NODE_ENV !== "production") {
-      this.bots.push(DevBot.getInstance());
-    }
   },
   mounted() {
     this.uuid && this.setUuid(uuidv4());

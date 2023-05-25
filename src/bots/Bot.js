@@ -23,6 +23,8 @@ export default class Bot {
   static _settingsComponent = ""; // Vue component filename for settings
   static _outputFormat = "markdown"; // "markdown" or "html"
 
+  chatId = null;
+  
   constructor() {
     // Compute the logo paths after packing by Webpack 4
     if (!this.constructor._logoPackedPaths) {
@@ -37,6 +39,10 @@ export default class Bot {
 
   static getInstance() {
     return new this();
+  }
+
+  setChatId(chatId) {
+    this.chatId = chatId;
   }
 
   getLogo() {
