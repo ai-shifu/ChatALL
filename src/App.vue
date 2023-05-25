@@ -105,8 +105,9 @@ import i18n from "./i18n";
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
-import DarkMode from'@/components/DarkMode/DarkMode.vue';
 import ConfirmModal from "@/components/ConfirmModal.vue";
+import DarkMode from'@/components/DarkMode/DarkMode.vue';
+
 
 // Bots
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
@@ -136,8 +137,8 @@ export default {
     ChatMessages,
     MakeAvailableModal,
     SettingsModal,
-    DarkMode,
     ConfirmModal,
+    DarkMode,
   },
   data() {
     return {
