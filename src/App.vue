@@ -1,97 +1,106 @@
 <template>
   <div id="app">
-    <header>
-      <div class="header-content">
-        <img class="logo" src="@/assets/logo-banner.png" alt="ChatALL" />
-        <div class="column-icons">
+    <v-layout>
+
+      <header>
+        <div class="header-content">
+          <div />
+          <div class="column-icons">
+            <img
+              src="@/assets/column-1.svg"
+              @click="changeColumns(1)"
+              :class="{ selected: columns === 1 }"
+            />
+            <img
+              src="@/assets/column-2.svg"
+              @click="changeColumns(2)"
+              :class="{ selected: columns === 2 }"
+            />
+            <img
+              src="@/assets/column-3.svg"
+              @click="changeColumns(3)"
+              :class="{ selected: columns === 3 }"
+            />
+          </div>
+          <div>
+            <v-icon
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-broom"
+              size="x-large"
+              @click="clearMessages()"
+            ></v-icon>
+            <v-icon
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-cog"
+              size="x-large"
+              @click="openSettingsModal()"
+            ></v-icon>
+          </div>
+        </div>
+      </header>
+
+      <ChatsMenuDrawer 
+        @create:chat="checkAllBotsAvailability"
+      />
+
+      <main class="content pl-10">
+        <div id="content">
+          <ChatMessages :columns="columns"></ChatMessages>
+        </div>
+      </main>
+
+      <footer class="ml-14">
+        <v-textarea
+          v-model="prompt"
+          auto-grow
+          max-rows="8.5"
+          rows="1"
+          density="comfortable"
+          hide-details
+          variant="solo"
+          :placeholder="$t('footer.promptPlaceholder')"
+          autofocus
+          @keydown="filterEnterKey"
+          style="min-width: 390px"
+        ></v-textarea>
+        <v-btn
+          color="primary"
+          elevation="2"
+          class="margin-bottom"
+          :disabled="
+            prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
+          "
+          @click="sendPromptToBots"
+        >
+          {{ $t("footer.sendPrompt") }}
+        </v-btn>
+        <div class="bot-logos margin-bottom">
           <img
-            src="@/assets/column-1.svg"
-            @click="changeColumns(1)"
-            :class="{ selected: columns === 1 }"
-          />
-          <img
-            src="@/assets/column-2.svg"
-            @click="changeColumns(2)"
-            :class="{ selected: columns === 2 }"
-          />
-          <img
-            src="@/assets/column-3.svg"
-            @click="changeColumns(3)"
-            :class="{ selected: columns === 3 }"
+            v-for="(bot, index) in bots"
+            :class="{ selected: activeBots[bot.constructor._className] }"
+            :key="index"
+            :src="bot.getLogo()"
+            :alt="bot.getFullname()"
+            :title="bot.getFullname()"
+            @click="toggleSelected(bot)"
           />
         </div>
-        <div>
-          <v-icon
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-broom"
-            size="x-large"
-            @click="clearMessages()"
-          ></v-icon>
-          <v-icon
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-cog"
-            size="x-large"
-            @click="openSettingsModal()"
-          ></v-icon>
-        </div>
-      </div>
-    </header>
+      </footer>
 
-    <main class="content">
-      <div id="content">
-        <ChatMessages :columns="columns"></ChatMessages>
-      </div>
-    </main>
-
-    <footer>
-      <v-textarea
-        v-model="prompt"
-        auto-grow
-        max-rows="8.5"
-        rows="1"
-        density="comfortable"
-        hide-details
-        variant="solo"
-        :placeholder="$t('footer.promptPlaceholder')"
-        autofocus
-        @keydown="filterEnterKey"
-        style="min-width: 390px"
-      ></v-textarea>
-      <v-btn
-        color="primary"
-        elevation="2"
-        class="margin-bottom"
-        :disabled="
-          prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
-        "
-        @click="sendPromptToBots"
-      >
-        {{ $t("footer.sendPrompt") }}
-      </v-btn>
-      <div class="bot-logos margin-bottom">
-        <img
-          v-for="(bot, index) in bots"
-          :class="{ selected: activeBots[bot.getClassname()] }"
-          :key="index"
-          :src="bot.getLogo()"
-          :alt="bot.getFullname()"
-          :title="bot.getFullname()"
-          @click="toggleSelected(bot)"
-        />
-      </div>
-    </footer>
-    <MakeAvailableModal
-      v-model:open="isMakeAvailableOpen"
-      :bot="clickedBot"
-      @done="checkAllBotsAvailability(clickedBot)"
-    />
-    <SettingsModal
-      v-model:open="isSettingsOpen"
-      @done="checkAllBotsAvailability()"
-    />
-    <ConfirmModal ref="confirmModal" />
+      <MakeAvailableModal
+        v-model:open="isMakeAvailableOpen"
+        :bot="clickedBot"
+        @done="checkAllBotsAvailability(clickedBot)"
+      />
+      <SettingsModal
+        v-model:open="isSettingsOpen"
+        @done="checkAllBotsAvailability()"
+      />
+      <ConfirmModal ref="confirmModal" />
+    
+    </v-layout>
   </div>
 </template>
 
@@ -109,6 +118,7 @@ import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
+import ChatsMenuDrawer from "@/components/ChatsMenuDrawer.vue"
 
 export default {
   name: "App",
@@ -117,24 +127,24 @@ export default {
     MakeAvailableModal,
     SettingsModal,
     ConfirmModal,
+    ChatsMenuDrawer,
   },
   data() {
     return {
       prompt: "",
-      bots: bots.all,
       activeBots: {},
-
       clickedBot: null,
       isMakeAvailableOpen: false,
-
       isSettingsOpen: false,
     };
   },
   computed: {
     ...mapGetters({
+      currentChatId: "chatsModule/getCurrentChatId",
       columns: "appModule/getColumns", 
       uuid: "appModule/getUuid", 
       selectedBots: "settingsModule/getSelectedBots",
+      bots: "chatsModule/getCurrentChatBotsAvailable",
     }),
   },
   methods: {
@@ -145,15 +155,21 @@ export default {
     }),
     async sendPromptToBots() {
       if (this.prompt.trim() === "") return;
-      if (Object.values(this.activeBots).every((bot) => !bot)) return;
 
-      const toBots = bots.all.filter(
-        (bot) => this.activeBots[bot.getClassname()],
+      // TODO: implement this logic in chats.module store in order to save active bots by chats
+      const activeBotNames = Object.keys(this.activeBots).filter(
+        (botName) => this.activeBots[botName],
       );
 
-      this.$store.dispatch("sendPrompt", {
+      if (!activeBotNames.length) return;
+
+      const bots = this.bots.filter(
+        (bot) => Boolean(this.activeBots[bot.constructor._className]),
+      );
+
+      this.$store.dispatch("chatsModule/sendPrompt", {
         prompt: this.prompt,
-        bots: toBots,
+        activeBotNames,
       });
 
       this.$matomo.trackEvent(
@@ -229,20 +245,20 @@ export default {
         this.sendPromptToBots();
       }
     },
-    async clearMessages() {
-      const result = await this.$refs.confirmModal.showModal(
-        i18n.global.t("header.clearMessages"),
-      );
-      if (result) {
-        this.$store.commit("clearMessages");
+    clearMessages() {
+      if (window.confirm(i18n.global.t("header.clearMessages"))) {
+        this.$store.dispatch("chatsModule/clearChatMessages");
       }
     },
-  },
-  computed: {
-    ...mapState(["columns"]),
-    ...mapState(["selectedBots"]),
+    initChat() {
+      if (this.currentChatId) {
+        return;
+      }
+      this.$store.dispatch('chatsModule/createChat')
+    }
   },
   created() {
+    this.initChat();
     this.checkAllBotsAvailability();
   },
   mounted() {
