@@ -25,12 +25,19 @@ const vuetify = createVuetify({
       light: {
         colors: {
           primary: "#062AAA",
+          secondary:"#f3f3f3",
+          text:"#000000",
+          prompt:"#95EC69"
         },
       },
       dark: {
-        dark: true,
+        dark:true,
         colors: {
-          primary: "#062AAA",
+         primary:"#000000",
+         secondary:"191919",
+         background:"191919",
+         text:"#ffffff",
+         prompt:"191919"
         },
       },
     },

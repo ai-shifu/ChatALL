@@ -24,14 +24,14 @@
           <DarkMode/>
           <v-icon
             class="cursor-pointer"
-            color="primary"
+            color="#062aaa"
             icon="mdi-broom"
             size="x-large"
             @click="clearMessages()"
           ></v-icon>
           <v-icon
             class="cursor-pointer"
-            color="primary"
+            color="#062aaa"
             icon="mdi-cog"
             size="x-large"
             @click="openSettingsModal()"
@@ -105,7 +105,7 @@ import i18n from "./i18n";
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
-import DarkMode from "@/components/DarkMode/DarkMode.vue";
+import DarkMode from'@/components/DarkMode/DarkMode.vue'
 
 // Bots
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
@@ -135,7 +135,7 @@ export default {
     ChatMessages,
     MakeAvailableModal,
     SettingsModal,
-    DarkMode,
+    DarkMode
   },
   data() {
     return {
@@ -304,7 +304,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: white;
+    background-color: rgb(var(--v-theme-secondary));
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     padding: 16px;
     z-index: 999;
@@ -377,44 +377,9 @@ footer {
 .v-textarea--auto-grow textarea{
     overflow: auto !important;
 }
-/*DarkMode*/
-:root{
-  --background-color-primary: #ffffff;
-  --background-color-secondary: #ffffff;
-  --text-primary-color: #000000;
-  --element-size: 4rem;
+
+.markdown-body{
+  color:rgb(var(--v-theme-text));
 }
-
-/* Define styles for the root window with dark - mode preference */
-:root.dark-theme {
-  --background-color-primary: #000000;
-  --background-color-secondary: #000000;
-  --text-primary-color: #ffffff;
-}
-
-p {
-  color: var(--text-primary-color);
-}
-
-ul {
-  color: var(--text-primary-color);
-}
-
-header {
-  background-color: var(--background-color-primary);
-}
-
-.content .message {
-  background-color: var(--background-color-primary);
-  color:var(--text-primary-color)
-}
-
-.v-card-title {
-  background-color: var(--background-color-primary);
-  color:var(--text-primary-color)
-}
-
-
-
 
 </style>

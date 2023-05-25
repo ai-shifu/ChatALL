@@ -114,6 +114,7 @@ function handleClick(event) {
 .message {
     border-radius: 8px;
     padding: 16px;
+    color:rgb(var(--v-theme-text));
     word-wrap: break-word;
     text-align: left;
 }
@@ -123,13 +124,13 @@ function handleClick(event) {
 }
 
 .prompt {
-    background-color: #95EC69;
+    background-color: rgb(var(--v-theme-prompt));
     width: fit-content;
     grid-column: 1 / span var(--columns);
 }
 
 .response {
-    background-color: #FFF;
+    background-color:rgb(var(--v-theme-secondary));
     width: 100%;
     grid-column: auto / span 1;
 }

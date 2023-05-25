@@ -1,107 +1,94 @@
 <template>
-    <div>
-      <input
-        @change="toggleTheme"
-        id="checkbox"
-        type="checkbox"
-        class="switch-checkbox"
-      />
-      <label for="checkbox" class="switch-label">
-        
-        <span >🌙</span>
-        <span >☀️</span>
-        <div
-          class="switch-toggle"
-          :class="{ 'switch-toggle-checked': userTheme === 'dark-theme' }"
-        ></div>
-      </label>
-    </div>
+      <label class="switch">
+  <input type="checkbox" @click="toggleTheme">
+  <span class="slider round"></span>
+</label>
+
   </template>
   
   <script>
+  import { useTheme } from 'vuetify'
+  
   export default {
-    mounted() {
-      const initUserTheme = this.getTheme() || this.getMediaPreference();
-      this.setTheme(initUserTheme);
-    },
-  
-    data() {
+    setup () {
+      const theme = useTheme();
+      var darkText={
+        message:"Dark Mode",
+      }
       return {
-        userTheme: "light-theme",
-      };
+        theme,
+        toggleTheme() { 
+            theme.global.name.value = theme.global.current.value.dark ? 'light': 'dark' ;
+            if(theme.global.current.value.dark){
+            darkText.message="Light Mode"
+            }
+          else {
+            darkText.message="Dark Mode"
+           }
+        },
+      }
     },
-  
-    methods: {
-      toggleTheme() {
-        const activeTheme = localStorage.getItem("user-theme");
-        if (activeTheme === "light-theme") {
-          this.setTheme("dark-theme");
-        } else {
-          this.setTheme("light-theme");
-        }
-      },
-  
-      getTheme() {
-        return localStorage.getItem("user-theme");
-      },
-  
-      setTheme(theme) {
-        localStorage.setItem("user-theme", theme);
-        this.userTheme = theme;
-        document.documentElement.className = theme;
-      },
-  
-      getMediaPreference() {
-        const hasDarkPreference = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        if (hasDarkPreference) {
-          return "dark-theme";
-        } else {
-          return "light-theme";
-        }
-      },
-    },
-  };
-  </script>
-  
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
-  <style scoped>
-  .switch-checkbox {
-    display: none;
   }
-  
-  .switch-label {
-    align-items: center;
-    background: var(--text-primary-color);
-    border: calc(var(--element-size) * 0.025) solid var(--accent-color);
-    border-radius: var(--element-size);
-    cursor: pointer;
-    display: flex;
-    font-size: calc(var(--element-size) * 0.2);
-    height: calc(var(--element-size) * 0.35);
-    position: relative;
-    padding: calc(var(--element-size) * 0.1);
-    transition: background 0.5s ease;
-    justify-content: space-between;
-    width: var(--element-size);
-    z-index: 1;
-  }
-  
-  .switch-toggle {
-    position: absolute;
-    background-color: rgb(var(--v-theme-primary));
-    border-radius: 50%;
-    top: calc(var(--element-size) * -0.03);
-    left: calc(var(--element-size) * -0.00);
-    height: calc(var(--element-size) * 0.4);
-    width: calc(var(--element-size) * 0.4);
-    transform: translateX(0);
-    transition: transform 0.3s ease, background-color 0.5s ease;
-  }
-  
-  .switch-toggle-checked {
-    transform: translateX(calc(var(--element-size) * 0.6)) !important;
-  }
-  </style>
-  
+</script>
+
+<style scoped>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 25px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 22px;
+  left: 3px;
+  bottom: 4px;
+  background-color:rgb(var(--v-theme-primary));
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(var(--v-theme-text));
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
