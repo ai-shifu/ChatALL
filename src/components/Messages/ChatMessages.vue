@@ -32,8 +32,7 @@ const props = defineProps({
 const autoScroll = ref(true);
 const gridTemplateColumns = computed(() => `repeat(${props.columns}, 1fr)`);
 const filteredMessages = computed(() => {
-  const currentChat = store.state.chats[store.state.currentChatIndex];
-  return currentChat.messages.filter((message) => !message.hide);
+  return store.getters.currentChat.messages.filter((message) => !message.hide);
 });
 
 const updateMessage = (index, values) => {
@@ -58,7 +57,7 @@ const autoScrollToBottom = () => {
   }
 };
 
-watch(() => store.state.messages.length, autoScrollToBottom);
+watch(() => store.getters.currentChat.messages.length, autoScrollToBottom);
 watch(() => store.state.updateCounter, autoScrollToBottom);
 
 const onScroll = () => {
@@ -68,8 +67,7 @@ const onScroll = () => {
 };
 
 onMounted(() => {
-  const currentChat = store.state.chats[store.state.currentChatIndex];
-  currentChat.messages.forEach((message) => {
+  store.getters.currentChat.messages.forEach((message) => {
     message.done = true;
   });
   window.addEventListener("scroll", onScroll);

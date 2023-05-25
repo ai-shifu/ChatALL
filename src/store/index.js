@@ -187,6 +187,14 @@ export default createStore({
       commit("setMessages", []);
     },
   },
+  getters: {
+    currentChat: (state) => {
+      if (state.chats.length === 0) {
+        return null;
+      }
+      return state.chats[state.currentChatIndex];
+    },
+  },
   modules: {
     // ...你的模块
   },
