@@ -1,6 +1,6 @@
 import Bot from "@/bots/Bot";
 import { SSE } from "sse.js";
-import store from "@/store";
+import store from "@/store/settings.module";
 
 export default class OpenAIAPIBot extends Bot {
   static _brandId = "openaiApi";

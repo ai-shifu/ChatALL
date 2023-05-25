@@ -2,7 +2,7 @@ import axios from "axios";
 import { SSE } from "sse.js";
 
 import Bot from "@/bots/Bot";
-import store from "@/store";
+import store from "@/store/settings.module";
 
 export default class WenxinQianfanBot extends Bot {
   static _brandId = "wenxinQianfan"; // ID of the bot, should be unique

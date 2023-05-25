@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapMutations, mapGetters } from 'vuex';
 
 import Bot from "@/bots/openai/ChatGPTBot";
 import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
@@ -45,10 +45,10 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["setChatgpt"]),
+    ...mapMutations({ setChatgpt: "settingsModule/SET_CHATGPT" }),
   },
   computed: {
-    ...mapState(["chatgpt"]),
+    ...mapGetters({ chatgpt: "settingsModule/getChatgpt" }),
     autoRefresh: {
       get() {
         return this.chatgpt.refreshCycle > 0;

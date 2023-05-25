@@ -28,10 +28,10 @@ export default {
     });
   },
   computed: {
-    ...mapState(["moss"]),
+    ...mapState(["settingsModule/moss"]),
   },
   methods: {
-    ...mapMutations(["setMoss"]),
+    ...mapMutations(["settingsModule/SET_MOSS"]),
   },
 };
 </script>
