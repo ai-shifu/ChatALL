@@ -37,7 +37,7 @@ const filteredMessages = computed(() => {
 
 const updateMessage = (index, values) => {
   store.dispatch("updateMessage", {
-    indexes: { chatIndex: -1, messageIndex: index }, // chatIndex -1 means current chat
+    indexes: { chatIndex: store.state.currentChatIndex, messageIndex: index },
     message: values,
   });
 };
