@@ -4,7 +4,7 @@ import { SSE } from "sse.js";
 import AsyncLock from "async-lock";
 
 import Bot from "@/bots/Bot";
-import store from "@/store";
+import store from "@/store/settings.module";
 
 // Inspired by https://v2ex.com/t/926890
 const REFRESH_SESSION_URL =

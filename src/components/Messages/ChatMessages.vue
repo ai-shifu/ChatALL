@@ -32,11 +32,11 @@ const props = defineProps({
 const autoScroll = ref(true);
 const gridTemplateColumns = computed(() => `repeat(${props.columns}, 1fr)`);
 const filteredMessages = computed(() =>
-  store.state.messages.filter((message) => !message.hide),
+  store.getters['chatsModule/getMessages'].filter((message) => !message.hide),
 );
 
 const updateMessage = (index, values) => {
-  store.dispatch("updateMessage", {
+  store.dispatch("chatsModule/updateChatMessage", {
     index,
     message: values,
   });
@@ -57,8 +57,8 @@ const autoScrollToBottom = () => {
   }
 };
 
-watch(() => store.state.messages.length, autoScrollToBottom);
-watch(() => store.state.updateCounter, autoScrollToBottom);
+watch(() => store.getters['chatsModule/getMessages'].length, autoScrollToBottom);
+watch(() => store.getters['appModule/updateCounter'], autoScrollToBottom);
 
 const onScroll = () => {
   const scrollPosition = window.pageYOffset + window.innerHeight;
@@ -67,9 +67,11 @@ const onScroll = () => {
 };
 
 onMounted(() => {
-  store.state.messages.forEach((message) => {
-    message.done = true;
-  });
+  const updatedMessages = store.getters['chatsModule/getMessages'].map((message) => ({
+    ...message,
+    done: true,
+  })); 
+  store.commit('chatsModule/SET_CHAT_MESSAGES', updatedMessages)
   window.addEventListener("scroll", onScroll);
   scrollToBottom({ immediately: true });
 });

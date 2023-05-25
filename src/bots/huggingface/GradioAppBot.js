@@ -1,6 +1,6 @@
 import AsyncLock from "async-lock";
 import GradioBot from "./GradioBot";
-import store from "@/store";
+import store from "@/store/settings.module";
 
 export default class GradioAppBot extends GradioBot {
   static _className = "GradioAppBot"; // Class name of the bot

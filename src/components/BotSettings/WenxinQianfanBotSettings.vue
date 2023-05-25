@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import Bot from "@/bots/baidu/WenxinQianfanBot";
 export default {
   data() {
@@ -36,7 +36,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["setWenxinQianfan"]),
+    ...mapMutations({ setWenxinQianfan: "settingsModule/SET_WENXIN_QIANFAN" }),
     setApiKey(value) {
       this.setWenxinQianfan({
         ...this.wenxinQianfan,
@@ -51,7 +51,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["wenxinQianfan"]),
+    ...mapGetters({ wenxinQianfan: "settingsModule/getWenxinQianfan" }),
   },
 };
 </script>

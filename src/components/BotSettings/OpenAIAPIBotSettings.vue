@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import Bot from "@/bots/openai/OpenAIAPIBot";
 import i18n from "@/i18n";
 export default {
@@ -56,10 +56,10 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["setOpenaiApi"]),
+    ...mapMutations({ setOpenaiApi: "settingsModule/SET_OPENAI_API" }),
   },
   computed: {
-    ...mapState(["openaiApi"]),
+    ...mapGetters({ openaiApi: "settingsModule/getOpenaiApi" }),
   },
 };
 </script>

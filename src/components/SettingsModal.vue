@@ -85,11 +85,11 @@ const languages = computed(() => [
   { name: "Français", code: "fr" },
 ]);
 
-const lang = computed(() => store.state.lang);
+const lang = computed(() => store.getters["appModule/getLang"]);
 
 const setCurrentLanguage = (lang) => {
   locale.value = lang;
-  store.commit("setCurrentLanguage", lang);
+  store.commit("appModule/SET_CURRENT_LANGUAGE", lang);
 };
 const closeDialog = () => {
   emit("update:open", false);

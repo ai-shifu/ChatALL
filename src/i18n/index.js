@@ -1,7 +1,7 @@
 import { createI18n } from "vue-i18n";
 
 // Import stored language
-import store from "../store";
+import store from "../store/app.module";
 var lang = store.state.lang;
 if (lang == "auto") {
   lang = navigator.language || navigator.userLanguage || "en";

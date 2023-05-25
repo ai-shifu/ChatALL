@@ -126,7 +126,6 @@ import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
-import store from "./store";
 
 export default {
   name: "App",
@@ -166,7 +165,19 @@ export default {
       isSettingsOpen: false,
     };
   },
+  computed: {
+    ...mapGetters({
+      columns: "appModule/getColumns", 
+      uuid: "appModule/getUuid", 
+      selectedBots: "settingsModule/getSelectedBots",
+    }),
+  },
   methods: {
+    ...mapMutations({ 
+      changeColumns: "appModule/CHANGE_COLUMNS",
+      setUuid: "appModule/SET_UUID",
+      setBotSelected: "settingsModule/SET_BOT_SELECTED"
+    }),
     async sendPromptToBots() {
       if (this.prompt.trim() === "") return;
       if (Object.values(this.activeBots).every((bot) => !bot)) return;
@@ -189,11 +200,8 @@ export default {
       // Clear the textarea after sending the prompt
       this.prompt = "";
     },
-    ...mapMutations(["changeColumns"]),
-    ...mapMutations(["setUuid"]),
-    ...mapMutations(["SET_BOT_SELECTED"]),
     toggleSelected(bot) {
-      const botId = bot.constructor._className;
+      const botName = bot.constructor._className;
       var selected = false;
       if (!bot.isAvailable()) {
         this.clickedBot = bot;
@@ -201,9 +209,9 @@ export default {
         this.isMakeAvailableOpen = true;
         selected = true;
       } else {
-        selected = !this.selectedBots[botId];
+        selected = !this.selectedBots[botName];
       }
-      this.SET_BOT_SELECTED({ botId, selected });
+      this.setBotSelected({ botName, selected });
       this.updateActiveBots();
     },
     updateActiveBots() {
@@ -273,8 +281,8 @@ export default {
     }
   },
   mounted() {
-    !store.state.uuid && this.setUuid(uuidv4());
-    window._paq.push(["setUserId", store.state.uuid]);
+    this.uuid && this.setUuid(uuidv4());
+    window._paq.push(["setUserId", this.uuid]);
     window._paq.push(["trackPageView"]);
   },
 };

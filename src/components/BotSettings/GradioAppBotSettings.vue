@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapGetters, mapMutations } from 'vuex';
 import Bot from "@/bots/huggingface/GradioAppBot";
 
 export default {
@@ -39,10 +39,10 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["setGradio"]),
+    ...mapMutations({ setGradio: "settingsModule/SET_GRADIO" }),
   },
   computed: {
-    ...mapState(["gradio"]),
+    ...mapGetters({ gradio: "settingsModule/getGradio" }),
   },
 };
 </script>
