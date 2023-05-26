@@ -1,4 +1,3 @@
-// import axios from "axios";
 import ChatGPTBot from "./ChatGPTBot";
 
 export default class ChatGPT4BotMobile extends ChatGPTBot {
