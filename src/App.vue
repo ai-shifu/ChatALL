@@ -101,34 +101,14 @@ import { mapState, mapMutations } from "vuex";
 import { v4 as uuidv4 } from "uuid";
 
 import i18n from "./i18n";
+import store from "./store";
+import bots from "./bots";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
-
-// Bots
-import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
-import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
-import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
-import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
-import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
-import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
-import SparkBot from "@/bots/SparkBot";
-import BardBot from "@/bots/BardBot";
-import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
-import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
-import MOSSBot from "@/bots/MOSSBot";
-import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
-import VicunaBot from "@/bots/lmsys/VicunaBot";
-import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
-import AlpacaBot from "@/bots/lmsys/AlpacaBot";
-import ClaudeBot from "@/bots/lmsys/ClaudeBot";
-import DevBot from "@/bots/DevBot";
-import GradioAppBot from "@/bots/huggingface/GradioAppBot";
-import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
-import store from "./store";
 
 export default {
   name: "App",
@@ -141,26 +121,7 @@ export default {
   data() {
     return {
       prompt: "",
-      bots: [
-        ChatGPT35Bot.getInstance(),
-        ChatGPT4Bot.getInstance(),
-        ChatGPTBrowsingBot.getInstance(),
-        OpenAIAPI35Bot.getInstance(),
-        OpenAIAPI4Bot.getInstance(),
-        BingChatCreativeBot.getInstance(),
-        BingChatBalancedBot.getInstance(),
-        BingChatPreciseBot.getInstance(),
-        ClaudeBot.getInstance(),
-        BardBot.getInstance(),
-        WenxinQianfanBot.getInstance(),
-        SparkBot.getInstance(),
-        HuggingChatBot.getInstance(),
-        VicunaBot.getInstance(),
-        AlpacaBot.getInstance(),
-        ChatGLMBot.getInstance(),
-        MOSSBot.getInstance(),
-        GradioAppBot.getInstance(),
-      ],
+      bots: bots.all,
       activeBots: {},
 
       clickedBot: null,
@@ -174,7 +135,7 @@ export default {
       if (this.prompt.trim() === "") return;
       if (Object.values(this.activeBots).every((bot) => !bot)) return;
 
-      const bots = this.bots.filter(
+      const bots = bots.all.filter(
         (bot) => this.activeBots[bot.constructor._className],
       );
 
@@ -210,17 +171,17 @@ export default {
       this.updateActiveBots();
     },
     updateActiveBots() {
-      for (const bot of this.bots) {
+      for (const bot of bots.all) {
         this.activeBots[bot.constructor._className] =
           bot.isAvailable() && this.selectedBots[bot.constructor._className];
       }
     },
     async checkAllBotsAvailability(specifiedBot = null) {
       try {
-        let botsToCheck = this.bots;
+        let botsToCheck = bots.all;
         if (specifiedBot) {
           // If a bot is specified, only check bots of the same brand
-          botsToCheck = this.bots.filter(
+          botsToCheck = bots.all.filter(
             (bot) =>
               bot.constructor._brandId === specifiedBot.constructor._brandId,
           );
@@ -274,9 +235,6 @@ export default {
   },
   created() {
     this.checkAllBotsAvailability();
-    if (process.env.NODE_ENV !== "production") {
-      this.bots.push(DevBot.getInstance());
-    }
   },
   mounted() {
     !store.state.uuid && this.setUuid(uuidv4());
