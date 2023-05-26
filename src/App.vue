@@ -242,7 +242,7 @@ export default {
     window._paq.push(["trackPageView"]);
 
     const ver = require("../package.json").version;
-    document.title = `ChatALL v${ver}`;
+    document.title = `ChatALL.ai v${ver}`;
   },
 };
 </script>
