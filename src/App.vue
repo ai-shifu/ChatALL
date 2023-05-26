@@ -240,6 +240,9 @@ export default {
     !store.state.uuid && this.setUuid(uuidv4());
     window._paq.push(["setUserId", store.state.uuid]);
     window._paq.push(["trackPageView"]);
+
+    const ver = require("../package.json").version;
+    document.title = `ChatALL v${ver}`;
   },
 };
 </script>
