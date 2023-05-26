@@ -66,7 +66,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({ wenxinQianfan: "settingsModule/getWenxinQianfan" }),
+    ...mapGetters({ wenxinQianfan: "settingsModule/getWenxinQianfanSettings" }),
   },
 };
 </script>

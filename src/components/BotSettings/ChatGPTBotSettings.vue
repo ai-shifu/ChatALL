@@ -48,7 +48,7 @@ export default {
     ...mapMutations({ setChatgpt: "settingsModule/SET_CHATGPT" }),
   },
   computed: {
-    ...mapGetters({ chatgpt: "settingsModule/getChatgpt" }),
+    ...mapGetters({ chatgpt: "settingsModule/getChatgptSettings" }),
     autoRefresh: {
       get() {
         return this.chatgpt.refreshCycle > 0;

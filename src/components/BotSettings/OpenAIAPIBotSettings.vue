@@ -76,7 +76,7 @@ export default {
     ...mapMutations({ setOpenaiApi: "settingsModule/SET_OPENAI_API" }),
   },
   computed: {
-    ...mapGetters({ openaiApi: "settingsModule/getOpenaiApi" }),
+    ...mapGetters({ openaiApi: "settingsModule/getOpenaiApiSettings" }),
   },
 };
 </script>

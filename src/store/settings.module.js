@@ -30,11 +30,11 @@ const state = {
 
 const getters = {
   getSelectedBots: (state) => state.selectedBots,
-  getOpenaiApi: (state) => state.openaiApi,
-  getChatgpt: (state) => state.chatgpt,
-  getGradio: (state) => state.gradio,
-  getMoss: (state) => state.moss,
-  getWenxinQianfan: (state) => state.wenxinQianfan,
+  getOpenaiApiSettings: (state) => state.openaiApi,
+  getChatgptSettings: (state) => state.chatgpt,
+  getGradioSettings: (state) => state.gradio,
+  getMossSettings: (state) => state.moss,
+  getWenxinQianfanSettings: (state) => state.wenxinQianfan,
 }
 
 const mutations = {
@@ -59,12 +59,9 @@ const mutations = {
   },
 }
 
-const actions = {}
-
 export default {
   namespaced: true,
   state,
   getters,
   mutations,
-  actions,
 }
