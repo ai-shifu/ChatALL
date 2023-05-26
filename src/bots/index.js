@@ -1,54 +1,41 @@
-// Bots
-import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
-import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
-import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
-import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
-import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
-import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
-import SparkBot from "@/bots/SparkBot";
-import BardBot from "@/bots/BardBot";
-import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
-import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
-import MOSSBot from "@/bots/MOSSBot";
-import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
-import VicunaBot from "@/bots/lmsys/VicunaBot";
-import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
-import AlpacaBot from "@/bots/lmsys/AlpacaBot";
-import ClaudeBot from "@/bots/lmsys/ClaudeBot";
-import DevBot from "@/bots/DevBot";
-import GradioAppBot from "@/bots/huggingface/GradioAppBot";
-import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
+import ChatGPT35Bot from "./openai/ChatGPT35Bot";
+import ChatGPT4Bot from "./openai/ChatGPT4Bot";
+import ChatGPTBrowsingBot from "./openai/ChatGPTBrowsingBot";
+import BingChatPreciseBot from "./microsoft/BingChatPreciseBot";
+import BingChatBalancedBot from "./microsoft/BingChatBalancedBot";
+import BingChatCreativeBot from "./microsoft/BingChatCreativeBot";
+import SparkBot from "./SparkBot";
+import BardBot from "./BardBot";
+import OpenAIAPI35Bot from "./openai/OpenAIAPI35Bot";
+import OpenAIAPI4Bot from "./openai/OpenAIAPI4Bot";
+import MOSSBot from "./MOSSBot";
+import WenxinQianfanBot from "./baidu/WenxinQianfanBot";
+import VicunaBot from "./lmsys/VicunaBot";
+import ChatGLMBot from "./lmsys/ChatGLMBot";
+import AlpacaBot from "./lmsys/AlpacaBot";
+import ClaudeBot from "./lmsys/ClaudeBot";
+import GradioAppBot from "./huggingface/GradioAppBot";
+import HuggingChatBot from "./huggingface/HuggingChatBot";
+import DevBot from "./DevBot";
 
-const all = [
-  ChatGPT35Bot.getInstance(),
-  ChatGPT4Bot.getInstance(),
-  ChatGPTBrowsingBot.getInstance(),
-  OpenAIAPI35Bot.getInstance(),
-  OpenAIAPI4Bot.getInstance(),
-  BingChatCreativeBot.getInstance(),
-  BingChatBalancedBot.getInstance(),
-  BingChatPreciseBot.getInstance(),
-  ClaudeBot.getInstance(),
-  BardBot.getInstance(),
-  WenxinQianfanBot.getInstance(),
-  SparkBot.getInstance(),
-  HuggingChatBot.getInstance(),
-  VicunaBot.getInstance(),
-  AlpacaBot.getInstance(),
-  ChatGLMBot.getInstance(),
-  MOSSBot.getInstance(),
-  GradioAppBot.getInstance(),
-];
-
-if (process.env.NODE_ENV !== "production") {
-  all.push(DevBot.getInstance());
+export default {
+  ChatGPT35Bot,
+  ChatGPT4Bot,
+  ChatGPTBrowsingBot,
+  BingChatPreciseBot,
+  BingChatBalancedBot,
+  BingChatCreativeBot,
+  SparkBot,
+  BardBot,
+  OpenAIAPI35Bot,
+  OpenAIAPI4Bot,
+  MOSSBot,
+  WenxinQianfanBot,
+  VicunaBot,
+  ChatGLMBot,
+  AlpacaBot,
+  ClaudeBot,
+  GradioAppBot,
+  HuggingChatBot,
+  DevBot,
 }
-
-const bots = {
-  all,
-  getBotByClassName(className) {
-    return all.find((bot) => bot.getClassname() === className);
-  },
-};
-
-export default bots;
