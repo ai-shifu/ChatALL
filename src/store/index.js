@@ -136,8 +136,6 @@ export default createStore({
           type: "response",
           content: "",
           format: bot.getOutputFormat(),
-          logo: bot.getLogo(),
-          name: bot.getFullname(),
           model: bot.constructor._model,
           done: false,
           highlight: false,

@@ -9,8 +9,8 @@
     :loading="message.done ? false : 'primary'"
   >
     <v-card-title v-if="message.type === 'response'" class="title">
-      <img :src="message.logo" alt="Bot Icon" />
-      {{ message.name }}
+      <img :src="botLogo" alt="Bot Icon" />
+      {{ botFullname }}
       <v-spacer></v-spacer>
       <v-btn
         flat
@@ -40,11 +40,12 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, computed } from "vue";
 import i18n from "@/i18n";
 import Markdown from "vue3-markdown-it";
 import { useMatomo } from "@/composables/matomo";
 import ConfirmModal from "@/components/ConfirmModal.vue";
+import bots from "@/bots";
 
 import "highlight.js/styles/github.css";
 import "github-markdown-css/github-markdown-light.css";
@@ -65,8 +66,17 @@ const emits = defineEmits(["update-message"]);
 const matomo = useMatomo();
 
 const root = ref();
-
 const confirmModal = ref(null);
+
+const botLogo = computed(() => {
+  const bot = bots.getBotByClassName(props.message.className);
+  return bot ? bot.getLogo() : "";
+});
+
+const botFullname = computed(() => {
+  const bot = bots.getBotByClassName(props.message.className);
+  return bot ? bot.getFullname() : "";
+});
 
 watch(
   () => props.columns,
