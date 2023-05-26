@@ -1,14 +1,5 @@
 import i18n from "@/i18n";
 
-// To get actual logo path of the bot, we need to use Webpack 4's require.context()
-// to get the context of the logo files, and then use the context to get the actual
-// path of the logo file.
-const botLogoContext = require.context(
-  "../assets/bots/",
-  false,
-  /\.(png|jpg|jpeg|svg)$/,
-);
-
 export default class Bot {
   static _logoPackedPaths = null;
   static _isAvailable = false;
@@ -25,17 +16,7 @@ export default class Bot {
 
   chatId = null;
   
-  constructor() {
-    // Compute the logo paths after packing by Webpack 4
-    if (!this.constructor._logoPackedPaths) {
-      this.constructor._logoPackedPaths = botLogoContext
-        .keys()
-        .reduce((logos, logoPath) => {
-          logos[logoPath.replace("./", "")] = botLogoContext(logoPath);
-          return logos;
-        }, {});
-    }
-  }
+  constructor() {}
 
   static getInstance() {
     return new this();
