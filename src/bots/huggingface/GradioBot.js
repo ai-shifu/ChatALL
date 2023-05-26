@@ -70,11 +70,11 @@ export default class GradioBot extends Bot {
 
   async _sendFnIndex(fn_index, prompt, onUpdateResponse, callbackParam) {
     const config = this.config;
+    const session_hash = await this.getChatContext();
     return new Promise((resolve, reject) => {
       try {
         const url = new URL(config.root + config.path + "/queue/join");
         url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
-        const session_hash = this.getChatContext();
 
         const data = this.makeData(fn_index, prompt);
 
