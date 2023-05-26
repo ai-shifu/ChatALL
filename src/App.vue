@@ -111,7 +111,7 @@ import ConfirmModal from "@/components/ConfirmModal.vue";
 // Bots
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
-import ChatGPT4BotMobile from "@/bots/openai/ChatGPT4BotMobile";
+import ChatGPT4MobileBot from "@/bots/openai/ChatGPT4MobileBot";
 import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
 import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
 import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
@@ -145,7 +145,7 @@ export default {
       bots: [
         ChatGPT35Bot.getInstance(),
         ChatGPT4Bot.getInstance(),
-        ChatGPT4BotMobile.getInstance(),
+        ChatGPT4MobileBot.getInstance(),
         ChatGPTBrowsingBot.getInstance(),
         OpenAIAPI35Bot.getInstance(),
         OpenAIAPI4Bot.getInstance(),
