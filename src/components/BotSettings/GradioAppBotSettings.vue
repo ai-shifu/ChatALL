@@ -42,7 +42,7 @@ export default {
     ...mapMutations({ setGradio: "settingsModule/SET_GRADIO" }),
   },
   computed: {
-    ...mapGetters({ gradio: "settingsModule/getGradio" }),
+    ...mapGetters({ gradio: "settingsModule/getGradioSettings" }),
   },
 };
 </script>
