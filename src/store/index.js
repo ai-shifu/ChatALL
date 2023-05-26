@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import VuexPersist from "vuex-persist";
-import i18n from "../i18n";
+import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
 
 const getMatomo = function () {
@@ -55,7 +55,7 @@ export default createStore({
       pastRounds: 5,
     },
     messages: [],
-    chats: [{ title: "", messages: [] }],
+    chats: [{ title: "New Chat", contexts: {}, messages: [] }],
     currentChatIndex: 0,
     updateCounter: 0,
   },
@@ -109,6 +109,15 @@ export default createStore({
     incrementUpdateCounter(state) {
       state.updateCounter += 1;
     },
+    setChatContext(state, { botClassname, context }) {
+      const currentChat = state.chats[state.currentChatIndex];
+      currentChat.contexts[botClassname] = context;
+    },
+    clearMessages(state) {
+      const currentChat = state.chats[state.currentChatIndex];
+      currentChat.contexts = {};
+      currentChat.messages = [];
+    },
     init(state) {
       // Upgrade messages data structure
       if (state.messages.length > 0) {
@@ -140,7 +149,7 @@ export default createStore({
           done: false,
           highlight: false,
           hide: false,
-          className: bot.constructor._className,
+          className: bot.getClassname(),
         };
 
         // workaround for tracking message position
@@ -157,7 +166,7 @@ export default createStore({
         $matomo.trackEvent(
           "prompt",
           "sendTo",
-          bot.constructor._className,
+          bot.getClassname(),
           prompt.length,
         );
       }
@@ -180,9 +189,6 @@ export default createStore({
           message.content.length,
         );
       }
-    },
-    clearMessages({ commit }) {
-      commit("setMessages", []);
     },
   },
   getters: {

@@ -13,8 +13,6 @@ export default class MOSSBot extends Bot {
   static _loginUrl = "https://moss.fastnlp.top/moss/";
   static _lock = new AsyncLock();
 
-  static _chat_id = 0;
-
   constructor() {
     super();
   }
@@ -28,7 +26,7 @@ export default class MOSSBot extends Bot {
     };
   }
 
-  async createConversation() {
+  async createChatContext() {
     try {
       const res = await axios.post(
         "https://moss.fastnlp.top/api/chats",
@@ -66,16 +64,15 @@ export default class MOSSBot extends Bot {
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    const chat_id = await this.getChatContext();
     return new Promise((resolve, reject) => {
       (async () => {
         try {
-          if (this.constructor._chat_id === 0) {
-            this.constructor._chat_id = await this.createConversation();
+          if (chat_id === 0) {
+            reject(new Error(i18n.global.t("bot.failedToCreateConversation")));
           }
 
-          const url = `wss://moss.fastnlp.top/api/ws/chats/${
-            this.constructor._chat_id
-          }/records?jwt=${
+          const url = `wss://moss.fastnlp.top/api/ws/chats/${chat_id}/records?jwt=${
             this.getAuthHeader().headers.Authorization.split(" ")[1]
           }`;
 
@@ -98,7 +95,7 @@ export default class MOSSBot extends Bot {
           wsp.onUnpackedMessage.addListener(async (event) => {
             if (!("status" in event)) {
               // The last message. Parse links first
-              const links = event.processed_extra_data[0]?.data;
+              const links = event.processed_extra_data?.[0]?.data;
               for (const key in links) {
                 if (Object.hasOwnProperty.call(links, key)) {
                   const link = links[key];

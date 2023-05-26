@@ -47,7 +47,7 @@ if (process.env.NODE_ENV !== "production") {
 const bots = {
   all,
   getBotByClassName(className) {
-    return all.find((bot) => bot.constructor._className === className);
+    return all.find((bot) => bot.getClassname() === className);
   },
 };
 

@@ -73,7 +73,7 @@
       <div class="bot-logos margin-bottom">
         <img
           v-for="(bot, index) in bots"
-          :class="{ selected: activeBots[bot.constructor._className] }"
+          :class="{ selected: activeBots[bot.getClassname()] }"
           :key="index"
           :src="bot.getLogo()"
           :alt="bot.getFullname()"
@@ -135,20 +135,20 @@ export default {
       if (this.prompt.trim() === "") return;
       if (Object.values(this.activeBots).every((bot) => !bot)) return;
 
-      const bots = bots.all.filter(
-        (bot) => this.activeBots[bot.constructor._className],
+      const toBots = bots.all.filter(
+        (bot) => this.activeBots[bot.getClassname()],
       );
 
       this.$store.dispatch("sendPrompt", {
         prompt: this.prompt,
-        bots,
+        bots: toBots,
       });
 
       this.$matomo.trackEvent(
         "prompt",
         "send",
         "Active bots count",
-        bots.length,
+        toBots.length,
       );
       // Clear the textarea after sending the prompt
       this.prompt = "";
@@ -157,7 +157,7 @@ export default {
     ...mapMutations(["setUuid"]),
     ...mapMutations(["SET_BOT_SELECTED"]),
     toggleSelected(bot) {
-      const botId = bot.constructor._className;
+      const botId = bot.getClassname();
       var selected = false;
       if (!bot.isAvailable()) {
         this.clickedBot = bot;
@@ -172,8 +172,8 @@ export default {
     },
     updateActiveBots() {
       for (const bot of bots.all) {
-        this.activeBots[bot.constructor._className] =
-          bot.isAvailable() && this.selectedBots[bot.constructor._className];
+        this.activeBots[bot.getClassname()] =
+          bot.isAvailable() && this.selectedBots[bot.getClassname()];
       }
     },
     async checkAllBotsAvailability(specifiedBot = null) {
@@ -225,7 +225,7 @@ export default {
         i18n.global.t("header.clearMessages"),
       );
       if (result) {
-        this.$store.dispatch("clearMessages");
+        this.$store.commit("clearMessages");
       }
     },
   },

@@ -64,7 +64,7 @@ export default class DevBot extends Bot {
    * @param null
    * @returns {any} - Conversation structure. null if not supported.
    */
-  async createConversation() {
+  async createChatContext() {
     return null;
   }
 }

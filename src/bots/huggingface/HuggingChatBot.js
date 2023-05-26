@@ -12,8 +12,6 @@ export default class HuggingChatBot extends Bot {
   static _loginUrl = "https://huggingface.co/chat/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
-  conversationId = "";
-
   constructor() {
     super();
   }
@@ -25,7 +23,7 @@ export default class HuggingChatBot extends Bot {
    */
   async checkAvailability() {
     // Create a conversation to test if the bot is available
-    const conversationId = await this.createConversation();
+    const conversationId = await this.createChatContext();
     if (conversationId) {
       this.constructor._isAvailable = true;
       // Delete the conversation after testing
@@ -67,18 +65,15 @@ export default class HuggingChatBot extends Bot {
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    const conversationId = await this.getChatContext();
     return new Promise((resolve, reject) => {
       (async () => {
-        // If there's no chat session, create one
-        if (!this.conversationId) {
-          this.conversationId = await this.createConversation();
-          if (!this.conversationId) {
-            reject(new Error(i18n.global.t("bot.failedToCreateConversation")));
-          }
+        if (!conversationId) {
+          reject(new Error(i18n.global.t("bot.failedToCreateConversation")));
         }
 
         const source = new SSE(
-          `https://huggingface.co/chat/conversation/${this.conversationId}`,
+          `https://huggingface.co/chat/conversation/${conversationId}`,
           {
             headers: { "Content-Type": "application/json" },
             payload: JSON.stringify(this.packRequest(prompt)),
@@ -123,7 +118,7 @@ export default class HuggingChatBot extends Bot {
    * @param null
    * @returns {any} - Conversation structure. null if not supported.
    */
-  async createConversation() {
+  async createChatContext() {
     let conversationId = "";
     await axios
       .post("https://huggingface.co/chat/conversation", {

@@ -38,18 +38,14 @@ export default class BardBot extends Bot {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) ChatALL/1.18.13 Chrome/112.0.5615.165 Safari/537.36";
   static _lock = new AsyncLock();
 
-  conversationContext = {
-    requestParams: null,
-    contextIds: ["", "", ""],
-  };
-
   constructor() {
     super();
   }
 
   async checkAvailability() {
-    this.conversationContext.requestParams = await fetchRequestParams();
-    if (this.conversationContext.requestParams.atValue) {
+    const context = await this.getChatContext();
+    context.requestParams = await fetchRequestParams();
+    if (context.requestParams.atValue) {
       this.constructor._isAvailable = true;
     } else {
       this.constructor._isAvailable = false;
@@ -58,8 +54,9 @@ export default class BardBot extends Bot {
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    const context = await this.getChatContext();
     return new Promise((resolve, reject) => {
-      const { requestParams, contextIds } = this.conversationContext;
+      const { requestParams, contextIds } = context;
 
       axios
         .post(
@@ -83,7 +80,7 @@ export default class BardBot extends Bot {
         )
         .then(({ data: resp }) => {
           const { text, ids } = parseBartResponse(resp);
-          this.conversationContext.contextIds = ids;
+          context.contextIds = ids;
           onUpdateResponse(callbackParam, { content: text, done: true });
           resolve();
         })
@@ -91,5 +88,12 @@ export default class BardBot extends Bot {
           reject(error);
         });
     });
+  }
+
+  async createChatContext() {
+    return {
+      requestParams: null,
+      contextIds: ["", "", ""],
+    };
   }
 }

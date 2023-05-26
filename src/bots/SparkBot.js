@@ -12,8 +12,6 @@ export default class SparkBot extends Bot {
   static _loginUrl = "https://xinghuo.xfyun.cn/";
   static _lock = new AsyncLock(); // All Spark bots share the same lock
 
-  chatId = 0; // ID of the chat session
-
   constructor() {
     super();
   }
@@ -31,7 +29,7 @@ export default class SparkBot extends Bot {
     return this.isAvailable();
   }
 
-  async createConversation() {
+  async createChatContext() {
     const response = await axios.post(
       "https://xinghuo.xfyun.cn/iflygpt/u/chat-list/v1/create-chat-list",
       {},
@@ -64,21 +62,18 @@ export default class SparkBot extends Bot {
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    const chatId = await this.getChatContext();
     return new Promise((resolve, reject) => {
       (async () => {
-        // If there's no chat session, create one
-        if (this.chatId === 0) {
-          this.chatId = await this.createConversation();
-          if (!this.chatId) {
-            reject(new Error(i18n.global.t("bot.failedToCreateConversation")));
-          }
+        if (chatId === 0) {
+          reject(new Error(i18n.global.t("bot.failedToCreateConversation")));
         }
 
         // Create FormData payload
         const GtToken = await this.getGtToken();
         const formData = new FormData();
         formData.append("fd", String(+new Date()).slice(-6));
-        formData.append("chatId", this.chatId);
+        formData.append("chatId", chatId);
         formData.append("text", prompt);
         formData.append("GtToken", GtToken);
         formData.append("clientType", "1");

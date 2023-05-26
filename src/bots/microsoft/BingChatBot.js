@@ -14,6 +14,7 @@ function randomIP() {
     Math.floor(Math.random() * 255)
   );
 }
+
 export default class BingChatBot extends Bot {
   static _brandId = "bingChat";
   static _className = "BingChatBot"; // Class name of the bot
@@ -23,18 +24,17 @@ export default class BingChatBot extends Bot {
   static _userAgent =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
 
-  static _conversation = null;
-  static _optionsSets = null;
+  static _optionsSets = null; // Set by the subclass
 
   constructor() {
     super();
   }
 
-  async createConversation() {
+  async createChatContext() {
     const headers = {
       "x-ms-client-request-id": uuidv4(),
       "x-ms-useragent":
-        "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.0 OS/Win32",
+        "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.0 OS/MacIntel",
       "x-forwarded-for": randomIP(),
     };
     var conversation = null;
@@ -63,24 +63,28 @@ export default class BingChatBot extends Bot {
   }
 
   async checkAvailability() {
-    // Bing Chat does not have a login status API
-    // So we just check if we can create a conversation
-    const conversation = await this.createConversation();
-    this.constructor._isAvailable = !!conversation;
-    if (this.constructor._conversation === null) {
-      this.constructor._conversation = conversation;
-    }
+    axios
+      .get("https://www.bing.com/turing/conversation/chats")
+      .then((response) => {
+        this.constructor._isAvailable =
+          response.data && response.data.result.value == "Success";
+      })
+      .catch((error) => {
+        this.constructor._isAvailable = false;
+        console.error("Error checking Bing Chat login status:", error);
+      });
     return this.isAvailable();
   }
 
-  buildChatRequest(prompt) {
+  async buildChatRequest(prompt) {
+    const context = await this.getChatContext();
     return {
       arguments: [
         {
           source: "cib",
           optionsSets: this.constructor._optionsSets,
           allowedMessageTypes: ["Chat", "InternalSearchQuery"],
-          isStartOfSession: this.constructor._conversation.invocationId === 0,
+          isStartOfSession: context.invocationId === 0,
           message: {
             timestamp: new Date().toISOString(),
             author: "user",
@@ -88,19 +92,19 @@ export default class BingChatBot extends Bot {
             text: prompt,
             messageType: "Chat",
           },
-          conversationSignature:
-            this.constructor._conversation.conversationSignature,
-          conversationId: this.constructor._conversation.conversationId,
-          participant: { id: this.constructor._conversation.clientId },
+          conversationSignature: context.conversationSignature,
+          conversationId: context.conversationId,
+          participant: { id: context.clientId },
         },
       ],
-      invocationId: this.constructor._conversation.invocationId.toString(),
+      invocationId: context.invocationId.toString(),
       target: "chat",
       type: 4,
     };
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    let context = await this.getChatContext();
     return new Promise((resolve, reject) => {
       try {
         const RecordSeparator = String.fromCharCode(30);
@@ -131,8 +135,8 @@ export default class BingChatBot extends Bot {
           for (const event of events) {
             if (JSON.stringify(event) === "{}") {
               wsp.sendPacked({ type: 6 });
-              wsp.sendPacked(this.buildChatRequest(prompt));
-              this.constructor._conversation.invocationId += 1;
+              wsp.sendPacked(await this.buildChatRequest(prompt));
+              context.invocationId += 1;
             } else if (event.type === 6) {
               wsp.sendPacked({ type: 6 });
             } else if (event.type === 3) {
@@ -145,8 +149,8 @@ export default class BingChatBot extends Bot {
                 console.error("Error sending prompt to Bing Chat:", event);
                 if (event.item.result.value === "InvalidSession") {
                   // Create a new conversation and retry
-                  this.constructor._conversation =
-                    await this.createConversation();
+                  context = await this.createChatContext();
+                  this.setChatContext(context);
                   this._sendPrompt(prompt, onUpdateResponse, callbackParam);
                   reject(new Error(i18n.global.t("bot.creatingConversation")));
                 } else {
@@ -157,8 +161,8 @@ export default class BingChatBot extends Bot {
                 event.item.throttling.numUserMessagesInConversation
               ) {
                 // Max number of messages reached
-                this.constructor._conversation =
-                  await this.createConversation();
+                context = await this.createChatContext();
+                this.setChatContext(context);
               }
               wsp.removeAllListeners();
               wsp.close();

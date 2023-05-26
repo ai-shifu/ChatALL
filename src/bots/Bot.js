@@ -1,4 +1,5 @@
 import i18n from "@/i18n";
+import store from "@/store";
 
 // To get actual logo path of the bot, we need to use Webpack 4's require.context()
 // to get the context of the logo files, and then use the context to get the actual
@@ -70,6 +71,10 @@ export default class Bot {
 
   getOutputFormat() {
     return this.constructor._outputFormat;
+  }
+
+  getClassname() {
+    return this.constructor._className;
   }
 
   async getSettingsComponent() {
@@ -199,12 +204,36 @@ export default class Bot {
   }
 
   /**
-   * Subclass should implement this method if the bot supports conversation.
+   * Subclass should implement this method if the bot supports multi-chats.
    * The conversation structure is defined by the subclass.
    * @param null
    * @returns {any} - Conversation structure. null if not supported.
    */
-  async createConversation() {
+  async createChatContext() {
     return null;
+  }
+
+  /**
+   * Get the context from the store. If not available, create a new one.
+   * @returns {object} - Chat context defined by the bot
+   */
+  async getChatContext() {
+    let context = store.getters.currentChat.contexts[this.getClassname()];
+    if (!context) {
+      context = await this.createChatContext();
+      this.setChatContext(context);
+    }
+    return context;
+  }
+
+  /**
+   * @param {*} context
+   * @returns Nothing
+   */
+  setChatContext(context) {
+    store.commit("setChatContext", {
+      botClassname: this.getClassname(),
+      context,
+    });
   }
 }
