@@ -28,7 +28,7 @@
       $t("bot.pastRoundsPrompt")
     }}</v-list-item-subtitle>
     <v-slider
-      v-model="setWenxinQianfan.pastRounds"
+      v-model="wenxinQianfan.pastRounds"
       color="primary"
       :min="0"
       :max="10"
