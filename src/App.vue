@@ -35,7 +35,7 @@
               color="primary"
               icon="mdi-cog"
               size="x-large"
-              @click="openSettingsModal()"
+              @click="isSettingsOpen = true"
             ></v-icon>
           </div>
         </div>
@@ -104,14 +104,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import "@mdi/font/css/materialdesignicons.css";
-import { mapMutations, mapGetters } from "vuex";
+import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
 
 import i18n from "./i18n";
-import store from "./store";
-import bots from "./bots";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
@@ -119,157 +117,147 @@ import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import ChatsMenuDrawer from "@/components/ChatsMenuDrawer.vue"
+import { ref, computed, reactive, onMounted, onBeforeMount } from 'vue';
+import { useMatomo } from '@/composables/matomo';
 
-export default {
-  name: "App",
-  components: {
-    ChatMessages,
-    MakeAvailableModal,
-    SettingsModal,
-    ConfirmModal,
-    ChatsMenuDrawer,
-  },
-  data() {
-    return {
-      prompt: "",
-      activeBots: {},
-      clickedBot: null,
-      isMakeAvailableOpen: false,
-      isSettingsOpen: false,
-    };
-  },
-  computed: {
-    ...mapGetters({
-      currentChatId: "chatsModule/getCurrentChatId",
-      columns: "appModule/getColumns", 
-      uuid: "appModule/getUuid", 
-      selectedBots: "settingsModule/getSelectedBots",
-      bots: "chatsModule/getCurrentChatBotsAvailable",
-    }),
-  },
-  methods: {
-    ...mapMutations({ 
-      changeColumns: "appModule/CHANGE_COLUMNS",
-      setUuid: "appModule/SET_UUID",
-      setBotSelected: "settingsModule/SET_BOT_SELECTED"
-    }),
-    async sendPromptToBots() {
-      if (this.prompt.trim() === "") return;
+const store = useStore();
+const matomo = useMatomo()
 
-      // TODO: implement this logic in chats.module store in order to save active bots by chats
-      const activeBotNames = Object.keys(this.activeBots).filter(
-        (botName) => this.activeBots[botName],
+const prompt = ref("");
+const activeBots = reactive({});
+const clickedBot = ref(null);
+const isMakeAvailableOpen = ref(false);
+const isSettingsOpen = ref(false);
+
+const currentChatId = computed(() => store.getters["chatsModule/getCurrentChatId"]);
+const columns = computed(() => store.getters["appModule/getColumns"]);
+const uuid = computed(() => store.getters["appModule/getUuid"]);
+const selectedBots = computed(() => store.getters["settingsModule/getSelectedBots"]);
+const bots = computed(() => store.getters["chatsModule/getCurrentChatBotsAvailable"]);
+
+const changeColumns = (columns) => store.commit("appModule/CHANGE_COLUMNS", columns);
+const setUuid = (uuid) => store.commit("appModule/SET_UUID", uuid);
+const setBotSelected = (botName, selected) => store.commit("settingsModule/SET_BOT_SELECTED", { botName, selected });
+
+function sendPromptToBots() {
+  if (prompt.value.trim() === "") return;
+
+  // TODO: implement this logic in chats.module store in order to save active bots by chats
+  // TODO: rework active bots logic
+  const activeBotNames = Object.keys(activeBots).filter(
+    (botName) => activeBots[botName],
+  );
+
+  if (!activeBotNames.length) return;
+
+  const activeBotInstances = bots.value.filter(
+    (bot) => Boolean(activeBots[bot.constructor._className]),
+  );
+
+  store.dispatch("chatsModule/sendPrompt", {
+    prompt: prompt.value,
+    activeBotNames,
+  });
+
+  matomo.value.trackEvent(
+    "prompt",
+    "send",
+    "Active bots count",
+    activeBotInstances.length,
+  );
+
+  prompt.value = "";
+}
+
+function toggleSelected(bot) {
+  const botName = bot.constructor._className;
+  var selected = false;
+  if (!bot.isAvailable()) {
+    clickedBot.value = bot;
+    // Open the bot's settings dialog
+    isMakeAvailableOpen.value = true;
+    selected = true;
+  } else {
+    selected = !selectedBots.value[botName];
+  }
+  setBotSelected({ botName, selected });
+  updateActiveBots();
+}
+
+function updateActiveBots() {
+  for (const bot of bots.value) {
+    activeBots[bot.constructor._className] =
+      bot.isAvailable() && selectedBots.value[bot.constructor._className];
+  }
+}
+
+async function checkAllBotsAvailability(specifiedBot = null) {
+  try {
+    let botsToCheck = bots.value;
+    if (specifiedBot) {
+      // If a bot is specified, only check bots of the same brand
+      botsToCheck = bots.value.filter(
+        (bot) =>
+          bot.constructor._brandId === specifiedBot.constructor._brandId,
       );
-
-      if (!activeBotNames.length) return;
-
-      const bots = this.bots.filter(
-        (bot) => Boolean(this.activeBots[bot.constructor._className]),
-      );
-
-      this.$store.dispatch("chatsModule/sendPrompt", {
-        prompt: this.prompt,
-        activeBotNames,
-      });
-
-      this.$matomo.trackEvent(
-        "prompt",
-        "send",
-        "Active bots count",
-        toBots.length,
-      );
-      // Clear the textarea after sending the prompt
-      this.prompt = "";
-    },
-    toggleSelected(bot) {
-      const botName = bot.constructor._className;
-      var selected = false;
-      if (!bot.isAvailable()) {
-        this.clickedBot = bot;
-        // Open the bot's settings dialog
-        this.isMakeAvailableOpen = true;
-        selected = true;
-      } else {
-        selected = !this.selectedBots[botName];
-      }
-      this.setBotSelected({ botName, selected });
-      this.updateActiveBots();
-    },
-    updateActiveBots() {
-      for (const bot of bots.all) {
-        this.activeBots[bot.getClassname()] =
-          bot.isAvailable() && this.selectedBots[bot.getClassname()];
-      }
-    },
-    async checkAllBotsAvailability(specifiedBot = null) {
-      try {
-        let botsToCheck = bots.all;
-        if (specifiedBot) {
-          // If a bot is specified, only check bots of the same brand
-          botsToCheck = bots.all.filter(
-            (bot) =>
-              bot.constructor._brandId === specifiedBot.constructor._brandId,
-          );
-        }
-
-        const checkAvailabilityPromises = botsToCheck.map((bot) =>
-          bot
-            .checkAvailability()
-            .then(() => this.updateActiveBots())
-            .catch((error) => {
-              console.error(
-                `Error checking login status for ${bot.getFullname()}:`,
-                error,
-              );
-            }),
-        );
-        await Promise.allSettled(checkAvailabilityPromises);
-      } catch (error) {
-        console.error("Error checking login status for bots:", error);
-      }
-    },
-    openSettingsModal() {
-      this.isSettingsOpen = true;
-    },
-    // Send the prompt when the user presses enter and prevent the default behavior
-    // But if the shift, ctrl, alt, or meta keys are pressed, do as default
-    filterEnterKey(event) {
-      if (
-        event.keyCode == 13 &&
-        !event.shiftKey &&
-        !event.ctrlKey &&
-        !event.altKey &&
-        !event.metaKey
-      ) {
-        event.preventDefault();
-        this.sendPromptToBots();
-      }
-    },
-    clearMessages() {
-      if (window.confirm(i18n.global.t("header.clearMessages"))) {
-        this.$store.dispatch("chatsModule/clearChatMessages");
-      }
-    },
-    initChat() {
-      if (this.currentChatId) {
-        return;
-      }
-      this.$store.dispatch('chatsModule/createChat')
     }
-  },
-  created() {
-    this.initChat();
-    this.checkAllBotsAvailability();
-  },
-  mounted() {
-    this.uuid && this.setUuid(uuidv4());
-    window._paq.push(["setUserId", this.uuid]);
-    window._paq.push(["trackPageView"]);
 
-    const ver = require("../package.json").version;
-    document.title = `ChatALL.ai v${ver}`;
-  },
-};
+    const checkAvailabilityPromises = botsToCheck.map((bot) =>
+      bot
+        .checkAvailability()
+        .then(() => updateActiveBots())
+        .catch((error) => {
+          console.error(
+            `Error checking login status for ${bot.getFullname()}:`,
+            error,
+          );
+        }),
+    );
+    await Promise.allSettled(checkAvailabilityPromises);
+  } catch (error) {
+    console.error("Error checking login status for bots:", error);
+  }
+}
+
+// Send the prompt when the user presses enter and prevent the default behavior
+// But if the shift, ctrl, alt, or meta keys are pressed, do as default
+function filterEnterKey(event) {
+  if (
+    event.keyCode == 13 &&
+    !event.shiftKey &&
+    !event.ctrlKey &&
+    !event.altKey &&
+    !event.metaKey
+  ) {
+    event.preventDefault();
+    sendPromptToBots();
+  }
+}
+
+function clearMessages() {
+  if (window.confirm(i18n.global.t("header.clearMessages"))) {
+    store.dispatch("chatsModule/clearChatMessages");
+  }
+}
+
+function initChat() {
+  if (currentChatId.value) {
+    return;
+  }
+  store.dispatch('chatsModule/createChat')
+}
+
+onBeforeMount(() => {
+  initChat();
+  checkAllBotsAvailability();  
+})
+
+onMounted(() => {
+  uuid.value && setUuid(uuidv4());
+  window._paq.push(["setUserId", uuid.value]);
+  window._paq.push(["trackPageView"]);
+})
+
 </script>
 
 <style>
