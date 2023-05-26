@@ -82,6 +82,7 @@ export default class SparkBot extends Bot {
         formData.append("text", prompt);
         formData.append("GtToken", GtToken);
         formData.append("clientType", "1");
+        formData.append("isBot", "0");
 
         const source = new SSE(
           "https://xinghuo.xfyun.cn/iflygpt/u/chat_message/chat",
