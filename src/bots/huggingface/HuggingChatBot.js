@@ -102,11 +102,6 @@ export default class HuggingChatBot extends Bot {
           reject(new Error(error.data.error));
         });
 
-        source.addEventListener("done", () => {
-          source.close();
-          resolve();
-        });
-
         source.stream();
       })();
     });

@@ -99,10 +99,6 @@ export default class WenxinQianfanBot extends Bot {
           source.close();
           reject(new Error(`${data.error_code} ${data.error_msg}`));
         });
-        source.addEventListener("done", () => {
-          source.close();
-          resolve();
-        });
         source.stream();
       });
     } catch (error) {

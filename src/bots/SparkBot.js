@@ -127,11 +127,6 @@ export default class SparkBot extends Bot {
           reject(new Error(error.data));
         });
 
-        source.addEventListener("done", () => {
-          source.close();
-          resolve();
-        });
-
         source.stream();
       })();
     });
