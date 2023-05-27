@@ -6,7 +6,7 @@
 <script>
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
-import { mapState, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 
 import Bot from "@/bots/MOSSBot";
 import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
@@ -27,11 +27,8 @@ export default {
       this.setMoss(token);
     });
   },
-  computed: {
-    ...mapState(["settingsModule/moss"]),
-  },
   methods: {
-    ...mapMutations(["settingsModule/SET_MOSS"]),
+    ...mapMutations({ setMoss: "settingsModule/SET_MOSS_SETTINGS" }),
   },
 };
 </script>
