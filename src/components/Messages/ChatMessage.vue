@@ -118,14 +118,13 @@ async function hide() {
 
 function handleClick(event) {
   const target = event.target;
-  if (target.tagName !== "A" && target.tagName !== "SUP") {
+  if (target.tagName !== "A" && target.parentElement.tagName !== "A") {
     return;
   }
   // Open in external browser
   event.preventDefault();
   const electron = window.require("electron");
-  const url =
-    target.tagName === "SUP" ? target.parentElement.href : target.href;
+  const url = target.href || target.parentElement.href;
   electron.shell.openExternal(url);
 }
 </script>
