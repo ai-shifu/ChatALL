@@ -113,9 +113,10 @@ export default class ChatGPTBot extends Bot {
           },
         },
       ],
-      model: this.constructor._model,
       conversation_id: context.conversationId,
       parent_message_id: context.parentMessageId,
+      model: this.constructor._model,
+      history_and_training_disabled: false, // allow training
     });
 
     return new Promise((resolve, reject) => {
@@ -197,12 +198,6 @@ export default class ChatGPTBot extends Bot {
           }
 
           reject(new Error(message));
-        });
-
-        source.addEventListener("done", () => {
-          source.close();
-          onUpdateResponse(callbackParam, { done: true });
-          resolve();
         });
 
         source.stream();
