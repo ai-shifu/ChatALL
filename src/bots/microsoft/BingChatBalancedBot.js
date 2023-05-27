@@ -23,6 +23,7 @@ export default class BingChatBalancedBot extends BingChatBot {
     "autosave",
     "glpromptv6",
   ];
+  static _tone = "Balanced";
 
   constructor() {
     super();

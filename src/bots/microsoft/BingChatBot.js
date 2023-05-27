@@ -4,17 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 import WebSocketAsPromised from "websocket-as-promised";
 import i18n from "@/i18n";
 
-function randomIP() {
-  return (
-    "13." +
-    Math.floor(Math.random() * 3 + 105) +
-    "." +
-    Math.floor(Math.random() * 255) +
-    "." +
-    Math.floor(Math.random() * 255)
-  );
-}
-
 export default class BingChatBot extends Bot {
   static _brandId = "bingChat";
   static _className = "BingChatBot"; // Class name of the bot
@@ -25,6 +14,7 @@ export default class BingChatBot extends Bot {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
 
   static _optionsSets = null; // Set by the subclass
+  static _tone = ""; // Set by the subclass
 
   constructor() {
     super();
@@ -35,7 +25,6 @@ export default class BingChatBot extends Bot {
       "x-ms-client-request-id": uuidv4(),
       "x-ms-useragent":
         "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.0 OS/MacIntel",
-      "x-forwarded-for": randomIP(),
     };
     var conversation = null;
 
@@ -76,14 +65,38 @@ export default class BingChatBot extends Bot {
     return this.isAvailable();
   }
 
-  async buildChatRequest(prompt) {
+  async makePromptRequest(prompt) {
     const context = await this.getChatContext();
+    const uuid = uuidv4();
     return {
       arguments: [
         {
           source: "cib",
           optionsSets: this.constructor._optionsSets,
           allowedMessageTypes: ["Chat", "InternalSearchQuery"],
+          sliceIds: [
+            "winmuid2tf",
+            "0522chtsprs0",
+            "anssuptkmr1",
+            "522convqfs0",
+            "osbsdusgreccf",
+            "contansperf",
+            "mlchatpcth-c",
+            "winstmsg2tf",
+            "creatgoglc",
+            "creatorv2t",
+            "sydconfigoptt",
+            "norespwtf",
+            "0524txt3",
+            "517opinion",
+            "418dhlth",
+            "0518logos",
+            "517recansvg",
+            "525glv7s0",
+            "kcimgatt",
+            "427startpms0",
+            "515oscfing2s0",
+          ],
           isStartOfSession: context.invocationId === 0,
           message: {
             timestamp: new Date().toISOString(),
@@ -91,10 +104,14 @@ export default class BingChatBot extends Bot {
             inputMethod: "Keyboard",
             text: prompt,
             messageType: "Chat",
+            requestId: uuid,
+            messageId: uuid,
           },
+          tone: this.constructor._tone,
+          requestId: uuid,
           conversationSignature: context.conversationSignature,
-          conversationId: context.conversationId,
           participant: { id: context.clientId },
+          conversationId: context.conversationId,
         },
       ],
       invocationId: context.invocationId.toString(),
@@ -107,19 +124,19 @@ export default class BingChatBot extends Bot {
     let context = await this.getChatContext();
     return new Promise((resolve, reject) => {
       try {
-        const RecordSeparator = String.fromCharCode(30);
+        const seperator = String.fromCharCode(30);
         const wsp = new WebSocketAsPromised(
           "wss://sydney.bing.com/sydney/ChatHub",
           {
             packMessage: (data) => {
-              return JSON.stringify(data) + RecordSeparator;
+              return JSON.stringify(data) + seperator;
             },
             unpackMessage: (data) => {
               return data
                 .toString()
-                .split(RecordSeparator)
+                .split(seperator)
                 .filter(Boolean)
-                .map((d) => JSON.parse(d));
+                .map((r) => JSON.parse(r));
             },
           },
         );
@@ -135,7 +152,7 @@ export default class BingChatBot extends Bot {
           for (const event of events) {
             if (JSON.stringify(event) === "{}") {
               wsp.sendPacked({ type: 6 });
-              wsp.sendPacked(await this.buildChatRequest(prompt));
+              wsp.sendPacked(await this.makePromptRequest(prompt));
               context.invocationId += 1;
             } else if (event.type === 6) {
               wsp.sendPacked({ type: 6 });
@@ -185,6 +202,12 @@ export default class BingChatBot extends Bot {
                   done: false,
                 });
               }
+            } else if (event.type === 7) {
+              wsp.removeAllListeners();
+              wsp.close();
+              reject(new Error(event.error));
+            } else {
+              console.warn("Unknown Bing Chat response:", event);
             }
           }
         });
@@ -199,6 +222,10 @@ export default class BingChatBot extends Bot {
               }),
             ),
           );
+        });
+
+        wsp.onClose.addListener(() => {
+          onUpdateResponse(callbackParam, { done: true });
         });
 
         wsp.open();

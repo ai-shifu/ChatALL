@@ -23,6 +23,7 @@ export default class BingChatPreciseBot extends BingChatBot {
     "autosave",
     "clgalileo",
   ];
+  static _tone = "Precise";
 
   constructor() {
     super();

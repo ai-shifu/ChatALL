@@ -24,6 +24,7 @@ export default class BingChatCreativeBot extends BingChatBot {
     "clgalileo",
     "gencontentv3",
   ];
+  static _tone = "Creative";
 
   constructor() {
     super();
