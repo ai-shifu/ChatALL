@@ -19,7 +19,7 @@
     "tripleColumn": "3 cột"
   },
   "footer": {
-    "sendPrompt": "Gửi tới:",
+    "sendPrompt": "Gửi:",
     "promptPlaceholder": "gõ tin nhắn ở đây. (Shift+Enter để thêm dòng mới)"
   },
   "error": {
@@ -36,7 +36,9 @@
     "name": "Hư không",
     "notImplemented": "Đang được xây dựng...",
     "notAvailable": "Chat bot chưa sẳn sàng vì bạn chưa đăng nhập hoặc chưa cài đặt đúng.",
-    "waiting": "Chờ các yêu cầu khác từ { botName } hoàn tất..."
+    "waiting": "Chờ các yêu cầu khác từ { botName } hoàn tất...",
+    "pastRounds": "Cần bao nhiêu cuộc trò chuyện trước để thực hiện?",
+    "pastRoundsPrompt": "Càng nhiều cuộc trò chuyện trước để thực hiện, hiệu quả của cuộc đối thoại nhiều vòng càng tốt, nhưng nó cũng sẽ tiêu tốn nhiều chi phí hơn"
   },
   "bard": {
     "name": "Bard"
