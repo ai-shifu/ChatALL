@@ -20,6 +20,13 @@ export const AVAILABLE_BOT_NAMES = [
   'DevBot',
 ]
 
+export const DEFAULT_BOT_NAMES = [
+  'VicunaBot',
+  'ClaudeBot',
+  'ChatGLMBot',
+  'AlpacaBot',
+]
+
 export default {
   AVAILABLE_BOT_NAMES,
 }

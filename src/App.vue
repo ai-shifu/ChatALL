@@ -69,30 +69,31 @@
           color="primary"
           elevation="2"
           class="margin-bottom"
-          :disabled="
-            prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
-          "
+          :disabled="prompt.trim() === '' || !currentChatActiveBotNames.length"
           @click="sendPromptToBots"
         >
           {{ $t("footer.sendPrompt") }}
         </v-btn>
         <div class="bot-logos margin-bottom">
-          <img
-            v-for="(bot, index) in bots"
-            :class="{ selected: activeBots[bot.constructor._className] }"
-            :key="index"
-            :src="bot.getLogo()"
-            :alt="bot.getFullname()"
-            :title="bot.getFullname()"
-            @click="toggleSelected(bot)"
-          />
+          <template 
+            v-for="botData in availableBotsData"
+            :key="`bot-logo-${botData.name}`"
+          >
+            <img
+              :class="{ selected: currentChatActiveBotNames.indexOf(botData.name) > -1 }"
+              :src="botData.logo"
+              :alt="botData.fullName"
+              :title="botData.fullName"
+              @click="onClickBot(botData.name)"
+            />
+          </template>
         </div>
       </footer>
 
       <MakeAvailableModal
         v-model:open="isMakeAvailableOpen"
-        :bot="clickedBot"
-        @done="checkAllBotsAvailability(clickedBot)"
+        :bot="clickedBotInstance"
+        @done="checkAllBotsAvailability(clickedBotInstance)"
       />
       <SettingsModal
         v-model:open="isSettingsOpen"
@@ -105,7 +106,7 @@
 </template>
 
 <script setup>
-import "@mdi/font/css/materialdesignicons.css";
+import { ref, computed, onMounted, onBeforeMount } from 'vue';
 import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
 
@@ -113,110 +114,64 @@ import i18n from "./i18n";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
-import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
-import ConfirmModal from "@/components/ConfirmModal.vue";
+import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import ChatsMenuDrawer from "@/components/ChatsMenuDrawer.vue"
-import { ref, computed, reactive, onMounted, onBeforeMount } from 'vue';
+import ConfirmModal from "@/components/ConfirmModal.vue";
+
+// Composables
 import { useMatomo } from '@/composables/matomo';
+import { useChatBots } from "@/composables/chat-bots";
+
+// Styles
+import "@mdi/font/css/materialdesignicons.css";
 
 const store = useStore();
-const matomo = useMatomo()
+const matomo = useMatomo();
+const { 
+  currentChatId, 
+  availableBotsData, 
+  currentChatActiveBotNames,
+  currentChatActiveBotInstances,
+  isMakeAvailableOpen,
+  clickedBotInstance,
+  checkAllBotsAvailability,
+} = useChatBots();
 
 const prompt = ref("");
-const activeBots = reactive({});
-const clickedBot = ref(null);
-const isMakeAvailableOpen = ref(false);
 const isSettingsOpen = ref(false);
 
-const currentChatId = computed(() => store.getters["chatsModule/getCurrentChatId"]);
 const columns = computed(() => store.getters["appModule/getColumns"]);
 const uuid = computed(() => store.getters["appModule/getUuid"]);
-const selectedBots = computed(() => store.getters["settingsModule/getSelectedBots"]);
-const bots = computed(() => store.getters["chatsModule/getCurrentChatBotsAvailable"]);
 
 const changeColumns = (columns) => store.commit("appModule/CHANGE_COLUMNS", columns);
 const setUuid = (uuid) => store.commit("appModule/SET_UUID", uuid);
-const setBotSelected = (botName, selected) => store.commit("settingsModule/SET_BOT_SELECTED", { botName, selected });
 
 function sendPromptToBots() {
   if (prompt.value.trim() === "") return;
-
-  // TODO: implement this logic in chats.module store in order to save active bots by chats
-  // TODO: rework active bots logic
-  const activeBotNames = Object.keys(activeBots).filter(
-    (botName) => activeBots[botName],
-  );
-
-  if (!activeBotNames.length) return;
-
-  const activeBotInstances = bots.value.filter(
-    (bot) => Boolean(activeBots[bot.constructor._className]),
-  );
+  if (currentChatActiveBotInstances.value.length === 0) return;
 
   store.dispatch("chatsModule/sendPrompt", {
     prompt: prompt.value,
-    activeBotNames,
+    botInstances: currentChatActiveBotInstances.value,
   });
 
   matomo.value.trackEvent(
     "prompt",
     "send",
     "Active bots count",
-    activeBotInstances.length,
+    currentChatActiveBotNames.value.length,
   );
 
   prompt.value = "";
 }
 
-function toggleSelected(bot) {
-  const botName = bot.constructor._className;
-  var selected = false;
-  if (!bot.isAvailable()) {
-    clickedBot.value = bot;
-    // Open the bot's settings dialog
-    isMakeAvailableOpen.value = true;
-    selected = true;
+function onClickBot(botName) {
+  if ( currentChatActiveBotNames.value.indexOf(botName) === -1 ) {
+    currentChatActiveBotNames.value = [...currentChatActiveBotNames.value, botName]
   } else {
-    selected = !selectedBots.value[botName];
-  }
-  setBotSelected({ botName, selected });
-  updateActiveBots();
-}
-
-function updateActiveBots() {
-  for (const bot of bots.value) {
-    activeBots[bot.constructor._className] =
-      bot.isAvailable() && selectedBots.value[bot.constructor._className];
-  }
-}
-
-async function checkAllBotsAvailability(specifiedBot = null) {
-  try {
-    let botsToCheck = bots.value;
-    if (specifiedBot) {
-      // If a bot is specified, only check bots of the same brand
-      botsToCheck = bots.value.filter(
-        (bot) =>
-          bot.constructor._brandId === specifiedBot.constructor._brandId,
-      );
-    }
-
-    const checkAvailabilityPromises = botsToCheck.map((bot) =>
-      bot
-        .checkAvailability()
-        .then(() => updateActiveBots())
-        .catch((error) => {
-          console.error(
-            `Error checking login status for ${bot.getFullname()}:`,
-            error,
-          );
-        }),
-    );
-    await Promise.allSettled(checkAvailabilityPromises);
-  } catch (error) {
-    console.error("Error checking login status for bots:", error);
-  }
+    currentChatActiveBotNames.value = currentChatActiveBotNames.value.filter((bot) => bot !== botName)
+  }  
 }
 
 // Send the prompt when the user presses enter and prevent the default behavior
