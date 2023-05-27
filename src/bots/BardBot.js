@@ -2,30 +2,41 @@ import axios from "axios";
 import Bot from "./Bot";
 import AsyncLock from "async-lock";
 
-function extractFromHTML(variableName, html) {
-  const regex = new RegExp(`"${variableName}":"([^"]+)"`);
-  const match = regex.exec(html);
-  return match?.[1];
-}
-
 async function fetchRequestParams() {
-  const { data: html } = await axios.get("https://bard.google.com/faq");
-  const atValue = extractFromHTML("SNlM0e", html);
-  const blValue = extractFromHTML("cfb2h", html);
+  const resp = await axios.get("https://bard.google.com/faq");
+  const atValue = resp.data.match(/"SNlM0e":"([^"]+)"/)?.[1];
+  const blValue = resp.data.match(/"cfb2h":"([^"]+)"/)?.[1];
+  if (!atValue || !blValue) {
+    throw new Error("Failed to fetch Bard at/bl values");
+  }
   return { atValue, blValue };
 }
 
-function parseBartResponse(resp) {
-  const data = JSON.parse(resp.split("\n")[3]);
-  const payload = JSON.parse(data[0][2]);
-  if (!payload) {
-    throw new Error("Failed to access Bard");
+function parseResponse(resp) {
+  let data = JSON.parse(resp.split("\n")[3]);
+  data = JSON.parse(data[0][2]);
+  if (!data) {
+    throw new Error("Failed to parse Bard response");
   }
-  const text = payload[0][0];
-  return {
-    text,
-    ids: [...payload[1], payload[4][0][0]],
-  };
+
+  const ids = [...data[1], data[4][0][0]];
+
+  let text = data[4][0][1][0];
+  const images = data[4][0][4];
+  if (images) {
+    images.forEach((image) => {
+      const url = image[0][0][0];
+      const alt = image[0][4];
+      const link = image[1][0][0];
+      const placeholder = image[2];
+      text = text.replace(
+        placeholder,
+        `[![${alt}](${url})](${link} "${link}")`,
+      );
+    });
+  }
+
+  return { text, ids };
 }
 
 export default class BardBot extends Bot {
@@ -79,7 +90,7 @@ export default class BardBot extends Bot {
           },
         )
         .then(({ data: resp }) => {
-          const { text, ids } = parseBartResponse(resp);
+          const { text, ids } = parseResponse(resp);
           context.contextIds = ids;
           onUpdateResponse(callbackParam, { content: text, done: true });
           resolve();
