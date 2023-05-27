@@ -27,7 +27,7 @@ export default class Bot {
   }
 
   getLogo() {
-    return this.constructor._logoPackedPaths[this.constructor._logoFilename];
+    return this.constructor._logoFilename;
   }
 
   getBrandName() {

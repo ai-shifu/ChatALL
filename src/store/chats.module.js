@@ -1,25 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-
-// Bots
-import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
-import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
-import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
-import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
-import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
-import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
-import SparkBot from "@/bots/SparkBot";
-import BardBot from "@/bots/BardBot";
-import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
-import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
-import MOSSBot from "@/bots/MOSSBot";
-import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
-import VicunaBot from "@/bots/lmsys/VicunaBot";
-import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
-import AlpacaBot from "@/bots/lmsys/AlpacaBot";
-import ClaudeBot from "@/bots/lmsys/ClaudeBot";
-import GradioAppBot from "@/bots/huggingface/GradioAppBot";
-import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
-import DevBot from "@/bots/DevBot";
+import { DEFAULT_BOT_NAMES } from "@/config";
 
 const getMatomo = function () {
   return window.Piwik.getAsyncTracker();
@@ -39,8 +19,8 @@ const getters = {
       title,
     })),
   getCurrentChatId: (state) => state.currentChatId,
-  getCurrentChatBotsAvailable: (state) => state.currentChatId 
-    ? state.chats[state.currentChatId].bots
+  getCurrentChatActiveBotNames: (state) => state.currentChatId 
+    ? state.chats[state.currentChatId].activeBotNames
     : [],
 }
 
@@ -65,8 +45,8 @@ const mutations = {
       ...message ,
     };
   },
-  UPDATE_CHAT_ACTIVE_BOTS(state, { activeBots }) {
-    state.chats[state.currentChatId].activeBots = activeBots
+  UPDATE_CURRENT_CHAT_ACTIVE_BOTS(state, activeBotNames) {
+    state.chats[state.currentChatId].activeBotNames = activeBotNames
   },
   SET_CHAT_MESSAGES(state, messages) {
     state.chats[state.currentChatId].messages = messages;
@@ -74,7 +54,8 @@ const mutations = {
 }
 
 const actions = {
-  sendPrompt({ commit, state, dispatch }, { prompt, activeBotNames }) {
+  // TODO: externalize this function into useChatBots composable
+  sendPrompt({ commit, state, dispatch }, { prompt, botInstances }) {
     commit("ADD_CHAT_MESSAGE", {
       type: "prompt",
       content: prompt,
@@ -85,36 +66,32 @@ const actions = {
     const $matomo = getMatomo();
     
     // eslint-disable-next-line no-unused-vars
-    for (const activeBotName of activeBotNames) {
-
-      const bot = state.chats[state.currentChatId].bots.find(
-        (bot) => bot.constructor._className === activeBotName,
-      );
+    for (const botInstance of Object.values(botInstances)) {
 
       const message = {
         type: "response",
         content: "",
-        format: bot.getOutputFormat(),
-        logo: bot.getLogo(),
-        name: bot.getFullname(),
-        model: bot.constructor._model,
+        format: botInstance.getOutputFormat(),
+        logo: "/bots/" + botInstance.getLogo(),
+        name: botInstance.getFullname(),
+        model: botInstance.constructor._model,
         done: false,
         highlight: false,
         hide: false,
-        className: bot.constructor._className,
+        className: botInstance.constructor._className,
       };
 
       // workaround for tracking message position
       message.index = state.chats[state.currentChatId]
         .messages.push(message) - 1;
       
-      bot.sendPrompt(
+      botInstance.sendPrompt(
         prompt,
         (index, values) =>
           dispatch("updateChatMessage", { 
             index, 
             message: values,
-            chatId: bot.chatId,
+            chatId: botInstance.chatId,
           }),
         message.index,
       );
@@ -122,7 +99,7 @@ const actions = {
       $matomo.trackEvent(
         "prompt",
         "sendTo",
-        bot.constructor._className,
+        botInstance.constructor._className,
         prompt.length,
       );
     }
@@ -156,40 +133,17 @@ const actions = {
 
     const id = uuidv4()
     const chatsCount = Object.keys(state.chats).length;
-    const bots = [
-      ChatGPT35Bot.getInstance(),
-      ChatGPT4Bot.getInstance(),
-      ChatGPTBrowsingBot.getInstance(),
-      OpenAIAPI35Bot.getInstance(),
-      OpenAIAPI4Bot.getInstance(),
-      BingChatCreativeBot.getInstance(),
-      BingChatBalancedBot.getInstance(),
-      BingChatPreciseBot.getInstance(),
-      ClaudeBot.getInstance(),
-      BardBot.getInstance(),
-      WenxinQianfanBot.getInstance(),
-      SparkBot.getInstance(),
-      HuggingChatBot.getInstance(),
-      VicunaBot.getInstance(),
-      AlpacaBot.getInstance(),
-      ChatGLMBot.getInstance(),
-      MOSSBot.getInstance(),
-      GradioAppBot.getInstance(),
-    ]
-
+    const activeBotNames = [...DEFAULT_BOT_NAMES];
+    
     if (process.env.NODE_ENV !== "production") {
-      bots.push(DevBot.getInstance());
+      activeBotNames.push('DevBot');
     }
-
-    for (const bot of bots) {
-      bot.setChatId(id);
-    }
-
+    
     commit("ADD_CHAT", { 
       id, 
       title: `New Chat #${chatsCount + 1}`, 
       messages: [],
-      bots,
+      activeBotNames,
     });
     commit("UPDATE_ACTIVE_CHAT_ID", id);
   }
