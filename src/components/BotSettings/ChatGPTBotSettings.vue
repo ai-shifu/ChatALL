@@ -45,7 +45,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations({ setChatgpt: "settingsModule/SET_CHATGPT" }),
+    ...mapMutations({ setChatgpt: "settingsModule/SET_CHATGPT_SETTINGS" }),
   },
   computed: {
     ...mapGetters({ chatgpt: "settingsModule/getChatgptSettings" }),

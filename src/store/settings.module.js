@@ -1,12 +1,5 @@
 
 const state = {
-  selectedBots: {
-    // Active bots which no login required
-    ChatGLMBot: true,
-    VicunaBot: true,
-    AlpacaBot: true,
-    ClaudeBot: true,
-  },
   openaiApi: {
     apiKey: "",
     temperature: 1,
@@ -29,7 +22,6 @@ const state = {
 }
 
 const getters = {
-  getSelectedBots: (state) => state.selectedBots,
   getOpenaiApiSettings: (state) => state.openaiApi,
   getChatgptSettings: (state) => state.chatgpt,
   getGradioSettings: (state) => state.gradio,
@@ -38,23 +30,19 @@ const getters = {
 }
 
 const mutations = {
-  SET_BOT_SELECTED(state, payload) {
-    const { botId, selected } = payload;
-    state.selectedBots[botId] = selected;
-  },
-  SET_CHATGPT(state, refreshCycle) {
+  SET_CHATGPT_SETTINGS(state, refreshCycle) {
     state.chatgpt.refreshCycle = refreshCycle;
   },
-  SET_OPENAI_API(state, values) {
+  SET_OPENAI_API_SETTINGS(state, values) {
     state.openaiApi = { ...state.openaiApi, ...values };
   },
-  SET_MOSS(state, token) {
+  SET_MOSS_SETTINGS(state, token) {
     state.moss.token = token;
   },
-  SET_WENXIN_QIANFAN(state, { apiKey, secretKey }) {
+  SET_WENXIN_QIANFAN_SETTINGS(state, { apiKey, secretKey }) {
     state.wenxinQianfan = { apiKey, secretKey };
   },
-  SET_GRADIO(state, values) {
+  SET_GRADIO_SETTINGS(state, values) {
     state.gradio = { ...state.gradio, ...values };
   },
 }

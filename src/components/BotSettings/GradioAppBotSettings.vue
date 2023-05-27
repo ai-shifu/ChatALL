@@ -39,7 +39,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations({ setGradio: "settingsModule/SET_GRADIO" }),
+    ...mapMutations({ setGradio: "settingsModule/SET_GRADIO_SETTINGS" }),
   },
   computed: {
     ...mapGetters({ gradio: "settingsModule/getGradioSettings" }),

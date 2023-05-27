@@ -73,7 +73,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations({ setOpenaiApi: "settingsModule/SET_OPENAI_API" }),
+    ...mapMutations({ setOpenaiApi: "settingsModule/SET_OPENAI_API_SETTINGS" }),
   },
   computed: {
     ...mapGetters({ openaiApi: "settingsModule/getOpenaiApiSettings" }),

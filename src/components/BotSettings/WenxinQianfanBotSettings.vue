@@ -51,7 +51,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations({ setWenxinQianfan: "settingsModule/SET_WENXIN_QIANFAN" }),
+    ...mapMutations({ setWenxinQianfan: "settingsModule/SET_WENXIN_QIANFAN_SETTINGS" }),
     setApiKey(value) {
       this.setWenxinQianfan({
         ...this.wenxinQianfan,
