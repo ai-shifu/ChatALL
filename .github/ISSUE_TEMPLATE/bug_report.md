@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
 如果需要，请添加截图以帮助解释你的问题。
 
 **Devtools Info / 开发者工具信息**
-In ChatALL menu, click View->Toggle Developer Tools to open devtools. Paste any suspicous info here.
+In ChatALL menu, click View->Toggle Developer Tools to open devtools. Paste any suspicious info here.
 在 ChatALL 菜单中，点击“查看”->“切换开发者工具”来打开开发者工具。将任何可疑信息粘贴到这里。
 
 **Versions / 版本**
