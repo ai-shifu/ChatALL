@@ -11,7 +11,9 @@ const state = {
 }
 
 const getters = {
-  getMessages: (state) =>  state.chats[state.currentChatId].messages,
+  getMessages: (state) =>  state.chats[state.currentChatId] 
+    ? state.chats[state.currentChatId].messages
+    : [],
   getChats: (state) => Object.values(state.chats)
     .filter(({ messages }) => messages.length > 0)
     .map(({id, title}) => ({
@@ -105,6 +107,10 @@ const actions = {
     }
   },
   updateChatMessage({ commit, state }, { index, message: values, chatId }) {
+    if (!state.chats[chatId]) {
+      return
+    }
+
     commit("UPDATE_CHAT_MESSAGE", { index, message: values, chatId });
 
     // workaround for notifing the message window to scroll to bottom
@@ -123,7 +129,8 @@ const actions = {
   clearChatMessages({ commit }) {
     commit("SET_CHAT_MESSAGES", []);
   },
-  deleteChat({ commit }, id) {
+  async deleteChat({ commit, dispatch }, id) {
+    await dispatch("createChat");
     commit("DELETE_CHAT", id);
   },
   createChat({ commit, state }) {

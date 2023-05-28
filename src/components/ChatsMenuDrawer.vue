@@ -7,16 +7,19 @@ const store = useStore()
 const emits = defineEmits(['create:chat'])
 
 const chats = computed(() => store.getters['chatsModule/getChats'])
+const messages = computed(() => store.getters['chatsModule/getMessages'])
 const currentChatId = computed(() => store.getters['chatsModule/getCurrentChatId']) 
 
 async function onAddNewChat() {
+  if (chats.value.length && !messages.value.length) {
+    return
+  }
   await store.dispatch('chatsModule/createChat')
   emits('create:chat')
 }
 
 async function onRemoveChat(chatId) {
-  console.log("FEATURE DISABLED", chatId)
-  // await store.dispatch('chatsModule/deleteChat', chatId)
+  await store.dispatch('chatsModule/deleteChat', chatId)
 }
 
 function onSelectChat(chatId) {
@@ -61,7 +64,8 @@ function onSelectChat(chatId) {
         :value="chat.id"
       >
         <template #append>
-          <v-icon 
+          <v-icon
+            v-if="chat.id === currentChatId"
             size="small" 
             color="red" 
             @click.self="onRemoveChat(chat.id)"
