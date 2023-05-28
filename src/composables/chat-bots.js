@@ -31,7 +31,7 @@ export function useChatBots() {
   
   const currentChatId = computed(() => store.getters["chatsModule/getCurrentChatId"])
   const currentChatBotInstances = computed(() => chatsBotInstances[currentChatId.value] 
-    ? Object.values(chatsBotInstances[currentChatId.value]) || []
+    ? Object.values(chatsBotInstances[currentChatId.value])
     : []
   )
 
@@ -130,20 +130,22 @@ export function useChatBots() {
    * When a new bot is enabled by user,
    * we need to instanciate and configure it then associate it to the current chat.
    */
-  watch(() => currentChatActiveBotNames.value, async (newValue, oldValue) => {
+  watch(currentChatActiveBotNames, async (newValue, oldValue) => {
     if (!currentChatId.value) {
       return
     }
 
     // if a bot has been disabled 
-    if (newValue.length < oldValue.length) {
+    if (oldValue && newValue.length < oldValue.length) {
       const botNameToDisable = oldValue.find((botName) => !newValue.includes(botName))
       delete chatsBotInstances[currentChatId.value][botNameToDisable]
       return
     }
     
     // compare old and new active bots to find the new one
-    const newActiveBotNames = newValue.filter((botName) => !oldValue.includes(botName))
+    const newActiveBotNames = oldValue && oldValue.length 
+      ? newValue.filter((botName) => !oldValue.includes(botName))
+      : newValue
 
     if (!newActiveBotNames.length) {
       return
