@@ -111,6 +111,7 @@ export default createStore({
     },
     setChatContext(state, { botClassname, context }) {
       const currentChat = state.chats[state.currentChatIndex];
+      if (currentChat.contexts == undefined) currentChat.contexts = {};
       currentChat.contexts[botClassname] = context;
     },
     clearMessages(state) {
@@ -123,6 +124,7 @@ export default createStore({
       if (state.messages.length > 0) {
         const chat = {
           title: i18n.global.t("chat.newChat"),
+          contexts: {},
           messages: state.messages,
         };
         state.chats[0] = chat;
