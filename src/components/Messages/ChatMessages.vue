@@ -34,11 +34,13 @@ const gridTemplateColumns = computed(() => `repeat(${props.columns}, 1fr)`);
 const filteredMessages = computed(() =>
   store.getters['chatsModule/getMessages'].filter((message) => !message.hide),
 );
+const currentChatId = computed(() => store.getters['chatsModule/getCurrentChatId']);
 
 const updateMessage = (index, values) => {
   store.dispatch("chatsModule/updateChatMessage", {
     index,
     message: values,
+    chatId: currentChatId.value,
   });
 };
 
