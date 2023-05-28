@@ -218,7 +218,7 @@ export default class Bot {
    * @returns {object} - Chat context defined by the bot
    */
   async getChatContext() {
-    let context = store.getters.currentChat.contexts[this.getClassname()];
+    let context = store.getters.currentChat?.contexts?.[this.getClassname()];
     if (!context) {
       context = await this.createChatContext();
       this.setChatContext(context);
