@@ -1,0 +1,113 @@
+{
+  "settings": {
+    "enable": "Abilita",
+    "forExample": "Ad esempio { esempio }",
+    "title": "Impostazioni",
+    "general": "Generali",
+    "auto": "Automatico",
+    "language": "Lingua",
+    "languagePrompt": "Riavvia l'applicazione per applicare la nuova lingua",
+    "loginOrOut": "Accedi/Esci",
+    "loginOrOutPrompt": "Clicca sul link sottostante per accedere o uscire nella nuova finestra, quindi chiudila",
+    "notice": "Avviso",
+    "secretPrompt": "Il tuo token segreto rimarrà sul tuo dispositivo e non sarà condiviso con nessun'altra persona"
+  },
+  "header": {
+    "clearMessages": "Cancellare tutti i messaggi?",
+    "yes": "Sì",
+    "no": "No",
+    "singleColumn": "Colonna singola",
+    "doubleColumn": "Colonna doppia",
+    "tripleColumn": "Colonna tripla"
+  },
+  "footer": {
+    "sendPrompt": "Invia a:",
+    "promptPlaceholder": "Digita un messaggio. (Shift+Invio per aggiungere una nuova riga)"
+  },
+  "error": {
+    "failedConnectUrl": "Connessione a { url } non riuscita",
+    "closedByServer": "Connessione chiusa dal server"
+  },
+  "modal": {
+    "confirmHide": "Eliminare questo messaggio?",
+    "done": "Fatto"
+  },
+  "chat": {
+    "newChat": "Nuova Chat"
+  },
+  "bot": {
+    "creatingConversation": "Creazione della conversazione in corso...",
+    "failedToCreateConversation": "Creazione della conversazione non riuscita",
+    "name": "Bot Nullo",
+    "notImplemented": "In costruzione...",
+    "notAvailable": "Il bot non è disponibile perché non è stato effettuato l'accesso o la configurazione non è corretta.",
+    "waiting": "In attesa del completamento di altre richieste di { botName }...",
+    "pastRounds": "Quanti round di chat precedenti mantenere?",
+    "pastRoundsPrompt": "Più chat storiche vengono mantenute, migliore è l'effetto del dialogo multi-round, ma richiede anche più risorse"
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "loginToContinue": "Richiesta limitata. <a { attributes }>Accedi</a> per continuare.",
+    "h3imaginative": "Creativo",
+    "galileo": "Equilibrato",
+    "h3precise": "Preciso"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "Anti-disconnessione automatica",
+    "autoRefreshPrompt": "Se non ti viene chiesto di effettuare frequentemente l'accesso, NON abilitare questa funzione",
+    "notice": "Solo i membri Plus a pagamento possono utilizzare GPT-4",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "Navigazione Web"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "L'indice fn_index della funzione che richiederai. Di solito è 0",
+    "name": "Gradio",
+    "queueFull": "La coda è piena, riprova più tardi",
+    "url": "URL dell'app Gradio",
+    "urlPrompt": "URL della tua app Gradio. Se stai usando lo spazio di Hugging Face, ottieni l'URL diretto cliccando su Embed this space nell'angolo in alto a destra.",
+    "waiting": "Ci sono { queue_size } richieste in coda, sei al { rank }º posto e l'attesa stimata è di { queue_eta } secondi"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "URL API alternativo",
+    "alterUrlPrompt": "Se stai utilizzando un URL API personalizzato, puoi inserirlo qui",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "Temperatura",
+    "temperaturePrompt": "Più alta è la temperatura, più creativo è il testo, ma maggiore è la probabilità che sia incoerente",
+    "temperature0": "Più deterministico",
+    "temperature2": "Più casuale",
+    "apiKey": "Chiave API"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "dev": {
+    "name": "Bot Dev"
+  }
+}
