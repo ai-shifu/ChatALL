@@ -50,6 +50,7 @@
   },
   "bingChat": {
     "name": "Bing Chat",
+    "loginToContinue": "请求被限制。请<a { attributes }>登录</a>再继续。",
     "h3imaginative": "创造力",
     "galileo": "平衡",
     "h3precise": "精确"

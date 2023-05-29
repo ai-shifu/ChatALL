@@ -121,6 +121,10 @@ function handleClick(event) {
   if (target.tagName !== "A" && target.parentElement.tagName !== "A") {
     return;
   }
+  if (target.target === "innerWindow") {
+    // Open in Electron inner window
+    return;
+  }
   // Open in external browser
   event.preventDefault();
   const electron = window.require("electron");

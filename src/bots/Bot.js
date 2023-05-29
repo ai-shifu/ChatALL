@@ -215,11 +215,12 @@ export default class Bot {
 
   /**
    * Get the context from the store. If not available, create a new one.
+   * @param {boolean} createIfNotExists - Create a new context if not exists
    * @returns {object} - Chat context defined by the bot
    */
-  async getChatContext() {
+  async getChatContext(createIfNotExists = true) {
     let context = store.getters.currentChat?.contexts?.[this.getClassname()];
-    if (!context) {
+    if (!context && createIfNotExists) {
       context = await this.createChatContext();
       this.setChatContext(context);
     }

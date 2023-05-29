@@ -50,6 +50,7 @@
   },
   "bingChat": {
     "name": "Bing Chat",
+    "loginToContinue": "Request is throttled. <a { attributes }>Log in</a> to continue.",
     "h3imaginative": "Creative",
     "galileo": "Balanced",
     "h3precise": "Precise"

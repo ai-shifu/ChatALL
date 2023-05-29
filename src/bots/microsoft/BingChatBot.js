@@ -56,7 +56,13 @@ export default class BingChatBot extends Bot {
       .get("https://www.bing.com/turing/conversation/chats")
       .then((response) => {
         this.constructor._isAvailable =
-          response.data && response.data.result.value == "Success";
+          response.data?.result?.value == "Success";
+
+        // If login user is changed, clear the chat context
+        const context = this.getChatContext(false);
+        if (response.data?.clientId != context?.clientId) {
+          this.setChatContext(null);
+        }
       })
       .catch((error) => {
         this.constructor._isAvailable = false;
@@ -170,6 +176,19 @@ export default class BingChatBot extends Bot {
                   this.setChatContext(context);
                   this._sendPrompt(prompt, onUpdateResponse, callbackParam);
                   reject(new Error(i18n.global.t("bot.creatingConversation")));
+                } else if (event.item.result.value === "Throttled") {
+                  if (await this.isAnonymous(context.clientId)) {
+                    const url = this.getLoginUrl();
+                    onUpdateResponse(callbackParam, {
+                      content: i18n.global.t("bingChat.loginToContinue", {
+                        attributes: `href="${url}" title="${url}" target="innerWindow"`,
+                      }),
+                      done: false,
+                    });
+                    this.setChatContext(null);
+                  } else {
+                    reject(new Error(event.item.result.message));
+                  }
                 } else {
                   reject(new Error(event.item.result.message));
                 }
@@ -233,5 +252,9 @@ export default class BingChatBot extends Bot {
         reject(error);
       }
     });
+  }
+
+  async isAnonymous(clientId) {
+    return clientId.length > 30; // TODO: find a better way to check if anonymous
   }
 }
