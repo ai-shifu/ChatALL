@@ -95,14 +95,13 @@
   </div>
 </template>
 
-<script>
-import "@mdi/font/css/materialdesignicons.css";
-import { mapState, mapMutations } from "vuex";
+<script setup>
+import { ref, computed, onMounted, onBeforeMount, reactive } from 'vue';
+import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
 
 import i18n from "./i18n";
-import store from "./store";
-import bots from "./bots";
+import _bots from "./bots";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
@@ -110,142 +109,146 @@ import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 
-export default {
-  name: "App",
-  components: {
-    ChatMessages,
-    MakeAvailableModal,
-    SettingsModal,
-    ConfirmModal,
-  },
-  data() {
-    return {
-      prompt: "",
-      bots: bots.all,
-      activeBots: {},
+// Composables
+import { useMatomo } from '@/composables/matomo';
 
-      clickedBot: null,
-      isMakeAvailableOpen: false,
+// Styles
+import "@mdi/font/css/materialdesignicons.css";
 
-      isSettingsOpen: false,
-    };
-  },
-  methods: {
-    async sendPromptToBots() {
-      if (this.prompt.trim() === "") return;
-      if (Object.values(this.activeBots).every((bot) => !bot)) return;
+const store = useStore();
+const matomo = useMatomo();
 
-      const toBots = bots.all.filter(
-        (bot) => this.activeBots[bot.getClassname()],
+const confirmModal = ref(null);
+const prompt = ref("");
+const bots = ref(_bots.all);
+const activeBots = reactive({});
+const clickedBot = ref(null);
+const isSettingsOpen = ref(false);
+const isMakeAvailableOpen = ref(false);
+
+const columns = computed(() => store.state.columns);
+const selectedBots = computed(() => store.state.selectedBots);
+
+const changeColumns = (columns) => store.commit("changeColumns", columns);
+const setUuid = (uuid) => store.commit("setUuid", uuid);
+const setBotSelected = (uuid) => store.commit("SET_BOT_SELECTED", uuid);
+
+function sendPromptToBots() {
+  if (prompt.value.trim() === "") return;
+  if (Object.values(activeBots).every((bot) => !bot)) return;
+
+  const toBots = bots.value.filter(
+    (bot) => activeBots[bot.getClassname()],
+  );
+
+  store.dispatch("sendPrompt", {
+    prompt: prompt.value,
+    bots: toBots,
+  });
+
+  matomo.value.trackEvent(
+    "prompt",
+    "send",
+    "Active bots count",
+    toBots.length,
+  );
+  // Clear the textarea after sending the prompt
+  prompt.value = "";
+}
+
+function toggleSelected(bot) {
+  const botId = bot.getClassname();
+  var selected = false;
+  if (!bot.isAvailable()) {
+    clickedBot.value = bot;
+    // Open the bot's settings dialog
+    isMakeAvailableOpen.value = true;
+    selected = true;
+  } else {
+    selected = !selectedBots.value[botId];
+  }
+  setBotSelected({ botId, selected });
+  updateActiveBots();
+}
+
+function updateActiveBots() {
+  for (const bot of bots.value) {
+    activeBots[bot.getClassname()] =
+      bot.isAvailable() && selectedBots.value[bot.getClassname()];
+  }
+}
+
+async function checkAllBotsAvailability(specifiedBot = null) {
+  try {
+    let botsToCheck = bots.value;
+    if (specifiedBot) {
+      // If a bot is specified, only check bots of the same brand
+      botsToCheck = bots.value.filter(
+        (bot) =>
+          bot.constructor._brandId === specifiedBot.constructor._brandId,
       );
+    }
 
-      this.$store.dispatch("sendPrompt", {
-        prompt: this.prompt,
-        bots: toBots,
-      });
-
-      this.$matomo.trackEvent(
-        "prompt",
-        "send",
-        "Active bots count",
-        toBots.length,
-      );
-      // Clear the textarea after sending the prompt
-      this.prompt = "";
-    },
-    ...mapMutations(["changeColumns"]),
-    ...mapMutations(["setUuid"]),
-    ...mapMutations(["SET_BOT_SELECTED"]),
-    toggleSelected(bot) {
-      const botId = bot.getClassname();
-      var selected = false;
-      if (!bot.isAvailable()) {
-        this.clickedBot = bot;
-        // Open the bot's settings dialog
-        this.isMakeAvailableOpen = true;
-        selected = true;
-      } else {
-        selected = !this.selectedBots[botId];
-      }
-      this.SET_BOT_SELECTED({ botId, selected });
-      this.updateActiveBots();
-    },
-    updateActiveBots() {
-      for (const bot of bots.all) {
-        this.activeBots[bot.getClassname()] =
-          bot.isAvailable() && this.selectedBots[bot.getClassname()];
-      }
-    },
-    async checkAllBotsAvailability(specifiedBot = null) {
-      try {
-        let botsToCheck = bots.all;
-        if (specifiedBot) {
-          // If a bot is specified, only check bots of the same brand
-          botsToCheck = bots.all.filter(
-            (bot) =>
-              bot.constructor._brandId === specifiedBot.constructor._brandId,
+    const checkAvailabilityPromises = botsToCheck.map((bot) =>
+      bot
+        .checkAvailability()
+        .then(() => updateActiveBots())
+        .catch((error) => {
+          console.error(
+            `Error checking login status for ${bot.getFullname()}:`,
+            error,
           );
-        }
+        }),
+    );
+    await Promise.allSettled(checkAvailabilityPromises);
+  } catch (error) {
+    console.error("Error checking login status for bots:", error);
+  }
+}
 
-        const checkAvailabilityPromises = botsToCheck.map((bot) =>
-          bot
-            .checkAvailability()
-            .then(() => this.updateActiveBots())
-            .catch((error) => {
-              console.error(
-                `Error checking login status for ${bot.getFullname()}:`,
-                error,
-              );
-            }),
-        );
-        await Promise.allSettled(checkAvailabilityPromises);
-      } catch (error) {
-        console.error("Error checking login status for bots:", error);
-      }
-    },
-    openSettingsModal() {
-      this.isSettingsOpen = true;
-    },
-    // Send the prompt when the user presses enter and prevent the default behavior
-    // But if the shift, ctrl, alt, or meta keys are pressed, do as default
-    filterEnterKey(event) {
-      if (
-        event.keyCode == 13 &&
-        !event.shiftKey &&
-        !event.ctrlKey &&
-        !event.altKey &&
-        !event.metaKey
-      ) {
-        event.preventDefault();
-        this.sendPromptToBots();
-      }
-    },
-    async clearMessages() {
-      const result = await this.$refs.confirmModal.showModal(
-        i18n.global.t("header.clearMessages"),
-      );
-      if (result) {
-        this.$store.commit("clearMessages");
-      }
-    },
-  },
-  computed: {
-    ...mapState(["columns"]),
-    ...mapState(["selectedBots"]),
-  },
-  created() {
-    this.checkAllBotsAvailability();
-  },
-  mounted() {
-    !store.state.uuid && this.setUuid(uuidv4());
-    window._paq.push(["setUserId", store.state.uuid]);
-    window._paq.push(["trackPageView"]);
+function openSettingsModal() {
+  isSettingsOpen.value = true;
+}
 
-    const ver = require("../package.json").version;
-    document.title = `ChatALL.ai v${ver}`;
-  },
-};
+// Send the prompt when the user presses enter and prevent the default behavior
+// But if the shift, ctrl, alt, or meta keys are pressed, do as default
+function filterEnterKey(event) {
+  if (
+    event.keyCode == 13 &&
+    !event.shiftKey &&
+    !event.ctrlKey &&
+    !event.altKey &&
+    !event.metaKey
+  ) {
+    event.preventDefault();
+    sendPromptToBots();
+  }
+}
+
+async function clearMessages() {
+  const result = await confirmModal.value.showModal(
+    i18n.global.t("header.clearMessages"),
+  );
+  if (result) {
+    store.commit("clearMessages");
+  }
+}
+
+onMounted(() => {
+  !store.state.uuid && setUuid(uuidv4());
+  window._paq.push(["setUserId", store.state.uuid]);
+  window._paq.push(["trackPageView"]);
+
+  const ver = require("../package.json").version;
+  document.title = `ChatALL.ai v${ver}`;
+});
+
+onBeforeMount(() => {
+  checkAllBotsAvailability();
+});
+
 </script>
+
 
 <style>
 * {
