@@ -79,6 +79,7 @@ const languages = computed(() => [
   { name: $t("settings.auto"), code: "auto" },
   { name: "Deutsch", code: "de" },
   { name: "English", code: "en" },
+  { name: "Italiano", code: "it" },
   { name: "Русский", code: "ru" },
   { name: "简体中文", code: "zh" },
   { name: "Tiếng Việt", code: "vi" },
