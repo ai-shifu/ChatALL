@@ -15,6 +15,7 @@ import deMessages from "./locales/de.json";
 import ruMessages from "./locales/ru.json";
 import viMessages from "./locales/vi.json";
 import frMessages from "./locales/fr.json";
+import itMessages from "./locales/it.json";
 
 const messages = {
   en: enMessages,
@@ -22,6 +23,7 @@ const messages = {
   de: deMessages,
   ru: ruMessages,
   vi: viMessages,
+  it: itMessages,
   fr: frMessages,
 };
 
