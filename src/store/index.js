@@ -49,6 +49,9 @@ export default createStore({
     moss: {
       token: "",
     },
+    qianWen: {
+      xsrfToken: "",
+    },
     wenxinQianfan: {
       apiKey: "",
       secretKey: "",
@@ -82,6 +85,9 @@ export default createStore({
     },
     setMoss(state, token) {
       state.moss.token = token;
+    },
+    setQianWenToken(state, token) {
+      state.qianWen.xsrfToken = token;
     },
     setWenxinQianfan(state, values) {
       state.wenxinQianfan = { ...state.wenxinQianfan, ...values };

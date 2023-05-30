@@ -145,6 +145,22 @@ function createNewWindow(url, userAgent = "") {
       newWin.destroy(); // Destroy the window manually
     });
   }
+
+  // Get QianWen bot's XSRF-TOKEN
+  if (url.includes("tongyi.aliyun.com")) {
+    newWin.on("close", async (e) => {
+      try {
+        e.preventDefault(); // Prevent the window from closing
+        const token = await newWin.webContents.executeJavaScript(
+          'document.cookie.split("; ").find((cookie) => cookie.startsWith("XSRF-TOKEN="))?.split("=")[1];',
+        );
+        mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
+      } catch (error) {
+        console.error(error);
+      }
+      newWin.destroy(); // Destroy the window manually
+    });
+  }
 }
 
 ipcMain.handle("create-new-window", (event, url, userAgent) => {

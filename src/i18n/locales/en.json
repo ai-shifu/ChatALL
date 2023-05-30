@@ -101,6 +101,9 @@
     "temperature2": "More random",
     "apiKey": "API Key"
   },
+  "qianWen": {
+    "name": "QianWen"
+  },
   "spark": {
     "name": "iFlytek Spark"
   },

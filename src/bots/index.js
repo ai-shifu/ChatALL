@@ -18,6 +18,7 @@ import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
+import QianWenBot from "./QianWenBot";
 
 const all = [
   ChatGPT35Bot.getInstance(),
@@ -31,6 +32,7 @@ const all = [
   ClaudeBot.getInstance(),
   BardBot.getInstance(),
   WenxinQianfanBot.getInstance(),
+  QianWenBot.getInstance(),
   SparkBot.getInstance(),
   HuggingChatBot.getInstance(),
   VicunaBot.getInstance(),
