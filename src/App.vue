@@ -96,7 +96,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeMount, reactive } from 'vue';
+import { ref, computed, onMounted, onBeforeMount, reactive } from "vue";
 import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
 
@@ -110,7 +110,7 @@ import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 
 // Composables
-import { useMatomo } from '@/composables/matomo';
+import { useMatomo } from "@/composables/matomo";
 
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
@@ -137,21 +137,14 @@ function sendPromptToBots() {
   if (prompt.value.trim() === "") return;
   if (Object.values(activeBots).every((bot) => !bot)) return;
 
-  const toBots = bots.value.filter(
-    (bot) => activeBots[bot.getClassname()],
-  );
+  const toBots = bots.value.filter((bot) => activeBots[bot.getClassname()]);
 
   store.dispatch("sendPrompt", {
     prompt: prompt.value,
     bots: toBots,
   });
 
-  matomo.value.trackEvent(
-    "prompt",
-    "send",
-    "Active bots count",
-    toBots.length,
-  );
+  matomo.value.trackEvent("prompt", "send", "Active bots count", toBots.length);
   // Clear the textarea after sending the prompt
   prompt.value = "";
 }
@@ -184,8 +177,7 @@ async function checkAllBotsAvailability(specifiedBot = null) {
     if (specifiedBot) {
       // If a bot is specified, only check bots of the same brand
       botsToCheck = bots.value.filter(
-        (bot) =>
-          bot.constructor._brandId === specifiedBot.constructor._brandId,
+        (bot) => bot.constructor._brandId === specifiedBot.constructor._brandId,
       );
     }
 
@@ -240,15 +232,13 @@ onMounted(() => {
   window._paq.push(["trackPageView"]);
 
   const ver = require("../package.json").version;
-  document.title = `ChatALL.ai v${ver}`;
+  document.title = `ChatALL.ai - v${ver}`;
 });
 
 onBeforeMount(() => {
   checkAllBotsAvailability();
 });
-
 </script>
-
 
 <style>
 * {
