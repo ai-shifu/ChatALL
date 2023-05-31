@@ -56,6 +56,7 @@ export default class BardBot extends Bot {
   async checkAvailability() {
     const context = await this.getChatContext();
     context.requestParams = await fetchRequestParams();
+    this.setChatContext(context);
     if (context.requestParams.atValue) {
       this.constructor._isAvailable = true;
     } else {
