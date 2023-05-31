@@ -4,7 +4,7 @@ import BingChatBot from "./BingChatBot";
 
 export default class BingChatBalancedBot extends BingChatBot {
   static _className = "BingChatBalancedBot"; // Class name of the bot
-  static _logoFilename = "bing-balanced-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "bing-balanced-logo.png"; // Place it in public/bots/
   static _model = "galileo"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _lock = new AsyncLock(); // Must process requests in queue
 

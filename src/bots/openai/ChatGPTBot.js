@@ -13,7 +13,7 @@ const REFRESH_SESSION_URL =
 export default class ChatGPTBot extends Bot {
   static _brandId = "chatGpt";
   static _className = "ChatGPTBot"; // Class name of the bot
-  static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "chatgpt-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://chat.openai.com/";
   // Remove Electron from the user agent to avoid blank login screen of Google
   static _userAgent =

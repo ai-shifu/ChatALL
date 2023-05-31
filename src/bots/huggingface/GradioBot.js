@@ -6,7 +6,7 @@ import i18n from "@/i18n";
 export default class GradioBot extends Bot {
   static _brandId = "gradio"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "GradioBot"; // Class name of the bot
-  static _logoFilename = "gradio-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "gradio-logo.svg"; // Place it in public/bots/
   static _loginUrl = ""; // Any Gradio URL
   static _fnIndexes = [0]; // Indexes of the APIs to call in order. Sniffer it by devtools.
 

@@ -4,7 +4,7 @@ import axios from "axios";
 export default class ERNIEBot extends Bot {
   static _brandId = "ernie"; // ID of the bot, should be unique
   static _className = "ERNIEBot"; // Class name of the bot
-  static _logoFilename = "ernie-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "ernie-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://yiyan.baidu.com/";
 
   constructor() {

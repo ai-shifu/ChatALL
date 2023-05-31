@@ -8,7 +8,7 @@ import Bot from "./Bot";
 export default class SparkBot extends Bot {
   static _brandId = "spark";
   static _className = "SparkBot"; // Class name of the bot
-  static _logoFilename = "spark-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "spark-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://xinghuo.xfyun.cn/";
   static _lock = new AsyncLock(); // All Spark bots share the same lock
 

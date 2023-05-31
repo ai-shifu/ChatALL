@@ -4,7 +4,7 @@ import Bot from "@/bots/Bot";
 export default class YourAIBot extends Bot {
   static _brandId = "yourAi"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "YourAIBot"; // Class name of the bot
-  static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "default-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://example.com/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 

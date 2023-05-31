@@ -4,7 +4,7 @@ import GradioBot from "@/bots/huggingface/GradioBot";
 export default class LMSYSBot extends GradioBot {
   static _brandId = "lmsys"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "LMSYSBot"; // Class name of the bot
-  static _logoFilename = "lmsys-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "lmsys-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://chat.lmsys.org/"; // Any Gradio URL
   static _settingsComponent = "LMSYSBotSettings"; // Vue component filename for settings
   static _fnIndexes = [7, 8]; // Indexes of the APIs to call in order. Sniffer it by devtools.
