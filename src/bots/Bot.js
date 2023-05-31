@@ -171,6 +171,8 @@ export default class Bot {
     }
 
     const executeSendPrompt = async () => {
+      // Begin thinking...
+      onUpdateResponse(callbackParam, { content: "...", done: false });
       await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
     };
 
