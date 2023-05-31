@@ -25,7 +25,7 @@
 | [Bard](https://bard.google.com/)                             | 支持     | 无 API   |                                          |
 | [Poe](https://poe.com/)                                      | 即将推出 | 即将推出 |                                          |
 | [MOSS](https://moss.fastnlp.top/)                            | 支持     | 无 API   |                                          |
-| [通义千问](http://tongyi.aliyun.com/)                        | 即将推出 | 即将推出 |                                          |
+| [通义千问](http://tongyi.aliyun.com/)                        | 支持     | 即将推出 |                                          |
 | [得到学习助手](https://ai.dedao.cn/)                         | 即将推出 | 无 API   |                                          |
 | [讯飞星火](http://xinghuo.xfyun.cn/)                         | 支持     | 即将推出 |                                          |
 | [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | 支持     | 无 API   | 不需要帐号                               |

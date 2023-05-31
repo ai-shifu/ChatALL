@@ -13,27 +13,27 @@
 
 ## 特徴
 
-大規模言語モデル（LLM）ベースの AI ボットは素晴らしいです。しかし、その挙動はランダムで、ボットによって得意とするタスクが異なります。最高の体験をしたいのであれば、ボットを1つずつ試すのはやめましょう。ChatALL （中国名：齐尔）は、複数の AI ボットに同時にプロンプトを送信することができ、最高の結果を発見するのに役立ちます。
+大規模言語モデル（LLM）ベースの AI ボットは素晴らしいです。しかし、その挙動はランダムで、ボットによって得意とするタスクが異なります。最高の体験をしたいのであれば、ボットを 1 つずつ試すのはやめましょう。ChatALL （中国名：齐尔）は、複数の AI ボットに同時にプロンプトを送信することができ、最高の結果を発見するのに役立ちます。
 
 ### 対応するボット
 
-| AI ボット                                                                  | Web アクセス  | API         |
-| ------------------------------------------------------------------------- | ----------- | ----------- |
-| [ChatGPT](https://chat.openai.com)                                        | はい         | はい         |
-| [Bing Chat](https://www.bing.com/new)                                     | はい         | APIなし      |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                   | いいえ       | はい         |
-| [Bard](https://bard.google.com/)                                          | はい         | APIなし      |
-| [Poe](https://poe.com/)                                                   | 近日公開     | 近日公開     |
-| [MOSS](https://moss.fastnlp.top/)                                         | はい         | APIなし      |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                               | 近日公開     | 近日公開     |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                          | 近日公開     | APIなし      |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                 | はい         | 近日公開     |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                | はい         | APIなし      |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                       | はい         | APIなし      |
-| [ChatGLM](https://chatglm.cn/blog)                                        | はい         | APIなし      |
-| [Claude](https://www.anthropic.com/index/introducing-claude)              | はい         | APIなし      |
-| Hugging Face space/セルフデプロイモデルの [Gradio](https://gradio.app/)       | はい         | APIなし      |
-| [HuggingChat](https://huggingface.co/chat/)                               | はい         | APIなし      |
+| AI ボット                                                               | Web アクセス | API      |
+| ----------------------------------------------------------------------- | ------------ | -------- |
+| [ChatGPT](https://chat.openai.com)                                      | はい         | はい     |
+| [Bing Chat](https://www.bing.com/new)                                   | はい         | API なし |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                                 | いいえ       | はい     |
+| [Bard](https://bard.google.com/)                                        | はい         | API なし |
+| [Poe](https://poe.com/)                                                 | 近日公開     | 近日公開 |
+| [MOSS](https://moss.fastnlp.top/)                                       | はい         | API なし |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                             | はい         | 近日公開 |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                        | 近日公開     | API なし |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                               | はい         | 近日公開 |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)              | はい         | API なし |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                     | はい         | API なし |
+| [ChatGLM](https://chatglm.cn/blog)                                      | はい         | API なし |
+| [Claude](https://www.anthropic.com/index/introducing-claude)            | はい         | API なし |
+| Hugging Face space/セルフデプロイモデルの [Gradio](https://gradio.app/) | はい         | API なし |
+| [HuggingChat](https://huggingface.co/chat/)                             | はい         | API なし |
 
 などなど...
 
@@ -44,7 +44,7 @@
 - 気に入った応答をハイライトし、悪い応答を削除
 - ChatGPT セッションを自動的に維持
 - ボットの有効化/無効化をいつでも行えます
-- 1列、2列、3列の表示切り替えが可能
+- 1 列、2 列、3 列の表示切り替えが可能
 - 複数の言語（en、zh）をサポート
 - [TODO] ベストレコメンデーション
 
@@ -68,7 +68,7 @@ https://github.com/sunner/ChatALL/releases からダウンロード
 
 Apple Silicon Mac (M1, M2 CPU) の場合は、\*-mac-arm64.dmg ファイルをダウンロードしてください。
 
-その他のMacの場合は、\*-mac-x64.dmg ファイルをダウンロードしてください。
+その他の Mac の場合は、\*-mac-x64.dmg ファイルをダウンロードしてください。
 
 ### Linux の場合
 

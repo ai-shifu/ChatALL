@@ -25,7 +25,7 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 | [Bard](https://bard.google.com/)                                          | Yes         | No API      |
 | [Poe](https://poe.com/)                                                   | Coming soon | Coming soon |
 | [MOSS](https://moss.fastnlp.top/)                                         | Yes         | No API      |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                               | Coming soon | Coming soon |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                               | Yes         | Coming soon |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)                          | Coming soon | No API      |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                 | Yes         | Coming soon |
 | [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                | Yes         | No API      |

@@ -18,14 +18,14 @@ Les robots d'intelligence artificielle basés sur les grands modèles de langage
 ### Bots pris en charge
 
 | AI Bots                                                      | Accès web     | API           | Notes                                             |
-| ------------------------------------------------------------ | -----------   | -----------   | --------------------------------------------------|
+| ------------------------------------------------------------ | ------------- | ------------- | ------------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Oui           | Oui           | Navigation web incluse                            |
 | [Bing Chat](https://www.bing.com/new)                        | Oui           | Non           |                                                   |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | Non           | Oui           |                                                   |
 | [Bard](https://bard.google.com/)                             | Oui           | Non           |                                                   |
 | [Poe](https://poe.com/)                                      | Prochainement | Prochainement |                                                   |
 | [MOSS](https://moss.fastnlp.top/)                            | Oui           | Non           |                                                   |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Prochainement | Prochainement |                                                   |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Oui           | Prochainement |                                                   |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prochainement | Non           |                                                   |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Oui           | Prochainement |                                                   |
 | [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Oui           | Non           | Pas besoin de compte ou de clé API                |
