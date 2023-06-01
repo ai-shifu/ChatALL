@@ -53,6 +53,7 @@
     "eslint-plugin-vue": "^9.14.1",
     "prettier-plugin-vue": "^1.1.6",
     "sse.js": "github:mpetazzoni/sse.js",
+    "vsce": "^2.15.0",
     "vue-cli-plugin-electron-builder": "^2.1.1"
   },
   "eslintConfig": {
@@ -75,5 +76,6 @@
     "not dead",
     "not ie 11"
   ],
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "__npminstall_done": false
 }
