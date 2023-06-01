@@ -116,3 +116,7 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 は多くのコードを提供した
 - ChatGPT、Bing Chat、Google が多くの解決策を提供（順不同）
 - [ChatHub](https://github.com/chathub-dev/chathub) に触発されました。リスペクトです！
+
+## Sponsor
+
+このプロジェクトが気に入った場合は、ぜひご検討ください [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)

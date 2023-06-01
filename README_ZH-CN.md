@@ -120,3 +120,10 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 贡献了大部分代码
 - ChatGPT，Bing Chat 和 Google 提供了许多解决方案（排名分先后）
 - 受 [ChatHub](https://github.com/chathub-dev/chathub) 启发。致敬！
+
+## 赞助
+
+如果您喜欢这个项目，可以通过以下方式支持：
+
+<img src="https://sunner.cn/sponsor/alipay.jpg" width="200" />
+<img src="https://sunner.cn/sponsor/wepay.jpg" width="200" />

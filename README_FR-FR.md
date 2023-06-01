@@ -118,3 +118,7 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 a contribué à une grande partie du code
 - ChatGPT, Bing Chat et Google fournissent de nombreuses solutions (classées par ordre).
 - Inspiré par [ChatHub] (https://github.com/chathub-dev/chathub). Respect !
+
+## Sponsor
+
+Si vous aimez ce projet, veuillez envisager [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)

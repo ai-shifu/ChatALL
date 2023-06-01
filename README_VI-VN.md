@@ -118,3 +118,7 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 đóng góp rất nhiều mã nguồn
 - ChatGPT, Bing Chat và Google cung cấp nhiều giải pháp (được xếp hạng theo thứ tự)
 - Lấy cảm hứng từ [ChatHub](https://github.com/chathub-dev/chathub). Tôn trọng!
+
+## Sponsor
+
+Nếu bạn thích dự án này, xin vui lòng xem xét [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)
