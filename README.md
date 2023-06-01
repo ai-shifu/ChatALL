@@ -123,4 +123,6 @@ npm run electron:build -- -wml --x64 --arm64
 
 ## Sponsor
 
-If you like this project, please consider [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)
+If you like this project, please consider:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)
