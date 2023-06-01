@@ -16,7 +16,7 @@ export default class QianWenBot extends Bot {
   static _brandId = "qianWen"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "QianWenBot"; // Class name of the bot
   static _logoFilename = "qianwen-logo.png"; // Place it in assets/bots/
-  static _loginUrl = "https://tongyi.aliyun.com/";
+  static _loginUrl = "https://qianwen.aliyun.com/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
   constructor() {
@@ -37,7 +37,7 @@ export default class QianWenBot extends Bot {
   async checkAvailability() {
     await axios
       .post(
-        "https://tongyi.aliyun.com/qianwen/querySign",
+        "https://qianwen.aliyun.com/querySign",
         {},
         { headers: this.getRequestHeaders() },
       )
@@ -88,14 +88,11 @@ export default class QianWenBot extends Bot {
 
     return new Promise((resolve, reject) => {
       try {
-        const source = new SSE(
-          "https://tongyi.aliyun.com/qianwen/conversation",
-          {
-            headers,
-            payload,
-            withCredentials: true,
-          },
-        );
+        const source = new SSE("https://qianwen.aliyun.com/conversation", {
+          headers,
+          payload,
+          withCredentials: true,
+        });
 
         source.addEventListener("message", (event) => {
           if (event.data === "") {
@@ -141,7 +138,7 @@ export default class QianWenBot extends Bot {
     let context = null;
     await axios
       .post(
-        "https://tongyi.aliyun.com/qianwen/addSession",
+        "https://qianwen.aliyun.com/addSession",
         { firstQuery: "ChatALL" }, // A hack to set session name
         { headers: this.getRequestHeaders() },
       )

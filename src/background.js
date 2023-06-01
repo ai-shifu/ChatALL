@@ -149,7 +149,7 @@ function createNewWindow(url, userAgent = "") {
   }
 
   // Get QianWen bot's XSRF-TOKEN
-  if (url.includes("tongyi.aliyun.com")) {
+  if (url.includes("qianwen.aliyun.com")) {
     newWin.on("close", async (e) => {
       try {
         e.preventDefault(); // Prevent the window from closing
