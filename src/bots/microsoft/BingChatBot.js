@@ -52,7 +52,7 @@ export default class BingChatBot extends Bot {
   }
 
   async checkAvailability() {
-    axios
+    await axios
       .get("https://www.bing.com/turing/conversation/chats")
       .then((response) => {
         this.constructor._isAvailable =
