@@ -147,7 +147,6 @@ export default createStore({
         hide: false,
       });
 
-      const $matomo = getMatomo();
       for (const bot of bots) {
         const message = {
           type: "response",
@@ -171,7 +170,7 @@ export default createStore({
           { chatIndex: state.currentChatIndex, messageIndex: message.index },
         );
 
-        $matomo.trackEvent(
+        getMatomo().trackEvent(
           "prompt",
           "sendTo",
           bot.getClassname(),

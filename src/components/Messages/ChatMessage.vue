@@ -91,14 +91,14 @@ onMounted(() => {
 
 function copyToClipboard() {
   navigator.clipboard.writeText(props.message.content);
-  matomo.value.trackEvent("vote", "copy", props.message.className, 1);
+  matomo.value?.trackEvent("vote", "copy", props.message.className, 1);
 }
 
 function toggleHighlight() {
   emits("update-message", props.message.index, {
     highlight: !props.message.highlight,
   });
-  matomo.value.trackEvent(
+  matomo.value?.trackEvent(
     "vote",
     "highlight",
     props.message.className,
@@ -112,7 +112,7 @@ async function hide() {
   );
   if (result) {
     emits("update-message", props.message.index, { hide: true });
-    matomo.value.trackEvent("vote", "hide", props.message.className, 1);
+    matomo.value?.trackEvent("vote", "hide", props.message.className, 1);
   }
 }
 
