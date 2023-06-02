@@ -144,9 +144,10 @@ function sendPromptToBots() {
     bots: toBots,
   });
 
-  matomo.value.trackEvent("prompt", "send", "Active bots count", toBots.length);
   // Clear the textarea after sending the prompt
   prompt.value = "";
+
+  matomo.value.trackEvent("prompt", "send", "Active bots count", toBots.length);
 }
 
 function toggleSelected(bot) {
