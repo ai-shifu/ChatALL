@@ -35,7 +35,7 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
 
-More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs)
+More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
 ### Other features
 
