@@ -22,7 +22,7 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 | [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web Browsing included                       |
 | [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      | No login required                           |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                             |
-| [Bard](https://bard.google.com/)                             | Yes         | No API      |                                             |
+| [Bard](https://bard.google.com/)                             | Yes         | Coming soon |                                             |
 | [Poe](https://poe.com/)                                      | Coming soon | Coming soon |                                             |
 | [MOSS](https://moss.fastnlp.top/)                            | Yes         | No API      |                                             |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Yes         | Coming soon |                                             |
@@ -35,7 +35,7 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
 
-And more...
+More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs)
 
 ### Other features
 
@@ -45,8 +45,18 @@ And more...
 - Automatically keep ChatGPT session alive
 - Enable/disable any bots at any time
 - Switch between one, two, or three-column view
-- Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese)
-- [TODO] Best recommendations
+- Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese, Korean)
+- Supports Windows, macOS and Linux
+
+Planned features:
+
+You are welcome to contribute to these features.
+
+- [ ] Dark mode
+- [ ] Multi-chats
+- [ ] Select bots in popup menu
+- [ ] Deploy front-end to GitHub Pages
+- [ ] LangChain integration
 
 ## Prerequisites
 

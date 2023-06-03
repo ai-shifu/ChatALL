@@ -22,7 +22,7 @@
 | [ChatGPT](https://chat.openai.com)                           | 支持     | 支持     | 包含 Web Browsing                        |
 | [Bing Chat](https://www.bing.com/new)                        | 支持     | 无 API   | 不需要帐号                               |
 | [文心一言](https://yiyan.baidu.com/)                         | 否       | 支持     |                                          |
-| [Bard](https://bard.google.com/)                             | 支持     | 无 API   |                                          |
+| [Bard](https://bard.google.com/)                             | 支持     | 即将推出 |                                          |
 | [Poe](https://poe.com/)                                      | 即将推出 | 即将推出 |                                          |
 | [MOSS](https://moss.fastnlp.top/)                            | 支持     | 无 API   |                                          |
 | [通义千问](http://tongyi.aliyun.com/)                        | 支持     | 即将推出 |                                          |
@@ -35,7 +35,7 @@
 | [Gradio](httpps://gradio.app/)                               | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 
-更多...
+还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 
 ### 其他功能
 
@@ -45,8 +45,18 @@
 - 自动保持 ChatGPT 不掉线
 - 随时启用/禁用任何机器人
 - 在一列、两列或三列视图之间切换
-- 支持多语言（中文，英语，德语，法语，俄语，越南语）
-- [TODO] 推荐最佳答案
+- 支持多语言（中文，英语，德语，法语，俄语，越南语，韩语）
+- 支持 Windows，macOS 和 Linux
+
+计划中：
+
+欢迎参与这些功能的开发。
+
+- [ ] 夜间模式
+- [ ] 多聊天窗口
+- [ ] 在弹出菜单中选择机器人
+- [ ] 把前端部署到 GitHub Pages
+- [ ] 集成 LangChain
 
 ## 预先需要
 
