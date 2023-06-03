@@ -16,9 +16,9 @@
     "clearMessages": "모든 메시지를 지우시겠습니까?",
     "yes": "예",
     "no": "아니오",
-    "singleColumn": "단일 열",
-    "doubleColumn": "이중 열",
-    "tripleColumn": "삼중 열"
+    "singleColumn": "1 열",
+    "doubleColumn": "2 열",
+    "tripleColumn": "3 열"
   },
   "footer": {
     "sendPrompt": "보내기:",
