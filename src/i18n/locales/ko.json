@@ -1,0 +1,116 @@
+﻿{
+  "settings": {
+    "enable": "사용함",
+    "forExample": "예: { example }",
+    "title": "설정",
+    "general": "일반",
+    "auto": "자동",
+    "language": "언어",
+    "languagePrompt": "새 언어를 적용하기 위해 앱을 다시 시작",
+    "loginOrOut": "로그인/로그아웃",
+    "loginOrOutPrompt": "아래 링크를 클릭하여 새 창에 로그인하거나 로그아웃한 다음 닫습니다",
+    "notice": "알림",
+    "secretPrompt": "비밀 토큰은 단말기에 남아 다른 사람과 공유되지 않습니다"
+  },
+  "header": {
+    "clearMessages": "모든 메시지를 지우시겠습니까?",
+    "yes": "예",
+    "no": "아니오",
+    "singleColumn": "1열",
+    "doubleColumn": "2열",
+    "tripleColumn": "3열"
+  },
+  "footer": {
+    "sendPrompt": "보내기:",
+    "promptPlaceholder": "메시지를 입력합니다. (Shift+Enter를 입력하여 새 줄 추가)"
+  },
+  "error": {
+    "failedConnectUrl": "{ url }을(를) 연결하지 못했습니다",
+    "closedByServer": "서버가 연결을 닫았습니다"
+  },
+  "modal": {
+    "confirmHide": "이 메시지를 삭제하시겠습니까?",
+    "done": "완료"
+  },
+  "chat":{
+    "newChat": "새 대화"
+  },
+  "bot": {
+    "creatingConversation": "대화를 만드는 중...",
+    "failedToCreateConversation": "대화를 만들지 못했습니다",
+    "name": "Null 봇",
+    "notImplemented": "공사 중...",
+    "notAvailable": "로그인하지 않았거나 올바르게 구성되지 않았기 때문에 봇을 사용할 수 없습니다.",
+    "waiting": "다른 {botName} 요청이 완료되기를 기다리는 중...",
+    "pastRounds": "몇 번의 과거 채팅을 가지고 가야 합니까?",
+    "pastRoundsPrompt": "과거 대화 기록이 많을수록 다자간 대화의 효과는 더 좋아지지만 비용도 더 많이 소모됩니다."
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "loginToContinue": "요청이 제한됩니다. 계속하려면 <a { attributes }>로그인</a>하십시오.",
+    "h3imaginative": "창의적인",
+    "galileo": "균형 잡힌",
+    "h3precise": "정밀한"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "자동 연결 끊김 방지",
+    "autoRefreshPrompt": "자주 로그인하라는 메시지가 표시되지 않는 경우 이 기능을 사용하지 않음",
+    "notice": "유료 플러스 회원만 GPT-4를 사용할 수 있습니다",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "웹 브라우징"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "요청할 함수의 fn_index입니다. 대부분 0입니다",
+    "name": "Gradio",
+    "queueFull": "대기열이 가득 찼습니다. 나중에 다시 시도하십시오",
+    "url": "Gradio 앱 URL",
+    "urlPrompt": "Gradio 앱의 URL입니다. Hugging Face 공간을 사용하는 경우 오른쪽 상단 모서리의 \"Embed this space\"를 클릭하여 직접 URL을 가져옵니다.",
+    "waiting": "대기열에 {queue_size}개의 요청이 있으며 {rank}위에 있으며 {queue_eta}초 동안 기다려야 합니다"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "대체 API URL",
+    "alterUrlPrompt": "사용자 지정 API URL을 사용하는 경우 여기에 입력할 수 있습니다",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "온도",
+    "temperaturePrompt": "온도가 높을수록 텍스트는 창의적이지만 일관성이 없을 가능성이 높습니다",
+    "temperature0": "더 결정론적인",
+    "temperature2": "더 많은 무작위",
+    "apiKey": "API 키"
+  },
+  "qianWen": {
+    "name": "QianWen"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "dev": {
+    "name": "Dev Bot"
+  }
+}
