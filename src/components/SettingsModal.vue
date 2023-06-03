@@ -86,6 +86,7 @@ const languages = computed(() => [
   { name: "简体中文", code: "zh" },
   { name: "Tiếng Việt", code: "vi" },
   { name: "Français", code: "fr" },
+  { name: "한국인", code: "ko" },
 ]);
 
 const lang = computed(() => store.state.lang);
