@@ -81,12 +81,12 @@ const languages = computed(() => [
   { name: $t("settings.auto"), code: "auto" },
   { name: "Deutsch", code: "de" },
   { name: "English", code: "en" },
-  { name: "Italiano", code: "it" },
-  { name: "Русский", code: "ru" },
-  { name: "简体中文", code: "zh" },
-  { name: "Tiếng Việt", code: "vi" },
   { name: "Français", code: "fr" },
   { name: "한국인", code: "ko" },
+  { name: "Italiano", code: "it" },
+  { name: "Русский", code: "ru" },
+  { name: "Tiếng Việt", code: "vi" },
+  { name: "简体中文", code: "zh" },
 ]);
 
 const lang = computed(() => store.state.lang);

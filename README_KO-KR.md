@@ -2,7 +2,7 @@
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>모든 AI 봇과 동시에 채팅, 최고의 제품을 찾아보세요</strong></p>
 
-[한국어](README_KO-KR.md) / [Deutsch](README_DE-DE.md) | English | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | [Tiếng Việt](README_VI-VN.md) | [Français](README_FR-FR.md)
+[Deutsch](README_DE-DE.md) | [English](README.md) | [Français](README_FR-FR.md) | [日本語](README_JA-JP.md) | 한국인 | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
@@ -17,23 +17,23 @@
 
 ### 지원되는 봇
 
-| AI 봇                                                      | 웹 액세스  | API         | 참고                                       |
-| ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | 예         | 예         | 웹 브라우징 포함                       |
-| [Bing Chat](https://www.bing.com/new)                        | 예         | API 없음     | 로그인 필요 없음                           |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | 아니오          | 예         |                                             |
-| [Bard](https://bard.google.com/)                             | 예         | API 없음     |                                             |
-| [Poe](https://poe.com/)                                      | 근일 개봉 | 근일 개봉 |                                             |
-| [MOSS](https://moss.fastnlp.top/)                            | 예         | API 없음      |                                             |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | 예         | 근일 개봉 |                                             |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             | 근일 개봉 | API 없음    |                                             |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | 예         | 근일 개봉 |                                             |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | 예         | API 없음      | 로그인 필요 없음                           |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | 예         | API 없음      | 로그인 필요 없음                           |
-| [ChatGLM](https://chatglm.cn/blog)                           | 예         | API 없음      | 로그인 필요 없음                           |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | 예         | API 없음      | No Login required                           |
-| [Gradio](https://gradio.app/)                                | 예         | API 없음      | Hugging Face space/자체 배포 모델용 |
-| [HuggingChat](https://huggingface.co/chat/)                  | 예         | API 없음      |                                             |
+| AI 봇                                                        | 웹 액세스 | API       | 참고                                |
+| ------------------------------------------------------------ | --------- | --------- | ----------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | 예        | 예        | 웹 브라우징 포함                    |
+| [Bing Chat](https://www.bing.com/new)                        | 예        | API 없음  | 로그인 필요 없음                    |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | 아니오    | 예        |                                     |
+| [Bard](https://bard.google.com/)                             | 예        | API 없음  |                                     |
+| [Poe](https://poe.com/)                                      | 근일 개봉 | 근일 개봉 |                                     |
+| [MOSS](https://moss.fastnlp.top/)                            | 예        | API 없음  |                                     |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | 예        | 근일 개봉 |                                     |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)             | 근일 개봉 | API 없음  |                                     |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | 예        | 근일 개봉 |                                     |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | 예        | API 없음  | 로그인 필요 없음                    |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | 예        | API 없음  | 로그인 필요 없음                    |
+| [ChatGLM](https://chatglm.cn/blog)                           | 예        | API 없음  | 로그인 필요 없음                    |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | 예        | API 없음  | No Login required                   |
+| [Gradio](https://gradio.app/)                                | 예        | API 없음  | Hugging Face space/자체 배포 모델용 |
+| [HuggingChat](https://huggingface.co/chat/)                  | 예        | API 없음  |                                     |
 
 그리고 더...
 

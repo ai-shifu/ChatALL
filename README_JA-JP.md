@@ -2,7 +2,7 @@
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>すべての AI ボットと同時にチャットし、ベストを発見する</strong></p>
 
-[Deutsch](README_DE-DE.md) | [English](README.md) | [简体中文](README_ZH-CN.md) | 日本語 | [Tiếng Việt](README_VI-VN.md) | [Français](README_FR-FR.md)
+[Deutsch](README_DE-DE.md) | [English](README.md) | [Français](README_FR-FR.md) | 日本語 | [한국인](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
