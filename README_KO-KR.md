@@ -119,7 +119,7 @@ npm run electron:build -- -wml --x64 --arm64
 
 - GPT-4는 코드의 많은 부분을 기여했습니다
 - ChatGPT, Bing Chat 및 Google은 많은 솔루션을 제공합니다 (순서대로 나열)
-- [ChatHub](https://github.com/chathub-dev/chathub) 에서 영감을 받았습니다. 존경합니다!
+- [ChatHub](https://github.com/chathub-dev/chathub)에서 영감을 받았습니다. 존경합니다!
 
 ## 후원
 
