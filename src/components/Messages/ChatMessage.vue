@@ -92,7 +92,11 @@ onMounted(() => {
 });
 
 function copyToClipboard() {
-  navigator.clipboard.writeText(props.message.content);
+  let content = props.message.content;
+  if (props.message.format === "html") {
+    content = content.replace(/<[^>]*>?/gm, "");
+  }
+  navigator.clipboard.writeText(content);
   matomo.value?.trackEvent("vote", "copy", props.message.className, 1);
 }
 
