@@ -28,7 +28,9 @@
         <v-icon>mdi-delete</v-icon>
       </v-btn>
     </v-card-title>
+    <pre v-if="message.type === 'prompt'">{{ message.content }}</pre>
     <Markdown
+      v-else
       class="markdown-body"
       :breaks="true"
       :html="true"
@@ -149,6 +151,11 @@ function handleClick(event) {
     background-color: #95EC69;
     width: fit-content;
     grid-column: 1 / span var(--columns);
+}
+
+.prompt pre {
+  white-space: pre-wrap; 
+  font-family: inherit;
 }
 
 .response {
