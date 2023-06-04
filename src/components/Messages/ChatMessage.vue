@@ -33,7 +33,7 @@
       v-else
       class="markdown-body"
       :breaks="true"
-      :html="true"
+      :html="message.format === 'html'"
       :source="message.content"
       @click="handleClick"
     />
