@@ -26,26 +26,25 @@ export default class BingChatBot extends Bot {
       "x-ms-useragent":
         "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.0 OS/MacIntel",
     };
-    var conversation = null;
+    let conversation = null;
 
-    try {
-      const response = await axios.get(
-        "https://www.bing.com/turing/conversation/create",
-        { headers },
+    const response = await axios.get(
+      "https://www.bing.com/turing/conversation/create",
+      { headers },
+    );
+    if (response.data && response.data.result.value == "Success") {
+      // Save the conversation context
+      conversation = {
+        clientId: response.data.clientId,
+        conversationId: response.data.conversationId,
+        conversationSignature: response.data.conversationSignature,
+        invocationId: 0,
+      };
+    } else {
+      console.error("Error creating Bing Chat conversation:", response);
+      throw new Error(
+        i18n.global.t("bot.failedToCreateConversation") + " " + response.data,
       );
-      if (response.data && response.data.result.value == "Success") {
-        // Save the conversation context
-        conversation = {
-          clientId: response.data.clientId,
-          conversationId: response.data.conversationId,
-          conversationSignature: response.data.conversationSignature,
-          invocationId: 0,
-        };
-      } else {
-        console.error("Error creating Bing Chat conversation:", response);
-      }
-    } catch (error) {
-      console.error("Error creating Bing Chat conversation:", error);
     }
 
     return conversation;
