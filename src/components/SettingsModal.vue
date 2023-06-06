@@ -82,7 +82,7 @@ const languages = computed(() => [
   { name: "Deutsch", code: "de" },
   { name: "English", code: "en" },
   { name: "Français", code: "fr" },
-  { name: "한국인", code: "ko" },
+  { name: "한국어", code: "ko" },
   { name: "Italiano", code: "it" },
   { name: "Русский", code: "ru" },
   { name: "Tiếng Việt", code: "vi" },
