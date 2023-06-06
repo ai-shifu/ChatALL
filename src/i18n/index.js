@@ -17,7 +17,7 @@ import viMessages from "./locales/vi.json";
 import frMessages from "./locales/fr.json";
 import itMessages from "./locales/it.json";
 import koMessages from "./locales/ko.json";
-import koMessages from "./locales/es.json";
+import esMessages from "./locales/es.json";
 
 const messages = {
   en: enMessages,
