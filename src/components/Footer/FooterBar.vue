@@ -147,42 +147,44 @@ onBeforeMount(async () => {
 
 <style>
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 8px 16px;
-    gap: 8px;
-    box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 8px 16px;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
 .bot-logos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .bot-logos img {
-    opacity: 0.3;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
+  opacity: 0.5;
+  filter: grayscale(100%);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
 }
 
 img.selected {
-    opacity: 1;
+  opacity: 1;
+  filter: grayscale(0%);
 }
 
 .margin-bottom {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 /* Override default style of vuetify v-textarea */
-.v-textarea--auto-grow textarea{
-    overflow: auto !important;
+.v-textarea--auto-grow textarea {
+  overflow: auto !important;
 }
 </style>
