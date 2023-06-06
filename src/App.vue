@@ -146,6 +146,10 @@ header {
     margin: 4px;
 }
 
+img.selected {
+  opacity: 1;
+}
+
 .content {
     flex: 1;
     background-color: #f3f3f3;
