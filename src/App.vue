@@ -46,10 +46,7 @@
     </main>
 
     <FooterBar></FooterBar>
-    <SettingsModal
-      v-model:open="isSettingsOpen"
-      @done="checkAllBotsAvailability()"
-    />
+    <SettingsModal v-model:open="isSettingsOpen" />
     <ConfirmModal ref="confirmModal" />
   </div>
 </template>

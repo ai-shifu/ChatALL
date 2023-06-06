@@ -35,11 +35,7 @@
         @click="toggleSelected(bot)"
       />
     </div>
-    <MakeAvailableModal
-      v-model:open="isMakeAvailableOpen"
-      :bot="clickedBot"
-      @done="checkAllBotsAvailability(clickedBot)"
-    />
+    <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
   </div>
 </template>
 
@@ -47,10 +43,15 @@
 import { ref, computed, onBeforeMount, reactive } from "vue";
 import { useStore } from "vuex";
 
-import _bots from "@/bots";
+// Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
+
 // Composables
 import { useMatomo } from "@/composables/matomo";
+
+import _bots from "@/bots";
+
+const { ipcRenderer } = window.require("electron");
 
 const store = useStore();
 const matomo = useMatomo();
@@ -62,33 +63,6 @@ const selectedBots = computed(() => store.state.selectedBots);
 const clickedBot = ref(null);
 const isMakeAvailableOpen = ref(false);
 const setBotSelected = (uuid) => store.commit("SET_BOT_SELECTED", uuid);
-
-async function checkAllBotsAvailability(specifiedBot = null) {
-  try {
-    let botsToCheck = bots.value;
-    if (specifiedBot) {
-      // If a bot is specified, only check bots of the same brand
-      botsToCheck = bots.value.filter(
-        (bot) => bot.constructor._brandId === specifiedBot.constructor._brandId,
-      );
-    }
-
-    const checkAvailabilityPromises = botsToCheck.map((bot) =>
-      bot
-        .checkAvailability()
-        .then(() => updateActiveBots())
-        .catch((error) => {
-          console.error(
-            `Error checking login status for ${bot.getFullname()}:`,
-            error,
-          );
-        }),
-    );
-    await Promise.allSettled(checkAvailabilityPromises);
-  } catch (error) {
-    console.error("Error checking login status for bots:", error);
-  }
-}
 
 function updateActiveBots() {
   for (const bot of bots.value) {
@@ -134,23 +108,40 @@ function sendPromptToBots() {
   );
 }
 
-function toggleSelected(bot) {
+async function toggleSelected(bot) {
   const botId = bot.getClassname();
-  var selected = false;
-  if (!bot.isAvailable()) {
-    clickedBot.value = bot;
-    // Open the bot's settings dialog
-    isMakeAvailableOpen.value = true;
-    selected = true;
+  let selected = false;
+  if (activeBots[botId]) {
+    selected = false;
   } else {
-    selected = !selectedBots.value[botId];
+    selected = true;
+    if (!bot.isAvailable()) {
+      const availability = await bot.checkAvailability();
+      if (!availability) {
+        clickedBot.value = bot;
+        // Open the bot's settings dialog
+        isMakeAvailableOpen.value = true;
+      }
+    }
   }
   setBotSelected({ botId, selected });
   updateActiveBots();
 }
 
-onBeforeMount(() => {
-  checkAllBotsAvailability();
+onBeforeMount(async () => {
+  bots.value.forEach(async (bot) => {
+    await bot.checkAvailability();
+    updateActiveBots();
+  });
+
+  // Listen message trigged by main process
+  ipcRenderer.on("CHECK-AVAILABILITY", async (event, url) => {
+    const bot = bots.value.find((bot) => bot.getLoginUrl() === url);
+    if (bot) {
+      await bot.checkAvailability();
+      updateActiveBots();
+    }
+  });
 });
 </script>
 

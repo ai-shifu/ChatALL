@@ -11,7 +11,10 @@ export default class ChatGPT4Bot extends ChatGPTBot {
   }
 
   async checkAvailability() {
+    const reserved = this.constructor._isAvailable; // To supress the availablity changing
     const isAvailable = await super.checkAvailability();
+    this.constructor._isAvailable = reserved;
+
     if (isAvailable) {
       try {
         const headers = {

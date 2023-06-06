@@ -132,37 +132,28 @@ function createNewWindow(url, userAgent = "") {
   }
   newWin.loadURL(url);
 
-  // Get the secret of MOSS
-  if (url.includes("moss.fastnlp.top")) {
-    newWin.on("close", async (e) => {
-      try {
-        e.preventDefault(); // Prevent the window from closing
-        const secret = await newWin.webContents.executeJavaScript(
-          'localStorage.getItem("flutter.token");',
-        );
-        mainWindow.webContents.send("moss-secret", secret);
-      } catch (error) {
-        console.error(error);
-      }
+  newWin.on("close", async (e) => {
+    if (url.startsWith("https://moss.fastnlp.top/")) {
+      // Get the secret of MOSS
+      e.preventDefault(); // Prevent the window from closing
+      const secret = await newWin.webContents.executeJavaScript(
+        'localStorage.getItem("flutter.token");',
+      );
+      mainWindow.webContents.send("moss-secret", secret);
       newWin.destroy(); // Destroy the window manually
-    });
-  }
+    } else if (url.startsWith("https://qianwen.aliyun.com/")) {
+      // Get QianWen bot's XSRF-TOKEN
+      e.preventDefault(); // Prevent the window from closing
+      const token = await newWin.webContents.executeJavaScript(
+        'document.cookie.split("; ").find((cookie) => cookie.startsWith("XSRF-TOKEN="))?.split("=")[1];',
+      );
+      mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
+      newWin.destroy(); // Destroy the window manually
+    }
 
-  // Get QianWen bot's XSRF-TOKEN
-  if (url.startsWith("https://qianwen.aliyun.com/")) {
-    newWin.on("close", async (e) => {
-      try {
-        e.preventDefault(); // Prevent the window from closing
-        const token = await newWin.webContents.executeJavaScript(
-          'document.cookie.split("; ").find((cookie) => cookie.startsWith("XSRF-TOKEN="))?.split("=")[1];',
-        );
-        mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
-      } catch (error) {
-        console.error(error);
-      }
-      newWin.destroy(); // Destroy the window manually
-    });
-  }
+    // Tell renderer process to check aviability
+    mainWindow.webContents.send("CHECK-AVAILABILITY", url);
+  });
 }
 
 ipcMain.handle("create-new-window", (event, url, userAgent) => {
