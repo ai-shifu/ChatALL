@@ -185,12 +185,22 @@ export default class BingChatBot extends Bot {
                         content: i18n.global.t("bingChat.loginToContinue", {
                           attributes: `href="${url}" title="${url}" target="innerWindow"`,
                         }),
+                        format: "html",
                         done: false,
                       });
                       this.setChatContext(null);
                     } else {
                       reject(new Error(event.item.result.message));
                     }
+                  } else if (event.item.result.value === "CaptchaChallenge") {
+                    const url = "https://www.bing.com/turing/captcha/challenge";
+                    onUpdateResponse(callbackParam, {
+                      content: i18n.global.t("bingChat.solveCaptcha", {
+                        attributes: `href="${url}" title="${url}" target="innerWindow"`,
+                      }),
+                      format: "html",
+                      done: false,
+                    });
                   } else {
                     reject(new Error(event.item.result.message));
                   }
