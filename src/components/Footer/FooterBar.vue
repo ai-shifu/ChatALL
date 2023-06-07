@@ -32,6 +32,7 @@
         :active="activeBots[bot.getClassname()]"
         @click="toggleSelected(bot)"
       ></BotLogo>
+      <BotsMenu :favBots="favBots" />
     </div>
     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
   </div>
@@ -44,6 +45,7 @@ import { useStore } from "vuex";
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import BotLogo from "./BotLogo.vue";
+import BotsMenu from "./BotsMenu.vue";
 
 // Composables
 import { useMatomo } from "@/composables/matomo";
