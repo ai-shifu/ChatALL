@@ -25,15 +25,13 @@
       {{ $t("footer.sendPrompt") }}
     </v-btn>
     <div class="bot-logos margin-bottom">
-      <img
+      <BotLogo
         v-for="(bot, index) in bots"
-        :class="{ selected: activeBots[bot.getClassname()] }"
         :key="index"
-        :src="bot.getLogo()"
-        :alt="bot.getFullname()"
-        :title="bot.getFullname()"
+        :bot="bot"
+        :active="activeBots[bot.getClassname()]"
         @click="toggleSelected(bot)"
-      />
+      ></BotLogo>
     </div>
     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
   </div>
@@ -45,6 +43,7 @@ import { useStore } from "vuex";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
+import BotLogo from "./BotLogo.vue";
 
 // Composables
 import { useMatomo } from "@/composables/matomo";
@@ -162,7 +161,7 @@ onBeforeMount(async () => {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: transparent;
+  background-color: rgba(243, 243, 243, 0.7);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -175,19 +174,6 @@ onBeforeMount(async () => {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-}
-
-.bot-logos img {
-  opacity: 0.5;
-  filter: grayscale(100%);
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-}
-
-img.selected {
-  opacity: 1;
-  filter: grayscale(0%);
 }
 
 .margin-bottom {
