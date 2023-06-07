@@ -56,18 +56,29 @@ const { ipcRenderer } = window.require("electron");
 const store = useStore();
 const matomo = useMatomo();
 
-const activeBots = reactive({});
 const bots = ref(_bots.all);
+const activeBots = reactive({});
+const favBots = computed(() => {
+  const _favBots = [];
+  store.getters.currentChat.favBots.forEach((favBot) => {
+    _favBots.push({
+      ...favBot,
+      instance: _bots.getBotByClassName(favBot.classname),
+    });
+  });
+  return _favBots;
+});
+
 const prompt = ref("");
-const selectedBots = computed(() => store.state.selectedBots);
 const clickedBot = ref(null);
 const isMakeAvailableOpen = ref(false);
+
 const setBotSelected = (param) => store.commit("SET_BOT_SELECTED", param);
 
 function updateActiveBots() {
-  for (const bot of bots.value) {
-    activeBots[bot.getClassname()] =
-      bot.isAvailable() && selectedBots.value[bot.getClassname()];
+  for (const favBot of favBots.value) {
+    activeBots[favBot.classname] =
+      favBot.instance.isAvailable() && favBot.selected;
   }
 }
 
@@ -109,9 +120,9 @@ function sendPromptToBots() {
 }
 
 async function toggleSelected(bot) {
-  const botId = bot.getClassname();
+  const botClassname = bot.getClassname();
   let selected = false;
-  if (activeBots[botId]) {
+  if (activeBots[botClassname]) {
     selected = false;
   } else {
     selected = true;
@@ -124,13 +135,13 @@ async function toggleSelected(bot) {
       }
     }
   }
-  setBotSelected({ botId, selected });
+  setBotSelected({ botClassname, selected });
   updateActiveBots();
 }
 
 onBeforeMount(async () => {
-  bots.value.forEach(async (bot) => {
-    await bot.checkAvailability();
+  favBots.value.forEach(async (favBot) => {
+    await favBot.instance.checkAvailability();
     updateActiveBots();
   });
 
