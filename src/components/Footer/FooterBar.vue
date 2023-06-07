@@ -62,7 +62,7 @@ const prompt = ref("");
 const selectedBots = computed(() => store.state.selectedBots);
 const clickedBot = ref(null);
 const isMakeAvailableOpen = ref(false);
-const setBotSelected = (uuid) => store.commit("SET_BOT_SELECTED", uuid);
+const setBotSelected = (param) => store.commit("SET_BOT_SELECTED", param);
 
 function updateActiveBots() {
   for (const bot of bots.value) {
