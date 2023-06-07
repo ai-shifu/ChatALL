@@ -2,7 +2,7 @@
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>Chat with ALL AI Bots Concurrently, Discover the Best</strong></p>
 
-[Deutsch](README_DE-DE.md) | Español | [Français](README_FR-FR.md) | [日本語](README_JA-JP.md) | [한국인](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
+[Deutsch](README_DE-DE.md) | [English](README.md) | Español | [Français](README_FR-FR.md) | [日本語](README_JA-JP.md) | [한국인](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
@@ -17,46 +17,46 @@ Los bots de IA basados en modelos de lenguaje grande (LLM) son increíbles. Sin 
 
 ### Bots compatibles
 
-| Bots de IA | Acceso Web | API | Notas |
-| ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Sí | Sí | Navegación web incluida |
-| [Bing Chat](https://www.bing.com/new)                        | Sí | Sin API | No es necesario iniciar sesión |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No | Sí |                                             |
-| [Bardo](https://bard.google.com/)                             | Sí | Próximamente |                                             |
-| [Poe](https://poe.com/)                                      | Próximamente | Próximamente |                                             |
-| [MUSGO](https://moss.fastnlp.top/)                            | Sí | Sin API |                                             |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sí | Próximamente |                                             |
-| [Asistente de aprendizaje de Dedao](https://ai.dedao.cn/)             | Próximamente | Sin API |                                             |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sí | Próximamente |                                             |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sí | Sin API | No es necesario iniciar sesión |
-| [Vicuña](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sí | Sin API | No es necesario iniciar sesión |
-| [ChatGLM](https://chatglm.cn/blog)                           | Sí | Sin API | No es necesario iniciar sesión |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Sí | Sin API | No es necesario iniciar sesión |
-| [Gradio](https://gradio.app/)                                | Sí | Sin API | Para modelos de espacio Hugging Face/autodesplegados |
-| [HuggingChat](https://huggingface.co/chat/)                  | Sí | Sin API |                                             |
+| Bots de IA                                                   | Acceso Web   | API          | Notas                                                |
+| ------------------------------------------------------------ | ------------ | ------------ | ---------------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | Sí           | Sí           | Navegación web incluida                              |
+| [Bing Chat](https://www.bing.com/new)                        | Sí           | Sin API      | No es necesario iniciar sesión                       |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No           | Sí           |                                                      |
+| [Bardo](https://bard.google.com/)                            | Sí           | Próximamente |                                                      |
+| [Poe](https://poe.com/)                                      | Próximamente | Próximamente |                                                      |
+| [MUSGO](https://moss.fastnlp.top/)                           | Sí           | Sin API      |                                                      |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sí           | Próximamente |                                                      |
+| [Asistente de aprendizaje de Dedao](https://ai.dedao.cn/)    | Próximamente | Sin API      |                                                      |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sí           | Próximamente |                                                      |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sí           | Sin API      | No es necesario iniciar sesión                       |
+| [Vicuña](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sí           | Sin API      | No es necesario iniciar sesión                       |
+| [ChatGLM](https://chatglm.cn/blog)                           | Sí           | Sin API      | No es necesario iniciar sesión                       |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | Sí           | Sin API      | No es necesario iniciar sesión                       |
+| [Gradio](https://gradio.app/)                                | Sí           | Sin API      | Para modelos de espacio Hugging Face/autodesplegados |
+| [HuggingChat](https://huggingface.co/chat/)                  | Sí           | Sin API      |                                                      |
 
 Más está por venir. Vota a tus bots favoritos en [Estas cuestiones](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
 ### Otras características
 
-*   Modo de solicitud rápida: envíe la siguiente solicitud sin esperar a que se complete la solicitud anterior
-*   Almacene el historial de chat localmente, proteja su privacidad
-*   Resalta la respuesta que te gusta, elimina la mala
-*   Mantenga activa automáticamente la sesión de ChatGPT
-*   Habilite/deshabilite cualquier bot en cualquier momento
-*   Cambiar entre una vista de una, dos o tres columnas
-*   Soporta múltiples idiomas (chino, inglés, alemán, francés, ruso, vietnamita, coreano)
-*   Compatible con Windows, macOS y Linux
+- Modo de solicitud rápida: envíe la siguiente solicitud sin esperar a que se complete la solicitud anterior
+- Almacene el historial de chat localmente, proteja su privacidad
+- Resalta la respuesta que te gusta, elimina la mala
+- Mantenga activa automáticamente la sesión de ChatGPT
+- Habilite/deshabilite cualquier bot en cualquier momento
+- Cambiar entre una vista de una, dos o tres columnas
+- Soporta múltiples idiomas (chino, inglés, alemán, francés, ruso, vietnamita, coreano)
+- Compatible con Windows, macOS y Linux
 
 Características planificadas:
 
 Le invitamos a contribuir a estas características.
 
-*   \[ ] Modo oscuro
-*   \[ ] Multi-chats
-*   \[ ] Seleccione bots en el menú emergente
-*   \[ ] Implementar front-end en GitHub Pages
-*   \[ ] Integración con LangChain
+- \[ ] Modo oscuro
+- \[ ] Multi-chats
+- \[ ] Seleccione bots en el menú emergente
+- \[ ] Implementar front-end en GitHub Pages
+- \[ ] Integración con LangChain
 
 ## Prerrequisitos
 
@@ -127,9 +127,9 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### Otros
 
-*   GPT-4 contribuyó con gran parte del código
-*   ChatGPT, Bing Chat y Google proporcionan muchas soluciones (clasificadas en orden)
-*   Inspirado por [ChatHub](https://github.com/chathub-dev/chathub). ¡Respeto!
+- GPT-4 contribuyó con gran parte del código
+- ChatGPT, Bing Chat y Google proporcionan muchas soluciones (clasificadas en orden)
+- Inspirado por [ChatHub](https://github.com/chathub-dev/chathub). ¡Respeto!
 
 ## Patrocinador
 
