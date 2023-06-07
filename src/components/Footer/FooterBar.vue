@@ -136,11 +136,11 @@ onBeforeMount(async () => {
 
   // Listen message trigged by main process
   ipcRenderer.on("CHECK-AVAILABILITY", async (event, url) => {
-    const bot = bots.value.find((bot) => bot.getLoginUrl() === url);
-    if (bot) {
+    const botsToCheck = bots.value.filter((bot) => bot.getLoginUrl() === url);
+    botsToCheck.forEach(async (bot) => {
       await bot.checkAvailability();
       updateActiveBots();
-    }
+    });
   });
 });
 </script>
