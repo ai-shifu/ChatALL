@@ -80,13 +80,25 @@ export default createStore({
     setUuid(state, uuid) {
       state.uuid = uuid;
     },
-    SET_BOT_SELECTED(state, { botClassname, selected }) {
+    setBotSelected(state, { botClassname, selected }) {
       const currentChat = state.chats[state.currentChatIndex];
       const bot = currentChat.favBots.find(
         (bot) => bot.classname === botClassname,
       );
       if (bot) bot.selected = selected;
       else currentChat.favBots.push({ classname: botClassname, selected });
+    },
+    addFavoriteBot(state, botClassname) {
+      const currentChat = state.chats[state.currentChatIndex];
+      const favBots = currentChat.favBots;
+      if (favBots.find((bot) => bot.classname === botClassname) == undefined)
+        favBots.push({ classname: botClassname, selected: true });
+    },
+    removeFavoriteBot(state, botClassname) {
+      const currentChat = state.chats[state.currentChatIndex];
+      const favBots = currentChat.favBots;
+      const index = favBots.findIndex((bot) => bot.classname === botClassname);
+      favBots.splice(index, 1);
     },
     setCurrentLanguage(state, language) {
       state.lang = language;

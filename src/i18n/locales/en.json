@@ -21,6 +21,7 @@
     "tripleColumn": "Triple Column"
   },
   "footer": {
+    "chooseFavorite": "Choose your favorite AI bots",
     "sendPrompt": "Send to:",
     "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
   },
