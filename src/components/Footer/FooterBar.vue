@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onBeforeMount, reactive } from "vue";
+import { ref, computed, onBeforeMount, reactive, watch } from "vue";
 import { useStore } from "vuex";
 
 // Components
@@ -74,6 +74,20 @@ const favBots = computed(() => {
 const prompt = ref("");
 const clickedBot = ref(null);
 const isMakeAvailableOpen = ref(false);
+
+watch(favBots, async (newValue, oldValue) => {
+  const botsToCheck = newValue.filter((newBot) => {
+    return !oldValue.some((oldBot) => oldBot.classname === newBot.classname);
+  });
+  await botsToCheck.forEach(async (favBot) => {
+    const bot = favBot.instance;
+    if (!bot.isAvailable()) {
+      await bot.checkAvailability();
+      updateActiveBots();
+    }
+  });
+  updateActiveBots();
+});
 
 function updateActiveBots() {
   for (const favBot of favBots.value) {
@@ -141,7 +155,6 @@ async function toggleSelected(bot) {
     }
   }
   store.commit("setBotSelected", { botClassname, selected });
-  updateActiveBots();
 }
 
 onBeforeMount(async () => {
