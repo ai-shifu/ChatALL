@@ -21,25 +21,25 @@ import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
 
 const all = [
-  ChatGPT35Bot.getInstance(),
-  ChatGPT4Bot.getInstance(),
-  ChatGPTBrowsingBot.getInstance(),
-  OpenAIAPI35Bot.getInstance(),
-  OpenAIAPI4Bot.getInstance(),
+  AlpacaBot.getInstance(),
+  BardBot.getInstance(),
   BingChatCreativeBot.getInstance(),
   BingChatBalancedBot.getInstance(),
   BingChatPreciseBot.getInstance(),
+  ChatGLMBot.getInstance(),
+  ChatGPT35Bot.getInstance(),
+  ChatGPT4Bot.getInstance(),
+  ChatGPTBrowsingBot.getInstance(),
   ClaudeBot.getInstance(),
-  BardBot.getInstance(),
-  WenxinQianfanBot.getInstance(),
+  GradioAppBot.getInstance(),
+  HuggingChatBot.getInstance(),
+  MOSSBot.getInstance(),
+  OpenAIAPI35Bot.getInstance(),
+  OpenAIAPI4Bot.getInstance(),
   QianWenBot.getInstance(),
   SparkBot.getInstance(),
-  HuggingChatBot.getInstance(),
   VicunaBot.getInstance(),
-  AlpacaBot.getInstance(),
-  ChatGLMBot.getInstance(),
-  MOSSBot.getInstance(),
-  GradioAppBot.getInstance(),
+  WenxinQianfanBot.getInstance(),
 ];
 
 if (process.env.NODE_ENV !== "production") {
