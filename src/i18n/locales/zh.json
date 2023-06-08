@@ -21,6 +21,7 @@
     "tripleColumn": "三列"
   },
   "footer": {
+    "chooseFavorite": "选择你喜欢的 AI",
     "sendPrompt": "发送到:",
     "promptPlaceholder": "输入消息。（Shift+Enter 换行）"
   },

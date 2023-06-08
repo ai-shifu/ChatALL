@@ -1,6 +1,5 @@
 <template>
   <v-avatar
-    size="36"
     rounded="rounded"
     :class="{ active: active }"
     :image="bot.getLogo()"

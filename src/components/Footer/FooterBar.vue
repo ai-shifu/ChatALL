@@ -26,12 +26,14 @@
     </v-btn>
     <div class="bot-logos margin-bottom">
       <BotLogo
-        v-for="(bot, index) in bots"
+        v-for="(bot, index) in favBots"
         :key="index"
-        :bot="bot"
-        :active="activeBots[bot.getClassname()]"
-        @click="toggleSelected(bot)"
-      ></BotLogo>
+        :bot="bot.instance"
+        :active="activeBots[bot.classname]"
+        size="36"
+        @click="toggleSelected(bot.instance)"
+      />
+      <BotsMenu :favBots="favBots" />
     </div>
     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
   </div>
@@ -44,6 +46,7 @@ import { useStore } from "vuex";
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import BotLogo from "./BotLogo.vue";
+import BotsMenu from "./BotsMenu.vue";
 
 // Composables
 import { useMatomo } from "@/composables/matomo";
@@ -72,8 +75,6 @@ const prompt = ref("");
 const clickedBot = ref(null);
 const isMakeAvailableOpen = ref(false);
 
-const setBotSelected = (param) => store.commit("SET_BOT_SELECTED", param);
-
 function updateActiveBots() {
   for (const favBot of favBots.value) {
     activeBots[favBot.classname] =
@@ -100,7 +101,12 @@ function sendPromptToBots() {
   if (prompt.value.trim() === "") return;
   if (Object.values(activeBots).every((bot) => !bot)) return;
 
-  const toBots = bots.value.filter((bot) => activeBots[bot.getClassname()]);
+  const toBots = [];
+  favBots.value.forEach((favBot) => {
+    if (activeBots[favBot.classname]) {
+      toBots.push(favBot.instance);
+    }
+  });
 
   store.dispatch("sendPrompt", {
     prompt: prompt.value,
@@ -134,7 +140,7 @@ async function toggleSelected(bot) {
       }
     }
   }
-  setBotSelected({ botClassname, selected });
+  store.commit("setBotSelected", { botClassname, selected });
   updateActiveBots();
 }
 
