@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="448px" viewBox="0 0 512 448" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>single-column</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(0.000000, -43.000000)" fill="#062AAA" fill-rule="nonzero">
+            <g id="table-columns-solid-copy" transform="translate(0.000000, 43.000000)">
+                <path d="M0,64 C0,28.7 28.7,0 64,0 L448,0 C483.3,0 512,28.7 512,64 L512,384 C512,419.3 483.3,448 448,448 L64,448 C28.7,448 0,419.3 0,384 L0,64 Z M64,128 L64,384 L448,384 L448,128 L64,128 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
