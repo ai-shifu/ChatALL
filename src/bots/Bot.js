@@ -23,7 +23,7 @@ export default class Bot {
   }
 
   getLogo() {
-    return `${this.constructor._logoFolderName}/${this.constructor._logoFilename}`;
+    return `bots/${this.constructor._logoFilename}`;
   }
 
   getBrandName() {
