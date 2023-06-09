@@ -191,8 +191,17 @@ export default class ChatGPTBot extends Bot {
 
           let message = "";
           if (error.data) {
-            const data = JSON.parse(error.data);
-            message = data.detail;
+            try {
+              const data = JSON.parse(error.data);
+              message = data.detail?.message;
+            } catch (e) {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(error.data, "text/html");
+              const msg = doc.querySelector(".message p");
+              message = msg ? msg.textContent + ". " : "";
+              const explanation = doc.querySelector(".explanation");
+              message += explanation ? explanation.textContent : "";
+            }
           } else {
             message = error.source.url;
           }

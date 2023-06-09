@@ -28,10 +28,12 @@
         <v-icon>mdi-delete</v-icon>
       </v-btn>
     </v-card-title>
+    <pre v-if="message.type === 'prompt'">{{ message.content }}</pre>
     <Markdown
+      v-else
       class="markdown-body"
       :breaks="true"
-      :html="true"
+      :html="message.format === 'html'"
       :source="message.content"
       @click="handleClick"
     />
@@ -90,15 +92,19 @@ onMounted(() => {
 });
 
 function copyToClipboard() {
-  navigator.clipboard.writeText(props.message.content);
-  matomo.value.trackEvent("vote", "copy", props.message.className, 1);
+  let content = props.message.content;
+  if (props.message.format === "html") {
+    content = content.replace(/<[^>]*>?/gm, "");
+  }
+  navigator.clipboard.writeText(content);
+  matomo.value?.trackEvent("vote", "copy", props.message.className, 1);
 }
 
 function toggleHighlight() {
   emits("update-message", props.message.index, {
     highlight: !props.message.highlight,
   });
-  matomo.value.trackEvent(
+  matomo.value?.trackEvent(
     "vote",
     "highlight",
     props.message.className,
@@ -112,7 +118,7 @@ async function hide() {
   );
   if (result) {
     emits("update-message", props.message.index, { hide: true });
-    matomo.value.trackEvent("vote", "hide", props.message.className, 1);
+    matomo.value?.trackEvent("vote", "hide", props.message.className, 1);
   }
 }
 
@@ -149,6 +155,11 @@ function handleClick(event) {
     background-color: #95EC69;
     width: fit-content;
     grid-column: 1 / span var(--columns);
+}
+
+.prompt pre {
+  white-space: pre-wrap; 
+  font-family: inherit;
 }
 
 .response {

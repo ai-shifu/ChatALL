@@ -2,16 +2,6 @@ import axios from "axios";
 import Bot from "./Bot";
 import AsyncLock from "async-lock";
 
-async function fetchRequestParams() {
-  const resp = await axios.get("https://bard.google.com/faq");
-  const atValue = resp.data.match(/"SNlM0e":"([^"]+)"/)?.[1];
-  const blValue = resp.data.match(/"cfb2h":"([^"]+)"/)?.[1];
-  if (!atValue || !blValue) {
-    throw new Error("Failed to fetch Bard at/bl values");
-  }
-  return { atValue, blValue };
-}
-
 function parseResponse(resp) {
   let data = JSON.parse(resp.split("\n")[3]);
   data = JSON.parse(data[0][2]);
@@ -55,8 +45,6 @@ export default class BardBot extends Bot {
 
   async checkAvailability() {
     const context = await this.getChatContext();
-    context.requestParams = await fetchRequestParams();
-    this.setChatContext(context);
     if (context.requestParams.atValue) {
       this.constructor._isAvailable = true;
     } else {
@@ -103,8 +91,15 @@ export default class BardBot extends Bot {
   }
 
   async createChatContext() {
+    const resp = await axios.get("https://bard.google.com/faq");
+    const atValue = resp.data.match(/"SNlM0e":"([^"]+)"/)?.[1];
+    const blValue = resp.data.match(/"cfb2h":"([^"]+)"/)?.[1];
+    if (!atValue || !blValue) {
+      throw new Error("Failed to fetch Bard at/bl values");
+    }
+
     return {
-      requestParams: null,
+      requestParams: { atValue, blValue },
       contextIds: ["", "", ""],
     };
   }

@@ -2,7 +2,7 @@
    <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>同时与所有 AI 机器人聊天，找到最佳答案</strong></p>
 
-[Deutsch](README_DE-DE.md) | [English](README.md) | 简体中文 | [日本語](README_JA-JP.md) | [Tiếng Việt](README_VI-VN.md) | [Français](README_FR-FR.md)
+[Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | 简体中文
 
 </div>
 
@@ -22,7 +22,7 @@
 | [ChatGPT](https://chat.openai.com)                           | 支持     | 支持     | 包含 Web Browsing                        |
 | [Bing Chat](https://www.bing.com/new)                        | 支持     | 无 API   | 不需要帐号                               |
 | [文心一言](https://yiyan.baidu.com/)                         | 否       | 支持     |                                          |
-| [Bard](https://bard.google.com/)                             | 支持     | 无 API   |                                          |
+| [Bard](https://bard.google.com/)                             | 支持     | 即将推出 |                                          |
 | [Poe](https://poe.com/)                                      | 即将推出 | 即将推出 |                                          |
 | [MOSS](https://moss.fastnlp.top/)                            | 支持     | 无 API   |                                          |
 | [通义千问](http://tongyi.aliyun.com/)                        | 支持     | 即将推出 |                                          |
@@ -35,7 +35,7 @@
 | [Gradio](httpps://gradio.app/)                               | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 
-更多...
+还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 
 ### 其他功能
 
@@ -45,8 +45,18 @@
 - 自动保持 ChatGPT 不掉线
 - 随时启用/禁用任何机器人
 - 在一列、两列或三列视图之间切换
-- 支持多语言（中文，英语，德语，法语，俄语，越南语）
-- [TODO] 推荐最佳答案
+- 支持多语言（中文，英语，德语，法语，俄语，越南语，韩语）
+- 支持 Windows，macOS 和 Linux
+
+计划中：
+
+欢迎参与这些功能的开发。
+
+- [ ] 夜间模式
+- [ ] 多聊天窗口
+- [ ] 在弹出菜单中选择机器人
+- [ ] 把前端部署到 GitHub Pages
+- [ ] 集成 LangChain
 
 ## 预先需要
 
@@ -120,3 +130,10 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 贡献了大部分代码
 - ChatGPT，Bing Chat 和 Google 提供了许多解决方案（排名分先后）
 - 受 [ChatHub](https://github.com/chathub-dev/chathub) 启发。致敬！
+
+## 赞助
+
+如果您喜欢这个项目，可以通过以下方式支持：
+
+<img src="https://sunner.cn/sponsor/alipay.jpg" width="200" />
+<img src="https://sunner.cn/sponsor/wepay.jpg" width="200" />

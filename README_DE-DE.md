@@ -2,7 +2,7 @@
    <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>Chatten Sie mit ALLEN AI-Bots gleichzeitig, entdecken Sie die Besten</strong></p>
 
-Deutsch | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | [Tiếng Việt](README_VI-VN.md) | [Français](README_FR-FR.md)
+Deutsch | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
@@ -116,3 +116,9 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 hat einen Großteil des Codes beigesteuert
 - ChatGPT, Bing Chat und Google bieten viele Lösungen (in dieser Reihenfolge)
 - Inspiriert von [ChatHub](https://github.com/chathub-dev/chathub). Respekt!
+
+## Sponsor
+
+Wenn Ihnen dieses Projekt gefällt, erwägen Sie bitte:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)

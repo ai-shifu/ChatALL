@@ -1,0 +1,116 @@
+{
+  "settings": {
+    "enable": "Habilitar",
+    "forExample": "Por ejemplo, { ejemplo }",
+    "title": "Configuración",
+    "general": "General",
+    "auto": "Automático",
+    "language": "Idioma",
+    "languagePrompt": "Reinicie la aplicación para aplicar el nuevo idioma",
+    "loginOrOut": "Iniciar sesión/Cerrar sesión",
+    "loginOrOutPrompt": "Haga clic en el vínculo siguiente para iniciar o cerrar sesión en la nueva ventana y, a continuación, ciérrela",
+    "notice": "Notar",
+    "secretPrompt": "Su token secreto permanecerá en su dispositivo y no se compartirá con nadie más"
+  },
+  "header": {
+    "clearMessages": "¿Borrar todos los mensajes?",
+    "yes": "Sí",
+    "no": "No",
+    "singleColumn": "Columna única",
+    "doubleColumn": "Columna doble",
+    "tripleColumn": "Triple columna"
+  },
+  "footer": {
+    "sendPrompt": "Enviar a:",
+    "promptPlaceholder": "Escriba un mensaje. (Mayús+Entrar para añadir una nueva línea)"
+  },
+  "error": {
+    "failedConnectUrl": "Error al conectar { url }",
+    "closedByServer": "Conexión cerrada por el servidor"
+  },
+  "modal": {
+    "confirmHide": "¿Eliminar este mensaje?",
+    "done": "Hecho"
+  },
+  "chat": {
+    "newChat": "Nuevo chat"
+  },
+  "bot": {
+    "creatingConversation": "Creando conversación...",
+    "failedToCreateConversation": "Error al crear la conversación",
+    "name": "Bot nulo",
+    "notImplemented": "En obra...",
+    "notAvailable": "El bot no está disponible porque no inicia sesión o no está configurado correctamente.",
+    "waiting": "Esperando a que se completen otras solicitudes { botName }...",
+    "pastRounds": "¿Cuántas rondas de chats pasados llevar?",
+    "pastRoundsPrompt": "Cuantos más chats históricos se lleven a cabo, mejor será el efecto del diálogo de varias rondas, pero también consumirá más costos."
+  },
+  "bard": {
+    "name": "Bardo"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "loginToContinue": "La solicitud está limitada. <a {=\"\" attributes=\"\" }=\"\">Inicie sesión</a> para continuar.",
+    "h3imaginative": "Creativo",
+    "galileo": "Equilibrado",
+    "h3precise": "Preciso"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "Antidesconexión automática",
+    "autoRefreshPrompt": "Si NO se le pide que inicie sesión con frecuencia, NO habilite esta función",
+    "notice": "Solo los miembros Plus de pago pueden usar GPT-4",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "Navegación Web"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "La fn_index de la función que solicitará. En su mayoría es 0",
+    "name": "Gradio",
+    "queueFull": "La cola está llena, inténtalo de nuevo más tarde",
+    "url": "URL de la aplicación Gradio",
+    "urlPrompt": "URL de tu aplicación Gradio. Si usa el espacio Hugging Face, obtenga la URL directa haciendo clic en \"Incrustar este espacio\" en la esquina superior derecha.",
+    "waiting": "Hay { queue_size } solicitudes en la cola, estás en { rango } º lugar y se espera que esperes { queue_eta } segundos"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "Vicuña-13B",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "Alpaca-13B",
+    "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MUSGO"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "URL de API alternativa",
+    "alterUrlPrompt": "Si está utilizando una URL de API personalizada, puede ingresarla aquí",
+    "gpt-35-turbo": "GPT-3.5-turbo",
+    "gpt-4": "GPT-4",
+    "temperature": "Temperatura",
+    "temperaturePrompt": "Cuanto mayor sea la temperatura, más creativo será el texto, pero más probable es que sea incoherente.",
+    "temperature0": "Más determinista",
+    "temperature2": "Más aleatorio",
+    "apiKey": "Clave API"
+  },
+  "qianWen": {
+    "name": "QianWen"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "dev": {
+    "name": "Bot de desarrollo"
+  }
+}

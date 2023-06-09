@@ -11,7 +11,7 @@ export function useMatomo() {
     matomo.value = getMatomo();
   } else {
     const interval = 50;
-    const timeout = 3000;
+    const timeout = 10000;
     const start = Date.now();
 
     const timer = setInterval(() => {

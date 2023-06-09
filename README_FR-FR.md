@@ -2,7 +2,7 @@
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>Discutez avec tous les bots IA simultanément pour sélectionner la meilleure réponse</strong></p>
 
-[Deutsch](README_DE-DE.md) | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | [Tiếng Việt](README_VI-VN.md) | Français
+[Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | Français | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
@@ -118,3 +118,9 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 a contribué à une grande partie du code
 - ChatGPT, Bing Chat et Google fournissent de nombreuses solutions (classées par ordre).
 - Inspiré par [ChatHub] (https://github.com/chathub-dev/chathub). Respect !
+
+## Sponsor
+
+Si vous aimez ce projet, veuillez envisager:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)

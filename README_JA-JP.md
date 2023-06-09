@@ -2,7 +2,7 @@
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>すべての AI ボットと同時にチャットし、ベストを発見する</strong></p>
 
-[Deutsch](README_DE-DE.md) | [English](README.md) | [简体中文](README_ZH-CN.md) | 日本語 | [Tiếng Việt](README_VI-VN.md) | [Français](README_FR-FR.md)
+[Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | 日本語 | [한국어](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
@@ -116,3 +116,9 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 は多くのコードを提供した
 - ChatGPT、Bing Chat、Google が多くの解決策を提供（順不同）
 - [ChatHub](https://github.com/chathub-dev/chathub) に触発されました。リスペクトです！
+
+## Sponsor
+
+このプロジェクトが気に入った場合は、ぜひご検討ください：
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)

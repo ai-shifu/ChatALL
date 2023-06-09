@@ -2,7 +2,7 @@
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>Trò chuyện đồng thời với tất cả những AI bots, Tìm ra câu trả lời tốt nhất </strong></p>
 
-[Deutsch](README_DE-DE.md) | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | Tiếng Việt | [Français](README_FR-FR.md)
+[Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | Tiếng Việt | [简体中文](README_ZH-CN.md)
 
 </div>
 
@@ -118,3 +118,9 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 đóng góp rất nhiều mã nguồn
 - ChatGPT, Bing Chat và Google cung cấp nhiều giải pháp (được xếp hạng theo thứ tự)
 - Lấy cảm hứng từ [ChatHub](https://github.com/chathub-dev/chathub). Tôn trọng!
+
+## Sponsor
+
+Nếu bạn thích dự án này, xin vui lòng xem xét:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)
