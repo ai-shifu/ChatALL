@@ -7,7 +7,7 @@ import store from "@/store";
 export default class WenxinQianfanBot extends Bot {
   static _brandId = "wenxinQianfan"; // ID of the bot, should be unique
   static _className = "WenxinQianfanBot"; // Class name of the bot
-  static _logoFilename = "wenxin-qianfan-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "wenxin-qianfan-logo.png"; // Place it in public/bots/
 
   accessToken = "";
 

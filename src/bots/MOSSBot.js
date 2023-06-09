@@ -9,7 +9,7 @@ import i18n from "@/i18n";
 export default class MOSSBot extends Bot {
   static _brandId = "moss";
   static _className = "MOSSBot";
-  static _logoFilename = "moss-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "moss-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://moss.fastnlp.top/moss/";
   static _lock = new AsyncLock();
 

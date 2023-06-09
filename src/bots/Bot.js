@@ -1,15 +1,6 @@
 import i18n from "@/i18n";
 import store from "@/store";
 
-// To get actual logo path of the bot, we need to use Webpack 4's require.context()
-// to get the context of the logo files, and then use the context to get the actual
-// path of the logo file.
-const botLogoContext = require.context(
-  "../assets/bots/",
-  false,
-  /\.(png|jpg|jpeg|svg)$/,
-);
-
 export default class Bot {
   static _logoPackedPaths = null;
   static _isAvailable = false;
@@ -17,31 +8,22 @@ export default class Bot {
   static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "Bot"; // Class name of the bot
   static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
-  static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
+  static _logoFolderName = "bots"; // Folder name for the logo. Leave it empty if the logo is in public/bots/
+  static _logoFilename = "default-logo.svg"; // Place it in public/bots/
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
   static _lock = null; // AsyncLock for prompt requests. `new AsyncLock()` in the subclass as needed.
   static _settingsComponent = ""; // Vue component filename for settings
   static _outputFormat = "markdown"; // "markdown" or "html"
 
-  constructor() {
-    // Compute the logo paths after packing by Webpack 4
-    if (!this.constructor._logoPackedPaths) {
-      this.constructor._logoPackedPaths = botLogoContext
-        .keys()
-        .reduce((logos, logoPath) => {
-          logos[logoPath.replace("./", "")] = botLogoContext(logoPath);
-          return logos;
-        }, {});
-    }
-  }
+  constructor() {}
 
   static getInstance() {
     return new this();
   }
 
   getLogo() {
-    return this.constructor._logoPackedPaths[this.constructor._logoFilename];
+    return `bots/${this.constructor._logoFilename}`;
   }
 
   getBrandName() {

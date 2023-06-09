@@ -15,7 +15,7 @@ function generateRandomId() {
 export default class QianWenBot extends Bot {
   static _brandId = "qianWen"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "QianWenBot"; // Class name of the bot
-  static _logoFilename = "qianwen-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "qianwen-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://qianwen.aliyun.com/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 

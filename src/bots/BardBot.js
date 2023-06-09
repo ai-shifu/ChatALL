@@ -32,7 +32,7 @@ function parseResponse(resp) {
 export default class BardBot extends Bot {
   static _brandId = "bard";
   static _className = "BardBot"; // Class name of the bot
-  static _logoFilename = "bard-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "bard-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://bard.google.com/";
   // Remove Electron from the user agent to avoid blank login screen
   static _userAgent =
