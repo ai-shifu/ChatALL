@@ -8,7 +8,6 @@ export default class Bot {
   static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "Bot"; // Class name of the bot
   static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
-  static _logoFolderName = "bots"; // Folder name for the logo. Leave it empty if the logo is in public/bots/
   static _logoFilename = "default-logo.svg"; // Place it in public/bots/
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
