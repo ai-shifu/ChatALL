@@ -103,6 +103,10 @@
     "temperature2": "More random",
     "apiKey": "API Key"
   },
+  "poe": {
+    "name": "Poe",
+    "capybara": "Sage"
+  },
   "qianWen": {
     "name": "QianWen"
   },
