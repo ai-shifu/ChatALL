@@ -5,6 +5,7 @@ import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
 import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
 import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
 import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
+import SageBot from "@/bots/poe/SageBot";
 import SparkBot from "@/bots/SparkBot";
 import BardBot from "@/bots/BardBot";
 import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
@@ -37,6 +38,7 @@ const all = [
   OpenAIAPI35Bot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   QianWenBot.getInstance(),
+  SageBot.getInstance(),
   SparkBot.getInstance(),
   VicunaBot.getInstance(),
   WenxinQianfanBot.getInstance(),
