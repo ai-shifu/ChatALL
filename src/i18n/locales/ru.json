@@ -1,0 +1,104 @@
+{
+  "settings": {
+    "enable": "Включить",
+    "forExample": "Например { example }",
+    "title": "Настройки",
+    "general": "Главная",
+    "auto": "Автоматический",
+    "language": "Язык",
+    "languagePrompt": "Перезапустите приложение, чтобы применить новый язык",
+    "loginOrOut": "Вход/выход",
+    "loginOrOutPrompt": "Нажмите на ссылку ниже, чтобы войти или выйти из аккаунта в новом окне, а затем закройте его",
+    "notice": "Уведомление",
+    "secretPrompt": "Ваш секретный токен останется на вашем устройстве и не будет передан никому другому"
+  },
+  "header": {
+    "clearMessages": "Очистить все сообщения?",
+    "singleColumn": "Одиночная колонна",
+    "doubleColumn": "Двойная колонна",
+    "tripleColumn": "Тройная колонна"
+  },
+  "footer": {
+    "sendPrompt": "Отправить:",
+    "promptPlaceholder": "Введите сообщение. (Shift+Enter для добавления новой строки)"
+  },
+  "error": {
+    "failedConnectUrl": "Не удалось подключиться { url }",
+    "closedByServer": "Соединение закрыто сервером"
+  },
+  "modal": {
+    "confirmHide": "Удалить это сообщение?",
+    "done": "Готово"
+  },
+  "bot": {
+    "creatingConversation": "Создание диалога...",
+    "failedToCreateConversation": "Не удалось создать диалог",
+    "name": "Нулевой бот",
+    "notImplemented": "В разработке...",
+    "notAvailable": "Бот недоступен из-за неправильного входа в аккаунт или неправильной настройки.",
+    "waiting": "Ожидание завершения других запросов от{ botName } ..."
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "h3imaginative": "Творческий",
+    "galileo": "Сбалансированный",
+    "h3precise": "Точный"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "Автоматическое отключение",
+    "autoRefreshPrompt": "Если вас не часто просят войти в систему, не включайте эту функцию!",
+    "notice": "Только платные пользователи Plus могут использовать GPT-4",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "fn_index функции, которую вы запросите. В основном это 0",
+    "name": "Gradio",
+    "queueFull": "Очередь заполнена, пожалуйста, повторите попытку позже",
+    "url": "Gradio App URL",
+    "urlPrompt": "URL-адрес приложения Gradio. Если вы используете пространство для Hugging Face, получите прямой URL-адрес, нажав на \"Embed this space\" в правом верхнем углу.",
+    "waiting": "Есть { queue_size } запросы в очереди, вы находитесь на { rank } месте, и ожидается, что вы будете ждать { queue_eta } секунд"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "Альтернативный URL API",
+    "alterUrlPrompt": "Если вы используете пользовательский URL API, вы можете ввести его здесь",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "Температура",
+    "temperaturePrompt": "Чем выше температура, тем креативнее текст, но тем больше вероятность того, что он будет бессвязным",
+    "temperature0": "Более определенный",
+    "temperature2": "Более рандомный",
+    "apiKey": "Ключ API"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "dev": {
+    "name": "Dev Bot"
+  }
+}

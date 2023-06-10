@@ -1,0 +1,101 @@
+{
+  "settings": {
+    "enable": "Aktivieren",
+    "forExample": "zum Bsp. { example }",
+    "title": "Einstellungen",
+    "general": "Allgemein",
+    "auto": "Automatisch",
+    "language": "Sprache",
+    "languagePrompt": "Starten Sie die Anwendung neu, um die neue Sprache anzuwenden",
+    "loginOrOut": "Einloggen/Ausloggen",
+    "loginOrOutPrompt": "Klicken Sie auf den nachstehenden Link, um sich in einem neuen Fenster an- oder abzumelden und schließen Sie es dann",
+    "notice": "Hinweis",
+    "secretPrompt": "Ihr geheimer Token verbleibt auf Ihrem Gerät und wird nicht an andere Personen weitergegeben"
+  },
+  "header": {
+    "clearMessages": "Alle Nachrichten löschen?",
+    "singleColumn": "Einzelne Spalte",
+    "doubleColumn": "Doppelte Spalte",
+    "tripleColumn": "Dreifache Spalte"
+  },
+  "footer": {
+    "sendPrompt": "Senden an:",
+    "promptPlaceholder": "Geben Sie eine Nachricht ein. (Umschalt+Eingabe, um eine neue Zeile hinzuzufügen)"
+  },
+  "error": {
+    "failedConnectUrl": "Verbindung fehlgeschlagen { url }",
+    "closedByServer": "Verbindung vom Server geschlossen"
+  },
+  "modal": {
+    "confirmHide": "Diese Nachricht löschen?",
+    "done": "Erledigt"
+  },
+  "bot": {
+    "creatingConversation": "Konversation wird erstellt ...",
+    "failedToCreateConversation": "Konversation konnte nicht erstellt werden",
+    "name": "Null Bot",
+    "notImplemented": "Noch in Entwicklung...",
+    "notAvailable": "Der Bot ist nicht verfügbar, weil er nicht angemeldet oder nicht richtig konfiguriert ist.",
+    "waiting": "Warten auf die Beendigung anderer { botName }-Anfrage(n)..."
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "Automatischer Schutz vor Verbindungsabbruch",
+    "autoRefreshPrompt": "Wenn Sie NICHT häufig aufgefordert werden, sich anzumelden, sollten Sie diese Funktion NICHT aktivieren.",
+    "notice": "Nur bezahlte Plus-Mitglieder können GPT-4 nutzen.",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "h3imaginative": "Kreativ",
+    "galileo": "Ausgewogen",
+    "h3precise": "Präzise"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "Alternative API URL",
+    "alterUrlPrompt": "Wenn Sie eine benutzerdefinierte API-URL verwenden, können Sie diese hier eingeben",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-4": "gpt-4",
+    "temperature": "Temperatur",
+    "temperaturePrompt": "Je höher die Temperatur, desto kreativer der Text, aber desto wahrscheinlicher ist es, dass er inkohärent ist",
+    "temperature0": "Stärker deterministisch",
+    "temperature2": "Mehr zufällig",
+    "apiKey": "API Key"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "Der fn_index der Funktion, die Sie anfordern. Meistens ist er 0",
+    "name": "Gradio",
+    "queueFull": "Die Warteschlange ist voll, bitte versuchen Sie es später noch einmal",
+    "url": "Gradio App URL",
+    "urlPrompt": "URL Ihrer Gradio-App. Wenn Sie den Raum Hugging Face verwenden, erhalten Sie die direkte URL, indem Sie auf \"Diesen Raum einbetten\" in der oberen rechten Ecke klicken.",
+    "waiting": "Es gibt { queue_size } Anfragen in der Warteschlange, Sie stehen an { rank } Stelle, und es wird erwartet, dass Sie { queue_eta } Sekunden warten"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  },
+  "dev": {
+    "name": "Dev Bot"
+  }
+}
