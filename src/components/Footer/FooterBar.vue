@@ -18,7 +18,8 @@
       elevation="2"
       class="margin-bottom"
       :disabled="
-        prompt.trim() === '' || Object.values(activeBots).every((bot) => !bot)
+        prompt.trim() === '' ||
+        favBots.filter((favBot) => activeBots[favBot.classname]).length === 0
       "
       @click="sendPromptToBots"
     >
@@ -113,14 +114,12 @@ function filterEnterKey(event) {
 
 function sendPromptToBots() {
   if (prompt.value.trim() === "") return;
-  if (Object.values(activeBots).every((bot) => !bot)) return;
 
-  const toBots = [];
-  favBots.value.forEach((favBot) => {
-    if (activeBots[favBot.classname]) {
-      toBots.push(favBot.instance);
-    }
-  });
+  const toBots = favBots.value
+    .filter((favBot) => activeBots[favBot.classname])
+    .map((favBot) => favBot.instance);
+
+  if (toBots.length === 0) return;
 
   store.dispatch("sendPrompt", {
     prompt: prompt.value,
