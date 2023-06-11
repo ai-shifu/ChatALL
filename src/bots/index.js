@@ -20,6 +20,11 @@ import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
+import ChatGPT35PoeBot from "./poe/ChatGPT35PoeBot";
+import ChatGPT4PoeBot from "./poe/ChatGPT4PoeBot";
+import ClaudeInstantPoeBot from "./poe/ClaudeInstantPoeBot";
+import ClaudeInstant100kPoeBot from "./poe/ClaudeInstant100kPoeBot";
+import ClaudePlusPoeBot from "./poe/ClaudePlusPoeBot";
 
 const all = [
   AlpacaBot.getInstance(),
@@ -29,9 +34,14 @@ const all = [
   BingChatPreciseBot.getInstance(),
   ChatGLMBot.getInstance(),
   ChatGPT35Bot.getInstance(),
+  ChatGPT35PoeBot.getInstance(),
   ChatGPT4Bot.getInstance(),
   ChatGPTBrowsingBot.getInstance(),
+  ChatGPT4PoeBot.getInstance(),
   ClaudeBot.getInstance(),
+  ClaudeInstantPoeBot.getInstance(),
+  ClaudeInstant100kPoeBot.getInstance(),
+  ClaudePlusPoeBot.getInstance(),
   GradioAppBot.getInstance(),
   HuggingChatBot.getInstance(),
   MOSSBot.getInstance(),
