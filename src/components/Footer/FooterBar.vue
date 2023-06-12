@@ -202,4 +202,10 @@ onBeforeMount(async () => {
 .v-textarea--auto-grow textarea {
   overflow: auto !important;
 }
+
+textarea::placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>
