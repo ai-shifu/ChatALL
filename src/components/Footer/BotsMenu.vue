@@ -88,6 +88,6 @@ const toggleFavorite = (bot) => {
 
 <style>
 .bots-list {
-  column-count: 2
+  column-count: 3
 }
 </style>
