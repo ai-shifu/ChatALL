@@ -21,7 +21,7 @@
       <v-card>
         <v-list>
           <v-list-item>
-            <v-list-item-title>
+            <v-list-item-title class="font-weight-black">
               {{ $t("footer.chooseFavorite") }}
             </v-list-item-title>
           </v-list-item>
