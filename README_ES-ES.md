@@ -8,7 +8,6 @@
 
 ## Capturas de pantalla
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## Funciones
@@ -23,7 +22,7 @@ Los bots de IA basados en modelos de lenguaje grande (LLM) son increíbles. Sin 
 | [Bing Chat](https://www.bing.com/new)                        | Sí           | Sin API      | No es necesario iniciar sesión                       |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No           | Sí           |                                                      |
 | [Bardo](https://bard.google.com/)                            | Sí           | Próximamente |                                                      |
-| [Poe](https://poe.com/)                                      | Próximamente | Próximamente |                                                      |
+| [Poe](https://poe.com/)                                      | Sí           | Próximamente |                                                      |
 | [MUSGO](https://moss.fastnlp.top/)                           | Sí           | Sin API      |                                                      |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sí           | Próximamente |                                                      |
 | [Asistente de aprendizaje de Dedao](https://ai.dedao.cn/)    | Próximamente | Sin API      |                                                      |
@@ -34,6 +33,7 @@ Los bots de IA basados en modelos de lenguaje grande (LLM) son increíbles. Sin 
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Sí           | Sin API      | No es necesario iniciar sesión                       |
 | [Gradio](https://gradio.app/)                                | Sí           | Sin API      | Para modelos de espacio Hugging Face/autodesplegados |
 | [HuggingChat](https://huggingface.co/chat/)                  | Sí           | Sin API      |                                                      |
+| [QianWen](https://qianwen.aliyun.com/)                       | Sí           | Próximamente |                                                      |
 
 Más está por venir. Vota a tus bots favoritos en [Estas cuestiones](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 

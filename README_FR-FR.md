@@ -8,7 +8,6 @@
 
 ## Captures d'écran
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## Fonctionnalités
@@ -23,7 +22,7 @@ Les robots d'intelligence artificielle basés sur les grands modèles de langage
 | [Bing Chat](https://www.bing.com/new)                        | Oui           | Non           |                                                   |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | Non           | Oui           |                                                   |
 | [Bard](https://bard.google.com/)                             | Oui           | Non           |                                                   |
-| [Poe](https://poe.com/)                                      | Prochainement | Prochainement |                                                   |
+| [Poe](https://poe.com/)                                      | Oui           | Prochainement |                                                   |
 | [MOSS](https://moss.fastnlp.top/)                            | Oui           | Non           |                                                   |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Oui           | Prochainement |                                                   |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prochainement | Non           |                                                   |
@@ -34,6 +33,7 @@ Les robots d'intelligence artificielle basés sur les grands modèles de langage
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Oui           | Non           | Pas besoin de compte ou de clé API                |
 | [Gradio](https://gradio.app/)                                | Oui           | Non           | Pour les modèles Hugging Face space/self-deployed |
 | [HuggingChat](https://huggingface.co/chat/)                  | Oui           | Non           |                                                   |
+| [QianWen](https://qianwen.aliyun.com/)                       | Oui           | Prochainement |                                                   |
 
 Et plus...
 

@@ -8,7 +8,6 @@
 
 ## スクリーンショット
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## 特徴
@@ -18,12 +17,12 @@
 ### 対応するボット
 
 | AI ボット                                                               | Web アクセス | API      |
-| ----------------------------------------------------------------------- | ------------ | -------- |
+| ----------------------------------------------------------------------- | ------------ | -------- | --- |
 | [ChatGPT](https://chat.openai.com)                                      | はい         | はい     |
 | [Bing Chat](https://www.bing.com/new)                                   | はい         | API なし |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                 | いいえ       | はい     |
 | [Bard](https://bard.google.com/)                                        | はい         | API なし |
-| [Poe](https://poe.com/)                                                 | 近日公開     | 近日公開 |
+| [Poe](https://poe.com/)                                                 | はい         | 近日公開 |
 | [MOSS](https://moss.fastnlp.top/)                                       | はい         | API なし |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                             | はい         | 近日公開 |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)                        | 近日公開     | API なし |
@@ -34,6 +33,7 @@
 | [Claude](https://www.anthropic.com/index/introducing-claude)            | はい         | API なし |
 | Hugging Face space/セルフデプロイモデルの [Gradio](https://gradio.app/) | はい         | API なし |
 | [HuggingChat](https://huggingface.co/chat/)                             | はい         | API なし |
+| [QianWen](https://qianwen.aliyun.com/)                                  | はい         | 近日公開 |     |
 
 などなど...
 

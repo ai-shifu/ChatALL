@@ -8,7 +8,6 @@
 
 ## Screenshots
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## Features
@@ -23,7 +22,7 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 | [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      | No login required                           |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                             |
 | [Bard](https://bard.google.com/)                             | Yes         | Coming soon |                                             |
-| [Poe](https://poe.com/)                                      | Coming soon | Coming soon |                                             |
+| [Poe](https://poe.com/)                                      | Yes         | Coming soon |                                             |
 | [MOSS](https://moss.fastnlp.top/)                            | Yes         | No API      |                                             |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Yes         | Coming soon |                                             |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Coming soon | No API      |                                             |
@@ -34,6 +33,7 @@ Large Language Models (LLMs) based AI bots are amazing. However, their behavior 
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | No Login required                           |
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
+| [QianWen](https://qianwen.aliyun.com/)                       | Yes         | Coming soon |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
@@ -54,7 +54,6 @@ You are welcome to contribute to these features.
 
 - [ ] Dark mode
 - [ ] Multi-chats
-- [ ] Select bots in popup menu
 - [ ] Deploy front-end to GitHub Pages
 - [ ] LangChain integration
 

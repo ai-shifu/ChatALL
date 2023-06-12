@@ -8,7 +8,6 @@
 
 ## Ảnh chụp màn hình
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## Tính năng
@@ -23,7 +22,7 @@ Các Chat bots AI dựa trên Mô hình ngôn ngữ lớn (Large Language Models
 | [Bing Chat](https://www.bing.com/new)                        | Có           | Không có API |                                                       |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No           | Có           |                                                       |
 | [Bard](https://bard.google.com/)                             | Có           | Không có API |                                                       |
-| [Poe](https://poe.com/)                                      | Sắp ra mắt   | Sắp ra mắt   |                                                       |
+| [Poe](https://poe.com/)                                      | Có           | Sắp ra mắt   |                                                       |
 | [MOSS](https://moss.fastnlp.top/)                            | Có           | Không có API |                                                       |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Có           | Sắp ra mắt   |                                                       |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Sắp ra mắt   | Không có API |                                                       |
@@ -34,6 +33,7 @@ Các Chat bots AI dựa trên Mô hình ngôn ngữ lớn (Large Language Models
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
 | [Gradio](https://gradio.app/)                                | Có           | Không có API | Dành cho models Hugging Face không gian/tự triển khai |
 | [HuggingChat](https://huggingface.co/chat/)                  | Có           | Không có API |                                                       |
+| [QianWen](https://qianwen.aliyun.com/)                       | Có           | Sắp ra mắt   |                                                       |
 
 Và hơn thế nữa ...
 

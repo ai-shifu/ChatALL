@@ -8,7 +8,6 @@
 
 ## 屏幕截图
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## 功能
@@ -23,7 +22,7 @@
 | [Bing Chat](https://www.bing.com/new)                        | 支持     | 无 API   | 不需要帐号                               |
 | [文心一言](https://yiyan.baidu.com/)                         | 否       | 支持     |                                          |
 | [Bard](https://bard.google.com/)                             | 支持     | 即将推出 |                                          |
-| [Poe](https://poe.com/)                                      | 即将推出 | 即将推出 |                                          |
+| [Poe](https://poe.com/)                                      | 支持     | 即将推出 |                                          |
 | [MOSS](https://moss.fastnlp.top/)                            | 支持     | 无 API   |                                          |
 | [通义千问](http://tongyi.aliyun.com/)                        | 支持     | 即将推出 |                                          |
 | [得到学习助手](https://ai.dedao.cn/)                         | 即将推出 | 无 API   |                                          |
@@ -34,6 +33,7 @@
 | [Claude](https://www.anthropic.com/index/introducing-claude) | 支持     | 无 API   | 不需要帐号                               |
 | [Gradio](httpps://gradio.app/)                               | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
+| [通义千问](https://qianwen.aliyun.com/)                      | 支持     | 即将推出 |                                          |
 
 还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 
@@ -54,7 +54,6 @@
 
 - [ ] 夜间模式
 - [ ] 多聊天窗口
-- [ ] 在弹出菜单中选择机器人
 - [ ] 把前端部署到 GitHub Pages
 - [ ] 集成 LangChain
 

@@ -8,7 +8,6 @@ Deutsch | [English](README.md) | [Español](README_ES-ES.md) | [Français](READM
 
 ## Bilder
 
-![Bilder](screenshots/screenshot-2.png?raw=true)
 ![Bilder](screenshots/screenshot-1.png?raw=true)
 
 ## Funktionen
@@ -18,12 +17,12 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 ### Supported bots
 
 | AI Bots                                                                   | Web Zugang  | API         |
-| ------------------------------------------------------------------------- | ----------- | ----------- |
+| ------------------------------------------------------------------------- | ----------- | ----------- | --- |
 | [ChatGPT](https://chat.openai.com)                                        | Yes         | Yes         |
 | [Bing Chat](https://www.bing.com/new)                                     | Yes         | No API      |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                   | No          | Yes         |
 | [Bard](https://bard.google.com/)                                          | Yes         | No API      |
-| [Poe](https://poe.com/)                                                   | Coming soon | Coming soon |
+| [Poe](https://poe.com/)                                                   | Yes         | Coming soon |
 | [MOSS](https://moss.fastnlp.top/)                                         | Yes         | No API      |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                               | Yes         | Coming soon |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)                          | Coming soon | No API      |
@@ -34,6 +33,7 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 | [Claude](https://www.anthropic.com/index/introducing-claude)              | Yes         | No API      |
 | [Gradio](https://gradio.app/) for Hugging Face space/self-deployed models | Yes         | No API      |
 | [HuggingChat](https://huggingface.co/chat/)                               | Yes         | No API      |
+| [QianWen](https://qianwen.aliyun.com/)                                    | Yes         | Coming soon |     |
 
 Und mehr...
 

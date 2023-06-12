@@ -8,7 +8,6 @@
 
 ## 스크린샷
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## 기능
@@ -23,7 +22,7 @@
 | [Bing Chat](https://www.bing.com/new)                        | 예        | API 없음  | 로그인 필요 없음                    |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | 아니오    | 예        |                                     |
 | [Bard](https://bard.google.com/)                             | 예        | API 없음  |                                     |
-| [Poe](https://poe.com/)                                      | 근일 개봉 | 근일 개봉 |                                     |
+| [Poe](https://poe.com/)                                      | 예        | 근일 개봉 |                                     |
 | [MOSS](https://moss.fastnlp.top/)                            | 예        | API 없음  |                                     |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | 예        | 근일 개봉 |                                     |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | 근일 개봉 | API 없음  |                                     |
@@ -34,6 +33,7 @@
 | [Claude](https://www.anthropic.com/index/introducing-claude) | 예        | API 없음  | No Login required                   |
 | [Gradio](https://gradio.app/)                                | 예        | API 없음  | Hugging Face space/자체 배포 모델용 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 예        | API 없음  |                                     |
+| [QianWen](https://qianwen.aliyun.com/)                       | 예        | 근일 개봉 |                                     |
 
 그리고 더...
 
