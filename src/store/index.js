@@ -42,6 +42,10 @@ export default createStore({
     qianWen: {
       xsrfToken: "",
     },
+    skyWork: {
+      inviteToken: "",
+      token: "",
+    },
     wenxinQianfan: {
       apiKey: "",
       secretKey: "",
@@ -115,6 +119,9 @@ export default createStore({
     },
     setQianWenToken(state, token) {
       state.qianWen.xsrfToken = token;
+    },
+    setSkyWork(state, tokens) {
+      state.skyWork = { ...state.skyWork, ...tokens };
     },
     setWenxinQianfan(state, values) {
       state.wenxinQianfan = { ...state.wenxinQianfan, ...values };

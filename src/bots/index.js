@@ -25,6 +25,7 @@ import ChatGPT4PoeBot from "./poe/ChatGPT4PoeBot";
 import ClaudeInstantPoeBot from "./poe/ClaudeInstantPoeBot";
 import ClaudeInstant100kPoeBot from "./poe/ClaudeInstant100kPoeBot";
 import ClaudePlusPoeBot from "./poe/ClaudePlusPoeBot";
+import SkyWorkBot from "./SkyWorkBot";
 
 const all = [
   AlpacaBot.getInstance(),
@@ -49,6 +50,7 @@ const all = [
   OpenAIAPI4Bot.getInstance(),
   QianWenBot.getInstance(),
   SageBot.getInstance(),
+  SkyWorkBot.getInstance(),
   SparkBot.getInstance(),
   VicunaBot.getInstance(),
   WenxinQianfanBot.getInstance(),

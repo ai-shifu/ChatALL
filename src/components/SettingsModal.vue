@@ -57,6 +57,7 @@ import LMSYSBotSettings from "@/components/BotSettings/LMSYSBotSettings.vue";
 import HuggingChatBotSettings from "@/components/BotSettings/HuggingChatBotSettings.vue";
 import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue";
 import PoeBotSettings from "@/components/BotSettings/PoeBotSettings.vue";
+import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue";
 
 const { t: $t, locale } = useI18n();
 const store = useStore();
@@ -77,6 +78,7 @@ const settings = [
   PoeBotSettings,
   QianWenBotSettings,
   SparkBotSettings,
+  SkyWorkBotSettings,
 ];
 
 const languages = computed(() => [
