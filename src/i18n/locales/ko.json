@@ -1,4 +1,4 @@
-﻿{
+{
   "settings": {
     "enable": "사용함",
     "forExample": "예: { example }",
@@ -21,6 +21,7 @@
     "tripleColumn": "3열"
   },
   "footer": {
+    "chooseFavorite": "좋아하는 AI 봇 선택",
     "sendPrompt": "보내기:",
     "promptPlaceholder": "메시지를 입력합니다. (Shift+Enter를 입력하여 새 줄 추가)"
   },
@@ -51,6 +52,7 @@
   "bingChat": {
     "name": "Bing Chat",
     "loginToContinue": "요청이 제한됩니다. 계속하려면 <a { attributes }>로그인</a>하십시오.",
+    "solveCaptcha": "계속하려면 <a { attributes }>CAPTCHA를 해결</a>해야 합니다.",
     "h3imaginative": "창의적인",
     "galileo": "균형 잡힌",
     "h3precise": "정밀한"
@@ -98,11 +100,23 @@
     "temperature": "온도",
     "temperaturePrompt": "온도가 높을수록 텍스트는 창의적이지만 일관성이 없을 가능성이 높습니다",
     "temperature0": "더 결정론적인",
-    "temperature2": "더 많은 무작위",
+    "temperature2": "더 무작위",
     "apiKey": "API 키"
+  },
+  "poe": {
+    "name": "Poe",
+    "a2": "Claude-instant",
+    "a2_100k": "Claude-instant-100k",
+    "a2_2": "Claude+",
+    "beaver": "GPT-4",
+    "capybara": "Sage",
+    "chinchilla": "ChatGPT 3.5"
   },
   "qianWen": {
     "name": "QianWen"
+  },
+  "skyWork": {
+    "name": "SkyWork"
   },
   "spark": {
     "name": "iFlytek Spark"
