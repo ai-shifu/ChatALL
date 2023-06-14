@@ -30,11 +30,9 @@ import { compare } from 'compare-versions';
 const { shell } = window.require("electron");
 
 const versions = JSON.parse(localStorage.getItem("chatall-versions"));
-const text = ref('');
 const snackbar = ref(false);
 if (versions?.latest && versions?.current && compare(versions.latest, versions.current, '>')) {
   if (!versions?.skip || compare(versions.latest, versions.skip, '>')) {
-    text.value = `Update Available!<br />Your Version: ${versions.current}, Latest Version: ${versions.latest}`
     snackbar.value = true;
   }
 }
