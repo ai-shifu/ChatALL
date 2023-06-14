@@ -8,7 +8,7 @@ const saveLatestVersion = (data) => {
   if (data) {
     const latestVersion = JSON.parse(data).tag_name;
     const currentVersion = app.getVersion();
-    localMainWindow.webContents.executeJavaScript(`
+    const saveVersionScript = `
       localStorage.setItem(
         "chatall-versions",
         JSON.stringify({
@@ -16,7 +16,8 @@ const saveLatestVersion = (data) => {
           current: "v${currentVersion}",
           latest: "${latestVersion}",
         })
-      );`);
+      );`;
+    localMainWindow.webContents.executeJavaScript(saveVersionScript);
   }
 };
 
