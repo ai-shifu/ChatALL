@@ -48,6 +48,7 @@
     <FooterBar></FooterBar>
     <SettingsModal v-model:open="isSettingsOpen" />
     <ConfirmModal ref="confirmModal" />
+    <UpdateNotification></UpdateNotification>
   </div>
 </template>
 
@@ -63,6 +64,7 @@ import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import FooterBar from "@/components/Footer/FooterBar.vue";
+import UpdateNotification from "@/components/Notification/UpdateNotificationModal.vue";
 
 // Styles
 import "@mdi/font/css/materialdesignicons.css";

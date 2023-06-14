@@ -23,6 +23,7 @@
     "@mdi/font": "^7.2.96",
     "async-lock": "^1.4.0",
     "axios": "^1.4.0",
+    "compare-versions": "^6.0.0-rc.1",
     "core-js": "^3.30.2",
     "electron-builder": "^23.6.0",
     "github-markdown-css": "^5.2.0",

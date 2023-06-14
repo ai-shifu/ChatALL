@@ -73,6 +73,7 @@ export default createStore({
     ],
     currentChatIndex: 0,
     updateCounter: 0,
+    versions: undefined,
     // TODO: delete following fields
     selectedBots: {},
     messages: [],
@@ -158,6 +159,9 @@ export default createStore({
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.contexts = {};
       currentChat.messages = [];
+    },
+    setSkipVersion(state, version) {
+      state.versions.skip = version;
     },
     init(state) {
       // Upgrade messages data structure

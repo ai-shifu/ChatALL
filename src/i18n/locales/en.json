@@ -126,5 +126,13 @@
   },
   "dev": {
     "name": "Dev Bot"
+  },
+  "updates": {
+    "updateAvailable": "Update Available!",
+    "currentVersion": "Your Version",
+    "latestVersion": "Latest Version",
+    "downloadFromGitHub": "Download from GitHub",
+    "skipThisVersion": "Skip this Version",
+    "close": "Close"
   }
 }
