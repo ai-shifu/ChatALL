@@ -1,6 +1,6 @@
 <template>
   <div id="snackbar" class="text-center">
-    <v-snackbar color="#fff" :vertical="true" :content-class="flex - column" :timeout="-1" multi-line v-model="snackbar">
+    <v-snackbar color="#fff" :vertical="true" :timeout="-1" multi-line v-model="snackbar">
       <span class="text-black text-center font-weight-bold">
         {{ $t('updates.updateAvailable') }}
       </span>
@@ -54,21 +54,24 @@ function install() {
 </style>
 
 <style scoped>
->>> span {
+:deep() span {
   /* font-size: 18px;
   line-height: 1.5; */
 }
 
->>> .v-btn {
+:deep() .v-btn {
   text-transform: none;
   margin: .2rem;
 }
 
->>> .v-snackbar__actions {
+:deep() .v-snackbar__actions {
   margin: .3rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
->>> .v-snackbar__content {
+:deep() .v-snackbar__content {
   padding: .5rem;
   margin: 0;
   display: flex;
