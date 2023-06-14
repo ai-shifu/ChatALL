@@ -132,10 +132,10 @@ export default class SkyWorkBot extends Bot {
                   reject(new Error(`${data.code} ${data.code_msg}`));
                 }
                 done = data.resp_data?.result_message?.status == 3;
-                onUpdateResponse(callbackParam, {
-                  content: data.resp_data?.result_message?.content,
-                  done: done,
-                });
+                const content = data.resp_data?.result_message?.content;
+                if (content) {
+                  onUpdateResponse(callbackParam, { content, done });
+                }
               });
           } while (!done);
 
