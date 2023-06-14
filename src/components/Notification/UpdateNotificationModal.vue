@@ -25,12 +25,11 @@
   </div>
 </template>
 <script setup>
-import store from "@/store";
 import { ref } from "vue";
 import { compare } from 'compare-versions';
 const { shell } = window.require("electron");
 
-const versions = store.state.versions;
+const versions = JSON.parse(localStorage.getItem("chatall-versions"));
 const text = ref('');
 const snackbar = ref(false);
 if (versions?.latest && versions?.current && compare(versions.latest, versions.current, '>')) {
@@ -42,7 +41,8 @@ if (versions?.latest && versions?.current && compare(versions.latest, versions.c
 
 function skip() {
   snackbar.value = false;
-  store.commit("setSkipVersion", versions.latest);
+  versions.skip = versions.latest;
+  localStorage.setItem("chatall-versions", JSON.stringify(versions));
 }
 
 function install() {

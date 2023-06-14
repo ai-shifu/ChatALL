@@ -9,12 +9,14 @@ const saveLatestVersion = (data) => {
     const latestVersion = JSON.parse(data).tag_name;
     const currentVersion = app.getVersion();
     localMainWindow.webContents.executeJavaScript(`
-            const storage = JSON.parse(localStorage.getItem("chatall-app"));
-            const updatedVersions = { ...storage.versions, current: "v${currentVersion}", latest: "${latestVersion}"};
-            storage.versions = updatedVersions;
-            localStorage.setItem("chatall-app", JSON.stringify(storage));
-            `,
-    );
+      localStorage.setItem(
+        "chatall-versions",
+        JSON.stringify({
+          ...JSON.parse(localStorage.getItem("chatall-versions")),
+          current: "v${currentVersion}",
+          latest: "${latestVersion}",
+        })
+      );`);
   }
 };
 
