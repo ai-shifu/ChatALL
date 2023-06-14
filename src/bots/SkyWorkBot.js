@@ -32,42 +32,37 @@ export default class SkyWorkBot extends Bot {
    * @sideeffect - Set this.constructor._isAvailable
    */
   async checkAvailability() {
-    await axios
-      .post(
+    try {
+      const { data } = await axios.post(
         "https://neice.tiangong.cn/api/v1/user/inviteVerify",
         { data: {} },
         this.getAuthHeaders(),
-      )
-      .then((res) => {
-        if (res.data.code === 200) {
+      );
+
+      if (data.code === 200) {
+        this.constructor._isAvailable = true;
+      } else if (data.code >= 60100) {
+        // Invite token expired, request a new one
+        const { data } = await axios.post(
+          "https://neice.tiangong.cn/api/v1/queue/waitAccess",
+          { data: { token: "" } },
+          this.getAuthHeaders(),
+        );
+        if (data.code === 200 && data.resp_data?.busy_now === false) {
+          await store.commit("setSkyWork", {
+            inviteToken: data.resp_data?.invite_token,
+          });
           this.constructor._isAvailable = true;
-        } else if (res.data.code === 60101) {
-          // Invite token expired, request a new one
-          axios
-            .post(
-              "https://neice.tiangong.cn/api/v1/queue/waitAccess",
-              { data: { token: "" } },
-              this.getAuthHeaders(),
-            )
-            .then((res) => {
-              if (res.data.code === 200) {
-                store.commit("setSkyWork", {
-                  inviteToken: res.data.resp_data.invite_token,
-                });
-                this.constructor._isAvailable = true;
-              } else {
-                this.constructor._isAvailable = false;
-              }
-            });
         } else {
-          console.error("SkyWork login error:", res.data);
           this.constructor._isAvailable = false;
         }
-      })
-      .catch((err) => {
-        console.error(err);
+      } else {
         this.constructor._isAvailable = false;
-      });
+      }
+    } catch (err) {
+      console.error("SkyWork login error:", err);
+      this.constructor._isAvailable = false;
+    }
     return this.isAvailable(); // Always return like this
   }
 
@@ -115,29 +110,32 @@ export default class SkyWorkBot extends Bot {
           }
 
           // Get the response
-          let done = false;
-          do {
-            // wait 1s
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-            await axios
-              .post(
-                "https://neice.tiangong.cn/api/v1/chat/getMessage",
-                { data: { message_id: messageId } },
-                this.getAuthHeaders(),
-              )
-              .then((res) => {
-                const data = res.data;
-                if (data.code !== 200) {
-                  console.error(data);
-                  reject(new Error(`${data.code} ${data.code_msg}`));
-                }
-                done = data.resp_data?.result_message?.status == 3;
-                const content = data.resp_data?.result_message?.content;
-                if (content) {
-                  onUpdateResponse(callbackParam, { content, done });
-                }
-              });
-          } while (!done);
+          if (messageId) {
+            let done = false;
+            do {
+              // wait 1s
+              await new Promise((resolve) => setTimeout(resolve, 1000));
+              await axios
+                .post(
+                  "https://neice.tiangong.cn/api/v1/chat/getMessage",
+                  { data: { message_id: messageId } },
+                  this.getAuthHeaders(),
+                )
+                .then((res) => {
+                  const data = res.data;
+                  if (data.code !== 200) {
+                    console.error(data);
+                    reject(new Error(`${data.code} ${data.code_msg}`));
+                  }
+                  const status = data.resp_data?.result_message?.status;
+                  done = status == 3 || status == 6; // 3 - done, 6 - need continue
+                  const content = data.resp_data?.result_message?.content;
+                  if (content) {
+                    onUpdateResponse(callbackParam, { content, done });
+                  }
+                });
+            } while (!done);
+          }
 
           resolve();
         } catch (error) {
