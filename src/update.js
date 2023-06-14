@@ -4,7 +4,7 @@ import { app, autoUpdater, net } from "electron";
 
 let localMainWindow;
 
-const saveLatestVersion = (data) => {
+const saveLatestVersion = async (data) => {
   if (data) {
     const latestVersion = JSON.parse(data).tag_name;
     const currentVersion = app.getVersion();
@@ -17,7 +17,8 @@ const saveLatestVersion = (data) => {
           latest: "${latestVersion}",
         })
       );`;
-    localMainWindow.webContents.executeJavaScript(saveVersionScript);
+    await localMainWindow.webContents.executeJavaScript(saveVersionScript);
+    autoUpdater.removeListener("error", getLatestVersionFromGithub);
   }
 };
 
