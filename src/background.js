@@ -1,8 +1,9 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, ipcMain, autoUpdater } from "electron";
+import { app, protocol, BrowserWindow, ipcMain } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
+import updateApp from './update';
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
@@ -13,8 +14,6 @@ protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } },
 ]);
 
-// Auto Updater
-require("update-electron-app")();
 
 async function createWindow() {
   // Create the browser window.
@@ -201,6 +200,7 @@ app.on("ready", async () => {
   }
 
   createWindow();
+  updateApp(mainWindow);
 });
 
 // Exit cleanly on request from parent process in development mode.

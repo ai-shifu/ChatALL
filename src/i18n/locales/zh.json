@@ -128,5 +128,13 @@
   },
   "dev": {
     "name": "开发专用 Bot"
+  },
+  "updates": {
+    "updateAvailable": "有更新!",
+    "currentVersion": "您当前的版本",
+    "latestVersion": "最新版本",
+    "downloadFromGitHub": "去 GitHub 下载",
+    "skipThisVersion": "跳过此版本",
+    "close": "关闭"
   }
 }
