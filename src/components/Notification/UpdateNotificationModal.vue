@@ -11,7 +11,7 @@
         {{ $t('updates.latestVersion') }}: {{ versions.latest }}
       </span>
       <template v-slot:actions>
-        <v-btn prepend-icon="mdi-github" color="#062aaa" variant="tonal" @click="install" class="update-notification-btn">
+        <v-btn prepend-icon="mdi-github" color="primary" variant="tonal" @click="install" class="update-notification-btn">
           {{ $t('updates.downloadFromGitHub') }}
         </v-btn>
         <v-btn flat color="black" variant="text" @click="skip" class="update-notification-btn">
