@@ -52,11 +52,6 @@ function install() {
 </style>
 
 <style scoped>
-:deep() span {
-  /* font-size: 18px;
-  line-height: 1.5; */
-}
-
 :deep() .v-btn {
   text-transform: none;
   margin: .2rem;
