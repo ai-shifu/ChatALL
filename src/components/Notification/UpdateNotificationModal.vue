@@ -14,10 +14,10 @@
         <v-btn prepend-icon="mdi-github" color="#062aaa" variant="tonal" @click="install" class="update-notification-btn">
           {{ $t('updates.downloadFromGitHub') }}
         </v-btn>
-        <v-btn  color="red" variant="outlined" @click="skip" class="update-notification-btn">
+        <v-btn flat color="black" variant="text" @click="skip" class="update-notification-btn">
           {{ $t('updates.skipThisVersion') }}
         </v-btn>
-        <v-btn flat class="text-black update-notification-btn" variant="text" @click="snackbar = false">
+        <v-btn flat color="black" variant="text" class="update-notification-btn" @click="snackbar = false">
           {{ $t('updates.close') }}
         </v-btn>
       </template>
