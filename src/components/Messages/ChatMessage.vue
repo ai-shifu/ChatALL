@@ -171,7 +171,6 @@ function handleClick(event) {
 .title {
     display: flex;
     align-items: center;
-    justify-content: center;
     font-size: 1rem;
     padding: 0;
     margin-bottom: 8px;
