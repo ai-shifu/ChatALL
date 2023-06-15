@@ -45,7 +45,7 @@ function skip() {
 
 function openReleasePage() {
   snackbar.value = false;
-  shell.openExternal(`https://github.com/sunner/ChatALL/releases/tag/${versions.latest}`);
+  shell.openExternal(`https://github.com/sunner/ChatALL/releases/latest`);
 }
 </script>
 <style scoped>
