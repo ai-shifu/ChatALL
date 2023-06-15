@@ -48,9 +48,6 @@ function install() {
   shell.openExternal(`https://github.com/sunner/ChatALL/releases/tag/${versions.latest}`);
 }
 </script>
-<style>
-</style>
-
 <style scoped>
 :deep() .v-btn {
   text-transform: none;
