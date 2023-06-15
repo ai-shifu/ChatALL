@@ -56,8 +56,7 @@ function install() {
 
 :deep() .v-snackbar__actions {
   margin: .3rem;
-  align-items: center;
-  justify-content: center;
+  justify-content: end;
   width: 100%;
 }
 
