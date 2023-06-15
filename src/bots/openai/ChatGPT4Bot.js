@@ -11,6 +11,15 @@ export default class ChatGPT4Bot extends ChatGPTBot {
   }
 
   async checkAvailability() {
+    // Tempararily disable ChatGPT4Bot and ChatGPT4BrowsingBot due to the Arkose token issue
+    if (
+      this.constructor._className === "ChatGPT4Bot" ||
+      this.constructor._className === "ChatGPTBrowsingBot"
+    ) {
+      this.constructor._isAvailable = false;
+      return this.isAvailable();
+    }
+
     const reserved = this.constructor._isAvailable; // To supress the availablity changing
     const isAvailable = await super.checkAvailability();
     this.constructor._isAvailable = reserved;

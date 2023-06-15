@@ -26,6 +26,8 @@ import ClaudeInstantPoeBot from "./poe/ClaudeInstantPoeBot";
 import ClaudeInstant100kPoeBot from "./poe/ClaudeInstant100kPoeBot";
 import ClaudePlusPoeBot from "./poe/ClaudePlusPoeBot";
 import SkyWorkBot from "./SkyWorkBot";
+import ChatGPT4MobileBot from "./openai/ChatGPT4MobileBot";
+import OpenAIAPI3516KBot from "./openai/OpenAIAPI3516KBot";
 
 const all = [
   AlpacaBot.getInstance(),
@@ -36,8 +38,7 @@ const all = [
   ChatGLMBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
-  ChatGPT4Bot.getInstance(),
-  ChatGPTBrowsingBot.getInstance(),
+  ChatGPT4MobileBot.getInstance(),
   ChatGPT4PoeBot.getInstance(),
   ClaudeBot.getInstance(),
   ClaudeInstantPoeBot.getInstance(),
@@ -47,6 +48,7 @@ const all = [
   HuggingChatBot.getInstance(),
   MOSSBot.getInstance(),
   OpenAIAPI35Bot.getInstance(),
+  OpenAIAPI3516KBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   QianWenBot.getInstance(),
   SageBot.getInstance(),
@@ -56,6 +58,8 @@ const all = [
   WenxinQianfanBot.getInstance(),
 ];
 
+const disabled = [ChatGPT4Bot.getInstance(), ChatGPTBrowsingBot.getInstance()];
+
 if (process.env.NODE_ENV !== "production") {
   all.push(DevBot.getInstance());
 }
@@ -63,7 +67,12 @@ if (process.env.NODE_ENV !== "production") {
 const bots = {
   all,
   getBotByClassName(className) {
-    return all.find((bot) => bot.getClassname() === className);
+    const bot = disabled.find((bot) => bot.getClassname() === className);
+    if (bot) {
+      return bot;
+    } else {
+      return all.find((bot) => bot.getClassname() === className);
+    }
   },
 };
 

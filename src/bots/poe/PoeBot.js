@@ -27,9 +27,9 @@ export default class PoeBot extends Bot {
       AnnotateWithIdsProviderQuery:
         "b4e6992c3af8f208ab2b3979dce48889835736ed29f623ea9f609265018d0d8f",
       chatHelpers_sendMessageMutation_Mutation:
-        "de851458c795514a77f70b70626f22674d46237f3c1d086cf456e83b7bc36ecd",
+        "dc684d8e0aab4cee82ed40ef7381b40cc31b1dd3afdf0e5c0a500364994fed8b",
       ChatListPaginationQuery:
-        "a988fce78107f09c50d0d80401ad4ff8d736f410b3565c3aab36b25b29d930a3",
+        "c2e523bd328fee74768a0356481ba24da372b2e54d07820bcd0d439b2bd60495",
       subscriptionsMutation:
         "61c1bfa1ba167fd0857e3f6eaf9699e847e6c3b09d69926b12b5390076fe36e6",
     };
@@ -121,13 +121,9 @@ export default class PoeBot extends Bot {
 
     // Get settings
     if (!ctx.settings) {
-      await axios
-        .get(
-          "https://poe.com/api/settings?channel=poe-chan54-8888-ffaimjlmexuuafbrmggw",
-        )
-        .then((response) => {
-          ctx.settings = response.data;
-        });
+      await axios.get("https://poe.com/api/settings").then((response) => {
+        ctx.settings = response.data;
+      });
     }
 
     return new Promise((resolve, reject) => {
