@@ -11,7 +11,7 @@
         {{ $t('updates.latestVersion') }}: {{ versions.latest }}
       </span>
       <template v-slot:actions>
-        <v-btn prepend-icon="mdi-github" color="primary" variant="tonal" @click="install" class="update-notification-btn">
+        <v-btn prepend-icon="mdi-github" color="primary" variant="tonal" @click="openReleasePage" class="update-notification-btn">
           {{ $t('updates.downloadFromGitHub') }}
         </v-btn>
         <v-btn color="primary" @click="skip" class="update-notification-btn">
@@ -43,7 +43,7 @@ function skip() {
   localStorage.setItem("chatall-versions", JSON.stringify(versions));
 }
 
-function install() {
+function openReleasePage() {
   snackbar.value = false;
   shell.openExternal(`https://github.com/sunner/ChatALL/releases/tag/${versions.latest}`);
 }
