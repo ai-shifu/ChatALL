@@ -10,14 +10,14 @@
       <span class="text-black text-center">
         {{ $t('updates.latestVersion') }}: {{ versions.latest }}
       </span>
-      <v-btn prepend-icon="mdi-github" color="primary" variant="tonal" @click="openReleasePage" class="update-notification-btn">
+      <v-btn prepend-icon="mdi-github" color="primary" variant="tonal" @click="openReleasePage">
         {{ $t('updates.downloadFromGitHub') }}
       </v-btn>
       <template v-slot:actions>
-        <v-btn color="primary" @click="skip" class="update-notification-btn">
+        <v-btn color="primary" @click="skip">
           {{ $t('updates.skipThisVersion') }}
         </v-btn>
-        <v-btn color="primary" class="update-notification-btn" @click="snackbar = false">
+        <v-btn color="primary" @click="snackbar = false">
           {{ $t('updates.close') }}
         </v-btn>
       </template>
