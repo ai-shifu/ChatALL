@@ -155,6 +155,10 @@ export default class PoeBot extends Bot {
         console.debug("context", ctx);
 
         wsp.onUnpackedMessage.addListener((message) => {
+          if (message.error) {
+            reject(new Error(message.error));
+            return;
+          }
           ctx.settings.tchannelData.minSeq = message.min_seq;
           const messages = message.messages.map((m) => JSON.parse(m));
           for (const m of messages) {
