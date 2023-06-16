@@ -120,10 +120,17 @@ export default class GradioBot extends Bot {
           } else if (event.msg === "process_completed") {
             // Done
             if (event.success && event.output.data) {
-              onUpdateResponse(callbackParam, {
-                content: this.parseData(fn_index, event.output.data),
-                done: fn_index == this.constructor._fnIndexes.slice(-1), // Only the last one is done
-              });
+              if (
+                typeof event.output.data[2] !== "string" ||
+                event.output.data[2] === ""
+              ) {
+                onUpdateResponse(callbackParam, {
+                  content: this.parseData(fn_index, event.output.data),
+                  done: fn_index == this.constructor._fnIndexes.slice(-1), // Only the last one is done
+                });
+              } else {
+                reject(new Error(event.output.data[2]));
+              }
             } else {
               reject(new Error(event.output.error));
             }
