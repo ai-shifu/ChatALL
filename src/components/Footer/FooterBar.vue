@@ -37,6 +37,7 @@
       <BotsMenu :favBots="favBots" />
     </div>
     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
+    <ConfirmModal ref="confirmModal" />
   </div>
 </template>
 
@@ -46,6 +47,7 @@ import { useStore } from "vuex";
 
 // Components
 import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
+import ConfirmModal from "@/components/ConfirmModal.vue";
 import BotLogo from "./BotLogo.vue";
 import BotsMenu from "./BotsMenu.vue";
 
@@ -58,6 +60,8 @@ const { ipcRenderer } = window.require("electron");
 
 const store = useStore();
 const matomo = useMatomo();
+
+const confirmModal = ref(null);
 
 const bots = ref(_bots.all);
 const activeBots = reactive({});
@@ -90,8 +94,20 @@ watch(favBots, async (newValue, oldValue) => {
   updateActiveBots();
 });
 
-function updateActiveBots() {
+async function updateActiveBots() {
   for (const favBot of favBots.value) {
+    // Unselect the bot if user has not confirmed to use it
+    if (favBot.selected) {
+      const confirmed = await favBot.instance.confirmBeforeUsing(
+        confirmModal.value,
+      );
+      if (!confirmed) {
+        store.commit("setBotSelected", {
+          botClassname: favBot.classname,
+          selected: false,
+        });
+      }
+    }
     activeBots[favBot.classname] =
       favBot.instance.isAvailable() && favBot.selected;
   }

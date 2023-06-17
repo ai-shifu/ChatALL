@@ -84,6 +84,17 @@ export default class Bot {
   }
 
   /**
+   * Subclass should implement this method if it needs to notice the user
+   * before using the bot.
+   * @param {object} confirmModal - ConfirmModal component
+   * @returns {boolean} true if user has confirmed to use the bot
+   */
+  // eslint-disable-next-line
+  async confirmBeforeUsing(confirmModal) {
+    return true;
+  }
+
+  /**
    * Acquire a lock for the given key and call lockedFn() when the lock is acquired.
    * If the lock is not available, call onLockUnavailable() and then try to acquire
    * the lock again.

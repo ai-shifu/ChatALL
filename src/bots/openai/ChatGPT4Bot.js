@@ -1,5 +1,7 @@
 import axios from "axios";
 import ChatGPTBot from "./ChatGPTBot";
+import i18n from "@/i18n";
+import store from "@/store";
 
 export default class ChatGPT4Bot extends ChatGPTBot {
   static _className = "ChatGPT4Bot"; // Class name of the bot
@@ -8,6 +10,19 @@ export default class ChatGPT4Bot extends ChatGPTBot {
 
   constructor() {
     super();
+  }
+
+  // eslint-disable-next-line
+  async confirmBeforeUsing(confirmModal) {
+    if (store.state.chatgpt.riskConfirmed) return true;
+
+    const confirmed = await confirmModal.showModal(
+      i18n.global.t("chatGpt.riskWarningTitle"),
+      i18n.global.t("chatGpt.riskWarningText"),
+    );
+
+    store.state.chatgpt.riskConfirmed = confirmed;
+    return confirmed;
   }
 
   async checkAvailability() {

@@ -62,6 +62,8 @@
     "autoRefresh": "自动防掉线",
     "autoRefreshPrompt": "如果没有被要求频繁登录，不需要启用此功能",
     "notice": "只有付费的 Plus 用户才能使用 GPT-4",
+    "riskWarningTitle": "温馨提醒",
+    "riskWarningText": "OpenAI 正在使用 Arkose Labs 的服务检测和阻止通过官方客户端以外的途径访问 ChatGPT 的 GPT-4 和 GPT-4 Browsing 两种模型的行为。尽管 ChatALL 成功绕过了它的防护，但 OpenAI 仍能轻而易举地识别出你，增加你的封号风险。\n\n你是否愿意冒这个风险？",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Web 浏览",
