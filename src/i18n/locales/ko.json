@@ -66,7 +66,7 @@
     "riskWarningText": "OpenAI는 공식 클라이언트가 아닌 앱을 통해 ChatGPT의 GPT-4 및 GPT-4 브라우징 모델에 액세스하는 작업을 탐지하고 방지하기 위해 Arkose Labs의 서비스를 사용하고 있습니다. ChatALL이 성공적으로 보호를 무시했지만 OpenAI는 여전히 사용자를 쉽게 식별할 수 있어 금지될 위험이 높아집니다. \n\n이 위험을 감수하시겠습니까?",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "웹 브라우징"
+    "gpt-4-browsing": "웹 브라우징",
     "gpt-4-mobile": "GPT-4 모바일 V2"
   },
   "ernie": {
