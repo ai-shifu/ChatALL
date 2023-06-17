@@ -16,24 +16,24 @@
 
 ### 対応するボット
 
-| AI ボット                                                               | Web アクセス | API      |
-| ----------------------------------------------------------------------- | ------------ | -------- | --- |
-| [ChatGPT](https://chat.openai.com)                                      | はい         | はい     |
-| [Bing Chat](https://www.bing.com/new)                                   | はい         | API なし |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                 | いいえ       | はい     |
-| [Bard](https://bard.google.com/)                                        | はい         | API なし |
-| [Poe](https://poe.com/)                                                 | はい         | 近日公開 |
-| [MOSS](https://moss.fastnlp.top/)                                       | はい         | API なし |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                             | はい         | 近日公開 |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                        | 近日公開     | API なし |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                               | はい         | 近日公開 |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)              | はい         | API なし |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                     | はい         | API なし |
-| [ChatGLM](https://chatglm.cn/blog)                                      | はい         | API なし |
-| [Claude](https://www.anthropic.com/index/introducing-claude)            | はい         | API なし |
-| Hugging Face space/セルフデプロイモデルの [Gradio](https://gradio.app/) | はい         | API なし |
-| [HuggingChat](https://huggingface.co/chat/)                             | はい         | API なし |
-| [QianWen](https://qianwen.aliyun.com/)                                  | はい         | 近日公開 |     |
+| 対応AI                                                        | webアクセス | API       | メモ                                |
+| ------------------------------------------------------------ | --------- | --------- | ----------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | はい      | あり        |  ブラウジングを含む                    |
+| [Bing Chat](https://www.bing.com/new)                        | はい      | なし  | ログイン不要 [ログインするとターン数上昇]                 |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | いいえ    | あり        |                                     |
+| [Bard](https://bard.google.com/)                             | はい      | なし  |                                     |
+| [Poe](https://poe.com/)                                      | はい      | 近日登場 |                                     |
+| [MOSS](https://moss.fastnlp.top/)                            | はい      | なし  |                                     |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | はい      | 近日登場|                                     |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)             | 近日登場  | なし  |                                     |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | はい      | 近日登場 |                                     |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | はい      | なし  | ログイン不要                     |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | はい      | なし  | ログイン不要                    |
+| [ChatGLM](https://chatglm.cn/blog)                           | はい      | なし  | ログイン不要                     |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | はい      | なし  | ログイン不要                   |
+| [Gradio](https://gradio.app/)                                | はい      | なし  | Hugging Face space/自己配布モデル用 |
+| [HuggingChat](https://huggingface.co/chat/)                  | はい      | なし  |                                     |
+| [QianWen](https://qianwen.aliyun.com/)                       | はい      | 近日登場 |                                     |
 
 などなど...
 
