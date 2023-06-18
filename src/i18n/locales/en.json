@@ -63,7 +63,7 @@
     "autoRefreshPrompt": "If you're NOT being asked to log in frequently, do NOT enable this feature",
     "notice": "Only paid Plus members can use GPT-4",
     "riskWarningTitle": "Reminder",
-    "riskWarningText": "OpenAI is using services from Arkose Labs to detect and prevent actions accessing ChatGPT's GPT-4 and GPT-4 Browsing models through Apps other than the official clients. Although ChatALL has successfully bypassed its protection, OpenAI can still easily identify you, increasing your risk of being banned. \n\nAre you sure to take this risk?",
+    "riskWarningText": "OpenAI is using services from Arkose Labs to detect and prevent actions accessing ChatGPT's GPT-4 and GPT-4 Browsing models through Apps other than the official clients. Although ChatALL has successfully bypassed its protection, OpenAI can still easily identify you, increasing your risk of being banned. \n\nAre you sure to take this risk? (The risk of using GPT-4 Mobile V2 will be much lower)",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Web Browsing",
