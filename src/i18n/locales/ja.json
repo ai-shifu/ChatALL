@@ -1,0 +1,142 @@
+{
+  "settings": {
+    "enable": "適用",
+    "forExample": "例: { example }",
+    "title": "設定",
+    "general": "一般",
+    "auto": "自動",
+    "language": "言語",
+    "languagePrompt": "新しい言語を適用するためにアプリを再起動してください。",
+    "loginOrOut": "ログイン/ログアウト",
+    "loginOrOutPrompt": "リンクをクリックしてサイトににログインまたはログアウトして閉じてください。",
+    "notice": "注意",
+    "secretPrompt": "シークレットトークンは端末に残り、他の人と共有されません。"
+  },
+  "header": {
+    "clearMessages": "全ての会話を削除しますか？",
+    "yes": "はい",
+    "no": "いいえ",
+    "singleColumn": "1列",
+    "doubleColumn": "2列",
+    "tripleColumn": "3列"
+  },
+  "footer": {
+    "chooseFavorite": "お気に入りのAIを選択",
+    "sendPrompt": "送信:",
+    "promptPlaceholder": "メッセージを入力。 (Shift+Enterキーで改行)"
+  },
+  "error": {
+    "failedConnectUrl": "{ url }を接続できませんでした",
+    "closedByServer": "サーバーが接続を終了しました"
+  },
+  "modal": {
+    "confirmHide": "このメッセージを削除しますか？",
+    "done": "完了"
+  },
+  "chat":{
+    "newChat": "新しい会話"
+  },
+  "bot": {
+    "creatingConversation": "会話を作成中...",
+    "failedToCreateConversation": "会話を作ることができませんでした",
+    "name": "Null Bot",
+    "notImplemented": "工事中...",
+    "notAvailable": "ログインしていないか、正しく設定されていないため、AIを使用できません。",
+    "waiting": "その他の{botName}リクエストが完了するのを待っています...",
+    "pastRounds": "チャットのターン数を設定",
+    "pastRoundsPrompt": "過去の会話記録が多ければ多いほど、多者間会話の効果は高くなりますが、コストもかかります。"
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "Bing Chat",
+    "loginToContinue": "リクエストが制限されます。続行するには <a { attributes }>ログイン</a>してください.",
+    "solveCaptcha": "続行するには <a { attributes }>CAPTCHA認証/a>をしてください。",
+    "h3imaginative": "創造的に",
+    "galileo": "バランスよく",
+    "h3precise": "厳密に"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "自動切断防止",
+    "autoRefreshPrompt": "頻繁にログインするように求められない場合は、この機能を無効にしてください。",
+    "notice": "ChatGPTプラス会員のみGPT-4をご利用いただけます。",
+    "riskWarningTitle": "記憶",
+    "riskWarningText": "OpenAIは、公式クライアント以外のアプリからChatGPTのGPT-4およびGPT-4ブラウジングモデルにアクセスする操作を検出および防止するために、Arkose Labsのサービスを使用しています。ChatALLが保護を回避したとしても、OpenAIはユーザーを簡単に識別できるため、アカウント停止されるリスクが高くなります。\\n\\nそのリスクを負いますか？",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "webブラウジング",
+    "gpt-4-mobile": "GPT-4 モバイル V2"
+  },
+  "ernie": {
+    "name": "ERNIE"
+  },
+  "huggingChat": {
+    "name": "HuggingChat"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "リクエストする関数の fn_indexです。ほとんど0です",
+    "name": "Gradio",
+    "queueFull": "キューがいっぱいです。後で再試行してください",
+    "url": "GradioアプリURL",
+    "urlPrompt": "GradioアプリのURLです。Hugging Faceスペースを使用している場合、右上隅の \"Embed this space\"をクリックして直接URLを取得します。",
+    "waiting": "キューに {queue_size}件のリクエストがあり{rank}上にあり{queue_eta}秒間待つ必要があります"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-13b": "vicuna-13b",
+    "chatglm-6b": "chatglm-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-v1": "claude-v1"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "代替API URL",
+    "alterUrlPrompt": "カスタムAPI URLを使用する場合、ここに入力することができます。",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-35-turbo-16k": "gpt-3.5-turbo-16k",
+    "gpt-4": "gpt-4",
+    "temperature": "温度",
+    "temperaturePrompt": "温度が高いほど、テキストは創造的ですが、一貫性がない可能性が高いです。",
+    "temperature0": "より決定論的な",
+    "temperature2": "もっとランダム",
+    "apiKey": "APIキー"
+  },
+  "poe": {
+    "name": "Poe",
+    "a2": "Claude-instant",
+    "a2_100k": "Claude-instant-100k",
+    "a2_2": "Claude+",
+    "beaver": "GPT-4",
+    "capybara": "Sage",
+    "chinchilla": "ChatGPT 3.5"
+  },
+  "qianWen": {
+    "name": "QianWen"
+  },
+  "skyWork": {
+    "name": "SkyWork"
+  },
+  "spark": {
+    "name": "iFlytek Spark"
+  },
+  "wenxinQianfan": {
+    "name": "Wenxin Qianfan"
+  },
+  "dev": {
+    "name": "Dev Bot"
+  },
+  "updates": {
+    "updateAvailable": "新しいアップデート可能!",
+    "currentVersion": "現在のバージョン",
+    "latestVersion": "最新バージョン",
+    "downloadFromGitHub": "GitHubからダウンロード",
+    "skipThisVersion": "このバージョンをスキップ",
+    "close": "閉じる"
+  }
+}
