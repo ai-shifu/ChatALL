@@ -18,6 +18,7 @@ import frMessages from "./locales/fr.json";
 import itMessages from "./locales/it.json";
 import koMessages from "./locales/ko.json";
 import esMessages from "./locales/es.json";
+import jaMessages from "./locales/ja.json";
 
 const messages = {
   en: enMessages,
@@ -28,7 +29,8 @@ const messages = {
   it: itMessages,
   fr: frMessages,
   ko: koMessages,
-  es: esMessages,  
+  es: esMessages,
+  ja: jaMessages,
 };
 
 const i18n = createI18n({
