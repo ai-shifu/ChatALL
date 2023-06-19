@@ -129,7 +129,8 @@ export default class GradioBot extends Bot {
                   done: fn_index == this.constructor._fnIndexes.slice(-1), // Only the last one is done
                 });
               } else {
-                reject(new Error(event.output.data[2]));
+                const errorMsg = this.parseError(event.output.data[2]);
+                reject(new Error(errorMsg));
               }
             } else {
               reject(new Error(event.output.error));
@@ -172,5 +173,9 @@ export default class GradioBot extends Bot {
    */
   async createChatContext() {
     return Math.random().toString(36).substring(2);
+  }
+
+  parseError(errorMsg) {
+    return errorMsg;
   }
 }
