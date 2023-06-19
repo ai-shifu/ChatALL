@@ -14,7 +14,12 @@ export default class ChatGPT4Bot extends ChatGPTBot {
 
   // eslint-disable-next-line
   async confirmBeforeUsing(confirmModal) {
-    if (store.state.chatgpt.riskConfirmed) return true;
+    if (
+      store.state.chatgpt.riskConfirmed ||
+      (this.constructor._model !== "gpt-4" &&
+        this.constructor._model !== "gpt-4-browsing")
+    )
+      return true;
 
     const confirmed = await confirmModal.showModal(
       i18n.global.t("chatGpt.riskWarningTitle"),

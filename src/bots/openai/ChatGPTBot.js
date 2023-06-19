@@ -94,8 +94,8 @@ export default class ChatGPTBot extends Bot {
   getArkoseToken() {
     let arkoseToken = void 0;
     if (
-      this.getClassname() === "ChatGPT4Bot" ||
-      this.getClassname() === "ChatGPTBrowsingBot"
+      this.constructor._model === "gpt-4" ||
+      this.constructor._model === "gpt-4-browsing"
     ) {
       let part1 = Math.floor(Math.random() * Math.pow(16, 16)).toString(16);
       while (part1.length < 15) {
