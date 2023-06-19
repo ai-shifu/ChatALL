@@ -93,6 +93,25 @@ ChatALL 是一个客户端，而不是代理。因此，您必须：
 
 下载 .AppImage 文件，将其设置为可执行，然后双击就可运行。
 
+## 问题解决
+
+使用中如果遇到问题，可以尝试如下方法解决：
+
+1. 刷新 - 按下 `Ctrl + R` 或 `Cmd + R`。
+2. 重启 - 退出 ChatALL，再重新运行。
+3. 重新登录 - 点击右上角的设置按钮，在弹出的窗口中点击对应的登入/登出链接，重新登录网站。
+4. 清空消息 - 点击右上角的扫帚按钮。
+
+如果以上方法都不行，那么可以尝试**重置 ChatALL**。注意，这将丢失你所有的设置和消息历史。
+
+删除下面的目录可以重置 ChatALL：
+
+- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
+- Linux: `/home/<user>/.config/ChatALL/`
+- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+
+如果问题依旧，请[提交一个 issue](https://github.com/sunner/ChatALL/issues)。
+
 ## 给开发者
 
 ### 贡献新的 AI 机器人

@@ -93,6 +93,25 @@ If the system prompts that it cannot check whether the software is malicious, fo
 
 Download the .AppImage file, make it executable, and enjoy the click-to-run experience.
 
+## Troubleshooting
+
+If you encounter any problems while using ChatALL, you can try the following methods to resolve them:
+
+1. Refresh - press `Ctrl + R` or `Cmd + R`.
+2. Restart - exit ChatALL and run it again.
+3. Re-login - click the settings button in the upper right corner, then click the corresponding login/logout link in the pop-up window to log in to the website again.
+4. Clear all messages - click the broom button in the upper right corner.
+
+If none of the above methods work, you can try **resetting ChatALL**. Note that this will delete all your settings and message history.
+
+You can reset ChatALL by deleting the following directories:
+
+- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
+- Linux: `/home/<user>/.config/ChatALL/`
+- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+
+If the problem persists, please [submit an issue](https://github.com/sunner/ChatALL/issues).
+
 ## For developers
 
 ### Contribute a Bot
