@@ -97,10 +97,10 @@ Download the .AppImage file, make it executable, and enjoy the click-to-run expe
 
 If you encounter any problems while using ChatALL, you can try the following methods to resolve them:
 
-1. Refresh - press `Ctrl + R` or `Cmd + R`.
-2. Restart - exit ChatALL and run it again.
-3. Re-login - click the settings button in the upper right corner, then click the corresponding login/logout link in the pop-up window to log in to the website again.
-4. Clear all messages - click the broom button in the upper right corner.
+1. **Refresh** - press `Ctrl + R` or `Cmd + R`.
+2. **Restart** - exit ChatALL and run it again.
+3. **Re-login** - click the settings button in the upper right corner, then click the corresponding login/logout link in the pop-up window to log in to the website again.
+4. **Clear all messages** - click the broom button in the upper right corner.
 
 If none of the above methods work, you can try **resetting ChatALL**. Note that this will delete all your settings and message history.
 
