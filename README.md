@@ -14,6 +14,14 @@
 
 Large Language Models (LLMs) based AI bots are amazing. However, their behavior can be random and different bots excel at different tasks. If you want the best experience, don't try them one by one. ChatALL (Chinese name: 齐叨) can send prompt to several AI bots concurrently, help you to discover the best results. All you need to do is [download, install](https://github.com/sunner/ChatALL/releases) and ask.
 
+### Is this you?
+
+Typical users of ChatALL are:
+
+- 🤠**Gurus of LLMs**, who want to find the best answers or creations from LLMs.
+- 🤓**Researchers of LLMs**, who want to intuitively compare the strengths and weaknesses of various LLMs in different fields.
+- 😎**Developers of LLM applications**, who want to quickly debug prompts and find the best-performing foundation models.
+
 ### Supported bots
 
 | AI Bots                                                      | Web Access  | API         | Notes                                       |
