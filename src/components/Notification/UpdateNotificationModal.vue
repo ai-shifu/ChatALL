@@ -27,14 +27,20 @@
 <script setup>
 import { ref } from "vue";
 import { compare } from 'compare-versions';
-const { shell } = window.require("electron");
+const { shell, ipcRenderer } = window.require("electron");
 
-const versions = JSON.parse(localStorage.getItem("chatall-versions"));
+let versions = undefined;
 const snackbar = ref(false);
-if (versions?.latest && versions?.current && compare(versions.latest, versions.current, '>')) {
-  if (!versions?.skip || compare(versions.latest, versions.skip, '>')) {
-    snackbar.value = true;
+ipcRenderer.on('version-saved', checkVersion);
+
+function checkVersion() {
+  versions = JSON.parse(localStorage.getItem("chatall-versions"));
+  if (versions?.latest && versions?.current && compare(versions.latest, versions.current, '>')) {
+    if (!versions?.skip || compare(versions.latest, versions.skip, '>')) {
+      snackbar.value = true;
+    }
   }
+  ipcRenderer.removeListener('version-saved', checkVersion);
 }
 
 function skip() {
