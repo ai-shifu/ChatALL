@@ -28,7 +28,19 @@
             ></v-select>
           </v-list-item>
         </div>
-
+        <div class="section">
+          <v-list-item>
+            <v-list-item-title>{{ $t("settings.theme") }}</v-list-item-title>
+            <v-select
+              :items="modes"
+              item-title="name"
+              item-value="code"
+              hide-details
+              :model-value="currentMode"
+              @update:model-value="setCurrentMode($event)"
+            ></v-select>
+          </v-list-item>
+        </div>
         <template v-for="(setting, index) in settings" :key="index">
           <v-divider></v-divider>
           <div class="section">
@@ -44,6 +56,8 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
+import { useTheme } from "vuetify";
+const { ipcRenderer } = window.require("electron");
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
@@ -61,6 +75,7 @@ import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue"
 
 const { t: $t, locale } = useI18n();
 const store = useStore();
+const theme = useTheme();
 
 const props = defineProps(["open"]);
 const emit = defineEmits(["update:open", "done"]);
@@ -95,11 +110,28 @@ const languages = computed(() => [
   { name: "简体中文", code: "zh" },
 ]);
 
+const modes = computed(() => [
+  { name: $t("settings.system"), code: 'system' },
+  { name: $t("settings.light"), code: 'light' },
+  { name: $t("settings.dark"), code: 'dark' },
+])
+
 const lang = computed(() => store.state.lang);
+const currentMode = computed(() => store.state.mode);
 
 const setCurrentLanguage = (lang) => {
   locale.value = lang;
   store.commit("setCurrentLanguage", lang);
+};
+const setCurrentMode = async (mode) => {
+  let newTheme = mode;
+  if (mode === 'system') {
+    const nativeTheme = await ipcRenderer.invoke('get-native-theme');
+    newTheme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light';
+  }
+  theme.global.name.value = newTheme;
+  store.commit("setMode", mode);
+  store.commit("setTheme", newTheme);
 };
 const closeDialog = () => {
   emit("update:open", false);

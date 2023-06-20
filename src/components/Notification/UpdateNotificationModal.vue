@@ -1,13 +1,13 @@
 <template>
   <div id="snackbar" class="text-center">
-    <v-snackbar color="#fff" :vertical="true" :timeout="-1" multi-line v-model="snackbar">
-      <span class="text-black text-center font-weight-bold">
+    <v-snackbar :vertical="true" :timeout="-1" multi-line v-model="snackbar">
+      <span class="text-center font-weight-bold">
         {{ $t('updates.updateAvailable') }}
       </span>
-      <span class="text-black text-center">
+      <span class="text-center">
         {{ $t('updates.currentVersion') }}: {{ versions.current }}
       </span>
-      <span class="text-black text-center">
+      <span class="text-center">
         {{ $t('updates.latestVersion') }}: {{ versions.latest }}
       </span>
       <v-btn prepend-icon="mdi-github" color="primary" variant="tonal" @click="openReleasePage">
@@ -68,5 +68,9 @@ function openReleasePage() {
   flex-direction: column;
   width: 100%;
   justify-content: center;
+}
+
+span {
+  color: rgb(var(--v-theme-response-font));
 }
 </style>

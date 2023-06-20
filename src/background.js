@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, ipcMain } from "electron";
+import { app, protocol, BrowserWindow, ipcMain, nativeTheme } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import updateApp from './update';
@@ -20,6 +20,7 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    backgroundColor: nativeTheme.shouldUseDarkColors ? '#343541' : '#fff',
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -165,6 +166,16 @@ function createNewWindow(url, userAgent = "") {
 
 ipcMain.handle("create-new-window", (event, url, userAgent) => {
   createNewWindow(url, userAgent);
+});
+
+ipcMain.handle("get-native-theme", () => {
+  return Promise.resolve({
+    shouldUseDarkColors: nativeTheme.shouldUseDarkColors,
+  });
+});
+
+nativeTheme.on('updated', () => {
+  mainWindow.webContents.send('on-updated-system-theme');
 });
 
 // Quit when all windows are closed.

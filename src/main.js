@@ -6,6 +6,7 @@ import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { useI18n } from "vue-i18n";
 import "material-design-icons/iconfont/material-icons.css";
 import VueMatomo from "vue-matomo";
+const { ipcRenderer } = window.require("electron");
 
 // Vuetify
 import "vuetify/styles";
@@ -16,6 +17,15 @@ import * as directives from "vuetify/directives";
 // Init storage
 store.commit("init");
 
+let defaultTheme;
+if (store.state.mode === "system") {
+  const nativeTheme = await ipcRenderer.invoke('get-native-theme');
+  defaultTheme = nativeTheme.shouldUseDarkColors ? "dark" : "light";
+  store.commit("setTheme", defaultTheme);
+} else {
+  defaultTheme = store.state.theme;
+}
+
 const vuetify = createVuetify({
   components,
   directives,
@@ -23,17 +33,31 @@ const vuetify = createVuetify({
     adapter: createVueI18nAdapter({ i18n, useI18n }),
   },
   theme: {
-    defaultTheme: "light",
+    defaultTheme: defaultTheme,
     themes: {
       light: {
         colors: {
           primary: "#062AAA",
+          surface: '#FFFFFF',
+          background: "#f3f3f3",
+          'surface-variant': "#fff",
+          header: "#fff",
+          prompt: "#95ec69",
+          response: "#fff",
+          'response-font': "#212121",
         },
       },
       dark: {
         dark: true,
         colors: {
-          primary: "#062AAA",
+          primary: "#ececf1",
+          surface: '#202123',
+          background: "#343541",
+          'surface-variant': "#282A32",
+          header: "#202123",
+          prompt: "#282A32",
+          response: "#444654",
+          'response-font': "#fff",
         },
       },
     },

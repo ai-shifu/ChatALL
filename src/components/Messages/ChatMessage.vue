@@ -152,7 +152,7 @@ function handleClick(event) {
 }
 
 .prompt {
-    background-color: #95EC69;
+    background-color: rgb(var(--v-theme-prompt));
     width: fit-content;
     grid-column: 1 / span var(--columns);
 }
@@ -163,7 +163,7 @@ function handleClick(event) {
 }
 
 .response {
-    background-color: #FFF;
+    background-color: rgb(var(--v-theme-response));
     width: 100%;
     grid-column: auto / span 1;
 }
@@ -185,5 +185,6 @@ function handleClick(event) {
 .markdown-body {
     background-color: inherit;
     font-family: inherit;
+    color: rgb(var(--v-theme-response-font));
 }
 </style>
