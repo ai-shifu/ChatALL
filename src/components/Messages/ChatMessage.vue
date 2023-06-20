@@ -49,9 +49,6 @@ import { useMatomo } from "@/composables/matomo";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import bots from "@/bots";
 
-import "highlight.js/styles/github.css";
-import "github-markdown-css/github-markdown-light.css";
-
 const props = defineProps({
   message: {
     type: Object,
@@ -182,9 +179,7 @@ function handleClick(event) {
     margin-right: 4px;
 }
 
-.markdown-body {
-    background-color: inherit;
-    font-family: inherit;
-    color: rgb(var(--v-theme-response-font));
+:deep() .markdown-body {
+  margin-left: 1.5rem;
 }
 </style>

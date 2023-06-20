@@ -51,7 +51,7 @@
     </main>
 
     <FooterBar></FooterBar>
-    <SettingsModal v-model:open="isSettingsOpen" />
+    <SettingsModal v-model:open="isSettingsOpen"  @update-theme="updateTheme" />
     <ConfirmModal ref="confirmModal" />
     <UpdateNotification></UpdateNotification>
   </div>
@@ -62,11 +62,10 @@ import { ref, computed, onMounted } from "vue";
 import { useTheme } from "vuetify";
 import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
-const { ipcRenderer } = window.require("electron");
 
 import i18n from "./i18n";
 
-// Components
+import { saveTheme, setBodyDataTheme } from './theme'
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
@@ -76,16 +75,15 @@ import UpdateNotification from "@/components/Notification/UpdateNotificationModa
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
 
+const { ipcRenderer } = window.require("electron");
+
 const store = useStore();
 const theme = useTheme();
-const onUpdatedSystemTheme =  async () => {
-  if (store.state.mode === 'system') {
-    const nativeTheme = await ipcRenderer.invoke('get-native-theme');
-    const newTheme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light';
-    theme.global.name.value = newTheme;
-    store.commit("setTheme", newTheme);
-  }
-};
+const onUpdatedSystemTheme = async () => {
+  const finalTheme = await saveTheme(store.state.mode, theme, store, ipcRenderer);
+  setBodyDataTheme(finalTheme);
+}
+
 ipcRenderer.on('on-updated-system-theme', onUpdatedSystemTheme);
 
 const confirmModal = ref(null);
@@ -119,7 +117,15 @@ onMounted(() => {
 });
 </script>
 
-<style>
+<style lang="scss">
+[data-theme='dark'] {
+  @import url('github-markdown-css/github-markdown-dark.css');
+}
+
+[data-theme='light'] {
+  @import url('github-markdown-css/github-markdown-light.css');
+}
+
 * {
     margin: 0;
     padding: 0;

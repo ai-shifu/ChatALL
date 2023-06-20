@@ -57,7 +57,6 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
 import { useTheme } from "vuetify";
-const { ipcRenderer } = window.require("electron");
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
@@ -73,12 +72,15 @@ import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue"
 import PoeBotSettings from "@/components/BotSettings/PoeBotSettings.vue";
 import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue";
 
+import { saveTheme } from '../theme'
+
+const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
 const store = useStore();
 const theme = useTheme();
 
 const props = defineProps(["open"]);
-const emit = defineEmits(["update:open", "done"]);
+const emit = defineEmits(["update:open", "done", "update-theme"]);
 
 const settings = [
   ChatGPTBotSettings,
@@ -124,14 +126,9 @@ const setCurrentLanguage = (lang) => {
   store.commit("setCurrentLanguage", lang);
 };
 const setCurrentMode = async (mode) => {
-  let newTheme = mode;
-  if (mode === 'system') {
-    const nativeTheme = await ipcRenderer.invoke('get-native-theme');
-    newTheme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light';
-  }
-  theme.global.name.value = newTheme;
   store.commit("setMode", mode);
-  store.commit("setTheme", newTheme);
+  await saveTheme(mode, theme, store, ipcRenderer);
+  emit("update-theme");
 };
 const closeDialog = () => {
   emit("update:open", false);
