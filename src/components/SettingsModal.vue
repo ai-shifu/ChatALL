@@ -142,4 +142,8 @@ const closeDialog = () => {
   margin-bottom: 16px;
   padding: 0 16px;
 }
+
+:deep() .v-slider-thumb__label {
+  color: rgb(var(--v-theme-response-font));
+}
 </style>
