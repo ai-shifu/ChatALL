@@ -62,10 +62,11 @@ import { ref, computed, onMounted } from "vue";
 import { useTheme } from "vuetify";
 import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
+import { saveTheme, setBodyDataTheme } from './theme'
 
 import i18n from "./i18n";
 
-import { saveTheme, setBodyDataTheme } from './theme'
+// Components
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
@@ -82,6 +83,7 @@ const theme = useTheme();
 const onUpdatedSystemTheme = async () => {
   const finalTheme = await saveTheme(store.state.mode, theme, store, ipcRenderer);
   setBodyDataTheme(finalTheme);
+  finalTheme === 'dark' ? import("highlight.js/styles/github-dark.css") : import("highlight.js/styles/github.css");
 }
 
 ipcRenderer.on('on-updated-system-theme', onUpdatedSystemTheme);
