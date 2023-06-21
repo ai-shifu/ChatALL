@@ -35,7 +35,10 @@ export default class ChatGPT4Bot extends ChatGPTBot {
     const isAvailable = await super.checkAvailability();
     this.constructor._isAvailable = reserved;
 
-    if (isAvailable) {
+    // 浏览器登陆状态
+    if (this.getClassname() == 'ChatGPTBrowsingBot') {
+      this.constructor._isAvailable = isAvailable;
+    }else if (isAvailable) {
       try {
         const headers = {
           "Content-Type": "application/json",
