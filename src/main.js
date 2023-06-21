@@ -6,7 +6,7 @@ import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { useI18n } from "vue-i18n";
 import "material-design-icons/iconfont/material-icons.css";
 import VueMatomo from "vue-matomo";
-import { saveTheme, setBodyDataTheme } from './theme'
+import { saveTheme, setDocumentDataTheme } from './theme'
 
 // Vuetify
 import "vuetify/styles";
@@ -20,7 +20,7 @@ const { ipcRenderer } = window.require("electron");
 store.commit("init");
 
 let defaultTheme = await saveTheme(store.state.mode, undefined, store, ipcRenderer);
-setBodyDataTheme(defaultTheme);
+setDocumentDataTheme(defaultTheme);
 defaultTheme === 'dark' ? import("highlight.js/styles/github-dark.css") : import("highlight.js/styles/github.css");
 
 const vuetify = createVuetify({

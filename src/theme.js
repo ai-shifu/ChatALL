@@ -1,4 +1,4 @@
-export const setBodyDataTheme = (theme) => {
+export const setDocumentDataTheme = (theme) => {
   document.documentElement.setAttribute("data-theme", theme);
 };
 
