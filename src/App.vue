@@ -51,7 +51,7 @@
     </main>
 
     <FooterBar></FooterBar>
-    <SettingsModal v-model:open="isSettingsOpen"  @update-theme="updateTheme" />
+    <SettingsModal v-model:open="isSettingsOpen"/>
     <ConfirmModal ref="confirmModal" />
     <UpdateNotification></UpdateNotification>
   </div>
@@ -62,7 +62,7 @@ import { ref, computed, onMounted } from "vue";
 import { useTheme } from "vuetify";
 import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
-import { saveTheme, setDocumentDataTheme } from './theme'
+import { applyTheme, resolveTheme } from './theme'
 
 import i18n from "./i18n";
 
@@ -79,11 +79,11 @@ import "@mdi/font/css/materialdesignicons.css";
 const { ipcRenderer } = window.require("electron");
 
 const store = useStore();
-const theme = useTheme();
+const vuetifyTheme = useTheme();
 const onUpdatedSystemTheme = async () => {
-  const finalTheme = await saveTheme(store.state.mode, theme, store, ipcRenderer);
-  setDocumentDataTheme(finalTheme);
-  finalTheme === 'dark' ? import("highlight.js/styles/github-dark.css") : import("highlight.js/styles/github.css");
+  const resolvedTheme = await resolveTheme(store.state.mode, ipcRenderer);
+  store.commit("setTheme", resolvedTheme);
+  applyTheme(resolvedTheme, vuetifyTheme);
 }
 
 ipcRenderer.on('on-updated-system-theme', onUpdatedSystemTheme);

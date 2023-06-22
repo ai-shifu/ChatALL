@@ -72,15 +72,15 @@ import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue"
 import PoeBotSettings from "@/components/BotSettings/PoeBotSettings.vue";
 import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue";
 
-import { saveTheme } from '../theme'
+import { resolveTheme, applyTheme, Mode } from '../theme'
 
 const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
 const store = useStore();
-const theme = useTheme();
+const vuetifyTheme = useTheme();
 
 const props = defineProps(["open"]);
-const emit = defineEmits(["update:open", "done", "update-theme"]);
+const emit = defineEmits(["update:open", "done"]);
 
 const settings = [
   ChatGPTBotSettings,
@@ -113,9 +113,9 @@ const languages = computed(() => [
 ]);
 
 const modes = computed(() => [
-  { name: $t("settings.system"), code: 'system' },
-  { name: $t("settings.light"), code: 'light' },
-  { name: $t("settings.dark"), code: 'dark' },
+  { name: $t("settings.system"), code: Mode.SYSTEM },
+  { name: $t("settings.light"), code: Mode.LIGHT },
+  { name: $t("settings.dark"), code: Mode.DARK },
 ])
 
 const lang = computed(() => store.state.lang);
@@ -126,9 +126,10 @@ const setCurrentLanguage = (lang) => {
   store.commit("setCurrentLanguage", lang);
 };
 const setCurrentMode = async (mode) => {
+  const resolvedTheme = await resolveTheme(mode, ipcRenderer);
   store.commit("setMode", mode);
-  await saveTheme(mode, theme, store, ipcRenderer);
-  emit("update-theme");
+  store.commit("setTheme", resolvedTheme);
+  applyTheme(resolvedTheme, vuetifyTheme);
 };
 const closeDialog = () => {
   emit("update:open", false);
