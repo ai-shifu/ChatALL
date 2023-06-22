@@ -55,7 +55,7 @@
     "md5": "^2.3.0",
     "prettier-plugin-vue": "^1.1.6",
     "sse.js": "github:mpetazzoni/sse.js",
-    "vue-cli-plugin-electron-builder": "^2.1.1"
+    "vue-cli-plugin-electron-builder": "github:nklayman/vue-cli-plugin-electron-builder"
   },
   "eslintConfig": {
     "root": true,
