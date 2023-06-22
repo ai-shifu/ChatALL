@@ -51,7 +51,7 @@
     </main>
 
     <FooterBar></FooterBar>
-    <SettingsModal v-model:open="isSettingsOpen"/>
+    <SettingsModal v-model:open="isSettingsOpen" />
     <ConfirmModal ref="confirmModal" />
     <UpdateNotification></UpdateNotification>
   </div>
