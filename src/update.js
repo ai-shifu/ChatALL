@@ -18,6 +18,7 @@ const saveLatestVersion = async (data) => {
         })
       );`;
     await localMainWindow.webContents.executeJavaScript(saveVersionScript);
+    localMainWindow.webContents.send('version-saved');
     autoUpdater.removeListener("error", getLatestVersionFromGithub);
   }
 };

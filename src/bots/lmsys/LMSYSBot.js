@@ -28,10 +28,11 @@ export default class LMSYSBot extends GradioBot {
   }
 
   parseData(fn_index, data) {
-    let r = "";
+    let r = undefined;
     if (fn_index === this.constructor._fnIndexes[1]) {
       r = data[1][data[1].length - 1][1];
     }
+    if (!r) r = ""; // Sometimes the result from data[] is null
     return r;
   }
 

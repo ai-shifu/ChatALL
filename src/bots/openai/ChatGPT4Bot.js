@@ -12,7 +12,6 @@ export default class ChatGPT4Bot extends ChatGPTBot {
     super();
   }
 
-  // eslint-disable-next-line
   async confirmBeforeUsing(confirmModal) {
     if (
       store.state.chatgpt.riskConfirmed ||
