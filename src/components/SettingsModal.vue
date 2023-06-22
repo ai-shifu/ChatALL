@@ -145,6 +145,6 @@ const closeDialog = () => {
 }
 
 :deep() .v-slider-thumb__label {
-  color: rgb(var(--v-theme-response-font));
+  color: rgb(var(--v-theme-font));
 }
 </style>

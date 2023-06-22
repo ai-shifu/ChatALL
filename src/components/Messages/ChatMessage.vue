@@ -178,8 +178,4 @@ function handleClick(event) {
     height: 20px;
     margin-right: 4px;
 }
-
-:deep() .markdown-body {
-  margin-left: 1.5rem;
-}
 </style>

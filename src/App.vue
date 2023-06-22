@@ -128,15 +128,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
-[data-theme='dark'] {
-  @import url('github-markdown-css/github-markdown-dark.css');
-}
-
-[data-theme='light'] {
-  @import url('github-markdown-css/github-markdown-light.css');
-}
-
+<style>
 * {
     margin: 0;
     padding: 0;
