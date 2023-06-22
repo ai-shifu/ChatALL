@@ -54,7 +54,7 @@ const vuetify = createVuetify({
           header: "#292a2d",
           prompt: "#222329",
           response: "#131419",
-          "response-font": "#fff",
+          "font": "#fff",
         },
       },
     },
