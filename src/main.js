@@ -48,7 +48,7 @@ const vuetify = createVuetify({
         dark: true,
         colors: {
           primary: "#ececf1",
-          surface: "#101011",
+          surface: "#292a2d",
           background: "#1a1a20",
           "surface-variant": "#131419",
           header: "#292a2d",
