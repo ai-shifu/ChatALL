@@ -4,7 +4,6 @@
     "forExample": "例如：{ example }",
     "title": "设置",
     "general": "通用",
-    "auto": "自动",
     "language": "语言",
     "languagePrompt": "新语言将在程序重新启动后生效",
     "loginOrOut": "登入/登出",

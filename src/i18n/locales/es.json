@@ -4,7 +4,6 @@
     "forExample": "Por ejemplo, { ejemplo }",
     "title": "Configuración",
     "general": "General",
-    "auto": "Automático",
     "language": "Idioma",
     "languagePrompt": "Reinicie la aplicación para aplicar el nuevo idioma",
     "loginOrOut": "Iniciar sesión/Cerrar sesión",

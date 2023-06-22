@@ -99,7 +99,7 @@ const settings = [
 ];
 
 const languages = computed(() => [
-  { name: $t("settings.auto"), code: "auto" },
+  { name: $t("settings.system"), code: "auto" },
   { name: "Deutsch", code: "de" },
   { name: "English", code: "en" },
   { name: "Español", code: "es" },

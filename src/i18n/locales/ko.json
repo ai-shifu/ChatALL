@@ -4,7 +4,6 @@
     "forExample": "예: { example }",
     "title": "설정",
     "general": "일반",
-    "auto": "자동",
     "language": "언어",
     "languagePrompt": "새 언어를 적용하기 위해 앱을 다시 시작",
     "loginOrOut": "로그인/로그아웃",
