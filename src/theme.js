@@ -6,8 +6,8 @@ const HIGHLIGHT_STYLE_ID = 'chatall-higlightjs';
 const SYSTEM = 'system';
 const DARK = 'dark';
 const LIGHT = 'light';
-export const Mode = { SYSTEM, DARK, LIGHT };
 export const Theme = { DARK, LIGHT };
+export const Mode = { SYSTEM, ...Theme };
 
 /**
  * Determine the actual theme for system mode
