@@ -49,9 +49,6 @@ import { useMatomo } from "@/composables/matomo";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import bots from "@/bots";
 
-import "highlight.js/styles/github.css";
-import "github-markdown-css/github-markdown-light.css";
-
 const props = defineProps({
   message: {
     type: Object,
@@ -140,6 +137,10 @@ function handleClick(event) {
 </script>
 
 <style scoped>
+.markdown-body{
+  background-color: rgb(var(--v-theme-response));
+}
+
 .message {
     border-radius: 8px;
     padding: 16px;
@@ -152,7 +153,7 @@ function handleClick(event) {
 }
 
 .prompt {
-    background-color: #95EC69;
+    background-color: rgb(var(--v-theme-prompt));
     width: fit-content;
     grid-column: 1 / span var(--columns);
 }
@@ -163,7 +164,7 @@ function handleClick(event) {
 }
 
 .response {
-    background-color: #FFF;
+    background-color: rgb(var(--v-theme-response));
     width: 100%;
     grid-column: auto / span 1;
 }
@@ -180,10 +181,5 @@ function handleClick(event) {
     width: 20px;
     height: 20px;
     margin-right: 4px;
-}
-
-.markdown-body {
-    background-color: inherit;
-    font-family: inherit;
 }
 </style>

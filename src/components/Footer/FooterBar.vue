@@ -198,7 +198,6 @@ onBeforeMount(async () => {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(243, 243, 243, 0.7);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;

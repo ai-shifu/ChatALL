@@ -28,7 +28,19 @@
             ></v-select>
           </v-list-item>
         </div>
-
+        <div class="section">
+          <v-list-item>
+            <v-list-item-title>{{ $t("settings.theme") }}</v-list-item-title>
+            <v-select
+              :items="modes"
+              item-title="name"
+              item-value="code"
+              hide-details
+              :model-value="currentMode"
+              @update:model-value="setCurrentMode($event)"
+            ></v-select>
+          </v-list-item>
+        </div>
         <template v-for="(setting, index) in settings" :key="index">
           <v-divider></v-divider>
           <div class="section">
@@ -44,6 +56,7 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
+import { useTheme } from "vuetify";
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
@@ -59,8 +72,12 @@ import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue"
 import PoeBotSettings from "@/components/BotSettings/PoeBotSettings.vue";
 import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue";
 
+import { resolveTheme, applyTheme, Mode } from "../theme";
+
+const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
 const store = useStore();
+const vuetifyTheme = useTheme();
 
 const props = defineProps(["open"]);
 const emit = defineEmits(["update:open", "done"]);
@@ -95,11 +112,24 @@ const languages = computed(() => [
   { name: "简体中文", code: "zh" },
 ]);
 
+const modes = computed(() => [
+  { name: $t("settings.system"), code: Mode.SYSTEM },
+  { name: $t("settings.light"), code: Mode.LIGHT },
+  { name: $t("settings.dark"), code: Mode.DARK },
+]);
+
 const lang = computed(() => store.state.lang);
+const currentMode = computed(() => store.state.mode);
 
 const setCurrentLanguage = (lang) => {
   locale.value = lang;
   store.commit("setCurrentLanguage", lang);
+};
+const setCurrentMode = async (mode) => {
+  const resolvedTheme = await resolveTheme(mode, ipcRenderer);
+  store.commit("setMode", mode);
+  store.commit("setTheme", resolvedTheme);
+  applyTheme(resolvedTheme, vuetifyTheme);
 };
 const closeDialog = () => {
   emit("update:open", false);
@@ -112,5 +142,9 @@ const closeDialog = () => {
   margin-top: 16px;
   margin-bottom: 16px;
   padding: 0 16px;
+}
+
+:deep() .v-slider-thumb__label {
+  color: rgb(var(--v-theme-font));
 }
 </style>

@@ -10,7 +10,11 @@
     "loginOrOut": "Login/Logout",
     "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it",
     "notice": "Notice",
-    "secretPrompt": "Your secret token will remain on your device and will not be shared with anyone else"
+    "secretPrompt": "Your secret token will remain on your device and will not be shared with anyone else",
+    "theme": "Theme",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
   },
   "header": {
     "clearMessages": "Clear all messages?",
