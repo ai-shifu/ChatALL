@@ -75,7 +75,7 @@ export default createStore({
     currentChatIndex: 0,
     updateCounter: 0,
     theme: undefined,
-    mode: 'system',
+    mode: "system",
     // TODO: delete following fields
     selectedBots: {},
     messages: [],

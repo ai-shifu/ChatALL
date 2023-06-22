@@ -6,7 +6,7 @@ import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { useI18n } from "vue-i18n";
 import "material-design-icons/iconfont/material-icons.css";
 import VueMatomo from "vue-matomo";
-import { resolveTheme, applyTheme } from './theme'
+import { resolveTheme, applyTheme } from "./theme";
 
 // Vuetify
 import "vuetify/styles";
@@ -35,26 +35,26 @@ const vuetify = createVuetify({
       light: {
         colors: {
           primary: "#062AAA",
-          surface: '#FFFFFF',
+          surface: "#FFFFFF",
           background: "#f3f3f3",
-          'surface-variant': "#fff",
+          "surface-variant": "#fff",
           header: "#fff",
           prompt: "#95ec69",
           response: "#fff",
-          'response-font': "#212121",
+          "response-font": "#212121",
         },
       },
       dark: {
         dark: true,
         colors: {
           primary: "#ececf1",
-          surface: '#202123',
+          surface: "#202123",
           background: "#343541",
-          'surface-variant': "#282A32",
+          "surface-variant": "#282A32",
           header: "#202123",
           prompt: "#282A32",
           response: "#444654",
-          'response-font': "#fff",
+          "response-font": "#fff",
         },
       },
     },

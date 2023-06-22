@@ -72,7 +72,7 @@ import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue"
 import PoeBotSettings from "@/components/BotSettings/PoeBotSettings.vue";
 import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue";
 
-import { resolveTheme, applyTheme, Mode } from '../theme'
+import { resolveTheme, applyTheme, Mode } from "../theme";
 
 const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
@@ -116,7 +116,7 @@ const modes = computed(() => [
   { name: $t("settings.system"), code: Mode.SYSTEM },
   { name: $t("settings.light"), code: Mode.LIGHT },
   { name: $t("settings.dark"), code: Mode.DARK },
-])
+]);
 
 const lang = computed(() => store.state.lang);
 const currentMode = computed(() => store.state.mode);

@@ -2,23 +2,28 @@
   <div id="snackbar" class="text-center">
     <v-snackbar :vertical="true" :timeout="-1" multi-line v-model="snackbar">
       <span class="text-center font-weight-bold">
-        {{ $t('updates.updateAvailable') }}
+        {{ $t("updates.updateAvailable") }}
       </span>
       <span class="text-center">
-        {{ $t('updates.currentVersion') }}: {{ versions.current }}
+        {{ $t("updates.currentVersion") }}: {{ versions.current }}
       </span>
       <span class="text-center">
-        {{ $t('updates.latestVersion') }}: {{ versions.latest }}
+        {{ $t("updates.latestVersion") }}: {{ versions.latest }}
       </span>
-      <v-btn prepend-icon="mdi-github" color="primary" variant="tonal" @click="openReleasePage">
-        {{ $t('updates.downloadFromGitHub') }}
+      <v-btn
+        prepend-icon="mdi-github"
+        color="primary"
+        variant="tonal"
+        @click="openReleasePage"
+      >
+        {{ $t("updates.downloadFromGitHub") }}
       </v-btn>
       <template v-slot:actions>
         <v-btn color="primary" @click="skip">
-          {{ $t('updates.skipThisVersion') }}
+          {{ $t("updates.skipThisVersion") }}
         </v-btn>
         <v-btn color="primary" @click="snackbar = false">
-          {{ $t('updates.close') }}
+          {{ $t("updates.close") }}
         </v-btn>
       </template>
     </v-snackbar>
@@ -26,13 +31,17 @@
 </template>
 <script setup>
 import { ref } from "vue";
-import { compare } from 'compare-versions';
+import { compare } from "compare-versions";
 const { shell } = window.require("electron");
 
 const versions = JSON.parse(localStorage.getItem("chatall-versions"));
 const snackbar = ref(false);
-if (versions?.latest && versions?.current && compare(versions.latest, versions.current, '>')) {
-  if (!versions?.skip || compare(versions.latest, versions.skip, '>')) {
+if (
+  versions?.latest &&
+  versions?.current &&
+  compare(versions.latest, versions.current, ">")
+) {
+  if (!versions?.skip || compare(versions.latest, versions.skip, ">")) {
     snackbar.value = true;
   }
 }

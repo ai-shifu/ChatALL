@@ -1,11 +1,11 @@
-import highlightDark from '!css-loader!../node_modules/highlight.js/styles/github-dark.css';
-import highlightLight from '!css-loader!../node_modules/highlight.js/styles/github.css';
+import highlightDark from "!css-loader!../node_modules/highlight.js/styles/github-dark.css";
+import highlightLight from "!css-loader!../node_modules/highlight.js/styles/github.css";
 
-const HIGHLIGHT_STYLE_ID = 'chatall-higlightjs';
+const HIGHLIGHT_STYLE_ID = "chatall-higlightjs";
 
-const SYSTEM = 'system';
-const DARK = 'dark';
-const LIGHT = 'light';
+const SYSTEM = "system";
+const DARK = "dark";
+const LIGHT = "light";
 export const Theme = { DARK, LIGHT };
 export const Mode = { SYSTEM, ...Theme };
 
@@ -33,24 +33,30 @@ export const applyTheme = (theme, vuetifyTheme) => {
   if (vuetifyTheme) {
     vuetifyTheme.global.name.value = theme; // vuetify theme
   }
-  
+
   setDataTheme(theme); // markdown style
 
   // block style
   removePreviousHighlightStyle();
   addHighlightStyle(theme);
-}
+};
 
 const removePreviousHighlightStyle = () => {
-  document.querySelectorAll(`style#${HIGHLIGHT_STYLE_ID}`).forEach(e => e.remove());
-}
+  document
+    .querySelectorAll(`style#${HIGHLIGHT_STYLE_ID}`)
+    .forEach((e) => e.remove());
+};
 
 const addHighlightStyle = (theme) => {
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.id = HIGHLIGHT_STYLE_ID;
-  style.appendChild(document.createTextNode(theme === Theme.DARK ? highlightDark : highlightLight));
+  style.appendChild(
+    document.createTextNode(
+      theme === Theme.DARK ? highlightDark : highlightLight,
+    ),
+  );
   document.head.appendChild(style);
-}
+};
 
 const setDataTheme = (theme) => {
   document.documentElement.dataset.theme = theme; // set data-theme
