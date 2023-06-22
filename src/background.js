@@ -19,7 +19,7 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    backgroundColor: nativeTheme.shouldUseDarkColors ? "#343541" : "#fff",
+    backgroundColor: nativeTheme.shouldUseDarkColors ? "#1a1a20" : "#fff",
     show: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone

@@ -137,6 +137,10 @@ function handleClick(event) {
 </script>
 
 <style scoped>
+.markdown-body{
+  background-color: rgb(var(--v-theme-response));
+}
+
 .message {
     border-radius: 8px;
     padding: 16px;
