@@ -41,12 +41,12 @@ export const applyTheme = (theme, vuetifyTheme) => {
     .querySelectorAll(`style#${MARKDOWN_STYLE_ID}, style#${HIGHLIGHT_STYLE_ID}`)
     .forEach((e) => e.remove()); // remove previous style
   addStyle(
-    MARKDOWN_STYLE_ID,
-    theme === Theme.DARK ? markdownDark : markdownLight,
-  );
-  addStyle(
     HIGHLIGHT_STYLE_ID,
     theme === Theme.DARK ? highlightDark : highlightLight,
+  );
+  addStyle(
+    MARKDOWN_STYLE_ID,
+    theme === Theme.DARK ? markdownDark : markdownLight,
   );
 };
 
