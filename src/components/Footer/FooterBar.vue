@@ -1,6 +1,6 @@
 <template>
   <div class="footer"
-    v-shortkey.once="['alt', 'k']" 
+    v-shortkey.once="['ctrl', 'k']" 
     @shortkey="focusPromptTextarea"
   >
     <v-textarea
@@ -37,7 +37,7 @@
         :active="activeBots[bot.classname]"
         size="36"
         @click="toggleSelected(bot.instance)"
-        v-shortkey.once="['alt', `${index + 1}`]"
+        v-shortkey.once="['ctrl', `${index + 1}`]"
         @shortkey="toggleSelected(bot.instance)" 
       />
       <BotsMenu :favBots="favBots" />
