@@ -9,7 +9,11 @@
     "loginOrOut": "ログイン/ログアウト",
     "loginOrOutPrompt": "リンクをクリックしてサイトににログインまたはログアウトして閉じてください。",
     "notice": "注意",
-    "secretPrompt": "シークレットトークンは端末に残り、他の人と共有されません。"
+    "secretPrompt": "シークレットトークンは端末に残り、他の人と共有されません。",
+    "theme": "テーマ",
+    "system": "システム",
+    "light": "ライト",
+    "dark": "ダーク"
   },
   "header": {
     "clearMessages": "全ての会話を削除しますか？",
@@ -76,7 +80,7 @@
   },
   "gradio": {
     "fnIndex": "fn_index",
-    "fnIndexPrompt": "リクエストする関数の fn_indexです。ほとんど0です",
+    "fnIndexPrompt": "リクエストする関数の fn_indexです。推奨は0です",
     "name": "Gradio",
     "queueFull": "キューがいっぱいです。後で再試行してください",
     "url": "GradioアプリURL",
