@@ -45,6 +45,7 @@
 - ChatGPTのセッションを自動で生かす
 - 使いたいボットAIをいつでも変更することができます。
 - 1列～3列の3段階の表示切替
+- ダークテーマ対応
 - 多言語対応(英語、中国語、ドイツ語、フランス語、ロシア語、ベトナム語、韓国語、日本語など...今後も言語を追加)
 - Windows、macOS、Linux対応
 
@@ -52,7 +53,6 @@
 
 これらの機能への貢献は大歓迎です。
 
-- [ ] ダークモード
 - [ ] マルチキャット
 - [ ] フロントエンドをGitHub Pagesにデプロイする。
 - [ ] LangChainの統合
@@ -114,7 +114,7 @@ npm run electron:build -- -wml --x64 --arm64
 
 ## クレジット
 
-### 共同開発車
+### 貢献者
 
 <a href="https://github.com/sunner/ChatALL/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
