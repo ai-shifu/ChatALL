@@ -28,7 +28,6 @@
     "electron-builder": "^23.6.0",
     "github-markdown-css": "^5.2.0",
     "highlight.js": "^11.8.0",
-    "markdown-it-highlightjs": "^4.0.1",
     "material-design-icons": "^3.0.1",
     "update-electron-app": "^2.0.1",
     "uuid": "^9.0.0",
