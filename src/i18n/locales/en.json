@@ -141,5 +141,11 @@
     "downloadFromGitHub": "Download from GitHub",
     "skipThisVersion": "Skip this Version",
     "close": "Close"
+  },
+  "find": {
+    "find": "Find",
+    "noMatches": "No matches",
+    "matchCase": "Match case",
+    "wrapAround": "Wrap around"
   }
 }
