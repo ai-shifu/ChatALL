@@ -1,25 +1,32 @@
 <template>
   <div class="footer">
-    <v-textarea
+    <v-autocomplete
       v-model="prompt"
+      ref="autocomplete"
+      :items="autocompleteItems"
+      item-title="name"
+      item-value="ind"
+      :menu-props="{ closeOnContentClick: true }"
+      :hide-no-data="true"
+      :label="$t('footer.promptPlaceholder')"
       auto-grow
       max-rows="8.5"
       rows="1"
       density="comfortable"
       hide-details
       variant="solo"
-      :placeholder="$t('footer.promptPlaceholder')"
       autofocus
       @keydown="filterEnterKey"
+      @input="changePrompt"
       style="min-width: 390px"
-    ></v-textarea>
+    ></v-autocomplete>
     <v-btn
       color="primary"
       elevation="2"
       class="margin-bottom"
       :disabled="
-        prompt.trim() === '' ||
-        favBots.filter((favBot) => activeBots[favBot.classname]).length === 0
+        prompt && (prompt.trim() === '' ||
+        favBots.filter((favBot) => activeBots[favBot.classname]).length === 0)
       "
       @click="sendPromptToBots"
     >
@@ -55,13 +62,14 @@ import BotsMenu from "./BotsMenu.vue";
 import { useMatomo } from "@/composables/matomo";
 
 import _bots from "@/bots";
-
 const { ipcRenderer } = window.require("electron");
+
 
 const store = useStore();
 const matomo = useMatomo();
 
 const confirmModal = ref(null);
+const autocomplete = ref(null);
 
 const bots = ref(_bots.all);
 const activeBots = reactive({});
@@ -94,7 +102,25 @@ watch(favBots, async (newValue, oldValue) => {
   });
   updateActiveBots();
 });
-
+const autocompleteItems = computed(() => {
+  const messages = store.getters.currentChat.messages.filter(
+    (message) => !message.hide,
+  );
+  const items = messages
+    .filter((d) => d.type == "prompt")
+    .map((d, i) => ({ name: d.content, ind: d.content }));
+  const set = new Set(items);
+  const its = Array.from(set);
+  return its;
+});
+function changePrompt(evt) {
+  const value = evt.target.value;
+  if (
+    value
+  ) {
+    prompt.value = value;
+  }
+}
 async function updateActiveBots() {
   for (const favBot of favBots.value) {
     // Unselect the bot if user has not confirmed to use it
@@ -125,6 +151,7 @@ function filterEnterKey(event) {
     !event.metaKey
   ) {
     event.preventDefault();
+    autocomplete.value.menu = false; // close menu popup
     sendPromptToBots();
   }
 }
