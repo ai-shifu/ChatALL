@@ -13,6 +13,7 @@
     "
   >
     <v-text-field
+      id="find-text-field"
       @keydown.enter="() => find()"
       @focus="$event.target.select()"
       ref="findTextRef"
@@ -91,6 +92,7 @@ const formRef = ref(null);
 const findTextRef = ref(null);
 const findTextModel = ref("");
 const isShowFindText = ref(false);
+const FIND_TEXT_FIELD_ID = "find-text-field";
 
 const MATCH_CASE_VALUE = "case";
 const WRAP_AROUND_VALUE = "wrap";
@@ -125,6 +127,14 @@ function find(backward) {
     backward,
     wrapAroundToggle.value?.length,
   );
+  if (
+    isMatch.value &&
+    wrapAroundToggle.value?.length && // if wrap around toggled
+    window.getSelection()?.focusNode?.lastElementChild?.id ===
+      FIND_TEXT_FIELD_ID // when the match is in find-text-field
+  ) {
+    isMatch.value = false; // show no matches
+  }
   formRef.value.validate();
 }
 </script>
