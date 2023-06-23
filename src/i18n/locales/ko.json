@@ -9,7 +9,7 @@
     "loginOrOut": "로그인/로그아웃",
     "loginOrOutPrompt": "아래 링크를 클릭하여 새 창에 로그인하거나 로그아웃한 다음 닫습니다",
     "notice": "알림",
-    "secretPrompt": "비밀 토큰은 단말기에 남아 다른 사람과 공유되지 않습니다"
+    "secretPrompt": "비밀 토큰은 단말기에 남아 다른 사람과 공유되지 않습니다",
     "theme": "테마",
     "system": "시스템",
     "light": "밝은",
