@@ -80,10 +80,6 @@ Téléchargez le fichier .AppImage, rendez-le exécutable et profitez de l'expé
 
 [Le guide](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) may help you.
 
-### Dépendance d'environnement
-
-Node.js doit être en version 16.x
-
 ### Lancement
 
 ```bash
