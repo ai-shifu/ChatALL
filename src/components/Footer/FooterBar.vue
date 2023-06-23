@@ -1,7 +1,11 @@
 <template>
-  <div class="footer">
+  <div class="footer"
+    v-shortkey.once="['alt', 'k']" 
+    @shortkey="focusPromptTextarea"
+  >
     <v-textarea
       v-model="prompt"
+      ref="promptTextArea"
       auto-grow
       max-rows="8.5"
       rows="1"
@@ -62,6 +66,7 @@ const store = useStore();
 const matomo = useMatomo();
 
 const confirmModal = ref(null);
+const promptTextArea = ref(null);
 
 const bots = ref(_bots.all);
 const activeBots = reactive({});
@@ -112,6 +117,10 @@ async function updateActiveBots() {
     activeBots[favBot.classname] =
       favBot.instance.isAvailable() && favBot.selected;
   }
+}
+
+function focusPromptTextarea() {
+  promptTextArea.value.$el.querySelector('textarea').focus()
 }
 
 // Send the prompt when the user presses enter and prevent the default behavior
