@@ -63,7 +63,7 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 - [ ] 다크 모드
 - [ ] 다중 채팅
 - [ ] GitHub 페이지에 프런트엔드 배포
-- [ ] LangChain 통합- [ ] 
+- [ ] LangChain 통합- [ ]
 
 ## 전제 조건
 
@@ -117,10 +117,6 @@ ChatALL을 사용하는 동안 문제가 발생하면 다음 방법을 사용하
 ### 봇 기부
 
 [가이드](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)가 도움이 될 수 있습니다.
-
-### 환경 종속자
-
-Node.js는 v16.x여야 합니다
 
 ### 실행
 

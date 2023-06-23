@@ -74,7 +74,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, nextTick } from "vue";
+
 import { useTheme } from "vuetify";
 import { useStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
@@ -113,7 +114,11 @@ const columns = computed(() => store.state.columns);
 const changeColumns = (columns) => store.commit("changeColumns", columns);
 const setUuid = (uuid) => store.commit("setUuid", uuid);
 
-function openSettingsModal() {
+async function openSettingsModal() {
+  if (isSettingsOpen.value) { // click too fast
+    isSettingsOpen.value = false;
+    await nextTick();
+  } 
   isSettingsOpen.value = true;
 }
 
