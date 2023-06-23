@@ -38,7 +38,6 @@ const all = [
   ChatGLMBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
-  ChatGPT4MobileBot.getInstance(),
   ChatGPT4PoeBot.getInstance(),
   ClaudeBot.getInstance(),
   ClaudeInstantPoeBot.getInstance(),
@@ -58,7 +57,11 @@ const all = [
   WenxinQianfanBot.getInstance(),
 ];
 
-const disabled = [ChatGPT4Bot.getInstance(), ChatGPTBrowsingBot.getInstance()];
+const disabled = [
+  ChatGPT4Bot.getInstance(),
+  ChatGPTBrowsingBot.getInstance(),
+  ChatGPT4MobileBot.getInstance(),
+];
 
 if (process.env.NODE_ENV !== "production") {
   all.push(DevBot.getInstance());
