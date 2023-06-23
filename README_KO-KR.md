@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
   <img src="src/assets/logo-cover.png" width=256></img>
   <p><strong>모든 AI 봇과 동시에 채팅, 최고의 제품을 찾아보세요</strong></p>
 
@@ -13,6 +13,14 @@
 ## 기능
 
 대규모 언어 모델(LLMs) 기반 AI 봇은 놀랍습니다. 하지만 봇의 행동은 무작위적일 수 있으며, 봇마다 다른 작업에서 뛰어난 능력을 발휘합니다. 최상의 경험을 원한다면 하나씩 사용해 보지 마세요. ChatALL (중국명: 齐叨)은 여러 AI 봇에 동시에 프롬프트를 전송하여 최상의 결과를 찾을 수 있도록 도와줍니다. [다운로드, 설치](https://github.com/sunner/ChatALL/releases)한 후 물어보기만 하면 됩니다.
+
+### 본인인가요?
+
+ChatALL의 일반적인 사용자는 다음과 같습니다:
+
+- 🤠**LLM의 전문가**, LLM에서 최고의 답이나 창작물을 찾고 싶어하는 사람.
+- 🤓**LLM의 연구원**, 다양한 분야에서 다양한 LLM의 강점과 약점을 직관적으로 비교하고자 하는 사람.
+- 😎**LLM 응용 프로그램 개발자**, 프롬프트를 빠르게 디버그하고 가장 성능이 좋은 기초 모델을 찾고자 하는 사용자.
 
 ### 지원되는 봇
 
@@ -84,6 +92,25 @@ Apple Silicon Mac (M1, M2 CPU)의 경우 \*-mac-arm64.dmg 파일을 다운로드
 ### Linux에서
 
 .AppImage 파일을 다운로드하여 실행 파일로 만들고 클릭하고 실행 환경을 즐기십시오.
+
+## 문제 해결
+
+ChatALL을 사용하는 동안 문제가 발생하면 다음 방법을 사용하여 문제를 해결할 수 있습니다:
+
+1. **새로 고침** - `Ctrl + R` 또는 `Cmd + R` 을 누릅니다.
+2. **다시 시작** - ChatALL을 종료하고 다시 실행합니다.
+3. **다시 로그인** - 오른쪽 상단 모서리의 설정 버튼을 클릭한 다음 팝업 창에서 해당 로그인/로그아웃 링크를 클릭하여 웹 사이트에 다시 로그인합니다.
+4. **모든 메시지 지우기** - 오른쪽 상단 모서리에 있는 빗자루 버튼을 클릭합니다.
+
+위의 방법 중 어느 것도 효과가 없다면, **ChatALL 초기화**를 시도해 보세요. 이렇게 하면 모든 설정과 메시지 내역이 삭제된다는 점에 유의하세요.
+
+다음 디렉터리를 삭제하여 ChatALL을 재설정할 수 있습니다:
+
+- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
+- Linux: `/home/<user>/.config/ChatALL/`
+- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+
+문제가 지속되면 [문제 제출](https://github.com/sunner/ChatALL/issues)로 문의해 주세요.
 
 ## 개발자용
 
