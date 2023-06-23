@@ -141,5 +141,11 @@
     "downloadFromGitHub": "去 GitHub 下载",
     "skipThisVersion": "跳过此版本",
     "close": "关闭"
+  },
+  "find": {
+    "find": "查找",
+    "noMatches": "未找到结果",
+    "matchCase": "匹配大小写",
+    "wrapAround": "循环查找"
   }
 }

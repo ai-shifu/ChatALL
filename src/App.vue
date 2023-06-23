@@ -51,6 +51,7 @@
           ></v-icon>
         </div>
       </div>
+      <FindModal></FindModal>
     </header>
 
     <main class="content">
@@ -81,6 +82,7 @@ import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import FooterBar from "@/components/Footer/FooterBar.vue";
 import UpdateNotification from "@/components/Notification/UpdateNotificationModal.vue";
+import FindModal from "@/components/FindModal.vue";
 
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
