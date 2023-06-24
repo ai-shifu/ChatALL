@@ -141,5 +141,11 @@
     "downloadFromGitHub": "GitHubからダウンロード",
     "skipThisVersion": "このバージョンをスキップ",
     "close": "閉じる"
+  },
+  "find": {
+    "find": "検索",
+    "noMatches": "結果はありません。",
+    "matchCase": "大文字と小文字を区別する",
+    "wrapAround": "結果を繰り返す"
   }
 }
