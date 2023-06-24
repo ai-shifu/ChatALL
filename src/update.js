@@ -6,9 +6,10 @@ let localMainWindow;
 
 const saveLatestVersion = async (data) => {
   if (data) {
-    const latestVersion = JSON.parse(data).tag_name;
-    const currentVersion = app.getVersion();
-    const saveVersionScript = `
+    try {
+      const latestVersion = JSON.parse(data).tag_name;
+      const currentVersion = app.getVersion();
+      const saveVersionScript = `
       localStorage.setItem(
         "chatall-versions",
         JSON.stringify({
@@ -17,9 +18,13 @@ const saveLatestVersion = async (data) => {
           latest: "${latestVersion}",
         })
       );`;
-    await localMainWindow.webContents.executeJavaScript(saveVersionScript);
-    localMainWindow.webContents.send('version-saved');
-    autoUpdater.removeListener("error", getLatestVersionFromGithub);
+      await localMainWindow.webContents.executeJavaScript(saveVersionScript);
+      localMainWindow.webContents.send("version-saved");
+      autoUpdater.removeListener("error", getLatestVersionFromGithub);
+    } catch (error) {
+      console.error(`data: ${JSON.stringify(data)}`);
+      console.error(JSON.stringify(error));
+    }
   }
 };
 
