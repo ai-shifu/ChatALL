@@ -141,5 +141,11 @@
     "downloadFromGitHub": "GitHub에서 다운로드",
     "skipThisVersion": "이 버전 건너뛰기",
     "close": "닫기"
+  },
+  "find": {
+    "find": "찾기",
+    "noMatches": "일치 항목 없음",
+    "matchCase": "대소문자 일치",
+    "wrapAround": "둘러싸기"
   }
 }
