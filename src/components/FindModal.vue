@@ -137,6 +137,10 @@ function find(backward) {
   }
   formRef.value.validate();
 }
+
+defineExpose({
+  showFindTextField,
+});
 </script>
 
 <style scoped>

@@ -42,6 +42,14 @@
         </div>
         <div>
           <v-icon
+            id="find-btn"
+            class="cursor-pointer"
+            color="primary"
+            icon="mdi-magnify"
+            size="x-large"
+            @click="openFind()"
+          ></v-icon>
+          <v-icon
             class="cursor-pointer"
             color="primary"
             icon="mdi-broom"
@@ -57,7 +65,7 @@
           ></v-icon>
         </div>
       </div>
-      <FindModal></FindModal>
+      <FindModal ref="findRef"></FindModal>
     </header>
 
     <main class="content">
@@ -107,6 +115,7 @@ const onUpdatedSystemTheme = async () => {
 ipcRenderer.on("on-updated-system-theme", onUpdatedSystemTheme);
 
 const confirmModal = ref(null);
+const findRef = ref(null);
 const isSettingsOpen = ref(false);
 
 const columns = computed(() => store.state.columns);
@@ -120,6 +129,10 @@ async function openSettingsModal() {
     await nextTick();
   } 
   isSettingsOpen.value = true;
+}
+
+function openFind() {
+  findRef.value.showFindTextField();
 }
 
 async function clearMessages() {
