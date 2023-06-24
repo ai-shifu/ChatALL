@@ -5,6 +5,7 @@ import { ChatOpenAI } from "langchain/chat_models/openai";
 export default class AzureOpenAIAPIBot extends LangChainBot {
   static _brandId = "azureOpenaiApi";
   static _className = "AzureOpenAIAPIBot";
+  static _logoFilename = "azure-openai-logo.png";
 
   constructor() {
     super();

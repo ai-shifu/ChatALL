@@ -111,9 +111,7 @@
     "apiKey": "API Key"
   },
   "azureOpenaiApi": {
-    "name": "Azure OpenAI API",
-    "alterUrlPrompt": "If you are using a custom API URL, you can enter it here",
-    "gpt-35-turbo": "gpt-3.5-turbo",
+    "name": "Azure OpenAI Service",
     "temperature": "Temperature",
     "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
     "temperature0": "More deterministic",

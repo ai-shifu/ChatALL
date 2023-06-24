@@ -111,18 +111,16 @@
     "apiKey": "API 密钥"
   },
   "azureOpenaiApi": {
-    "name": "Azure OpenAI API",
-    "alterUrlPrompt": "如果你使用非官方的 OpenAI API URL，可以在这里输入",
-    "gpt-35-turbo": "gpt-3.5-turbo",
+    "name": "Azure OpenAI 服务",
     "temperature": "Temperature",
     "temperaturePrompt": "Temperature 越高，生成的文本越有创造性，但也越没条理",
     "temperature0": "更具确定性",
     "temperature2": "更具随机性",
     "azureOpenAIApiKey": "Azure OpenAI API 密钥",
     "azureApiInstanceName": "Azure OpenAI API 实例名称",
-    "azureApiInstanceNamePrompt": "在https://portal.azure.com/认知服务下查看Azure OpenAI API 实例名称",
+    "azureApiInstanceNamePrompt": "在 https://portal.azure.com/ 认知服务下查看Azure OpenAI API 实例名称",
     "azureOpenAIApiDeploymentName": "Azure OpenAI API 模型部署名称",
-    "azureOpenAIApiDeploymentNamePrompt": "在https://oai.azure.com/管理菜单下的模型部署列表中查看",
+    "azureOpenAIApiDeploymentNamePrompt": "在 https://oai.azure.com/ 管理菜单下的模型部署列表中查看",
     "azureOpenAIApiVersion": "Azure OpenAI API 模型版本"
   },
   "poe": {
