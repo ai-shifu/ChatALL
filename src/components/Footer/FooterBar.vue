@@ -1,9 +1,14 @@
 <template>
-  <div class="footer"
-    v-shortkey.once="['ctrl', 'k']" 
-    @shortkey="focusPromptTextarea"
+  <div
+    class="footer"
+    v-shortkey.once="{
+      focusPromptTextarea: ['ctrl', 'k'],
+      toggleBotsMenu: ['ctrl', 'tab'],
+    }"
+    @shortkey="handleShortcut"
   >
     <v-textarea
+      id="prompt-textarea"
       v-model="prompt"
       ref="promptTextArea"
       auto-grow
@@ -32,15 +37,16 @@
     <div class="bot-logos margin-bottom">
       <BotLogo
         v-for="(bot, index) in favBots"
+        :id="`fav-bot-${index + 1}`"
         :key="index"
         :bot="bot.instance"
         :active="activeBots[bot.classname]"
         size="36"
         @click="toggleSelected(bot.instance)"
         v-shortkey.once="['ctrl', `${index + 1}`]"
-        @shortkey="toggleSelected(bot.instance)" 
+        @shortkey="toggleSelected(bot.instance)"
       />
-      <BotsMenu :favBots="favBots" />
+      <BotsMenu id="bots-menu-btn" ref="botsMenuRef" :favBots="favBots" />
     </div>
     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
     <ConfirmModal ref="confirmModal" />
@@ -69,6 +75,7 @@ const matomo = useMatomo();
 
 const confirmModal = ref(null);
 const promptTextArea = ref(null);
+const botsMenuRef = ref(null);
 
 const bots = ref(_bots.all);
 const activeBots = reactive({});
@@ -122,7 +129,19 @@ async function updateActiveBots() {
 }
 
 function focusPromptTextarea() {
-  promptTextArea.value.$el.querySelector('textarea').focus()
+  promptTextArea.value.$el.querySelector("textarea").focus();
+}
+
+function toggleBotsMenu() {
+  botsMenuRef.value.toggleMenu();
+}
+
+function handleShortcut(event) {
+  if (event.srcKey === "focusPromptTextarea") {
+    focusPromptTextarea();
+  } else if (event.srcKey === "toggleBotsMenu") {
+    toggleBotsMenu();
+  }
 }
 
 // Send the prompt when the user presses enter and prevent the default behavior

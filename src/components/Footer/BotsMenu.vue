@@ -84,6 +84,14 @@ const toggleFavorite = (bot) => {
     store.commit("addFavoriteBot", classname);
   }
 };
+
+function toggleMenu() {
+  menu.value = !menu.value;
+}
+
+defineExpose({
+  toggleMenu,
+});
 </script>
 
 <style>
