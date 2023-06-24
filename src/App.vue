@@ -10,32 +10,15 @@
         />
         <div class="column-icons">
           <img
-            src="@/assets/column-1.svg"
-            @click="changeColumns(1)"
-            @shortkey="changeColumns(1)"
-            v-shortkey.once="['f1']"
+            v-for="columnCount in 3"
+            :id="`column-${columnCount}`"
+            :key="columnCount"
+            :src="getColumnImage(columnCount)"
+            @click="changeColumns(columnCount)"
+            @shortkey="changeColumns(columnCount)"
+            v-shortkey.once="[`f${columnCount}`]"
             :class="{
-              selected: columns === 1,
-              'dark-png': store.state.theme === Theme.DARK,
-            }"
-          />
-          <img
-            src="@/assets/column-2.svg"
-            @click="changeColumns(2)"
-            @shortkey="changeColumns(2)"
-            v-shortkey.once="['f2']"
-            :class="{
-              selected: columns === 2,
-              'dark-png': store.state.theme === Theme.DARK,
-            }"
-          />
-          <img
-            src="@/assets/column-3.svg"
-            @click="changeColumns(3)"
-            @shortkey="changeColumns(3)"
-            v-shortkey.once="['f3']"
-            :class="{
-              selected: columns === 3,
+              selected: columns === columnCount,
               'dark-png': store.state.theme === Theme.DARK,
             }"
           />
@@ -152,6 +135,10 @@ onMounted(() => {
   const ver = require("../package.json").version;
   document.title = `ChatALL.ai - v${ver}`;
 });
+
+function getColumnImage(columnCount) {
+  return require(`@/assets/column-${columnCount}.svg`);
+}
 </script>
 
 <style>
