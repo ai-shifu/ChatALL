@@ -29,6 +29,14 @@ export default createStore({
       pastRounds: 5,
       alterUrl: "",
     },
+    azureOpenaiApi: {
+      azureApiKey: "",
+      temperature: 1,
+      pastRounds: 5,
+      azureApiInstanceName: "",
+      azureOpenAIApiDeploymentName: "",
+      azureOpenAIApiVersion: "",
+    },
     chatgpt: {
       refreshCycle: 0,
       riskConfirmed: false,
@@ -116,6 +124,9 @@ export default createStore({
     },
     setOpenaiApi(state, values) {
       state.openaiApi = { ...state.openaiApi, ...values };
+    },
+    setAzureOpenaiApi(state, values) {
+      state.azureOpenaiApi = { ...state.azureOpenaiApi, ...values };
     },
     setMoss(state, token) {
       state.moss.token = token;
