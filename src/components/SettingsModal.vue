@@ -60,6 +60,7 @@ import { useTheme } from "vuetify";
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
+import AzureOpenAIAPIBotSettings from "./BotSettings/AzureOpenAIAPIBotSettings.vue";
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
 import SparkBotSettings from "./BotSettings/SparkBotSettings.vue";
 import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
@@ -85,6 +86,7 @@ const emit = defineEmits(["update:open", "done"]);
 const settings = [
   ChatGPTBotSettings,
   OpenAIAPIBotSettings,
+  AzureOpenAIAPIBotSettings,
   WenxinQianfanBotSettings,
   GradioAppBotSettings,
   BardBotSettings,
