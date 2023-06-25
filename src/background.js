@@ -16,13 +16,35 @@ let mainWindow = null;
 const userDataPath = app.getPath('userData');
 const proxySettingPath = path.join(userDataPath, 'proxySetting.json');
 let proxySetting;
-try {
-  proxySetting = JSON.parse(fs.readFileSync(proxySettingPath, 'utf8'));
-} catch (err) {
-  console.error(`Read proxy file failed: ${err}`);
-}
-if (proxySetting.proxyServer) {
-  app.commandLine.appendSwitch("proxy-server", proxySetting.proxyServer);
+
+if (fs.existsSync(proxySettingPath)) {
+  // if file exist, read the setting
+  try {
+    proxySetting = JSON.parse(fs.readFileSync(proxySettingPath, 'utf8'));
+    if (proxySetting.proxyServer) {
+      app.commandLine.appendSwitch("proxy-server", proxySetting.proxyServer);
+    }
+  } catch (err) {
+    console.error(`Read proxy setting file failed: ${err}`);
+  }
+} else {
+  // if file not exist, create the file and write the default setting
+  const defaultProxySetting = {
+    enableProxy:"Yes",
+    proxyMode:"All",
+    proxyServer: "http://127.0.0.1:7890",
+    PACMode:"File",
+    PACUrl: "",
+    PACfile: ""
+  };
+
+  fs.writeFile(proxySettingPath, JSON.stringify(defaultProxySetting), 'utf8', (err) => {
+    if (err) {
+      console.error(`Create proxy setting file failed: ${err}`);
+    } else {
+      console.error(`Create proxy setting file success.`);
+    }
+  });
 }
 
 // Scheme must be registered before the app is ready
