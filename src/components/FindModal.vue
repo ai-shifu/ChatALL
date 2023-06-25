@@ -15,6 +15,7 @@
     <v-text-field
       id="find-text-field"
       @keydown.enter="() => find()"
+      @keydown.esc="closeFindTextField"
       @focus="$event.target.select()"
       ref="findTextRef"
       color="primary"
