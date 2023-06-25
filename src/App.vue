@@ -33,6 +33,9 @@
             @click="openFind()"
           ></v-icon>
           <v-icon
+            v-shortkey.once="SHORTCUT_CLEAR_MESSAGES.key"
+            @shortkey="clearMessages"
+            :id="SHORTCUT_CLEAR_MESSAGES.elementId"
             class="cursor-pointer"
             color="primary"
             icon="mdi-broom"
@@ -88,6 +91,7 @@ import { applyTheme, resolveTheme, Theme } from "./theme";
 import {
   SHORTCUT_FIND,
   SHORTCUT_SHORTCUT_GUIDE,
+  SHORTCUT_CLEAR_MESSAGES,
 } from "./components/ShortcutGuide/shortcut.const";
 
 import i18n from "./i18n";
