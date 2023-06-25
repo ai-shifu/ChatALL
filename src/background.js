@@ -4,10 +4,26 @@ import { app, protocol, BrowserWindow, ipcMain, nativeTheme } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import updateApp from "./update";
+import fs from 'fs';
+import path from 'path';
+import createMenuTemplate from './menu.js'; // Add easy menu
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 let mainWindow = null;
+
+// Proxy setting section, user can change the setting in the file outside the program, just edit the json file with text editor.
+const userDataPath = app.getPath('userData');
+const proxySettingPath = path.join(userDataPath, 'proxySetting.json');
+let proxySetting;
+try {
+  proxySetting = JSON.parse(fs.readFileSync(proxySettingPath, 'utf8'));
+} catch (err) {
+  console.error(`Read proxy file failed: ${err}`);
+}
+if (proxySetting.proxyServer) {
+  app.commandLine.appendSwitch("proxy-server", proxySetting.proxyServer);
+}
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -214,6 +230,10 @@ app.on("ready", async () => {
 
   createWindow();
   updateApp(mainWindow);
+    // Add a simple menu diag to show the setting
+  const menuTemplate = createMenuTemplate(mainWindow);
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
 });
 
 // Exit cleanly on request from parent process in development mode.
