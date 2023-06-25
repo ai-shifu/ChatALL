@@ -2,7 +2,7 @@
   <v-form
     ref="formRef"
     @submit.prevent="true"
-    v-shortkey.once="['ctrl', 'f']"
+    v-shortkey.once="SHORTCUT_FIND.key"
     @shortkey="handleFindShortcut"
     style="
       position: absolute;
@@ -15,6 +15,7 @@
     <v-text-field
       id="find-text-field"
       @keydown.enter="() => find()"
+      @keydown.esc="closeFindTextField"
       @focus="$event.target.select()"
       ref="findTextRef"
       color="primary"
@@ -86,6 +87,7 @@
 
 <script setup>
 import { ref, nextTick } from "vue";
+import { SHORTCUT_FIND } from "./ShortcutGuide/shortcut.const";
 
 const formRef = ref(null);
 

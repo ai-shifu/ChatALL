@@ -2,13 +2,13 @@
   <div
     class="footer"
     v-shortkey.once="{
-      focusPromptTextarea: ['ctrl', 'k'],
-      toggleBotsMenu: ['ctrl', 'tab'],
+      focusPromptTextarea: SHORTCUT_PROMPT_TEXTAREA.key,
+      toggleBotsMenu: SHORTCUT_BOTS_MENU.key,
     }"
     @shortkey="handleShortcut"
   >
     <v-textarea
-      id="prompt-textarea"
+      :id="SHORTCUT_PROMPT_TEXTAREA.elementId"
       v-model="prompt"
       ref="promptTextArea"
       auto-grow
@@ -46,7 +46,11 @@
         v-shortkey.once="['ctrl', `${index + 1}`]"
         @shortkey="toggleSelected(bot.instance)"
       />
-      <BotsMenu id="bots-menu-btn" ref="botsMenuRef" :favBots="favBots" />
+      <BotsMenu
+        :id="SHORTCUT_BOTS_MENU.elementId"
+        ref="botsMenuRef"
+        :favBots="favBots"
+      />
     </div>
     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
     <ConfirmModal ref="confirmModal" />
@@ -67,6 +71,10 @@ import BotsMenu from "./BotsMenu.vue";
 import { useMatomo } from "@/composables/matomo";
 
 import _bots from "@/bots";
+import {
+  SHORTCUT_PROMPT_TEXTAREA,
+  SHORTCUT_BOTS_MENU,
+} from "./../ShortcutGuide/shortcut.const";
 
 const { ipcRenderer } = window.require("electron");
 
