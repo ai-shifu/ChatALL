@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import VuexPersist from "vuex-persist";
 import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
+import { v4 as uuidv4 } from "uuid";
 
 const getMatomo = function () {
   return window.Piwik.getAsyncTracker();
@@ -147,6 +148,10 @@ export default createStore({
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.messages.push(message);
     },
+    setLatestPromptId(state, id) {
+      const currentChat = state.chats[state.currentChatIndex];
+      currentChat.latestPromptId = id;
+    },
     updateMessage(state, { indexes, message }) {
       const { chatIndex, messageIndex } = indexes;
       const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
@@ -203,13 +208,19 @@ export default createStore({
     },
   },
   actions: {
-    sendPrompt({ commit, state, dispatch }, { prompt, bots }) {
-      commit("addMessage", {
-        type: "prompt",
-        content: prompt,
-        done: true,
-        hide: false,
-      });
+    sendPrompt({ commit, state, dispatch }, { prompt, bots, promptId }) {
+      const id = promptId ? promptId : uuidv4();
+      if (!promptId) {
+        // if promptId not found, not a resend
+        commit("addMessage", {
+          type: "prompt",
+          content: prompt,
+          done: true,
+          hide: false,
+          id: id,
+        });
+      }
+      commit("setLatestPromptId", id); // to keep track of the latest prompt for hiding old prompt's resend button
 
       for (const bot of bots) {
         const message = {
@@ -221,6 +232,7 @@ export default createStore({
           highlight: false,
           hide: false,
           className: bot.getClassname(),
+          promptId: id,
         };
 
         // workaround for tracking message position
