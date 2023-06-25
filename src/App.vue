@@ -43,6 +43,9 @@
             @click="clearMessages()"
           ></v-icon>
           <v-icon
+            v-shortkey.once="SHORTCUT_SETTINGS.key"
+            @shortkey="openSettingsModal"
+            :id="SHORTCUT_SETTINGS.elementId"
             class="cursor-pointer"
             color="primary"
             icon="mdi-cog"
@@ -90,6 +93,7 @@ import { v4 as uuidv4 } from "uuid";
 import { applyTheme, resolveTheme, Theme } from "./theme";
 import {
   SHORTCUT_FIND,
+  SHORTCUT_SETTINGS,
   SHORTCUT_SHORTCUT_GUIDE,
   SHORTCUT_CLEAR_MESSAGES,
 } from "./components/ShortcutGuide/shortcut.const";

@@ -25,6 +25,15 @@ export const SHORTCUT_CLEAR_MESSAGES = {
   flexDirection: "column",
 };
 
+export const SHORTCUT_SETTINGS = {
+  elementId: "settings-btn",
+  key: ["ctrl", ","],
+  offset: {
+    top: 40,
+  },
+  flexDirection: "column",
+};
+
 export const SHORTCUT_SHORTCUT_GUIDE = {
   elementId: "shortcut-guide-btn",
   key: ["ctrl", "/"],
@@ -45,6 +54,7 @@ export const SHORTCUT_BOTS_MENU = {
 
 export const SHORTCUT_LIST = [
   SHORTCUT_FIND,
+  SHORTCUT_SETTINGS,
   SHORTCUT_BOTS_MENU,
   SHORTCUT_SHORTCUT_GUIDE,
   SHORTCUT_CLEAR_MESSAGES,
