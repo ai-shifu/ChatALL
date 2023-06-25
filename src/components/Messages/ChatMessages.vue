@@ -4,13 +4,26 @@
       class="message-grid"
       :style="{ gridTemplateColumns: gridTemplateColumns }"
     >
-      <chat-message
-        v-for="(message, index) in filteredMessages"
-        :key="index"
-        :columns="columns"
-        :message="message"
-        @update-message="updateMessage"
-      ></chat-message>
+      <template v-for="(message, index) in filteredMessages" :key="index">
+        <!-- Check if the current message is a prompt
+          If true, render <chat-message> component and set responses array empty -->
+        <chat-message
+          v-if="checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message)"
+          :columns="columns"
+          :message="message"
+          @update-message="updateMessage"
+        ></chat-message>
+        <template v-else>
+          <!-- If current message is response, push current message to responses array.
+            Then check if next message.type === 'prompt', if true, render <chat-responses> -->
+          <chat-responses
+            v-if="pushResponseAndCheckIsNextMessagePromptType(index, message)"
+            :columns="columns"
+            :responses="responses"
+            :update-message="updateMessage"
+          ></chat-responses>
+        </template>
+      </template>
     </div>
   </div>
 </template>
@@ -19,6 +32,7 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import ChatMessage from "./ChatMessage.vue";
+import ChatResponses from "./ChatResponses.vue";
 
 const store = useStore();
 
@@ -76,6 +90,24 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("scroll", onScroll);
 });
+
+let responses = []; // this array store a prompt responses
+function checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message) {
+  if (message.type === "prompt") {
+    responses = []; // clear responses for next prompt's responses
+    return true;
+  }
+  return false;
+}
+
+function pushResponseAndCheckIsNextMessagePromptType(index, response) {
+  const nextIndex = index + 1;
+  responses.push(response);
+  if (nextIndex >= filteredMessages.value.length) {
+    return true; // allow last element
+  }
+  return filteredMessages.value[nextIndex].type === "prompt";
+}
 </script>
 
 <style scoped>
