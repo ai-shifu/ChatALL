@@ -7,12 +7,12 @@
       <template v-for="(message, index) in filteredMessages" :key="index">
         <!-- Check if the current message is a prompt
           If true, render <chat-message> component and set responses array empty -->
-        <chat-message
+        <chat-prompt
           v-if="checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message)"
           :columns="columns"
           :message="message"
           @update-message="updateMessage"
-        ></chat-message>
+        ></chat-prompt>
         <template v-else>
           <!-- If current message is response, push current message to responses array.
             Then check if next message.type === 'prompt', if true, render <chat-responses> -->
@@ -31,7 +31,7 @@
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { useStore } from "vuex";
-import ChatMessage from "./ChatMessage.vue";
+import ChatPrompt from "./ChatPrompt.vue";
 import ChatResponses from "./ChatResponses.vue";
 
 const store = useStore();
