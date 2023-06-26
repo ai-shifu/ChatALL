@@ -91,22 +91,17 @@ export default class ChatGPTBot extends Bot {
     }
   }
 
-  getArkoseToken() {
-    let arkoseToken = void 0;
-    if (
-      this.constructor._model === "gpt-4" ||
-      this.constructor._model === "gpt-4-browsing"
-    ) {
-      let part1 = Math.floor(Math.random() * Math.pow(16, 16)).toString(16);
-      while (part1.length < 15) {
-        part1 = "0" + part1;
-      }
-      const part2 = (Math.random() * 10).toFixed(10);
-      arkoseToken = `${
-        part1 + part2
-      }|r=us-west-2|meta=3|meta_width=300|metabgclr=transparent|metaiconclr=%23555555|guitextcolor=%23000000|pk=35536E1E-65B4-4D96-9D97-6ADB7EFF8147|at=40|sup=1|rid=59|ag=101|cdn_url=https%3A%2F%2Ftcr9i.chat.openai.com%2Fcdn%2Ffc|lurl=https%3A%2F%2Faudio-us-west-2.arkoselabs.com|surl=https%3A%2F%2Ftcr9i.chat.openai.com|smurl=https%3A%2F%2Ftcr9i.chat.openai.com%2Fcdn%2Ffc%2Fassets%2Fstyle-manager`;
+  // Credit: https://github.com/linweiyuan/go-chatgpt-api/issues/175
+  async getArkoseToken() {
+    let token = void 0;
+
+    if (this.constructor._model !== "text-davinci-002-render-sha") {
+      await axios.get("https://arkose-token.linweiyuan.com/").then((res) => {
+        token = res.data.token;
+      });
     }
-    return arkoseToken;
+
+    return token;
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
@@ -121,7 +116,7 @@ export default class ChatGPTBot extends Bot {
     const context = await this.getChatContext();
     const payload = JSON.stringify({
       action: "next",
-      arkose_token: this.getArkoseToken(),
+      arkose_token: await this.getArkoseToken(),
       messages: [
         {
           id: uuidv4(),
