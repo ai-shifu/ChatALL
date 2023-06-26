@@ -13,29 +13,43 @@ const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 let mainWindow = null;
 
 // Proxy setting section, user can change the setting in the file outside the program, just edit the json file with text editor.
+
 const userDataPath = app.getPath('userData');
 const proxySettingPath = path.join(userDataPath, 'proxySetting.json');
 let proxySetting;
 
 if (fs.existsSync(proxySettingPath)) {
-  // if file exist, read the setting
+  // If file exist, read the setting
   try {
     proxySetting = JSON.parse(fs.readFileSync(proxySettingPath, 'utf8'));
-    if (proxySetting.proxyServer) {
-      app.commandLine.appendSwitch("proxy-server", proxySetting.proxyServer);
+    if (proxySetting.proxyServer && proxySetting.enableProxy === "Yes") {
+      if (proxySetting.proxyMode === "All") {
+        app.commandLine.appendSwitch("proxy-server", proxySetting.proxyServer);
+        app.commandLine.appendSwitch("proxy-bypass-list", proxySetting.proxyBypassList ?? '<local>');
+      } else if (proxySetting.proxyMode === "PAC") {
+        if (proxySetting.PACMode === "File" && proxySetting.PACfile) {
+          // Note: proxy-pac-url can not load file via 'file://' , we need to change to base64 format
+          let data = getBase64(proxySetting.PACfile);
+          app.commandLine.appendSwitch("proxy-pac-url", data);
+        } else if (proxySetting.PACMode === "URL" && proxySetting.PACUrl) {
+          app.commandLine.appendSwitch("proxy-pac-url", proxySetting.PACUrl);
+        }
+      }
+
     }
   } catch (err) {
     console.error(`Read proxy setting file failed: ${err}`);
   }
 } else {
-  // if file not exist, create the file and write the default setting
+  // If file not exist, create the file and write the default setting
   const defaultProxySetting = {
-    enableProxy:"Yes",
-    proxyMode:"All",
+    enableProxy: "Yes",
+    proxyMode: "All",
     proxyServer: "http://127.0.0.1:7890",
-    PACMode:"File",
+    proxyBypassList: "<local>;*.aliyun.com;*.tiangong.cn*.xfyun.cn;*.baidu.com;*.baidubce.com",
+    PACMode: "File",
     PACUrl: "",
-    PACfile: ""
+    PACfile: "",
   };
 
   fs.writeFile(proxySettingPath, JSON.stringify(defaultProxySetting), 'utf8', (err) => {
@@ -45,6 +59,11 @@ if (fs.existsSync(proxySettingPath)) {
       console.error(`Create proxy setting file success.`);
     }
   });
+}
+
+function getBase64(file) {
+  let fileData = fs.readFileSync(file).toString('base64');
+  return 'data:text/plain;base64,' + fileData;
 }
 
 // Scheme must be registered before the app is ready
