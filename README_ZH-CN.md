@@ -26,7 +26,7 @@ ChatALL 的典型用户是：
 
 | AI 机器人                                                    | 网页访问 | API      | 说明                                     |
 | ------------------------------------------------------------ | -------- | -------- | ---------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | 支持     | 支持     | 包含 Web Browsing                        |
+| [ChatGPT](https://chat.openai.com)                           | 支持     | 支持     | 包含 Web Browsing、Azure OpenAI service  |
 | [Bing Chat](https://www.bing.com/new)                        | 支持     | 无 API   | 不需要帐号                               |
 | [文心一言](https://yiyan.baidu.com/)                         | 否       | 支持     |                                          |
 | [Bard](https://bard.google.com/)                             | 支持     | 即将推出 |                                          |
@@ -41,7 +41,7 @@ ChatALL 的典型用户是：
 | [Claude](https://www.anthropic.com/index/introducing-claude) | 支持     | 无 API   | 不需要帐号                               |
 | [Gradio](httpps://gradio.app/)                               | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
-| [通义千问](https://qianwen.aliyun.com/)                      | 支持     | 即将推出 |                                          |
+| [天工](https://neice.tiangong.cn/)                           | 支持     | 即将推出 |                                          |
 
 还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 
@@ -50,20 +50,20 @@ ChatALL 的典型用户是：
 - 快问模式：不需要等待前面的请求完成，就可以发下一条指令
 - 对话历史保存在本地，保护你的隐私
 - 高亮喜欢的答案，删除不需要的答案
-- 自动保持 ChatGPT 不掉线
 - 随时启用/禁用任何机器人
 - 在一列、两列或三列视图之间切换
-- 支持多语言（中文，英语，德语，法语，俄语，越南语，韩语）
+- 自动更新到最新版
+- 夜间模式（由 @tanchekwei 贡献）
+- 快捷键。按 `Ctrl + /` 可以看到所有快捷键（由 @tanchekwei 贡献）
+- 支持多语言（中文、英语、德语、法语、俄语、越南语、韩语、日语、西班牙语、意大利语）
 - 支持 Windows，macOS 和 Linux
 
 计划中：
 
 欢迎参与这些功能的开发。
 
-- [ ] 夜间模式
 - [ ] 多聊天窗口
 - [ ] 把前端部署到 GitHub Pages
-- [ ] 集成 LangChain
 
 ## 预先需要
 

@@ -26,7 +26,7 @@ Typical users of ChatALL are:
 
 | AI Bots                                                      | Web Access  | API         | Notes                                       |
 | ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web Browsing included                       |
+| [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
 | [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      | No login required                           |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                             |
 | [Bard](https://bard.google.com/)                             | Yes         | Coming soon |                                             |
@@ -41,29 +41,29 @@ Typical users of ChatALL are:
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | No Login required                           |
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
-| [QianWen](https://qianwen.aliyun.com/)                       | Yes         | Coming soon |                                             |
+| [SkyWork](https://neice.tiangong.cn/)                        | Yes         | Coming soon |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
 ### Other features
 
 - Quick-prompt mode: send the next prompt without waiting for the previous request to complete
-- Store chat history locally, protect your privacy
+- Save chat history locally, protect your privacy
 - Highlight the response you like, delete the bad
-- Automatically keep ChatGPT session alive
 - Enable/disable any bots at any time
 - Switch between one, two, or three-column view
-- Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese, Korean)
+- Auto update to the latest version
+- Dark mode (contributed by @tanchekwei)
+- Short keys. Press `Ctrl + /` to know all of them (contributed by @tanchekwei)
+- Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese, Korean, Japanese, Spanish, Italian)
 - Supports Windows, macOS and Linux
 
 Planned features:
 
 You are welcome to contribute to these features.
 
-- [ ] Dark mode
 - [ ] Multi-chats
 - [ ] Deploy front-end to GitHub Pages
-- [ ] LangChain integration
 
 ## Prerequisites
 
