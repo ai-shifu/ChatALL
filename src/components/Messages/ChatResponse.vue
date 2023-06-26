@@ -224,6 +224,10 @@ function messageBotIsSelected() {
 </script>
 
 <style scoped>
+:deep() .v-responsive__content {
+  overflow: auto;
+}
+
 .markdown-body{
     background-color: rgb(var(--v-theme-response));
     font-family: inherit;
