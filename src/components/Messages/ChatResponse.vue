@@ -7,7 +7,6 @@
     <v-card-title class="title">
       <img :src="botLogo" alt="Bot Icon" />
       {{ botFullname }}
-      <v-spacer></v-spacer>
       <v-btn
         flat
         icon
@@ -15,6 +14,7 @@
         v-if="isShowPagingButton"
         @click="carouselModel = Math.max(carouselModel - 1, 0)"
         :disabled="carouselModel === 0"
+        style="margin-left: .5rem"
       >
         <v-icon>mdi-menu-left</v-icon>
       </v-btn>
@@ -28,6 +28,7 @@
       >
         <v-icon>mdi-menu-right</v-icon>
       </v-btn>
+      <v-spacer></v-spacer>
       <v-btn
         flat
         icon
