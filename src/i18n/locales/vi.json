@@ -9,15 +9,22 @@
     "loginOrOut": "Đăng nhập/Đăng xuất",
     "loginOrOutPrompt": "Bấm vào đường dẫn bên dưới để đăng nhập hoặc đăng xuất trong cửa sổ mới, sau đó đóng nó lại",
     "notice": "Thông báo",
-    "secretPrompt": "Token của bạn sẽ nằm trên thiết bị của bạn và sẽ không đươc chia sẽ tới bất kì ai khác"
+    "secretPrompt": "Token của bạn sẽ nằm trên thiết bị của bạn và sẽ không đươc chia sẽ tới bất kì ai khác",
+    "theme": "Giao diện",
+    "system": "Hệ thống",
+    "light": "Sáng",
+    "dark": "Tối"
   },
   "header": {
     "clearMessages": "Xóa tất cả tin?",
+    "yes": "Có",
+    "no": "Không",
     "singleColumn": "1 cột",
     "doubleColumn": "2 cột",
     "tripleColumn": "3 cột"
   },
   "footer": {
+    "chooseFavorite": "Chọn AI bots thường dùng",
     "sendPrompt": "Gửi:",
     "promptPlaceholder": "gõ tin nhắn ở đây. (Shift+Enter để thêm dòng mới)"
   },
@@ -94,6 +101,19 @@
     "temperature2": "Tự nhiên hơn",
     "apiKey": "API Key"
   },
+  "azureOpenaiApi": {
+    "name": "Azure OpenAI Service",
+    "temperature": "Temperature",
+    "temperaturePrompt":"Temperature càng cao, văn bản càng sáng tạo nhưng càng có khả năng trở nên rời rạc",
+    "temperature0": "Cụ thể hơn",
+    "temperature2": "Tự nhiên hơn",
+    "azureOpenAIApiKey": "Azure OpenAI API Key",
+    "azureApiInstanceName": "Azure OpenAI API InstanceName",
+    "azureApiInstanceNamePrompt": "Xem InstanceName ở mục Cognitive Services tại https://portal.azure.com/",
+    "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
+    "azureOpenAIApiDeploymentNamePrompt": "Xem tên nhà phát triển được liệt kê tại https://oai.azure.com/",
+    "azureOpenAIApiVersion": "Azure OpenAI API Version"
+  },
   "spark": {
     "name": "iFlytek Spark"
   },
@@ -102,5 +122,19 @@
   },
   "dev": {
     "name": "Dev Bot"
+  },
+  "updates": {
+    "updateAvailable": "Cập nhập mới đã có!",
+    "currentVersion": "Phiên bản của bạn",
+    "latestVersion": "Phiên bản mới nhất",
+    "downloadFromGitHub": "Download từ GitHub",
+    "skipThisVersion": "Bỏ qua phiên bản này",
+    "close": "Đóng"
+  },
+  "find": {
+    "find": "Tìm",
+    "noMatches": "Không thấy kết quả",
+    "matchCase": "Trường hợp phù hợp",
+    "wrapAround": "Quay lại đầu"
   }
 }
