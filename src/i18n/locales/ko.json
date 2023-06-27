@@ -66,7 +66,7 @@
     "autoRefreshPrompt": "자주 로그인하라는 메시지가 표시되지 않는 경우 이 기능을 사용하지 않음",
     "notice": "유료 플러스 회원만 GPT-4를 사용할 수 있습니다",
     "riskWarningTitle": "기억",
-    "riskWarningText": "OpenAI는 공식 클라이언트가 아닌 앱을 통해 ChatGPT의 GPT-4 및 GPT-4 브라우징 모델에 액세스하는 작업을 탐지하고 방지하기 위해 Arkose Labs의 서비스를 사용하고 있습니다. ChatALL이 성공적으로 보호를 무시했지만 OpenAI는 여전히 사용자를 쉽게 식별할 수 있어 금지될 위험이 높아집니다. \n\n이 위험을 감수하시겠습니까?",
+    "riskWarningText": "OpenAI는 공식 클라이언트가 아닌 앱을 통해 ChatGPT의 GPT-4, GPT-4 Mobie V2 및 GPT-4 Browsing 모델에 액세스하는 작업을 탐지하고 방지하기 위해 Arkose Labs의 서비스를 사용하고 있습니다. ChatALL은 보호를 무시할 수 있지만, OpenAI는 여전히 사용자를 쉽게 식별할 수 있으므로 사용자가 금지될 위험이 높아집니다. \n\n이 위험을 감수하시겠습니까? (GPT-3.5를 사용할 경우 위험이 훨씬 낮습니다.)",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "웹 브라우징",
