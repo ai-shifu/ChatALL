@@ -8,7 +8,7 @@ import i18n from "@/i18n";
 export default class HuggingChatBot extends Bot {
   static _brandId = "huggingChat"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "HuggingChatBot"; // Class name of the bot
-  static _logoFilename = "huggingchat-logo.png"; // Place it in assets/bots/
+  static _logoFilename = "huggingchat-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://huggingface.co/chat/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 

@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import VuexPersist from "vuex-persist";
 import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
+import { v4 as uuidv4 } from "uuid";
 
 const getMatomo = function () {
   return window.Piwik.getAsyncTracker();
@@ -23,24 +24,23 @@ export default createStore({
     uuid: "",
     lang: "auto",
     columns: 2,
-    selectedBots: {
-      // Active bots which no login required
-      BingChatCreativeBot: true,
-      BingChatBalancedBot: true,
-      BingChatPreciseBot: true,
-      ChatGLMBot: true,
-      VicunaBot: true,
-      AlpacaBot: true,
-      ClaudeBot: true,
-    },
     openaiApi: {
       apiKey: "",
       temperature: 1,
       pastRounds: 5,
       alterUrl: "",
     },
+    azureOpenaiApi: {
+      azureApiKey: "",
+      temperature: 1,
+      pastRounds: 5,
+      azureApiInstanceName: "",
+      azureOpenAIApiDeploymentName: "",
+      azureOpenAIApiVersion: "",
+    },
     chatgpt: {
       refreshCycle: 0,
+      riskConfirmed: false,
     },
     gradio: {
       url: "",
@@ -49,15 +49,45 @@ export default createStore({
     moss: {
       token: "",
     },
+    qianWen: {
+      xsrfToken: "",
+    },
+    skyWork: {
+      inviteToken: "",
+      token: "",
+    },
     wenxinQianfan: {
       apiKey: "",
       secretKey: "",
       pastRounds: 5,
     },
-    messages: [],
-    chats: [{ title: "New Chat", contexts: {}, messages: [] }],
+    chats: [
+      {
+        title: "New Chat",
+        favBots: [
+          // default bots
+          { classname: "ChatGPT35Bot", selected: true },
+          { classname: "ChatGPT4Bot", selected: true },
+          { classname: "ChatGPTBrowsingBot", selected: true },
+          { classname: "BingChatCreativeBot", selected: true },
+          { classname: "BingChatBalancedBot", selected: true },
+          { classname: "BingChatPreciseBot", selected: true },
+          { classname: "ChatGLMBot", selected: true },
+          { classname: "VicunaBot", selected: true },
+          { classname: "AlpacaBot", selected: true },
+          { classname: "ClaudeBot", selected: true },
+        ],
+        contexts: {},
+        messages: [],
+      },
+    ],
     currentChatIndex: 0,
     updateCounter: 0,
+    theme: undefined,
+    mode: "system",
+    // TODO: delete following fields
+    selectedBots: {},
+    messages: [],
   },
   mutations: {
     changeColumns(state, n) {
@@ -66,9 +96,25 @@ export default createStore({
     setUuid(state, uuid) {
       state.uuid = uuid;
     },
-    SET_BOT_SELECTED(state, payload) {
-      const { botId, selected } = payload;
-      state.selectedBots[botId] = selected;
+    setBotSelected(state, { botClassname, selected }) {
+      const currentChat = state.chats[state.currentChatIndex];
+      const bot = currentChat.favBots.find(
+        (bot) => bot.classname === botClassname,
+      );
+      if (bot) bot.selected = selected;
+      else currentChat.favBots.push({ classname: botClassname, selected });
+    },
+    addFavoriteBot(state, botClassname) {
+      const currentChat = state.chats[state.currentChatIndex];
+      const favBots = currentChat.favBots;
+      if (favBots.find((bot) => bot.classname === botClassname) == undefined)
+        favBots.push({ classname: botClassname, selected: true });
+    },
+    removeFavoriteBot(state, botClassname) {
+      const currentChat = state.chats[state.currentChatIndex];
+      const favBots = currentChat.favBots;
+      const index = favBots.findIndex((bot) => bot.classname === botClassname);
+      favBots.splice(index, 1);
     },
     setCurrentLanguage(state, language) {
       state.lang = language;
@@ -80,8 +126,17 @@ export default createStore({
     setOpenaiApi(state, values) {
       state.openaiApi = { ...state.openaiApi, ...values };
     },
+    setAzureOpenaiApi(state, values) {
+      state.azureOpenaiApi = { ...state.azureOpenaiApi, ...values };
+    },
     setMoss(state, token) {
       state.moss.token = token;
+    },
+    setQianWenToken(state, token) {
+      state.qianWen.xsrfToken = token;
+    },
+    setSkyWork(state, tokens) {
+      state.skyWork = { ...state.skyWork, ...tokens };
     },
     setWenxinQianfan(state, values) {
       state.wenxinQianfan = { ...state.wenxinQianfan, ...values };
@@ -92,6 +147,10 @@ export default createStore({
     addMessage(state, message) {
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.messages.push(message);
+    },
+    setLatestPromptId(state, id) {
+      const currentChat = state.chats[state.currentChatIndex];
+      currentChat.latestPromptId = id;
     },
     updateMessage(state, { indexes, message }) {
       const { chatIndex, messageIndex } = indexes;
@@ -111,6 +170,7 @@ export default createStore({
     },
     setChatContext(state, { botClassname, context }) {
       const currentChat = state.chats[state.currentChatIndex];
+      if (currentChat.contexts == undefined) currentChat.contexts = {};
       currentChat.contexts[botClassname] = context;
     },
     clearMessages(state) {
@@ -123,23 +183,45 @@ export default createStore({
       if (state.messages.length > 0) {
         const chat = {
           title: i18n.global.t("chat.newChat"),
+          contexts: {},
           messages: state.messages,
         };
         state.chats[0] = chat;
         state.messages = [];
       }
+      // Migrate to favorited bots
+      if (state.selectedBots) {
+        const bots = Object.keys(state.selectedBots);
+        state.chats[0].favBots = [];
+        for (const bot of bots) {
+          if (state.selectedBots[bot])
+            state.chats[0].favBots.push({ classname: bot, selected: true });
+        }
+        state.selectedBots = null;
+      }
+    },
+    setTheme(state, theme) {
+      state.theme = theme;
+    },
+    setMode(state, mode) {
+      state.mode = mode;
     },
   },
   actions: {
-    sendPrompt({ commit, state, dispatch }, { prompt, bots }) {
-      commit("addMessage", {
-        type: "prompt",
-        content: prompt,
-        done: true,
-        hide: false,
-      });
+    sendPrompt({ commit, state, dispatch }, { prompt, bots, promptId }) {
+      const id = promptId ? promptId : uuidv4();
+      if (!promptId) {
+        // if promptId not found, not a resend
+        commit("addMessage", {
+          type: "prompt",
+          content: prompt,
+          done: true,
+          hide: false,
+          id: id,
+        });
+      }
+      commit("setLatestPromptId", id); // to keep track of the latest prompt for hiding old prompt's resend button
 
-      const $matomo = getMatomo();
       for (const bot of bots) {
         const message = {
           type: "response",
@@ -150,6 +232,7 @@ export default createStore({
           highlight: false,
           hide: false,
           className: bot.getClassname(),
+          promptId: id,
         };
 
         // workaround for tracking message position
@@ -163,7 +246,7 @@ export default createStore({
           { chatIndex: state.currentChatIndex, messageIndex: message.index },
         );
 
-        $matomo.trackEvent(
+        getMatomo().trackEvent(
           "prompt",
           "sendTo",
           bot.getClassname(),

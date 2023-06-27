@@ -3,7 +3,7 @@ import Bot from "@/bots/Bot";
 export default class DevBot extends Bot {
   static _brandId = "dev"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "DevBot"; // Class name of the bot
-  static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "default-logo.svg"; // Place it in public/bots/
   static _loginUrl = "http://chatall.ai";
   static _isAvailable = true;
 

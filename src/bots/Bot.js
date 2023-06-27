@@ -1,15 +1,6 @@
 import i18n from "@/i18n";
 import store from "@/store";
 
-// To get actual logo path of the bot, we need to use Webpack 4's require.context()
-// to get the context of the logo files, and then use the context to get the actual
-// path of the logo file.
-const botLogoContext = require.context(
-  "../assets/bots/",
-  false,
-  /\.(png|jpg|jpeg|svg)$/,
-);
-
 export default class Bot {
   static _logoPackedPaths = null;
   static _isAvailable = false;
@@ -17,31 +8,21 @@ export default class Bot {
   static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "Bot"; // Class name of the bot
   static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
-  static _logoFilename = "default-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "default-logo.svg"; // Place it in public/bots/
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
   static _lock = null; // AsyncLock for prompt requests. `new AsyncLock()` in the subclass as needed.
   static _settingsComponent = ""; // Vue component filename for settings
   static _outputFormat = "markdown"; // "markdown" or "html"
 
-  constructor() {
-    // Compute the logo paths after packing by Webpack 4
-    if (!this.constructor._logoPackedPaths) {
-      this.constructor._logoPackedPaths = botLogoContext
-        .keys()
-        .reduce((logos, logoPath) => {
-          logos[logoPath.replace("./", "")] = botLogoContext(logoPath);
-          return logos;
-        }, {});
-    }
-  }
+  constructor() {}
 
   static getInstance() {
     return new this();
   }
 
   getLogo() {
-    return this.constructor._logoPackedPaths[this.constructor._logoFilename];
+    return `bots/${this.constructor._logoFilename}`;
   }
 
   getBrandName() {
@@ -100,6 +81,17 @@ export default class Bot {
 
   isAvailable() {
     return this.constructor._isAvailable;
+  }
+
+  /**
+   * Subclass should implement this method if it needs to notice the user
+   * before using the bot.
+   * @param {object} confirmModal - ConfirmModal component
+   * @returns {boolean} true if user has confirmed to use the bot
+   */
+  // eslint-disable-next-line
+  async confirmBeforeUsing(confirmModal) {
+    return true;
   }
 
   /**
@@ -171,6 +163,8 @@ export default class Bot {
     }
 
     const executeSendPrompt = async () => {
+      // Begin thinking...
+      onUpdateResponse(callbackParam, { content: "...", done: false });
       await this._sendPrompt(prompt, onUpdateResponse, callbackParam);
     };
 
@@ -215,11 +209,12 @@ export default class Bot {
 
   /**
    * Get the context from the store. If not available, create a new one.
+   * @param {boolean} createIfNotExists - Create a new context if not exists
    * @returns {object} - Chat context defined by the bot
    */
-  async getChatContext() {
-    let context = store.getters.currentChat.contexts[this.getClassname()];
-    if (!context) {
+  async getChatContext(createIfNotExists = true) {
+    let context = store.getters.currentChat?.contexts?.[this.getClassname()];
+    if (!context && createIfNotExists) {
       context = await this.createChatContext();
       this.setChatContext(context);
     }

@@ -1,52 +1,70 @@
 <div align="center">
   <img src="src/assets/logo-cover.png" width=256></img>
-  <p><strong>すべての AI ボットと同時にチャットし、ベストを発見する</strong></p>
+  <p><strong>全てのAIと同時にチャットし、ベストを見つける</strong></p>
 
-[Deutsch](README_DE-DE.md) | [English](README.md) | [简体中文](README_ZH-CN.md) | 日本語 | [Tiếng Việt](README_VI-VN.md) | [Français](README_FR-FR.md)
+[Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | 日本語 | [한국어](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
-## スクリーンショット
+## 画像
 
-![Screenshot](screenshots/screenshot-2.png?raw=true)
 ![Screenshot](screenshots/screenshot-1.png?raw=true)
 
 ## 特徴
 
-大規模言語モデル（LLM）ベースの AI ボットは素晴らしいです。しかし、その挙動はランダムで、ボットによって得意とするタスクが異なります。最高の体験をしたいのであれば、ボットを1つずつ試すのはやめましょう。ChatALL （中国名：齐尔）は、複数の AI ボットに同時にプロンプトを送信することができ、最高の結果を発見するのに役立ちます。
+大規模言語モデル（LLM）ベースの AIは素晴らしいです。しかし、その解答はAIによってバラバラで、AIによって得意とする処理が異なります。最高の体験をしたいのであれば、ボットを別々に毎回試すのはやめましょう。ChatALLは、複数のAIにメッセージを送信することができ、各AIの結果を見て比較するのに役立ちます。
 
-### 対応するボット
+### あなたですか？
 
-| AI ボット                                                                  | Web アクセス  | API         |
-| ------------------------------------------------------------------------- | ----------- | ----------- |
-| [ChatGPT](https://chat.openai.com)                                        | はい         | はい         |
-| [Bing Chat](https://www.bing.com/new)                                     | はい         | APIなし      |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                   | いいえ       | はい         |
-| [Bard](https://bard.google.com/)                                          | はい         | APIなし      |
-| [Poe](https://poe.com/)                                                   | 近日公開     | 近日公開     |
-| [MOSS](https://moss.fastnlp.top/)                                         | はい         | APIなし      |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                               | 近日公開     | 近日公開     |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                          | 近日公開     | APIなし      |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                 | はい         | 近日公開     |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                | はい         | APIなし      |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                       | はい         | APIなし      |
-| [ChatGLM](https://chatglm.cn/blog)                                        | はい         | APIなし      |
-| [Claude](https://www.anthropic.com/index/introducing-claude)              | はい         | APIなし      |
-| Hugging Face space/セルフデプロイモデルの [Gradio](https://gradio.app/)       | はい         | APIなし      |
-| [HuggingChat](https://huggingface.co/chat/)                               | はい         | APIなし      |
+ChatALLのだいたいのユーザーはこんな感じ：
 
-などなど...
+- 🤠**LLMのスペシャリストたち**, LLMから最高の答えや創造物を見つけたい人たち。
+- 🤓**LLMの研究者**, 様々な分野のLLMの長所と短所を直感的に比較したい人。
+- 😎**LLMアプリケーションの開発者**, プロンプトを素早くデバッグし、最もパフォーマンスの高い基礎モデルを見つけたい人。
+### 対応するAI
 
-### その他の特徴
+| 対応AI                                                       | webアクセス | API   | メモ                                |
+| ------------------------------------------------------------ | -------- | -------- | ----------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | はい　　　| あり　　　|  ブラウジングを含む                    |
+| [Bing Chat](https://www.bing.com/new)                        | はい　　　| なし　　　| ログイン不要 [ログインするとターン数上昇]                 |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | いいえ　　| あり　　　|                                     |
+| [Bard](https://bard.google.com/)                             | はい　　　| 近日登場　|                                     |
+| [Poe](https://poe.com/)                                      | はい　　　| 近日登場　|                                     |
+| [MOSS](https://moss.fastnlp.top/)                            | はい　　　| なし　　　|                                     |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | はい　　　| 近日登場　|                                     |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)             | 近日登場　| なし　　　|                                     |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | はい　　　| 近日登場　|                                     |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | はい　　　| なし　　　| ログイン不要                     |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | はい　　　| なし　　　| ログイン不要                    |
+| [ChatGLM](https://chatglm.cn/blog)                           | はい　　　| なし　　　| ログイン不要                     |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | はい　　　| なし　　　| ログイン不要                   |
+| [Gradio](https://gradio.app/)                                | はい　　　| なし　　　| Hugging Face space/自己配布モデル用 |
+| [HuggingChat](https://huggingface.co/chat/)                  | はい　　　| なし　　　|                                     |
+| [QianWen](https://qianwen.aliyun.com/)                       | はい　　　| 近日登場　|                                     |
 
-- クイックプロンプトモード: 前のリクエストが完了するのを待たずに次のプロンプトを送信
+まだまだ続きます。これらの問題でお気に入りのボットをアップボートしてください。
+
+### その他特徴
+
+- クイックプロンプトモード：前のリクエストの完了を待たずに次のプロンプトを送信するモード
 - チャット履歴をローカルに保存し、プライバシーを保護
-- 気に入った応答をハイライトし、悪い応答を削除
-- ChatGPT セッションを自動的に維持
-- ボットの有効化/無効化をいつでも行えます
-- 1列、2列、3列の表示切り替えが可能
-- 複数の言語（en、zh）をサポート
-- [TODO] ベストレコメンデーション
+- 気に入ったメッセージをピン止めし、悪いメッセージを削除
+- ChatGPTのセッションを自動で生かす
+- 使いたいボットAIをいつでも変更することができます。
+- 1列～3列の3段階の表示切替
+- 最新バージョンへの自動アップデート
+- ダークモード対応（@tanchekwei氏寄稿）
+- `Ctrl + /` を押すと全てのショートカットキーが表示 (貢献者 @tanchekwei)
+- 多言語対応(英語、中国語、ドイツ語、フランス語、ロシア語、ベトナム語、韓国語、日本語など...今後も言語を追加)
+- Windows、macOS、Linux対応
+- ダークテーマ対応
+
+今後リリース予定の機能:
+
+これらの機能への貢献は大歓迎です。
+
+- [ ] マルチキャット
+- [ ] フロントエンドをGitHub Pagesにデプロイする。
 
 ## 前提条件
 
@@ -58,21 +76,40 @@ ChatALL はプロキシではなく、クライアントです。そのため、
 
 ## ダウンロード / インストール
 
-https://github.com/sunner/ChatALL/releases からダウンロード
+https://github.com/sunner/ChatALL/releases から最新版をダウンロードしてください！
 
 ### Windows の場合
 
-\*-win.exe ファイルをダウンロードし、セットアップを進めてください。
+\*-win-x64.exe ファイルをダウンロードし、セットアップを進めてください。(x86 CPUは \*-win.exe をダウンロードしてください)
 
 ### macOS の場合
 
-Apple Silicon Mac (M1, M2 CPU) の場合は、\*-mac-arm64.dmg ファイルをダウンロードしてください。
+AppleシリコンMac (頭文字にMがあるCPU)は、\*-mac-arm64.dmg ファイルをダウンロードしてください。
 
-その他のMacの場合は、\*-mac-x64.dmg ファイルをダウンロードしてください。
+Intel Macは、\*-mac-x64.dmg ファイルをダウンロードしてください。
 
 ### Linux の場合
 
 .AppImage ファイルをダウンロードし、実行可能な状態にしてクリックで実行してください。
+
+## トラブルシューティング
+
+ChatALLをご利用中に問題が発生した場合は、以下の解決策をお試しください。：
+
+1. **再読み込み** - "Ctrl + R" または "Cmd + R" を押す。
+2. **アプリを再起動** - ChatALLを終了し、再度実行する。
+3. **再ログイン** - 右上の設定ボタンをクリックし、ログイン/ログアウトリンクをクリックして、ウェブサイトに再ログインします。
+4. **すべてのメッセージを削除する** - 右上のほうきボタンをクリックし"はい"をクリックする。
+
+上記の方法でもうまくいかない場合は、**ChatALLを初期化**してみてください。この場合、すべての設定とメッセージ履歴が削除されますのでご注意ください。
+
+ChatALLをリセットするには、以下のディレクトリを削除します：
+
+- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
+- Linux: `/home/<user>/.config/ChatALL/`
+- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+
+問題が解決しない場合は、[こちらに報告してください](https://github.com/sunner/ChatALL/issues).
 
 ## 開発者向け
 
@@ -105,7 +142,7 @@ npm run electron:build -- -wml --x64 --arm64
 
 ## クレジット
 
-### コントリビューター
+### 貢献者
 
 <a href="https://github.com/sunner/ChatALL/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
@@ -113,6 +150,12 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### その他
 
-- GPT-4 は多くのコードを提供した
-- ChatGPT、Bing Chat、Google が多くの解決策を提供（順不同）
-- [ChatHub](https://github.com/chathub-dev/chathub) に触発されました。リスペクトです！
+- GPT-4はコードの貢献した
+- ChatGPT、Bing Chat、Googleは多くの解決策を提供しています（ランキング順）
+- [ChatHub](https://github.com/chathub-dev/chathub) を参考にしました。リスペクトです！
+
+## 支援者
+
+このプロジェクトが気に入った場合は、ぜひ支援にご検討ください：
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)

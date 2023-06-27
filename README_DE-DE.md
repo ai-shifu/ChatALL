@@ -2,13 +2,12 @@
    <img src="src/assets/logo-cover.png" width=256></img>
    <p><strong>Chatten Sie mit ALLEN AI-Bots gleichzeitig, entdecken Sie die Besten</strong></p>
 
-Deutsch | [English](README.md) | [简体中文](README_ZH-CN.md) | [日本語](README_JA-JP.md) | [Tiếng Việt](README_VI-VN.md) | [Français](README_FR-FR.md)
+Deutsch | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
 </div>
 
 ## Bilder
 
-![Bilder](screenshots/screenshot-2.png?raw=true)
 ![Bilder](screenshots/screenshot-1.png?raw=true)
 
 ## Funktionen
@@ -17,23 +16,24 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 
 ### Supported bots
 
-| AI Bots                                                                   | Web Zugang  | API         |
-| ------------------------------------------------------------------------- | ----------- | ----------- |
-| [ChatGPT](https://chat.openai.com)                                        | Yes         | Yes         |
-| [Bing Chat](https://www.bing.com/new)                                     | Yes         | No API      |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                   | No          | Yes         |
-| [Bard](https://bard.google.com/)                                          | Yes         | No API      |
-| [Poe](https://poe.com/)                                                   | Coming soon | Coming soon |
-| [MOSS](https://moss.fastnlp.top/)                                         | Yes         | No API      |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                               | Coming soon | Coming soon |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                          | Coming soon | No API      |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                 | Yes         | Coming soon |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                | Yes         | No API      |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                       | Yes         | No API      |
-| [ChatGLM](https://chatglm.cn/blog)                                        | Yes         | No API      |
-| [Claude](https://www.anthropic.com/index/introducing-claude)              | Yes         | No API      |
-| [Gradio](https://gradio.app/) for Hugging Face space/self-deployed models | Yes         | No API      |
-| [HuggingChat](https://huggingface.co/chat/)                               | Yes         | No API      |
+| AI Bots                                                      | Web Zugang  | API         | Notizen                                      |
+| ------------------------------------------------------------ | ----------- | ----------- | -------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web-Browsing inklusive                       |
+| [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      | Kein Login erforderlich                      |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                              |
+| [Bard](https://bard.google.com/)                             | Yes         | Coming soon |                                              |
+| [Poe](https://poe.com/)                                      | Yes         | Coming soon |                                              |
+| [MOSS](https://moss.fastnlp.top/)                            | Yes         | No API      |                                              |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Yes         | Coming soon |                                              |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Coming soon | No API      |                                              |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Yes         | Coming soon |                                              |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Yes         | No API      | Kein Login erforderlich                      |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | Kein Login erforderlich                      |
+| [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | Kein Login erforderlich                      |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | Kein Login erforderlich                      |
+| [Gradio](https://gradio.app/)                                | Yes         | No API      | Für Hugging Face space/self-deployed Modelle |
+| [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                              |
+| [QianWen](https://qianwen.aliyun.com/)                       | Yes         | Coming soon |                                              |
 
 Und mehr...
 
@@ -116,3 +116,9 @@ npm run electron:build -- -wml --x64 --arm64
 - GPT-4 hat einen Großteil des Codes beigesteuert
 - ChatGPT, Bing Chat und Google bieten viele Lösungen (in dieser Reihenfolge)
 - Inspiriert von [ChatHub](https://github.com/chathub-dev/chathub). Respekt!
+
+## Sponsor
+
+Wenn Ihnen dieses Projekt gefällt, erwägen Sie bitte:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)

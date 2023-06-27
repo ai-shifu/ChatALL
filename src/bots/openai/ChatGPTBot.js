@@ -13,7 +13,7 @@ const REFRESH_SESSION_URL =
 export default class ChatGPTBot extends Bot {
   static _brandId = "chatGpt";
   static _className = "ChatGPTBot"; // Class name of the bot
-  static _logoFilename = "chatgpt-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "chatgpt-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://chat.openai.com/";
   // Remove Electron from the user agent to avoid blank login screen of Google
   static _userAgent =
@@ -91,6 +91,19 @@ export default class ChatGPTBot extends Bot {
     }
   }
 
+  // Credit: https://github.com/linweiyuan/go-chatgpt-api/issues/175
+  async getArkoseToken() {
+    let token = void 0;
+
+    if (this.constructor._model !== "text-davinci-002-render-sha") {
+      await axios.get("https://arkose-token.linweiyuan.com/").then((res) => {
+        token = res.data.token;
+      });
+    }
+
+    return token;
+  }
+
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Make sure the access token is available
     if (!this.accessToken) await this.checkAvailability();
@@ -103,6 +116,7 @@ export default class ChatGPTBot extends Bot {
     const context = await this.getChatContext();
     const payload = JSON.stringify({
       action: "next",
+      arkose_token: await this.getArkoseToken(),
       messages: [
         {
           id: uuidv4(),
@@ -191,8 +205,17 @@ export default class ChatGPTBot extends Bot {
 
           let message = "";
           if (error.data) {
-            const data = JSON.parse(error.data);
-            message = data.detail;
+            try {
+              const data = JSON.parse(error.data);
+              message = data.detail?.message || data.detail;
+            } catch (e) {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(error.data, "text/html");
+              const msg = doc.querySelector(".message p");
+              message = msg ? msg.textContent + ". " : "";
+              const explanation = doc.querySelector(".explanation");
+              message += explanation ? explanation.textContent : "";
+            }
           } else {
             message = error.source.url;
           }

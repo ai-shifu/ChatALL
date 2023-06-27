@@ -1,8 +1,9 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, ipcMain, autoUpdater } from "electron";
+import { app, protocol, BrowserWindow, ipcMain, nativeTheme } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
+import updateApp from "./update";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
@@ -13,14 +14,13 @@ protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } },
 ]);
 
-// Auto Updater
-require("update-electron-app")();
-
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    backgroundColor: nativeTheme.shouldUseDarkColors ? "#1a1a20" : "#fff",
+    show: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -79,14 +79,16 @@ async function createWindow() {
       const urlObj = new URL(url);
 
       // Only replace outbound access and electron origin
-      if (
-        ["http:", "https:"].includes(urlObj.protocol) &&
-        !["localhost", "127.0.0.1"].includes(urlObj.hostname) &&
-        requestHeaders["Referer"]
-      ) {
-        const refererObj = new URL(requestHeaders["Referer"]);
-        if (["localhost", "127.0.0.1"].includes(refererObj.hostname)) {
-          const referer = `${urlObj.protocol}//${urlObj.host}/`;
+      if (["http:", "https:"].includes(urlObj.protocol)) {
+        const referer = `${urlObj.protocol}//${urlObj.host}/`;
+        if (!requestHeaders["Referer"]) {
+          // Force add referer header. This is required for QianWen.
+          requestHeaders["Referer"] = referer;
+        } else if (
+          requestHeaders["Referer"].includes("127.0.0.1") ||
+          requestHeaders["Referer"].includes("localhost")
+        ) {
+          // Replace the referer header if it is the default one.
           requestHeaders["Referer"] = referer;
         }
       }
@@ -106,11 +108,13 @@ async function createWindow() {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
+    win.show();
     if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
     createProtocol("app");
     // Load the index.html when not in development
-    win.loadURL("app://./index.html");
+    await win.loadURL("app://./index.html");
+    win.show();
   }
 }
 
@@ -130,25 +134,50 @@ function createNewWindow(url, userAgent = "") {
   }
   newWin.loadURL(url);
 
-  // Get the secret of MOSS
-  if (url.includes("moss.fastnlp.top")) {
-    newWin.on("close", async (e) => {
-      try {
-        e.preventDefault(); // Prevent the window from closing
-        const secret = await newWin.webContents.executeJavaScript(
-          'localStorage.getItem("flutter.token");',
-        );
-        mainWindow.webContents.send("moss-secret", secret);
-      } catch (error) {
-        console.error(error);
-      }
-      newWin.destroy(); // Destroy the window manually
-    });
-  }
+  newWin.on("close", async (e) => {
+    e.preventDefault(); // Prevent the window from closing
+
+    // Hacking secrets
+    const getLocalStorage = async (key) => {
+      return await newWin.webContents.executeJavaScript(
+        `localStorage.getItem("${key}");`,
+      );
+    };
+    if (url.startsWith("https://moss.fastnlp.top/")) {
+      // Get the secret of MOSS
+      const secret = await getLocalStorage("flutter.token");
+      mainWindow.webContents.send("moss-secret", secret);
+    } else if (url.startsWith("https://qianwen.aliyun.com/")) {
+      // Get QianWen bot's XSRF-TOKEN
+      const token = await newWin.webContents.executeJavaScript(
+        'document.cookie.split("; ").find((cookie) => cookie.startsWith("XSRF-TOKEN="))?.split("=")[1];',
+      );
+      mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
+    } else if (url.startsWith("https://neice.tiangong.cn/")) {
+      // Get the tokens of SkyWork
+      const inviteToken = await getLocalStorage("formNatureQueueWaitToken");
+      const token = await getLocalStorage("formNatureResearchToken");
+      mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
+    }
+
+    newWin.destroy(); // Destroy the window manually
+    // Tell renderer process to check aviability
+    mainWindow.webContents.send("CHECK-AVAILABILITY", url);
+  });
 }
 
 ipcMain.handle("create-new-window", (event, url, userAgent) => {
   createNewWindow(url, userAgent);
+});
+
+ipcMain.handle("get-native-theme", () => {
+  return Promise.resolve({
+    shouldUseDarkColors: nativeTheme.shouldUseDarkColors,
+  });
+});
+
+nativeTheme.on("updated", () => {
+  mainWindow.webContents.send("on-updated-system-theme");
 });
 
 // Quit when all windows are closed.
@@ -184,6 +213,7 @@ app.on("ready", async () => {
   }
 
   createWindow();
+  updateApp(mainWindow);
 });
 
 // Exit cleanly on request from parent process in development mode.

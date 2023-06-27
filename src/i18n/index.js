@@ -15,6 +15,10 @@ import deMessages from "./locales/de.json";
 import ruMessages from "./locales/ru.json";
 import viMessages from "./locales/vi.json";
 import frMessages from "./locales/fr.json";
+import itMessages from "./locales/it.json";
+import koMessages from "./locales/ko.json";
+import esMessages from "./locales/es.json";
+import jaMessages from "./locales/ja.json";
 
 const messages = {
   en: enMessages,
@@ -22,7 +26,11 @@ const messages = {
   de: deMessages,
   ru: ruMessages,
   vi: viMessages,
+  it: itMessages,
   fr: frMessages,
+  ko: koMessages,
+  es: esMessages,
+  ja: jaMessages,
 };
 
 const i18n = createI18n({

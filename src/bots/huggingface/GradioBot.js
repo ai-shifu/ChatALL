@@ -6,7 +6,7 @@ import i18n from "@/i18n";
 export default class GradioBot extends Bot {
   static _brandId = "gradio"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "GradioBot"; // Class name of the bot
-  static _logoFilename = "gradio-logo.svg"; // Place it in assets/bots/
+  static _logoFilename = "gradio-logo.svg"; // Place it in public/bots/
   static _loginUrl = ""; // Any Gradio URL
   static _fnIndexes = [0]; // Indexes of the APIs to call in order. Sniffer it by devtools.
 
@@ -120,10 +120,18 @@ export default class GradioBot extends Bot {
           } else if (event.msg === "process_completed") {
             // Done
             if (event.success && event.output.data) {
-              onUpdateResponse(callbackParam, {
-                content: this.parseData(fn_index, event.output.data),
-                done: fn_index == this.constructor._fnIndexes.slice(-1), // Only the last one is done
-              });
+              if (
+                typeof event.output.data[2] !== "string" ||
+                event.output.data[2] === ""
+              ) {
+                onUpdateResponse(callbackParam, {
+                  content: this.parseData(fn_index, event.output.data),
+                  done: fn_index == this.constructor._fnIndexes.slice(-1), // Only the last one is done
+                });
+              } else {
+                const errorMsg = this.parseError(event.output.data[2]);
+                reject(new Error(errorMsg));
+              }
             } else {
               reject(new Error(event.output.error));
             }
@@ -165,5 +173,9 @@ export default class GradioBot extends Bot {
    */
   async createChatContext() {
     return Math.random().toString(36).substring(2);
+  }
+
+  parseError(errorMsg) {
+    return errorMsg;
   }
 }
