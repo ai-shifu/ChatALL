@@ -1,4 +1,6 @@
 import axios from "axios";
+import store from "@/store";
+import i18n from "@/i18n";
 import ChatGPTBot from "./ChatGPTBot";
 
 export default class ChatGPT4Bot extends ChatGPTBot {
@@ -8,6 +10,24 @@ export default class ChatGPT4Bot extends ChatGPTBot {
 
   constructor() {
     super();
+  }
+
+  async confirmBeforeUsing(confirmModal) {
+    if (
+      store.state.chatgpt.riskConfirmed ||
+      (this.constructor._model !== "gpt-4" &&
+        this.constructor._model !== "gpt-4-browsing" &&
+        this.constructor._model !== "gpt-4-mobile")
+    )
+      return true;
+
+    const confirmed = await confirmModal.showModal(
+      i18n.global.t("chatGpt.riskWarningTitle"),
+      i18n.global.t("chatGpt.riskWarningText"),
+    );
+
+    store.state.chatgpt.riskConfirmed = confirmed;
+    return confirmed;
   }
 
   async checkAvailability() {
