@@ -6,7 +6,7 @@
     >
       <template v-for="(message, index) in filteredMessages" :key="index">
         <!-- Check if the current message is a prompt
-          If true, render <chat-message> component and set responses array empty -->
+          If true, render <chat-prompt> component and set responses array empty -->
         <chat-prompt
           v-if="checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message)"
           :columns="columns"
