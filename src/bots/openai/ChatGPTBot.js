@@ -17,7 +17,7 @@ export default class ChatGPTBot extends Bot {
   static _loginUrl = "https://chat.openai.com/";
   // Remove Electron from the user agent to avoid blank login screen of Google
   static _userAgent =
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) ChatALL/1.18.13 Chrome/112.0.5615.165 Safari/537.36";
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) chatall/1.29.40 Chrome/114.0.5735.134 Safari/537.36";
   static _model = "";
   static _lock = new AsyncLock(); // All ChatGPT bots share the same lock
 
