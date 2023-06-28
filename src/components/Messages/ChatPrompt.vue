@@ -1,5 +1,9 @@
 <template>
-  <v-card ref="root" class="message prompt">
+  <v-card
+    ref="root"
+    class="message prompt"
+    :class="props.isThread ? 'thread-prompt' : ''"
+  >
     <pre>{{ props.message.content }}</pre>
   </v-card>
 </template>
@@ -17,6 +21,10 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  isThread: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 watch(
@@ -33,20 +41,26 @@ onMounted(() => {
 
 <style scoped>
 .message {
-    border-radius: 8px;
-    padding: 16px;
-    word-wrap: break-word;
-    text-align: left;
+  border-radius: 8px;
+  padding: 16px;
+  word-wrap: break-word;
+  text-align: left;
 }
 
 .prompt {
-    background-color: rgb(var(--v-theme-prompt));
-    width: fit-content;
-    grid-column: 1 / span var(--columns);
+  background-color: rgb(var(--v-theme-prompt));
+  width: fit-content;
+  grid-column: 1 / span var(--columns);
 }
 
 .prompt pre {
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
   font-family: inherit;
+}
+
+.thread-prompt {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 </style>

@@ -11,7 +11,6 @@
           v-if="checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message)"
           :columns="columns"
           :message="message"
-          @update-message="updateMessage"
         ></chat-prompt>
         <template v-else>
           <!-- If current message is response, push current message to responses array.
