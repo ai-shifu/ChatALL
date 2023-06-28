@@ -75,6 +75,7 @@ export default createStore({
         ],
         contexts: {},
         messages: [],
+        threads: [],
       },
     ],
     currentChatIndex: 0,
@@ -144,12 +145,29 @@ export default createStore({
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.latestPromptIndex = promptIndex;
     },
+    setLatestThreadPromptIndex(state, { threadIndex, promptIndex }) {
+      const currentChat = state.chats[state.currentChatIndex].threads[threadIndex];
+      currentChat.latestPromptIndex = promptIndex;
+    },
+    setResponseThreadIndex(state, { responseIndex, threadIndex }) {
+      const currentChat = state.chats[state.currentChatIndex];
+      currentChat.messages[responseIndex].threadIndex = threadIndex;
+    },
     updateMessage(state, { indexes, message }) {
       const { chatIndex, messageIndex } = indexes;
       const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
       const chat = state.chats[i];
       chat.messages[messageIndex] = {
         ...chat.messages[messageIndex],
+        ...message,
+      };
+    },
+    updateThreadMessage(state, { indexes, message }) {
+      const { chatIndex, messageIndex, threadIndex } = indexes;
+      const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
+      const chat = state.chats[i];
+      chat.threads[threadIndex].messages[messageIndex] = {
+        ...chat.threads[threadIndex].messages[messageIndex],
         ...message,
       };
     },
@@ -169,6 +187,7 @@ export default createStore({
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.contexts = {};
       currentChat.messages = [];
+      currentChat.threads = [];
     },
     init(state) {
       // Upgrade messages data structure
@@ -191,6 +210,9 @@ export default createStore({
         }
         state.selectedBots = null;
       }
+      if (state.chats[0].threads === undefined) {
+        state.chats[0].threads = [];
+      }
     },
     setTheme(state, theme) {
       state.theme = theme;
@@ -202,7 +224,7 @@ export default createStore({
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
       const currentChat = state.chats[state.currentChatIndex];
-      if (!promptIndex) {
+      if (promptIndex === undefined) {
         // if promptIndex not found, not resend, push to messages array
         const promptMessage = {
           type: "prompt",
@@ -248,6 +270,77 @@ export default createStore({
         );
       }
     },
+    sendPromptInThread(
+      { commit, state, dispatch },
+      { prompt, bot, responseIndex, threadIndex, promptIndex },
+    ) {
+      const currentChat = state.chats[state.currentChatIndex];
+      let thread;
+      if (threadIndex !== undefined) {
+        // existing thread
+        thread = currentChat.threads[threadIndex];
+      } else {
+        // new thread
+        const newThreadMessage = {
+          responseIndex: responseIndex,
+          messages: [],
+        };
+        newThreadMessage.index = currentChat.threads.push(newThreadMessage) - 1;
+        thread = newThreadMessage;
+        threadIndex = thread.index;
+        // update threadIndex to response
+        commit("setResponseThreadIndex", {
+          responseIndex,
+          threadIndex: thread.index,
+        });
+      }
+
+      if (promptIndex === undefined) { // index starts at zero, using `if (!promptIndex)` will enter wrong condition for first time.
+        // if promptIndex not found, not resend, push to messages array
+        const threadPromptMessage = {
+          type: "prompt",
+          content: prompt,
+        };
+        // add message
+        threadPromptMessage.index = thread.messages.push(threadPromptMessage) - 1;
+        promptIndex = threadPromptMessage.index;
+      }
+      commit("setLatestThreadPromptIndex", {threadIndex: thread.index, promptIndex}); // to keep track of the latest prompt index for hiding old prompt's resend button
+
+      const threadResponseMessage = {
+        type: "response",
+        content: "",
+        format: bot.getOutputFormat(),
+        model: bot.constructor._model,
+        done: false,
+        highlight: false,
+        hide: false,
+        className: bot.getClassname(),
+        promptIndex: promptIndex,
+      };
+
+      // workaround for tracking message position
+      threadResponseMessage.index =
+        thread.messages.push(threadResponseMessage) - 1;
+
+      bot.sendPrompt(
+        prompt,
+        (indexes, values) =>
+          dispatch("updateThreadMessage", { indexes, message: values }),
+        {
+          chatIndex: state.currentChatIndex,
+          messageIndex: threadResponseMessage.index,
+          threadIndex: threadIndex,
+        },
+      );
+
+      getMatomo().trackEvent(
+        "prompt",
+        "sendTo",
+        bot.getClassname(),
+        prompt.length,
+      );
+    },
     updateMessage({ commit, state }, { indexes, message: values }) {
       commit("updateMessage", { indexes, message: values });
 
@@ -260,6 +353,26 @@ export default createStore({
       const message = { ...chat.messages[indexes.messageIndex], ...values };
       if (values.done) {
         getMatomo()?.trackEvent(
+          "prompt",
+          "received",
+          message.className,
+          message.content.length,
+        );
+      }
+    },
+    updateThreadMessage({ commit, state }, { indexes, message: values }) {
+      commit("updateThreadMessage", { indexes, message: values });
+
+      // workaround for notifing the message window to scroll to bottom
+      commit("incrementUpdateCounter");
+
+      const i =
+        indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
+      const chat = state.chats[i];
+      let message = { ...chat.threads[indexes.threadIndex], ...values };
+
+      if (values.done) {
+        getMatomo().trackEvent(
           "prompt",
           "received",
           message.className,
