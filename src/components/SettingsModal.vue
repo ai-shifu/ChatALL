@@ -15,9 +15,9 @@
         <v-tabs
           v-model="tab"
           bg-color="primary"
-          color="red-lighten-1"
         >
           <v-tab value="general">{{ $t("settings.general") }}</v-tab>
+          <v-tab value="bots">{{ $t("settings.bots") }}</v-tab>
           <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
         </v-tabs>
         <v-btn
@@ -71,10 +71,10 @@
           v-for="(setting, index) in settings"
           :key="index"
         >
-          <v-divider v-if="tab =='general'"></v-divider>
+          <v-divider v-if="tab =='bots'"></v-divider>
           <div
             class="section"
-            v-if="tab =='general'"
+            v-if="tab =='bots'"
           >
             <component :is="setting"></component>
           </div>

@@ -13,7 +13,8 @@
     "theme": "主题",
     "system": "系统",
     "light": "浅色",
-    "dark": "深色"
+    "dark": "深色",
+    "bots": "AI 模型"
   },
   "header": {
     "clearMessages": "清空所有消息？",
@@ -162,23 +163,26 @@
     "wrapAround": "循环查找"
   },
   "proxy":{
-    "name": "代理服务器配置",
+    "name": "代理服务器",
     "address": "代理服务器地址",
-    "addressHint":"代理服务器地址，如 http://127.0.0.1:7890",
+    "addressHint":"代理服务器地址，如 http://127.0.0.1:7890 socks5://127.0.0.1:7890",
     "enable":"启用",
     "disable":"禁用",
     "enableProxy":"启用代理",
     "proxyMode":"代理模式",
-    "globalMode":"全局模式",
-    "pacMode":"PAC模式",
-    "byPass":"不使用代理的地址（仅对全局代理模式生效）",
+    "globalMode":"普通模式",
+    "pacFileMode":"PAC 文件模式",
+    "PACUrlMode":"PAC URL模式",
+    "byPass":"不使用代理（仅对普通模式生效）",
     "byPassHint":"不使用代理的地址，是用英文 ';' 分隔，最后不要出现;号，如'<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
     "fromFile":"从文件加载",
     "fromURL":"从URL加载",
-    "pacUrl":"PAC URL地址",
+    "PACUrl":"PAC URL地址",
     "pacFile":"PAC 文件",
-    "pacFileUsing":"当前使用的PAC 文件",
+    "pacFileUsing":"当前使用的PAC文件",
     "pacFileNew":"选择其他PAC文件",
+    "quickSet":"快捷配置",
+    "fullSet":"高级配置",
     "action":"操作",
     "onlySave":"仅保存",
     "saveAndApply":"保存并应用",
@@ -188,6 +192,10 @@
     "proxyFilePath":"代理配置文件保存路径",
     "proxyFilePathHint":"你可以备份这个配置文件，或者用其他程序修改这个配置",
     "saveSuccess":"保存成功",
-    "saveFailed":"保存失败"
+    "saveFailed":"保存失败",
+    "resetAllMessage":"所有代理的配置（包括已保存的）都会丢失，确定重置吗？",
+    "reloadMessage":"所有未经保存的设置都会丢失，确定重新加载吗？",
+    "saveAndActiveMessage":"应用代理需要重启本程序，确定重启吗？",
+    "googleService":"谷歌各种资源"
   }
 }

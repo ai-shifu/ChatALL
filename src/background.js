@@ -15,13 +15,13 @@ let mainWindow = null;
 const userDataPath = app.getPath('userData');
 const proxySettingPath = path.join(userDataPath, 'proxySetting.json');
 const defaultProxySetting = {
-  enableProxy: "No",
+  enableProxy: false,
   proxyMode: "All",
-  proxyServer: "http://127.0.0.1:7890",
-  proxyBypassList: "<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com",
-  PACMode: "File",
+  proxyServer: "",
+  proxyBypassList: "<local>",
   PACUrl: "",
   PACfile: "",
+  bypassBotsProxy:"[]"
 };
 let proxySetting;
 
@@ -36,10 +36,10 @@ async function initProxyDefault() {
   fs.writeFile(proxySettingPath, JSON.stringify(defaultProxySetting), 'utf8', (err) => {
     if (err) {
       console.error(`Create proxy setting file failed: ${err}`);
-      return "Failed"
+      return false
     } else {
-      console.error(`Create proxy setting file success.`);
-      return "Success"
+      console.info(`Create proxy setting file success.`);
+      return true
     }
   });
 }
@@ -63,21 +63,19 @@ async function getProxySetting() {
       }
 
       // Set the proxy
-      if (proxySetting.proxyServer && proxySetting.enableProxy === "Yes") {
+      if (proxySetting.proxyServer && proxySetting.enableProxy) {
+
         if (proxySetting.proxyMode === "All") {
           app.commandLine.appendSwitch("proxy-server", proxySetting.proxyServer);
           app.commandLine.appendSwitch("proxy-bypass-list", proxySetting.proxyBypassList ?? '<local>');
-        } else if (proxySetting.proxyMode === "PAC") {
-          if (proxySetting.PACMode === "File" && proxySetting.PACfile) {
+        } else if (proxySetting.proxyMode === "PACFile" && proxySetting.PACfile) {
             // Note: proxy-pac-url can not load file via 'file://' , we need to change to base64 format
             let data = getBase64(proxySetting.PACfile);
             app.commandLine.appendSwitch("proxy-pac-url", data);
-          } else if (proxySetting.PACMode === "URL" && proxySetting.PACUrl) {
+          } else if (proxySetting.proxyMode === "PACUrl" && proxySetting.PACUrl) {
             app.commandLine.appendSwitch("proxy-pac-url", proxySetting.PACUrl);
           }
         }
-
-      }
     } catch (err) {
       console.error(`Read proxy setting file failed: ${err}`);
     }

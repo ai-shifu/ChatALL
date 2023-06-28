@@ -13,7 +13,8 @@
     "theme": "Theme",
     "system": "System",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "bots": "AI Bots"
   },
   "header": {
     "clearMessages": "Clear all messages?",
@@ -164,21 +165,24 @@
   "proxy":{
     "name": "Proxy",
     "address": "Proxy Server Address",
-    "addressHint":"Proxy server address, e.g., http://127.0.0.1:7890",
+    "addressHint":"Proxy Server Address, e.g., http://127.0.0.1:7890 socks5://127.0.0.1:7890",
     "enable":"Enable",
     "disable":"Disable",
     "enableProxy":"Enable Proxy",
     "proxyMode":"Proxy Mode",
     "globalMode":"Global Mode",
-    "pacMode":"PAC Mode",
+    "pacFileMode":"PAC File Mode",
+    "PACUrlMode":"PAC URL Mode",
     "byPass":"Non-proxy Addresses (only effective for Global Mode)",
     "byPassHint":"Non-proxy addresses, separated by ';' in English, no ';' at the end, e.g., '<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
     "fromFile":"Load from File",
     "fromURL":"Load from URL",
-    "pacUrl":"PAC URL Address",
+    "PACUrl":"PAC URL Address",
     "pacFile":"PAC File",
     "pacFileUsing":"Currently Used PAC File",
     "pacFileNew":"Select Other PAC File",
+    "quickSet":"Quick Configuration",
+    "fullSet":"Advanced Configuration",
     "action":"Action",
     "onlySave":"Save Only",
     "saveAndApply":"Save and Apply",
@@ -188,6 +192,10 @@
     "proxyFilePath":"Proxy Configuration File Save Path",
     "proxyFilePathHint":"You can backup this configuration file, or modify it with other programs",
     "saveSuccess":"Save Successful",
-    "saveFailed":"Save Failed"
+    "saveFailed":"Save Failed",
+    "resetAllMessage":"All settings (include saved) will be lost, are you sure?",
+    "reloadMessage":"All settings without save will be lost, are you sure?",
+    "saveAndActiveMessage":"Activate the proxy configuration will restart the program, are you sure?",
+    "googleService":"Google Service"
   }
 }

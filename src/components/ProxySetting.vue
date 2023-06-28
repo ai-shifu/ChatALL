@@ -1,68 +1,93 @@
 <template>
   <v-list>
     <v-list-item>
-      <v-list-item-title>{{ $t("proxy.address") }}</v-list-item-title>
-      <v-text-field
-        v-model="proxySettings.proxyServer"
-        :hint="$t('proxy.addressHint')"
-      ></v-text-field>
-      <v-radio-group
-        inline
+      <v-list-item-title>{{ $t("proxy.enableProxy") }}</v-list-item-title>
+      <v-checkbox
+        :label="$t('proxy.enable')"
         v-model="proxySettings.enableProxy"
-        :label="$t('proxy.enableProxy')"
-      >
-        <v-radio
-          :label="$t('proxy.enable')"
-          value="Yes"
-        ></v-radio>
-        <v-radio
-          :label="$t('proxy.disable')"
-          value="No"
-        ></v-radio>
-      </v-radio-group>
+      ></v-checkbox>
     </v-list-item>
     <v-list-item>
-      <v-list-item-title>{{ $t("proxy.proxyMode") }}</v-list-item-title>
+      <v-list-item-title>{{ $t("proxy.proxyMode") }} </v-list-item-title>
       <v-radio-group
         inline
         v-model="proxySettings.proxyMode"
-        label=""
       >
         <v-radio
           :label="$t('proxy.globalMode')"
           value="All"
+          v-bind="props"
         ></v-radio>
         <v-radio
-          :label="$t('proxy.pacMode')"
-          value="PAC"
+          :label="$t('proxy.pacFileMode')"
+          value="PACFile"
         ></v-radio>
+        <v-radio
+          :label="$t('proxy.PACUrlMode')"
+          value="PACUrl"
+        ></v-radio>
+
       </v-radio-group>
     </v-list-item>
-    <v-list-item v-if="proxySettings.proxyMode != 'PAC'">
-      <v-list-item-title>{{ $t("proxy.byPass") }}</v-list-item-title>
-      <v-textarea
-        v-model="proxySettings.proxyBypassList"
-        :hint="$t('proxy.byPassHint')"
+    <v-list-item>
+      <v-list-item-title>{{ $t("proxy.address") }}</v-list-item-title>
+      <v-text-field
+        v-model="proxySettings.proxyServer"
+        :hint="$t('proxy.addressHint')"
         persistent-hint
-      ></v-textarea>
+      ></v-text-field>
     </v-list-item>
-    <v-list-item v-if="proxySettings.proxyMode == 'PAC'">
-      <v-list-item-title>{{ $t("proxy.pacMode") }}</v-list-item-title>
-      <v-radio-group
-        inline
-        v-model="proxySettings.PACMode"
+    <v-list-item>
+      <v-divider></v-divider>
+    </v-list-item>
+    <v-list-item v-if="proxySettings.proxyMode == 'All'">
+      <v-list-item-title>{{ $t("proxy.byPass") }}</v-list-item-title>
+
+      <v-tabs
+        fixed-tabs
+        v-model="bypassSetMode"
       >
-        <v-radio
-          :label="$t('proxy.fromFile')"
-          value="File"
-        ></v-radio>
-        <v-radio
-          :label="$t('proxy.fromURL')"
-          value="URL"
-        ></v-radio>
-      </v-radio-group>
+        <v-tab value="quickSet">
+          {{ $t("proxy.quickSet") }}
+        </v-tab>
+        <v-tab value="fullSet">
+          {{ $t("proxy.fullSet") }}
+        </v-tab>
+      </v-tabs>
+      <v-card>
+        <v-row
+          class="align-content-start"
+          v-if="bypassSetMode == 'quickSet'"
+        >
+
+          <template
+            v-for="(bot, index) in bots"
+            :key="index"
+          >
+            <v-col
+              cols="auto"
+              class="pt-2"
+            >
+              <v-checkbox
+                v-model="botsProxy"
+                :label="bot.name"
+                :value="bot.name"
+                hide-details
+              ></v-checkbox>
+            </v-col>
+          </template>
+
+        </v-row>
+      </v-card>
+      <v-card v-if="bypassSetMode == 'fullSet'">
+        <v-textarea
+          v-model="proxySettings.proxyBypassList"
+          :hint="$t('proxy.byPassHint')"
+          persistent-hint
+        ></v-textarea>
+      </v-card>
     </v-list-item>
-    <v-list-item v-if="proxySettings.proxyMode == 'PAC'">
+    <v-list-item v-if="proxySettings.proxyMode == 'PACFile'">
       <v-list-item-title>{{ $t("proxy.pacFile") }}</v-list-item-title>
       <v-text-field
         v-model="proxySettings.PACfile"
@@ -70,42 +95,46 @@
         disabled
       ></v-text-field>
       <v-file-input
-      :label="$t('proxy.pacFileNew')"
+        :label="$t('proxy.pacFileNew')"
         @change="onFileChange"
       ></v-file-input>
     </v-list-item>
-    <v-list-item v-if="proxySettings.proxyMode == 'PAC'">
-      <v-list-item-title>{{ $t('proxy.pacUrl') }}</v-list-item-title>
+    <v-list-item v-if="proxySettings.proxyMode == 'PACUrl'">
+      <v-list-item-title>{{ $t('proxy.PACUrl') }}</v-list-item-title>
       <v-text-field
         v-model="proxySettings.PACUrl"
-        :label="$t('proxy.pacUrl')"
+        :label="$t('proxy.PACUrl')"
       ></v-text-field>
     </v-list-item>
-
     <v-list-item>
-      <v-list-item-title>{{ $t('proxy.action') }}</v-list-item-title>
+      <v-divider></v-divider>
+    </v-list-item>
+    <v-list-item>
       <v-btn
-        color="#5865f2"
-        @click="onlySave"
-      >
-        {{ $t('proxy.onlySave') }}
-      </v-btn>
-      <v-btn
-        color="#5865f2"
+        color="primary"
         @click="saveAndActive"
         class="ma-2 pa-2"
       >
         {{ $t('proxy.saveAndApply') }}
       </v-btn>
       <v-btn
-        color="#5865f2"
+        variant="outlined"
+        color="primary"
+        @click="onlySave"
+      >
+        {{ $t('proxy.onlySave') }}
+      </v-btn>
+      <v-btn
+        variant="outlined"
+        color="primary"
         @click="reload"
         class="ma-2 pa-2"
       >
         {{ $t('proxy.reload') }}
       </v-btn>
       <v-btn
-        color="#5865f2"
+        variant="outlined"
+        color="primary"
         @click="resetAll"
         class="ma-2 pa-2"
       >
@@ -113,11 +142,7 @@
       </v-btn>
     </v-list-item>
     <v-list-item>
-        <v-alert
-    type="info"
-    variant="outlined"
-    :text="$t('proxy.saveHint')"
-  ></v-alert>
+      <v-divider></v-divider>
     </v-list-item>
     <v-list-item>
       <v-list-item-title>{{ $t('proxy.proxyFilePath') }}</v-list-item-title>
@@ -136,92 +161,189 @@
   >
     {{ snackbar.text }}
   </v-snackbar>
+  <ConfirmModal ref="confirmModal" />
 </template>
   
-  <script>
+<script setup>
+import ConfirmModal from "@/components/ConfirmModal.vue";
 import i18n from "@/i18n";
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref, watch } from "vue";
+
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
+const confirmModal = ref(null);
 
-export default {
-  setup() {
-    const proxySettings = ref({});
-    const userDataPath = ref("");
-    const snackbar = reactive({
-      show: false,
-      text: "",
-      timeout: 1500,
-      color: "success",
-    });
-    const newInputfile = ref("");
+const proxySettings = ref({});
+const userDataPath = ref("");
+const snackbar = reactive({
+  show: false,
+  text: "",
+  timeout: 1500,
+  color: "success",
+});
 
-    onMounted(async () => {
-      userDataPath.value = await ipcRenderer.invoke("get-proxy-setting-path");
-      proxySettings.value = await ipcRenderer.invoke(
-        "get-proxy-setting-content",
-      );
-    });
-
-    async function resetAll() {
-      console.log("reset all");
-      await ipcRenderer.invoke("reset-proxy-default-setting");
-      proxySettings.value = await ipcRenderer.invoke(
-        "get-proxy-setting-content",
-      );
-    }
-
-    async function reload() {
-      proxySettings.value = await ipcRenderer.invoke(
-        "get-proxy-setting-content",
-      );
-    }
-
-    async function onlySave() {
-      console.log(proxySettings.value);
-      const oldPacFile = proxySettings.value.PACfile;
-      if (newInputfile.value) {
-        proxySettings.value.PACfile = newInputfile.value;
-      }
-      const data = JSON.parse(JSON.stringify(proxySettings.value));
-      const reply = await ipcRenderer.invoke("save-proxy-setting", { data });
-      console.log(reply);
-      if (reply.success) {
-        snackbar.text = i18n.global.t("proxy.saveSuccess");
-        snackbar.color = "success";
-        snackbar.timeout = 1000;
-      } else {
-        proxySettings.value.PACfile = oldPacFile;
-        // snackbar.text = `Save failed: ${reply.error}`;
-        snackbar.text = `${i18n.global.t("proxy.saveFailed")}: ${reply.error}`;
-        snackbar.color = "error";
-        snackbar.timeout = 3000;
-      }
-      snackbar.show = true;
-    }
-
-    function onFileChange(file) {
-      console.log(file);
-      console.log(file.target.files[0].path);
-      newInputfile.value = file.target.files[0].path;
-    }
-
-    async function saveAndActive() {
-      console.log(proxySettings.value);
-      await onlySave();
-      await ipcRenderer.invoke("save-proxy-and-restart");
-    }
-
-    return {
-      proxySettings,
-      userDataPath,
-      snackbar,
-      onlySave,
-      saveAndActive,
-      reload,
-      resetAll,
-      onFileChange,
-    };
+const bots = ref([
+  {
+    name: i18n.global.t("bard.name"),
+    bypassList: "*.google.com",
   },
-};
+  {
+    name: i18n.global.t("bingChat.name"),
+    bypassList: "*.bing.com",
+  },
+  {
+    name: i18n.global.t("chatGpt.name"),
+    bypassList: "*.openai.com",
+  },
+  {
+    name: i18n.global.t("ernie.name"),
+    bypassList: "yiyan.baidu.com",
+  },
+  {
+    name: i18n.global.t("huggingChat.name"),
+    bypassList: "*.huggingface.co",
+  },
+  {
+    name: i18n.global.t("gradio.name"),
+    bypassList: "*.gradio.app",
+  },
+  {
+    name: i18n.global.t("lmsys.name"),
+    bypassList: "*.lmsys.org",
+  },
+  {
+    name: i18n.global.t("moss.name"),
+    bypassList: "*.moss.fastnlp.top",
+  },
+  {
+    name: i18n.global.t("openaiApi.name"),
+    bypassList: "*.openai.com",
+  },
+  {
+    name: i18n.global.t("azureOpenaiApi.name"),
+    bypassList: "*.azure.com",
+  },
+  {
+    name: i18n.global.t("poe.name"),
+    bypassList: "*.poe.com",
+  },
+  {
+    name: i18n.global.t("qianWen.name"),
+    bypassList: "*.aliyun.com",
+  },
+  {
+    name: i18n.global.t("skyWork.name"),
+    bypassList: "*.tiangong.cn",
+  },
+  {
+    name: i18n.global.t("spark.name"),
+    bypassList: "*.xfyun.cn;*.mudu.tv;geetest.com",
+  },
+  {
+    name: i18n.global.t("wenxinQianfan.name"),
+    bypassList: "*.aip.baidubce.com",
+  },
+  {
+    name: i18n.global.t("dev.name"),
+    bypassList: "*.chatall.a",
+  },
+  {
+    name: i18n.global.t("proxy.googleService"),
+    bypassList: "*.google.com",
+  },
+]);
+const botsProxy = ref([]);
+const newInputfile = ref("");
+const bypassSetMode = ref("");
+
+onMounted(async () => {
+  userDataPath.value = await ipcRenderer.invoke("get-proxy-setting-path");
+  proxySettings.value = await ipcRenderer.invoke("get-proxy-setting-content");
+  botsProxy.value = JSON.parse(proxySettings.value.bypassBotsProxy);
+});
+
+async function resetAll() {
+  const result = await confirmModal.value.showModal(
+    i18n.global.t("proxy.resetAllMessage"),
+  );
+  if (result) {
+    await ipcRenderer.invoke("reset-proxy-default-setting");
+    proxySettings.value = await ipcRenderer.invoke("get-proxy-setting-content");
+  }
+}
+
+async function reload() {
+  const result = await confirmModal.value.showModal(
+    i18n.global.t("proxy.reloadMessage"),
+  );
+  if (result) {
+    proxySettings.value = await ipcRenderer.invoke("get-proxy-setting-content");
+  }
+}
+
+async function onlySave() {
+  console.log(proxySettings.value);
+  const oldPacFile = proxySettings.value.PACfile;
+  if (newInputfile.value) {
+    proxySettings.value.PACfile = newInputfile.value;
+  }
+  const data = JSON.parse(JSON.stringify(proxySettings.value));
+  const reply = await ipcRenderer.invoke("save-proxy-setting", { data });
+  console.log(reply);
+  if (reply.success) {
+    snackbar.text = i18n.global.t("proxy.saveSuccess");
+    snackbar.color = "success";
+    snackbar.timeout = 1000;
+  } else {
+    proxySettings.value.PACfile = oldPacFile;
+    // snackbar.text = `Save failed: ${reply.error}`;
+    snackbar.text = `${i18n.global.t("proxy.saveFailed")}: ${reply.error}`;
+    snackbar.color = "error";
+    snackbar.timeout = 3000;
+  }
+  snackbar.show = true;
+}
+
+function onFileChange(file) {
+  console.log(file);
+  console.log(file.target.files[0].path);
+  newInputfile.value = file.target.files[0].path;
+}
+
+async function saveAndActive() {
+  const result = await confirmModal.value.showModal(
+    i18n.global.t("proxy.saveAndActiveMessage"),
+  );
+  if (result) {
+    await onlySave();
+    await ipcRenderer.invoke("save-proxy-and-restart");
+  }
+}
+
+watch(botsProxy, (newVal) => {
+  let bypassListSet = new Set(proxySettings.value.proxyBypassList.split(";"));
+  console.log(bypassListSet);
+  console.log(newVal);
+  newVal.forEach((botName) => {
+    const bot = bots.value.find((bot) => bot.name === botName);
+    if (bot) {
+      bot.bypassList.split(";").forEach((item) => bypassListSet.add(item));
+    }
+  });
+  const bypassList = Array.from(bypassListSet).join(";");
+  console.log(bypassList); // 输出合并后的bypassList
+  proxySettings.value.proxyBypassList = bypassList;
+  proxySettings.value.bypassBotsProxy = JSON.stringify(botsProxy.value);
+});
+
+defineExpose({
+  proxySettings,
+  userDataPath,
+  snackbar,
+  onlySave,
+  saveAndActive,
+  reload,
+  resetAll,
+  onFileChange,
+});
 </script>
