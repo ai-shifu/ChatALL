@@ -36,7 +36,7 @@ export default class BardBot extends Bot {
   static _loginUrl = "https://bard.google.com/";
   // Remove Electron from the user agent to avoid blank login screen
   static _userAgent =
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) ChatALL/1.18.13 Chrome/112.0.5615.165 Safari/537.36";
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) chatall/1.29.40 Chrome/114.0.5735.134 Safari/537.36";
   static _lock = new AsyncLock();
 
   constructor() {

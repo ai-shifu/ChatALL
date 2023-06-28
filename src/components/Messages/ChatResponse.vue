@@ -14,7 +14,7 @@
         v-if="isShowPagingButton"
         @click="carouselModel = Math.max(carouselModel - 1, 0)"
         :disabled="carouselModel === 0"
-        style="margin-left: .5rem"
+        style="margin-left: 0.5rem"
       >
         <v-icon>mdi-menu-left</v-icon>
       </v-btn>
@@ -132,9 +132,10 @@ const isShowResendButton = computed(() => {
   return (
     isAllDone.value &&
     messageBotIsSelected() &&
-    props.messages[0].promptId &&
-    store.getters.currentChat.latestPromptId &&
-    store.getters.currentChat.latestPromptId === props.messages[0].promptId
+    props.messages[0].promptIndex &&
+    store.getters.currentChat.latestPromptIndex &&
+    store.getters.currentChat.latestPromptIndex ===
+      props.messages[0].promptIndex
   );
 });
 const isShowPagingButton = computed(() => props.messages.length > 1);
@@ -198,18 +199,17 @@ function handleClick(event) {
 }
 
 function resendPrompt(responseMessage) {
-  if (!responseMessage.promptId) {
+  if (!responseMessage.promptIndex) {
     return;
   }
-  const promptMessage = store.getters.currentChat.messages.find(
-    (m) => m.id === responseMessage.promptId && m.type === "prompt",
-  );
+  const promptMessage =
+    store.getters.currentChat.messages[responseMessage.promptIndex];
   if (promptMessage) {
     const botInstance = bots.getBotByClassName(responseMessage.className);
     store.dispatch("sendPrompt", {
       prompt: promptMessage.content,
       bots: [botInstance],
-      promptId: responseMessage.promptId,
+      promptIndex: responseMessage.promptIndex,
     });
   } else {
     // show not found
