@@ -12,14 +12,7 @@
       >
         <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-tabs
-          v-model="tab"
-          bg-color="primary"
-        >
-          <v-tab value="general">{{ $t("settings.general") }}</v-tab>
-          <v-tab value="bots">{{ $t("settings.bots") }}</v-tab>
-          <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
-        </v-tabs>
+
         <v-btn
           icon
           dark
@@ -28,7 +21,19 @@
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
+      <v-row>
+        <v-col cols="2">
+        <v-tabs
+          v-model="tab"
 
+          direction="vertical"
+        >
+          <v-tab value="general">{{ $t("settings.general") }}</v-tab>
+          <v-tab value="bots">{{ $t("settings.bots") }}</v-tab>
+          <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
+        </v-tabs>
+    </v-col>
+    <v-col>
       <v-list
         lines="two"
         subheader
@@ -86,6 +91,8 @@
           <component :is="proxy"></component>
         </div>
       </v-list>
+    </v-col>
+    </v-row>
     </v-card>
   </v-dialog>
 </template>

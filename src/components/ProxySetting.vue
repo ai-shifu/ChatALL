@@ -3,7 +3,7 @@
     <v-list-item>
       <v-list-item-title>{{ $t("proxy.enableProxy") }}</v-list-item-title>
       <v-checkbox
-        :label="$t('proxy.enable')"
+        :label="$t('settings.enable')"
         v-model="proxySettings.enableProxy"
       ></v-checkbox>
     </v-list-item>
@@ -15,7 +15,7 @@
       >
         <v-radio
           :label="$t('proxy.globalMode')"
-          value="All"
+          value="normal"
           v-bind="props"
         ></v-radio>
         <v-radio
@@ -40,7 +40,7 @@
     <v-list-item>
       <v-divider></v-divider>
     </v-list-item>
-    <v-list-item v-if="proxySettings.proxyMode == 'All'">
+    <v-list-item v-if="proxySettings.proxyMode == 'normal'">
       <v-list-item-title>{{ $t("proxy.byPass") }}</v-list-item-title>
 
       <v-tabs
@@ -136,7 +136,6 @@
         variant="outlined"
         color="primary"
         @click="resetAll"
-        class="ma-2 pa-2"
       >
         {{ $t('proxy.reset') }}
       </v-btn>
@@ -242,10 +241,6 @@ const bots = ref([
   {
     name: i18n.global.t("wenxinQianfan.name"),
     bypassList: "*.aip.baidubce.com",
-  },
-  {
-    name: i18n.global.t("dev.name"),
-    bypassList: "*.chatall.a",
   },
   {
     name: i18n.global.t("proxy.googleService"),

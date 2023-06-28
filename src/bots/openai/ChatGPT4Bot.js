@@ -1,6 +1,6 @@
-import axios from "axios";
-import store from "@/store";
 import i18n from "@/i18n";
+import store from "@/store";
+import axios from "axios";
 import ChatGPTBot from "./ChatGPTBot";
 
 export default class ChatGPT4Bot extends ChatGPTBot {

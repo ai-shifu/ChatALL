@@ -16,7 +16,7 @@ const userDataPath = app.getPath('userData');
 const proxySettingPath = path.join(userDataPath, 'proxySetting.json');
 const defaultProxySetting = {
   enableProxy: false,
-  proxyMode: "All",
+  proxyMode: "normal",
   proxyServer: "",
   proxyBypassList: "<local>",
   PACUrl: "",
@@ -65,7 +65,7 @@ async function getProxySetting() {
       // Set the proxy
       if (proxySetting.proxyServer && proxySetting.enableProxy) {
 
-        if (proxySetting.proxyMode === "All") {
+        if (proxySetting.proxyMode === "normal") {
           app.commandLine.appendSwitch("proxy-server", proxySetting.proxyServer);
           app.commandLine.appendSwitch("proxy-bypass-list", proxySetting.proxyBypassList ?? '<local>');
         } else if (proxySetting.proxyMode === "PACFile" && proxySetting.PACfile) {

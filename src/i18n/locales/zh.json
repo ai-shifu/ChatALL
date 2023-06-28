@@ -166,8 +166,6 @@
     "name": "代理服务器",
     "address": "代理服务器地址",
     "addressHint":"代理服务器地址，如 http://127.0.0.1:7890 socks5://127.0.0.1:7890",
-    "enable":"启用",
-    "disable":"禁用",
     "enableProxy":"启用代理",
     "proxyMode":"代理模式",
     "globalMode":"普通模式",
