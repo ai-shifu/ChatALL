@@ -2,7 +2,6 @@ import { createStore } from "vuex";
 import VuexPersist from "vuex-persist";
 import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
-import { v4 as uuidv4 } from "uuid";
 
 const getMatomo = function () {
   return window.Piwik.getAsyncTracker();
@@ -147,10 +146,6 @@ export default createStore({
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.latestPromptIndex = promptIndex;
-    },
-    setLatestPromptId(state, id) {
-      const currentChat = state.chats[state.currentChatIndex];
-      currentChat.latestPromptId = id;
     },
     updateMessage(state, { indexes, message }) {
       const { chatIndex, messageIndex } = indexes;
