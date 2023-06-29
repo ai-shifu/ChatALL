@@ -36,7 +36,7 @@
     "vue-i18n": "^9.2.2",
     "vue-matomo": "^4.2.0",
     "vue3-markdown-it": "^1.0.10",
-    "vue3-shortkey": "^4.0.0",
+    "vue3-shortkey": "github:rodrigopv/vue3-shortkey#pull/1/head",
     "vuetify": "^3.3.5",
     "vuex": "^4.1.0",
     "vuex-persist": "^3.1.3",
