@@ -197,6 +197,8 @@ function createNewWindow(url, userAgent = "") {
   const newWin = new BrowserWindow({
     width: 800,
     height: 600,
+    show: false,
+    backgroundColor: nativeTheme.shouldUseDarkColors ? "#1a1a20" : "#fff",
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -207,7 +209,9 @@ function createNewWindow(url, userAgent = "") {
   if (userAgent) {
     newWin.webContents.setUserAgent(userAgent);
   }
+  if (process.platform !== "darwin") newWin.minimize();
   newWin.loadURL(url);
+  newWin.show();
 
   newWin.on("close", async (e) => {
     e.preventDefault(); // Prevent the window from closing
