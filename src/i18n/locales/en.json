@@ -50,6 +50,19 @@
     "pastRounds": "How many rounds of past chats to carry?",
     "pastRoundsPrompt": "The more historical chats carried, the better the effect of multi-round dialogue, but it will also consume more costs"
   },
+  "azureOpenaiApi": {
+    "name": "Azure OpenAI Service",
+    "temperature": "Temperature",
+    "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
+    "temperature0": "More deterministic",
+    "temperature2": "More random",
+    "azureOpenAIApiKey": "Azure OpenAI API Key",
+    "azureApiInstanceName": "Azure OpenAI API InstanceName",
+    "azureApiInstanceNamePrompt": "View the instance name in Cognitive Services on https://portal.azure.com/",
+    "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
+    "azureOpenAIApiDeploymentNamePrompt": "View the deployment name in deployment list on https://oai.azure.com/",
+    "azureOpenAIApiVersion": "Azure OpenAI API Version"
+  },
   "bard": {
     "name": "Bard"
   },
@@ -110,19 +123,6 @@
     "temperature0": "More deterministic",
     "temperature2": "More random",
     "apiKey": "API Key"
-  },
-  "azureOpenaiApi": {
-    "name": "Azure OpenAI Service",
-    "temperature": "Temperature",
-    "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
-    "temperature0": "More deterministic",
-    "temperature2": "More random",
-    "azureOpenAIApiKey": "Azure OpenAI API Key",
-    "azureApiInstanceName": "Azure OpenAI API InstanceName",
-    "azureApiInstanceNamePrompt": "View the instance name in Cognitive Services on https://portal.azure.com/",
-    "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
-    "azureOpenAIApiDeploymentNamePrompt": "View the deployment name in deployment list on https://oai.azure.com/",
-    "azureOpenAIApiVersion": "Azure OpenAI API Version"
   },
   "poe": {
     "name": "Poe",

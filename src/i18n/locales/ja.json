@@ -49,6 +49,19 @@
     "pastRounds": "チャットのターン数を設定",
     "pastRoundsPrompt": "過去の会話記録が多ければ多いほど、多者間会話の効果は高くなりますが、コストもかかります。"
   },
+  "azureOpenaiApi": {
+    "name": "Azure OpenAI サービス",
+    "temperature": "温度",
+    "temperaturePrompt": "温度が高ければ高いほど、独創的な文章になるが、支離滅裂な文章になりやすい。",
+    "temperature0": "より決定論的",
+    "temperature2": "よりランダム",
+    "azureOpenAIApiKey": "Azure OpenAI API キー",
+    "azureApiInstanceName": "Azure OpenAI API インスタンス名",
+    "azureApiInstanceNamePrompt": "https://portal.azure.com/ の Cognitive Services でインスタンス名を表示する。",
+    "azureOpenAIApiDeploymentName": "Azure OpenAI API デプロイメント名",
+    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ の配置リストで配置名を表示する",
+    "azureOpenAIApiVersion": "Azure OpenAI API バージョン"
+  },
   "bard": {
     "name": "Bard"
   },
@@ -109,19 +122,6 @@
     "temperature0": "より決定論的な",
     "temperature2": "もっとランダム",
     "apiKey": "APIキー"
-  },
-  "azureOpenaiApi": {
-    "name": "Azure OpenAI サービス",
-    "temperature": "温度",
-    "temperaturePrompt": "温度が高ければ高いほど、独創的な文章になるが、支離滅裂な文章になりやすい。",
-    "temperature0": "より決定論的",
-    "temperature2": "よりランダム",
-    "azureOpenAIApiKey": "Azure OpenAI API キー",
-    "azureApiInstanceName": "Azure OpenAI API インスタンス名",
-    "azureApiInstanceNamePrompt": "https://portal.azure.com/ の Cognitive Services でインスタンス名を表示する。",
-    "azureOpenAIApiDeploymentName": "Azure OpenAI API デプロイメント名",
-    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ の配置リストで配置名を表示する",
-    "azureOpenAIApiVersion": "Azure OpenAI API バージョン"
   },
   "poe": {
     "name": "Poe",

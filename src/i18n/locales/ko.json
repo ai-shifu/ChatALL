@@ -49,6 +49,19 @@
     "pastRounds": "몇 번의 과거 채팅을 가지고 가야 합니까?",
     "pastRoundsPrompt": "과거 대화 기록이 많을수록 다자간 대화의 효과는 더 좋아지지만 비용도 더 많이 소모됩니다."
   },
+  "azureOpenaiApi": {
+    "name": "Azure OpenAI 서비스",
+    "temperature": "온도",
+    "temperaturePrompt": "온도가 높을수록 텍스트가 더 창의적이지만 일관성이 없을 가능성이 높습니다.",
+    "temperature0": "더 결정론적인",
+    "temperature2": "더 무작위",
+    "azureOpenAIApiKey": "Azure OpenAI API 키",
+    "azureApiInstanceName": "Azure OpenAI API 인스턴스 이름",
+    "azureApiInstanceNamePrompt": "https://portal.azure.com/ 의 Cognitive Services에서 인스턴스 이름 확인",
+    "azureOpenAIApiDeploymentName": "Azure OpenAI API 배포 이름",
+    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ 의 배포 목록에서 배포 이름을 확인",
+    "azureOpenAIApiVersion": "Azure OpenAI API 버전"
+  },
   "bard": {
     "name": "Bard"
   },
@@ -109,19 +122,6 @@
     "temperature0": "더 결정론적인",
     "temperature2": "더 무작위",
     "apiKey": "API 키"
-  },
-  "azureOpenaiApi": {
-    "name": "Azure OpenAI 서비스",
-    "temperature": "온도",
-    "temperaturePrompt": "온도가 높을수록 텍스트가 더 창의적이지만 일관성이 없을 가능성이 높습니다.",
-    "temperature0": "더 결정론적인",
-    "temperature2": "더 무작위",
-    "azureOpenAIApiKey": "Azure OpenAI API 키",
-    "azureApiInstanceName": "Azure OpenAI API 인스턴스 이름",
-    "azureApiInstanceNamePrompt": "https://portal.azure.com/ 의 Cognitive Services에서 인스턴스 이름 확인",
-    "azureOpenAIApiDeploymentName": "Azure OpenAI API 배포 이름",
-    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ 의 배포 목록에서 배포 이름을 확인",
-    "azureOpenAIApiVersion": "Azure OpenAI API 버전"
   },
   "poe": {
     "name": "Poe",
