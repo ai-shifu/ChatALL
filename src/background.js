@@ -18,8 +18,8 @@ const defaultProxySetting = {
   proxyMode: "normal",
   proxyServer: "",
   proxyBypassList: "<local>",
-  PACUrl: "",
-  PACfile: "",
+  pacUrl: "",
+  pacFile: "",
   bypassBotsProxy: "[]",
 };
 let proxySetting;
@@ -82,14 +82,14 @@ async function getProxySetting() {
             proxySetting.proxyBypassList ?? "<local>",
           );
         } else if (
-          proxySetting.proxyMode === "PACFile" &&
-          proxySetting.PACfile
+          proxySetting.proxyMode === "pacFile" &&
+          proxySetting.pacFile
         ) {
           // Note: proxy-pac-url can not load file via 'file://' , we need to change to base64 format
-          let data = getBase64(proxySetting.PACfile);
+          let data = getBase64(proxySetting.pacFile);
           app.commandLine.appendSwitch("proxy-pac-url", data);
-        } else if (proxySetting.proxyMode === "PACUrl" && proxySetting.PACUrl) {
-          app.commandLine.appendSwitch("proxy-pac-url", proxySetting.PACUrl);
+        } else if (proxySetting.proxyMode === "pacUrl" && proxySetting.pacUrl) {
+          app.commandLine.appendSwitch("proxy-pac-url", proxySetting.pacUrl);
         }
       }
     } catch (err) {

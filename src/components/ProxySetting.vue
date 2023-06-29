@@ -13,8 +13,8 @@
       <v-list-item-title>{{ $t("proxy.proxyMode") }} </v-list-item-title>
       <v-radio-group inline hide-details v-model="proxySettings.proxyMode">
         <v-radio :label="$t('proxy.globalMode')" value="normal"></v-radio>
-        <v-radio :label="$t('proxy.pacFileMode')" value="PACFile"></v-radio>
-        <v-radio :label="$t('proxy.PACUrlMode')" value="PACUrl"></v-radio>
+        <v-radio :label="$t('proxy.pacFileMode')" value="pacFile"></v-radio>
+        <v-radio :label="$t('proxy.pacUrlMode')" value="pacUrl"></v-radio>
       </v-radio-group>
     </v-list-item>
 
@@ -63,7 +63,7 @@
       </v-card>
     </v-list-item>
 
-    <v-list-item v-if="proxySettings.proxyMode == 'PACFile'">
+    <v-list-item v-if="proxySettings.proxyMode == 'pacFile'">
       <v-list-item-title>{{ $t("proxy.pacFile") }}</v-list-item-title>
       <v-text-field
         v-model="proxySettings.PACfile"
@@ -76,11 +76,11 @@
       ></v-file-input>
     </v-list-item>
 
-    <v-list-item v-if="proxySettings.proxyMode == 'PACUrl'">
-      <v-list-item-title>{{ $t("proxy.PACUrl") }}</v-list-item-title>
+    <v-list-item v-if="proxySettings.proxyMode == 'pacUrl'">
+      <v-list-item-title>{{ $t("proxy.pacUrl") }}</v-list-item-title>
       <v-text-field
-        v-model="proxySettings.PACUrl"
-        :label="$t('proxy.PACUrl')"
+        v-model="proxySettings.pacUrl"
+        :label="$t('proxy.pacUrl')"
       ></v-text-field>
     </v-list-item>
 
