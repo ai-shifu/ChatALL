@@ -16,7 +16,7 @@
       </v-toolbar>
       <v-row>
         <v-col cols="2">
-          <v-tabs v-model="tab" direction="vertical">
+          <v-tabs v-model="tab" direction="vertical" color="primary">
             <v-tab value="general">{{ $t("settings.general") }}</v-tab>
             <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
             <v-tab
@@ -172,5 +172,10 @@ const closeDialog = () => {
 <style scoped>
 :deep() .v-slider-thumb__label {
   color: rgb(var(--v-theme-font));
+}
+
+/* Keep the orignal case of tab names */
+.v-btn {
+  text-transform: none !important;
 }
 </style>
