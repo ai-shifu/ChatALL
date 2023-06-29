@@ -23,7 +23,9 @@
       <v-list-item-title>{{ $t("proxy.address") }}</v-list-item-title>
       <v-text-field
         v-model="proxySettings.proxyServer"
-        :hint="$t('proxy.addressHint')"
+        :hint="
+          $t('settings.forExample', { example: $t('proxy.addressExample') })
+        "
         persistent-hint
       ></v-text-field>
     </v-list-item>
