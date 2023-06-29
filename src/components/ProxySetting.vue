@@ -10,11 +10,7 @@
     <v-list-item>
       <v-list-item-title>{{ $t("proxy.proxyMode") }} </v-list-item-title>
       <v-radio-group inline v-model="proxySettings.proxyMode">
-        <v-radio
-          :label="$t('proxy.globalMode')"
-          value="normal"
-          v-bind="props"
-        ></v-radio>
+        <v-radio :label="$t('proxy.globalMode')" value="normal"></v-radio>
         <v-radio :label="$t('proxy.pacFileMode')" value="PACFile"></v-radio>
         <v-radio :label="$t('proxy.PACUrlMode')" value="PACUrl"></v-radio>
       </v-radio-group>
@@ -44,7 +40,11 @@
         </v-tab>
       </v-tabs>
       <v-card>
-        <v-row class="align-content-start" v-if="bypassSetMode == 'quickSet'">
+        <v-row
+          class="align-content-start"
+          v-if="bypassSetMode == 'quickSet'"
+          dense
+        >
           <template v-for="(bot, index) in bots" :key="index">
             <v-col cols="auto" class="pt-2">
               <v-checkbox
@@ -225,6 +225,7 @@ onMounted(async () => {
 
 async function resetAll() {
   const result = await confirmModal.value.showModal(
+    "",
     i18n.global.t("proxy.resetAllMessage"),
   );
   if (result) {
@@ -235,6 +236,7 @@ async function resetAll() {
 
 async function reload() {
   const result = await confirmModal.value.showModal(
+    "",
     i18n.global.t("proxy.reloadMessage"),
   );
   if (result) {
@@ -273,6 +275,7 @@ function onFileChange(file) {
 
 async function saveAndActive() {
   const result = await confirmModal.value.showModal(
+    "",
     i18n.global.t("proxy.saveAndActiveMessage"),
   );
   if (result) {
