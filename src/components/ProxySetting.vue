@@ -44,7 +44,11 @@
         </v-tab>
       </v-tabs>
       <v-card>
-        <v-row class="align-content-start" v-if="bypassSetMode == 'quickSet'">
+        <v-row
+          class="align-content-start"
+          v-if="bypassSetMode == 'quickSet'"
+          dense
+        >
           <template v-for="(bot, index) in bots" :key="index">
             <v-col cols="auto" class="pt-2">
               <v-checkbox
