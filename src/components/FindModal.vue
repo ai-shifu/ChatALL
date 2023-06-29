@@ -113,9 +113,7 @@ function handleFindShortcut() {
 
 function showFindTextField() {
   isShowFindText.value = true;
-  nextTick(() => {
-    findTextRef.value.$el.querySelector("input").focus();
-  });
+  nextTick().then(findTextRef.value.focus);
 }
 
 function closeFindTextField() {
