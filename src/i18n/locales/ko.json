@@ -13,7 +13,8 @@
     "theme": "테마",
     "system": "시스템",
     "light": "밝은",
-    "dark": "어두운"
+    "dark": "어두운",
+    "bots": "AI 봇"
   },
   "header": {
     "clearMessages": "모든 메시지를 지우시겠습니까?",
@@ -36,7 +37,7 @@
     "confirmHide": "이 메시지를 삭제하시겠습니까?",
     "done": "완료"
   },
-  "chat":{
+  "chat": {
     "newChat": "새 대화"
   },
   "bot": {
@@ -52,14 +53,14 @@
   "azureOpenaiApi": {
     "name": "Azure OpenAI 서비스",
     "temperature": "온도",
-    "temperaturePrompt": "온도가 높을수록 텍스트가 더 창의적이지만 일관성이 없을 가능성이 높습니다.",
+    "temperaturePrompt": "온도가 높을수록 텍스트는 창의적이지만 일관성이 없을 가능성이 높습니다",
     "temperature0": "더 결정론적인",
     "temperature2": "더 무작위",
     "azureOpenAIApiKey": "Azure OpenAI API 키",
     "azureApiInstanceName": "Azure OpenAI API 인스턴스 이름",
-    "azureApiInstanceNamePrompt": "https://portal.azure.com/ 의 Cognitive Services에서 인스턴스 이름 확인",
+    "azureApiInstanceNamePrompt": "https://portal.azure.com/ 의 Cognitive Services에서 인스턴스 이름을 확인합니다",
     "azureOpenAIApiDeploymentName": "Azure OpenAI API 배포 이름",
-    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ 의 배포 목록에서 배포 이름을 확인",
+    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ 의 배포 목록에서 배포 이름을 확인합니다",
     "azureOpenAIApiVersion": "Azure OpenAI API 버전"
   },
   "bard": {
@@ -98,7 +99,7 @@
     "queueFull": "대기열이 가득 찼습니다. 나중에 다시 시도하십시오",
     "url": "Gradio 앱 URL",
     "urlPrompt": "Gradio 앱의 URL입니다. Hugging Face 공간을 사용하는 경우 오른쪽 상단 모서리의 \"Embed this space\"를 클릭하여 직접 URL을 가져옵니다.",
-    "waiting": "대기열에 {queue_size}개의 요청이 있으며 {rank}위에 있으며 {queue_eta}초 동안 기다려야 합니다"
+    "waiting": "대기열에 {queue_size}개의 요청이 있으며 {rank} 위에 있으며 {queue_eta}초 동안 기다려야 합니다"
   },
   "lmsys": {
     "name": "LMSYS",
@@ -160,5 +161,38 @@
     "noMatches": "일치 항목 없음",
     "matchCase": "대소문자 일치",
     "wrapAround": "둘러싸기"
+  },
+  "proxy":{
+    "name": "프록시",
+    "address": "프록시 서버 주소",
+    "addressExample":"http://127.0.0.1:7890, socks5://127.0.0.1:1080",
+    "enableProxy":"프록시 사용",
+    "proxyMode":"프록시 모드",
+    "globalMode":"일반 모드",
+    "pacFileMode":"PAC 파일 모드",
+    "pacUrlMode":"PAC URL 모드",
+    "byPass":"프록시가 아닌 주소 (일반 모드에서만 유효)",
+    "byPassHint":"프록시가 아닌 주소는 ';'으로 구분하되 끝에 ';'을 넣지 않습니다. 예:  '<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
+    "fromFile":"파일에서 불러오기",
+    "fromURL":"URL에서 불러오기",
+    "pacUrl":"PAC URL 주소",
+    "pacFile":"PAC 파일",
+    "pacFileUsing":"현재 사용 중인 PAC 파일",
+    "pacFileNew":"기타 PAC 파일 선택",
+    "quickSet":"빠른 구성",
+    "fullSet":"고급 구성",
+    "action":"동작",
+    "onlySave":"저장만",
+    "saveAndApply":"저장 및 적용",
+    "reload":"다시 불러오기",
+    "reset":"재설정",
+    "proxyFilePath":"프록시 구성 파일의 경로",
+    "proxyFilePathHint":"이 파일을 백업하거나 다른 프로그램으로 수정할 수 있습니다",
+    "saveSuccess":"저장 성공",
+    "saveFailed":"저장 실패",
+    "resetAllMessage":"모든 설정 (저장됨 포함)이 손실됩니다. 기본값으로 재설정하시겠습니까?",
+    "reloadMessage":"저장하지 않으면 모든 설정이 손실됩니다. 구성 파일을 다시 불러오시겠습니까?",
+    "saveAndActiveMessage":"프록시 구성을 적용하면 ChatALL이 다시 시작됩니다. 확실합니까?",
+    "googleService":"Google 서비스"
   }
 }
