@@ -102,37 +102,53 @@
         </template>
       </v-carousel-item>
     </v-carousel>
-    <div
-      v-if="isShowThreadTextField"
-      style="display: flex; align-items: flex-end; margin-top: 1rem"
-    >
-      <v-textarea
-        style="padding-right: 0.5rem"
-        v-model="promptRef"
-        auto-grow
-        max-rows="8.5"
-        rows="1"
-        density="compact"
-        hide-details
-        variant="solo"
-        :placeholder="`${$t('footer.sendPrompt')} ${botFullname}`"
-        @keydown="filterEnterKey"
-      ></v-textarea>
-      <v-btn
-        :disabled="promptRef.trim() === ''"
-        color="primary"
-        size="small"
-        @click="sendPromptToBot"
+    <v-card class="response" style="padding: 0">
+      <v-card-title style="display: flex; padding: 0">
+        <v-spacer></v-spacer>
+        <v-btn
+          flat
+          size="x-small"
+          icon
+          v-if="isShowReplyButton"
+          :color="isShowReplyTextField ? 'primary' : ''"
+          @click="toggleReplyButton"
+        >
+          <v-icon>mdi-reply</v-icon>
+        </v-btn>
+      </v-card-title>
+      <div
+        v-show="isShowReplyTextField && isShowReplyButton"
+        style="display: flex; align-items: flex-end; margin-top: 1rem"
       >
-        <v-icon>mdi-send</v-icon>
-      </v-btn>
-    </div>
+        <v-textarea
+          style="padding-right: 0.5rem"
+          ref="replyRef"
+          v-model="replyModel"
+          auto-grow
+          max-rows="8.5"
+          rows="1"
+          density="compact"
+          hide-details
+          variant="solo"
+          :placeholder="`${$t('footer.sendPrompt')} ${botFullname}`"
+          @keydown="filterEnterKey"
+        ></v-textarea>
+        <v-btn
+          :disabled="replyModel.trim() === ''"
+          color="primary"
+          size="small"
+          @click="sendPromptToBot"
+        >
+          <v-icon>mdi-send</v-icon>
+        </v-btn>
+      </div>
+    </v-card>
   </v-card>
   <ConfirmModal ref="confirmModal" />
 </template>
 
 <script setup>
-import { onMounted, ref, watch, computed } from "vue";
+import { onMounted, ref, watch, computed, nextTick } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
 import Markdown from "vue3-markdown-it";
@@ -166,7 +182,8 @@ const matomo = useMatomo();
 const store = useStore();
 
 const root = ref();
-const promptRef = ref("");
+const replyModel = ref("");
+const replyRef = ref();
 const maxPage = computed(() => props.messages.length - 1);
 const carouselModel = ref(maxPage.value);
 const confirmModal = ref(null);
@@ -211,7 +228,8 @@ const isLatestPromptForThread = computed(() => {
   }
   return false;
 });
-const isShowThreadTextField = computed(() => {
+const isShowReplyTextField = ref(false);
+const isShowReplyButton = computed(() => {
   return (
     // show the thread text field when all conditions met
     !props.isThread && // if current response is not a thread,
@@ -266,19 +284,19 @@ function filterEnterKey(event) {
 }
 
 function sendPromptToBot() {
-  if (promptRef.value.trim() === "") return;
+  if (replyModel.value.trim() === "") return;
 
   const botInstance = bots.getBotByClassName(props.messages[0].className);
 
   store.dispatch("sendPromptInThread", {
     responseIndex: props.messages[carouselModel.value].index,
     threadIndex: props.messages[carouselModel.value].threadIndex,
-    prompt: promptRef.value,
+    prompt: replyModel.value,
     bot: botInstance,
   });
 
   // Clear the textarea after sending the prompt
-  promptRef.value = "";
+  replyModel.value = "";
 
   matomo.value?.trackEvent("prompt", "send", "Active bots count", 1);
 }
@@ -416,6 +434,13 @@ function messageBotIsSelected() {
     (b) => b.classname === props.messages[0].className,
   );
   return favBot?.selected;
+}
+
+function toggleReplyButton() {
+  isShowReplyTextField.value = !isShowReplyTextField.value;
+  if (isShowReplyTextField.value) {
+    nextTick().then(replyRef.value.focus);
+  }
 }
 </script>
 
