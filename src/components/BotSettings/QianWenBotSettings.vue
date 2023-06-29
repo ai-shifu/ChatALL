@@ -1,5 +1,4 @@
 <template>
-  <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
   <login-setting :bot="bot"></login-setting>
 </template>
 

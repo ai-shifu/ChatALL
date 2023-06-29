@@ -1,5 +1,4 @@
 <template>
-  <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
   <v-list-item>
     <v-list-item-title>API Key & Secret Key</v-list-item-title>
     <v-list-item-subtitle>{{

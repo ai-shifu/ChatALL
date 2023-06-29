@@ -1,5 +1,4 @@
 <template>
-  <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
   <v-list-item>
     <v-alert type="info" outlined>{{ $t("chatGpt.notice") }} </v-alert>
   </v-list-item>

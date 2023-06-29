@@ -1,7 +1,8 @@
 <template>
-  <v-list-subheader>{{ bot.getBrandName() }}</v-list-subheader>
   <v-list-item>
-    <v-list-item-title>{{ $t("azureOpenaiApi.azureOpenAIApiKey") }}</v-list-item-title>
+    <v-list-item-title>{{
+      $t("azureOpenaiApi.azureOpenAIApiKey")
+    }}</v-list-item-title>
     <v-list-item-subtitle>{{
       $t("settings.secretPrompt")
     }}</v-list-item-subtitle>
@@ -12,7 +13,9 @@
       placeholder="b40..."
       @update:model-value="setAzureOpenaiApi({ azureApiKey: $event })"
     ></v-text-field>
-    <v-list-item-title>{{ $t("azureOpenaiApi.azureApiInstanceName") }}</v-list-item-title>
+    <v-list-item-title>{{
+      $t("azureOpenaiApi.azureApiInstanceName")
+    }}</v-list-item-title>
     <v-list-item-subtitle>{{
       $t("azureOpenaiApi.azureApiInstanceNamePrompt")
     }}</v-list-item-subtitle>
@@ -22,7 +25,9 @@
       dense
       @update:model-value="setAzureOpenaiApi({ azureApiInstanceName: $event })"
     ></v-text-field>
-    <v-list-item-title>{{ $t("azureOpenaiApi.azureOpenAIApiDeploymentName") }}</v-list-item-title>
+    <v-list-item-title>{{
+      $t("azureOpenaiApi.azureOpenAIApiDeploymentName")
+    }}</v-list-item-title>
     <v-list-item-subtitle>{{
       $t("azureOpenaiApi.azureOpenAIApiDeploymentNamePrompt")
     }}</v-list-item-subtitle>
@@ -30,9 +35,13 @@
       v-model="azureOpenaiApi.azureOpenAIApiDeploymentName"
       outlined
       dense
-      @update:model-value="setAzureOpenaiApi({ azureOpenAIApiDeploymentName: $event })"
+      @update:model-value="
+        setAzureOpenaiApi({ azureOpenAIApiDeploymentName: $event })
+      "
     ></v-text-field>
-    <v-list-item-title>{{ $t("azureOpenaiApi.azureOpenAIApiVersion") }}</v-list-item-title>
+    <v-list-item-title>{{
+      $t("azureOpenaiApi.azureOpenAIApiVersion")
+    }}</v-list-item-title>
     <v-text-field
       v-model="azureOpenaiApi.azureOpenAIApiVersion"
       outlined
@@ -41,7 +50,9 @@
       @update:model-value="setAzureOpenaiApi({ azureOpenAIApiVersion: $event })"
     ></v-text-field>
 
-    <v-list-item-title>{{ $t("azureOpenaiApi.temperature") }}</v-list-item-title>
+    <v-list-item-title>{{
+      $t("azureOpenaiApi.temperature")
+    }}</v-list-item-title>
     <v-list-item-subtitle>{{
       $t("azureOpenaiApi.temperaturePrompt")
     }}</v-list-item-subtitle>
