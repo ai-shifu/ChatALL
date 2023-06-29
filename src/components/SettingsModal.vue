@@ -18,14 +18,19 @@
         <v-col cols="2">
           <v-tabs v-model="tab" direction="vertical">
             <v-tab value="general">{{ $t("settings.general") }}</v-tab>
-            <v-tab value="bots">{{ $t("settings.bots") }}</v-tab>
             <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
+            <v-tab
+              v-for="(setting, index) in botSettings"
+              :key="index"
+              :value="index"
+            >
+              {{ $t(`${setting.brand}.name`) }}
+            </v-tab>
           </v-tabs>
         </v-col>
         <v-col>
           <v-list lines="two" subheader>
-            <div class="section" v-if="tab == 'general'">
-              <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
+            <div v-if="tab == 'general'">
               <v-list-item>
                 <v-list-item-title>{{
                   $t("settings.language")
@@ -39,8 +44,6 @@
                   @update:model-value="setCurrentLanguage($event)"
                 ></v-select>
               </v-list-item>
-            </div>
-            <div class="section" v-if="tab == 'general'">
               <v-list-item>
                 <v-list-item-title>{{
                   $t("settings.theme")
@@ -56,15 +59,16 @@
               </v-list-item>
             </div>
 
-            <template v-for="(setting, index) in settings" :key="index">
-              <v-divider v-if="tab == 'bots'"></v-divider>
-              <div class="section" v-if="tab == 'bots'">
-                <component :is="setting"></component>
-              </div>
-            </template>
-            <div class="section" v-if="tab == 'proxy'">
+            <div v-if="tab == 'proxy'">
               <component :is="proxy"></component>
             </div>
+
+            <template v-for="(setting, index) in botSettings" :key="index">
+              <component
+                v-if="tab == index"
+                :is="setting.component"
+              ></component>
+            </template>
           </v-list>
         </v-col>
       </v-row>
@@ -107,21 +111,21 @@ const emit = defineEmits(["update:open", "done"]);
 
 const tab = ref(null);
 
-const settings = [
-  ChatGPTBotSettings,
-  OpenAIAPIBotSettings,
-  AzureOpenAIAPIBotSettings,
-  WenxinQianfanBotSettings,
-  GradioAppBotSettings,
-  BardBotSettings,
-  BingChatBotSettings,
-  HuggingChatBotSettings,
-  LMSYSBotSettings,
-  MOSSBotSettings,
-  PoeBotSettings,
-  QianWenBotSettings,
-  SparkBotSettings,
-  SkyWorkBotSettings,
+const botSettings = [
+  { brand: "azureOpenaiApi", component: AzureOpenAIAPIBotSettings },
+  { brand: "bard", component: BardBotSettings },
+  { brand: "bingChat", component: BingChatBotSettings },
+  { brand: "chatGpt", component: ChatGPTBotSettings },
+  { brand: "gradio", component: GradioAppBotSettings },
+  { brand: "huggingChat", component: HuggingChatBotSettings },
+  { brand: "lmsys", component: LMSYSBotSettings },
+  { brand: "moss", component: MOSSBotSettings },
+  { brand: "openaiApi", component: OpenAIAPIBotSettings },
+  { brand: "poe", component: PoeBotSettings },
+  { brand: "qianWen", component: QianWenBotSettings },
+  { brand: "skyWork", component: SkyWorkBotSettings },
+  { brand: "spark", component: SparkBotSettings },
+  { brand: "wenxinQianfan", component: WenxinQianfanBotSettings },
 ];
 
 const proxy = ProxySettings;
@@ -166,12 +170,6 @@ const closeDialog = () => {
 </script>
 
 <style scoped>
-.section {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  padding: 0 16px;
-}
-
 :deep() .v-slider-thumb__label {
   color: rgb(var(--v-theme-font));
 }
