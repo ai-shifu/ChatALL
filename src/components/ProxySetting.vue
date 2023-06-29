@@ -10,11 +10,7 @@
     <v-list-item>
       <v-list-item-title>{{ $t("proxy.proxyMode") }} </v-list-item-title>
       <v-radio-group inline v-model="proxySettings.proxyMode">
-        <v-radio
-          :label="$t('proxy.globalMode')"
-          value="normal"
-          v-bind="props"
-        ></v-radio>
+        <v-radio :label="$t('proxy.globalMode')" value="normal"></v-radio>
         <v-radio :label="$t('proxy.pacFileMode')" value="PACFile"></v-radio>
         <v-radio :label="$t('proxy.PACUrlMode')" value="PACUrl"></v-radio>
       </v-radio-group>
