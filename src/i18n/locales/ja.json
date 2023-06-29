@@ -13,7 +13,8 @@
     "theme": "テーマ",
     "system": "システムと同期",
     "light": "ライト",
-    "dark": "ダーク"
+    "dark": "ダーク",
+    "bots": "AIボット"
   },
   "header": {
     "clearMessages": "全ての会話を削除しますか？",
@@ -160,5 +161,38 @@
     "noMatches": "結果はありません。",
     "matchCase": "大文字と小文字を区別する",
     "wrapAround": "結果を繰り返す"
+},
+  "proxy":{
+    "name": "プロキシ",
+    "address": "プロキシサーバーアドレス",
+    "addressExample":"http://127.0.0.1:7890, socks5://127.0.0.1:1080",
+    "enableProxy":"プロキシを有効",
+    "proxyMode":"プロキシモード",
+    "globalMode":"ノーマルモード",
+    "pacFileMode":"プロキシ自動設定ファイルモード",
+    "PACUrlMode":"プロキシ自動設定URLモード",
+    "byPass":"非プロキシ アドレス (ノーマルモードでのみ有効)",
+    "byPassHint":"非プロキシアドレス。';'で区切られるが、最後に';'は付けない。例：'<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
+    "fromFile":"ファイルから読み込む",
+    "fromURL":"URLから読み込む",
+    "PACUrl":"プロキシ自動設定URLアドレス",
+    "pacFile":"プロキシ自動設定ファイル",
+    "pacFileUsing":"現在使用中のプロキシ自動設定ファイル",
+    "pacFileNew":"他のプロキシ自動設定ファイルを選択",
+    "quickSet":"クイック設定",
+    "fullSet":"詳細設定",
+    "action":"アクション",
+    "onlySave":"保存のみ",
+    "saveAndApply":"保存して適用",
+    "reload":"再読み込み",
+    "reset":"リセット",
+    "proxyFilePath":"プロキシ設定ファイルのパス",
+    "proxyFilePathHint":"このファイルをバックアップしたり、他のプログラムで修正することができます。",
+    "saveSuccess":"保存成功",
+    "saveFailed":"保存失敗",
+    "resetAllMessage":"全ての設定（保存されているものも含む）が失われます。本当にリセットしますか？",
+    "reloadMessage":"保存していない設定はすべて失われます。設定ファイルを再読み込みしてよろしいですか？",
+    "saveAndActiveMessage":"プロキシ設定を適用するにはChatALLを再起動する必要があります。よろしいですか？",
+    "googleService":"Google Service"
   }
 }
