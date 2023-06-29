@@ -225,6 +225,7 @@ onMounted(async () => {
 
 async function resetAll() {
   const result = await confirmModal.value.showModal(
+    "",
     i18n.global.t("proxy.resetAllMessage"),
   );
   if (result) {
@@ -235,6 +236,7 @@ async function resetAll() {
 
 async function reload() {
   const result = await confirmModal.value.showModal(
+    "",
     i18n.global.t("proxy.reloadMessage"),
   );
   if (result) {
@@ -273,6 +275,7 @@ function onFileChange(file) {
 
 async function saveAndActive() {
   const result = await confirmModal.value.showModal(
+    "",
     i18n.global.t("proxy.saveAndActiveMessage"),
   );
   if (result) {
