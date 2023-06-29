@@ -5,17 +5,20 @@
       <v-checkbox
         :label="$t('settings.enable')"
         v-model="proxySettings.enableProxy"
+        hide-details
       ></v-checkbox>
     </v-list-item>
+
     <v-list-item>
       <v-list-item-title>{{ $t("proxy.proxyMode") }} </v-list-item-title>
-      <v-radio-group inline v-model="proxySettings.proxyMode">
+      <v-radio-group inline hide-details v-model="proxySettings.proxyMode">
         <v-radio :label="$t('proxy.globalMode')" value="normal"></v-radio>
         <v-radio :label="$t('proxy.pacFileMode')" value="PACFile"></v-radio>
         <v-radio :label="$t('proxy.PACUrlMode')" value="PACUrl"></v-radio>
       </v-radio-group>
     </v-list-item>
-    <v-list-item>
+
+    <v-list-item v-if="proxySettings.proxyMode == 'normal'">
       <v-list-item-title>{{ $t("proxy.address") }}</v-list-item-title>
       <v-text-field
         v-model="proxySettings.proxyServer"
@@ -24,13 +27,7 @@
         "
         persistent-hint
       ></v-text-field>
-    </v-list-item>
-    <v-list-item>
-      <v-divider></v-divider>
-    </v-list-item>
-    <v-list-item v-if="proxySettings.proxyMode == 'normal'">
       <v-list-item-title>{{ $t("proxy.byPass") }}</v-list-item-title>
-
       <v-tabs fixed-tabs v-model="bypassSetMode">
         <v-tab value="quickSet">
           {{ $t("proxy.quickSet") }}
@@ -65,6 +62,7 @@
         ></v-textarea>
       </v-card>
     </v-list-item>
+
     <v-list-item v-if="proxySettings.proxyMode == 'PACFile'">
       <v-list-item-title>{{ $t("proxy.pacFile") }}</v-list-item-title>
       <v-text-field
@@ -77,6 +75,7 @@
         @change="onFileChange"
       ></v-file-input>
     </v-list-item>
+
     <v-list-item v-if="proxySettings.proxyMode == 'PACUrl'">
       <v-list-item-title>{{ $t("proxy.PACUrl") }}</v-list-item-title>
       <v-text-field
@@ -84,9 +83,7 @@
         :label="$t('proxy.PACUrl')"
       ></v-text-field>
     </v-list-item>
-    <v-list-item>
-      <v-divider></v-divider>
-    </v-list-item>
+
     <v-list-item>
       <v-btn color="primary" @click="saveAndActive" class="ma-2 pa-2">
         {{ $t("proxy.saveAndApply") }}
@@ -106,6 +103,7 @@
         {{ $t("proxy.reset") }}
       </v-btn>
     </v-list-item>
+
     <v-list-item>
       <v-divider></v-divider>
     </v-list-item>
@@ -119,6 +117,7 @@
       ></v-text-field>
     </v-list-item>
   </v-list>
+
   <v-snackbar
     v-model="snackbar.show"
     :timeout="snackbar.timeout"
@@ -126,6 +125,7 @@
   >
     {{ snackbar.text }}
   </v-snackbar>
+
   <ConfirmModal ref="confirmModal" />
 </template>
 
