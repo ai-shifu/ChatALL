@@ -9,54 +9,76 @@
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title>
         <v-spacer></v-spacer>
+
         <v-btn icon dark @click="closeDialog">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
-      <v-list lines="two" subheader>
-        <div class="section">
-          <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
-          <v-list-item>
-            <v-list-item-title>{{ $t("settings.language") }}</v-list-item-title>
-            <v-select
-              :items="languages"
-              item-title="name"
-              item-value="code"
-              hide-details
-              :model-value="lang"
-              @update:model-value="setCurrentLanguage($event)"
-            ></v-select>
-          </v-list-item>
-        </div>
-        <div class="section">
-          <v-list-item>
-            <v-list-item-title>{{ $t("settings.theme") }}</v-list-item-title>
-            <v-select
-              :items="modes"
-              item-title="name"
-              item-value="code"
-              hide-details
-              :model-value="currentMode"
-              @update:model-value="setCurrentMode($event)"
-            ></v-select>
-          </v-list-item>
-        </div>
-        <template v-for="(setting, index) in settings" :key="index">
-          <v-divider></v-divider>
-          <div class="section">
-            <component :is="setting"></component>
-          </div>
-        </template>
-      </v-list>
+      <v-row>
+        <v-col cols="2">
+          <v-tabs v-model="tab" direction="vertical">
+            <v-tab value="general">{{ $t("settings.general") }}</v-tab>
+            <v-tab value="bots">{{ $t("settings.bots") }}</v-tab>
+            <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
+          </v-tabs>
+        </v-col>
+        <v-col>
+          <v-list lines="two" subheader>
+            <div class="section" v-if="tab == 'general'">
+              <v-list-subheader>{{ $t("settings.general") }}</v-list-subheader>
+              <v-list-item>
+                <v-list-item-title>{{
+                  $t("settings.language")
+                }}</v-list-item-title>
+                <v-select
+                  :items="languages"
+                  item-title="name"
+                  item-value="code"
+                  hide-details
+                  :model-value="lang"
+                  @update:model-value="setCurrentLanguage($event)"
+                ></v-select>
+              </v-list-item>
+            </div>
+            <div class="section" v-if="tab == 'general'">
+              <v-list-item>
+                <v-list-item-title>{{
+                  $t("settings.theme")
+                }}</v-list-item-title>
+                <v-select
+                  :items="modes"
+                  item-title="name"
+                  item-value="code"
+                  hide-details
+                  :model-value="currentMode"
+                  @update:model-value="setCurrentMode($event)"
+                ></v-select>
+              </v-list-item>
+            </div>
+
+            <template v-for="(setting, index) in settings" :key="index">
+              <v-divider v-if="tab == 'bots'"></v-divider>
+              <div class="section" v-if="tab == 'bots'">
+                <component :is="setting"></component>
+              </div>
+            </template>
+            <div class="section" v-if="tab == 'proxy'">
+              <component :is="proxy"></component>
+            </div>
+          </v-list>
+        </v-col>
+      </v-row>
     </v-card>
   </v-dialog>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
 import { useTheme } from "vuetify";
+
+import ProxySettings from "@/components/ProxySetting.vue";
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
@@ -83,6 +105,8 @@ const vuetifyTheme = useTheme();
 const props = defineProps(["open"]);
 const emit = defineEmits(["update:open", "done"]);
 
+const tab = ref(null);
+
 const settings = [
   ChatGPTBotSettings,
   OpenAIAPIBotSettings,
@@ -99,6 +123,8 @@ const settings = [
   SparkBotSettings,
   SkyWorkBotSettings,
 ];
+
+const proxy = ProxySettings;
 
 const languages = computed(() => [
   { name: $t("settings.system"), code: "auto" },

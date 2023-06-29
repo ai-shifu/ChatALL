@@ -1,14 +1,105 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, ipcMain, nativeTheme } from "electron";
+import { BrowserWindow, app, ipcMain, nativeTheme, protocol } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
+import fs from "fs";
+import path from "path";
 import updateApp from "./update";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 let mainWindow = null;
 
+const userDataPath = app.getPath("userData");
+const proxySettingPath = path.join(userDataPath, "proxySetting.json");
+const defaultProxySetting = {
+  enableProxy: false,
+  proxyMode: "normal",
+  proxyServer: "",
+  proxyBypassList: "<local>",
+  PACUrl: "",
+  PACfile: "",
+  bypassBotsProxy: "[]",
+};
+let proxySetting;
+
+getProxySetting();
+
+function getBase64(file) {
+  let fileData = fs.readFileSync(file).toString("base64");
+  return "data:text/plain;base64," + fileData;
+}
+
+async function initProxyDefault() {
+  fs.writeFile(
+    proxySettingPath,
+    JSON.stringify(defaultProxySetting),
+    "utf8",
+    (err) => {
+      if (err) {
+        console.error(`Create proxy setting file failed: ${err}`);
+        return false;
+      } else {
+        console.info(`Create proxy setting file success.`);
+        return true;
+      }
+    },
+  );
+}
+
+async function getProxySetting() {
+  if (fs.existsSync(proxySettingPath)) {
+    // If file exist, try read the setting
+    try {
+      proxySetting = JSON.parse(fs.readFileSync(proxySettingPath, "utf8"));
+
+      // Check the proxySetting file, if some key is missing, write it back to the file
+      let isChanged = false;
+      for (let key in defaultProxySetting) {
+        if (!proxySetting.hasOwnProperty(key)) {
+          proxySetting[key] = defaultProxySetting[key];
+          isChanged = true;
+        }
+      }
+      if (isChanged) {
+        fs.writeFileSync(
+          proxySettingPath,
+          JSON.stringify(proxySetting),
+          "utf8",
+        );
+      }
+
+      // Set the proxy
+      if (proxySetting.proxyServer && proxySetting.enableProxy) {
+        if (proxySetting.proxyMode === "normal") {
+          app.commandLine.appendSwitch(
+            "proxy-server",
+            proxySetting.proxyServer,
+          );
+          app.commandLine.appendSwitch(
+            "proxy-bypass-list",
+            proxySetting.proxyBypassList ?? "<local>",
+          );
+        } else if (
+          proxySetting.proxyMode === "PACFile" &&
+          proxySetting.PACfile
+        ) {
+          // Note: proxy-pac-url can not load file via 'file://' , we need to change to base64 format
+          let data = getBase64(proxySetting.PACfile);
+          app.commandLine.appendSwitch("proxy-pac-url", data);
+        } else if (proxySetting.proxyMode === "PACUrl" && proxySetting.PACUrl) {
+          app.commandLine.appendSwitch("proxy-pac-url", proxySetting.PACUrl);
+        }
+      }
+    } catch (err) {
+      console.error(`Read proxy setting file failed: ${err}`);
+    }
+  } else {
+    // If file not exist, create the file and write the default setting
+    await initProxyDefault();
+  }
+}
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } },
@@ -179,6 +270,40 @@ ipcMain.handle("get-native-theme", () => {
     shouldUseDarkColors: nativeTheme.shouldUseDarkColors,
   });
 });
+
+// For Proxy Setting Vue Page
+ipcMain.handle("get-proxy-setting-path", async (event) => {
+  return proxySettingPath;
+});
+
+ipcMain.handle("get-proxy-setting-content", async (event) => {
+  await getProxySetting();
+  return proxySetting;
+});
+
+ipcMain.handle("reset-proxy-default-setting", async (event) => {
+  const resetResut = await initProxyDefault();
+  return resetResut;
+});
+
+ipcMain.handle("save-proxy-setting", async (event, args) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(proxySettingPath, JSON.stringify(args.data), "utf8", (err) => {
+      if (err) {
+        reject({ success: false, error: err });
+      } else {
+        resolve({ success: true });
+      }
+    });
+  });
+});
+
+ipcMain.handle("save-proxy-and-restart", async (event) => {
+  app.relaunch();
+  app.exit();
+  return "";
+});
+// Proxy Setting End
 
 nativeTheme.on("updated", () => {
   mainWindow.webContents.send("on-updated-system-theme");
