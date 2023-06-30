@@ -113,8 +113,8 @@
   },
   "openaiApi": {
     "name": "OpenAI API",
-    "alterUrl": "대체 API URL",
-    "alterUrlPrompt": "사용자 지정 API URL을 사용하는 경우 여기에 입력할 수 있습니다",
+    "alterUrl": "대체 기본 URL",
+    "alterUrlPrompt": "API 요청의 기본 URL 경로, 프록시 또는 서비스 에뮬레이터를 사용하지 않는 경우 비워 두십시오",
     "gpt-35-turbo": "gpt-3.5-터보",
     "gpt-35-turbo-16k": "gpt-3.5-터보-16k",
     "gpt-4": "gpt-4",
