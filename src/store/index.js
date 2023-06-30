@@ -2,10 +2,7 @@ import { createStore } from "vuex";
 import VuexPersist from "vuex-persist";
 import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
-
-const getMatomo = function () {
-  return window.Piwik.getAsyncTracker();
-};
+import { getMatomo } from "@/composables/matomo";
 
 // 初始化 VuexPersist 实例
 const vuexPersist = new VuexPersist({
@@ -243,7 +240,7 @@ export default createStore({
           { chatIndex: state.currentChatIndex, messageIndex: message.index },
         );
 
-        getMatomo().trackEvent(
+        getMatomo()?.trackEvent(
           "prompt",
           "sendTo",
           bot.getClassname(),
@@ -262,7 +259,7 @@ export default createStore({
       const chat = state.chats[i];
       const message = { ...chat.messages[indexes.messageIndex], ...values };
       if (values.done) {
-        getMatomo().trackEvent(
+        getMatomo()?.trackEvent(
           "prompt",
           "received",
           message.className,
