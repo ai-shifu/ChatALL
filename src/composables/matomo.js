@@ -1,23 +1,25 @@
 import { ref, onUnmounted } from "vue";
 
 export function getMatomo() {
-  return window.Piwik.getAsyncTracker();
+  return window.Piwik?.getAsyncTracker();
 }
 
 export function useMatomo() {
   const matomo = ref(null);
 
-  if (window.Piwik) {
-    matomo.value = getMatomo();
+  const instance = getMatomo();
+  if (instance) {
+    matomo.value = instance;
   } else {
     const interval = 50;
     const timeout = 10000;
     const start = Date.now();
 
     const timer = setInterval(() => {
-      if (window.Piwik) {
+      const instance = getMatomo();
+      if (instance) {
         clearInterval(timer);
-        matomo.value = getMatomo();
+        matomo.value = instance;
         return;
       }
 
