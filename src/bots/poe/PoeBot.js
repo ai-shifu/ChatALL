@@ -2,12 +2,14 @@ import Bot from "@/bots/Bot";
 import axios from "axios";
 import md5 from "md5";
 import WebSocketAsPromised from "websocket-as-promised";
+import AsyncLock from "async-lock";
 
 export default class PoeBot extends Bot {
   static _brandId = "poe"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "PoeBot"; // Class name of the bot
   static _logoFilename = "default-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://poe.com/";
+  static _lock = new AsyncLock();
 
   context = {
     formkey: "",
