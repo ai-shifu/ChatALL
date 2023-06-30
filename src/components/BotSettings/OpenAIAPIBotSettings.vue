@@ -51,7 +51,7 @@
       v-model="openaiApi.alterUrl"
       outlined
       dense
-      placeholder="https://your.proxy.com/v1/chat/completions"
+      placeholder="https://your.proxy.com/v1"
       @update:model-value="setOpenaiApi({ alterUrl: $event })"
     ></v-text-field>
   </v-list-item>
