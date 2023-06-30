@@ -197,7 +197,7 @@ const botFullname = computed(() => {
   return bot ? bot.getFullname() : "";
 });
 
-const isHighlighted = computed(() => props.messages.some((m) => m.highlight)); // if any message is hightlighted, return true
+const isHighlighted = computed(() => props.messages[maxPage.value].highlight); // if last response is hightlighted, return true
 const isAllDone = computed(() => !props.messages.some((m) => !m.done)); // if any message is not done, return false
 const isLatestPrompt = computed(
   // if the current message response to user latest prompt, return true
@@ -337,14 +337,14 @@ function toggleHighlight() {
     emits(
       "update-thread-message",
       props.threadIndex,
-      props.messages[carouselModel.value].index,
+      props.messages[maxPage.value].index,
       {
-        highlight: !props.messages[carouselModel.value].highlight,
+        highlight: !props.messages[maxPage.value].highlight, // only update last response highlight
       },
     );
   } else {
-    emits("update-message", props.messages[carouselModel.value].index, {
-      highlight: !props.messages[carouselModel.value].highlight,
+    emits("update-message", props.messages[maxPage.value].index, {
+      highlight: !props.messages[maxPage.value].highlight,
     });
   }
   matomo.value?.trackEvent(
