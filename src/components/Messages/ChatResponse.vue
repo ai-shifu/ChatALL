@@ -234,8 +234,7 @@ const isShowReplyButton = computed(() => {
     !props.isThread && // if current response is not a thread,
     isAllDone.value && // if all response done,
     messageBotIsSelected() && // if responding bot selected,
-    isLatestPrompt.value && // if current response is a response to latest prompt,
-    carouselModel.value === maxPage.value // if current response is on last page,
+    isLatestPrompt.value // if current response is a response to latest prompt,
   );
 });
 const isSomeResponsesHasThread = computed(() =>
@@ -288,11 +287,13 @@ function sendPromptToBot() {
   const botInstance = bots.getBotByClassName(props.messages[0].className);
 
   store.dispatch("sendPromptInThread", {
-    responseIndex: props.messages[carouselModel.value].index,
+    responseIndex: props.messages[maxPage.value].index, // always send prompt in thread to last page
     threadIndex: props.messages[carouselModel.value].threadIndex,
     prompt: replyModel.value,
     bot: botInstance,
   });
+
+  carouselModel.value = maxPage.value; // move to last page
 
   // Clear the textarea after sending the prompt
   replyModel.value = "";
