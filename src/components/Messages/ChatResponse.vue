@@ -72,7 +72,7 @@
         </template>
       </v-carousel-item>
     </v-carousel>
-    <v-card class="response" style="padding: 0">
+    <v-card class="response" style="padding: 0; margin-top: 0.5rem" flat>
       <v-card-title style="display: flex; padding: 0">
         <v-spacer></v-spacer>
         <v-btn
@@ -120,7 +120,11 @@
         style="display: flex; align-items: flex-end; margin-top: 1rem"
       >
         <v-textarea
-          style="padding-right: 0.5rem"
+          style="
+            padding-left: 0.1rem;
+            padding-right: 0.5rem;
+            padding-bottom: 0.1rem;
+          "
           ref="replyRef"
           v-model="replyModel"
           auto-grow
@@ -484,10 +488,9 @@ function toggleReplyButton() {
 
 .response-thread {
   background-color: rgb(var(--v-theme-response));
-  width: 98%;
+  width: 99%;
   grid-column: auto / span 1;
-  margin-left: .2rem;
-  margin-bottom: .2rem;
+  margin: auto;
 }
 
 .title {
