@@ -12,37 +12,7 @@
     <v-card-title class="title">
       <img :src="botLogo" alt="Bot Icon" />
       {{ botFullname }}
-      <v-btn
-        flat
-        icon
-        size="x-small"
-        v-if="isShowPagingButton"
-        @click="carouselModel = Math.max(carouselModel - 1, 0)"
-        :disabled="carouselModel === 0"
-        style="margin-left: 0.5rem"
-      >
-        <v-icon>mdi-menu-left</v-icon>
-      </v-btn>
-      <v-btn
-        flat
-        icon
-        size="x-small"
-        v-if="isShowPagingButton"
-        @click="carouselModel = Math.min(carouselModel + 1, maxPage)"
-        :disabled="carouselModel === maxPage"
-      >
-        <v-icon>mdi-menu-right</v-icon>
-      </v-btn>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        icon
-        size="x-small"
-        v-if="isShowResendButton"
-        @click="resendPrompt(messages[0])"
-      >
-        <v-icon>mdi-refresh</v-icon>
-      </v-btn>
       <v-btn
         flat
         size="x-small"
@@ -107,8 +77,37 @@
         <v-spacer></v-spacer>
         <v-btn
           flat
-          size="x-small"
           icon
+          size="x-small"
+          v-if="isShowPagingButton"
+          @click="carouselModel = Math.max(carouselModel - 1, 0)"
+          :disabled="carouselModel === 0"
+        >
+          <v-icon>mdi-menu-left</v-icon>
+        </v-btn>
+        <v-btn
+          flat
+          icon
+          size="x-small"
+          v-if="isShowPagingButton"
+          @click="carouselModel = Math.min(carouselModel + 1, maxPage)"
+          :disabled="carouselModel === maxPage"
+        >
+          <v-icon>mdi-menu-right</v-icon>
+        </v-btn>
+        <v-btn
+          flat
+          icon
+          size="x-small"
+          v-if="isShowResendButton"
+          @click="resendPrompt(messages[0])"
+        >
+          <v-icon>mdi-refresh</v-icon>
+        </v-btn>
+        <v-btn
+          flat
+          icon
+          size="x-small"
           v-if="isShowReplyButton"
           :color="isShowReplyTextField ? 'primary' : ''"
           @click="toggleReplyButton"
