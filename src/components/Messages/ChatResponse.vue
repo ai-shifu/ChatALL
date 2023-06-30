@@ -99,7 +99,7 @@
           flat
           icon
           size="x-small"
-          v-if="isShowResendButton"
+          :style="{ visibility: isShowResendButton ? 'visible' : 'hidden' }"
           @click="resendPrompt(messages[0])"
         >
           <v-icon>mdi-refresh</v-icon>
@@ -108,7 +108,7 @@
           flat
           icon
           size="x-small"
-          v-if="isShowReplyButton"
+          :style="{ visibility: isShowReplyButton ? 'visible' : 'hidden' }"
           :color="isShowReplyTextField ? 'primary' : ''"
           @click="toggleReplyButton"
         >
