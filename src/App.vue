@@ -147,7 +147,7 @@ const footerBarRef = ref(null);
 const shortcutGuideRef = ref(null);
 const isShortcutGuideOpen = ref(false);
 const isSettingsOpen = ref(false);
-const isChatDrawerOpen = ref(true);
+const isChatDrawerOpen = ref(store.state.isChatDrawerOpen);
 const chatDrawerRef = ref();
 
 const columns = computed(() => store.state.columns);

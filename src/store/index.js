@@ -82,6 +82,7 @@ export default createStore({
     updateCounter: 0,
     theme: undefined,
     mode: "system",
+    isChatDrawerOpen: true,
     // TODO: delete following fields
     selectedBots: {},
     messages: [],
@@ -226,6 +227,7 @@ export default createStore({
       if (state.chats[0].index === undefined) {
         state.chats[0].index = 0;
         state.chats[0].createdTime = new Date().getTime();
+        state.isChatDrawerOpen = true;
       }
     },
     setTheme(state, theme) {
@@ -257,6 +259,9 @@ export default createStore({
     },
     editChatTitle(state, title) {
       state.chats[state.currentChatIndex].title = title;
+    },
+    setIsChatDrawerOpen(state, isChatDrawerOpen) {
+      state.isChatDrawerOpen = isChatDrawerOpen;
     },
   },
   actions: {

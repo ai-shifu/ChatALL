@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onUpdated } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
 import ConfirmModal from "@/components/ConfirmModal.vue";
@@ -40,7 +40,13 @@ const store = useStore();
 
 const props = defineProps(["open"]);
 const emit = defineEmits(["update:open", "createChat"]);
+onUpdated(setIsChatDrawerOpen);
+
 const confirmModal = ref(null);
+
+function setIsChatDrawerOpen() {
+  store.commit("setIsChatDrawerOpen", props.open);
+}
 
 function onAddNewChat() {
   store.commit("createChat");
