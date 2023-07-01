@@ -60,7 +60,6 @@
 </template>
 
 <script setup>
-// import { nextTick } from "vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
 
