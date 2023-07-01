@@ -4,7 +4,7 @@
       class="message-grid"
       :style="{ gridTemplateColumns: gridTemplateColumns }"
     >
-      <template v-for="(message, index) in filteredMessages" :key="index">
+      <template v-for="(message, index) in messages" :key="index">
         <!-- Check if the current message is a prompt
           If true, render <chat-prompt> component and set responses array empty -->
         <chat-prompt
@@ -16,7 +16,10 @@
           <!-- If current message is response, push current message to responses array.
             Then check if next message.type === 'prompt', if true, render <chat-responses> -->
           <chat-responses
-            v-if="pushResponseAndCheckIsNextMessagePromptType(index, message)"
+            v-if="
+              !message.hide &&
+              pushResponseAndCheckIsNextMessagePromptType(index, message)
+            "
             :columns="columns"
             :responses="responses"
             :update-message="updateMessage"
@@ -48,11 +51,7 @@ const props = defineProps({
 
 const autoScroll = ref(true);
 const gridTemplateColumns = computed(() => `repeat(${props.columns}, 1fr)`);
-const filteredMessages = computed(() => {
-  return store.state.chats[props.chatIndex].messages.filter(
-    (message) => !message.hide,
-  );
-});
+const messages = computed(() => store.state.chats[props.chatIndex].messages);
 
 const updateMessage = (index, values) => {
   store.dispatch("updateMessage", {
@@ -108,10 +107,10 @@ function checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message) {
 function pushResponseAndCheckIsNextMessagePromptType(index, response) {
   const nextIndex = index + 1;
   responses.push(response);
-  if (nextIndex >= filteredMessages.value.length) {
+  if (nextIndex >= messages.value.length) {
     return true; // allow last element
   }
-  return filteredMessages.value[nextIndex].type === "prompt";
+  return messages.value[nextIndex].type === "prompt";
 }
 </script>
 
