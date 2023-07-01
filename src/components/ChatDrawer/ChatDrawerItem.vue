@@ -78,6 +78,7 @@ const props = defineProps({
 const chatTitleEditModel = ref("");
 
 function onSelectChat(index) {
+  if (index === store.state.currentChatIndex) return;
   store.commit("selectChat", index);
 }
 
