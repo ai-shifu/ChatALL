@@ -17,7 +17,7 @@
     "bots": "AI 模型"
   },
   "header": {
-    "clearMessages": "清空所有消息？",
+    "clearMessages": "清空当前对话的所有消息？",
     "yes": "是",
     "no": "否",
     "singleColumn": "单列",

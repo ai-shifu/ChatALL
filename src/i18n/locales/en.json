@@ -17,7 +17,7 @@
     "bots": "AI Bots"
   },
   "header": {
-    "clearMessages": "Clear all messages?",
+    "clearMessages": "Clear all messages in this chat?",
     "yes": "Yes",
     "no": "No",
     "singleColumn": "Single Column",
