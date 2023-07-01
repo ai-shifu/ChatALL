@@ -41,6 +41,7 @@
         <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
             we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
         <chat-thread
+          :key="rerenderThread"
           :threadIndex="messages[0].threadIndex"
           :updateThreadMessage="updateThreadMessage"
         ></chat-thread>
@@ -66,6 +67,7 @@
           <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
           we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
           <chat-thread
+            :key="rerenderThread"
             :threadIndex="message.threadIndex"
             :updateThreadMessage="updateThreadMessage"
           ></chat-thread>
@@ -309,6 +311,12 @@ watch(
     root.value.$el.style.setProperty("--columns", props.columns);
   },
 );
+
+const rerenderThread = ref(0);
+const rerenderThreadWhenChatIndexChanged = () => {
+  rerenderThread.value = Math.random();
+};
+watch(() => store.state.currentChatIndex, rerenderThreadWhenChatIndexChanged);
 
 const updateThreadMessage = (threadIndex, messageIndex, values) => {
   store.dispatch("updateThreadMessage", {
