@@ -62,6 +62,16 @@ export const SHORTCUT_CHAT_DRAWER = {
   flexDirection: "column",
 };
 
+export const SHORTCUT_NEW_CHAT = {
+  elementId: "new-chat-list-item",
+  key: ["ctrl", "n"],
+  offset: {
+    top: 12,
+    left: 20,
+  },
+  alignHorizontallyCenter: true,
+};
+
 export const SHORTCUT_LIST = [
   SHORTCUT_FIND,
   SHORTCUT_SETTINGS,
@@ -70,6 +80,7 @@ export const SHORTCUT_LIST = [
   SHORTCUT_CLEAR_MESSAGES,
   SHORTCUT_PROMPT_TEXTAREA,
   SHORTCUT_CHAT_DRAWER,
+  SHORTCUT_NEW_CHAT,
   {
     elementId: "column-1",
     key: ["f1"],

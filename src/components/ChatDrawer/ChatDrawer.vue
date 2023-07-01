@@ -6,10 +6,13 @@
   >
     <v-list nav>
       <v-list-item
+        :id="SHORTCUT_NEW_CHAT.elementId"
         density="comfortable"
         class="mb-1 border"
         :title="$t('chat.newChat')"
         @click="onAddNewChat"
+        @shortkey="onAddNewChat"
+        v-shortkey.once="SHORTCUT_NEW_CHAT.key"
       >
         <template v-slot:prepend>
           <v-icon color="primary"> mdi-plus </v-icon>
@@ -35,6 +38,7 @@ import { useStore } from "vuex";
 import i18n from "@/i18n";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import ChatDrawerItem from "@/components/ChatDrawer/ChatDrawerItem.vue";
+import { SHORTCUT_NEW_CHAT } from "@/components/ShortcutGuide/shortcut.const";
 
 const store = useStore();
 
