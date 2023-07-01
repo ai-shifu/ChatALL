@@ -311,6 +311,10 @@ textarea::placeholder {
   text-overflow: ellipsis;
 }
 
+:deep() .v-field__field > textarea {
+  overflow-y: auto;
+}
+
 .send-prompt-btn {
   height: 40px!important;
   margin: 0.4rem!important;
