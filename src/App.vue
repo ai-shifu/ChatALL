@@ -169,7 +169,15 @@ function openFind() {
 }
 
 function toggleShortcutGuide() {
-  shortcutGuideRef.value.toggleShortcutGuide();
+  if (!isChatDrawerOpen.value) {
+    // open chat drawer to show new chat shortcut
+    isChatDrawerOpen.value = true;
+    setTimeout(() => {
+      shortcutGuideRef.value.toggleShortcutGuide();
+    }, 200);
+  } else {
+    shortcutGuideRef.value.toggleShortcutGuide();
+  }
 }
 
 async function clearMessages() {
