@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <v-container fluid style="padding: 0">
-      <ChatsMenuDrawer
+      <ChatDrawer
         ref="chatDrawerRef"
         v-model:open="isChatDrawerOpen"
-      ></ChatsMenuDrawer>
+      ></ChatDrawer>
       <v-main class="content">
         <v-app-bar class="header-content" style="padding: 0">
           <div class="header-content">
@@ -109,7 +109,7 @@ import {
 import i18n from "./i18n";
 
 // Components
-import ChatsMenuDrawer from "@/components/ChatsMenuDrawer.vue";
+import ChatDrawer from "@/components/ChatDrawer.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
