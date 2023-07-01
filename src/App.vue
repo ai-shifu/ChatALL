@@ -255,9 +255,7 @@ img.selected {
 }
 
 .content {
-    flex: 1;
     background-color: rgb(var(--v-theme-background));
-    padding: 16px;
 }
 
 .cursor-pointer {
