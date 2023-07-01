@@ -4,8 +4,8 @@
     v-if="!isEditMode"
     :key="`chat-${props.chat.index}`"
     :active="store.getters.currentChat.index === props.chat.index"
-    :title="chat.title"
-    :value="index"
+    :title="props.chat.title"
+    :value="props.chat.index"
     style="padding: 0.8rem; padding-right: 0"
     @click="onSelectChat(props.chat.index)"
   >
