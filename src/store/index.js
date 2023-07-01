@@ -225,6 +225,7 @@ export default createStore({
       }
       if (state.chats[0].index === undefined) {
         state.chats[0].index = 0;
+        state.chats[0].createdTime = new Date().getTime();
       }
     },
     setTheme(state, theme) {
@@ -241,6 +242,7 @@ export default createStore({
           contexts: {},
           messages: [],
           threads: [],
+          createdTime: new Date().getTime(),
         }) - 1;
       state.chats[chatIndex].index = chatIndex;
       state.chats[chatIndex].title = `${i18n.global.t("chat.newChat")} ${
