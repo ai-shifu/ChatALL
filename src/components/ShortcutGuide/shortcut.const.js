@@ -52,6 +52,16 @@ export const SHORTCUT_BOTS_MENU = {
   flexDirection: "column",
 };
 
+export const SHORTCUT_CHAT_DRAWER = {
+  elementId: "chat-drawer-btn",
+  key: ["ctrl", "b"],
+  offset: {
+    left: -10,
+    top: 40,
+  },
+  flexDirection: "column",
+};
+
 export const SHORTCUT_LIST = [
   SHORTCUT_FIND,
   SHORTCUT_SETTINGS,
@@ -59,6 +69,7 @@ export const SHORTCUT_LIST = [
   SHORTCUT_SHORTCUT_GUIDE,
   SHORTCUT_CLEAR_MESSAGES,
   SHORTCUT_PROMPT_TEXTAREA,
+  SHORTCUT_CHAT_DRAWER,
   {
     elementId: "column-1",
     key: ["f1"],

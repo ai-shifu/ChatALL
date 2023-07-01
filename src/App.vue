@@ -10,8 +10,11 @@
         <v-app-bar class="header-content" style="padding: 0">
           <div class="header-content">
             <v-app-bar-nav-icon
+              :id="SHORTCUT_CHAT_DRAWER.elementId"
               variant="text"
               @click.stop="isChatDrawerOpen = !isChatDrawerOpen"
+              @shortkey="isChatDrawerOpen = !isChatDrawerOpen"
+              v-shortkey.once="SHORTCUT_CHAT_DRAWER.key"
             >
             </v-app-bar-nav-icon>
             <img
@@ -108,6 +111,7 @@ import {
   SHORTCUT_SETTINGS,
   SHORTCUT_SHORTCUT_GUIDE,
   SHORTCUT_CLEAR_MESSAGES,
+  SHORTCUT_CHAT_DRAWER,
 } from "./components/ShortcutGuide/shortcut.const";
 
 import i18n from "./i18n";
