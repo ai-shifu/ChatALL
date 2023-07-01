@@ -6,7 +6,7 @@
     :active="store.getters.currentChat.index === props.chat.index"
     :title="chat.title"
     :value="index"
-    style="padding: 0.8rem"
+    style="padding: 0.8rem; padding-right: 0"
     @click="onSelectChat(props.chat.index)"
   >
     <template v-slot:prepend>
@@ -18,14 +18,14 @@
     >
       <v-btn
         flat
-        size="small"
+        size="x-small"
         icon="mdi-pencil-outline"
         @click="editChat"
         style="background-color: transparent"
       ></v-btn>
       <v-btn
         flat
-        size="small"
+        size="x-small"
         icon="mdi-delete-outline"
         @click="confirmHideChat"
         style="margin: 0; background-color: transparent"
