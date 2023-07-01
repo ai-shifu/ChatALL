@@ -4,6 +4,7 @@
       <ChatDrawer
         ref="chatDrawerRef"
         v-model:open="isChatDrawerOpen"
+        @create-chat="focusPromptTextareaAfterChatCreated"
       ></ChatDrawer>
       <v-main class="content">
         <v-app-bar class="header-content" style="padding: 0">
@@ -78,8 +79,11 @@
         </v-app-bar>
         <FindModal ref="findRef"></FindModal>
 
-        <ChatMessages :columns="columns"></ChatMessages>
-        <FooterBar></FooterBar>
+        <ChatMessages
+          :chat-index="store.state.currentChatIndex"
+          :columns="columns"
+        ></ChatMessages>
+        <FooterBar ref="footerBarRef"></FooterBar>
       </v-main>
       <SettingsModal v-model:open="isSettingsOpen" />
       <ConfirmModal ref="confirmModal" />
@@ -109,7 +113,7 @@ import {
 import i18n from "./i18n";
 
 // Components
-import ChatDrawer from "@/components/ChatDrawer.vue";
+import ChatDrawer from "@/components/ChatDrawer/ChatDrawer.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
@@ -135,6 +139,7 @@ ipcRenderer.on("on-updated-system-theme", onUpdatedSystemTheme);
 
 const confirmModal = ref(null);
 const findRef = ref(null);
+const footerBarRef = ref(null);
 const shortcutGuideRef = ref(null);
 const isShortcutGuideOpen = ref(false);
 const isSettingsOpen = ref(false);
@@ -170,6 +175,10 @@ async function clearMessages() {
   if (result) {
     store.commit("clearMessages");
   }
+}
+
+function focusPromptTextareaAfterChatCreated() {
+  footerBarRef.value.focusPromptTextarea();
 }
 
 onMounted(() => {

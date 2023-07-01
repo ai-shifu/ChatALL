@@ -35,6 +35,7 @@
   },
   "modal": {
     "confirmHide": "Delete this message?",
+    "confirmHideChat": "Delete this chat?",
     "done": "Done"
   },
   "chat": {

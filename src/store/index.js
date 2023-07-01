@@ -240,11 +240,21 @@ export default createStore({
           favBots,
           contexts: {},
           messages: [],
+          threads: [],
         }) - 1;
       state.chats[chatIndex].index = chatIndex;
       state.chats[chatIndex].title = `${i18n.global.t("chat.newChat")} ${
         chatIndex + 1
       }`;
+    },
+    selectChat(state, index) {
+      state.currentChatIndex = index;
+    },
+    hideChat(state) {
+      state.chats[state.currentChatIndex].hide = true;
+    },
+    editChatTitle(state, title) {
+      state.chats[state.currentChatIndex].title = title;
     },
   },
   actions: {

@@ -272,6 +272,10 @@ function initializeSortable() {
     },
   });
 }
+
+defineExpose({
+  focusPromptTextarea,
+});
 </script>
 
 <style scoped>

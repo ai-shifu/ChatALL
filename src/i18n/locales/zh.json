@@ -35,6 +35,7 @@
   },
   "modal": {
     "confirmHide": "删除这条消息？",
+    "confirmHideChat": "删除这条对话？",
     "done": "完成"
   },
   "chat": {

@@ -40,12 +40,18 @@ const props = defineProps({
     type: Number,
     default: 3,
   },
+  chatIndex: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const autoScroll = ref(true);
 const gridTemplateColumns = computed(() => `repeat(${props.columns}, 1fr)`);
 const filteredMessages = computed(() => {
-  return store.getters.currentChat.messages.filter((message) => !message.hide);
+  return store.state.chats[props.chatIndex].messages.filter(
+    (message) => !message.hide,
+  );
 });
 
 const updateMessage = (index, values) => {

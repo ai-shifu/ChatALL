@@ -1,0 +1,83 @@
+<template>
+  <v-navigation-drawer
+    permanent
+    :model-value="props.open"
+    @update:model-value="closeChatDrawer"
+  >
+    <v-list nav>
+      <v-list-item
+        density="comfortable"
+        class="mb-1 border"
+        :title="$t('chat.newChat')"
+        @click="onAddNewChat"
+      >
+        <template v-slot:prepend>
+          <v-icon color="primary"> mdi-plus </v-icon>
+        </template>
+      </v-list-item>
+    </v-list>
+
+    <template v-for="chat in store.state.chats.slice().reverse()">
+      <ChatDrawerItem
+        v-if="!chat.hide"
+        :chat="chat"
+        @confirm-hide-chat="confirmHideChat"
+        :key="chat.index"
+      ></ChatDrawerItem>
+    </template>
+  </v-navigation-drawer>
+  <ConfirmModal ref="confirmModal" />
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { useStore } from "vuex";
+import i18n from "@/i18n";
+import ConfirmModal from "@/components/ConfirmModal.vue";
+import ChatDrawerItem from "@/components/ChatDrawer/ChatDrawerItem.vue";
+
+const store = useStore();
+
+const props = defineProps(["open"]);
+const emit = defineEmits(["update:open", "createChat"]);
+const confirmModal = ref(null);
+
+function onAddNewChat() {
+  store.commit("createChat");
+  store.commit("selectChat", store.state.chats.length - 1);
+  emit("createChat");
+}
+
+const closeChatDrawer = () => {
+  emit("update:open", false);
+};
+const openChatDrawer = () => {
+  emit("update:open", true);
+};
+
+const toggleChatDrawer = () => {
+  if (props.open) {
+    closeChatDrawer();
+  } else {
+    openChatDrawer();
+  }
+};
+
+async function confirmHideChat() {
+  const result = await confirmModal.value.showModal(
+    i18n.global.t("modal.confirmHideChat"),
+  );
+  if (result) {
+    store.commit("hideChat");
+  }
+}
+
+defineExpose({
+  toggleChatDrawer,
+});
+</script>
+<style scoped>
+:deep() .v-list-item-title {
+  font-size: 1rem!important;
+}
+</style>
