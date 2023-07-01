@@ -1,9 +1,5 @@
 <template>
-  <v-navigation-drawer
-    permanent
-    :model-value="props.open"
-    @update:model-value="closeChatDrawer"
-  >
+  <v-navigation-drawer permanent :model-value="props.open">
     <v-list nav>
       <v-list-item
         :id="SHORTCUT_NEW_CHAT.elementId"
@@ -52,21 +48,6 @@ function onAddNewChat() {
   emit("createChat");
 }
 
-const closeChatDrawer = () => {
-  emit("update:open", false);
-};
-const openChatDrawer = () => {
-  emit("update:open", true);
-};
-
-const toggleChatDrawer = () => {
-  if (props.open) {
-    closeChatDrawer();
-  } else {
-    openChatDrawer();
-  }
-};
-
 async function confirmHideChat() {
   const result = await confirmModal.value.showModal(
     i18n.global.t("modal.confirmHideChat"),
@@ -75,10 +56,6 @@ async function confirmHideChat() {
     store.commit("hideChat");
   }
 }
-
-defineExpose({
-  toggleChatDrawer,
-});
 </script>
 <style scoped>
 :deep() .v-list-item-title {
