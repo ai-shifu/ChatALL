@@ -301,8 +301,6 @@ function sendPromptToBot() {
 
   // Clear the textarea after sending the prompt
   replyModel.value = "";
-
-  matomo.value?.trackEvent("prompt", "send", "Active bots count", 1);
 }
 
 watch(
