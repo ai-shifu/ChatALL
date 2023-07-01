@@ -7,7 +7,8 @@
     :title="props.chat.title"
     :value="props.chat.index"
     style="padding: 0.8rem; padding-right: 0"
-    @click="onSelectChat(props.chat.index)"
+    :style="{ cursor: isCursorWait ? 'wait' : 'pointer' }"
+    @click="onSelectChat"
   >
     <template v-slot:prepend>
       <v-icon color="primary"> mdi-message-outline </v-icon>
@@ -60,25 +61,38 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const isEditMode = ref(false);
-const emit = defineEmits(["confirmHideChat"]);
-
+const emit = defineEmits(["confirmHideChat", "selectChat"]);
 const props = defineProps({
   chat: {
     type: Object,
     required: true,
   },
 });
+watch(() => store.state.currentChatIndex, unsetCursorWait);
 
+const isEditMode = ref(false);
+const isCursorWait = ref(false);
 const chatTitleEditModel = ref("");
 
-function onSelectChat(index) {
-  if (index === store.state.currentChatIndex) return;
-  store.commit("selectChat", index);
+async function onSelectChat() {
+  if (props.chat.index === store.state.currentChatIndex) return;
+  setCursorWait();
+  await new Promise((r) => setTimeout(r, 25));
+  store.commit("selectChat", props.chat.index);
+}
+
+function setCursorWait() {
+  document.body.style.cursor = "wait";
+  isCursorWait.value = true;
+}
+
+function unsetCursorWait() {
+  document.body.style.cursor = "";
+  isCursorWait.value = false;
 }
 
 async function confirmHideChat() {
