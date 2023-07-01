@@ -1,78 +1,76 @@
-<script setup>
-import { useStore } from 'vuex';
-import { computed } from 'vue';
-
-const store = useStore()
-
-const emits = defineEmits(['create:chat'])
-
-const chats = computed(() => store.getters['chatsModule/getChats'])
-const currentChatId = computed(() => store.getters['chatsModule/getCurrentChatId']) 
-
-async function onAddNewChat() {
-  await store.dispatch('chatsModule/createChat')
-  emits('create:chat')
-}
-
-async function onRemoveChat(chatId) {
-  console.log("FEATURE DISABLED", chatId)
-  // await store.dispatch('chatsModule/deleteChat', chatId)
-}
-
-function onSelectChat(chatId) {
-  store.commit('chatsModule/UPDATE_ACTIVE_CHAT_ID', chatId)
-}
-
-</script>
-
 <template>
-  <v-navigation-drawer 
-    permanent 
-    rail 
-    expand-on-hover
+  <v-navigation-drawer
+    :model-value="props.open"
+    @update:model-value="closeChatDrawer"
   >
-    <v-list>
-      <!-- App Logo -->
-      <v-list-item>
-        <img class="logo" src="@/assets/logo-banner.png" alt="ChatALL" />
-      </v-list-item>
-    </v-list>
-
-    <v-divider></v-divider>
-
-    <v-list density="compact" nav>
-      <!-- Add button -->
-      <v-list-item 
-        class="mb-4" 
-        border 
-        prepend-icon="mdi-plus" 
-        title="New chat" 
+    <v-list nav>
+      <v-list-item
+        density="comfortable"
+        class="mb-1"
+        border
+        prepend-icon="mdi-plus"
+        :title="$t('chat.newChat')"
         @click="onAddNewChat"
       ></v-list-item>
-
-      <!-- Chats list -->
-      <v-list-item
-        v-for="chat in chats" 
-        :key="`chat-${chat.id}`"
-        @click="onSelectChat(chat.id)"
-        :active="currentChatId === chat.id"
-        prepend-icon="mdi-message-outline" 
-        :title="chat.title"
-        :value="chat.id"
-      >
-        <template #append>
-          <v-icon 
-            size="small" 
-            color="red" 
-            @click.self="onRemoveChat(chat.id)"
-          >
-            mdi-delete-outline
-          </v-icon>
-        </template>
-      </v-list-item>
     </v-list>
+
+    <v-list-item
+      density="comfortable"
+      v-for="(chat, index) in store.state.chats.slice().reverse()"
+      :key="`chat-${index}`"
+      :active="store.getters.currentChat.index === index"
+      prepend-icon="mdi-message-outline"
+      :title="chat.title"
+      :value="index"
+      style="padding: 0.8rem"
+      @click="onSelectChat(index)"
+    >
+      <template #append v-if="store.getters.currentChat.index === index">
+        <v-icon size="small" color="primary" @click.self="onRemoveChat(index)">
+          mdi-delete-outline
+        </v-icon>
+      </template>
+    </v-list-item>
   </v-navigation-drawer>
 </template>
 
+<script setup>
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const props = defineProps(["open"]);
+const emit = defineEmits(["update:open"]);
+
+function onSelectChat() {}
+
+function onRemoveChat() {}
+
+function onAddNewChat() {
+  store.commit("createChat");
+}
+
+const closeChatDrawer = () => {
+  emit("update:open", false);
+};
+const openChatDrawer = () => {
+  emit("update:open", true);
+};
+
+const toggleChatDrawer = () => {
+  if (props.open) {
+    closeChatDrawer();
+  } else {
+    openChatDrawer();
+  }
+};
+
+defineExpose({
+  toggleChatDrawer,
+});
+</script>
 <style scoped>
+:deep() .v-list-item-title {
+  font-size: 1rem!important;
+}
 </style>

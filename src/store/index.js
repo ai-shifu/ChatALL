@@ -223,12 +223,28 @@ export default createStore({
       if (state.chats[0].threads === undefined) {
         state.chats[0].threads = [];
       }
+      if (state.chats[0].index === undefined) {
+        state.chats[0].index = 0;
+      }
     },
     setTheme(state, theme) {
       state.theme = theme;
     },
     setMode(state, mode) {
       state.mode = mode;
+    },
+    createChat(state) {
+      const { favBots } = state.chats[state.currentChatIndex];
+      const chatIndex =
+        state.chats.push({
+          favBots,
+          contexts: {},
+          messages: [],
+        }) - 1;
+      state.chats[chatIndex].index = chatIndex;
+      state.chats[chatIndex].title = `${i18n.global.t("chat.newChat")} ${
+        chatIndex + 1
+      }`;
     },
   },
   actions: {

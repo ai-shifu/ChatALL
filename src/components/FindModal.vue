@@ -5,11 +5,12 @@
     v-shortkey.once="SHORTCUT_FIND.key"
     @shortkey="handleFindShortcut"
     style="
-      position: absolute;
-      right: 0;
+      position: fixed;
+      right: 0px;
+      z-index: 1;
       width: 400px;
       min-width: 200px;
-      padding-top: 20px;
+      padding-top: 0.5rem;
     "
   >
     <v-text-field

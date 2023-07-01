@@ -118,13 +118,13 @@ function pushResponseAndCheckIsNextMessagePromptType(index, response) {
     height: 100%;
     overflow-y: auto;
     gap: 16px;
-    margin: 52px 16px;
+    padding: 0;
 }
 
 .message-grid {
     display: grid;
     grid-gap: 16px;
     width: 100%;
-    padding: 16px;
+    padding: 2rem;
 }
 </style>
