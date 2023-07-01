@@ -54,7 +54,7 @@ export const SHORTCUT_BOTS_MENU = {
 
 export const SHORTCUT_CHAT_DRAWER = {
   elementId: "chat-drawer-btn",
-  key: ["ctrl", "b"],
+  key: ["ctrl", "d"],
   offset: {
     left: -10,
     top: 40,
