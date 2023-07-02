@@ -1,87 +1,102 @@
 <template>
-  <div id="app">
-    <header>
-      <div class="header-content">
-        <img
-          :class="{ 'dark-png': store.state.theme === Theme.DARK }"
-          class="logo"
-          src="@/assets/logo-banner.png"
-          alt="ChatALL"
-        />
-        <div class="column-icons">
-          <img
-            v-for="columnCount in 3"
-            :id="`column-${columnCount}`"
-            :key="columnCount"
-            :src="getColumnImage(columnCount)"
-            @click="changeColumns(columnCount)"
-            @shortkey="changeColumns(columnCount)"
-            v-shortkey.once="[`f${columnCount}`]"
-            :class="{
-              selected: columns === columnCount,
-              'dark-png': store.state.theme === Theme.DARK,
-            }"
-          />
-        </div>
-        <div>
-          <v-icon
-            :id="SHORTCUT_FIND.elementId"
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-magnify"
-            size="x-large"
-            @click="openFind()"
-          ></v-icon>
-          <v-icon
-            v-shortkey.once="SHORTCUT_CLEAR_MESSAGES.key"
-            @shortkey="clearMessages"
-            :id="SHORTCUT_CLEAR_MESSAGES.elementId"
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-broom"
-            size="x-large"
-            @click="clearMessages()"
-          ></v-icon>
-          <v-icon
-            v-shortkey.once="SHORTCUT_SETTINGS.key"
-            @shortkey="openSettingsModal"
-            :id="SHORTCUT_SETTINGS.elementId"
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-cog"
-            size="x-large"
-            @click="openSettingsModal()"
-          ></v-icon>
-          <v-icon
-            v-shortkey.once="SHORTCUT_SHORTCUT_GUIDE.key"
-            @shortkey="toggleShortcutGuide"
-            :id="SHORTCUT_SHORTCUT_GUIDE.elementId"
-            class="cursor-pointer"
-            color="primary"
-            icon="mdi-help"
-            size="x-large"
-            @click="toggleShortcutGuide()"
-          ></v-icon>
-        </div>
-      </div>
-      <FindModal ref="findRef"></FindModal>
-    </header>
+  <v-app>
+    <v-container fluid style="padding: 0">
+      <ChatDrawer
+        ref="chatDrawerRef"
+        v-model:open="isChatDrawerOpen"
+        @create-chat="focusPromptTextareaAfterChatCreated"
+      ></ChatDrawer>
+      <v-main class="content">
+        <v-app-bar class="header-content" style="padding: 0">
+          <div class="header-content">
+            <v-app-bar-nav-icon
+              :id="SHORTCUT_CHAT_DRAWER.elementId"
+              variant="text"
+              @click.stop="isChatDrawerOpen = !isChatDrawerOpen"
+              @shortkey="isChatDrawerOpen = !isChatDrawerOpen"
+              v-shortkey.once="SHORTCUT_CHAT_DRAWER.key"
+            >
+            </v-app-bar-nav-icon>
+            <img
+              :class="{ 'dark-png': store.state.theme === Theme.DARK }"
+              class="logo"
+              src="@/assets/logo-banner.png"
+              alt="ChatALL"
+            />
+          </div>
+          <div class="column-icons header-content">
+            <img
+              v-for="columnCount in 3"
+              :id="`column-${columnCount}`"
+              :key="columnCount"
+              :src="getColumnImage(columnCount)"
+              @click="changeColumns(columnCount)"
+              @shortkey="changeColumns(columnCount)"
+              v-shortkey.once="[`f${columnCount}`]"
+              :class="{
+                selected: columns === columnCount,
+                'dark-png': store.state.theme === Theme.DARK,
+              }"
+            />
+          </div>
+          <div class="header-content" style="padding-right: 16px">
+            <v-icon
+              :id="SHORTCUT_FIND.elementId"
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-magnify"
+              size="x-large"
+              @click="openFind()"
+            ></v-icon>
+            <v-icon
+              v-shortkey.once="SHORTCUT_CLEAR_MESSAGES.key"
+              @shortkey="clearMessages"
+              :id="SHORTCUT_CLEAR_MESSAGES.elementId"
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-broom"
+              size="x-large"
+              @click="clearMessages()"
+            ></v-icon>
+            <v-icon
+              v-shortkey.once="SHORTCUT_SETTINGS.key"
+              @shortkey="openSettingsModal"
+              :id="SHORTCUT_SETTINGS.elementId"
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-cog"
+              size="x-large"
+              @click="openSettingsModal()"
+            ></v-icon>
+            <v-icon
+              v-shortkey.once="SHORTCUT_SHORTCUT_GUIDE.key"
+              @shortkey="toggleShortcutGuide"
+              :id="SHORTCUT_SHORTCUT_GUIDE.elementId"
+              class="cursor-pointer"
+              color="primary"
+              icon="mdi-help"
+              size="x-large"
+              @click="toggleShortcutGuide()"
+            ></v-icon>
+          </div>
+        </v-app-bar>
+        <FindModal ref="findRef"></FindModal>
 
-    <main class="content">
-      <div id="content">
-        <ChatMessages :columns="columns"></ChatMessages>
-      </div>
-    </main>
-
-    <FooterBar></FooterBar>
-    <SettingsModal v-model:open="isSettingsOpen" />
-    <ConfirmModal ref="confirmModal" />
-    <UpdateNotification></UpdateNotification>
-    <ShortcutGuide
-      ref="shortcutGuideRef"
-      v-model:open="isShortcutGuideOpen"
-    ></ShortcutGuide>
-  </div>
+        <ChatMessages
+          :chat-index="store.state.currentChatIndex"
+          :columns="columns"
+        ></ChatMessages>
+        <FooterBar ref="footerBarRef"></FooterBar>
+      </v-main>
+      <SettingsModal v-model:open="isSettingsOpen" />
+      <ConfirmModal ref="confirmModal" />
+      <UpdateNotification></UpdateNotification>
+      <ShortcutGuide
+        ref="shortcutGuideRef"
+        v-model:open="isShortcutGuideOpen"
+      ></ShortcutGuide>
+    </v-container>
+  </v-app>
 </template>
 
 <script setup>
@@ -96,11 +111,13 @@ import {
   SHORTCUT_SETTINGS,
   SHORTCUT_SHORTCUT_GUIDE,
   SHORTCUT_CLEAR_MESSAGES,
+  SHORTCUT_CHAT_DRAWER,
 } from "./components/ShortcutGuide/shortcut.const";
 
 import i18n from "./i18n";
 
 // Components
+import ChatDrawer from "@/components/ChatDrawer/ChatDrawer.vue";
 import ChatMessages from "@/components/Messages/ChatMessages.vue";
 import SettingsModal from "@/components/SettingsModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
@@ -126,9 +143,12 @@ ipcRenderer.on("on-updated-system-theme", onUpdatedSystemTheme);
 
 const confirmModal = ref(null);
 const findRef = ref(null);
+const footerBarRef = ref(null);
 const shortcutGuideRef = ref(null);
 const isShortcutGuideOpen = ref(false);
 const isSettingsOpen = ref(false);
+const isChatDrawerOpen = ref(store.state.isChatDrawerOpen);
+const chatDrawerRef = ref();
 
 const columns = computed(() => store.state.columns);
 
@@ -149,7 +169,15 @@ function openFind() {
 }
 
 function toggleShortcutGuide() {
-  shortcutGuideRef.value.toggleShortcutGuide();
+  if (!isChatDrawerOpen.value) {
+    // open chat drawer to show new chat shortcut
+    isChatDrawerOpen.value = true;
+    setTimeout(() => {
+      shortcutGuideRef.value.toggleShortcutGuide();
+    }, 200);
+  } else {
+    shortcutGuideRef.value.toggleShortcutGuide();
+  }
 }
 
 async function clearMessages() {
@@ -159,6 +187,10 @@ async function clearMessages() {
   if (result) {
     store.commit("clearMessages");
   }
+}
+
+function focusPromptTextareaAfterChatCreated() {
+  footerBarRef.value.focusPromptTextarea();
 }
 
 onMounted(() => {
@@ -193,9 +225,6 @@ body {
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     background-color: rgb(var(--v-theme-header));
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -226,9 +255,7 @@ img.selected {
 }
 
 .content {
-    flex: 1;
     background-color: rgb(var(--v-theme-background));
-    padding: 16px;
 }
 
 .cursor-pointer {
@@ -237,5 +264,9 @@ img.selected {
 
 .dark-png {
   filter: grayscale(1) brightness(5);
+}
+
+.v-toolbar__content {
+  justify-content: space-between
 }
 </style>

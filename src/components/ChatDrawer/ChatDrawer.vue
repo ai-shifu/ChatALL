@@ -1,0 +1,70 @@
+<template>
+  <v-navigation-drawer permanent :model-value="props.open">
+    <v-list nav>
+      <v-list-item
+        :id="SHORTCUT_NEW_CHAT.elementId"
+        density="comfortable"
+        class="mb-1 border"
+        :title="$t('chat.newChat')"
+        @click="onAddNewChat"
+        @shortkey="onAddNewChat"
+        v-shortkey.once="SHORTCUT_NEW_CHAT.key"
+      >
+        <template v-slot:prepend>
+          <v-icon color="primary"> mdi-plus </v-icon>
+        </template>
+      </v-list-item>
+    </v-list>
+
+    <template v-for="chat in store.state.chats.slice().reverse()">
+      <ChatDrawerItem
+        v-if="!chat.hide"
+        :chat="chat"
+        @confirm-hide-chat="confirmHideChat"
+        :key="chat.index"
+      ></ChatDrawerItem>
+    </template>
+  </v-navigation-drawer>
+  <ConfirmModal ref="confirmModal" />
+</template>
+
+<script setup>
+import { ref, onUpdated } from "vue";
+import { useStore } from "vuex";
+import i18n from "@/i18n";
+import ConfirmModal from "@/components/ConfirmModal.vue";
+import ChatDrawerItem from "@/components/ChatDrawer/ChatDrawerItem.vue";
+import { SHORTCUT_NEW_CHAT } from "@/components/ShortcutGuide/shortcut.const";
+
+const store = useStore();
+
+const props = defineProps(["open"]);
+const emit = defineEmits(["update:open", "createChat"]);
+onUpdated(setIsChatDrawerOpen);
+
+const confirmModal = ref(null);
+
+function setIsChatDrawerOpen() {
+  store.commit("setIsChatDrawerOpen", props.open);
+}
+
+function onAddNewChat() {
+  store.commit("createChat");
+  store.commit("selectChat", store.state.chats.length - 1);
+  emit("createChat");
+}
+
+async function confirmHideChat() {
+  const result = await confirmModal.value.showModal(
+    i18n.global.t("modal.confirmHideChat"),
+  );
+  if (result) {
+    store.commit("hideChat");
+  }
+}
+</script>
+<style scoped>
+:deep() .v-list-item-title {
+  font-size: 1rem!important;
+}
+</style>

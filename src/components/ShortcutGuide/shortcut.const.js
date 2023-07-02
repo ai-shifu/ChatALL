@@ -52,6 +52,26 @@ export const SHORTCUT_BOTS_MENU = {
   flexDirection: "column",
 };
 
+export const SHORTCUT_CHAT_DRAWER = {
+  elementId: "chat-drawer-btn",
+  key: ["ctrl", "d"],
+  offset: {
+    left: -10,
+    top: 40,
+  },
+  flexDirection: "column",
+};
+
+export const SHORTCUT_NEW_CHAT = {
+  elementId: "new-chat-list-item",
+  key: ["ctrl", "n"],
+  offset: {
+    top: 12,
+    left: 20,
+  },
+  alignHorizontallyCenter: true,
+};
+
 export const SHORTCUT_LIST = [
   SHORTCUT_FIND,
   SHORTCUT_SETTINGS,
@@ -59,6 +79,8 @@ export const SHORTCUT_LIST = [
   SHORTCUT_SHORTCUT_GUIDE,
   SHORTCUT_CLEAR_MESSAGES,
   SHORTCUT_PROMPT_TEXTAREA,
+  SHORTCUT_CHAT_DRAWER,
+  SHORTCUT_NEW_CHAT,
   {
     elementId: "column-1",
     key: ["f1"],

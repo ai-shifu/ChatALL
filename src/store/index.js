@@ -82,6 +82,7 @@ export default createStore({
     updateCounter: 0,
     theme: undefined,
     mode: "system",
+    isChatDrawerOpen: true,
     // TODO: delete following fields
     selectedBots: {},
     messages: [],
@@ -223,12 +224,44 @@ export default createStore({
       if (state.chats[0].threads === undefined) {
         state.chats[0].threads = [];
       }
+      if (state.chats[0].index === undefined) {
+        state.chats[0].index = 0;
+        state.chats[0].createdTime = new Date().getTime();
+        state.isChatDrawerOpen = true;
+      }
     },
     setTheme(state, theme) {
       state.theme = theme;
     },
     setMode(state, mode) {
       state.mode = mode;
+    },
+    createChat(state) {
+      const { favBots } = state.chats[state.currentChatIndex];
+      const chatIndex =
+        state.chats.push({
+          favBots,
+          contexts: {},
+          messages: [],
+          threads: [],
+          createdTime: new Date().getTime(),
+        }) - 1;
+      state.chats[chatIndex].index = chatIndex;
+      state.chats[chatIndex].title = `${i18n.global.t("chat.newChat")} ${
+        chatIndex + 1
+      }`;
+    },
+    selectChat(state, index) {
+      state.currentChatIndex = index;
+    },
+    hideChat(state) {
+      state.chats[state.currentChatIndex].hide = true;
+    },
+    editChatTitle(state, title) {
+      state.chats[state.currentChatIndex].title = title;
+    },
+    setIsChatDrawerOpen(state, isChatDrawerOpen) {
+      state.isChatDrawerOpen = isChatDrawerOpen;
     },
   },
   actions: {
