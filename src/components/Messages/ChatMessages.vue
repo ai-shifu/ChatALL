@@ -16,10 +16,7 @@
           <!-- If current message is response, push current message to responses array.
             Then check if next message.type === 'prompt', if true, render <chat-responses> -->
           <chat-responses
-            v-if="
-              !message.hide &&
-              pushResponseAndCheckIsNextMessagePromptType(index, message)
-            "
+            v-if="pushResponseAndCheckIsNextMessagePromptType(index, message)"
             :columns="columns"
             :responses="responses"
             :update-message="updateMessage"
@@ -106,7 +103,7 @@ function checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message) {
 
 function pushResponseAndCheckIsNextMessagePromptType(index, response) {
   const nextIndex = index + 1;
-  responses.push(response);
+  if (!response.hide) responses.push(response);
   if (nextIndex >= messages.value.length) {
     return true; // allow last element
   }
