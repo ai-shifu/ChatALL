@@ -22,9 +22,9 @@ export default class LangChainBot extends Bot {
 
     // Convert the messages to the correct format
     messages = messages.map((item) => {
-      if (item.type === "human") {
+      if (item.type === "human" || item.type === "prompt") {
         return new HumanChatMessage(item.data.content);
-      } else if (item.type === "ai") {
+      } else if (item.type === "ai" || item.type === "response") {
         return new AIChatMessage(item.data.content);
       } else if (item.type === "system") {
         return new SystemChatMessage(item.data.content);
