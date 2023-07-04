@@ -16,16 +16,15 @@ const store = useStore();
 
 defineProps(["bot", "active"]);
 
-const dark_icon_classname = [
-  "OpenAIAPI35Bot",
-  "OpenAIAPI3516KBot",
-  "OpenAIAPI4Bot",
-  "SkyWorkBot",
-  "AzureOpenAIAPIBot",
-  "DevBot",
-];
-
 function enable_filter(bot) {
+  const dark_icon_classname = [
+    "OpenAIAPI35Bot",
+    "OpenAIAPI3516KBot",
+    "OpenAIAPI4Bot",
+    "SkyWorkBot",
+    "AzureOpenAIAPIBot",
+    "DevBot",
+  ];
   const is_dark = store.state.theme == Theme.DARK;
   const is_dark_bot = dark_icon_classname.includes(bot.getClassname());
   return is_dark && is_dark_bot;
