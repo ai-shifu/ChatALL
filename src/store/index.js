@@ -263,6 +263,22 @@ export default createStore({
     setIsChatDrawerOpen(state, isChatDrawerOpen) {
       state.isChatDrawerOpen = isChatDrawerOpen;
     },
+    deleteChats(state) {
+      const { favBots } = state.chats[state.currentChatIndex];
+      const newChats = [
+        {
+          favBots,
+          contexts: {},
+          messages: [],
+          threads: [],
+          index: 0,
+          title: i18n.global.t("chat.newChat"),
+          createdTime: new Date().getTime(),
+        },
+      ];
+      state.chats = newChats;
+      state.currentChatIndex = 0;
+    },
   },
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
