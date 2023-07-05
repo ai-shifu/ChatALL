@@ -242,7 +242,8 @@ onBeforeMount(async () => {
 
   // Listen message trigged by main process
   ipcRenderer.on("CHECK-AVAILABILITY", async (event, url) => {
-    const botsToCheck = bots.value.filter((bot) => bot.getLoginUrl() === url);
+    const activeClassnames = Object.keys(activeBots);
+    const botsToCheck = bots.value.filter((bot) => bot.getLoginUrl() === url).filter(d => activeClassnames.includes(d.getClassname()));
     botsToCheck.forEach(async (bot) => {
       await bot.checkAvailability();
       updateActiveBots();
