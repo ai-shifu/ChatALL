@@ -4,7 +4,7 @@
     class="message prompt"
     :class="props.isThread ? 'thread-prompt' : ''"
   >
-    <span>{{ props.message.content }} </span>
+    <pre>{{ props.message.content }} </pre>
     <v-btn flat size="x-small" icon @click="copyToClipboard" class="copy_btn_bg">
       <v-icon>mdi-content-copy</v-icon>
     </v-btn>
@@ -55,6 +55,8 @@ function copyToClipboard() {
 }
 
 .prompt {
+  display: flex;
+  align-items: center;
   background-color: rgb(var(--v-theme-prompt));
   width: fit-content;
   grid-column: 1 / span var(--columns);
