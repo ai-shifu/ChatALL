@@ -27,7 +27,7 @@
     "electron-builder": "^24.4.0",
     "github-markdown-css": "^5.2.0",
     "highlight.js": "^11.8.0",
-    "langchain": "0.0.97",
+    "langchain": "0.0.103",
     "material-design-icons": "^3.0.1",
     "sortablejs": "^1.15.0",
     "update-electron-app": "^2.0.1",
