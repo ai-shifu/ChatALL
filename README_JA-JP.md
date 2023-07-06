@@ -12,7 +12,7 @@
 
 ## 特徴
 
-大規模言語モデル（LLM）ベースの AIは素晴らしいです。しかし、その解答はAIによってバラバラで、AIによって得意とする処理が異なります。最高の体験をしたいのであれば、ボットを別々に毎回試すのはやめましょう。ChatALLは、複数のAIにメッセージを送信することができ、各AIの結果を見て比較するのに役立ちます。
+大規模言語モデル（LLM）ベースの AIは素晴らしいです。しかし、その回答はAIによってバラバラで、AIによって得意とする処理が異なります。最高の体験をしたいのであれば、AIを別々に毎回試すのはやめましょう！ChatALLは、同時に複数のAIにメッセージを送信することができ、各AIの回答を見て比較するのに役立ちます。ChatALLを使うのに必要なのは[ダウンロード・インストール](https://github.com/sunner/ChatALL/releases)・質問それだけです。
 
 ### あなたですか？
 
@@ -42,18 +42,19 @@ ChatALLのだいたいのユーザーはこんな感じ：
 | [HuggingChat](https://huggingface.co/chat/)                  | はい　　　| なし　　　|                                     |
 | [QianWen](https://qianwen.aliyun.com/)                       | はい　　　| 近日登場　|                                     |
 
-まだまだ続きます。これらの問題でお気に入りのボットをアップボートしてください。
+まだまだ続きます。[Issuesタブ](https://github.com/sunner/ChatALL/labels/more%20LLMs)でお気に入りのAIを提案してください。
 
 ### その他特徴
 
 - クイックプロンプトモード：前のリクエストの完了を待たずに次のプロンプトを送信する機能
 - チャット履歴をローカルに保存し、プライバシーを保護
 - 気に入ったメッセージをピン止めし、悪いメッセージを削除
-- 使いたいボットAIをいつでも変更することができます。
+- 使いたいAIをいつでも変更することができます。
 - 1列～3列の3段階の表示切替
 - 最新バージョンへの自動アップデート
 - ダークモード対応（@tanchekwei氏寄稿）
 - `Ctrl + /` を押すと全てのショートカットキーが表示 (貢献者 @tanchekwei)
+- マルチチャット対応
 - 多言語対応(英語、中国語、ドイツ語、フランス語、ロシア語、ベトナム語、韓国語、日本語など...今後も言語を追加)
 - Windows、macOS、Linux対応 
 
@@ -84,6 +85,8 @@ https://github.com/sunner/ChatALL/releases から最新版をダウンロード�
 AppleシリコンMac (頭文字にMがあるCPU)は、\*-mac-arm64.dmg ファイルをダウンロードしてください。
 
 Intel Macは、\*-mac-x64.dmg ファイルをダウンロードしてください。
+
+システムが悪意のあるソフトウェアかどうかを確認できないと表示した場合は、[アップルの公式ガイド](https://support.apple.com/ja-jp/guide/mac-help/mchleab3a043/mac)に従ってください。
 
 ### Linux の場合
 
@@ -147,9 +150,9 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### その他
 
-- GPT-4はコードの貢献した
+- GPT-4はコードを提供した
 - ChatGPT、Bing Chat、Googleは多くの解決策を提供しています（ランキング順）
-- [ChatHub](https://github.com/chathub-dev/chathub) を参考にしました。リスペクトです！
+- [ChatHub](https://github.com/chathub-dev/chathub)のリスペクトです！
 
 ## 支援者
 
