@@ -39,7 +39,10 @@
     "done": "完了"
   },
   "chat":{
-    "newChat": "新しい会話"
+    "name": "チャット",
+    "newChat": "新しいチャット",
+    "deleteAllChatHistory": "全てのチャット履歴を削除",
+    "confirmDeleteAllChatHistory": "全てのチャット履歴を削除しますか？この操作は取り消せません。"  
   },
   "bot": {
     "creatingConversation": "会話を作成中...",
