@@ -4,7 +4,7 @@
       <ChatDrawer
         ref="chatDrawerRef"
         v-model:open="isChatDrawerOpen"
-        @create-chat="focusPromptTextareaAfterChatCreated"
+        @focus-textarea="focusPromptTextarea"
       ></ChatDrawer>
       <v-main class="content">
         <v-app-bar class="header-content" style="padding: 0">
@@ -189,7 +189,7 @@ async function clearMessages() {
   }
 }
 
-function focusPromptTextareaAfterChatCreated() {
+function focusPromptTextarea() {
   footerBarRef.value.focusPromptTextarea();
 }
 

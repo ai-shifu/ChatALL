@@ -65,7 +65,7 @@ import { ref, watch } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const emit = defineEmits(["confirmHideChat", "selectChat"]);
+const emit = defineEmits(["confirmHideChat", "focusTextarea"]);
 const props = defineProps({
   chat: {
     type: Object,
@@ -83,6 +83,7 @@ async function onSelectChat() {
   setCursorWait();
   await new Promise((r) => setTimeout(r, 25));
   store.commit("selectChat", props.chat.index);
+  emit("focusTextarea");
 }
 
 function setCursorWait() {
