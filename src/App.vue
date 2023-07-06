@@ -269,4 +269,8 @@ img.selected {
 .v-toolbar__content {
   justify-content: space-between
 }
+
+.vuepress-markdown-body:not(.custom) {
+    padding: 0 !important;
+}
 </style>

@@ -15,6 +15,27 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
+// VMdPreview
+import VMdPreview from '@kangc/v-md-editor/lib/preview';
+import '@kangc/v-md-editor/lib/style/preview.css';
+import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
+import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/index';
+import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
+import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
+import '@kangc/v-md-editor/lib/theme/style/github.css';
+import Prism from 'prismjs';
+import createKatexPlugin from '@kangc/v-md-editor/lib/plugins/katex/cdn';
+
+VMdPreview
+  .use(vuepressTheme, {
+    Prism,
+  })
+  .use(createLineNumbertPlugin())
+  .use(createCopyCodePlugin())
+  .use(createKatexPlugin());
+
 const { ipcRenderer } = window.require("electron");
 
 // Init storage
@@ -77,6 +98,7 @@ createApp(App)
   .use(i18n)
   .use(store)
   .use(vuetify)
+  .use(VMdPreview)
   .use(VueShortkey)
   .use(VueMatomo, {
     // Configure your matomo server and site by providing
