@@ -16,7 +16,7 @@
       </v-list-item>
     </v-list>
 
-    <template v-for="chat in store.state.chats.slice().reverse()">
+    <template v-for="chat in chatsReversed">
       <ChatDrawerItem
         v-if="!chat.hide"
         :chat="chat"
@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { ref, onUpdated } from "vue";
+import { ref, computed, onUpdated } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
 import ConfirmModal from "@/components/ConfirmModal.vue";
@@ -43,6 +43,7 @@ const emit = defineEmits(["update:open", "createChat"]);
 onUpdated(setIsChatDrawerOpen);
 
 const confirmModal = ref(null);
+const chatsReversed = computed(() => store.state.chats.slice().reverse());
 
 function setIsChatDrawerOpen() {
   store.commit("setIsChatDrawerOpen", props.open);
@@ -60,6 +61,17 @@ async function confirmHideChat() {
   );
   if (result) {
     store.commit("hideChat");
+    selectLatestVisibleChat();
+  }
+}
+
+function selectLatestVisibleChat() {
+  for (let i = 0; i < chatsReversed.value.length; i++) {
+    const chat = chatsReversed.value[i];
+    if (!chat.hide) {
+      store.commit("selectChat", chat.index);
+      break;
+    }
   }
 }
 </script>
