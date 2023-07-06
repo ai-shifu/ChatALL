@@ -4,8 +4,14 @@
     class="message prompt"
     :class="props.isThread ? 'thread-prompt' : ''"
   >
-    <span>{{ props.message.content }} </span>
-    <v-btn flat size="x-small" icon @click="copyToClipboard" class="copy_btn_bg">
+    <pre>{{ props.message.content }}</pre>
+    <v-btn
+      flat
+      size="x-small"
+      icon
+      @click="copyToClipboard"
+      class="copy_btn_bg"
+    >
       <v-icon>mdi-content-copy</v-icon>
     </v-btn>
   </v-card>
@@ -41,7 +47,7 @@ onMounted(() => {
   root.value.$el.style.setProperty("--columns", props.columns);
 });
 function copyToClipboard() {
-  let content = props.message.content
+  let content = props.message.content;
   navigator.clipboard.writeText(content);
 }
 </script>
