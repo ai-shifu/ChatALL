@@ -9,10 +9,15 @@
     "loginOrOut": "Iniciar sesión/Cerrar sesión",
     "loginOrOutPrompt": "Haga clic en el vínculo siguiente para iniciar o cerrar sesión en la nueva ventana y, a continuación, ciérrela",
     "notice": "Notar",
-    "secretPrompt": "Su token secreto permanecerá en su dispositivo y no se compartirá con nadie más"
+    "secretPrompt": "Su token secreto permanecerá en su dispositivo y no se compartirá con nadie más",
+    "theme": "Tema",
+    "system": "Sistema",
+    "light": "Luz",
+    "dark": "Oscuro",
+    "bots": "Bots de IA"
   },
   "header": {
-    "clearMessages": "¿Borrar todos los mensajes?",
+    "clearMessages": "¿Borrar todos los mensajes en este chat?",
     "yes": "Sí",
     "no": "No",
     "singleColumn": "Columna única",
@@ -20,6 +25,7 @@
     "tripleColumn": "Triple columna"
   },
   "footer": {
+    "chooseFavorite": "Elige tus bots de IA favoritos",
     "sendPrompt": "Enviar a:",
     "promptPlaceholder": "Escriba un mensaje. (Mayús+Entrar para añadir una nueva línea)"
   },
@@ -29,10 +35,14 @@
   },
   "modal": {
     "confirmHide": "¿Eliminar este mensaje?",
+    "confirmHideChat": "¿Eliminar este chat?",
     "done": "Hecho"
   },
   "chat": {
-    "newChat": "Nuevo chat"
+    "name": "Charlar",
+    "newChat": "Nuevo chat",
+    "deleteAllChatHistory": "Eliminar todo el historial de chat",
+    "confirmDeleteAllChatHistory": "¿Está seguro de que desea eliminar todo el historial de chat? Esta acción no se puede deshacer."
   },
   "bot": {
     "creatingConversation": "Creando conversación...",
@@ -44,12 +54,26 @@
     "pastRounds": "¿Cuántas rondas de chats pasados llevar?",
     "pastRoundsPrompt": "Cuantos más chats históricos se lleven a cabo, mejor será el efecto del diálogo de varias rondas, pero también consumirá más costos."
   },
+  "azureOpenaiApi": {
+    "name": "Servicio Azure OpenAI",
+    "temperature": "Temperatura",
+    "temperaturePrompt": "Cuanto mayor sea la temperatura, más creativo será el texto, pero más probable es que sea incoherente.",
+    "temperature0": "Más determinista",
+    "temperature2": "Más aleatorio",
+    "azureOpenAIApiKey": "Clave de API de Azure OpenAI",
+    "azureApiInstanceName": "Azure OpenAI API InstanceName",
+    "azureApiInstanceNamePrompt": "Ver el nombre de instancia en Cognitive Services en https://portal.azure.com/",
+    "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
+    "azureOpenAIApiDeploymentNamePrompt": "Ver el nombre de la implementación en la lista de implementaciones en https://oai.azure.com/",
+    "azureOpenAIApiVersion": "Versión de la API de Azure OpenAI"
+  },
   "bard": {
     "name": "Bardo"
   },
   "bingChat": {
     "name": "Bing Chat",
     "loginToContinue": "La solicitud está limitada. <a {=\"\" attributes=\"\" }=\"\">Inicie sesión</a> para continuar.",
+    "solveCaptcha": "Necesitas <a {=\"\" attributes=\"\" }=\"\">resolver CAPTCHA</a> para continuar.",
     "h3imaginative": "Creativo",
     "galileo": "Equilibrado",
     "h3precise": "Preciso"
@@ -59,9 +83,12 @@
     "autoRefresh": "Antidesconexión automática",
     "autoRefreshPrompt": "Si NO se le pide que inicie sesión con frecuencia, NO habilite esta función",
     "notice": "Solo los miembros Plus de pago pueden usar GPT-4",
+    "riskWarningTitle": "Recordatorio",
+    "riskWarningText": "OpenAI está utilizando servicios de Arkose Labs para detectar y evitar acciones que accedan a los modelos de navegación GPT-4, GPT-4 Mobie V2 y GPT-4 de ChatGPT a través de aplicaciones que no sean los clientes oficiales. Aunque ChatALL puede eludir su protección, OpenAI aún puede identificarlo fácilmente, lo que aumenta el riesgo de ser prohibido. \n\n¿Estás seguro de correr este riesgo? (El riesgo de usar GPT-3.5 es mucho menor)",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "Navegación Web"
+    "gpt-4-browsing": "Navegación Web",
+    "gpt-4-mobile": "GPT-4 móvil V2"
   },
   "ernie": {
     "name": "ERNIE"
@@ -90,9 +117,10 @@
   },
   "openaiApi": {
     "name": "OpenAI API",
-    "alterUrl": "URL de API alternativa",
-    "alterUrlPrompt": "Si está utilizando una URL de API personalizada, puede ingresarla aquí",
+    "alterUrl": "URL base alternativa",
+    "alterUrlPrompt": "Ruta de URL base para solicitudes de API, déjela en blanco si no usa un proxy o emulador de servicios",
     "gpt-35-turbo": "GPT-3.5-turbo",
+    "gpt-35-turbo-16k": "GPT-3.5-Turbo-16K",
     "gpt-4": "GPT-4",
     "temperature": "Temperatura",
     "temperaturePrompt": "Cuanto mayor sea la temperatura, más creativo será el texto, pero más probable es que sea incoherente.",
@@ -100,8 +128,20 @@
     "temperature2": "Más aleatorio",
     "apiKey": "Clave API"
   },
+  "poe": {
+    "name": "Poe",
+    "a2": "Claude-instantáneo",
+    "a2_100k": "Claude-instant-100k",
+    "a2_2": "Claude+",
+    "beaver": "GPT-4",
+    "capybara": "Salvia",
+    "chinchilla": "ChatGPT 3.5"
+  },
   "qianWen": {
     "name": "QianWen"
+  },
+  "skyWork": {
+    "name": "SkyWork"
   },
   "spark": {
     "name": "iFlytek Spark"
@@ -111,5 +151,52 @@
   },
   "dev": {
     "name": "Bot de desarrollo"
+  },
+  "updates": {
+    "updateAvailable": "¡Actualización disponible!",
+    "currentVersion": "Su versión",
+    "latestVersion": "Última versión",
+    "downloadFromGitHub": "Descargar desde GitHub",
+    "skipThisVersion": "Omitir esta versión",
+    "close": "Cerrar"
+  },
+  "find": {
+    "find": "Encontrar",
+    "noMatches": "No hay coincidencias",
+    "matchCase": "Estuche de fósforo",
+    "wrapAround": "Envolver"
+  },
+  "proxy": {
+    "name": "Proxy",
+    "address": "Dirección del servidor proxy",
+    "addressExample": "http://127.0.0.1:7890, calcetines5://127.0.0.1:1080",
+    "enableProxy": "Habilitar proxy",
+    "proxyMode": "Modo proxy",
+    "globalMode": "Modo normal",
+    "pacFileMode": "Modo de archivo PAC",
+    "pacUrlMode": "Modo URL PAC",
+    "byPass": "Direcciones no proxy (solo efectivas para el modo normal)",
+    "byPassHint": "Direcciones no proxy, separadas por ';', pero sin ';' al final. Por ejemplo, ';*.aliyun.com;*.tiangong.cn;*.<local>xfyun.cn;*.baidu.com;*.baidubce.com'</local>",
+    "fromFile": "Cargar desde archivo",
+    "fromURL": "Cargar desde URL",
+    "pacUrl": "Dirección URL PAC",
+    "pacFile": "Archivo PAC",
+    "pacFileUsing": "Archivo PAC utilizado actualmente",
+    "pacFileNew": "Seleccione otro archivo PAC",
+    "quickSet": "Configuración rápida",
+    "fullSet": "Configuración avanzada",
+    "action": "Acción",
+    "onlySave": "Guardar solo",
+    "saveAndApply": "Guardar y aplicar",
+    "reload": "Recargar",
+    "reset": "Restablecimiento",
+    "proxyFilePath": "Ruta del archivo de configuración del proxy",
+    "proxyFilePathHint": "Puede hacer una copia de seguridad de este archivo o modificarlo con otros programas",
+    "saveSuccess": "Guardar con éxito",
+    "saveFailed": "Error al guardar",
+    "resetAllMessage": "Se perderán todos los ajustes (incluidos los guardados). ¿Está seguro de restablecer los valores predeterminados?",
+    "reloadMessage": "Se perderán todos los ajustes sin guardar. ¿Está seguro de volver a cargar el archivo de configuración?",
+    "saveAndActiveMessage": "Aplicar la configuración de proxy reiniciará ChatALL. ¿Estás seguro?",
+    "googleService": "Servicio de Google"
   }
 }
