@@ -66,12 +66,19 @@ async function confirmHideChat() {
 }
 
 function selectLatestVisibleChat() {
+  let isAnyChatVisible = false;
   for (let i = 0; i < chatsReversed.value.length; i++) {
     const chat = chatsReversed.value[i];
     if (!chat.hide) {
+      isAnyChatVisible = true;
       store.commit("selectChat", chat.index);
       break;
     }
+  }
+  if (!isAnyChatVisible) {
+    // if there is no visible chat, create a new chat
+    store.commit("createChat");
+    store.commit("selectChat", store.state.chats.length - 1);
   }
 }
 </script>
