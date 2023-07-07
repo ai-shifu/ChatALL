@@ -41,12 +41,11 @@ export default class LangChainBot extends Bot {
     const callbacks = [
       {
         handleLLMNewToken(token) {
-          if (token) {
-            res += token;
-            onUpdateResponse(callbackParam, { content: res, done: false });
-          } else {
-            onUpdateResponse(callbackParam, { done: true });
-          }
+          res += token;
+          onUpdateResponse(callbackParam, { content: res, done: false });
+        },
+        handleLLMEnd() {
+          onUpdateResponse(callbackParam, { done: true });
         },
       },
     ];
