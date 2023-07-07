@@ -148,7 +148,9 @@
     "name": "讯飞星火"
   },
   "wenxinQianfan": {
-    "name": "文心千帆"
+    "name": "文心千帆",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo"
   },
   "dev": {
     "name": "开发专用 Bot"

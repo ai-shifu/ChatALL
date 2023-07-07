@@ -148,7 +148,9 @@
     "name": "iFlytek Spark"
   },
   "wenxinQianfan": {
-    "name": "Wenxin Qianfan"
+    "name": "Wenxin Qianfan",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo"
   },
   "dev": {
     "name": "Dev Bot"
