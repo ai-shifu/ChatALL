@@ -39,7 +39,7 @@
     "done": "Done"
   },
   "chat": {
-    "name": "Chat",
+    "name": "Chats",
     "newChat": "New Chat",
     "deleteAllChatHistory": "Delete All Chat History",
     "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone."
