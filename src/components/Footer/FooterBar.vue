@@ -197,10 +197,13 @@ function sendPromptToBots() {
 
   if (toBots.length === 0) return;
 
-  store.dispatch("sendPrompt", {
-    prompt: prompt.value,
-    bots: toBots,
-  });
+  const isFirstPrompt = store.getters.currentChat.messages.length === 0;
+  store
+    .dispatch("sendPrompt", {
+      prompt: prompt.value,
+      bots: toBots,
+    })
+    .then(() => updateChatTitleWithFirstPrompt(isFirstPrompt));
 
   // Clear the textarea after sending the prompt
   prompt.value = "";
@@ -295,6 +298,15 @@ function initializeSortable() {
   favBotLogosRef.value.addEventListener("drop", () => {
     isDropOnFavBotBar = true;
   });
+}
+
+function updateChatTitleWithFirstPrompt(isFirstPrompt) {
+  if (isFirstPrompt) {
+    // if this is first prompt, update chat title to first 30 characters of user prompt
+    store.commit("editChatTitle", {
+      title: store.getters.currentChat.messages[0].content.substring(0, 30),
+    });
+  }
 }
 
 defineExpose({
