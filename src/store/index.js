@@ -257,8 +257,16 @@ export default createStore({
     hideChat(state) {
       state.chats[state.currentChatIndex].hide = true;
     },
-    editChatTitle(state, title) {
-      state.chats[state.currentChatIndex].title = title;
+    editChatTitle(state, { title, isEditedByUser = false }) {
+      if (isEditedByUser) {
+        state.chats[state.currentChatIndex].title = title;
+        state.chats[state.currentChatIndex].isTitleUserEdited = true;  
+      } else {
+        if (!state.chats[state.currentChatIndex].isTitleUserEdited) {
+          // if user has not edit title before, set title
+          state.chats[state.currentChatIndex].title = title;
+        } // else do not overwrite user title
+      }
     },
     setIsChatDrawerOpen(state, isChatDrawerOpen) {
       state.isChatDrawerOpen = isChatDrawerOpen;

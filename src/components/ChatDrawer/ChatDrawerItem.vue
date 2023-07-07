@@ -106,7 +106,10 @@ function editChat() {
 }
 
 function confirmEdit() {
-  store.commit("editChatTitle", chatTitleEditModel.value);
+  store.commit("editChatTitle", {
+    title: chatTitleEditModel.value,
+    isEditedByUser: true,
+  });
   isEditMode.value = false;
 }
 
