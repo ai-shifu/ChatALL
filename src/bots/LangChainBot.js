@@ -1,9 +1,5 @@
 import Bot from "@/bots/Bot";
-import {
-  HumanChatMessage,
-  AIChatMessage,
-  SystemChatMessage,
-} from "langchain/schema";
+import { HumanMessage, AIMessage, SystemMessage } from "langchain/schema";
 
 export default class LangChainBot extends Bot {
   static _brandId = "langChainBot";
@@ -23,18 +19,18 @@ export default class LangChainBot extends Bot {
     // Convert the messages to the correct format
     messages = messages.map((item) => {
       if (item.type === "human") {
-        return new HumanChatMessage(item.data.content);
+        return new HumanMessage(item.data.content);
       } else if (item.type === "ai") {
-        return new AIChatMessage(item.data.content);
+        return new AIMessage(item.data.content);
       } else if (item.type === "system") {
-        return new SystemChatMessage(item.data.content);
+        return new SystemMessage(item.data.content);
       } else {
         return item;
       }
     });
 
     // Add the prompt to the messages
-    messages.push(new HumanChatMessage(prompt));
+    messages.push(new HumanMessage(prompt));
 
     let res = "";
     const model = this.constructor._chatModel;
@@ -51,7 +47,7 @@ export default class LangChainBot extends Bot {
     ];
     model.callbacks = callbacks;
     await model.call(messages);
-    messages.push(new AIChatMessage(res));
+    messages.push(new AIMessage(res));
     this.setChatContext(messages);
   }
 
