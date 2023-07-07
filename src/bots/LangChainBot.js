@@ -18,7 +18,7 @@ export default class LangChainBot extends Bot {
 
     // Deserialize the messages and convert them to the correct format
     messages = messages.map((item) => {
-      let storedMessage = JSON.parse(item);  // Deserialize
+      let storedMessage = JSON.parse(item); // Deserialize
       if (storedMessage.type === "human") {
         return new HumanMessage(storedMessage.data);
       } else if (storedMessage.type === "ai") {
