@@ -16,16 +16,15 @@ export default class LangChainBot extends Bot {
       messages.shift();
     }
 
-    // Convert the messages to the correct format
+    // Deserialize the messages and convert them to the correct format
     messages = messages.map((item) => {
-      if (item.type === "human") {
-        return new HumanMessage(item.data.content);
-      } else if (item.type === "ai") {
-        return new AIMessage(item.data.content);
-      } else if (item.type === "system") {
-        return new SystemMessage(item.data.content);
-      } else {
-        return item;
+      let storedMessage = JSON.parse(item); // Deserialize
+      if (storedMessage.type === "human") {
+        return new HumanMessage(storedMessage.data);
+      } else if (storedMessage.type === "ai") {
+        return new AIMessage(storedMessage.data);
+      } else if (storedMessage.type === "system") {
+        return new SystemMessage(storedMessage.data);
       }
     });
 
@@ -48,6 +47,8 @@ export default class LangChainBot extends Bot {
     model.callbacks = callbacks;
     await model.call(messages);
     messages.push(new AIMessage(res));
+    // Serialize the messages before storing
+    messages = messages.map((item) => JSON.stringify(item.toDict()));
     this.setChatContext(messages);
   }
 
