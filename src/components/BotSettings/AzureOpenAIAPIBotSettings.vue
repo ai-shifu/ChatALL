@@ -42,11 +42,13 @@
     <v-list-item-title>{{
       $t("azureOpenaiApi.azureOpenAIApiVersion")
     }}</v-list-item-title>
+    <v-list-item-subtitle>{{
+      $t("azureOpenaiApi.azureOpenAIApiVersionPrompt")
+    }}</v-list-item-subtitle>
     <v-text-field
       v-model="azureOpenaiApi.azureOpenAIApiVersion"
       outlined
       dense
-      placeholder="2023-03-15-preview"
       @update:model-value="setAzureOpenaiApi({ azureOpenAIApiVersion: $event })"
     ></v-text-field>
 

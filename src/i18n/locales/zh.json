@@ -65,7 +65,8 @@
     "azureApiInstanceNamePrompt": "在 https://portal.azure.com/ 认知服务下查看Azure OpenAI API 实例名称",
     "azureOpenAIApiDeploymentName": "Azure OpenAI API 模型部署名称",
     "azureOpenAIApiDeploymentNamePrompt": "在 https://oai.azure.com/ 管理菜单下的模型部署列表中查看",
-    "azureOpenAIApiVersion": "Azure OpenAI API 模型版本"
+    "azureOpenAIApiVersion": "Azure OpenAI API 模型版本",
+    "azureOpenAIApiVersionPrompt": "支持的模型版本在 https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference 页面中REST API版本控制章节中查看"
   },
   "bard": {
     "name": "Bard"
