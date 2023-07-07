@@ -60,13 +60,13 @@
     "temperaturePrompt": "Temperature 越高，生成的文本越有创造性，但也越没条理",
     "temperature0": "更具确定性",
     "temperature2": "更具随机性",
-    "azureOpenAIApiKey": "Azure OpenAI API 密钥",
-    "azureApiInstanceName": "Azure OpenAI API 实例名称",
-    "azureApiInstanceNamePrompt": "在 https://portal.azure.com/ 认知服务下查看Azure OpenAI API 实例名称",
-    "azureOpenAIApiDeploymentName": "Azure OpenAI API 模型部署名称",
-    "azureOpenAIApiDeploymentNamePrompt": "在 https://oai.azure.com/ 管理菜单下的模型部署列表中查看",
-    "azureOpenAIApiVersion": "Azure OpenAI API 模型版本",
-    "azureOpenAIApiVersionPrompt": "支持的模型版本在 https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference 页面中REST API版本控制章节中查看"
+    "azureOpenAIApiKey": "密钥",
+    "azureApiInstanceName": "实例名",
+    "azureApiInstanceNamePrompt": "在 https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI 查看",
+    "azureOpenAIApiDeploymentName": "部署名",
+    "azureOpenAIApiDeploymentNamePrompt": "在 https://oai.azure.com/ 的「管理 -> 部署」下查看",
+    "azureOpenAIApiVersion": "模型版本",
+    "azureOpenAIApiVersionPrompt": "在 https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#completions 查看支持的版本"
   },
   "bard": {
     "name": "Bard"

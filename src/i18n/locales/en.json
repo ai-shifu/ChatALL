@@ -60,13 +60,13 @@
     "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
     "temperature0": "More deterministic",
     "temperature2": "More random",
-    "azureOpenAIApiKey": "Azure OpenAI API Key",
-    "azureApiInstanceName": "Azure OpenAI API InstanceName",
-    "azureApiInstanceNamePrompt": "View the instance name in Cognitive Services on https://portal.azure.com/",
-    "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
-    "azureOpenAIApiDeploymentNamePrompt": "View the deployment name in deployment list on https://oai.azure.com/",
-    "azureOpenAIApiVersion": "Azure OpenAI API Version",
-    "azureOpenAIApiVersionPrompt": "View the support model versions in in the REST API version control section on the https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference page."
+    "azureOpenAIApiKey": "Key",
+    "azureApiInstanceName": "Instance Name",
+    "azureApiInstanceNamePrompt": "View the instance name at https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI",
+    "azureOpenAIApiDeploymentName": "Deployment Name",
+    "azureOpenAIApiDeploymentNamePrompt": "View the deployment name in Management -> Deployments at https://oai.azure.com/",
+    "azureOpenAIApiVersion": "Version",
+    "azureOpenAIApiVersionPrompt": "Get the supported versions from https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {
     "name": "Bard"
