@@ -60,12 +60,13 @@
     "temperaturePrompt": "温度が高ければ高いほど、独創的な文章になるが、支離滅裂な文章になりやすい。",
     "temperature0": "より決定論的",
     "temperature2": "よりランダム",
-    "azureOpenAIApiKey": "Azure OpenAI API キー",
-    "azureApiInstanceName": "Azure OpenAI API インスタンス名",
+    "azureOpenAIApiKey": "キー",
+    "azureApiInstanceName": "インスタンス名",
     "azureApiInstanceNamePrompt": "https://portal.azure.com/ の Cognitive Services でインスタンス名を表示する。",
-    "azureOpenAIApiDeploymentName": "Azure OpenAI API デプロイメント名",
-    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ の配置リストで配置名を表示する",
-    "azureOpenAIApiVersion": "Azure OpenAI API バージョン"
+    "azureOpenAIApiDeploymentName": "デプロイメント名",
+    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ の[管理] -> [デプロイメント]でデプロイメント名を表示します。",
+    "azureOpenAIApiVersion": "バージョン",
+    "azureOpenAIApiVersionPrompt": "サポートされているバージョンを https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions から入手する。"
   },
   "bard": {
     "name": "Bard"
@@ -147,7 +148,12 @@
     "name": "iFlytek Spark"
   },
   "wenxinQianfan": {
-    "name": "Wenxin Qianfan"
+    "name": "Wenxin Qianfan",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo"
+  },
+  "youChat": {
+    "name": "YouChat"
   },
   "dev": {
     "name": "Dev Bot"
