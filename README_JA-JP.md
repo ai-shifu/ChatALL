@@ -41,6 +41,7 @@ ChatALLのユーザーはこんな感じ：
 | [Gradio](https://gradio.app/)                                | はい　　　| なし　　　| Hugging Face space/自己配布モデル用     |
 | [HuggingChat](https://huggingface.co/chat/)                  | はい　　　| なし　　　|                                      |
 | [QianWen](https://qianwen.aliyun.com/)                       | はい　　　| 近日登場　|                                      |
+| [YouChat](https://you.com/)                                  | 不明　　　| 不明　　　|                                      |
 
 まだまだ続きます。[Issuesタブ](https://github.com/sunner/ChatALL/labels/more%20LLMs)でお気に入りのAIを提案してください。
 
