@@ -152,6 +152,9 @@
     "ERNIE-Bot": "ERNIE-Bot",
     "ERNIE-Bot-turbo": "ERNIE-Bot-turbo"
   },
+  "youChat": {
+    "name": "YouChat"
+  },
   "dev": {
     "name": "Dev Bot"
   },
