@@ -87,7 +87,11 @@ ChatALL 是一个客户端，而不是代理。因此，您必须：
 
 对于其他 Mac，下载 \*-mac-x64.dmg 文件。
 
-如果运行时系统提示不能检查软件是否是恶意的，那么按照 [Apple 官方指引](https://support.apple.com/guide/mac-help/apple-cant-check-app-for-malicious-software-mchleab3a043/mac)操作即可。
+如果你在使用 [Homebrew](https://brew.sh/)，可以使用以下命令安装：
+
+```bash
+brew install --cask chatall
+```
 
 ### Linux 系统
 
