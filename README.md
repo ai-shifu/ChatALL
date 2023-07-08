@@ -55,6 +55,8 @@ More is coming. Upvote your favorite bots in [these issues](https://github.com/s
 - Auto update to the latest version
 - Dark mode (contributed by @tanchekwei)
 - Short keys. Press `Ctrl + /` to know all of them (contributed by @tanchekwei)
+- Multiple chats (contributed by @tanchekwei)
+- Supports setting proxy (contributed by @msaong)
 - Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese, Korean, Japanese, Spanish, Italian)
 - Supports Windows, macOS and Linux
 
@@ -62,7 +64,6 @@ Planned features:
 
 You are welcome to contribute to these features.
 
-- [ ] Multi-chats
 - [ ] Deploy front-end to GitHub Pages
 
 ## Prerequisites
