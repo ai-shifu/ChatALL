@@ -519,4 +519,8 @@ function toggleReplyButton() {
   height: 20px;
   margin-right: 4px;
 }
+
+.v-btn {
+  background-color: inherit;
+}
 </style>
