@@ -504,6 +504,7 @@ function toggleReplyButton() {
   width: 99%;
   grid-column: auto / span 1;
   margin: auto;
+  margin-bottom: 0.2rem;
 }
 
 .title {
