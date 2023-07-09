@@ -39,7 +39,10 @@
     "done": "완료"
   },
   "chat": {
-    "newChat": "새 대화"
+    "name": "대화",
+    "newChat": "새 대화",
+    "deleteAllChatHistory": "모든 대화 기록 삭제",
+    "confirmDeleteAllChatHistory": "모든 대화 기록을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
   },
   "bot": {
     "creatingConversation": "대화를 만드는 중...",
@@ -57,12 +60,13 @@
     "temperaturePrompt": "온도가 높을수록 텍스트는 창의적이지만 일관성이 없을 가능성이 높습니다",
     "temperature0": "더 결정론적인",
     "temperature2": "더 무작위",
-    "azureOpenAIApiKey": "Azure OpenAI API 키",
-    "azureApiInstanceName": "Azure OpenAI API 인스턴스 이름",
-    "azureApiInstanceNamePrompt": "https://portal.azure.com/ 의 Cognitive Services에서 인스턴스 이름을 확인합니다",
+    "azureOpenAIApiKey": "키",
+    "azureApiInstanceName": "인스턴스 이름",
+    "azureApiInstanceNamePrompt": "https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI에서 인스턴스 이름 보기",
     "azureOpenAIApiDeploymentName": "Azure OpenAI API 배포 이름",
-    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ 의 배포 목록에서 배포 이름을 확인합니다",
-    "azureOpenAIApiVersion": "Azure OpenAI API 버전"
+    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ 에서 관리 -> 배포에서 배포 이름을 확인합니다",
+    "azureOpenAIApiVersion": "버전",
+    "azureOpenAIApiVersionPrompt": "https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions에서 지원되는 버전 다운로드"
   },
   "bard": {
     "name": "Bard"
@@ -144,7 +148,12 @@
     "name": "iFlytek Spark"
   },
   "wenxinQianfan": {
-    "name": "Wenxin Qianfan"
+    "name": "Wenxin Qianfan",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo"
+  },
+  "youChat": {
+    "name": "YouChat"
   },
   "dev": {
     "name": "Dev Bot"
