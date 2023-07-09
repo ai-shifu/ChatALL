@@ -1,7 +1,7 @@
 <template>
   <v-bottom-navigation
     class="footer"
-    v-shortkey.once="{
+    v-shortkey="{
       focusPromptTextarea: SHORTCUT_PROMPT_TEXTAREA.key,
       toggleBotsMenu: SHORTCUT_BOTS_MENU.key,
     }"
@@ -51,7 +51,7 @@
           :data-id="bot.classname"
           size="36"
           @click="toggleSelected(bot.instance)"
-          v-shortkey.once="['ctrl', `${index + 1}`]"
+          v-shortkey="['ctrl', `${index + 1}`]"
           @shortkey="toggleSelected(bot.instance)"
         />
       </div>
