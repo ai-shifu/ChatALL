@@ -21,6 +21,7 @@ ChatALLのユーザーはこんな感じ：
 - 🤠**LLMのプロたち**, LLMから最高の答えや創造物を見つけたい人たち。
 - 🤓**LLMの研究者**, 様々な分野のLLMの長所と短所を直感的に比較したい人。
 - 😎**LLMアプリケーションの開発者**, プロンプトを素早くデバッグし、最もパフォーマンスの高い基礎モデルを見つけたい人。
+
 ### 対応するAI
 
 | 対応AI                                                       | webアクセス | API   | 確認事項                               |
@@ -88,7 +89,11 @@ AppleシリコンMac (頭文字にMがあるCPU)は、\*-mac-arm64.dmg ファイ
 
 Intel Macは、\*-mac-x64.dmg ファイルをダウンロードしてください。
 
-システムが悪意のあるソフトウェアかどうかを確認できないと表示した場合は、[アップルの公式ガイド](https://support.apple.com/ja-jp/guide/mac-help/mchleab3a043/mac)に従ってください。
+[Homebrew](https://brew.sh/index_ja)を使用している場合は、次の方法でもインストールできます：
+
+```bash
+brew install --cask chatall
+```
 
 ### Linux の場合
 
@@ -127,8 +132,6 @@ npm run electron:serve
 ```
 
 ### ビルド
-
-Node.js は v16.x であること
 
 現在のプラットフォームに合わせてビルド:
 
