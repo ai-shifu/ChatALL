@@ -8,7 +8,7 @@
         :title="$t('chat.newChat')"
         @click="onAddNewChat"
         @shortkey="onAddNewChat"
-        v-shortkey.once="SHORTCUT_NEW_CHAT.key"
+        v-shortkey="SHORTCUT_NEW_CHAT.key"
       >
         <template v-slot:prepend>
           <v-icon color="primary"> mdi-plus </v-icon>

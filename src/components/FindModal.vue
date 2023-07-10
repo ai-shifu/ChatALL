@@ -2,7 +2,7 @@
   <v-form
     ref="formRef"
     @submit.prevent="true"
-    v-shortkey.once="SHORTCUT_FIND.key"
+    v-shortkey="SHORTCUT_FIND.key"
     @shortkey="handleFindShortcut"
     style="
       position: fixed;

@@ -65,10 +65,11 @@ function getShortcutLabelHTML(keys) {
 }
 
 function kbd(text) {
-  return `<kbd>${capitalizeFirstLetter(text)}</kbd>`;
+  return `<kbd>${formatModifierText(text)}</kbd>`;
 }
 
-function capitalizeFirstLetter(string) {
+function formatModifierText(string) {
+  string = string.replace('meta', 'cmd');
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
