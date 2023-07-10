@@ -270,7 +270,11 @@ img.selected {
   justify-content: space-between
 }
 
+.vuepress-markdown-body {
+    color: var(--v-theme-font) !important;
+}
 .vuepress-markdown-body:not(.custom) {
     padding: 0 !important;
+    background-color: transparent !important;
 }
 </style>
