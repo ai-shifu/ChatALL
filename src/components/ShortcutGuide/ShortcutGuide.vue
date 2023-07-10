@@ -65,10 +65,10 @@ function getShortcutLabelHTML(keys) {
 }
 
 function kbd(text) {
-  return `<kbd>${formatModifierTxt(text)}</kbd>`;
+  return `<kbd>${formatModifierText(text)}</kbd>`;
 }
 
-function formatModifierTxt(string) {
+function formatModifierText(string) {
   string = string.replace('meta', 'cmd');
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
