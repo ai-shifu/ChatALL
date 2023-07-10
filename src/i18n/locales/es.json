@@ -39,7 +39,7 @@
     "done": "Hecho"
   },
   "chat": {
-    "name": "Charlar",
+    "name": "Chats",
     "newChat": "Nuevo chat",
     "deleteAllChatHistory": "Eliminar todo el historial de chat",
     "confirmDeleteAllChatHistory": "¿Está seguro de que desea eliminar todo el historial de chat? Esta acción no se puede deshacer."
@@ -60,12 +60,13 @@
     "temperaturePrompt": "Cuanto mayor sea la temperatura, más creativo será el texto, pero más probable es que sea incoherente.",
     "temperature0": "Más determinista",
     "temperature2": "Más aleatorio",
-    "azureOpenAIApiKey": "Clave de API de Azure OpenAI",
-    "azureApiInstanceName": "Azure OpenAI API InstanceName",
-    "azureApiInstanceNamePrompt": "Ver el nombre de instancia en Cognitive Services en https://portal.azure.com/",
-    "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
-    "azureOpenAIApiDeploymentNamePrompt": "Ver el nombre de la implementación en la lista de implementaciones en https://oai.azure.com/",
-    "azureOpenAIApiVersion": "Versión de la API de Azure OpenAI"
+    "azureOpenAIApiKey": "Llave",
+    "azureApiInstanceName": "Nombre de instancia",
+    "azureApiInstanceNamePrompt": "Ver el nombre de la instancia en https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI",
+    "azureOpenAIApiDeploymentName": "Nombre de implementación",
+    "azureOpenAIApiDeploymentNamePrompt": "Ver el nombre de la implementación en Management -> Deployments at https://oai.azure.com/",
+    "azureOpenAIApiVersion": "Versión",
+    "azureOpenAIApiVersionPrompt": "Obtenga las versiones compatibles de https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {
     "name": "Bardo"
@@ -147,7 +148,12 @@
     "name": "iFlytek Spark"
   },
   "wenxinQianfan": {
-    "name": "Wenxin Qianfan"
+    "name": "Wenxin Qianfan",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo"
+  },
+  "youChat": {
+    "name": "YouChat"
   },
   "dev": {
     "name": "Bot de desarrollo"
