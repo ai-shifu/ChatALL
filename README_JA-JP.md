@@ -21,6 +21,7 @@ ChatALLのユーザーはこんな感じ：
 - 🤠**LLMのプロたち**, LLMから最高の答えや創造物を見つけたい人たち。
 - 🤓**LLMの研究者**, 様々な分野のLLMの長所と短所を直感的に比較したい人。
 - 😎**LLMアプリケーションの開発者**, プロンプトを素早くデバッグし、最もパフォーマンスの高い基礎モデルを見つけたい人。
+
 ### 対応するAI
 
 | 対応AI                                                       | webアクセス | API   | 確認事項                               |
@@ -41,6 +42,7 @@ ChatALLのユーザーはこんな感じ：
 | [Gradio](https://gradio.app/)                                | はい　　　| なし　　　| Hugging Face space/自己配布モデル用     |
 | [HuggingChat](https://huggingface.co/chat/)                  | はい　　　| なし　　　|                                      |
 | [QianWen](https://qianwen.aliyun.com/)                       | はい　　　| 近日登場　|                                      |
+| [You](https://you.com/)                                      | はい　　　| なし　|                                      |
 
 まだまだ続きます。[Issuesタブ](https://github.com/sunner/ChatALL/labels/more%20LLMs)でお気に入りのAIを提案してください。
 
@@ -52,9 +54,10 @@ ChatALLのユーザーはこんな感じ：
 - 使いたいAIをいつでも変更することができます。
 - 回答を1列～3列の表示切替
 - 最新バージョンへの自動通知と自動アップデート
-- ダークモード対応（@tanchekwei氏寄稿）
-- `Ctrl + /` 又は `Cmd + /` を押すと全てのショートカットキーが表示 (貢献者 @tanchekwei)
-- マルチチャット対応
+- ダークモード対応（提供者 @tanchekwei）
+- `Ctrl + /` 又は `Cmd + /` を押すと全てのショートカットキーが表示 (提供者 @tanchekwei)
+- マルチチャット対応 (提供者 @tanchekwei)
+- プロキシ設定をサポート (提供者 @msaong)
 - 対応言語：日本語、英語、中国語、スペイン語、ドイツ語、フランス語、ロシア語、ベトナム語、韓国語
 - Windows、macOS、Linux対応 
 
@@ -86,7 +89,11 @@ AppleシリコンMac (頭文字にMがあるCPU)は、\*-mac-arm64.dmg ファイ
 
 Intel Macは、\*-mac-x64.dmg ファイルをダウンロードしてください。
 
-システムが悪意のあるソフトウェアかどうかを確認できないと表示した場合は、[アップルの公式ガイド](https://support.apple.com/ja-jp/guide/mac-help/mchleab3a043/mac)に従ってください。
+[Homebrew](https://brew.sh/index_ja)を使用している場合は、次の方法でもインストールできます：
+
+```bash
+brew install --cask chatall
+```
 
 ### Linux の場合
 
@@ -125,8 +132,6 @@ npm run electron:serve
 ```
 
 ### ビルド
-
-Node.js は v16.x であること
 
 現在のプラットフォームに合わせてビルド:
 
