@@ -42,6 +42,7 @@ ChatALL 的典型用户是：
 | [Gradio](httpps://gradio.app/)                               | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 | [天工](https://neice.tiangong.cn/)                           | 支持     | 即将推出 |                                          |
+| [You](https://you.com/)                                      | 支持     | 无 API   |                                          |
 
 还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 

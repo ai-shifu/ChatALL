@@ -42,6 +42,7 @@ Typical users of ChatALL are:
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
 | [SkyWork](https://neice.tiangong.cn/)                        | Yes         | Coming soon |                                             |
+| [You](https://you.com/)                                      | Yes         | No API      |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
