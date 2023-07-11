@@ -131,13 +131,13 @@ const botSettings = [
   { brand: "lmsys", component: LMSYSBotSettings },
   { brand: "moss", component: MOSSBotSettings },
   { brand: "openaiApi", component: OpenAIAPIBotSettings },
+  { brand: "pi", component: PiBotSettings },
   { brand: "poe", component: PoeBotSettings },
   { brand: "qianWen", component: QianWenBotSettings },
   { brand: "skyWork", component: SkyWorkBotSettings },
   { brand: "spark", component: SparkBotSettings },
   { brand: "wenxinQianfan", component: WenxinQianfanBotSettings },
   { brand: "youChat", component: YouChatBotSettings },
-  { brand: "pi", component: PiBotSettings },
 ];
 
 const proxy = ProxySettings;
