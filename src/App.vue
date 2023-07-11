@@ -208,6 +208,8 @@ function getColumnImage(columnCount) {
 </script>
 
 <style>
+@import "katex/dist/katex.min.css";
+
 * {
     margin: 0;
     padding: 0;
@@ -268,5 +270,13 @@ img.selected {
 
 .v-toolbar__content {
   justify-content: space-between
+}
+
+.vuepress-markdown-body {
+    color: var(--v-theme-font) !important;
+}
+.vuepress-markdown-body:not(.custom) {
+    padding: 0 !important;
+    background-color: transparent !important;
 }
 </style>

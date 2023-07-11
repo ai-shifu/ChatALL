@@ -30,13 +30,7 @@
       </v-btn>
     </v-card-title>
     <template v-if="props.messages.length === 1">
-      <Markdown
-        class="markdown-body"
-        :breaks="true"
-        :html="messages[0].format === 'html'"
-        :source="messages[0].content"
-        @click="handleClick"
-      />
+      <v-md-preview :text="messages[0].content" @click="handleClick" />
       <template v-if="!props.isThread && messages[0].threadIndex !== undefined">
         <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
             we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
@@ -56,13 +50,7 @@
       v-model="carouselModel"
     >
       <v-carousel-item v-for="(message, i) in messages" :key="i">
-        <Markdown
-          class="markdown-body"
-          :breaks="true"
-          :html="message.format === 'html'"
-          :source="message.content"
-          @click="handleClick"
-        />
+        <v-md-preview :text="message.content" @click="handleClick" />
         <template v-if="!props.isThread && message.threadIndex !== undefined">
           <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
           we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
@@ -156,7 +144,6 @@
 import { onMounted, ref, watch, computed, nextTick } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
-import Markdown from "vue3-markdown-it";
 import { useMatomo } from "@/composables/matomo";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import ChatThread from "./ChatThread.vue";
@@ -403,12 +390,7 @@ function handleClick(event) {
 }
 
 function resendPrompt(responseMessage) {
-  matomo.value?.trackEvent(
-    "vote",
-    "resend",
-    responseMessage.className,
-    1,
-  );
+  matomo.value?.trackEvent("vote", "resend", responseMessage.className, 1);
 
   if (responseMessage.promptIndex === undefined) {
     return;
@@ -464,11 +446,6 @@ function toggleReplyButton() {
 <style scoped>
 :deep() .v-responsive__content {
   overflow: auto;
-}
-
-.markdown-body {
-  background-color: rgb(var(--v-theme-response));
-  font-family: inherit;
 }
 
 .message {
