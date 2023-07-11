@@ -123,7 +123,9 @@ async function createWindow() {
   });
 
   mainWindow = win;
-
+  win.webContents.on("did-finish-load", () => {
+    win.maximize();
+  });
   // Force the SameSite attribute to None for all cookies
   // This is required for the cross-origin request to work
   win.webContents.session.cookies.on(
