@@ -63,8 +63,6 @@ export default createStore({
         favBots: [
           // default bots
           { classname: "ChatGPT35Bot", selected: true },
-          { classname: "ChatGPT4Bot", selected: true },
-          { classname: "ChatGPTBrowsingBot", selected: true },
           { classname: "BingChatCreativeBot", selected: true },
           { classname: "BingChatBalancedBot", selected: true },
           { classname: "BingChatPreciseBot", selected: true },
@@ -77,6 +75,8 @@ export default createStore({
         contexts: {},
         messages: [],
         threads: [],
+        hide: false,
+        createdTime: new Date().getTime(),
       },
     ],
     currentChatIndex: 0,
@@ -85,7 +85,7 @@ export default createStore({
     mode: "system",
     isChatDrawerOpen: true,
     // TODO: delete following fields
-    selectedBots: {},
+    selectedBots: null,
     messages: [],
   },
   mutations: {
