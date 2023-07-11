@@ -208,6 +208,8 @@ function getColumnImage(columnCount) {
 </script>
 
 <style>
+@import "katex/dist/katex.min.css";
+
 * {
     margin: 0;
     padding: 0;

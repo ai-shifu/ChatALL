@@ -6,7 +6,7 @@ import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { useI18n } from "vue-i18n";
 import "material-design-icons/iconfont/material-icons.css";
 import VueMatomo from "vue-matomo";
-import VueShortkey from 'vue3-shortkey';
+import VueShortkey from "vue3-shortkey";
 import { resolveTheme, applyTheme } from "./theme";
 
 // Vuetify
@@ -16,22 +16,21 @@ import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
 // VMdPreview
-import VMdPreview from '@kangc/v-md-editor/lib/preview';
-import '@kangc/v-md-editor/lib/style/preview.css';
-import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
-import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/index';
-import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
-import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
-import '@kangc/v-md-editor/lib/style/base-editor.css';
-import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
-import '@kangc/v-md-editor/lib/theme/style/github.css';
-import Prism from 'prismjs';
-import createKatexPlugin from '@kangc/v-md-editor/lib/plugins/katex/cdn';
+import VMdPreview from "@kangc/v-md-editor/lib/preview";
+import "@kangc/v-md-editor/lib/style/preview.css";
+import "@kangc/v-md-editor/lib/theme/style/vuepress.css";
+import createLineNumbertPlugin from "@kangc/v-md-editor/lib/plugins/line-number/index";
+import createCopyCodePlugin from "@kangc/v-md-editor/lib/plugins/copy-code/index";
+import "@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css";
+import "@kangc/v-md-editor/lib/style/base-editor.css";
+import vuepressTheme from "@kangc/v-md-editor/lib/theme/vuepress.js";
+import "@kangc/v-md-editor/lib/theme/style/github.css";
+import Prism from "prismjs";
+import createKatexPlugin from "@kangc/v-md-editor/lib/plugins/katex/npm";
 
-VMdPreview
-  .use(vuepressTheme, {
-    Prism,
-  })
+VMdPreview.use(vuepressTheme, {
+  Prism,
+})
   .use(createLineNumbertPlugin())
   .use(createCopyCodePlugin())
   .use(createKatexPlugin());
@@ -64,7 +63,7 @@ const vuetify = createVuetify({
           header: "#fff",
           prompt: "#95ec69",
           response: "#fff",
-          "font": "#212121",
+          font: "#212121",
         },
       },
       dark: {
@@ -78,7 +77,7 @@ const vuetify = createVuetify({
           header: "#292a2d",
           prompt: "#222329",
           response: "#131419",
-          "font": "#fff",
+          font: "#fff",
         },
       },
     },
