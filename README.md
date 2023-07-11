@@ -43,6 +43,7 @@ Typical users of ChatALL are:
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
 | [SkyWork](https://neice.tiangong.cn/)                        | Yes         | Coming soon |                                             |
 | [You](https://you.com/)                                      | Yes         | No API      |                                             |
+| [Pi](https://heypi.com)                                      | Yes         | No API      |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 

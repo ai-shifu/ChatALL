@@ -43,6 +43,7 @@ ChatALL 的典型用户是：
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 | [天工](https://neice.tiangong.cn/)                           | 支持     | 即将推出 |                                          |
 | [You](https://you.com/)                                      | 支持     | 无 API   |                                          |
+| [Pi](https://heypi.com)                                      | 支持     | 无 API   |                                          |
 
 还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 
