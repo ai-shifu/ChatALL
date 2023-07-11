@@ -24,7 +24,7 @@ ChatALLのユーザーはこんな感じ：
 
 ### 対応するAI
 
-| 対応AI                                                       | webアクセス | API   | 確認事項                               |
+| 対応AI                                                        | webアクセス | API   | 確認事項                               |
 | ------------------------------------------------------------ | -------- | -------- | ----------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | はい　　　| あり　　　|  ブラウジングを含む                     |
 | [Bing Chat](https://www.bing.com/new)                        | はい　　　| なし　　　| ログイン不要 [ログインするとターン数上昇]  |
@@ -42,7 +42,8 @@ ChatALLのユーザーはこんな感じ：
 | [Gradio](https://gradio.app/)                                | はい　　　| なし　　　| Hugging Face space/自己配布モデル用     |
 | [HuggingChat](https://huggingface.co/chat/)                  | はい　　　| なし　　　|                                      |
 | [QianWen](https://qianwen.aliyun.com/)                       | はい　　　| 近日登場　|                                      |
-| [You](https://you.com/)                                      | はい　　　| なし　|                                      |
+| [You](https://you.com/)                                      | はい　　　| なし　　　|                                      |
+| [Pi](https://heypi.com)                                      | はい　　　| なし　　　|                                      |
 
 まだまだ続きます。[Issuesタブ](https://github.com/sunner/ChatALL/labels/more%20LLMs)でお気に入りのAIを提案してください。
 
