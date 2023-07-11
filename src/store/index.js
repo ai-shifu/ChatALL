@@ -68,6 +68,7 @@ export default createStore({
           { classname: "BingChatCreativeBot", selected: true },
           { classname: "BingChatBalancedBot", selected: true },
           { classname: "BingChatPreciseBot", selected: true },
+          { classname: "PiBot", selected: true },
           { classname: "ChatGLMBot", selected: true },
           { classname: "VicunaBot", selected: true },
           { classname: "AlpacaBot", selected: true },
@@ -260,7 +261,7 @@ export default createStore({
     editChatTitle(state, { title, isEditedByUser = false }) {
       if (isEditedByUser) {
         state.chats[state.currentChatIndex].title = title;
-        state.chats[state.currentChatIndex].isTitleUserEdited = true;  
+        state.chats[state.currentChatIndex].isTitleUserEdited = true;
       } else {
         if (!state.chats[state.currentChatIndex].isTitleUserEdited) {
           // if user has not edit title before, set title
