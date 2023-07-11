@@ -41,7 +41,9 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [Claude](https://www.anthropic.com/index/introducing-claude) | 예        | API 없음  | No Login required                   |
 | [Gradio](https://gradio.app/)                                | 예        | API 없음  | Hugging Face space/자체 배포 모델용 |
 | [HuggingChat](https://huggingface.co/chat/)                  | 예        | API 없음  |                                     |
-| [QianWen](https://qianwen.aliyun.com/)                       | 예        | 근일 개봉 |                                     |
+| [SkyWork](https://neice.tiangong.cn/)                        | 예         | 근일 개봉 |                                             |
+| [You](https://you.com/)                                      | 예         | API 없음      |                                             |
+| [Pi](https://heypi.com)                                      | 예         | API 없음      |                                             |
 
 그리고 더...
 
@@ -55,14 +57,15 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 - 최신 버전으로 자동 업데이트
 - 다크 모드 (@tanchekwei 기여)
 - 단축키. Ctrl + /`를 누르면 모든 단축키를 확인할 수 있습니다 (@tanchekwei 기여).
-- 여러 언어(한국어, 중국어, 영어, 독일어, 프랑스어, 러시아어, 베트남어) 지원
+- 다중 채팅 (@tancheckwei 기여)
+- 프록시 설정 지원 (@msaong에서 제공)
+- 여러 언어 ( 한국어, 중국어, 영어, 독일어, 프랑스어, 러시아어, 베트남어, 일본어, 스페인어, 이탈리아어) 지원
 - Windows, macOS 및 Linux 지원
 
 계획된 기능:
 
 이러한 기능에 참여하는 것을 환영합니다.
 
-- [ ] 다중 채팅
 - [ ] GitHub 페이지에 프런트엔드 배포
 
 ## 전제 조건
@@ -87,7 +90,11 @@ Apple Silicon Mac (M1, M2 CPU)의 경우 \*-mac-arm64.dmg 파일을 다운로드
 
 다른 Mac의 경우 \*-mac-x64.dmg 파일을 다운로드합니다.
 
-소프트웨어의 악성 여부를 확인할 수 없다는 메시지가 표시될 경우 [Apple 공식 가이드](https://support.apple.com/guide/mac-help/apple-cant-check-app-for-malicious-software-mchleab3a043/mac)를 따라 진행합니다
+[Homebrew](https://brew.sh/), )를 사용하는 경우 다음과 함께 설치할 수도 있습니다:
+
+```bash
+brew install --cask chatall
+```
 
 ### Linux에서
 
