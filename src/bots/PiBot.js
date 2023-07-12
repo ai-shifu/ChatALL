@@ -80,7 +80,7 @@ export default class PiBot extends Bot {
               ),
             );
           } else {
-            reject(new Error(event));
+            reject(this.getSSEDisplayError(event));
           }
         });
         source.stream();
