@@ -67,6 +67,7 @@ export default createStore({
           { classname: "BingChatBalancedBot", selected: true },
           { classname: "BingChatPreciseBot", selected: true },
           { classname: "PiBot", selected: true },
+          { classname: "YouChatBot", selected: true },
           { classname: "ChatGLMBot", selected: true },
           { classname: "VicunaBot", selected: true },
           { classname: "AlpacaBot", selected: true },
