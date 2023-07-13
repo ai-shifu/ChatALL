@@ -2,6 +2,7 @@
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
+import ChatGPT35BrowsingBot from "@/bots/openai/ChatGPT35BrowsingBot";
 import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
 import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
 import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
@@ -48,6 +49,7 @@ const all = [
   ChatGPT4MobileBot.getInstance(),
   ChatGPT4PoeBot.getInstance(),
   ChatGPTBrowsingBot.getInstance(),
+  ChatGPT35BrowsingBot.getInstance(),
   ClaudeInstantPoeBot.getInstance(),
   ClaudeInstant100kPoeBot.getInstance(),
   ClaudeBot.getInstance(),

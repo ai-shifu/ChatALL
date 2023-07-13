@@ -95,7 +95,7 @@ export default class ChatGPTBot extends Bot {
   async getArkoseToken() {
     let token = void 0;
 
-    if (this.constructor._model !== "text-davinci-002-render-sha") {
+    if (this.constructor._model !== "text-davinci-002-render-sha" && this.is_gpt4) {
       await axios.get("https://arkose-token.linweiyuan.com/").then((res) => {
         token = res.data.token;
       });
