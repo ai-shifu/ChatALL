@@ -108,7 +108,7 @@ import PoeBotSettings from "@/components/BotSettings/PoeBotSettings.vue";
 import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue";
 import YouChatBotSettings from "@/components/BotSettings/YouChatBotSettings.vue";
 import PiBotSettings from "@/components/BotSettings/PiBotSettings.vue";
-import Qihoo360BrainBotSettings from "./BotSettings/Qihoo360BrainBotSettings.vue";
+import Qihoo360AIBrainBotSettings from "./BotSettings/Qihoo360AIBrainBotSettings.vue";
 
 import { resolveTheme, applyTheme, Mode } from "../theme";
 
@@ -123,6 +123,7 @@ const emit = defineEmits(["update:open", "done"]);
 const tab = ref(null);
 
 const botSettings = [
+  { brand: "360AiBrain", component: Qihoo360AIBrainBotSettings },
   { brand: "azureOpenaiApi", component: AzureOpenAIAPIBotSettings },
   { brand: "bard", component: BardBotSettings },
   { brand: "bingChat", component: BingChatBotSettings },
@@ -135,7 +136,6 @@ const botSettings = [
   { brand: "pi", component: PiBotSettings },
   { brand: "poe", component: PoeBotSettings },
   { brand: "qianWen", component: QianWenBotSettings },
-  { brand: "qihoo360", component: Qihoo360BrainBotSettings },
   { brand: "skyWork", component: SkyWorkBotSettings },
   { brand: "spark", component: SparkBotSettings },
   { brand: "wenxinQianfan", component: WenxinQianfanBotSettings },

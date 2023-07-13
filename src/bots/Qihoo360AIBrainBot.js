@@ -2,10 +2,10 @@ import Bot from "@/bots/Bot";
 import axios from "axios";
 import { SSE } from "sse.js";
 
-export default class Qihoo360BrainBot extends Bot {
-  static _brandId = "qihoo360Brain";
-  static _className = "Qihoo360BrainBot"; // Class name of the bot
-  static _logoFilename = "qihoo360-logo.png";
+export default class Qihoo360AIBrainBot extends Bot {
+  static _brandId = "360AiBrain";
+  static _className = "Qihoo360AIBrainBot"; // Class name of the bot
+  static _logoFilename = "360-ai-brain-logo.png";
   static _loginUrl = "https://chat.360.cn/";
 
   constructor() {
@@ -16,8 +16,7 @@ export default class Qihoo360BrainBot extends Bot {
     await axios
       .get("https://chat.360.cn/backend-api/apiz/user/info")
       .then((response) => {
-        this.constructor._isAvailable =
-          response.data?.context?.message == "OK";
+        this.constructor._isAvailable = response.data?.context?.message == "OK";
       })
       .catch((error) => {
         this.constructor._isAvailable = false;
@@ -26,7 +25,7 @@ export default class Qihoo360BrainBot extends Bot {
     return this.isAvailable();
   }
 
-  async createChatContext() { 
+  async createChatContext() {
     return {};
   }
 
@@ -50,15 +49,18 @@ export default class Qihoo360BrainBot extends Bot {
       is_so: false,
       prompt: prompt,
       role: "00000001",
-      source_type: "prophet_web"
+      source_type: "prophet_web",
     });
 
     return new Promise((resolve, reject) => {
       try {
-        const source = new SSE("https://chat.360.cn/backend-api/api/common/chat", {
-          headers,
-          payload
-        });
+        const source = new SSE(
+          "https://chat.360.cn/backend-api/api/common/chat",
+          {
+            headers,
+            payload,
+          },
+        );
 
         source.addEventListener("200", (event) => {
           res += event.data;
@@ -71,12 +73,12 @@ export default class Qihoo360BrainBot extends Bot {
 
         //Get CONVERSATIONID e.g: CONVERSATIONID####f9563471f24a088d
         source.addEventListener("100", (event) => {
-          context.parentConversationId = event.data.split("####")[1]
+          context.parentConversationId = event.data.split("####")[1];
         });
 
         //Get MESSAGEID e.g: MESSAGEID####f9563471f24a088ddd34826b527ffdfb
         source.addEventListener("101", (event) => {
-          context.parentMessageId = event.data.split("####")[1]
+          context.parentMessageId = event.data.split("####")[1];
         });
 
         //unable to answer the user's question.
