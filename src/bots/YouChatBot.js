@@ -21,7 +21,7 @@ export default class YouChatBot extends Bot {
    * @sideeffect - Set this.constructor._isAvailable
    */
   async checkAvailability() {
-        this.constructor._isAvailable = true;
+    this.constructor._isAvailable = true;
     return this.isAvailable(); // Always return like this
   }
 
