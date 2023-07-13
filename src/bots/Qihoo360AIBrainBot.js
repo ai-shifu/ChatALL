@@ -92,7 +92,8 @@ export default class Qihoo360AIBrainBot extends Bot {
 
         source.addEventListener("error", (event) => {
           console.error(event);
-          reject(new Error(event));
+          const message = this.getSSEDisplayError(event);
+          reject(message);
         });
 
         source.stream();
