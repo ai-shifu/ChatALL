@@ -141,6 +141,9 @@
   "qianWen": {
     "name": "QianWen"
   },
+  "360AiBrain": {
+    "name": "360 AI Brain"
+  },
   "skyWork": {
     "name": "SkyWork"
   },
@@ -156,7 +159,8 @@
     "name": "YouChat"
   },
   "pi": {
-    "name": "Pi"
+    "name": "Pi",
+    "waitPiIntro": "下記のチャットボットサイトのリンクをクリックし、Piの紹介が終わるのを待ち、ウィンドウを閉じてください。"
   },
   "dev": {
     "name": "Dev Bot"
