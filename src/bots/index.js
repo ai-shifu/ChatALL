@@ -32,8 +32,10 @@ import AzureOpenAIAPIBot from "./microsoft/AzureOpenAIAPIBot";
 import WinxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
 import YouChatBot from "./YouChatBot";
 import PiBot from "./PiBot";
+import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
 
 const all = [
+  Qihoo360AIBrainBot.getInstance(),
   AlpacaBot.getInstance(),
   BardBot.getInstance(),
   BingChatCreativeBot.getInstance(),
