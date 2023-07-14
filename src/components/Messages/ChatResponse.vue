@@ -19,13 +19,20 @@
         icon
         @click="toggleHighlight"
         :color="isHighlighted ? 'primary' : ''"
+        :class="getButtonClass"
       >
         <v-icon>mdi-lightbulb-on-outline</v-icon>
       </v-btn>
-      <v-btn flat size="x-small" icon @click="copyToClipboard">
+      <v-btn
+        flat
+        size="x-small"
+        icon
+        @click="copyToClipboard"
+        :class="getButtonClass"
+      >
         <v-icon>mdi-content-copy</v-icon>
       </v-btn>
-      <v-btn flat size="x-small" icon @click="hide">
+      <v-btn flat size="x-small" icon @click="hide" :class="getButtonClass">
         <v-icon>mdi-delete</v-icon>
       </v-btn>
     </v-card-title>
@@ -258,6 +265,10 @@ const isShowResendButton = computed(() => {
   }
 });
 const isShowPagingButton = computed(() => props.messages.length > 1);
+const getButtonClass = computed(() => ({
+  "hide-btn": !props.isThread,
+  "hide-thread-btn": props.isThread,
+}));
 
 // Send the prompt when the user presses enter and prevent the default behavior
 // But if the shift, ctrl, alt, or meta keys are pressed, do as default
@@ -506,5 +517,14 @@ function toggleReplyButton() {
   max-height: 200px;
   white-space: inherit;
   background-color: inherit;
+}
+
+.hide-btn, .hide-thread-btn {
+  transition: 0.3s;
+  opacity: 0;
+}
+    
+.response:hover .hide-btn, .response-thread:hover .hide-thread-btn {
+  opacity: 1;
 }
 </style>
