@@ -30,7 +30,7 @@
     "promptPlaceholder": "输入消息。（Shift+Enter 换行）"
   },
   "error": {
-    "name": "错误",
+    "error": "错误",
     "failedConnectUrl": "连接 { url } 失败",
     "closedByServer": "连接被服务器关闭"
   },

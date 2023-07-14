@@ -30,7 +30,7 @@
     "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
   },
   "error": {
-    "name": "Error",
+    "error": "Error",
     "failedConnectUrl": "Failed to connect { url }",
     "closedByServer": "Connection closed by server"
   },
