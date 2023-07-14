@@ -33,6 +33,7 @@ import WinxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
 import YouChatBot from "./YouChatBot";
 import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
+import OpenAssistantBot from "./OpenAssistantBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -68,6 +69,7 @@ const all = [
   WinxinQianfanTurboBot.getInstance(),
   YouChatBot.getInstance(),
   PiBot.getInstance(),
+  OpenAssistantBot.getInstance(),
 ];
 
 const disabled = [];

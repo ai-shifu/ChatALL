@@ -164,6 +164,10 @@
     "name": "Pi",
     "waitPiIntro": "请点击下面的网站链接，等待Pi介绍完成后，然后关闭窗口。"
   },
+  "openAssistant": {
+    "name": "Open Assistant",
+    "queue": "当前有 { queue_size } 个请求在队列中，你在第 { queue_position } 位"
+  },
   "dev": {
     "name": "开发专用 Bot"
   },
