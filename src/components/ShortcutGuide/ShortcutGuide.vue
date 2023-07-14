@@ -9,7 +9,7 @@
       style="
         position: absolute;
         top: 0;
-        left: 15px;
+        left: 0;
         width: 100vw;
         height: 100vh;
       "
@@ -25,7 +25,7 @@
 
 <script setup>
 const props = defineProps(["open"]);
-const emit = defineEmits(["update:open", "done"]);
+const emit = defineEmits(["update:open"]);
 
 import { ref } from "vue";
 import { onUpdated } from "vue";
@@ -88,7 +88,6 @@ const toggleShortcutGuide = () => {
 const closeShortcutGuide = () => {
   window.removeEventListener("resize", closeShortcutGuide);
   emit("update:open", false);
-  emit("done");
 };
 
 const openShortcutGuide = () => {
@@ -111,5 +110,18 @@ defineExpose({
 :deep() span {
   line-height: 1rem;
   color: rgb(var(--v-theme-font));
+}
+
+:deep() kbd {
+  padding: 3px 5px;
+  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  line-height: 10px;
+  color: rgb(var(--v-theme-font));
+  vertical-align: middle;
+  background-color: rgb(var(--v-theme-background));
+  border: solid 1px rgba(110,118,129,0.4);
+  border-bottom-color: rgba(110,118,129,0.4);
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 rgba(110,118,129,0.4);
 }
 </style>
