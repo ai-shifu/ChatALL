@@ -31,7 +31,8 @@
   },
   "error": {
     "failedConnectUrl": "Failed to connect { url }",
-    "closedByServer": "Connection closed by server"
+    "closedByServer": "Connection closed by server",
+    "solveChallenge": "Kindly click on the link below, follow the instructions on the page to solve challenges / CAPTCHA, then close the window."
   },
   "modal": {
     "confirmHide": "Delete this message?",

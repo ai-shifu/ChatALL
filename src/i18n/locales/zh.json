@@ -31,7 +31,8 @@
   },
   "error": {
     "failedConnectUrl": "连接 { url } 失败",
-    "closedByServer": "连接被服务器关闭"
+    "closedByServer": "连接被服务器关闭",
+    "solveChallenge": "请点击下方链接，按页面指示完成质询 / 验证码，然后关闭窗口。"
   },
   "modal": {
     "confirmHide": "删除这条消息？",
