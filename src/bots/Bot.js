@@ -239,7 +239,7 @@ export default class Bot {
     // replace line break with <br/>
     text = text?.toString()?.replace(/[\r\n]+/g, "<br/>");
     return `<details open>
-              <summary>Error</summary>
+              <summary>${i18n.global.t("error.error")}</summary>
               <pre class="error">${text}</pre>
             </details>`;
   }
