@@ -34,6 +34,7 @@ import YouChatBot from "./YouChatBot";
 import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
 import OpenAssistantBot from "./OpenAssistantBot";
+import CharacterAIBot from "./CharacterAIBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -42,6 +43,7 @@ const all = [
   BingChatCreativeBot.getInstance(),
   BingChatBalancedBot.getInstance(),
   BingChatPreciseBot.getInstance(),
+  CharacterAIBot.getInstance(),
   ChatGLMBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),

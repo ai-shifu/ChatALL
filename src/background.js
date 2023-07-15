@@ -253,6 +253,10 @@ function createNewWindow(url, userAgent = "") {
       const inviteToken = await getLocalStorage("formNatureQueueWaitToken");
       const token = await getLocalStorage("formNatureResearchToken");
       mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
+    } else if (url.startsWith("https://character.ai/")) {
+      const token = await getLocalStorage("char_token");
+      const uuid = await getLocalStorage("uuid");
+      mainWindow.webContents.send("CHARACTER-AI-TOKENS", { token, uuid });
     }
 
     newWin.destroy(); // Destroy the window manually

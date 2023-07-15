@@ -57,11 +57,16 @@ export default createStore({
       secretKey: "",
       pastRounds: 5,
     },
+    characterAI: {
+      uuid: "",
+      token: "",
+    },
     chats: [
       {
         title: "New Chat",
         favBots: [
           // default bots
+          { classname: "CharacterAIBot", selected: true },
           { classname: "ChatGPT35Bot", selected: true },
           { classname: "BingChatCreativeBot", selected: true },
           { classname: "BingChatBalancedBot", selected: true },
@@ -152,6 +157,9 @@ export default createStore({
     },
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };
+    },
+    setCharacterAI(state, values) {
+      state.characterAI = { ...state.characterAI, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];

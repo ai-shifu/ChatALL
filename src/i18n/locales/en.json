@@ -168,6 +168,10 @@
     "name": "Open Assistant",
     "queue": "There are { queue_size } requests in the queue, you are in { queue_position }th place"
   },
+  "characterAI": {
+    "name": "Character.AI",
+    "loginToContinue": "Request is throttled. <a { attributes }>Log in</a> to continue."
+  },
   "dev": {
     "name": "Dev Bot"
   },
