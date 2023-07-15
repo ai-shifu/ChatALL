@@ -5,7 +5,7 @@ import axios from "axios";
 import queryString from "query-string";
 import { SSE } from "sse.js";
 
-export default class YouChatBot extends Bot {
+export default class OpenAssistantBot extends Bot {
   static _brandId = "openAssistant"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "OpenAssistantBot"; // Class name of the bot
   static _logoFilename = "open-assistant.svg"; // Place it in public/bots/
