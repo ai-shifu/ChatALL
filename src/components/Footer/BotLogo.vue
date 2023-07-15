@@ -1,7 +1,7 @@
 <template>
   <v-avatar
     rounded="rounded"
-    :class="{ active: active, filter: enable_filter(bot) }"
+    :class="{ active: active, invert: isLogoInverted }"
     :image="bot.getLogo()"
     :alt="bot.getFullname()"
     :title="bot.getFullname()"
@@ -9,26 +9,15 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { Theme } from "@/theme";
 
 const store = useStore();
-
-defineProps(["bot", "active"]);
-
-function enable_filter(bot) {
-  const dark_icon_classname = [
-    "OpenAIAPI35Bot",
-    "OpenAIAPI3516KBot",
-    "OpenAIAPI4Bot",
-    "SkyWorkBot",
-    "AzureOpenAIAPIBot",
-    "DevBot",
-  ];
-  const is_dark = store.state.theme == Theme.DARK;
-  const is_dark_bot = dark_icon_classname.includes(bot.getClassname());
-  return is_dark && is_dark_bot;
-}
+const props = defineProps(["bot", "active"]);
+const isLogoInverted = computed(() => {
+  return store.state.theme === Theme.DARK && props.bot?.isDarkLogo();
+});
 </script>
 
 <style>
@@ -43,7 +32,7 @@ function enable_filter(bot) {
   filter: grayscale(0%);
 }
 
-.filter{
+.invert{
   filter: invert(100%);
 }
 </style>
