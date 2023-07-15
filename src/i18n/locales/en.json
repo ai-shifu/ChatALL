@@ -164,6 +164,10 @@
     "name": "Pi",
     "waitPiIntro": "Please click the chatbot website link below and wait for the Pi introduction to finish, then close the window."
   },
+  "openAssistant": {
+    "name": "Open Assistant",
+    "queue": "There are { queue_size } requests in the queue, you are in { queue_position }th place"
+  },
   "dev": {
     "name": "Dev Bot"
   },
