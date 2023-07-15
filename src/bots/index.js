@@ -60,6 +60,8 @@ const all = [
   OpenAIAPI3516KBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
+  OpenAssistantBot.getInstance(),
+  PiBot.getInstance(),
   QianWenBot.getInstance(),
   SageBot.getInstance(),
   SkyWorkBot.getInstance(),
@@ -68,8 +70,6 @@ const all = [
   WenxinQianfanBot.getInstance(),
   WinxinQianfanTurboBot.getInstance(),
   YouChatBot.getInstance(),
-  PiBot.getInstance(),
-  OpenAssistantBot.getInstance(),
 ];
 
 const disabled = [];
