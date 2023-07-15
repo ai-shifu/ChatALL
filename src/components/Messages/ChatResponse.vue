@@ -10,7 +10,11 @@
     :flat="props.isThread"
   >
     <v-card-title class="title">
-      <img :src="botLogo" alt="Bot Icon" />
+      <img
+        :src="botLogo"
+        :class="{ invert: isBotLogoInverted }"
+        :alt="botFullname"
+      />
       {{ botFullname }}
       <v-spacer></v-spacer>
       <v-btn
@@ -155,6 +159,7 @@ import { useMatomo } from "@/composables/matomo";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import ChatThread from "./ChatThread.vue";
 import bots from "@/bots";
+import { Theme } from "@/theme";
 
 const props = defineProps({
   messages: {
@@ -196,6 +201,10 @@ const botLogo = computed(() => {
 
 const botFullname = computed(() => {
   return botInstance.value ? botInstance.value.getFullname() : "";
+});
+
+const isBotLogoInverted = computed(() => {
+  return store.state.theme === Theme.DARK && botInstance.value?.isDarkLogo();
 });
 
 const isHighlighted = computed(() => props.messages[maxPage.value].highlight); // if last response is hightlighted, return true
@@ -523,5 +532,9 @@ function toggleReplyButton() {
     
 .response:hover .hide-btn, .response-thread:hover .hide-thread-btn {
   opacity: 1;
+}
+
+.invert{
+  filter: invert(100%);
 }
 </style>

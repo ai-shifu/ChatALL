@@ -9,6 +9,7 @@ export default class Bot {
   static _className = "Bot"; // Class name of the bot
   static _model = ""; // Model of the bot (eg. "text-davinci-002-render-sha")
   static _logoFilename = "default-logo.svg"; // Place it in public/bots/
+  static _isDarkLogo = false; // True if the main color of logo is dark
   static _loginUrl = "undefined";
   static _userAgent = ""; // Empty string means using the default user agent
   static _lock = null; // AsyncLock for prompt requests. `new AsyncLock()` in the subclass as needed.
@@ -23,6 +24,10 @@ export default class Bot {
 
   getLogo() {
     return `bots/${this.constructor._logoFilename}`;
+  }
+
+  isDarkLogo() {
+    return this.constructor._isDarkLogo;
   }
 
   getBrandName() {

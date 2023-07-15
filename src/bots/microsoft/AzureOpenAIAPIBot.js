@@ -6,6 +6,7 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
   static _brandId = "azureOpenaiApi";
   static _className = "AzureOpenAIAPIBot";
   static _logoFilename = "azure-openai-logo.png";
+  static _isDarkLogo = true; // The main color of logo is dark
 
   constructor() {
     super();

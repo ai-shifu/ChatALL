@@ -8,6 +8,7 @@ export default class SkyWorkBot extends Bot {
   static _brandId = "skyWork"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "SkyWorkBot"; // Class name of the bot
   static _logoFilename = "skywork-logo.png"; // Place it in public/bots/
+  static _isDarkLogo = true; // The main color of logo is dark
   static _loginUrl = "https://neice.tiangong.cn/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
