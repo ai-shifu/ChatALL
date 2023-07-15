@@ -111,16 +111,6 @@ export default class OpenAssistantBot extends Bot {
           },
         );
         let text = "";
-        source.addEventListener("token", (event) => {
-          const data = JSON.parse(event.data);
-          if (data.text) {
-            text += data.text;
-            onUpdateResponse(callbackParam, {
-              content: text,
-              done: false,
-            });
-          }
-        });
         source.addEventListener("message", (event) => {
           let data;
           try {
