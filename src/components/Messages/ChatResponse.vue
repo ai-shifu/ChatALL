@@ -186,15 +186,16 @@ const replyRef = ref();
 const maxPage = computed(() => props.messages.length - 1);
 const carouselModel = ref(maxPage.value);
 const confirmModal = ref(null);
+const botInstance = computed(() => {
+  return bots.getBotByClassName(props.messages[0].className);
+});
 
 const botLogo = computed(() => {
-  const bot = bots.getBotByClassName(props.messages[0].className);
-  return bot ? bot.getLogo() : "";
+  return botInstance.value ? botInstance.value.getLogo() : "";
 });
 
 const botFullname = computed(() => {
-  const bot = bots.getBotByClassName(props.messages[0].className);
-  return bot ? bot.getFullname() : "";
+  return botInstance.value ? botInstance.value.getFullname() : "";
 });
 
 const isHighlighted = computed(() => props.messages[maxPage.value].highlight); // if last response is hightlighted, return true
@@ -288,13 +289,11 @@ function filterEnterKey(event) {
 function sendPromptToBot() {
   if (replyModel.value.trim() === "") return;
 
-  const botInstance = bots.getBotByClassName(props.messages[0].className);
-
   store.dispatch("sendPromptInThread", {
     responseIndex: props.messages[maxPage.value].index, // always send prompt in thread to last page
     threadIndex: props.messages[carouselModel.value].threadIndex,
     prompt: replyModel.value,
-    bot: botInstance,
+    bot: botInstance.value,
   });
 
   carouselModel.value = maxPage.value; // move to last page
@@ -412,10 +411,9 @@ function resendPrompt(responseMessage) {
         responseMessage.promptIndex
       ];
     if (promptMessage) {
-      const botInstance = bots.getBotByClassName(responseMessage.className);
       store.dispatch("sendPromptInThread", {
         prompt: promptMessage.content,
-        bot: botInstance,
+        bot: botInstance.value,
         promptIndex: responseMessage.promptIndex,
         responseIndex: responseMessage.index,
         threadIndex: props.threadIndex,
@@ -427,10 +425,9 @@ function resendPrompt(responseMessage) {
     const promptMessage =
       store.getters.currentChat.messages[responseMessage.promptIndex];
     if (promptMessage) {
-      const botInstance = bots.getBotByClassName(responseMessage.className);
       store.dispatch("sendPrompt", {
         prompt: promptMessage.content,
-        bots: [botInstance],
+        bots: [botInstance.value],
         promptIndex: responseMessage.promptIndex,
       });
     } else {
