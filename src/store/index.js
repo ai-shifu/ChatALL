@@ -60,7 +60,7 @@ export default createStore({
     characterAI: {
       token: "",
       ttl: 0,
-    }
+    },
     claude2: {
       org: "",
     },
