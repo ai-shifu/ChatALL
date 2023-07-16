@@ -253,6 +253,9 @@ function createNewWindow(url, userAgent = "") {
       const inviteToken = await getLocalStorage("formNatureQueueWaitToken");
       const token = await getLocalStorage("formNatureResearchToken");
       mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
+    } else if (url.startsWith("https://claude.ai/")) {
+      const org = await getLocalStorage("lastActiveOrg");
+      mainWindow.webContents.send("CLAUDE-2-ORG", org);
     }
 
     newWin.destroy(); // Destroy the window manually
