@@ -30,8 +30,8 @@ module.exports = defineConfig({
           icon: "src/assets/icon.png",
         },
         nsis: {
-          "oneClick": false,
-          "allowToChangeInstallationDirectory": true
+          oneClick: false,
+          allowToChangeInstallationDirectory: true
         }
       },
       /**
