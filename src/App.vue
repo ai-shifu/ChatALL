@@ -140,16 +140,6 @@ const onUpdatedSystemTheme = async () => {
 };
 
 ipcRenderer.on("on-updated-system-theme", onUpdatedSystemTheme);
-ipcRenderer.on("CHARACTER-AI-TOKENS", (event, { token, uuid }) => {
-  try {
-    store.commit("setCharacterAI", {
-      token: token ? JSON.parse(token).value : "",
-      uuid,
-    });
-  } catch (error) {
-    console.error("CHARACTER-AI-TOKENS", error);
-  }
-});
 
 const confirmModal = ref(null);
 const findRef = ref(null);

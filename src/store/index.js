@@ -58,15 +58,14 @@ export default createStore({
       pastRounds: 5,
     },
     characterAI: {
-      uuid: "",
       token: "",
+      ttl: 0,
     },
     chats: [
       {
         title: "New Chat",
         favBots: [
           // default bots
-          { classname: "CharacterAIBot", selected: true },
           { classname: "ChatGPT35Bot", selected: true },
           { classname: "BingChatCreativeBot", selected: true },
           { classname: "BingChatBalancedBot", selected: true },

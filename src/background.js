@@ -255,8 +255,7 @@ function createNewWindow(url, userAgent = "") {
       mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
     } else if (url.startsWith("https://character.ai/")) {
       const token = await getLocalStorage("char_token");
-      const uuid = await getLocalStorage("uuid");
-      mainWindow.webContents.send("CHARACTER-AI-TOKENS", { token, uuid });
+      mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
     }
 
     newWin.destroy(); // Destroy the window manually

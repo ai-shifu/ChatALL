@@ -1,9 +1,7 @@
 import Bot from "@/bots/Bot";
-import i18n from "@/i18n";
 import store from "@/store";
 import AsyncLock from "async-lock";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 
 export default class CharacterAIBot extends Bot {
   static _brandId = "characterAI"; // Brand id of the bot, should be unique. Used in i18n.
@@ -32,33 +30,36 @@ export default class CharacterAIBot extends Bot {
    * @sideeffect - Set this.constructor._isAvailable
    */
   async checkAvailability() {
-    let uuid = null;
-    if (!store.state.characterAI?.uuid) {
-      uuid = uuidv4();
-      await store.commit("setCharacterAI", {
-        uuid,
-      });
-    }
+    try {
+      this.constructor._isAvailable = false;
 
-    if (!store.state.characterAI?.token) {
-      let authResponse = await axios.post(
-        "https://beta.character.ai/chat/auth/lazy/",
-        { lazy_uuid: uuidv4() },
+      if (!store.state.characterAI.token) {
+        console.error("Error CharacterAIBot check login: token not found");
+        return this.isAvailable();
+      }
+
+      if (new Date().getTime() >= store.state.characterAI?.ttl) {
+        console.error("Error CharacterAIBot check login: token expired");
+        return this.isAvailable();
+      }
+
+      const userInfoResponse = await axios.get(
+        "https://beta.character.ai/chat/user/",
+        this.getAuthHeaders(),
       );
 
-      if (authResponse.status === 200 && authResponse.data?.token) {
-        await store.commit("setCharacterAI", {
-          token: authResponse.data.token,
-        });
-        this.constructor._isAvailable = true;
-      } else {
-        console.error("CharacterAIBot", authResponse);
-        this.constructor._isAvailable = false;
+      if (userInfoResponse.status !== 200) {
+        console.error("Error CharacterAIBot check login:", userInfoResponse);
+        return this.isAvailable();
       }
-    } else {
-      this.constructor._isAvailable = true;
+
+      if (userInfoResponse.data.user?.user?.username !== "ANONYMOUS") {
+        this.constructor._isAvailable = true;
+      }
+    } catch (error) {
+      console.error("Error CharacterAIBot check login:", error);
     }
-    return this.isAvailable(); // Always return like this
+    return this.isAvailable();
   }
 
   /**
@@ -134,19 +135,6 @@ export default class CharacterAIBot extends Bot {
         });
       } else {
         // handle exception
-        if (lastResponse.force_login) {
-          // {"force_login": true}
-          // require login, clear context
-          this.setChatContext(null);
-          onUpdateResponse(callbackParam, {
-            content: i18n.global.t("characterAI.loginToContinue", {
-              attributes: `href="${this.getLoginUrl()}" id="${this.getClassname()}" target="botLoginWindow"`,
-            }),
-            done: true,
-          });
-          return;
-        }
-
         // {"abort": true, "error": "No eligible candidates", "last_user_msg_id": 123, "last_user_msg_uuid": "1111-uuid"}
         onUpdateResponse(callbackParam, {
           content: `${this.text}\n${this.wrapCollapsedSection(
