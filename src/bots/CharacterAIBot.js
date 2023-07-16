@@ -9,7 +9,7 @@ export default class CharacterAIBot extends Bot {
   static _brandId = "characterAI"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "CharacterAIBot"; // Class name of the bot
   static _logoFilename = "character-ai-logo.svg"; // Place it in public/bots/
-  static _isLogoInvertedInDarkTheme = true;
+  static _isDarkLogo = true;
   static _loginUrl = "https://character.ai/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
