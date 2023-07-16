@@ -56,6 +56,9 @@
     "pastRounds": "携带多少轮过去的会话？",
     "pastRoundsPrompt": "带的历史会话越多，多轮对话效果越好，但也会消耗更多费用"
   },
+  "360AiBrain": {
+    "name": "360 智脑"
+  },
   "azureOpenaiApi": {
     "name": "Azure OpenAI 服务",
     "temperature": "Temperature",
@@ -83,6 +86,7 @@
   },
   "characterAI": {
     "name": "Character.AI"
+  },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "自动防掉线",
@@ -147,9 +151,6 @@
   },
   "qianWen": {
     "name": "通义千问"
-  },
-  "360AiBrain": {
-    "name": "360 智脑"
   },
   "skyWork": {
     "name": "天工"
