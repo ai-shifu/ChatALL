@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Bot from "@/bots/Claude2Bot";
+import Bot from "@/bots/ClaudeAIBot";
 import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
 import { mapMutations } from "vuex";
 const { ipcRenderer } = window.require("electron");
@@ -20,11 +20,11 @@ export default {
   mounted() {
     // Listen for the CLAUDE-2-ORG message from background.js
     ipcRenderer.on("CLAUDE-2-ORG", (event, org) => {
-      this.setClaude2({ org });
+      this.setClaudeAi({ org });
     });
   },
   methods: {
-    ...mapMutations(["setClaude2"]),
+    ...mapMutations(["setClaudeAi"]),
   },
 };
 </script>

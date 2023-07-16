@@ -61,7 +61,7 @@ export default createStore({
       token: "",
       ttl: 0,
     },
-    claude2: {
+    claudeAi: {
       org: "",
     },
     chats: [
@@ -163,8 +163,8 @@ export default createStore({
     setCharacterAI(state, values) {
       state.characterAI = { ...state.characterAI, ...values };
     },
-    setClaude2(state, values) {
-      state.claude2 = { ...state.claude2, ...values };
+    setClaudeAi(state, values) {
+      state.claudeAi = { ...state.claudeAi, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];

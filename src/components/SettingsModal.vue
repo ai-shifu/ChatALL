@@ -111,7 +111,7 @@ import PiBotSettings from "@/components/BotSettings/PiBotSettings.vue";
 import Qihoo360AIBrainBotSettings from "./BotSettings/Qihoo360AIBrainBotSettings.vue";
 import OpenAssistantBotSettings from "./BotSettings/OpenAssistantBotSettings.vue";
 import CharacterAIBotSettings from "./BotSettings/CharacterAIBotSettings.vue";
-import Claude2BotSettings from "./BotSettings/Claude2BotSettings.vue";
+import ClaudeAIBotSettings from "./BotSettings/ClaudeAIBotSettings.vue";
 
 import { resolveTheme, applyTheme, Mode } from "../theme";
 
@@ -132,7 +132,7 @@ const botSettings = [
   { brand: "bingChat", component: BingChatBotSettings },
   { brand: "characterAI", component: CharacterAIBotSettings },
   { brand: "chatGpt", component: ChatGPTBotSettings },
-  { brand: "claude2", component: Claude2BotSettings },
+  { brand: "claudeAi", component: ClaudeAIBotSettings },
   { brand: "gradio", component: GradioAppBotSettings },
   { brand: "huggingChat", component: HuggingChatBotSettings },
   { brand: "lmsys", component: LMSYSBotSettings },

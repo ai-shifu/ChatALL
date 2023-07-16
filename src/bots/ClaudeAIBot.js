@@ -5,10 +5,10 @@ import axios from "axios";
 import { SSE } from "sse.js";
 import { v4 as uuidv4 } from "uuid";
 
-export default class Claude2Bot extends Bot {
-  static _brandId = "claude2"; // Brand id of the bot, should be unique. Used in i18n.
-  static _className = "Claude2Bot"; // Class name of the bot
-  static _logoFilename = "claude2-logo.svg"; // Place it in public/bots/
+export default class ClaudeAIBot extends Bot {
+  static _brandId = "claudeAi"; // Brand id of the bot, should be unique. Used in i18n.
+  static _className = "ClaudeAIBot"; // Class name of the bot
+  static _logoFilename = "claude-ai-logo.svg"; // Place it in public/bots/
   static _isDarkLogo = true; // The main color of logo is dark
   static _loginUrl = "https://claude.ai/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
@@ -23,7 +23,7 @@ export default class Claude2Bot extends Bot {
    * @sideeffect - Set this.constructor._isAvailable
    */
   async checkAvailability() {
-    if (!store.state.claude2.org) {
+    if (!store.state.claudeAi.org) {
       this.constructor._isAvailable = false;
       return this.isAvailable();
     }
@@ -62,7 +62,7 @@ export default class Claude2Bot extends Bot {
         prompt: prompt,
       },
       conversation_uuid: context.uuid,
-      organization_uuid: store.state.claude2.org,
+      organization_uuid: store.state.claudeAi.org,
       text: prompt,
     });
     return new Promise((resolve, reject) => {
@@ -105,7 +105,7 @@ export default class Claude2Bot extends Bot {
         source.stream();
       } catch (err) {
         reject(err);
-        console.error("Error Claude2 _sendPrompt", err);
+        console.error("Error ClaudeAI _sendPrompt", err);
       }
     });
   }
@@ -121,7 +121,7 @@ export default class Claude2Bot extends Bot {
     const uuid = uuidv4();
     try {
       const createResponse = await axios.post(
-        `https://claude.ai/api/organizations/${store.state.claude2.org}/chat_conversations`,
+        `https://claude.ai/api/organizations/${store.state.claudeAi.org}/chat_conversations`,
         { name: "", uuid: uuid },
       );
 
@@ -130,10 +130,13 @@ export default class Claude2Bot extends Bot {
           uuid,
         };
       } else {
-        console.error("Error Claude2 createChatContext status", createResponse);
+        console.error(
+          "Error ClaudeAI createChatContext status",
+          createResponse,
+        );
       }
     } catch (error) {
-      console.error("Error Claude2 createChatContext", error);
+      console.error("Error ClaudeAI createChatContext", error);
     }
     return context;
   }
