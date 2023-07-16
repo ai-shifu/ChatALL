@@ -161,7 +161,6 @@ import ChatThread from "./ChatThread.vue";
 import bots from "@/bots";
 import { Theme } from "@/theme";
 
-const { ipcRenderer } = window.require("electron");
 const props = defineProps({
   messages: {
     type: Array,
@@ -400,14 +399,6 @@ function handleClick(event) {
   }
   if (target.target === "innerWindow") {
     // Open in Electron inner window
-    return;
-  }
-  if (target.target === "botLoginWindow") {
-    event.preventDefault();
-    const botInstance = bots.getBotByClassName(target.id);
-    const loginUrl = botInstance.getLoginUrl();
-    const userAgent = botInstance.getUserAgent();
-    ipcRenderer.invoke("create-new-window", loginUrl, userAgent);
     return;
   }
   // Open in external browser
