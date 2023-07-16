@@ -162,6 +162,7 @@ export default createStore({
     },
     setCharacterAI(state, values) {
       state.characterAI = { ...state.characterAI, ...values };
+    },
     setClaude2(state, values) {
       state.claude2 = { ...state.claude2, ...values };
     },
