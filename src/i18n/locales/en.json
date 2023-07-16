@@ -56,6 +56,9 @@
     "pastRounds": "How many rounds of past chats to carry?",
     "pastRoundsPrompt": "The more historical chats carried, the better the effect of multi-round dialogue, but it will also consume more costs"
   },
+  "360AiBrain": {
+    "name": "360 AI Brain"
+  },
   "azureOpenaiApi": {
     "name": "Azure OpenAI Service",
     "temperature": "Temperature",
@@ -81,6 +84,9 @@
     "galileo": "Balanced",
     "h3precise": "Precise"
   },
+  "characterAI": {
+    "name": "Character.AI"
+  },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "Automatic anti-disconnection",
@@ -92,6 +98,9 @@
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Web Browsing",
     "gpt-4-mobile": "GPT-4 Mobile V2"
+  },
+  "claude2": {
+    "name": "Claude 2"
   },
   "ernie": {
     "name": "ERNIE"
@@ -143,9 +152,6 @@
   "qianWen": {
     "name": "QianWen"
   },
-  "360AiBrain": {
-    "name": "360 AI Brain"
-  },
   "skyWork": {
     "name": "SkyWork"
   },
@@ -167,9 +173,6 @@
   "openAssistant": {
     "name": "Open Assistant",
     "queue": "There are { queue_size } requests in the queue, you are in { queue_position }th place"
-  },
-  "claude2": {
-    "name": "Claude 2"
   },
   "dev": {
     "name": "Dev Bot"

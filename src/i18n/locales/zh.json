@@ -56,6 +56,9 @@
     "pastRounds": "携带多少轮过去的会话？",
     "pastRoundsPrompt": "带的历史会话越多，多轮对话效果越好，但也会消耗更多费用"
   },
+  "360AiBrain": {
+    "name": "360 智脑"
+  },
   "azureOpenaiApi": {
     "name": "Azure OpenAI 服务",
     "temperature": "Temperature",
@@ -81,6 +84,9 @@
     "galileo": "平衡",
     "h3precise": "精确"
   },
+  "characterAI": {
+    "name": "Character.AI"
+  },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "自动防掉线",
@@ -92,6 +98,9 @@
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Web 浏览",
     "gpt-4-mobile": "GPT-4 移动版V2"
+  },
+  "claude2": {
+    "name": "Claude 2"
   },
   "ernie": {
     "name": "文心一言"
@@ -143,9 +152,6 @@
   "qianWen": {
     "name": "通义千问"
   },
-  "360AiBrain": {
-    "name": "360 智脑"
-  },
   "skyWork": {
     "name": "天工"
   },
@@ -167,9 +173,6 @@
   "openAssistant": {
     "name": "Open Assistant",
     "queue": "当前有 { queue_size } 个请求在队列中，你在第 { queue_position } 位"
-  },
-  "claude2": {
-    "name": "Claude 2"
   },
   "dev": {
     "name": "开发专用 Bot"

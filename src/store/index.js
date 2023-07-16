@@ -57,6 +57,10 @@ export default createStore({
       secretKey: "",
       pastRounds: 5,
     },
+    characterAI: {
+      token: "",
+      ttl: 0,
+    },
     claude2: {
       org: "",
     },
@@ -155,6 +159,9 @@ export default createStore({
     },
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };
+    },
+    setCharacterAI(state, values) {
+      state.characterAI = { ...state.characterAI, ...values };
     },
     setClaude2(state, values) {
       state.claude2 = { ...state.claude2, ...values };
