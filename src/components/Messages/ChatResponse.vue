@@ -100,6 +100,7 @@
           flat
           icon
           size="x-small"
+          v-if="!(!isShowResendButton && !isShowReplyButton)"
           :style="{ visibility: isShowResendButton ? 'visible' : 'hidden' }"
           @click="resendPrompt(messages[0])"
         >
@@ -109,6 +110,7 @@
           flat
           icon
           size="x-small"
+          v-if="!(!isShowResendButton && !isShowReplyButton)"
           :style="{ visibility: isShowReplyButton ? 'visible' : 'hidden' }"
           :color="isShowReplyTextField ? 'primary' : ''"
           @click="toggleReplyButton"

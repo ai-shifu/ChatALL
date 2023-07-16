@@ -35,6 +35,7 @@ import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
 import OpenAssistantBot from "./OpenAssistantBot";
 import CharacterAIBot from "./CharacterAIBot";
+import Claude2Bot from "./Claude2Bot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -54,6 +55,7 @@ const all = [
   ClaudeInstantPoeBot.getInstance(),
   ClaudeInstant100kPoeBot.getInstance(),
   ClaudeBot.getInstance(),
+  Claude2Bot.getInstance(),
   ClaudePlusPoeBot.getInstance(),
   GradioAppBot.getInstance(),
   HuggingChatBot.getInstance(),

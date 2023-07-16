@@ -29,6 +29,10 @@ module.exports = defineConfig({
           target: "AppImage",
           icon: "src/assets/icon.png",
         },
+        nsis: {
+          oneClick: false,
+          allowToChangeInstallationDirectory: true
+        }
       },
       /**
        * work around to fix this issue: https://github.com/nklayman/vue-cli-plugin-electron-builder/issues/1647#issuecomment-1019400838

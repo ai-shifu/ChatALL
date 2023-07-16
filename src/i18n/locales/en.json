@@ -170,6 +170,8 @@
   },
   "characterAI": {
     "name": "Character.AI"
+  "claude2": {
+    "name": "Claude 2"
   },
   "dev": {
     "name": "Dev Bot"

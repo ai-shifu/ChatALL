@@ -256,6 +256,9 @@ function createNewWindow(url, userAgent = "") {
     } else if (url.startsWith("https://character.ai/")) {
       const token = await getLocalStorage("char_token");
       mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
+    } else if (url.startsWith("https://claude.ai/")) {
+      const org = await getLocalStorage("lastActiveOrg");
+      mainWindow.webContents.send("CLAUDE-2-ORG", org);
     }
 
     newWin.destroy(); // Destroy the window manually
