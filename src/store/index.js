@@ -57,6 +57,9 @@ export default createStore({
       secretKey: "",
       pastRounds: 5,
     },
+    claude2: {
+      org: "",
+    },
     chats: [
       {
         title: "New Chat",
@@ -152,6 +155,9 @@ export default createStore({
     },
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };
+    },
+    setClaude2(state, values) {
+      state.claude2 = { ...state.claude2, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];

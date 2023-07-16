@@ -168,6 +168,9 @@
     "name": "Open Assistant",
     "queue": "There are { queue_size } requests in the queue, you are in { queue_position }th place"
   },
+  "claude2": {
+    "name": "Claude 2"
+  },
   "dev": {
     "name": "Dev Bot"
   },
