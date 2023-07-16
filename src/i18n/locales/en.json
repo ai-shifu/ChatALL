@@ -169,8 +169,7 @@
     "queue": "There are { queue_size } requests in the queue, you are in { queue_position }th place"
   },
   "characterAI": {
-    "name": "Character.AI",
-    "loginToContinue": "Request is throttled. <a { attributes }>Log in</a> to continue."
+    "name": "Character.AI"
   },
   "dev": {
     "name": "Dev Bot"

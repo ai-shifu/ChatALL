@@ -169,8 +169,7 @@
     "queue": "当前有 { queue_size } 个请求在队列中，你在第 { queue_position } 位"
   },
   "characterAI": {
-    "name": "Character.AI",
-    "loginToContinue": "请求被限制。请<a { attributes }>登录</a>再继续。"
+    "name": "Character.AI"
   },
   "dev": {
     "name": "开发专用 Bot"
