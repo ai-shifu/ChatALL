@@ -117,6 +117,10 @@ export default class OpenAssistantBot extends Bot {
             // handle event data: ": ping - 2023-07-14 13:28:17.735145"
             data = JSON.parse(event.data);
           } catch {
+            console.error(
+              "Error OpenAssistantBot JSON.parse message:",
+              event.data,
+            );
             return;
           }
           switch (data.event_type) {
@@ -140,11 +144,28 @@ export default class OpenAssistantBot extends Bot {
                 content: data.message.content, // full message
                 done: true,
               });
+              resolve();
+              break;
+            case "error":
+              onUpdateResponse(callbackParam, {
+                content: `${text}\n${this.wrapCollapsedSection(event.data)}`,
+                done: true,
+              });
+              resolve();
               break;
             default:
               break;
           }
-          resolve();
+        });
+        source.addEventListener("readystatechange", (event) => {
+          if (event.readyState === source.CLOSED) {
+            // after stream closed, done
+            onUpdateResponse(callbackParam, {
+              content: text,
+              done: true,
+            });
+            resolve();
+          }
         });
         source.addEventListener("error", (event) => {
           console.error(event);
@@ -165,13 +186,19 @@ export default class OpenAssistantBot extends Bot {
    */
   async createChatContext() {
     let context = null;
-    await axios.post("https://open-assistant.io/api/chat").then((response) => {
-      if (response.status === 200) {
-        context = {
-          ...response.data,
-        };
-      }
-    });
+    try {
+      await axios
+        .post("https://open-assistant.io/api/chat")
+        .then((response) => {
+          if (response.status === 200) {
+            context = {
+              ...response.data,
+            };
+          }
+        });
+    } catch (error) {
+      console.error("Error OpenAssistantBot createChatContext:", error);
+    }
     return context;
   }
 }
