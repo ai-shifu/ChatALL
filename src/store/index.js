@@ -462,6 +462,11 @@ export default createStore({
       }
       return state.chats[state.currentChatIndex];
     },
+    // get current chat prompt
+    getCurrentChatPrompt: (state, getters) => {
+      const messages = getters.currentChat.messages;
+      return messages.filter((message) => message?.type === "prompt");
+    },
   },
   modules: {
     // ...你的模块

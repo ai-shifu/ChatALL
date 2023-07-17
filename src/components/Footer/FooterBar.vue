@@ -176,8 +176,9 @@ function handleShortcut(event) {
 // Send the prompt when the user presses enter and prevent the default behavior
 // But if the shift, ctrl, alt, or meta keys are pressed, do as default
 function filterEnterKey(event) {
+  const keyCode = event.keyCode;
   if (
-    event.keyCode == 13 &&
+    keyCode == 13 &&
     !event.shiftKey &&
     !event.ctrlKey &&
     !event.altKey &&
@@ -185,6 +186,14 @@ function filterEnterKey(event) {
   ) {
     event.preventDefault();
     sendPromptToBots();
+  }
+
+  // pre or next prompt
+  if (keyCode == 38 || keyCode == 40) {
+    getHistoryPrompt(keyCode);
+    event.preventDefault();
+  } else {
+    promptIndex = 0;
   }
 }
 
@@ -208,12 +217,40 @@ function sendPromptToBots() {
   // Clear the textarea after sending the prompt
   prompt.value = "";
 
+  // reset prompt index
+  promptIndex = 0;
+
   matomo.value?.trackEvent(
     "prompt",
     "send",
     "Active bots count",
     toBots.length,
   );
+}
+
+// current prompt index
+let promptIndex = 0;
+
+// Listen to the up and down arrow keys to obtain historical records.
+function getHistoryPrompt(keyCode) {
+  // up and down key code
+  const historyKeyCode = { pre: 38, next: 40 };
+  const historyPrompts = store.getters.getCurrentChatPrompt;
+
+  if (!historyPrompts || !historyPrompts.length) return false;
+
+  if (keyCode === historyKeyCode.pre) {
+    // get previous prompt
+    promptIndex =
+      (promptIndex - 1 + historyPrompts.length) % historyPrompts.length;
+  } else if (keyCode === historyKeyCode.next) {
+    // get next prompt
+    promptIndex = (promptIndex + 1) % historyPrompts.length;
+  }
+
+  // get new prompt and set it
+  const newPrompt = historyPrompts[promptIndex];
+  prompt.value = newPrompt.content;
 }
 
 async function toggleSelected(bot) {
