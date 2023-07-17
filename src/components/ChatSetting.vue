@@ -38,19 +38,33 @@ const downloadJson = () => {
   const chats = JSON.parse(chatallMessages)?.chats ?? [];
 
   // Create an array of messages from the chat history.
-  const messages = chats.map((chat) => ({
-    // The title of the chat.
-    title: chat.title,
-    // The names of the bots that the user has selected.
-    bots: chat.favBots
-      .filter((bot) => bot.selected)
-      .map((bot) => bot.classname),
-    // The messages in the chat.
-    chat: chat.messages.map((message) => ({
-      type: message.type,
-      content: message.content,
-    })),
-  }));
+  const messages = chats
+    .filter((d) => !d.hide)
+    .map((chat) => ({
+      // The title of the chat.
+      title: chat.title,
+      // The messages in the chat.
+      messages: chat.messages
+        .filter((d) => !d.hide)
+        .reduce((arr, message) => {
+          const t = message.type;
+          const content = message.content;
+          if (t == "prompt") {
+            arr.push({
+              prompt: content,
+              responses: [],
+            });
+          } else {
+            arr.at(-1).responses.push({
+              content,
+              botClassname: message.className,
+              botModelName: message.model,
+              highlighted: message.highlight,
+            });
+          }
+          return arr;
+        }, []),
+    }));
 
   // Create a blob that contains the JSON data.
   // The space parameter specifies the indentation of nested objects in the string representation.
@@ -62,12 +76,11 @@ const downloadJson = () => {
   const url = URL.createObjectURL(blob);
 
   // Create a file name for the JSON file.
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
-  const fileName = `chatall-history-${formatter.format(new Date())}`;
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // months are 0-based in JavaScript
+  const day = String(date.getDate()).padStart(2, "0");
+  const fileName = `chatall-history-${year}${month}${day}`;
 
   const a = document.createElement("a");
   a.href = url;
