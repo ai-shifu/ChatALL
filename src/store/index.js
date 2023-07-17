@@ -10,7 +10,7 @@ const vuexPersist = new VuexPersist({
   storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
   reducer: (state) => {
     // eslint-disable-next-line
-    const { messages, chats, ...persistedState } = state;
+    const { messages, chats, updateCounter, ...persistedState } = state;
     return persistedState;
   },
 });
