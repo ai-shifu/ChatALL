@@ -436,8 +436,8 @@ export default createStore({
         prompt.length,
       );
     },
-    updateMessage({ commit, state }, { indexes, message }) {
-      messageBuffer.push({ indexes, message });
+    updateMessage({ commit, state }, { indexes, message: values }) {
+      messageBuffer.push({ indexes, message: values });
       if (!isThrottle) {
         isThrottle = true;
         setTimeout(() => {
@@ -445,16 +445,16 @@ export default createStore({
           commit("incrementUpdateCounter");
         }, 200); // save every 0.2 seconds
       }
-      if (message.done) {
+      if (values.done) {
         const i =
           indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
         const chat = state.chats[i];
-        const messages = { ...chat.messages[indexes.messageIndex], ...message };
+        const message = { ...chat.messages[indexes.messageIndex], ...values };
         getMatomo()?.trackEvent(
           "prompt",
           "received",
-          messages.className,
-          messages.content.length,
+          message.className,
+          message.content.length,
         );
       }
     },
