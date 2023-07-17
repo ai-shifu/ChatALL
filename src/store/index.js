@@ -434,11 +434,11 @@ export default createStore({
       // workaround for notifing the message window to scroll to bottom
       commit("incrementUpdateCounter");
 
-      const i =
-        indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
-      const chat = state.chats[i];
-      const message = { ...chat.messages[indexes.messageIndex], ...values };
       if (values.done) {
+        const i =
+          indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
+        const chat = state.chats[i];
+        const message = { ...chat.messages[indexes.messageIndex], ...values };
         getMatomo()?.trackEvent(
           "prompt",
           "received",
@@ -453,12 +453,11 @@ export default createStore({
       // workaround for notifing the message window to scroll to bottom
       commit("incrementUpdateCounter");
 
-      const i =
-        indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
-      const chat = state.chats[i];
-      let message = { ...chat.threads[indexes.threadIndex], ...values };
-
       if (values.done) {
+        const i =
+          indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
+        const chat = state.chats[i];
+        let message = { ...chat.threads[indexes.threadIndex], ...values };
         getMatomo()?.trackEvent(
           "prompt",
           "received",
