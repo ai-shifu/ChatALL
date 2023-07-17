@@ -4,13 +4,15 @@ import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
 import { getMatomo } from "@/composables/matomo";
 
+let isThrottle = false;
+let messageBuffer = [];
 // 初始化 VuexPersist 实例
 const vuexPersist = new VuexPersist({
   key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
   storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
   reducer: (state) => {
     // eslint-disable-next-line
-    const { messages, chats, ...persistedState } = state;
+    const { messages, chats, updateCounter, ...persistedState } = state;
     return persistedState;
   },
 });
@@ -179,14 +181,19 @@ export default createStore({
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.messages[responseIndex].threadIndex = threadIndex;
     },
-    updateMessage(state, { indexes, message }) {
-      const { chatIndex, messageIndex } = indexes;
-      const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
-      const chat = state.chats[i];
-      chat.messages[messageIndex] = {
-        ...chat.messages[messageIndex],
-        ...message,
-      };
+    updateMessage(state) {
+      messageBuffer.forEach((update) => {
+        const { indexes, message } = update;
+        const { chatIndex, messageIndex } = indexes;
+        const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
+        const chat = state.chats[i];
+        chat.messages[messageIndex] = {
+          ...chat.messages[messageIndex],
+          ...message,
+        };
+      });
+      messageBuffer = [];
+      isThrottle = false;
     },
     updateThreadMessage(state, { indexes, message }) {
       const { chatIndex, messageIndex, threadIndex } = indexes;
@@ -305,6 +312,7 @@ export default createStore({
   },
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
+      isThrottle = false;
       const currentChat = state.chats[state.currentChatIndex];
       if (promptIndex === undefined) {
         // if promptIndex not found, not resend, push to messages array
@@ -429,16 +437,19 @@ export default createStore({
       );
     },
     updateMessage({ commit, state }, { indexes, message: values }) {
-      commit("updateMessage", { indexes, message: values });
-
-      // workaround for notifing the message window to scroll to bottom
-      commit("incrementUpdateCounter");
-
-      const i =
-        indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
-      const chat = state.chats[i];
-      const message = { ...chat.messages[indexes.messageIndex], ...values };
+      messageBuffer.push({ indexes, message: values });
+      if (!isThrottle) {
+        isThrottle = true;
+        setTimeout(() => {
+          commit("updateMessage");
+          commit("incrementUpdateCounter");
+        }, 200); // save every 0.2 seconds
+      }
       if (values.done) {
+        const i =
+          indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
+        const chat = state.chats[i];
+        const message = { ...chat.messages[indexes.messageIndex], ...values };
         getMatomo()?.trackEvent(
           "prompt",
           "received",
@@ -453,12 +464,11 @@ export default createStore({
       // workaround for notifing the message window to scroll to bottom
       commit("incrementUpdateCounter");
 
-      const i =
-        indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
-      const chat = state.chats[i];
-      let message = { ...chat.threads[indexes.threadIndex], ...values };
-
       if (values.done) {
+        const i =
+          indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
+        const chat = state.chats[i];
+        let message = { ...chat.threads[indexes.threadIndex], ...values };
         getMatomo()?.trackEvent(
           "prompt",
           "received",
