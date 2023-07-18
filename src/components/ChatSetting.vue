@@ -57,9 +57,9 @@ const downloadJson = () => {
           } else {
             arr.at(-1).responses.push({
               content,
-              botClassname: message.className,
-              botModelName: message.model,
-              highlighted: message.highlight,
+              botName: message.className,
+              botModel: message.model,
+              highlight: message.highlight
             });
           }
           return arr;
