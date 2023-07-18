@@ -22,6 +22,7 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
 import ConfirmModal from "@/components/ConfirmModal.vue";
+import bots from "@/bots";
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
 const store = useStore();
@@ -55,9 +56,11 @@ const downloadJson = () => {
               responses: [],
             });
           } else {
+            const bot = bots.getBotByClassName(message.className);
+            const botName = bot.getFullname();
             arr.at(-1).responses.push({
               content,
-              botName: message.className,
+              botName,
               botModel: message.model,
               highlight: message.highlight
             });
