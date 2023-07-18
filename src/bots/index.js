@@ -33,6 +33,9 @@ import WinxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
 import YouChatBot from "./YouChatBot";
 import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
+import OpenAssistantBot from "./OpenAssistantBot";
+import CharacterAIBot from "./CharacterAIBot";
+import ClaudeAIBot from "./ClaudeAIBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -41,6 +44,7 @@ const all = [
   BingChatCreativeBot.getInstance(),
   BingChatBalancedBot.getInstance(),
   BingChatPreciseBot.getInstance(),
+  CharacterAIBot.getInstance(),
   ChatGLMBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
@@ -51,6 +55,7 @@ const all = [
   ClaudeInstantPoeBot.getInstance(),
   ClaudeInstant100kPoeBot.getInstance(),
   ClaudeBot.getInstance(),
+  ClaudeAIBot.getInstance(),
   ClaudePlusPoeBot.getInstance(),
   GradioAppBot.getInstance(),
   HuggingChatBot.getInstance(),
@@ -59,6 +64,8 @@ const all = [
   OpenAIAPI3516KBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
+  OpenAssistantBot.getInstance(),
+  PiBot.getInstance(),
   QianWenBot.getInstance(),
   SageBot.getInstance(),
   SkyWorkBot.getInstance(),
@@ -67,7 +74,6 @@ const all = [
   WenxinQianfanBot.getInstance(),
   WinxinQianfanTurboBot.getInstance(),
   YouChatBot.getInstance(),
-  PiBot.getInstance(),
 ];
 
 const disabled = [];

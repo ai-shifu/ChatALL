@@ -56,7 +56,7 @@ ChatALLのユーザーはこんな感じ：
 - 回答を1列～3列の表示切替
 - 最新バージョンへの自動通知と自動アップデート
 - ダークモード対応（提供者 @tanchekwei）
-- `Ctrl + /` 又は `Cmd + /` を押すと全てのショートカットキーが表示 (提供者 @tanchekwei)
+- `Ctrl + /` または `Cmd + /` で全てのショートカットキーが表示 (提供者 @tanchekwei)
 - マルチチャット対応 (提供者 @tanchekwei)
 - プロキシ設定をサポート (提供者 @msaong)
 - 対応言語：日本語、英語、中国語、スペイン語、ドイツ語、フランス語、ロシア語、ベトナム語、韓国語
@@ -78,13 +78,13 @@ ChatALL はプロキシではなく、クライアントです。そのため、
 
 ## ダウンロード / インストール
 
-https://github.com/sunner/ChatALL/releases から最新版をダウンロードしてください！
+https://github.com/sunner/ChatALL/releases からダウンロードできます。
 
-### Windows の場合
+### Windowsの場合
 
 \*-win-x64.exe ファイルをダウンロードし、セットアップを進めてください。(x86 CPUは \*-win.exe をダウンロードしてください)
 
-### macOS の場合
+### macOSの場合
 
 AppleシリコンMac (頭文字にMがあるCPU)は、\*-mac-arm64.dmg ファイルをダウンロードしてください。
 
@@ -96,7 +96,7 @@ Intel Macは、\*-mac-x64.dmg ファイルをダウンロードしてくださ�
 brew install --cask chatall
 ```
 
-### Linux の場合
+### Linuxの場合
 
 .AppImage ファイルをダウンロードし、実行可能な状態にしてクリックで実行してください。
 
@@ -123,7 +123,7 @@ ChatALLを初期化するには、以下のディレクトリを削除します�
 
 ### AIの提供
 
-[ガイド](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) があなたのお役に立つかもしれません。
+[ガイド](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)を参考にしてください。
 
 ### 実行
 

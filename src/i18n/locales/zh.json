@@ -31,8 +31,10 @@
     "promptPlaceholder": "输入消息。（Shift+Enter 换行）"
   },
   "error": {
+    "error": "错误",
     "failedConnectUrl": "连接 { url } 失败",
-    "closedByServer": "连接被服务器关闭"
+    "closedByServer": "连接被服务器关闭",
+    "solveChallenge": "请点击下方链接，按页面指示完成质询 / 验证码，然后关闭窗口。"
   },
   "modal": {
     "confirmHide": "删除这条消息？",
@@ -54,6 +56,9 @@
     "waiting": "等待其它 { botName } 请求结束...",
     "pastRounds": "携带多少轮过去的会话？",
     "pastRoundsPrompt": "带的历史会话越多，多轮对话效果越好，但也会消耗更多费用"
+  },
+  "360AiBrain": {
+    "name": "360 智脑"
   },
   "azureOpenaiApi": {
     "name": "Azure OpenAI 服务",
@@ -80,6 +85,9 @@
     "galileo": "平衡",
     "h3precise": "精确"
   },
+  "characterAI": {
+    "name": "Character.AI"
+  },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "自动防掉线",
@@ -91,6 +99,9 @@
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Web 浏览",
     "gpt-4-mobile": "GPT-4 移动版V2"
+  },
+  "claudeAi": {
+    "name": "Claude 2"
   },
   "ernie": {
     "name": "文心一言"
@@ -142,9 +153,6 @@
   "qianWen": {
     "name": "通义千问"
   },
-  "360AiBrain": {
-    "name": "360 智脑"
-  },
   "skyWork": {
     "name": "天工"
   },
@@ -162,6 +170,10 @@
   "pi": {
     "name": "Pi",
     "waitPiIntro": "请点击下面的网站链接，等待Pi介绍完成后，然后关闭窗口。"
+  },
+  "openAssistant": {
+    "name": "Open Assistant",
+    "queue": "当前有 { queue_size } 个请求在队列中，你在第 { queue_position } 位"
   },
   "dev": {
     "name": "开发专用 Bot"

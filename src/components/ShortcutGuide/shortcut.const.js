@@ -58,7 +58,6 @@ export const SHORTCUT_CHAT_DRAWER = {
   elementId: "chat-drawer-btn",
   key: [modifier, "d"],
   offset: {
-    left: -10,
     top: 40,
   },
   flexDirection: "column",
@@ -88,7 +87,6 @@ export const SHORTCUT_LIST = [
     key: ["f1"],
     offset: {
       top: 30,
-      left: -5,
     },
   },
   {
@@ -96,7 +94,6 @@ export const SHORTCUT_LIST = [
     key: ["f2"],
     offset: {
       top: 30,
-      left: -5,
     },
   },
   {
@@ -104,7 +101,6 @@ export const SHORTCUT_LIST = [
     key: ["f3"],
     offset: {
       top: 30,
-      left: -5,
     },
   },
   {

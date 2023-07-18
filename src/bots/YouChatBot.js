@@ -1,6 +1,5 @@
 import Bot from "@/bots/Bot";
 import AsyncLock from "async-lock";
-import axios from "axios";
 import queryString from "query-string";
 import { SSE } from "sse.js";
 import { v4 as uuidv4 } from "uuid";
@@ -22,16 +21,7 @@ export default class YouChatBot extends Bot {
    * @sideeffect - Set this.constructor._isAvailable
    */
   async checkAvailability() {
-    await axios
-      .get("https://you.com/api/payments/orders/subscriptions/current")
-      .then(() => {
-        this.constructor._isAvailable = true;
-      })
-      .catch((error) => {
-        console.error("Error YouChat check login:", error);
-        this.constructor._isAvailable = false;
-      });
-
+    this.constructor._isAvailable = true;
     return this.isAvailable(); // Always return like this
   }
 
