@@ -148,7 +148,13 @@ export default class Bot {
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     throw new Error(i18n.global.t("bot.notImplemented"));
   }
-  /* eslint-enable no-unused-vars */
+
+  async _stopGenerating() {
+  }
+
+  stopGenerating() {
+    this._stopGenerating();
+  }
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // If not logged in, handle the error

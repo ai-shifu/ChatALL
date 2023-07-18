@@ -91,6 +91,7 @@
       <SettingsModal v-model:open="isSettingsOpen" />
       <ConfirmModal ref="confirmModal" />
       <UpdateNotification></UpdateNotification>
+      <StopGenerating v-if="isGenerating"/>
       <ShortcutGuide
         ref="shortcutGuideRef"
         v-model:open="isShortcutGuideOpen"
@@ -125,6 +126,7 @@ import FooterBar from "@/components/Footer/FooterBar.vue";
 import UpdateNotification from "@/components/Notification/UpdateNotificationModal.vue";
 import FindModal from "@/components/FindModal.vue";
 import ShortcutGuide from "@/components/ShortcutGuide/ShortcutGuide.vue";
+import StopGenerating from "@/components/StopGenerating/StopGenerating.vue";
 
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
@@ -150,6 +152,10 @@ const isSettingsOpen = ref(false);
 const isChatDrawerOpen = ref(store.state.isChatDrawerOpen);
 const chatDrawerRef = ref();
 
+const isGenerating = computed(() => {
+    const messages = store.getters.currentChat.messages || [];
+    return messages.filter(v => v.type === 'response').some(v => !v.done);
+});
 const columns = computed(() => store.state.columns);
 
 const changeColumns = (columns) => store.commit("changeColumns", columns);

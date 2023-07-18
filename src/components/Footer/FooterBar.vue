@@ -33,10 +33,7 @@
       <v-btn
         class="send-prompt-btn"
         elevation="2"
-        :disabled="
-          prompt.trim() === '' ||
-          favBots.filter((favBot) => activeBots[favBot.classname]).length === 0
-        "
+        :disabled="isSendDisabled"
         @click="sendPromptToBots"
       >
         {{ $t("footer.sendPrompt") }}
@@ -121,6 +118,12 @@ const favBots = computed(() => {
 });
 
 const prompt = ref("");
+const isSendDisabled = computed(() => {
+    const messages = store.getters.currentChat.messages || [];
+    return prompt.value.trim() === ''
+        || favBots.value.filter(favBot => activeBots[favBot.classname]).length === 0
+        || messages.filter(v => v.type === 'response').some(v => !v.done);
+});
 const clickedBot = ref(null);
 const isMakeAvailableOpen = ref(false);
 
@@ -184,7 +187,9 @@ function filterEnterKey(event) {
     !event.metaKey
   ) {
     event.preventDefault();
-    sendPromptToBots();
+    if (!isSendDisabled.value) {
+      sendPromptToBots();
+    }
   }
 }
 
