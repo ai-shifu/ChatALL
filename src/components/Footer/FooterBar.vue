@@ -80,7 +80,7 @@
       v-shortkey="SHORTCUT_PROMPT_MANAGEMENT.key"
       @shortkey="isPromptManagementOpen = !isPromptManagementOpen"
       v-model:open="isPromptManagementOpen"
-      @use-prompt="usePrompt"
+      @after-leave="usePrompt"
     ></PromptModal>
   </v-bottom-navigation>
 </template>
@@ -330,9 +330,10 @@ function updateChatTitleWithFirstPrompt(isFirstPrompt) {
   }
 }
 
-function usePrompt(value) {
-  prompt.value = value;
-  nextTick().then(() => focusPromptTextarea());
+async function usePrompt(value) {
+  await nextTick();
+  focusPromptTextarea();
+  document.execCommand("insertText", false, value);
 }
 
 defineExpose({

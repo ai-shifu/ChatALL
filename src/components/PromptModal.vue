@@ -2,7 +2,8 @@
   <div>
     <v-dialog
       :model-value="props.open"
-      @update:model-value="closeDialog($event)"
+      @update:model-value="closeDialog"
+      @after-leave="onDialogCloseTransitionEnded"
     >
       <v-card class="justify-center">
         <v-card-title>
@@ -140,7 +141,7 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const props = defineProps(["open"]);
-const emit = defineEmits(["update:open", "usePrompt"]);
+const emit = defineEmits(["update:open", "afterLeave"]);
 const defaultLanguage = prompts.languages
   .map((lang) => lang.code)
   .includes(i18n.global.locale.value)
@@ -156,6 +157,7 @@ const formRef = ref(null);
 const contentRef = ref(null);
 const confirmModal = ref(null);
 const isOpenAddEditPrompt = ref(false);
+let selectedPrompt = "";
 
 const headers = computed(() => [
   {
@@ -205,7 +207,7 @@ function pin(row) {
 }
 
 function usePrompt(row) {
-  emit("usePrompt", row.prompt);
+  selectedPrompt = row.prompt;
   emit("update:open", false);
 }
 
@@ -280,6 +282,11 @@ function hideFullText(element) {
 
 function setPromptLanguage(value) {
   language.value = value;
+}
+
+function onDialogCloseTransitionEnded() {
+  emit("afterLeave", selectedPrompt);
+  selectedPrompt = "";
 }
 </script>
 
