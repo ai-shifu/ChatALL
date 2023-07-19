@@ -29,7 +29,7 @@
             <v-select
               color="primary"
               density="compact"
-              :items="languages"
+              :items="prompts.languages"
               hide-details
               item-title="name"
               item-value="code"
@@ -96,8 +96,8 @@
     <v-dialog
       persistent
       width="50%"
-      :model-value="isOpenAddPrompt"
-      @update:model-value="isOpenAddPrompt = $event"
+      :model-value="isOpenAddEditPrompt"
+      @update:model-value="isOpenAddEditPrompt = $event"
     >
       <v-card>
         <v-form ref="formRef" class="pa-3" @submit.prevent="true">
@@ -117,11 +117,11 @@
           <v-btn
             variant="outlined"
             color="primary"
-            @click="isOpenAddPrompt = false"
+            @click="isOpenAddEditPrompt = false"
             >{{ $t("header.no") }}</v-btn
           >
           <!-- color="primary" not working for nested dialog button -->
-          <v-btn variant="flat" class="bg-primary" @click="add">{{
+          <v-btn variant="flat" class="bg-primary" @click="addEditPrompt">{{
             $t("modal.done")
           }}</v-btn>
         </v-card-actions>
@@ -132,17 +132,16 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import prompts from "@/prompts";
-import { useStore } from "vuex";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import i18n from "@/i18n";
+import prompts from "@/prompts";
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
 
 const store = useStore();
 const props = defineProps(["open"]);
 const emit = defineEmits(["update:open", "usePrompt"]);
-const languages = computed(() => [...prompts.languages]);
-const defaultLanguage = languages.value
+const defaultLanguage = prompts.languages
   .map((lang) => lang.code)
   .includes(i18n.global.locale.value)
   ? i18n.global.locale.value
@@ -156,8 +155,8 @@ const editIndex = ref(null);
 const formRef = ref(null);
 const contentRef = ref(null);
 const confirmModal = ref(null);
+const isOpenAddEditPrompt = ref(false);
 
-const isOpenAddPrompt = ref(false);
 const headers = computed(() => [
   {
     align: "start",
@@ -212,10 +211,12 @@ function usePrompt(row) {
 
 function addPrompt() {
   isEdit.value = false;
-  isOpenAddPrompt.value = true;
+  title.value = "";
+  prompt.value = "";
+  isOpenAddEditPrompt.value = true;
 }
 
-function add() {
+function addEditPrompt() {
   if (formRef.value.validate()) {
     if (isEdit.value) {
       store.commit("editPrompt", {
@@ -226,7 +227,7 @@ function add() {
     } else {
       store.commit("addPrompt", { title: title.value, prompt: prompt.value });
     }
-    isOpenAddPrompt.value = false;
+    isOpenAddEditPrompt.value = false;
   }
 }
 
@@ -235,7 +236,7 @@ function edit(item) {
   prompt.value = item.prompt;
   editIndex.value = item.index;
   isEdit.value = true;
-  isOpenAddPrompt.value = true;
+  isOpenAddEditPrompt.value = true;
 }
 
 async function deletePrompt(item) {
