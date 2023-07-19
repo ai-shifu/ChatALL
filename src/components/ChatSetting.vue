@@ -56,11 +56,13 @@ const downloadJson = () => {
               responses: [],
             });
           } else {
-            const bot = bots.getBotByClassName(message.className);
+            const botClassname = message.className;
+            const bot = bots.getBotByClassName(botClassname);
             const botName = bot.getFullname();
             arr.at(-1).responses.push({
               content,
               botName,
+              botClassname,
               botModel: message.model,
               highlight: message.highlight
             });
@@ -83,7 +85,10 @@ const downloadJson = () => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0"); // months are 0-based in JavaScript
   const day = String(date.getDate()).padStart(2, "0");
-  const fileName = `chatall-history-${year}${month}${day}`;
+  const hour = String(date.getHours()).padStart(2, "0");
+  const minute = String(date.getMinutes()).padStart(2, "0");
+  const second = String(date.getSeconds()).padStart(2, "0");
+  const fileName = `chatall-history-${year}${month}${day}-${hour}-${minute}-${second}`;
 
   const a = document.createElement("a");
   a.href = url;
