@@ -190,8 +190,8 @@ function filterEnterKey(event) {
 
   // pre or next prompt
   if (keyCode == 38 || keyCode == 40) {
-    getHistoryPrompt(keyCode);
-    event.preventDefault();
+    // Obtain up and down history and set.
+    setPreAndNextPrompt(keyCode, event);
   } else {
     promptIndex = 0;
   }
@@ -227,6 +227,28 @@ function sendPromptToBots() {
     toBots.length,
   );
 }
+// Single -line text set historical records directly. Multi -line text is executed only at the beginning or end position
+function setPreAndNextPrompt(keyCode, event) {
+  const element = promptTextArea.value;
+
+  // Take the starting position of the current text selection in the input element
+  const position = element.selectionStart;
+
+  // Cursor at start position
+  const isStart = position === 0;
+
+  // Cursor at end position and direction key is down
+  const isEnd = position === element.value.length && keyCode == 40;
+
+  if (isStart || isEnd) {
+    // Stop default event Prevent a cursor to run around
+    event.preventDefault();
+
+    // get new prompt and set it
+    const newPrompt = getHistoryPrompt(keyCode);
+    prompt.value = newPrompt.content;
+  }
+}
 
 // current prompt index
 let promptIndex = 0;
@@ -248,9 +270,7 @@ function getHistoryPrompt(keyCode) {
     promptIndex = (promptIndex + 1) % historyPrompts.length;
   }
 
-  // get new prompt and set it
-  const newPrompt = historyPrompts[promptIndex];
-  prompt.value = newPrompt.content;
+  return historyPrompts[promptIndex];
 }
 
 async function toggleSelected(bot) {
