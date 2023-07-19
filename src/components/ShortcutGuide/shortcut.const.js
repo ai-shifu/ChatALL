@@ -73,6 +73,16 @@ export const SHORTCUT_NEW_CHAT = {
   alignHorizontallyCenter: true,
 };
 
+export const SHORTCUT_PROMPT_MANAGEMENT = {
+  elementId: "prompt-btn",
+  key: [modifier, "p"],
+  offset: {
+    top: -65,
+    left: 5,
+  },
+  flexDirection: "column",
+};
+
 export const SHORTCUT_LIST = [
   SHORTCUT_FIND,
   SHORTCUT_SETTINGS,
@@ -82,6 +92,7 @@ export const SHORTCUT_LIST = [
   SHORTCUT_PROMPT_TEXTAREA,
   SHORTCUT_CHAT_DRAWER,
   SHORTCUT_NEW_CHAT,
+  SHORTCUT_PROMPT_MANAGEMENT,
   {
     elementId: "column-1",
     key: ["f1"],

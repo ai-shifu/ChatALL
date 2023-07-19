@@ -18,6 +18,7 @@
           ref="defaultButton"
           variant="flat"
           color="primary"
+          class="bg-primary"
           @click="close(true)"
           >{{ $t("header.yes") }}</v-btn
         >
