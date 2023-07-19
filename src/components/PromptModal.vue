@@ -22,7 +22,7 @@
               class="mt-1"
               prepend-icon="mdi-plus"
               :text="$t('prompt.addPrompt')"
-              @click="addPrompt"
+              @click="add"
             ></v-btn>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
@@ -39,7 +39,6 @@
             ></v-select>
           </div>
         </v-card-title>
-        <div ref="contentRef" class="tooltip"></div>
         <v-data-table
           :headers="headers"
           :items="data"
@@ -145,8 +144,8 @@ const emit = defineEmits(["update:open", "afterLeave"]);
 const defaultLanguage = prompts.languages
   .map((lang) => lang.code)
   .includes(i18n.global.locale.value)
-  ? i18n.global.locale.value
-  : "en";
+  ? i18n.global.locale.value // use user langauge if availble
+  : "en"; // else default to 'en'
 const language = ref(defaultLanguage);
 const search = ref("");
 const title = ref("");
@@ -154,14 +153,12 @@ const prompt = ref("");
 const isEdit = ref(false);
 const editIndex = ref(null);
 const formRef = ref(null);
-const contentRef = ref(null);
 const confirmModal = ref(null);
 const isOpenAddEditPrompt = ref(false);
 let selectedPrompt = "";
 
 const headers = computed(() => [
   {
-    align: "start",
     key: "title",
     title: i18n.global.t("prompt.title"),
     width: "20%",
@@ -211,13 +208,6 @@ function usePrompt(row) {
   emit("update:open", false);
 }
 
-function addPrompt() {
-  isEdit.value = false;
-  title.value = "";
-  prompt.value = "";
-  isOpenAddEditPrompt.value = true;
-}
-
 function addEditPrompt() {
   if (formRef.value.validate()) {
     if (isEdit.value) {
@@ -231,6 +221,13 @@ function addEditPrompt() {
     }
     isOpenAddEditPrompt.value = false;
   }
+}
+
+function add() {
+  isEdit.value = false;
+  title.value = "";
+  prompt.value = "";
+  isOpenAddEditPrompt.value = true;
 }
 
 function edit(item) {
