@@ -64,7 +64,7 @@ const downloadJson = () => {
               botName,
               botClassname,
               botModel: message.model,
-              highlight: message.highlight
+              highlight: message.highlight,
             });
           }
           return arr;
@@ -73,7 +73,7 @@ const downloadJson = () => {
 
   // Create a blob that contains the JSON data.
   // The space parameter specifies the indentation of nested objects in the string representation.
-  const blob = new Blob([JSON.stringify(messages, null, 2)], {
+  const blob = new Blob([JSON.stringify({ chats: messages }, null, 2)], {
     // The type of the blob.
     type: "application/json",
   });
@@ -88,7 +88,7 @@ const downloadJson = () => {
   const hour = String(date.getHours()).padStart(2, "0");
   const minute = String(date.getMinutes()).padStart(2, "0");
   const second = String(date.getSeconds()).padStart(2, "0");
-  const fileName = `chatall-history-${year}${month}${day}-${hour}-${minute}-${second}`;
+  const fileName = `chatall-history-${year}${month}${day}-${hour}${minute}${second}`;
 
   const a = document.createElement("a");
   a.href = url;
