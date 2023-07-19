@@ -167,7 +167,6 @@ const headers = computed(() => [
     key: "title",
     title: i18n.global.t("prompt.title"),
     width: "20%",
-    fixed: true,
   },
   { key: "prompt", title: i18n.global.t("prompt.prompt"), width: "70%" },
   {
@@ -236,10 +235,10 @@ function add() {
 }
 
 function edit(item) {
+  isEdit.value = true;
   title.value = item.title;
   prompt.value = item.prompt;
   editIndex.value = item.index;
-  isEdit.value = true;
   isOpenAddEditPrompt.value = true;
 }
 
@@ -253,21 +252,20 @@ async function deletePrompt(item) {
 }
 
 function showFullText(element) {
-  const parent = element.currentTarget.parentElement;
+  const parent = element.currentTarget.closest("tr");
   if (parent.querySelector(".tooltip")) {
     return;
   }
   for (let i = 0; i < parent.children.length - 1; i++) {
-    const e = parent.children[i];
-    const position = e.getBoundingClientRect();
+    const td = parent.children[i];
+    const position = td.getBoundingClientRect();
     const div = document.createElement("div");
-    div.innerText = e.innerText;
-    e.innerText = "";
+    div.innerText = td.innerText;
+    td.innerText = "";
     div.classList.add("tooltip");
-    div.classList.add("visible");
     div.style.width = `${position.width}px`;
     div.addEventListener("mouseleave", hideFullText);
-    e.appendChild(div);
+    td.appendChild(div);
   }
 }
 
@@ -298,36 +296,19 @@ function onDialogCloseTransitionEnded() {
   cursor: pointer;
 }
 
-:deep() tr:focus, td:focus, .tooltip:focus  {
-  filter: brightness(70%);
-}
-
 :deep() td:nth-child(1), td:nth-child(2) {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 :deep() table {
-    table-layout: fixed;
-}
-
-:deep() .v-label {
-    height: 100%;
+  table-layout: fixed;
 }
 
 :deep() .tooltip {
   padding-right: 16px;
   white-space: break-spaces;
-  z-index: 9;
-  transition: visibility 0s, opacity 0.3s linear;
-  visibility: hidden;
-  opacity: 0;
-  background-color: transparent;;
-}
-
-:deep() .tooltip.visible {
-  visibility: visible;
-  opacity: 1;
+  background-color: transparent;
 }
 </style>
