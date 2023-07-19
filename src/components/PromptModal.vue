@@ -289,6 +289,7 @@ function setPromptLanguage(value) {
 function onDialogCloseTransitionEnded() {
   emit("afterLeave", selectedPrompt);
   selectedPrompt = "";
+  search.value = "";
 }
 </script>
 
