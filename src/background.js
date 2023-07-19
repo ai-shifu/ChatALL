@@ -304,7 +304,7 @@ ipcMain.handle("save-proxy-setting", async (event, args) => {
   });
 });
 
-ipcMain.handle("save-proxy-and-restart", async (event) => {
+ipcMain.handle("restart-app", async (event) => {
   app.relaunch();
   app.exit();
   return "";
