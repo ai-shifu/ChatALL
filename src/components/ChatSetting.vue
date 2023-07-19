@@ -63,7 +63,10 @@ async function reload(value) {
   const result = await confirmModal.value.showModal("", `${load}?`);
   if (result) {
     Object.keys(value).map((d) => (localStorage[d] = value[d]));
-    await ipcRenderer.invoke("restart-app");
+    // restart after some time or localStorage would not be completed
+    setTimeout(() => {
+      ipcRenderer.invoke("restart-app");
+    }, 1000);
   }
 }
 
