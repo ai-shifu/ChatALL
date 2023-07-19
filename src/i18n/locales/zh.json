@@ -44,7 +44,7 @@
     "name": "对话",
     "newChat": "新对话",
     "deleteAllChatHistory": "删除所有对话记录",
-    "downloadAllChatHistory": "下载所有对话记录",
+    "downloadAllChatHistory": "保存所有对话记录",
     "confirmDeleteAllChatHistory": "你确定要删除所有对话记录吗？此操作无法撤消。"
   },
   "bot": {
