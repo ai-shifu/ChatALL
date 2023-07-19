@@ -39,7 +39,8 @@
     "confirmHide": "Delete this message?",
     "confirmHideChat": "Delete this chat?",
     "confirmHidePrompt": "Delete this prompt?",
-    "done": "Done"
+    "done": "Done",
+    "cancel": "Cancel"
   },
   "chat": {
     "name": "Chats",
@@ -230,7 +231,8 @@
     "addPrompt": "Add Prompt",
     "title": "Title",
     "prompt": "Prompt",
-    "action": "Action"
+    "action": "Action",
+    "required": "Required"
   },
   "$vuetify": {
     "firstPage": "No Data",

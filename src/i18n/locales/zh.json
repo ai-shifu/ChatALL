@@ -39,7 +39,8 @@
     "confirmHide": "删除这条消息？",
     "confirmHideChat": "删除这条对话？",
     "confirmHidePrompt": "删除这条提示？",
-    "done": "完成"
+    "done": "完成",
+    "cancel": "取消"
   },
   "chat": {
     "name": "对话",
@@ -230,7 +231,8 @@
     "addPrompt": "添加提示",
     "title": "标题",
     "prompt": "提示",
-    "action": "操作"
+    "action": "操作",
+    "required": "必填"
   },
   "$vuetify": {
     "firstPage": "无数据显示",

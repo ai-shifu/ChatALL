@@ -100,16 +100,18 @@
       @update:model-value="isOpenAddEditPrompt = $event"
     >
       <v-card>
-        <v-form ref="formRef" class="pa-3" @submit.prevent="true">
+        <v-form ref="formRef" class="pa-3" @submit.prevent>
           <v-text-field
             required
             :placeholder="$t('prompt.title')"
             v-model="title"
+            :rules="requiredRule"
           ></v-text-field>
           <v-textarea
             required
             :placeholder="$t('prompt.prompt')"
             v-model="prompt"
+            :rules="requiredRule"
           ></v-textarea>
         </v-form>
         <v-card-actions>
@@ -118,7 +120,7 @@
             variant="outlined"
             color="primary"
             @click="isOpenAddEditPrompt = false"
-            >{{ $t("header.no") }}</v-btn
+            >{{ $t("modal.cancel") }}</v-btn
           >
           <!-- color="primary" not working for nested dialog button -->
           <v-btn variant="flat" class="bg-primary" @click="addEditPrompt">{{
@@ -156,6 +158,9 @@ const formRef = ref(null);
 const confirmModal = ref(null);
 const isOpenAddEditPrompt = ref(false);
 let selectedPrompt = "";
+const requiredRule = [
+  (value) => (value?.trim() ? true : i18n.global.t("prompt.required")),
+];
 
 const headers = computed(() => [
   {
@@ -208,8 +213,8 @@ function usePrompt(row) {
   emit("update:open", false);
 }
 
-function addEditPrompt() {
-  if (formRef.value.validate()) {
+async function addEditPrompt() {
+  if ((await formRef.value.validate()).valid) {
     if (isEdit.value) {
       store.commit("editPrompt", {
         title: title.value,
