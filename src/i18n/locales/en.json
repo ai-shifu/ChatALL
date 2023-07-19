@@ -38,6 +38,7 @@
   "modal": {
     "confirmHide": "Delete this message?",
     "confirmHideChat": "Delete this chat?",
+    "confirmHidePrompt": "Delete this prompt?",
     "done": "Done"
   },
   "chat": {
@@ -224,5 +225,30 @@
     "reloadMessage": "All settings without save will be lost. Are you sure to reload configure file?",
     "saveAndActiveMessage": "Apply the proxy configuration will restart ChatALL. Are you sure?",
     "googleService": "Google Service"
-  }
+  },
+  "prompt": {
+    "addPrompt": "Add Prompt",
+    "title": "Title",
+    "prompt": "Prompt",
+    "action": "Action"
+  },
+  "$vuetify": {
+    "firstPage": "No Data",
+    "dataFooter": {
+      "itemsPerPageText": "Items Per Page",
+      "pageText": "",
+      "firstPage": "First Page",
+      "prevPage": "Previous Page",
+      "lastPage": "Last Page",
+      "nextPage": "Next Page",
+      "itemsPerPageAll": "All"
+    },
+    "input": {
+      "clear": "Clear"
+    }
+  },
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100"
 }

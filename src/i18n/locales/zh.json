@@ -38,6 +38,7 @@
   "modal": {
     "confirmHide": "删除这条消息？",
     "confirmHideChat": "删除这条对话？",
+    "confirmHidePrompt": "删除这条提示？",
     "done": "完成"
   },
   "chat": {
@@ -224,5 +225,30 @@
     "reloadMessage": "所有未经保存的设置都会丢失。确定重新加载配置文件吗？",
     "saveAndActiveMessage": "应用代理需要重启 ChatALL。确定重启吗？",
     "googleService": "谷歌各种资源"
-  }
+  },
+  "prompt": {
+    "addPrompt": "添加提示",
+    "title": "标题",
+    "prompt": "提示",
+    "action": "操作"
+  },
+  "$vuetify": {
+    "firstPage": "无数据显示",
+    "dataFooter": {
+      "itemsPerPageText": "每页显示数目",
+      "pageText": "",
+      "firstPage": "第一页",
+      "prevPage": "上一页",
+      "lastPage": "最后一页",
+      "nextPage": "下一页",
+      "itemsPerPageAll": "全部"
+    },
+    "input": {
+      "clear": "清除"
+    }
+  },
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100"
 }
