@@ -36,6 +36,7 @@ import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
 import OpenAssistantBot from "./OpenAssistantBot";
 import CharacterAIBot from "./CharacterAIBot";
 import ClaudeAIBot from "./ClaudeAIBot";
+import Llama2HC70bBot from "./huggingface/Llama2HC70bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -59,6 +60,7 @@ const all = [
   ClaudePlusPoeBot.getInstance(),
   GradioAppBot.getInstance(),
   HuggingChatBot.getInstance(),
+  Llama2HC70bBot.getInstance(),
   MOSSBot.getInstance(),
   OpenAIAPI35Bot.getInstance(),
   OpenAIAPI3516KBot.getInstance(),

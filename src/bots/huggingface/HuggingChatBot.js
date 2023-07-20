@@ -10,6 +10,7 @@ export default class HuggingChatBot extends Bot {
   static _className = "HuggingChatBot"; // Class name of the bot
   static _logoFilename = "huggingchat-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://huggingface.co/chat/";
+  static _model = "OpenAssistant/oasst-sft-6-llama-30b-xor";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
   constructor() {
@@ -117,7 +118,7 @@ export default class HuggingChatBot extends Bot {
     let conversationId = "";
     await axios
       .post("https://huggingface.co/chat/conversation", {
-        model: "OpenAssistant/oasst-sft-6-llama-30b-xor",
+        model: this.constructor._model,
       })
       .then(({ data: resp }) => {
         conversationId = resp.conversationId;
