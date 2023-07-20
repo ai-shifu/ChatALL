@@ -189,7 +189,7 @@ function filterEnterKey(event) {
   }
 
   // pre or next prompt
-  if (keyCode == 38 || keyCode == 40) {
+  if (keyCode == historyKeyCode.pre || keyCode == historyKeyCode.next) {
     // Obtain up and down history and set.
     setPreAndNextPrompt(keyCode, event);
   } else {
@@ -235,28 +235,41 @@ function setPreAndNextPrompt(keyCode, event) {
   const position = element.selectionStart;
 
   // Cursor at start position
-  const isStart = position === 0;
+  const isStart = position === 0 && keyCode == historyKeyCode.pre;
 
   // Cursor at end position and direction key is down
-  const isEnd = position === element.value.length && keyCode == 40;
+  const isEnd =
+    position === element.value.length && keyCode == historyKeyCode.next;
 
   if (isStart || isEnd) {
     // Stop default event Prevent a cursor to run around
     event.preventDefault();
-
     // get new prompt and set it
     const newPrompt = getHistoryPrompt(keyCode);
     prompt.value = newPrompt.content;
+
+    let cursorPosition = { start: 0, end: 0 };
+    if (isEnd) {
+      cursorPosition = { start: -1, end: -1 };
+    }
+
+    // Reset cursor position. Waiting for the new prompt to complete
+    // Pre {0, 0} to the top, Next {-1, -1}  to the bottom
+    nextTick(() => {
+      element.focus();
+      element.setSelectionRange(cursorPosition.start, cursorPosition.end);
+    });
   }
 }
 
 // current prompt index
 let promptIndex = 0;
 
+// up and down key code
+const historyKeyCode = { pre: 38, next: 40 };
+
 // Listen to the up and down arrow keys to obtain historical records.
 function getHistoryPrompt(keyCode) {
-  // up and down key code
-  const historyKeyCode = { pre: 38, next: 40 };
   const historyPrompts = store.getters.getCurrentChatPrompt;
 
   if (!historyPrompts || !historyPrompts.length) return false;
