@@ -343,7 +343,7 @@ defineExpose({
 
 <style scoped>
 .footer {
-  background-color: transparent!important;
+  background-color: rgba(var(--v-theme-background), 0.7)!important;
   height: auto!important;
   display: flex;
   align-items: center!important;
