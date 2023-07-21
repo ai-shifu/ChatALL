@@ -187,13 +187,20 @@ function filterEnterKey(event) {
     event.preventDefault();
     sendPromptToBots();
   }
+  
+  // up or down
+  const isUpOrDown =
+    keyCode == historyKeyCode.pre || keyCode == historyKeyCode.next;
 
-  // pre or next prompt
-  if (keyCode == historyKeyCode.pre || keyCode == historyKeyCode.next) {
-    // Obtain up and down history and set.
-    setPreAndNextPrompt(keyCode, event);
-  } else {
-    promptIndex = 0;
+  const isAuxiliaryKey = event.metaKey || event.ctrlKey;
+
+  // macOS: Cmd + up/down, Windows: Ctrl + up/down
+  if (isAuxiliaryKey && isUpOrDown) {
+    event.preventDefault();
+
+    // get new prompt and set it
+    const newPrompt = getHistoryPrompt(keyCode);
+    prompt.value = newPrompt.content;
   }
 }
 
@@ -226,40 +233,6 @@ function sendPromptToBots() {
     "Active bots count",
     toBots.length,
   );
-}
-// Single -line text set historical records directly. Multi -line text is executed only at the beginning or end position
-function setPreAndNextPrompt(keyCode, event) {
-  const element = promptTextArea.value;
-
-  // Take the starting position of the current text selection in the input element
-  const position = element.selectionStart;
-
-  // Cursor at start position
-  const isStart = position === 0 && keyCode == historyKeyCode.pre;
-
-  // Cursor at end position and direction key is down
-  const isEnd =
-    position === element.value.length && keyCode == historyKeyCode.next;
-
-  if (isStart || isEnd) {
-    // Stop default event Prevent a cursor to run around
-    event.preventDefault();
-    // get new prompt and set it
-    const newPrompt = getHistoryPrompt(keyCode);
-    prompt.value = newPrompt.content;
-
-    let cursorPosition = { start: 0, end: 0 };
-    if (isEnd) {
-      cursorPosition = { start: -1, end: -1 };
-    }
-
-    // Reset cursor position. Waiting for the new prompt to complete
-    // Pre {0, 0} to the top, Next {-1, -1}  to the bottom
-    nextTick(() => {
-      element.focus();
-      element.setSelectionRange(cursorPosition.start, cursorPosition.end);
-    });
-  }
 }
 
 // current prompt index
@@ -386,16 +359,16 @@ defineExpose({
 
 <style scoped>
 .footer {
-  background-color: transparent!important;
-  height: auto!important;
+  background-color: transparent !important;
+  height: auto !important;
   display: flex;
-  align-items: center!important;
+  align-items: center !important;
   justify-content: space-between;
   padding: 8px 16px;
   gap: 8px;
   box-sizing: border-box;
-  padding-bottom: .5rem;
-  box-shadow: none!important;
+  padding-bottom: 0.5rem;
+  box-shadow: none !important;
 }
 
 .bot-logos {
@@ -422,12 +395,12 @@ textarea::placeholder {
 }
 
 .send-prompt-btn {
-  height: 40px!important;
-  margin: 0.4rem!important;
-  text-transform: uppercase!important;
-  font-size: small!important;
+  height: 40px !important;
+  margin: 0.4rem !important;
+  text-transform: uppercase !important;
+  font-size: small !important;
   color: rgb(var(--v-theme-on-primary));
   background-color: rgb(var(--v-theme-primary));
-  border-radius: 4px!important;
+  border-radius: 4px !important;
 }
 </style>
