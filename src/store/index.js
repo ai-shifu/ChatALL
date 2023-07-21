@@ -23,6 +23,7 @@ export default createStore({
   state: {
     uuid: "",
     lang: "auto",
+    enableScroll: true,
     columns: 2,
     openaiApi: {
       apiKey: "",
@@ -141,6 +142,10 @@ export default createStore({
       state.lang = language;
       i18n.global.locale = language;
     },
+    setCurrentScroll(state, scroll) {
+      state.enableScroll = scroll;
+      i18n.global.locale = scroll;
+    },
     setChatgpt(state, refreshCycle) {
       state.chatgpt.refreshCycle = refreshCycle;
     },
@@ -212,7 +217,7 @@ export default createStore({
       currentChat.messages = messages;
     },
     incrementUpdateCounter(state) {
-      state.updateCounter += 1;
+      state.enableScroll && (state.updateCounter += 1);
     },
     setChatContext(state, { botClassname, context }) {
       const currentChat = state.chats[state.currentChatIndex];

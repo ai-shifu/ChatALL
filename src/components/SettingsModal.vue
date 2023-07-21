@@ -59,6 +59,18 @@
                     @update:model-value="setCurrentMode($event)"
                   ></v-select>
                 </v-list-item>
+                <v-list-item>
+                <v-list-item-title>{{
+                  $t("settings.enableScroll")
+                }}</v-list-item-title>
+                <v-checkbox
+                  v-model="enableScroll"
+                  color="primary"
+                  hideDetails="auto"
+                  :label="$t('settings.enable')"
+                  @update:model-value="setCurrentScroll($event)"
+                ></v-checkbox>
+              </v-list-item>
               </div>
 
               <div v-if="tab == 'proxy'">
@@ -172,7 +184,11 @@ const modes = computed(() => [
 
 const lang = computed(() => store.state.lang);
 const currentMode = computed(() => store.state.mode);
-
+const enableScroll = computed(() => store.state.enableScroll);
+const setCurrentScroll = (scroll) => {
+  locale.enableScroll = scroll;
+  store.commit("setCurrentScroll", scroll);
+};
 const setCurrentLanguage = (lang) => {
   locale.value = lang;
   store.commit("setCurrentLanguage", lang);
