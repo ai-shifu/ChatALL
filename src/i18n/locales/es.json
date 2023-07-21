@@ -30,8 +30,10 @@
     "promptPlaceholder": "Escriba un mensaje. (Mayús+Entrar para añadir una nueva línea)"
   },
   "error": {
+    "error": "Error",
     "failedConnectUrl": "Error al conectar { url }",
-    "closedByServer": "Conexión cerrada por el servidor"
+    "closedByServer": "Conexión cerrada por el servidor",
+    "solveChallenge": "Haga clic en el siguiente enlace, siga las instrucciones de la página para resolver desafíos / CAPTCHA y luego cierre la ventana."
   },
   "modal": {
     "confirmHide": "¿Eliminar este mensaje?",
@@ -42,6 +44,7 @@
     "name": "Chats",
     "newChat": "Nuevo chat",
     "deleteAllChatHistory": "Eliminar todo el historial de chat",
+    "downloadAllChatHistory": "Guardar todo el historial de chat",
     "confirmDeleteAllChatHistory": "¿Está seguro de que desea eliminar todo el historial de chat? Esta acción no se puede deshacer."
   },
   "bot": {
@@ -53,6 +56,9 @@
     "waiting": "Esperando a que se completen otras solicitudes { botName }...",
     "pastRounds": "¿Cuántas rondas de chats pasados llevar?",
     "pastRoundsPrompt": "Cuantos más chats históricos se lleven a cabo, mejor será el efecto del diálogo de varias rondas, pero también consumirá más costos."
+  },
+  "360AiBrain": {
+    "name": "Cerebro de IA 360"
   },
   "azureOpenaiApi": {
     "name": "Servicio Azure OpenAI",
@@ -79,6 +85,9 @@
     "galileo": "Equilibrado",
     "h3precise": "Preciso"
   },
+  "characterAI": {
+    "name": "Character.AI"
+  },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "Antidesconexión automática",
@@ -90,6 +99,9 @@
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Navegación Web",
     "gpt-4-mobile": "GPT-4 móvil V2"
+  },
+  "claudeAi": {
+    "name": "Claude 2"
   },
   "ernie": {
     "name": "ERNIE"
@@ -154,6 +166,14 @@
   },
   "youChat": {
     "name": "YouChat"
+  },
+  "pi": {
+    "name": "Pi",
+    "waitPiIntro": "Haga clic en el enlace del sitio web del chatbot a continuación y espere a que finalice la introducción de Pi, luego cierre la ventana."
+  },
+  "openAssistant": {
+    "name": "Asistente para abrir",
+    "queue": "Hay { queue_size } solicitudes en la cola, estás en { queue_position }º lugar"
   },
   "dev": {
     "name": "Bot de desarrollo"

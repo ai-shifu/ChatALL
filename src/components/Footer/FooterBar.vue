@@ -29,7 +29,19 @@
         autofocus
         @keydown="filterEnterKey"
         style="min-width: 390px"
-      ></v-textarea>
+      >
+        <template v-slot:append-inner>
+          <v-btn
+            :id="SHORTCUT_PROMPT_MANAGEMENT.elementId"
+            @click="isPromptManagementOpen = !isPromptManagementOpen"
+            color="primary"
+            variant="plain"
+            class="h-100 w-100"
+            style="border-radius: 4px; min-width: unset !important"
+            icon="mdi-creation-outline"
+          ></v-btn>
+        </template>
+      </v-textarea>
       <v-btn
         class="send-prompt-btn"
         elevation="2"
@@ -64,6 +76,12 @@
     </div>
     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
     <ConfirmModal ref="confirmModal" />
+    <PromptModal
+      v-shortkey="SHORTCUT_PROMPT_MANAGEMENT.key"
+      @shortkey="isPromptManagementOpen = !isPromptManagementOpen"
+      v-model:open="isPromptManagementOpen"
+      @after-leave="usePrompt"
+    ></PromptModal>
   </v-bottom-navigation>
 </template>
 
@@ -85,6 +103,7 @@ import MakeAvailableModal from "@/components/MakeAvailableModal.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import BotLogo from "./BotLogo.vue";
 import BotsMenu from "./BotsMenu.vue";
+import PromptModal from "@/components/PromptModal.vue";
 
 // Composables
 import { useMatomo } from "@/composables/matomo";
@@ -92,6 +111,7 @@ import { useMatomo } from "@/composables/matomo";
 import _bots from "@/bots";
 import {
   SHORTCUT_PROMPT_TEXTAREA,
+  SHORTCUT_PROMPT_MANAGEMENT,
   SHORTCUT_BOTS_MENU,
 } from "./../ShortcutGuide/shortcut.const";
 
@@ -104,6 +124,7 @@ const confirmModal = ref(null);
 const promptTextArea = ref(null);
 const botsMenuRef = ref(null);
 const favBotLogosRef = ref();
+const isPromptManagementOpen = ref(false);
 
 const bots = ref(_bots.all);
 const activeBots = reactive({});
@@ -352,6 +373,12 @@ function updateChatTitleWithFirstPrompt(isFirstPrompt) {
   }
 }
 
+async function usePrompt(value) {
+  await nextTick();
+  focusPromptTextarea();
+  document.execCommand("insertText", false, value);
+}
+
 defineExpose({
   focusPromptTextarea,
 });
@@ -359,7 +386,7 @@ defineExpose({
 
 <style scoped>
 .footer {
-  background-color: transparent !important;
+  background-color: rgba(var(--v-theme-background), 0.7) !important;
   height: auto !important;
   display: flex;
   align-items: center !important;
@@ -402,5 +429,13 @@ textarea::placeholder {
   color: rgb(var(--v-theme-on-primary));
   background-color: rgb(var(--v-theme-primary));
   border-radius: 4px !important;
+}
+
+:deep() .v-field.v-field--appended{
+  padding-right: 0;
+}
+
+:deep() .v-field__append-inner{
+  padding-top: 0;
 }
 </style>

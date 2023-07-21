@@ -38,12 +38,15 @@
   "modal": {
     "confirmHide": "删除这条消息？",
     "confirmHideChat": "删除这条对话？",
-    "done": "完成"
+    "confirmHidePrompt": "删除这条提示？",
+    "done": "完成",
+    "cancel": "取消"
   },
   "chat": {
     "name": "对话",
     "newChat": "新对话",
     "deleteAllChatHistory": "删除所有对话记录",
+    "downloadAllChatHistory": "保存所有对话记录",
     "confirmDeleteAllChatHistory": "你确定要删除所有对话记录吗？此操作无法撤消。"
   },
   "bot": {
@@ -106,7 +109,9 @@
     "name": "文心一言"
   },
   "huggingChat": {
-    "name": "HuggingChat"
+    "name": "HuggingChat",
+    "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b"
   },
   "gradio": {
     "fnIndex": "fn_index",
@@ -223,5 +228,31 @@
     "reloadMessage": "所有未经保存的设置都会丢失。确定重新加载配置文件吗？",
     "saveAndActiveMessage": "应用代理需要重启 ChatALL。确定重启吗？",
     "googleService": "谷歌各种资源"
-  }
+  },
+  "prompt": {
+    "addPrompt": "添加提示",
+    "title": "标题",
+    "prompt": "提示",
+    "action": "操作",
+    "required": "必填"
+  },
+  "$vuetify": {
+    "firstPage": "无数据显示",
+    "dataFooter": {
+      "itemsPerPageText": "每页显示数目",
+      "pageText": "",
+      "firstPage": "第一页",
+      "prevPage": "上一页",
+      "lastPage": "最后一页",
+      "nextPage": "下一页",
+      "itemsPerPageAll": "全部"
+    },
+    "input": {
+      "clear": "清除"
+    }
+  },
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100"
 }
