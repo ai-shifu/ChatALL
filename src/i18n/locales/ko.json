@@ -109,7 +109,7 @@
     "name": "ERNIE"
   },
   "huggingChat": {
-    "name": "HuggingChat"
+    "name": "HuggingChat",
     "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
     "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b"
   },
