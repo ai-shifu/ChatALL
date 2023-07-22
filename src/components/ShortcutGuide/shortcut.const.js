@@ -4,9 +4,20 @@ export const SHORTCUT_PROMPT_TEXTAREA = {
   elementId: "prompt-textarea",
   key: [modifier, "k"],
   offset: {
-    top: 10,
+    top: 15,
   },
   alignHorizontallyCenter: true,
+};
+
+export const SHORTCUT_PROMPT_PRE_NEXT = {
+  elementId: "prompt-textarea",
+  key: [modifier, "up/down"],
+  offset: {
+    top: 15,
+    left: 100,
+  },
+  alignHorizontallyCenter: true,
+
 };
 
 export const SHORTCUT_FIND = {
@@ -93,6 +104,7 @@ export const SHORTCUT_LIST = [
   SHORTCUT_CHAT_DRAWER,
   SHORTCUT_NEW_CHAT,
   SHORTCUT_PROMPT_MANAGEMENT,
+  SHORTCUT_PROMPT_PRE_NEXT,
   {
     elementId: "column-1",
     key: ["f1"],
