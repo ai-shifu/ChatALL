@@ -43,7 +43,7 @@ body:
         If applicable, add screenshots to help explain your problem.
         如果需要，请添加截图以帮助解释你的问题。
     validations:
-      required: true
+      required: false
 
   - type: textarea
     attributes:
