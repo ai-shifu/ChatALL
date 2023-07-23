@@ -6,28 +6,36 @@ labels: enhancement
 body:
   - type: textarea
     attributes:
-      label: Is your feature request related to a problem? Please describe.
-      description: A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+      label: Is your feature request related to a problem? / 你想要的功能和什么问题相关？
+      description: |
+        A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+        简明扼要地说明这个功能是解决什么问题的。例如：我经常遇到这样的问题：[...]
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: Describe the solution you'd like
-      description: A clear and concise description of what you want to happen.
+      label: Describe the solution you'd like. / 你想要的解决方案是什么？
+      description: |
+        A clear and concise description of what you want to happen.
+        简明扼要地说明你想要的功能是什么。
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: Describe alternatives you've considered.
-      description: A clear and concise description of any alternative solutions or features you've considered.
+      label: Describe alternatives you've considered. / 你考虑过的其他方案是什么？
+      description: |
+        A clear and concise description of any alternative solutions or features you've considered.
+        简明扼要地说明你考虑过的其他方案或功能。
     validations:
-      required: true
+      required: false
 
   - type: textarea
     attributes:
-      label: Additional context
-      description: Add any other context or screenshots about the feature request here.
+      label: Additional context / 其他信息
+      description: |
+        Add any other context or screenshots about the feature request here.
+        在这里添加关于此功能的任何其他信息或屏幕截图。
     validations:
       required: false
