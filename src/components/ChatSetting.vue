@@ -22,55 +22,20 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
 import ConfirmModal from "@/components/ConfirmModal.vue";
-import bots from "@/bots";
+import { get_messages } from '@/utils';
+
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
 const store = useStore();
 
 // This function downloads the chat history as a JSON file.
+
 const downloadJson = () => {
-  // Get the chat history from localStorage.
-  const chatallMessages = localStorage.getItem("chatall-messages");
-  if (!chatallMessages) {
+  const messages = get_messages();
+  if (!messages) {
     console.error("chatall-messages not found in localStorage");
     return;
   }
-
-  const chats = JSON.parse(chatallMessages)?.chats ?? [];
-
-  // Create an array of messages from the chat history.
-  const messages = chats
-    .filter((d) => !d.hide)
-    .map((chat) => ({
-      // The title of the chat.
-      title: chat.title,
-      // The messages in the chat.
-      messages: chat.messages
-        .filter((d) => !d.hide)
-        .reduce((arr, message) => {
-          const t = message.type;
-          const content = message.content;
-          if (t == "prompt") {
-            arr.push({
-              prompt: content,
-              responses: [],
-            });
-          } else {
-            const botClassname = message.className;
-            const bot = bots.getBotByClassName(botClassname);
-            const botName = bot.getFullname();
-            arr.at(-1).responses.push({
-              content,
-              botName,
-              botClassname,
-              botModel: message.model,
-              highlight: message.highlight,
-            });
-          }
-          return arr;
-        }, []),
-    }));
-
   // Create a blob that contains the JSON data.
   // The space parameter specifies the indentation of nested objects in the string representation.
   const blob = new Blob([JSON.stringify({ chats: messages }, null, 2)], {
@@ -115,3 +80,4 @@ async function deleteChats() {
   }
 }
 </script>
+@/utils/storage

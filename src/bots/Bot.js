@@ -1,6 +1,7 @@
 import i18n from "@/i18n";
 import store from "@/store";
-
+import { get_messages } from '@/utils';
+let requested = null;
 export default class Bot {
   static _logoPackedPaths = null;
   static _isAvailable = false;
@@ -15,7 +16,6 @@ export default class Bot {
   static _lock = null; // AsyncLock for prompt requests. `new AsyncLock()` in the subclass as needed.
   static _settingsComponent = ""; // Vue component filename for settings
   static _outputFormat = "markdown"; // "markdown" or "html"
-
   constructor() {}
 
   static getInstance() {
@@ -156,6 +156,18 @@ export default class Bot {
   /* eslint-enable no-unused-vars */
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {
+    if (!requested) {
+      const messages = get_messages()
+      requested = messages.map(d => d.messages).flat().map(d => d.responses.map(res => ({ [`${res.botClassname}-${d.prompt}`]: res.content }))).flat().reduce((acc,d)=>({...acc,...d}),{});
+    }
+    const query=`${this.getClassname()}-${prompt}`
+    const answer = requested[query];
+    if (answer){
+      return onUpdateResponse(callbackParam, {
+        content: answer,
+        done: true,
+      });
+    }
     // If not logged in, handle the error
     if (!this.isAvailable()) {
       onUpdateResponse(callbackParam, {
