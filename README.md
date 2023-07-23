@@ -40,10 +40,15 @@ Typical users of ChatALL are:
 | [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | No Login required                           |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | No Login required                           |
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
-| [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                             |
+| [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      | Llama 2 included                            |
 | [SkyWork](https://neice.tiangong.cn/)                        | Yes         | Coming soon |                                             |
 | [You](https://you.com/)                                      | Yes         | No API      |                                             |
 | [Pi](https://heypi.com)                                      | Yes         | No API      |                                             |
+| [360 AI Brain](https://ai.360.cn/)                           | Yes         | No API      |                                             |
+| [YouChat](https://you.com/)                                  | Yes         | No API      |                                             |
+| [Open Assistant](https://open-assistant.io/)                 | Yes         | No API      |                                             |
+| [Claude](https://claude.ai/)                                 | Yes         | No API      |                                             |
+| [Character.AI](https://character.ai/)                        | Yes         | No API      |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
@@ -58,7 +63,8 @@ More is coming. Upvote your favorite bots in [these issues](https://github.com/s
 - Dark mode (contributed by @tanchekwei)
 - Short keys. Press `Ctrl + /` to know all of them (contributed by @tanchekwei)
 - Multiple chats (contributed by @tanchekwei)
-- Supports setting proxy (contributed by @msaong)
+- Proxy setting (contributed by @msaong)
+- Prompt management (contributed by @tanchekwei)
 - Supports multiple languages (Chinese, English, German, French, Russian, Vietnamese, Korean, Japanese, Spanish, Italian)
 - Supports Windows, macOS and Linux
 

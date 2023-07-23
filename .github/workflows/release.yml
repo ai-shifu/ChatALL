@@ -24,7 +24,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          brew install rpm
 
       - name: Build and release
         env:
