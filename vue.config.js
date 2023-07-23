@@ -22,7 +22,12 @@ module.exports = defineConfig({
           },
         },
         win: {
-          target: "nsis",
+          target: [
+            {
+              target: "nsis",
+              arch: ["ia32"],
+            },
+          ],
           icon: "src/assets/icon.ico",
         },
         linux: {
