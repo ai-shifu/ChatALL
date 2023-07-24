@@ -9,7 +9,7 @@ const prompts = {
   languages: [
     { name: "English", code: "en" },
     { name: "简体中文", code: "zh" },
-	{ name: "Español", code: "es" },
+    { name: "Español", code: "es" },
   ],
 };
 
