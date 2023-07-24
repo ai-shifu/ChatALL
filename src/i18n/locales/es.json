@@ -1,4 +1,8 @@
 {
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100",
   "settings": {
     "enable": "Habilitar",
     "forExample": "Por ejemplo, { ejemplo }",
@@ -38,7 +42,9 @@
   "modal": {
     "confirmHide": "¿Eliminar este mensaje?",
     "confirmHideChat": "¿Eliminar este chat?",
-    "done": "Hecho"
+    "confirmHidePrompt": "¿Eliminar este mensaje?",
+    "done": "Hecho",
+    "cancel": "Cancelar"
   },
   "chat": {
     "name": "Chats",
@@ -107,7 +113,9 @@
     "name": "ERNIE"
   },
   "huggingChat": {
-    "name": "HuggingChat"
+    "name": "HuggingChat",
+    "OpenAssistantoasst-sft-6-llama-30b-xor": "OASST-SFT-6-LLAMA-30B",
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b"
   },
   "gradio": {
     "fnIndex": "fn_index",
@@ -224,5 +232,27 @@
     "reloadMessage": "Se perderán todos los ajustes sin guardar. ¿Está seguro de volver a cargar el archivo de configuración?",
     "saveAndActiveMessage": "Aplicar la configuración de proxy reiniciará ChatALL. ¿Estás seguro?",
     "googleService": "Servicio de Google"
+  },
+  "prompt": {
+    "addPrompt": "Agregar mensaje",
+    "title": "Título",
+    "prompt": "Pronto",
+    "action": "Acción",
+    "required": "Obligatorio"
+  },
+  "$vuetify": {
+    "firstPage": "Sin datos",
+    "dataFooter": {
+      "itemsPerPageText": "Elementos por página",
+      "pageText": "",
+      "firstPage": "Primera página",
+      "prevPage": "Página anterior",
+      "lastPage": "Última página",
+      "nextPage": "Página siguiente",
+      "itemsPerPageAll": "Todo"
+    },
+    "input": {
+      "clear": "Claro"
+    }
   }
 }
