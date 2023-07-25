@@ -21,7 +21,8 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron .",
-    "release": "vue-cli-service electron:build -wml --x64 --arm64"
+    "release": "vue-cli-service electron:build -wml --x64 --arm64",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@kangc/v-md-editor": "2.3.15",
@@ -51,17 +52,21 @@
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/eslint-parser": "^7.22.9",
+    "@commitlint/config-conventional": "^17.6.7",
     "@electron/osx-sign": "^1.0.4",
     "@vue/cli": "^5.0.8",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
+    "commitlint": "^17.6.7",
     "electron": "^25.3.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.15.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "md5": "^2.3.0",
     "prettier": "^3.0.0",
     "prettier-plugin-vue": "^1.1.6",
@@ -77,11 +82,16 @@
       "eslint:recommended",
       "plugin:prettier/recommended"
     ],
-    "plugins": ["prettier"],
+    "plugins": [
+      "prettier"
+    ],
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
     "rules": {}
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,jsx.tsx}": "npm run lint"
   },
   "browserslist": [
     "> 1%",
