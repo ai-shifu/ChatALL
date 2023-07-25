@@ -16,7 +16,9 @@ export default class OpenAIAPIBot extends LangChainBot {
     } else {
       const chatModel = new ChatOpenAI({
         configuration: {
-          basePath: store.state.openaiApi.alterUrl ? store.state.openaiApi.alterUrl : "",
+          basePath: store.state.openaiApi.alterUrl
+            ? store.state.openaiApi.alterUrl
+            : "",
         },
         openAIApiKey: store.state.openaiApi.apiKey,
         modelName: this.constructor._model ? this.constructor._model : "",

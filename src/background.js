@@ -57,6 +57,7 @@ async function getProxySetting() {
       // Check the proxySetting file, if some key is missing, write it back to the file
       let isChanged = false;
       for (let key in defaultProxySetting) {
+        // eslint-disable-next-line no-prototype-builtins
         if (!proxySetting.hasOwnProperty(key)) {
           proxySetting[key] = defaultProxySetting[key];
           isChanged = true;
@@ -278,16 +279,16 @@ ipcMain.handle("get-native-theme", () => {
 });
 
 // For Proxy Setting Vue Page
-ipcMain.handle("get-proxy-setting-path", async (event) => {
+ipcMain.handle("get-proxy-setting-path", async () => {
   return proxySettingPath;
 });
 
-ipcMain.handle("get-proxy-setting-content", async (event) => {
+ipcMain.handle("get-proxy-setting-content", async () => {
   await getProxySetting();
   return proxySetting;
 });
 
-ipcMain.handle("reset-proxy-default-setting", async (event) => {
+ipcMain.handle("reset-proxy-default-setting", async () => {
   const resetResut = await initProxyDefault();
   return resetResut;
 });
@@ -304,7 +305,7 @@ ipcMain.handle("save-proxy-setting", async (event, args) => {
   });
 });
 
-ipcMain.handle("save-proxy-and-restart", async (event) => {
+ipcMain.handle("save-proxy-and-restart", async () => {
   app.relaunch();
   app.exit();
   return "";

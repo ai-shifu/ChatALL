@@ -6,13 +6,7 @@
     @click="closeShortcutGuide"
   >
     <div
-      style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-      "
+      style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh"
     >
       <div
         ref="shortcutGuideContentRef"
@@ -69,7 +63,7 @@ function kbd(text) {
 }
 
 function formatModifierText(string) {
-  string = string.replace('meta', 'cmd');
+  string = string.replace("meta", "cmd");
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
