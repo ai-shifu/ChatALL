@@ -15,6 +15,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "format": "prettier --write --cache src/",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
@@ -58,8 +59,11 @@
     "electron": "^25.3.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.15.1",
     "md5": "^2.3.0",
+    "prettier": "^3.0.0",
     "prettier-plugin-vue": "^1.1.6",
     "sse.js": "github:mpetazzoni/sse.js"
   },
@@ -70,8 +74,10 @@
     },
     "extends": [
       "plugin:vue/vue3-essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "plugin:prettier/recommended"
     ],
+    "plugins": ["prettier"],
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },

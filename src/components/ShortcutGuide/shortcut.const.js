@@ -17,7 +17,6 @@ export const SHORTCUT_PROMPT_PRE_NEXT = {
     left: 100,
   },
   alignHorizontallyCenter: true,
-
 };
 
 export const SHORTCUT_FIND = {
