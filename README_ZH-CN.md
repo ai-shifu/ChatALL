@@ -44,6 +44,11 @@ ChatALL 的典型用户是：
 | [天工](https://neice.tiangong.cn/)                           | 支持     | 即将推出 |                                          |
 | [You](https://you.com/)                                      | 支持     | 无 API   |                                          |
 | [Pi](https://heypi.com)                                      | 支持     | 无 API   |                                          |
+| [360 智脑](https://ai.360.cn/)                               | 支持     | 无       |                                          |
+| [YouChat](https://you.com/)                                  | 支持     | 无       |                                          |
+| [Open Assistant](https://open-assistant.io/)                 | 支持     | 无       |                                          |
+| [Claude](https://claude.ai/)                                 | 支持     | 无       |                                          |
+| [Character.AI](https://character.ai/)                        | 支持     | 无       |                                          |
 
 还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 
@@ -59,6 +64,7 @@ ChatALL 的典型用户是：
 - 快捷键。按 `Ctrl + /` 可以看到所有快捷键（由 @tanchekwei 贡献）
 - 多对话窗口（由 @tanchekwei 贡献）
 - 支持设置代理（由 @msaong 贡献）
+- 提示词管理（由 @tanchekwei 贡献）
 - 支持多语言（中文、英语、德语、法语、俄语、越南语、韩语、日语、西班牙语、意大利语）
 - 支持 Windows，macOS 和 Linux
 

@@ -1,8 +1,12 @@
 {
   "name": "chatall",
-  "version": "1.37.54",
+  "version": "1.37.55",
   "description": "Chat with multiple AI bots and discover the best.",
-  "author": "Sun Zhigang",
+  "author": {
+    "name": "Sun Zhigang",
+    "email": "sunner@gmail.com",
+    "url": "http://sunner.cn"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sunner/ChatALL.git"
