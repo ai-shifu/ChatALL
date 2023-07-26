@@ -161,7 +161,7 @@ watch(favBots, async (newValue, oldValue) => {
   updateActiveBots();
 });
 
-async function updateActiveBots() {
+async function updateActiveBots(selected = false) {
   for (const favBot of favBots.value) {
     // Unselect the bot if user has not confirmed to use it
     if (favBot.selected) {
@@ -176,7 +176,7 @@ async function updateActiveBots() {
       }
     }
     activeBots[favBot.classname] =
-      favBot.instance.isAvailable() && favBot.selected;
+      (selected || favBot.instance.isAvailable()) && favBot.selected;
   }
 }
 
@@ -199,6 +199,9 @@ function handleShortcut(event) {
 // Send the prompt when the user presses enter and prevent the default behavior
 // But if the shift, ctrl, alt, or meta keys are pressed, do as default
 function filterEnterKey(event) {
+  if (!checkedAvailable) {
+    checkSelectedBots();
+  }
   const keyCode = event.keyCode;
   if (
     keyCode == 13 &&
@@ -302,12 +305,13 @@ async function toggleSelected(bot) {
   }
   store.commit("setBotSelected", { botClassname, selected });
 }
-
+let checkedAvailable = false;
 onBeforeMount(async () => {
-  favBots.value.forEach(async (favBot) => {
-    await favBot.instance.checkAvailability();
-    updateActiveBots();
-  });
+  if (process.env.NODE_ENV !== "development") {
+    checkSelectedBots();
+  } else {
+    updateActiveBots(true);
+  }
 
   // Listen message trigged by main process
   ipcRenderer.on("CHECK-AVAILABILITY", async (event, url) => {
@@ -324,6 +328,14 @@ onMounted(() => {
 });
 
 let sortable = undefined;
+function checkSelectedBots() {
+  favBots.value.forEach(async (favBot) => {
+    await favBot.instance.checkAvailability();
+    updateActiveBots();
+  });
+  checkedAvailable = true;
+}
+
 function initializeSortable() {
   let isDropOnFavBotBar = false;
   const onDragEnd = (event) => {
