@@ -30,10 +30,10 @@
     "promptPlaceholder": "메시지를 입력합니다. (Shift+Enter를 입력하여 새 줄 추가)"
   },
   "error": {
-      "error": "오류",
+    "error": "오류",
     "failedConnectUrl": "{ url }을(를) 연결하지 못했습니다",
     "closedByServer": "서버가 연결을 닫았습니다",
-        "solveChallenge": "아래 링크를 클릭하고 페이지의 지침에 따라 과제/캡챠를 해결한 후 창을 닫습니다."
+    "solveChallenge": "아래 링크를 클릭하고 페이지의 지침에 따라 과제/캡챠를 해결한 후 창을 닫습니다."
   },
   "modal": {
     "confirmHide": "이 메시지를 삭제하시겠습니까?",

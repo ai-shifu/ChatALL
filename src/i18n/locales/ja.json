@@ -38,11 +38,11 @@
     "confirmHideChat": "チャットを削除しますか？",
     "done": "完了"
   },
-  "chat":{
+  "chat": {
     "name": "チャット",
     "newChat": "新しいチャット",
     "deleteAllChatHistory": "全てのチャット履歴を削除",
-    "confirmDeleteAllChatHistory": "全てのチャット履歴を削除しますか？この操作は取り消せません。"  
+    "confirmDeleteAllChatHistory": "全てのチャット履歴を削除しますか？この操作は取り消せません。"
   },
   "bot": {
     "creatingConversation": "会話を作成中...",
@@ -178,8 +178,8 @@
     "noMatches": "結果はありません。",
     "matchCase": "大文字と小文字を区別する",
     "wrapAround": "結果を繰り返す"
-},
-  "proxy":{
+  },
+  "proxy": {
     "name": "プロキシ",
     "address": "プロキシサーバーアドレス",
     "addressExample": "http://127.0.0.1:7890, socks5://127.0.0.1:1080",
