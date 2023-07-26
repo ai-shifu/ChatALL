@@ -141,6 +141,9 @@ export default createStore({
       state.lang = language;
       i18n.global.locale = language;
     },
+    setCurrentFontSize(state, fontSize) {
+      state.fontSize = fontSize;
+    },
     setChatgpt(state, refreshCycle) {
       state.chatgpt.refreshCycle = refreshCycle;
     },

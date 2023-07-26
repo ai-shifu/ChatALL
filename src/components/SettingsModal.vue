@@ -48,6 +48,20 @@
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-title>{{
+                    $t("settings.fontSize")
+                  }}</v-list-item-title>
+                  <v-slider
+                    v-model="fontSize"
+                    :min="1"
+                    :max="3"
+                    :step="0.1"
+                    color="orange"
+                    thumb-label
+                    style="margin: 10px"
+                  ></v-slider>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-title>{{
                     $t("settings.theme")
                   }}</v-list-item-title>
                   <v-select
@@ -84,7 +98,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { watch, computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
 import { useTheme } from "vuetify";
@@ -171,6 +185,26 @@ const modes = computed(() => [
 ]);
 
 const lang = computed(() => store.state.lang);
+const fontSize = ref(store.state.fontSize);
+watch(fontSize, async (newV) => {
+  add_font_size(newV);
+  store.commit("setCurrentFontSize", fontSize);
+});
+add_font_size();
+function add_font_size(newV = fontSize.value) {
+  const rule = `
+  * {
+  font-size: ${newV}rem;
+}
+  `;
+  add_css(rule);
+}
+
+function add_css(styles) {
+  var styleSheet = document.createElement("style");
+  styleSheet.innerText = styles;
+  document.head.appendChild(styleSheet);
+}
 const currentMode = computed(() => store.state.mode);
 
 const setCurrentLanguage = (lang) => {

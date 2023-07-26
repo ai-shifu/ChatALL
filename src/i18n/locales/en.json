@@ -4,6 +4,7 @@
     "forExample": "E.g. { example }",
     "title": "Settings",
     "general": "General",
+    "fontSize": "Font size magnification ratio",
     "language": "Language",
     "languagePrompt": "Relaunch the app to apply the new language",
     "loginOrOut": "Login/Logout",
