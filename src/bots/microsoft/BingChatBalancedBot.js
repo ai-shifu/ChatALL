@@ -14,14 +14,14 @@ export default class BingChatBalancedBot extends BingChatBot {
     "disable_emoji_spoken_text",
     "responsible_ai_policy_235",
     "enablemm",
-    "galileo",
-    "cricketansgnd",
-    "autosave",
-    "knowimg",
-    "eiatrvlansgnd",
     "dv3sugg",
     "autosave",
-    "glpromptv6",
+    "iyxapbing",
+    "iycapbing",
+    "galileo",
+    "weanow",
+    "eredirecturl",
+    "saharagenconv5",
   ];
   static _tone = "Balanced";
 
