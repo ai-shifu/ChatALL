@@ -94,7 +94,7 @@ export default class BingChatBot extends Bot {
             "724mtcls",
             "713savemems0",
             "727nrprdrss0",
-            "207hlthgrds0"
+            "207hlthgrds0",
           ],
           isStartOfSession: context.invocationId === 0,
           message: {

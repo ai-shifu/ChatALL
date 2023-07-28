@@ -31,7 +31,7 @@ export default class BingChatCreativeBot extends BingChatBot {
     "fluxv1short",
     "mtpreclst25",
     "rai278",
-    "replaceurl"
+    "replaceurl",
   ];
   static _tone = "Creative";
 
