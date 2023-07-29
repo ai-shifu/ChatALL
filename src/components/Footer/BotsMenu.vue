@@ -110,17 +110,16 @@ function toggleMenu() {
   menu.value = !menu.value;
 }
 
-function filterBots(values) {
-  let filtered;
-  if (values.length) {
-    const arrays = values.map((value) => botTags[value]);
-    filtered = arrays.reduce((a, b) => {
-      return a.filter((c) => b.includes(c));
+function filterBots(selectedTags) {
+  let filteredIn = bots.all;
+
+  if (selectedTags.length) {
+    const tagBots = selectedTags.map((tag) => botTags[tag]);
+    filteredIn = filteredIn.filter((bot) => {
+      return tagBots.every((tagBot) => tagBot.includes(bot));
     });
-  } else {
-    filtered = bots.all;
   }
-  shownBots.value = filtered;
+  shownBots.value = filteredIn;
 }
 
 defineExpose({
