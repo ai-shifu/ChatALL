@@ -100,24 +100,6 @@ const bots = {
 };
 
 export const botTags = {
-  openSource: [
-    bots.getBotByClassName("AlpacaBot"),
-    bots.getBotByClassName("ChatGLMBot"),
-    bots.getBotByClassName("HuggingChatBot"),
-    bots.getBotByClassName("Llama2HC70bBot"),
-    bots.getBotByClassName("MOSSBot"),
-    bots.getBotByClassName("OpenAssistantBot"),
-    bots.getBotByClassName("VicunaBot"),
-  ],
-  madeInChina: [
-    bots.getBotByClassName("Qihoo360AIBrainBot"),
-    bots.getBotByClassName("QianWenBot"),
-    bots.getBotByClassName("SkyWorkBot"),
-    bots.getBotByClassName("SparkBot"),
-    bots.getBotByClassName("WenxinQianfanBot"),
-    bots.getBotByClassName("WenxinQianfanTurboBot"),
-    bots.getBotByClassName("MOSSBot"),
-  ],
   free: [
     bots.getBotByClassName("BardBot"),
     bots.getBotByClassName("BingChatBalancedBot"),
@@ -153,6 +135,15 @@ export const botTags = {
     bots.getBotByClassName("ClaudeInstant100kPoeBot"),
     bots.getBotByClassName("ClaudePlusPoeBot"),
   ],
+  openSource: [
+    bots.getBotByClassName("AlpacaBot"),
+    bots.getBotByClassName("ChatGLMBot"),
+    bots.getBotByClassName("HuggingChatBot"),
+    bots.getBotByClassName("Llama2HC70bBot"),
+    bots.getBotByClassName("MOSSBot"),
+    bots.getBotByClassName("OpenAssistantBot"),
+    bots.getBotByClassName("VicunaBot"),
+  ],
   api: [
     bots.getBotByClassName("AzureOpenAIAPIBot"),
     bots.getBotByClassName("OpenAIAPI35Bot"),
@@ -160,6 +151,15 @@ export const botTags = {
     bots.getBotByClassName("OpenAIAPI4Bot"),
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
+  ],
+  madeInChina: [
+    bots.getBotByClassName("Qihoo360AIBrainBot"),
+    bots.getBotByClassName("QianWenBot"),
+    bots.getBotByClassName("SkyWorkBot"),
+    bots.getBotByClassName("SparkBot"),
+    bots.getBotByClassName("WenxinQianfanBot"),
+    bots.getBotByClassName("WenxinQianfanTurboBot"),
+    bots.getBotByClassName("MOSSBot"),
   ],
 };
 export default bots;

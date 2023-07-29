@@ -26,18 +26,20 @@
             <v-list-item-title class="font-weight-black">
               {{ $t("footer.chooseFavorite") }}
             </v-list-item-title>
-            <v-btn-toggle
-              v-model="selectedTags"
-              rounded="0"
-              color="deep-purple-accent-3"
-              group
-              multiple
-              @update:model-value="filterBots($event)"
-            >
-              <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
-                {{ $t(tag) }}
-              </v-btn>
-            </v-btn-toggle>
+            <template v-slot:append>
+              <v-btn-toggle
+                v-model="selectedTags"
+                divided
+                color="primary"
+                group
+                multiple
+                @update:model-value="filterBots($event)"
+              >
+                <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
+                  {{ $t(`footer.${tag}`) }}
+                </v-btn>
+              </v-btn-toggle>
+            </template>
           </v-list-item>
         </v-list>
 
@@ -129,5 +131,10 @@ defineExpose({
 <style>
 .bots-list {
   column-count: 3;
+}
+
+/* Keep the orignal case of tab names */
+.v-btn {
+  text-transform: none !important;
 }
 </style>

@@ -27,7 +27,12 @@
   "footer": {
     "chooseFavorite": "选择你喜欢的 AI",
     "sendPrompt": "发送到:",
-    "promptPlaceholder": "输入消息。（Shift+Enter 换行）"
+    "promptPlaceholder": "输入消息。（Shift+Enter 换行）",
+    "madeInChina": "中国制造",
+    "openSource": "开源",
+    "free": "免费",
+    "paid": "付费",
+    "api": "API"
   },
   "error": {
     "error": "错误",
@@ -254,12 +259,5 @@
   "10": "10",
   "25": "25",
   "50": "50",
-  "100": "100",
-  "tag": "标签",
-  "other":"其他",
-  "forein":"国外",
-  "madeInChina":"中国",
-  "openSource":"开源",
-  "free":"免费",
-  "paid":"付费"
+  "100": "100"
 }
