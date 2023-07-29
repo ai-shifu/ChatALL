@@ -26,7 +26,7 @@
             <v-list-item-title class="font-weight-black">
               {{ $t("footer.chooseFavorite") }}
             </v-list-item-title>
-            <v-select
+            <!-- <v-select
               v-model="value"
               :items="items"
               item-title="name"
@@ -35,7 +35,23 @@
               multiple
               :label="$t('tag')"
               @update:model-value="filterBots($event)"
-            ></v-select>
+            ></v-select> -->
+            <v-btn-toggle
+              v-model="selected"
+              rounded="0"
+              color="deep-purple-accent-3"
+              group
+              multiple
+              @update:model-value="filterBots($event)"
+            >
+              <v-btn
+                v-for="(item, index) in items"
+                :key="index"
+                :value="item.tag"
+              >
+                {{ item.name }}
+              </v-btn>
+            </v-btn-toggle>
           </v-list-item>
         </v-list>
 
@@ -89,7 +105,7 @@ const items = Object.keys(tags).map((tag) => ({
   name: i18n.global.t(tag),
   tag,
 }));
-const value = items.slice();
+const selected = ref([]);
 const props = defineProps(["favBots"]);
 const currentBots = ref(bots.all);
 let menu = ref(false);
@@ -109,8 +125,13 @@ const toggleFavorite = (bot) => {
 function toggleMenu() {
   menu.value = !menu.value;
 }
-function filterBots(value) {
-  const filtered = value.map((v) => tags[v]).flat();
+function filterBots(values) {
+  let filtered;
+  if (values.length) {
+    filtered = values.map((value) => tags[value]).flat();
+  } else {
+    filtered = bots.all;
+  }
   currentBots.value = filtered;
 }
 
