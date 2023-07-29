@@ -52,13 +52,11 @@
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/eslint-parser": "^7.22.9",
-    "@commitlint/config-conventional": "^17.6.7",
     "@electron/osx-sign": "^1.0.4",
     "@vue/cli": "^5.0.8",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
-    "commitlint": "^17.6.7",
     "electron": "^25.3.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.45.0",
