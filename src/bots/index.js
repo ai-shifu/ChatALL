@@ -29,7 +29,7 @@ import SkyWorkBot from "./SkyWorkBot";
 import ChatGPT4MobileBot from "./openai/ChatGPT4MobileBot";
 import OpenAIAPI3516KBot from "./openai/OpenAIAPI3516KBot";
 import AzureOpenAIAPIBot from "./microsoft/AzureOpenAIAPIBot";
-import WinxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
+import WenxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
 import YouChatBot from "./YouChatBot";
 import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
@@ -74,7 +74,7 @@ const all = [
   SparkBot.getInstance(),
   VicunaBot.getInstance(),
   WenxinQianfanBot.getInstance(),
-  WinxinQianfanTurboBot.getInstance(),
+  WenxinQianfanTurboBot.getInstance(),
   YouChatBot.getInstance(),
 ];
 
@@ -106,8 +106,8 @@ export const tags = {
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),
+    bots.getBotByClassName("VicunaBot"),
   ],
-
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),
     bots.getBotByClassName("QianWenBot"),
@@ -115,9 +115,8 @@ export const tags = {
     bots.getBotByClassName("SparkBot"),
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
-    bots.getBotByClassName("YouChatBot"),
+    bots.getBotByClassName("MOSSBot"),
   ],
-
   free: [
     bots.getBotByClassName("BardBot"),
     bots.getBotByClassName("BingChatBalancedBot"),
@@ -126,37 +125,39 @@ export const tags = {
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGPT35Bot"),
     bots.getBotByClassName("ChatGPT35PoeBot"),
-    bots.getBotByClassName("ChatGPTBrowsingBot"),
     bots.getBotByClassName("ClaudeBot"),
     bots.getBotByClassName("ClaudeInstantPoeBot"),
     bots.getBotByClassName("HuggingChatBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
-    bots.getBotByClassName("OpenAIAPI35Bot"),
     bots.getBotByClassName("OpenAssistantBot"),
     bots.getBotByClassName("Qihoo360AIBrainBot"),
     bots.getBotByClassName("QianWenBot"),
     bots.getBotByClassName("SkyWorkBot"),
     bots.getBotByClassName("SparkBot"),
-    bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("YouChatBot"),
-  ],
-
-  paid: [
+    bots.getBotByClassName("GradioAppBot"),
     bots.getBotByClassName("AlpacaBot"),
-    bots.getBotByClassName("AzureOpenAIAPIBot"),
+    bots.getBotByClassName("VicunaBot"),
     bots.getBotByClassName("CharacterAIBot"),
+    bots.getBotByClassName("ClaudeAIBot"),
+    bots.getBotByClassName("PiBot"),
+    bots.getBotByClassName("SageBot"),
+  ],
+  paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
     bots.getBotByClassName("ChatGPT4MobileBot"),
     bots.getBotByClassName("ChatGPT4PoeBot"),
+    bots.getBotByClassName("ChatGPTBrowsingBot"),
     bots.getBotByClassName("ClaudeInstant100kPoeBot"),
     bots.getBotByClassName("ClaudePlusPoeBot"),
-    bots.getBotByClassName("GradioAppBot"),
+  ],
+  api: [
+    bots.getBotByClassName("AzureOpenAIAPIBot"),
+    bots.getBotByClassName("OpenAIAPI35Bot"),
     bots.getBotByClassName("OpenAIAPI3516KBot"),
     bots.getBotByClassName("OpenAIAPI4Bot"),
-    bots.getBotByClassName("PiBot"),
-    bots.getBotByClassName("SageBot"),
-    bots.getBotByClassName("VicunaBot"),
+    bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
   ],
 };
