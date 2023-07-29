@@ -98,7 +98,8 @@ const bots = {
     return disabled.some((bot) => bot.getClassname() === className);
   },
 };
-export const tags = {
+
+export const botTags = {
   openSource: [
     bots.getBotByClassName("AlpacaBot"),
     bots.getBotByClassName("ChatGLMBot"),

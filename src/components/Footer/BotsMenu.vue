@@ -27,19 +27,15 @@
               {{ $t("footer.chooseFavorite") }}
             </v-list-item-title>
             <v-btn-toggle
-              v-model="selected"
+              v-model="selectedTags"
               rounded="0"
               color="deep-purple-accent-3"
               group
               multiple
               @update:model-value="filterBots($event)"
             >
-              <v-btn
-                v-for="(item, index) in items"
-                :key="index"
-                :value="item.tag"
-              >
-                {{ item.name }}
+              <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
+                {{ $t(tag) }}
               </v-btn>
             </v-btn-toggle>
           </v-list-item>
@@ -55,7 +51,7 @@
           nav
         >
           <v-list-item
-            v-for="(bot, index) in currentBots"
+            v-for="(bot, index) in shownBots"
             :key="index"
             :value="bot.getClassname()"
             color="primary"
@@ -82,26 +78,22 @@
 
 <script setup>
 import { computed, ref } from "vue";
-import { useI18n } from "vue-i18n";
-import i18n from "@/i18n";
 
 import bots from "@/bots";
-import { tags } from "@/bots";
+import { botTags } from "@/bots";
 import BotLogo from "./BotLogo.vue";
 import store from "@/store";
 
-const { t: $t } = useI18n();
-const items = Object.keys(tags).map((tag) => ({
-  name: i18n.global.t(tag),
-  tag,
-}));
-const selected = ref([]);
-const props = defineProps(["favBots"]);
-const currentBots = ref(bots.all);
 let menu = ref(false);
+
+const props = defineProps(["favBots"]);
 const favorited = computed(() => {
   return props.favBots.map((bot) => bot.classname);
 });
+
+const tags = Object.keys(botTags);
+const selectedTags = ref([]);
+const shownBots = ref(bots.all);
 
 const toggleFavorite = (bot) => {
   const classname = bot.getClassname();
@@ -115,17 +107,18 @@ const toggleFavorite = (bot) => {
 function toggleMenu() {
   menu.value = !menu.value;
 }
+
 function filterBots(values) {
   let filtered;
   if (values.length) {
-    const arrays = values.map((value) => tags[value]);
+    const arrays = values.map((value) => botTags[value]);
     filtered = arrays.reduce((a, b) => {
       return a.filter((c) => b.includes(c));
     });
   } else {
     filtered = bots.all;
   }
-  currentBots.value = filtered;
+  shownBots.value = filtered;
 }
 
 defineExpose({
