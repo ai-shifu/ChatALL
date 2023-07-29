@@ -26,16 +26,6 @@
             <v-list-item-title class="font-weight-black">
               {{ $t("footer.chooseFavorite") }}
             </v-list-item-title>
-            <!-- <v-select
-              v-model="value"
-              :items="items"
-              item-title="name"
-              item-value="tag"
-              chips
-              multiple
-              :label="$t('tag')"
-              @update:model-value="filterBots($event)"
-            ></v-select> -->
             <v-btn-toggle
               v-model="selected"
               rounded="0"
@@ -128,7 +118,10 @@ function toggleMenu() {
 function filterBots(values) {
   let filtered;
   if (values.length) {
-    filtered = values.map((value) => tags[value]).flat();
+    const arrays = values.map((value) => tags[value]);
+    filtered = arrays.reduce((a, b) => {
+      return a.filter((c) => b.includes(c));
+    });
   } else {
     filtered = bots.all;
   }
