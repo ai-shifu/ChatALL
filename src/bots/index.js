@@ -98,5 +98,66 @@ const bots = {
     return disabled.some((bot) => bot.getClassname() === className);
   },
 };
+export const tags = {
+  openSource: [
+    bots.getBotByClassName("AlpacaBot"),
+    bots.getBotByClassName("ChatGLMBot"),
+    bots.getBotByClassName("HuggingChatBot"),
+    bots.getBotByClassName("Llama2HC70bBot"),
+    bots.getBotByClassName("MOSSBot"),
+    bots.getBotByClassName("OpenAssistantBot"),
+  ],
 
+  madeInChina: [
+    bots.getBotByClassName("Qihoo360AIBrainBot"),
+    bots.getBotByClassName("QianWenBot"),
+    bots.getBotByClassName("SkyWorkBot"),
+    bots.getBotByClassName("SparkBot"),
+    bots.getBotByClassName("WenxinQianfanBot"),
+    bots.getBotByClassName("WenxinQianfanTurboBot"),
+    bots.getBotByClassName("YouChatBot"),
+  ],
+
+  free: [
+    bots.getBotByClassName("BardBot"),
+    bots.getBotByClassName("BingChatBalancedBot"),
+    bots.getBotByClassName("BingChatCreativeBot"),
+    bots.getBotByClassName("BingChatPreciseBot"),
+    bots.getBotByClassName("ChatGLMBot"),
+    bots.getBotByClassName("ChatGPT35Bot"),
+    bots.getBotByClassName("ChatGPT35PoeBot"),
+    bots.getBotByClassName("ChatGPTBrowsingBot"),
+    bots.getBotByClassName("ClaudeBot"),
+    bots.getBotByClassName("ClaudeInstantPoeBot"),
+    bots.getBotByClassName("HuggingChatBot"),
+    bots.getBotByClassName("Llama2HC70bBot"),
+    bots.getBotByClassName("MOSSBot"),
+    bots.getBotByClassName("OpenAIAPI35Bot"),
+    bots.getBotByClassName("OpenAssistantBot"),
+    bots.getBotByClassName("Qihoo360AIBrainBot"),
+    bots.getBotByClassName("QianWenBot"),
+    bots.getBotByClassName("SkyWorkBot"),
+    bots.getBotByClassName("SparkBot"),
+    bots.getBotByClassName("WenxinQianfanBot"),
+    bots.getBotByClassName("YouChatBot"),
+  ],
+
+  paid: [
+    bots.getBotByClassName("AlpacaBot"),
+    bots.getBotByClassName("AzureOpenAIAPIBot"),
+    bots.getBotByClassName("CharacterAIBot"),
+    bots.getBotByClassName("ChatGPT4Bot"),
+    bots.getBotByClassName("ChatGPT4MobileBot"),
+    bots.getBotByClassName("ChatGPT4PoeBot"),
+    bots.getBotByClassName("ClaudeInstant100kPoeBot"),
+    bots.getBotByClassName("ClaudePlusPoeBot"),
+    bots.getBotByClassName("GradioAppBot"),
+    bots.getBotByClassName("OpenAIAPI3516KBot"),
+    bots.getBotByClassName("OpenAIAPI4Bot"),
+    bots.getBotByClassName("PiBot"),
+    bots.getBotByClassName("SageBot"),
+    bots.getBotByClassName("VicunaBot"),
+    bots.getBotByClassName("WenxinQianfanTurboBot"),
+  ],
+};
 export default bots;

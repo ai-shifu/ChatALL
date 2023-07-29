@@ -6,6 +6,8 @@
       location="top"
       scroll-strategy="block"
       offset="12"
+      width="100vw"
+      height="100vh"
     >
       <template v-slot:activator="{ props }">
         <v-btn
@@ -24,6 +26,16 @@
             <v-list-item-title class="font-weight-black">
               {{ $t("footer.chooseFavorite") }}
             </v-list-item-title>
+            <v-select
+              v-model="value"
+              :items="items"
+              item-title="name"
+              item-value="tag"
+              chips
+              multiple
+              :label="$t('tag')"
+              @update:model-value="filterBots($event)"
+            ></v-select>
           </v-list-item>
         </v-list>
 
@@ -37,7 +49,7 @@
           nav
         >
           <v-list-item
-            v-for="(bot, index) in bots.all"
+            v-for="(bot, index) in currentBots"
             :key="index"
             :value="bot.getClassname()"
             color="primary"
@@ -64,13 +76,22 @@
 
 <script setup>
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
+import i18n from "@/i18n";
 
 import bots from "@/bots";
+import { tags } from "@/bots";
 import BotLogo from "./BotLogo.vue";
 import store from "@/store";
 
+const { t: $t } = useI18n();
+const items = Object.keys(tags).map((tag) => ({
+  name: i18n.global.t(tag),
+  tag,
+}));
+const value = items.slice();
 const props = defineProps(["favBots"]);
-
+const currentBots = ref(bots.all);
 let menu = ref(false);
 const favorited = computed(() => {
   return props.favBots.map((bot) => bot.classname);
@@ -87,6 +108,10 @@ const toggleFavorite = (bot) => {
 
 function toggleMenu() {
   menu.value = !menu.value;
+}
+function filterBots(value) {
+  const filtered = value.map((v) => tags[v]).flat();
+  currentBots.value = filtered;
 }
 
 defineExpose({
