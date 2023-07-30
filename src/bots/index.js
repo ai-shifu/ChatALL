@@ -30,6 +30,7 @@ import ChatGPT4MobileBot from "./openai/ChatGPT4MobileBot";
 import OpenAIAPI3516KBot from "./openai/OpenAIAPI3516KBot";
 import AzureOpenAIAPIBot from "./microsoft/AzureOpenAIAPIBot";
 import WinxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
+import ERNIEBot from "./baidu/ERNIEBot";
 import YouChatBot from "./YouChatBot";
 import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
@@ -75,6 +76,7 @@ const all = [
   VicunaBot.getInstance(),
   WenxinQianfanBot.getInstance(),
   WinxinQianfanTurboBot.getInstance(),
+  ERNIEBot.getInstance(),
   YouChatBot.getInstance(),
 ];
 

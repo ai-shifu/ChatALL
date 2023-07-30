@@ -41,7 +41,7 @@
       </v-btn>
     </v-card-title>
     <template v-if="props.messages.length === 1">
-      <v-md-preview :text="messages[0].content" @click="handleClick" />
+      <v-md-preview :text="String(messages[0].content)" @click="handleClick" />
       <template v-if="!props.isThread && messages[0].threadIndex !== undefined">
         <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
             we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
@@ -61,7 +61,7 @@
       v-model="carouselModel"
     >
       <v-carousel-item v-for="(message, i) in messages" :key="i">
-        <v-md-preview :text="message.content" @click="handleClick" />
+        <v-md-preview :text="String(message.content)" @click="handleClick" />
         <template v-if="!props.isThread && message.threadIndex !== undefined">
           <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
           we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
