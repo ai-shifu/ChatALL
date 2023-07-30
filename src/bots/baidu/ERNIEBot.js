@@ -57,6 +57,7 @@ export default class ERNIEBot extends Bot {
       })
       .then(({ data }) => {
         that.sessionId = data.data.sessions[0].sessionId;
+        that.sessionName = data.data.sessions[0].sessionName;
         return that.sessionId;
       });
   }
@@ -115,7 +116,7 @@ export default class ERNIEBot extends Bot {
     const body = {
       text: prompt,
       sessionId: this.sessionId,
-      sessionName: prompt,
+      sessionName: this.sessionName || prompt,
       parentChatId: this.currentChatId,
       type: 10,
       pluginInfo: [],
