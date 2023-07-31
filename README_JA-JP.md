@@ -43,7 +43,7 @@ ChatALLのユーザーはこんな感じ：
 | [HuggingChat](https://huggingface.co/chat/)                  | はい　　　| なし　　　|                                      |
 | [QianWen](https://qianwen.aliyun.com/)                       | はい　　　| 近日登場　|                                      |
 | [You](https://you.com/)                                      | はい　　　| なし　　　|                                      |
-| [Pi](https://heypi.com)                                      | はい　　　| なし　　　|                                      |
+| [Pi](https://pi.ai)                                      | はい　　　| なし　　　|                                      |
 
 まだまだ続きます。[Issuesタブ](https://github.com/sunner/ChatALL/labels/more%20LLMs)でお気に入りのAIを提案してください。
 
