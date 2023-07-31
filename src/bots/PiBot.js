@@ -43,7 +43,7 @@ export default class PiBot extends Bot {
     });
     return new Promise((resolve, reject) => {
       try {
-        const source = new SSE("https://heypi.com/api/chat", {
+        const source = new SSE("https://pi.ai/api/chat", {
           headers,
           payload,
           withCredentials: true,
