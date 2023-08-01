@@ -5,4 +5,5 @@ module.exports = {
   printWidth: 80,
   tabWidth: 2,
   plugins: ["prettier-plugin-vue"],
+  endOfLine: "auto",
 };
