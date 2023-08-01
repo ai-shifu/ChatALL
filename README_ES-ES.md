@@ -43,7 +43,7 @@ Los usuarios típicos de ChatALL son:
 | [HuggingChat](https://huggingface.co/chat/)                  | Sí           | Sin API      | Llama 2 incluido                                     |
 | [SkyWork](https://neice.tiangong.cn/)                        | Sí           | Próximamente |                                                      |
 | [Tú](https://you.com/)                                       | Sí           | Sin API      |                                                      |
-| [Pi](https://heypi.com)                                      | Sí           | Sin API      |                                                      |
+| [Pi](https://pi.ai)                                      | Sí           | Sin API      |                                                      |
 | [Cerebro de IA 360](https://ai.360.cn/)                      | Sí           | Sin API      |                                                      |
 | [YouChat](https://you.com/)                                  | Sí           | Sin API      |                                                      |
 | [Asistente para abrir](https://open-assistant.io/)           | Sí           | Sin API      |                                                      |

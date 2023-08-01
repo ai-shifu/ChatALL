@@ -43,7 +43,7 @@ Gli utenti tipici di ChatALL sono:
 | [HuggingChat](https://huggingface.co/chat/)                  | Sì          | No API      |                                             |
 | [SkyWork](https://neice.tiangong.cn/)                        | Sì          |Prossimamente|                                             |
 | [You](https://you.com/)                                      | Sì          | No API      |                                             |
-| [Pi](https://heypi.com)                                      | Sì          | No API      |                                             |
+| [Pi](https://pi.ai)                                      | Sì          | No API      |                                             |
 
 Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
@@ -119,7 +119,7 @@ Gli utenti tipici di ChatALL sono:
 | [HuggingChat](https://huggingface.co/chat/)                  | Sì          | No API      |                                             |
 | [SkyWork](https://neice.tiangong.cn/)                        | Sì          | Prossimamente |                                             |
 | [You](https://you.com/)                                      | Sì          | No API      |                                             |
-| [Pi](https://heypi.com)                                      | Sì          | No API      |                                             |
+| [Pi](https://pi.ai)                                      | Sì          | No API      |                                             |
 
 Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 

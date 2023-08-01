@@ -43,7 +43,7 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [HuggingChat](https://huggingface.co/chat/)                  | 예        | API 없음  |                                     |
 | [SkyWork](https://neice.tiangong.cn/)                        | 예         | 근일 개봉 |                                             |
 | [You](https://you.com/)                                      | 예         | API 없음      |                                             |
-| [Pi](https://heypi.com)                                      | 예         | API 없음      |                                             |
+| [Pi](https://pi.ai)                                      | 예         | API 없음      |                                             |
 
 그리고 더...
 

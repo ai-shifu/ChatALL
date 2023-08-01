@@ -43,7 +43,7 @@ ChatALL 的典型用户是：
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 | [天工](https://neice.tiangong.cn/)                           | 支持     | 即将推出 |                                          |
 | [You](https://you.com/)                                      | 支持     | 无 API   |                                          |
-| [Pi](https://heypi.com)                                      | 支持     | 无 API   |                                          |
+| [Pi](https://pi.ai)                                      | 支持     | 无 API   |                                          |
 | [360 智脑](https://ai.360.cn/)                               | 支持     | 无       |                                          |
 | [YouChat](https://you.com/)                                  | 支持     | 无       |                                          |
 | [Open Assistant](https://open-assistant.io/)                 | 支持     | 无       |                                          |

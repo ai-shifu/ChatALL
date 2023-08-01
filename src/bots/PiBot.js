@@ -7,7 +7,7 @@ export default class PiBot extends Bot {
   static _brandId = "pi"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "PiBot"; // Class name of the bot
   static _logoFilename = "pi-logo.svg"; // Place it in public/bots/
-  static _loginUrl = "https://heypi.com/";
+  static _loginUrl = "https://pi.ai/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
   constructor() {
@@ -43,7 +43,7 @@ export default class PiBot extends Bot {
     });
     return new Promise((resolve, reject) => {
       try {
-        const source = new SSE("https://heypi.com/api/chat", {
+        const source = new SSE("https://pi.ai/api/chat", {
           headers,
           payload,
           withCredentials: true,
