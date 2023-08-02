@@ -279,4 +279,14 @@ img.selected {
     padding: 0 !important;
     background-color: transparent !important;
 }
+.vuepress-markdown-body .arrow {
+    display: inline !important;
+}
+.vuepress-markdown-body
+.arrow.up,
+.arrow.down,
+.arrow.left,
+.arrow.right {
+    display: inline-block !important;
+}
 </style>
