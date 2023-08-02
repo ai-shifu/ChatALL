@@ -3,6 +3,7 @@ import VuexPersist from "vuex-persist";
 import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
 import promptsPersist from "./promptsPersist";
+import actionsPersist from "./actionsPersist";
 import { getMatomo } from "@/composables/matomo";
 
 let isThrottleMessage = false;
@@ -14,9 +15,16 @@ const vuexPersist = new VuexPersist({
   key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
   storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
   reducer: (state) => {
-    // eslint-disable-next-line
-    const { messages, chats, prompts, updateCounter, ...persistedState } =
-      state;
+    /* eslint-disable no-unused-vars */
+    const {
+      messages,
+      chats,
+      prompts,
+      actions,
+      updateCounter,
+      ...persistedState
+    } = state;
+    /* eslint-enable no-unused-vars */
     return persistedState;
   },
 });
@@ -104,6 +112,7 @@ export default createStore({
     selectedBots: null,
     messages: [],
     prompts: [],
+    actions: [],
   },
   mutations: {
     changeColumns(state, n) {
@@ -335,6 +344,17 @@ export default createStore({
     deletePrompt(state, values) {
       state.prompts[values.index].hide = true;
     },
+    addAction(state, values) {
+      const addAction = { ...values };
+      addAction.index = state.actions.push(addAction) - 1;
+    },
+    editAction(state, values) {
+      const { index } = values;
+      state.actions[index] = { ...state.actions[index], ...values };
+    },
+    deleteAction(state, values) {
+      state.actions[values.index].hide = true;
+    },
   },
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
@@ -524,5 +544,10 @@ export default createStore({
   modules: {
     // ...你的模块
   },
-  plugins: [vuexPersist.plugin, messagesPersist.plugin, promptsPersist.plugin], // 添加插件到 store
+  plugins: [
+    vuexPersist.plugin,
+    messagesPersist.plugin,
+    promptsPersist.plugin,
+    actionsPersist.plugin,
+  ], // 添加插件到 store
 });

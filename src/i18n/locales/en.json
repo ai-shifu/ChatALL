@@ -52,7 +52,8 @@
     "newChat": "New Chat",
     "deleteAllChatHistory": "Delete All Chat History",
     "downloadAllChatHistory": "Save All Chat History",
-    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone."
+    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
+    "actions": "Actions"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",

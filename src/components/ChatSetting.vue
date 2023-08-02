@@ -1,19 +1,24 @@
 <template>
-  <v-list-item>
-    <v-btn
-      color="primary"
-      variant="outlined"
-      :text="$t('chat.deleteAllChatHistory')"
-      @click="deleteChats"
-    ></v-btn>
-    <v-btn
-      color="primary"
-      variant="outlined"
-      :text="$t('chat.downloadAllChatHistory')"
-      @click="downloadJson"
-      style="margin-left: 10px"
-    ></v-btn>
-  </v-list-item>
+  <v-list>
+    <v-list-item>
+      <v-btn
+        color="primary"
+        variant="outlined"
+        :text="$t('chat.deleteAllChatHistory')"
+        @click="deleteChats"
+      ></v-btn>
+      <v-btn
+        color="primary"
+        variant="outlined"
+        :text="$t('chat.downloadAllChatHistory')"
+        @click="downloadJson"
+        style="margin-left: 10px"
+      ></v-btn>
+    </v-list-item>
+    <v-list-item>
+      <v-list-item-title>{{ $t("chat.actions") }} </v-list-item-title>
+    </v-list-item>
+  </v-list>
   <ConfirmModal ref="confirmModal" />
 </template>
 
