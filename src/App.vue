@@ -289,4 +289,15 @@ img.selected {
 .arrow.right {
     display: inline-block !important;
 }
+.vuepress-markdown-body tr:nth-child(2n) {
+  background-color: rgb(var(--v-theme-table-tr-2n))!important;
+}
+.vuepress-markdown-body code {
+  color: rgb(var(--v-theme-code-font))!important;
+  background-color: rgb(var(--v-theme-code-background))!important;
+}
+.vuepress-markdown-body pre[class*=v-md-prism-] code, .vuepress-markdown-body pre code {
+  color: #fff!important;
+  background-color: initial!important;
+}
 </style>
