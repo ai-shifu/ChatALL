@@ -25,7 +25,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@kangc/v-md-editor": "2.3.15",
+    "@kangc/v-md-editor": "^2.3.16",
     "@mdi/font": "^7.2.96",
     "async-lock": "^1.4.0",
     "axios": "^1.4.0",
