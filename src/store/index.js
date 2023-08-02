@@ -5,8 +5,10 @@ import messagesPersist from "./messagesPersist";
 import promptsPersist from "./promptsPersist";
 import { getMatomo } from "@/composables/matomo";
 
-let isThrottle = false;
+let isThrottleMessage = false;
+let isThrottleThreadMessage = false;
 let messageBuffer = [];
+let threadMessageBuffer = [];
 // 初始化 VuexPersist 实例
 const vuexPersist = new VuexPersist({
   key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
@@ -196,16 +198,21 @@ export default createStore({
         };
       });
       messageBuffer = [];
-      isThrottle = false;
+      isThrottleMessage = false;
     },
-    updateThreadMessage(state, { indexes, message }) {
-      const { chatIndex, messageIndex, threadIndex } = indexes;
-      const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
-      const chat = state.chats[i];
-      chat.threads[threadIndex].messages[messageIndex] = {
-        ...chat.threads[threadIndex].messages[messageIndex],
-        ...message,
-      };
+    updateThreadMessage(state) {
+      threadMessageBuffer.forEach((update) => {
+        const { indexes, message } = update;
+        const { chatIndex, messageIndex, threadIndex } = indexes;
+        const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
+        const chat = state.chats[i];
+        chat.threads[threadIndex].messages[messageIndex] = {
+          ...chat.threads[threadIndex].messages[messageIndex],
+          ...message,
+        };
+      });
+      threadMessageBuffer = [];
+      isThrottleThreadMessage = false;
     },
     setMessages(state, messages) {
       const currentChat = state.chats[state.currentChatIndex];
@@ -326,7 +333,7 @@ export default createStore({
   },
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
-      isThrottle = false;
+      isThrottleMessage = false;
       const currentChat = state.chats[state.currentChatIndex];
       if (promptIndex === undefined) {
         // if promptIndex not found, not resend, push to messages array
@@ -378,6 +385,7 @@ export default createStore({
       { commit, state, dispatch },
       { prompt, bot, responseIndex, threadIndex, promptIndex },
     ) {
+      isThrottleThreadMessage = false;
       const currentChat = state.chats[state.currentChatIndex];
       let thread;
       if (threadIndex !== undefined) {
@@ -452,8 +460,8 @@ export default createStore({
     },
     updateMessage({ commit, state }, { indexes, message: values }) {
       messageBuffer.push({ indexes, message: values });
-      if (!isThrottle) {
-        isThrottle = true;
+      if (!isThrottleMessage) {
+        isThrottleMessage = true;
         setTimeout(() => {
           commit("updateMessage");
           commit("incrementUpdateCounter");
@@ -473,11 +481,14 @@ export default createStore({
       }
     },
     updateThreadMessage({ commit, state }, { indexes, message: values }) {
-      commit("updateThreadMessage", { indexes, message: values });
-
-      // workaround for notifing the message window to scroll to bottom
-      commit("incrementUpdateCounter");
-
+      threadMessageBuffer.push({ indexes, message: values });
+      if (!isThrottleThreadMessage) {
+        isThrottleThreadMessage = true;
+        setTimeout(() => {
+          commit("updateThreadMessage");
+          commit("incrementUpdateCounter");
+        }, 200); // save every 0.2 seconds
+      }
       if (values.done) {
         const i =
           indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
