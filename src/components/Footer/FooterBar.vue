@@ -317,6 +317,49 @@ onBeforeMount(async () => {
       updateActiveBots();
     });
   });
+  ipcRenderer.on("SEND-ARGV", (event, argv) => {
+    if (argv.includes("--api")) {
+      let is_aip = false;
+      // Listen message trigged by main process
+      ipcRenderer.on("SEND-PROMPT", (event, data) => {
+        const prompt = `${data.prompt}`;
+        const bots = data.bots;
+        const toBots = favBots.value
+          .filter((favBot) => bots.includes(favBot.classname))
+          .map((favBot) => favBot.instance);
+        return new Promise((r) => {
+          if (toBots.length) {
+            return store
+              .dispatch("sendPrompt", {
+                prompt,
+                bots: toBots,
+              })
+              .then(() => {
+                is_aip = true;
+              });
+          } else {
+            ipcRenderer.invoke(
+              "SEND-PROMPT-REPLY",
+              `Please activate bot: ${bots}`,
+            );
+            r();
+          }
+        });
+      });
+      watch(
+        () => store.getters.currentChat,
+        (newValue) => {
+          const message = newValue.messages.at(-1);
+          if (is_aip && message.done) {
+            const content = message.content;
+            ipcRenderer.invoke("SEND-PROMPT-REPLY", content);
+            is_aip = false;
+          }
+        },
+        { deep: true },
+      );
+    }
+  });
 });
 
 onMounted(() => {

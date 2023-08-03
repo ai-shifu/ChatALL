@@ -6,6 +6,7 @@ import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import fs from "fs";
 import path from "path";
 import updateApp from "./update";
+import { createServer } from "./server";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
@@ -124,6 +125,9 @@ async function createWindow() {
   });
 
   mainWindow = win;
+  if (process.argv.includes("--api")) {
+    createServer(ipcMain, mainWindow);
+  }
 
   // Force the SameSite attribute to None for all cookies
   // This is required for the cross-origin request to work
@@ -202,6 +206,7 @@ async function createWindow() {
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     win.show();
     if (!process.env.IS_TEST) win.webContents.openDevTools();
+    mainWindow.webContents.send("SEND-ARGV", process.argv);
   } else {
     createProtocol("app");
     // Load the index.html when not in development
