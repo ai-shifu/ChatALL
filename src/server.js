@@ -13,18 +13,22 @@ export function createServer(ipcMain, mainWindow) {
     const data = req.body;
     console.log(data);
     mainWindow.webContents.send("SEND-PROMPT", data);
-    const ans = await new Promise((r) => {
-      const interval = setInterval(() => {
-        if (answer) {
-          clearInterval(interval);
-          r(answer);
-        }
-      }, 3000);
-    });
-    res.json({
-      message: ans,
-    });
-    answer = null;
+    let ans;
+    try {
+      ans = await new Promise((r) => {
+        const interval = setInterval(() => {
+          if (answer) {
+            clearInterval(interval);
+            r(answer);
+          }
+        }, 3000);
+      });
+    } finally {
+      answer = null;
+    }
+    res.send(ans);
+    // eslint-disable-next-line no-debugger
+    // debugger;
   });
 
   app.listen(8000, () => {

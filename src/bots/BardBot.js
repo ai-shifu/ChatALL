@@ -85,6 +85,8 @@ export default class BardBot extends Bot {
           resolve();
         })
         .catch((error) => {
+          this.constructor._isAvailable = false;
+          delete context.requestParams.atValue;
           reject(error);
         });
     });

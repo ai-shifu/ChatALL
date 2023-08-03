@@ -206,7 +206,6 @@ async function createWindow() {
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     win.show();
     if (!process.env.IS_TEST) win.webContents.openDevTools();
-    mainWindow.webContents.send("SEND-ARGV", process.argv);
   } else {
     createProtocol("app");
     // Load the index.html when not in development
