@@ -58,6 +58,7 @@
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
+    "body-parser": "^1.20.2",
     "electron": "^25.3.2",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.46.0",
