@@ -18,7 +18,6 @@
     "format": "prettier --write --cache src/",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
-    "electron:serve:api": "vue-cli-service electron:serve --api",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron .",

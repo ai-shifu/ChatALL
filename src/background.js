@@ -125,7 +125,7 @@ async function createWindow() {
   });
 
   mainWindow = win;
-  if (process.argv.includes("--api")) {
+  if (isDevelopment) {
     createServer(ipcMain, mainWindow);
   }
 
