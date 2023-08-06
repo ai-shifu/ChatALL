@@ -45,6 +45,16 @@
                     :model-value="lang"
                     @update:model-value="setCurrentLanguage($event)"
                   ></v-select>
+                  <v-switch
+                    v-model="enableRepliedLang"
+                    color="primary"
+                    hideDetails="auto"
+                    :label="`${$t('settings.enable_replied_lang')}: ${
+                      enableRepliedLang ? $t('header.yes') : $t('header.no')
+                    }`"
+                    inset
+                    @update:model-value="setRepliedLang($event)"
+                  ></v-switch>
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-title>{{
@@ -171,11 +181,16 @@ const modes = computed(() => [
 ]);
 
 const lang = computed(() => store.state.lang);
+const enableRepliedLang = ref(store.state.enableRepliedLang);
 const currentMode = computed(() => store.state.mode);
 
 const setCurrentLanguage = (lang) => {
   locale.value = lang;
   store.commit("setCurrentLanguage", lang);
+};
+const setRepliedLang = (enable) => {
+  locale.enableRepliedLang = enable;
+  store.commit("enableRepliedLang", enable);
 };
 const setCurrentMode = async (mode) => {
   const resolvedTheme = await resolveTheme(mode, ipcRenderer);

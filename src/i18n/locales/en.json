@@ -6,6 +6,7 @@
     "general": "General",
     "language": "Language",
     "languagePrompt": "Relaunch the app to apply the new language",
+    "enable_replied_lang": "The robot replies in this language",
     "loginOrOut": "Login/Logout",
     "loginOrOutPrompt": "Click the link below to log in or log out in the new window, and then close it",
     "notice": "Notice",

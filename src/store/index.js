@@ -25,6 +25,7 @@ export default createStore({
   state: {
     uuid: "",
     lang: "auto",
+    enableRepliedLang: false,
     columns: 2,
     openaiApi: {
       apiKey: "",
@@ -142,6 +143,9 @@ export default createStore({
     setCurrentLanguage(state, language) {
       state.lang = language;
       i18n.global.locale = language;
+    },
+    enableRepliedLang(state, enable) {
+      state.enableRepliedLang = enable;
     },
     setChatgpt(state, refreshCycle) {
       state.chatgpt.refreshCycle = refreshCycle;
@@ -365,7 +369,9 @@ export default createStore({
 
         // workaround for tracking message position
         message.index = currentChat.messages.push(message) - 1;
-
+        prompt = state.enableRepliedLang
+          ? `${prompt}. Replied by ${state.langName}`
+          : prompt;
         bot.sendPrompt(
           prompt,
           (indexes, values) =>
