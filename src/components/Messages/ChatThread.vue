@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, toRefs } from "vue";
 import { useStore } from "vuex";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import ChatResponses from "@/components/Messages/ChatResponses.vue";
@@ -37,7 +37,8 @@ const props = defineProps({
   },
 });
 
-const thread = ref(store.getters.currentChat.threads[props.threadIndex]);
+const { threadIndex } = toRefs(props);
+const thread = ref(store.getters.currentChat.threads[threadIndex.value]);
 const messages = computed(() => {
   return (thread.value ? thread.value.messages : []).filter(
     (message) => !message.hide,
