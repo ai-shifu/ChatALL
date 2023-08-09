@@ -319,7 +319,7 @@ ipcMain.handle("restart-app", async () => {
 // Proxy Setting End
 ipcMain.handle("upload", async (event, { MongoDB_URL, data }) => {
   // eslint-disable-next-line no-debugger
-  debugger;
+  // debugger;
   const client = new MongoClient(MongoDB_URL);
 
   client.connect();

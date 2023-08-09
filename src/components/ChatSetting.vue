@@ -34,17 +34,23 @@
     ></v-file-input>
   </v-list-item>
   <v-list-item>
-    <v-list-item-title>MongoDB Atlas</v-list-item-title>
+    <v-list-item-title>{{ $t("chat.MongoDBAtlas") }}</v-list-item-title>
     <v-text-field
       v-model="MongoDB_URL"
-      :hint="$t('settings.forExample', { example: $t('chat.addressExample') })"
+      :hint="
+        $t('settings.forExample', {
+          example:
+            'mongodb+srv://user:password@cluster0.xxxxxx.mongodb.net/?retryWrites=true',
+        })
+      "
       persistent-hint
       @update:model-value="setMongoDBURL($event)"
+      style="margin: 10px"
     ></v-text-field>
-    <v-btn @click="upload" class="ma-2 pa-2">
+    <v-btn @click="upload" variant="outlined" class="ma-2 pa-2">
       {{ $t("chat.upload") }}
     </v-btn>
-    <v-btn @click="download" class="ma-2 pa-2">
+    <v-btn @click="download" variant="outlined" class="ma-2 pa-2">
       {{ $t("chat.download") }}
     </v-btn>
   </v-list-item>

@@ -55,7 +55,7 @@
     "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
     "backupToLocal": "Backup all data to local",
     "restoreFromLocal": "Restore from backup",
-    "addressExample": "mongodb+srv://user:password@cluster0.***.mongodb.net/?retryWrites=true",
+    "MongoDBAtlas":"MongoDB Atlas",
     "upload": "Upload",
     "download": "Download",
     "confirmUpload": "Are you sure you want to upload all chat history?",
