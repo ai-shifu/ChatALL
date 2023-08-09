@@ -115,6 +115,7 @@ async function reload(value) {
   const load = i18n.global.t("proxy.saveAndApply");
   const result = await confirmModal.value.showModal("", `${load}?`);
   if (result) {
+    // todo merge data if supporting merge local and new data
     // let value_messages = JSON.parse(value["chatall-messages"]);
     // const local_chats = JSON.parse(localStorage["chatall-messages"]).chats;
     // value_messages.chats.forEach((element) => {
