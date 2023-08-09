@@ -52,7 +52,14 @@
     "newChat": "New Chat",
     "deleteAllChatHistory": "Delete All Chat History",
     "downloadAllChatHistory": "Save All Chat History",
-    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone."
+    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
+    "backupToLocal": "Backup all data to local",
+    "restoreFromLocal": "Restore from backup",
+    "addressExample": "mongodb+srv://user:password@cluster0.***.mongodb.net/?retryWrites=true",
+    "upload": "Upload",
+    "download": "Download",
+    "confirmUpload": "Are you sure you want to upload all chat history?",
+    "confirmDownload": "Are you sure you want to download all chat history?"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",

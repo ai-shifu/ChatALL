@@ -66,6 +66,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "md5": "^2.3.0",
+    "mongodb": "^5.7.0",
     "prettier": "^3.0.0",
     "prettier-plugin-vue": "^1.1.6",
     "sse.js": "github:mpetazzoni/sse.js"

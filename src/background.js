@@ -5,6 +5,7 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import fs from "fs";
 import path from "path";
+const MongoClient = require("mongodb").MongoClient;
 import updateApp from "./update";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -310,12 +311,34 @@ ipcMain.handle("save-proxy-setting", async (event, args) => {
   });
 });
 
-ipcMain.handle("save-proxy-and-restart", async () => {
+ipcMain.handle("restart-app", async () => {
   app.relaunch();
   app.exit();
   return "";
 });
 // Proxy Setting End
+ipcMain.handle("upload", async (event, { MongoDB_URL, data }) => {
+  // eslint-disable-next-line no-debugger
+  debugger;
+  const client = new MongoClient(MongoDB_URL);
+
+  client.connect();
+
+  const collection = client.db("test").collection("dialogs");
+  // const chunks = chunkify(data); // 将大对象拆分成块
+  collection.insertOne(data);
+});
+ipcMain.handle("download", async (event, MongoDB_URL) => {
+  // eslint-disable-next-line no-debugger
+  // debugger;
+  const client = new MongoClient(MongoDB_URL);
+
+  client.connect();
+
+  const collection = client.db("test").collection("dialogs");
+  const results = await collection.find().toArray();
+  return results;
+});
 
 nativeTheme.on("updated", () => {
   mainWindow.webContents.send("on-updated-system-theme");
