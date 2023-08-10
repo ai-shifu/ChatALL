@@ -96,6 +96,6 @@ defineExpose({
 
 <style>
 .bots-list {
-  column-count: 3
+  column-count: 3;
 }
 </style>

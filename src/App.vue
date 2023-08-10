@@ -211,33 +211,33 @@ function getColumnImage(columnCount) {
 @import "katex/dist/katex.min.css";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Arial", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 #app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 header {
-    width: 100%;
-    background-color: rgb(var(--v-theme-header));
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 16px;
-    z-index: 999;
+  width: 100%;
+  background-color: rgb(var(--v-theme-header));
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  z-index: 999;
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -245,11 +245,11 @@ header {
 }
 
 .column-icons img {
-    opacity: 0.5;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    margin: 4px;
+  opacity: 0.5;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin: 4px;
 }
 
 img.selected {
@@ -257,11 +257,11 @@ img.selected {
 }
 
 .content {
-    background-color: rgb(var(--v-theme-background));
+  background-color: rgb(var(--v-theme-background));
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .dark-png {
@@ -269,35 +269,35 @@ img.selected {
 }
 
 .v-toolbar__content {
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .vuepress-markdown-body {
-    color: var(--v-theme-font) !important;
+  color: var(--v-theme-font) !important;
 }
 .vuepress-markdown-body:not(.custom) {
-    padding: 0 !important;
-    background-color: transparent !important;
+  padding: 0 !important;
+  background-color: transparent !important;
 }
 .vuepress-markdown-body .arrow {
-    display: inline !important;
+  display: inline !important;
 }
-.vuepress-markdown-body
-.arrow.up,
+.vuepress-markdown-body .arrow.up,
 .arrow.down,
 .arrow.left,
 .arrow.right {
-    display: inline-block !important;
+  display: inline-block !important;
 }
 .vuepress-markdown-body tr:nth-child(2n) {
-  background-color: rgb(var(--v-theme-table-tr-2n))!important;
+  background-color: rgb(var(--v-theme-table-tr-2n)) !important;
 }
 .vuepress-markdown-body code {
-  color: rgb(var(--v-theme-code-font))!important;
-  background-color: rgb(var(--v-theme-code-background))!important;
+  color: rgb(var(--v-theme-code-font)) !important;
+  background-color: rgb(var(--v-theme-code-background)) !important;
 }
-.vuepress-markdown-body pre[class*=v-md-prism-] code, .vuepress-markdown-body pre code {
-  color: #fff!important;
-  background-color: initial!important;
+.vuepress-markdown-body pre[class*="v-md-prism-"] code,
+.vuepress-markdown-body pre code {
+  color: #fff !important;
+  background-color: initial !important;
 }
 </style>

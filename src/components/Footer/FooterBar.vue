@@ -433,11 +433,11 @@ textarea::placeholder {
   border-radius: 4px !important;
 }
 
-:deep() .v-field.v-field--appended{
+:deep() .v-field.v-field--appended {
   padding-right: 0;
 }
 
-:deep() .v-field__append-inner{
+:deep() .v-field__append-inner {
   padding-top: 0;
 }
 </style>

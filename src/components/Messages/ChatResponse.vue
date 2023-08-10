@@ -528,16 +528,18 @@ function toggleReplyButton() {
   background-color: inherit;
 }
 
-.hide-btn, .hide-thread-btn {
+.hide-btn,
+.hide-thread-btn {
   transition: 0.3s;
   opacity: 0;
 }
-    
-.response:hover .hide-btn, .response-thread:hover .hide-thread-btn {
+
+.response:hover .hide-btn,
+.response-thread:hover .hide-thread-btn {
   opacity: 1;
 }
 
-.invert{
+.invert {
   filter: invert(100%);
 }
 </style>

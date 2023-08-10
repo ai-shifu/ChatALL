@@ -296,7 +296,8 @@ function onDialogCloseTransitionEnded() {
   cursor: pointer;
 }
 
-:deep() td:nth-child(1), td:nth-child(2) {
+:deep() td:nth-child(1),
+td:nth-child(2) {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

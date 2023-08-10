@@ -113,20 +113,20 @@ function pushResponseAndCheckIsNextMessagePromptType(index, response) {
 
 <style scoped>
 .messages {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 100%;
-    overflow-y: auto;
-    gap: 16px;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  overflow-y: auto;
+  gap: 16px;
+  padding: 0;
 }
 
 .message-grid {
-    display: grid;
-    grid-gap: 16px;
-    width: 100%;
-    padding: 2rem;
+  display: grid;
+  grid-gap: 16px;
+  width: 100%;
+  padding: 2rem;
 }
 </style>

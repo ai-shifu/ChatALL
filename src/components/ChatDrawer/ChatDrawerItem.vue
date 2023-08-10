@@ -121,20 +121,20 @@ function onPressEnter(event) {
 </script>
 
 <style scoped>
-:deep() .v-input__prepend{
-    margin-left: 0.8rem;
-    margin-right: 0.25rem!important;
+:deep() .v-input__prepend {
+  margin-left: 0.8rem;
+  margin-right: 0.25rem !important;
 }
-:deep() .v-input__append{
-    margin-left: 0!important;
+:deep() .v-input__append {
+  margin-left: 0 !important;
 }
 
 :deep() .v-list-item__prepend > i {
-    margin-right: 0.5rem!important;
+  margin-right: 0.5rem !important;
 }
 
 :deep() .v-field__field > input {
-    padding-left: 0.25rem;
-    padding-right: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
 }
 </style>

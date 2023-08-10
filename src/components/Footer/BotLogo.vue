@@ -32,7 +32,7 @@ const isLogoInverted = computed(() => {
   filter: grayscale(0%);
 }
 
-.invert{
+.invert {
   filter: invert(100%);
 }
 </style>

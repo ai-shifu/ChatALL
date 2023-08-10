@@ -66,17 +66,17 @@ function openReleasePage() {
 <style scoped>
 :deep() .v-btn {
   text-transform: none;
-  margin: .2rem;
+  margin: 0.2rem;
 }
 
 :deep() .v-snackbar__actions {
-  margin: 0!important;
+  margin: 0 !important;
   justify-content: end;
   width: 100%;
 }
 
 :deep() .v-snackbar__content {
-  padding: .5rem;
+  padding: 0.5rem;
   padding-bottom: 0;
   margin: 0;
   display: flex;

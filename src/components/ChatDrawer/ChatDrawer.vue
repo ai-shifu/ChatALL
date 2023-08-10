@@ -93,6 +93,6 @@ function focusTextarea() {
 </script>
 <style scoped>
 :deep() .v-list-item-title {
-  font-size: 1rem!important;
+  font-size: 1rem !important;
 }
 </style>

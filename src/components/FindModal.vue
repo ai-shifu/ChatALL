@@ -146,6 +146,6 @@ defineExpose({
 
 <style scoped>
 :deep() .v-field {
-    padding-right: 0;
+  padding-right: 0;
 }
 </style>

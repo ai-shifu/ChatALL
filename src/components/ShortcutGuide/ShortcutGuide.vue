@@ -108,14 +108,21 @@ defineExpose({
 
 :deep() kbd {
   padding: 3px 5px;
-  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font:
+    11px ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
   line-height: 10px;
   color: rgb(var(--v-theme-font));
   vertical-align: middle;
   background-color: rgb(var(--v-theme-background));
-  border: solid 1px rgba(110,118,129,0.4);
-  border-bottom-color: rgba(110,118,129,0.4);
+  border: solid 1px rgba(110, 118, 129, 0.4);
+  border-bottom-color: rgba(110, 118, 129, 0.4);
   border-radius: 6px;
-  box-shadow: inset 0 -1px 0 rgba(110,118,129,0.4);
+  box-shadow: inset 0 -1px 0 rgba(110, 118, 129, 0.4);
 }
 </style>
