@@ -38,7 +38,9 @@ export default class ChatGPTBot extends Bot {
       const response = await axios.get(
         "https://chat.openai.com/api/auth/session",
       );
-      if (response.data && response.data.accessToken) {
+      if (response.data?.error) {
+        this.constructor._isAvailable = false;
+      } else if (response.data?.accessToken) {
         this.accessToken = response.data.accessToken;
         this.constructor._isAvailable = true;
       } else {
