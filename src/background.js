@@ -321,12 +321,23 @@ ipcMain.handle("upload", async (event, { MongoDB_URL, data }) => {
   // eslint-disable-next-line no-debugger
   // debugger;
   const client = new MongoClient(MongoDB_URL);
-
-  client.connect();
-
-  const collection = client.db("test").collection("dialogs");
-  // const chunks = chunkify(data); // 将大对象拆分成块
-  collection.insertOne(data);
+  return client
+    .connect()
+    .then(() => {
+      // eslint-disable-next-line no-debugger
+      // debugger;
+      const collection = client.db("test").collection("dialogs");
+      // const chunks = chunkify(data); // 将大对象拆分成块
+      return collection.insertOne(data);
+    })
+    .then(() => {
+      // eslint-disable-next-line no-debugger
+      // debugger;
+      return true;
+    })
+    .catch(() => {
+      return false;
+    });
 });
 ipcMain.handle("download", async (event, MongoDB_URL) => {
   // eslint-disable-next-line no-debugger

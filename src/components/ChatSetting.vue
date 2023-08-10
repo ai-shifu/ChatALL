@@ -55,10 +55,17 @@
     </v-btn>
   </v-list-item>
   <ConfirmModal ref="confirmModal" />
+  <v-snackbar
+    v-model="snackbar.show"
+    :timeout="snackbar.timeout"
+    :color="snackbar.color"
+  >
+    {{ snackbar.text }}
+  </v-snackbar>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
 const electron = window.require("electron");
@@ -71,7 +78,12 @@ const confirmModal = ref();
 const store = useStore();
 const jsonData = ref(null);
 const MongoDB_URL = ref(store.state.MongoDB_URL);
-
+const snackbar = reactive({
+  show: false,
+  text: "",
+  timeout: 1500,
+  color: "success",
+});
 const setMongoDBURL = (url) => {
   store.commit("setMongoDBURL", url);
 };
@@ -82,10 +94,18 @@ async function upload() {
   );
   if (result) {
     const data = JSON.parse(JSON.stringify(localStorage, null, 2));
-    await ipcRenderer.invoke("upload", {
+    // don't know why there's _id prop in localStorage that would lead to duplicate key error
+    delete data._id;
+    const is_success = await ipcRenderer.invoke("upload", {
       MongoDB_URL: MongoDB_URL.value,
       data,
     });
+    if (is_success) {
+      snackbar.text = i18n.global.t("proxy.saveSuccess");
+      snackbar.color = "success";
+      snackbar.timeout = 1000;
+      snackbar.show = true;
+    }
   }
 }
 async function download() {
