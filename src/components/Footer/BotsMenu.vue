@@ -62,6 +62,8 @@
                 color="primary"
                 group
                 multiple
+                variant="outlined"
+                rounded="xl"
                 @update:model-value="filterBots($event)"
               >
                 <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
