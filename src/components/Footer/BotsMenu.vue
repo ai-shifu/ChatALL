@@ -6,8 +6,6 @@
       location="top"
       scroll-strategy="block"
       offset="12"
-      width="100vw"
-      height="100vh"
     >
       <template v-slot:activator="{ props }">
         <v-btn
@@ -21,30 +19,6 @@
       </template>
 
       <v-card>
-        <v-list>
-          <v-list-item>
-            <v-list-item-title class="font-weight-black">
-              {{ $t("footer.chooseFavorite") }}
-            </v-list-item-title>
-            <template v-slot:append>
-              <v-btn-toggle
-                v-model="selectedTags"
-                divided
-                color="primary"
-                group
-                multiple
-                @update:model-value="filterBots($event)"
-              >
-                <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
-                  {{ $t(`footer.${tag}`) }}
-                </v-btn>
-              </v-btn-toggle>
-            </template>
-          </v-list-item>
-        </v-list>
-
-        <v-divider></v-divider>
-
         <v-list
           class="bots-list"
           density="compact"
@@ -71,6 +45,30 @@
               <BotLogo :bot="bot" active="true" size="24"></BotLogo>&nbsp;
               <span>{{ bot.getFullname() }}</span>
             </v-list-item-title>
+          </v-list-item>
+        </v-list>
+
+        <v-divider></v-divider>
+
+        <v-list>
+          <v-list-item>
+            <v-list-item-title class="font-weight-black">
+              {{ $t("footer.chooseFavorite") }}
+            </v-list-item-title>
+            <template v-slot:append>
+              <v-btn-toggle
+                v-model="selectedTags"
+                divided
+                color="primary"
+                group
+                multiple
+                @update:model-value="filterBots($event)"
+              >
+                <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
+                  {{ $t(`footer.${tag}`) }}
+                </v-btn>
+              </v-btn-toggle>
+            </template>
           </v-list-item>
         </v-list>
       </v-card>
