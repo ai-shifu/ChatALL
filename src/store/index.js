@@ -84,7 +84,6 @@ export default createStore({
           { classname: "ChatGLMBot", selected: true },
           { classname: "VicunaBot", selected: true },
           { classname: "AlpacaBot", selected: true },
-          { classname: "ClaudeBot", selected: true },
         ],
         contexts: {},
         messages: [],

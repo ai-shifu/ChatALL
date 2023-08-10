@@ -127,7 +127,7 @@
     "vicuna-13b": "vicuna-13b",
     "chatglm-6b": "chatglm-6b",
     "alpaca-13b": "alpaca-13b",
-    "claude-v1": "claude-v1"
+    "claude-1": "claude-1"
   },
   "moss": {
     "name": "MOSS"

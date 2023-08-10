@@ -131,7 +131,7 @@
     "vicuna-13b": "Vicuña-13B",
     "chatglm-6b": "chatglm-6b",
     "alpaca-13b": "Alpaca-13B",
-    "claude-v1": "claude-v1"
+    "claude-1": "claude-1"
   },
   "moss": {
     "name": "MUSGO"
