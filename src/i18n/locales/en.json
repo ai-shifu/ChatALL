@@ -27,7 +27,12 @@
   "footer": {
     "chooseFavorite": "Choose your favorite AI bots",
     "sendPrompt": "Send to:",
-    "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)"
+    "promptPlaceholder": "Type a message. (Shift+Enter to add a new line)",
+    "madeInChina": "Made in China",
+    "openSource": "Open Source",
+    "free": "Free",
+    "paid": "Paid",
+    "api": "API"
   },
   "error": {
     "error": "Error",

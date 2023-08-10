@@ -19,16 +19,6 @@
       </template>
 
       <v-card>
-        <v-list>
-          <v-list-item>
-            <v-list-item-title class="font-weight-black">
-              {{ $t("footer.chooseFavorite") }}
-            </v-list-item-title>
-          </v-list-item>
-        </v-list>
-
-        <v-divider></v-divider>
-
         <v-list
           class="bots-list"
           density="compact"
@@ -37,7 +27,7 @@
           nav
         >
           <v-list-item
-            v-for="(bot, index) in bots.all"
+            v-for="(bot, index) in shownBots"
             :key="index"
             :value="bot.getClassname()"
             color="primary"
@@ -57,6 +47,32 @@
             </v-list-item-title>
           </v-list-item>
         </v-list>
+
+        <v-divider></v-divider>
+
+        <v-list>
+          <v-list-item>
+            <v-list-item-title class="font-weight-black">
+              {{ $t("footer.chooseFavorite") }}
+            </v-list-item-title>
+            <template v-slot:append>
+              <v-btn-toggle
+                v-model="selectedTags"
+                divided
+                color="primary"
+                group
+                multiple
+                variant="outlined"
+                rounded="xl"
+                @update:model-value="filterBots($event)"
+              >
+                <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
+                  {{ $t(`footer.${tag}`) }}
+                </v-btn>
+              </v-btn-toggle>
+            </template>
+          </v-list-item>
+        </v-list>
       </v-card>
     </v-menu>
   </div>
@@ -66,15 +82,20 @@
 import { computed, ref } from "vue";
 
 import bots from "@/bots";
+import { botTags } from "@/bots";
 import BotLogo from "./BotLogo.vue";
 import store from "@/store";
 
-const props = defineProps(["favBots"]);
-
 let menu = ref(false);
+
+const props = defineProps(["favBots"]);
 const favorited = computed(() => {
   return props.favBots.map((bot) => bot.classname);
 });
+
+const tags = Object.keys(botTags);
+const selectedTags = ref([]);
+const shownBots = ref(bots.all);
 
 const toggleFavorite = (bot) => {
   const classname = bot.getClassname();
@@ -89,6 +110,18 @@ function toggleMenu() {
   menu.value = !menu.value;
 }
 
+function filterBots(selectedTags) {
+  let filteredIn = bots.all;
+
+  if (selectedTags.length) {
+    const tagBots = selectedTags.map((tag) => botTags[tag]);
+    filteredIn = filteredIn.filter((bot) => {
+      return tagBots.every((tagBot) => tagBot.includes(bot));
+    });
+  }
+  shownBots.value = filteredIn;
+}
+
 defineExpose({
   toggleMenu,
 });
@@ -97,5 +130,10 @@ defineExpose({
 <style>
 .bots-list {
   column-count: 3;
+}
+
+/* Keep the orignal case of tab names */
+.v-btn {
+  text-transform: none !important;
 }
 </style>
