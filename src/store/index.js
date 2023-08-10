@@ -22,6 +22,7 @@ const vuexPersist = new VuexPersist({
       prompts,
       actions,
       updateCounter,
+      selectedResponses,
       ...persistedState
     } = state;
     /* eslint-enable no-unused-vars */
@@ -113,6 +114,7 @@ export default createStore({
     messages: [],
     prompts: [],
     actions: [],
+    selectedResponses: [],
   },
   mutations: {
     changeColumns(state, n) {
@@ -355,6 +357,15 @@ export default createStore({
     deleteAction(state, values) {
       state.actions[values.index].hide = true;
     },
+    addSelectedResponses(state, value) {
+      value.selectedIndex = state.selectedResponses.push(value) - 1;
+    },
+    deleteSelectedResponses(state, value) {
+      const index = state.selectedResponses.findIndex(
+        (r) => r.selectedIndex === value,
+      );
+      state.selectedResponses.splice(index, 1);
+    },
   },
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
@@ -526,6 +537,10 @@ export default createStore({
           message.content.length,
         );
       }
+    },
+    addSelectedResponses({ commit, state }, value) {
+      commit("addSelectedResponses", value);
+      return state.selectedResponses.length - 1;
     },
   },
   getters: {
