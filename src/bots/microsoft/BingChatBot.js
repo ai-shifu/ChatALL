@@ -196,7 +196,11 @@ export default class BingChatBot extends Bot {
                       done: false,
                     });
                   } else {
-                    reject(new Error(event.item.result.message));
+                    reject(
+                      new Error(
+                        `${event.item.result.message} (${event.item.result.value})`,
+                      ),
+                    );
                   }
                 } else if (
                   event.item.throttling.maxNumUserMessagesInConversation ===
