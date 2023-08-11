@@ -260,6 +260,11 @@ function createNewWindow(url, userAgent = "") {
     } else if (url.startsWith("https://claude.ai/")) {
       const org = await getLocalStorage("lastActiveOrg");
       mainWindow.webContents.send("CLAUDE-2-ORG", org);
+    } else if (url.startsWith("https://poe.com/")) {
+      const formkey = await newWin.webContents.executeJavaScript(
+        "window.ereNdsRqhp2Rd3LEW();",
+      );
+      mainWindow.webContents.send("POE-FORMKEY", formkey);
     }
 
     newWin.destroy(); // Destroy the window manually

@@ -70,6 +70,9 @@ export default createStore({
     claudeAi: {
       org: "",
     },
+    poe: {
+      formkey: "",
+    },
     chats: [
       {
         title: "New Chat",
@@ -171,6 +174,9 @@ export default createStore({
     },
     setClaudeAi(state, values) {
       state.claudeAi = { ...state.claudeAi, ...values };
+    },
+    setPoe(state, values) {
+      state.poe = { ...state.poe, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];

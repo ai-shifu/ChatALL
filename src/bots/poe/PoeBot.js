@@ -3,6 +3,7 @@ import axios from "axios";
 import md5 from "md5";
 import WebSocketAsPromised from "websocket-as-promised";
 import AsyncLock from "async-lock";
+import store from "@/store";
 
 export default class PoeBot extends Bot {
   static _brandId = "poe"; // Brand id of the bot, should be unique. Used in i18n.
@@ -12,7 +13,6 @@ export default class PoeBot extends Bot {
   static _lock = new AsyncLock();
 
   context = {
-    formkey: "",
     buildId: "",
     chatId: 0,
     settings: null,
@@ -24,7 +24,8 @@ export default class PoeBot extends Bot {
   }
 
   async gqlPost(queryName, variables) {
-    const { formkey, settings } = this.context;
+    const { settings } = this.context;
+    const formkey = store.state.poe.formkey;
     const queryHashs = {
       AnnotateWithIdsProviderQuery:
         "b4e6992c3af8f208ab2b3979dce48889835736ed29f623ea9f609265018d0d8f",
@@ -41,7 +42,7 @@ export default class PoeBot extends Bot {
       queryName,
       variables,
     };
-    const tagId = md5(JSON.stringify(payload) + formkey + "WpuLMiXEKKE98j56k");
+    const tagId = md5(JSON.stringify(payload) + formkey + "4LxgHM6KpFqokX0Ox");
     const headers = {
       "Content-Type": "application/json",
       "poe-formkey": formkey,
@@ -75,34 +76,17 @@ export default class PoeBot extends Bot {
       this.constructor._loginUrl + modelHandles[this.constructor._model];
 
     try {
-      await axios.get(url).then((response) => {
-        if (response.request.responseURL !== url) {
-          // A 307 redirect to the login page means the bot is not logged in
-          // Axios always do the redirect, so we have to check the responseURL
-          return;
-        }
+      const response = await axios.get(url);
 
-        // Parse buildId
-        const buildId = response.data.match(/"buildId":"(.*?)",/);
-        this.context.buildId = buildId[1];
+      // Parse buildId
+      const buildId = response.data.match(/"buildId":"(.*?)",/);
+      this.context.buildId = buildId[1];
 
-        // Parse chatId
-        const chatId = response.data.match(/"chatId":(\d+),/);
-        this.context.chatId = chatId[1];
+      // Parse chatId
+      const chatId = response.data.match(/"chatId":(\d+),/);
+      this.context.chatId = chatId[1];
 
-        // Parse and run the secret code of Poe for formkey
-        const secretCode = response.data.match(
-          /var .=".*",.*window\..*=function\(\)\{return .\.join\(""\)\};/,
-        );
-
-        const secretFunction = secretCode[0].match(
-          /(window\..*)=function\(\)\{.*\};/,
-        );
-
-        this.context.formkey = eval(`${secretCode[0]}${secretFunction[1]}();`);
-
-        isAvailable = true;
-      });
+      isAvailable = true;
     } catch (error) {
       console.error("Error checking Poe login status:", error);
     }
