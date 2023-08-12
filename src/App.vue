@@ -108,7 +108,7 @@
             v-show="!isSelectedResponsesEmpty"
           >
             <v-btn
-              v-for="action in actions"
+              v-for="action in userActions"
               color="primary"
               class="no-text-transform"
               :text="action.name"
@@ -189,7 +189,9 @@ const chatDrawerRef = ref();
 const isSelectedResponsesEmpty = ref(true);
 
 const columns = computed(() => store.state.columns);
-const actions = computed(() => store.state.actions);
+const userActions = computed(() => {
+  return store.state.actions.filter((p) => !p.hide);
+});
 
 const changeColumns = (columns) => store.commit("changeColumns", columns);
 const setUuid = (uuid) => store.commit("setUuid", uuid);
