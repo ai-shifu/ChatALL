@@ -22,7 +22,8 @@
     "no": "No",
     "singleColumn": "Single Column",
     "doubleColumn": "Double Column",
-    "tripleColumn": "Triple Column"
+    "tripleColumn": "Triple Column",
+    "selectedResponsesCount": "{ selectedCount } Selected"
   },
   "footer": {
     "chooseFavorite": "Choose your favorite AI bots",

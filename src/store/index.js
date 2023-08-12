@@ -366,6 +366,9 @@ export default createStore({
       );
       state.selectedResponses.splice(index, 1);
     },
+    deleteAllSelectedResponses(state) {
+      state.selectedResponses = [];
+    },
   },
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {

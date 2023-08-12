@@ -4,7 +4,7 @@ import VuexPersist from "vuex-persist";
 const actionsPersist = new VuexPersist({
   key: "chatall-actions",
   storage: window.localStorage,
-  reducer: (state) => ({ prompts: state.actions }), // Store actions
+  reducer: (state) => ({ actions: state.actions }), // Store actions
 });
 
 export default actionsPersist;
