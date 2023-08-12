@@ -137,4 +137,8 @@ function onPressEnter(event) {
   padding-left: 0.25rem;
   padding-right: 0.5rem;
 }
+
+:deep() i.v-icon {
+  color: rgb(var(--v-theme-primary));
+}
 </style>

@@ -328,4 +328,8 @@ async function deleteAction(item) {
 .no-text-transform {
   text-transform: none !important;
 }
+
+:deep() i.v-icon {
+  color: rgb(var(--v-theme-primary));
+}
 </style>
