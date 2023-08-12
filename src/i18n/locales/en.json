@@ -45,6 +45,7 @@
     "confirmHide": "Delete this message?",
     "confirmHideChat": "Delete this chat?",
     "confirmHidePrompt": "Delete this prompt?",
+    "confirmHideAction": "Delete this action?",
     "done": "Done",
     "cancel": "Cancel"
   },
@@ -54,7 +55,17 @@
     "deleteAllChatHistory": "Delete All Chat History",
     "downloadAllChatHistory": "Save All Chat History",
     "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
-    "actions": "Actions"
+    "actions": "Actions",
+    "addAction": "Add Action",
+    "actionName": "Name",
+    "actionTemplate": "Template",
+    "preview": "Preview",
+    "loopStartRequired": "{'{'}loopStart{'}'} is required",
+    "loopEndRequired": "{'{'}loopEnd{'}'} is required",
+    "botNameRequired": "{'{'}botName{'}'} is required",
+    "botResponseRequired": "{'{'}botResponse{'}'} is required",
+    "botNameResponseOutsideLoop": "{'{'}botName{'}'} and {'{'}botResponse{'}'} must within block of {'{'}loopStart{'}'} and {'{'}loopEnd{'}'}",
+    "actionTemplateGuide": "### Template Keywords:\n| Keyword       | Description                         |\n|---------------|-------------------------------------|\n| {loopStart}   | indicates the start of a loop       |\n| {loopEnd}     | indicates the end of a loop         |\n| {botName}     | name of the selected response’s bot |\n| {botResponse} | the selected response               |\n\n{botName} and {botResponse} must be within the {loopStart} and {loopEnd} block"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",
