@@ -3,6 +3,7 @@ const templateKey = {
   loopEnd: "{loopEnd}",
   botName: "{botName}",
   botResponse: "{botResponse}",
+  index: "{index}",
 };
 
 const templateLoopKey = {
@@ -108,10 +109,12 @@ function evaluate(node, isLoop, data) {
     });
   } else if (node.type === "Text") {
     if (isLoop) {
-      for (const d of data) {
+      for (let i = 0; i < data.length; i++) {
+        const response = data[i];
         result += node.value
-          .replaceAll(templateKey.botName, d.botName)
-          .replaceAll(templateKey.botResponse, d.botResponse);
+          .replaceAll(templateKey.botName, response.botName)
+          .replaceAll(templateKey.botResponse, response.botResponse)
+          .replaceAll(templateKey.index, i + 1);
       }
     } else {
       return node.value;
