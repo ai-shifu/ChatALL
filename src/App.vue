@@ -113,6 +113,7 @@
               class="no-text-transform"
               :text="action.name"
               :key="action.index"
+              @click="callAction(action)"
             ></v-btn>
           </div>
           <!-- End Selected Responses  -->
@@ -132,6 +133,11 @@
         ref="shortcutGuideRef"
         v-model:open="isShortcutGuideOpen"
       ></ShortcutGuide>
+      <ChatAction
+        v-model:open="isChatActionOpen"
+        :action="action"
+        :responses="store.state.selectedResponses"
+      ></ChatAction>
     </v-container>
   </v-app>
 </template>
@@ -162,6 +168,7 @@ import FooterBar from "@/components/Footer/FooterBar.vue";
 import UpdateNotification from "@/components/Notification/UpdateNotificationModal.vue";
 import FindModal from "@/components/FindModal.vue";
 import ShortcutGuide from "@/components/ShortcutGuide/ShortcutGuide.vue";
+import ChatAction from "@/components/ChatAction.vue";
 
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
@@ -187,6 +194,7 @@ const isSettingsOpen = ref(false);
 const isChatDrawerOpen = ref(store.state.isChatDrawerOpen);
 const chatDrawerRef = ref();
 const isSelectedResponsesEmpty = ref(true);
+const isChatActionOpen = ref(false);
 
 const columns = computed(() => store.state.columns);
 const userActions = computed(() => {
@@ -195,6 +203,7 @@ const userActions = computed(() => {
 
 const changeColumns = (columns) => store.commit("changeColumns", columns);
 const setUuid = (uuid) => store.commit("setUuid", uuid);
+let action;
 
 async function openSettingsModal() {
   if (isSettingsOpen.value) {
@@ -256,6 +265,11 @@ function getColumnImage(columnCount) {
 
 function deselectAll() {
   store.commit("deleteAllSelectedResponses");
+}
+
+function callAction(value) {
+  action = value;
+  isChatActionOpen.value = true;
 }
 </script>
 

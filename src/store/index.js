@@ -545,6 +545,10 @@ export default createStore({
       commit("addSelectedResponses", value);
       return state.selectedResponses.length - 1;
     },
+    createChatAndSelect({ commit, state }) {
+      commit("createChat");
+      commit("selectChat", state.chats.length - 1);
+    },
   },
   getters: {
     currentChat: (state) => {

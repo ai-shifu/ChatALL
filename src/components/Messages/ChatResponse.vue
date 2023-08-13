@@ -104,8 +104,9 @@
           flat
           icon
           size="x-small"
+          ref="pageLeftButton"
           v-if="isShowPagingButton"
-          @click="carouselModel = Math.max(carouselModel - 1, 0)"
+          @click="pageLeft"
           :disabled="carouselModel === 0"
         >
           <v-icon>mdi-menu-left</v-icon>
@@ -114,8 +115,9 @@
           flat
           icon
           size="x-small"
+          ref="pageRightButton"
           v-if="isShowPagingButton"
-          @click="carouselModel = Math.min(carouselModel + 1, maxPage)"
+          @click="pageRight"
           :disabled="carouselModel === maxPage"
         >
           <v-icon>mdi-menu-right</v-icon>
@@ -214,10 +216,13 @@ const store = useStore();
 const root = ref();
 const replyModel = ref("");
 const replyRef = ref();
+const pageLeftButton = ref();
+const pageRightButton = ref();
 const maxPage = computed(() => props.messages.length - 1);
 const carouselModel = ref(maxPage.value);
 const confirmModal = ref(null);
 const isSelected = ref(false);
+const isSelectedList = ref([]);
 const isSelectedResponsesEmpty = ref(
   store.state.selectedResponses.length === 0,
 );
@@ -500,21 +505,44 @@ function toggleReplyButton() {
 let selectedIndex = undefined;
 async function select(event) {
   event.stopPropagation();
+  if (
+    pageLeftButton.value?.$el.contains(event.target) ||
+    pageRightButton.value?.$el.contains(event.target)
+  ) {
+    // return when click on page left, right button
+    return;
+  }
+
   if (isSelected.value) {
     store.commit("deleteSelectedResponses", selectedIndex);
+    isSelected.value = false;
+    const index = isSelectedList.value.indexOf(carouselModel.value);
+    isSelectedList.value.splice(index, 1);
   } else {
     selectedIndex = await store.dispatch("addSelectedResponses", {
-      ...toRaw(props.messages[0]),
+      ...toRaw(props.messages[carouselModel.value]),
     });
+    isSelected.value = true;
+    isSelectedList.value.push(carouselModel.value);
   }
-  isSelected.value = !isSelected.value;
 }
 
 function updateIsSelectedResponsesEmpty() {
   isSelectedResponsesEmpty.value = store.state.selectedResponses.length === 0;
   if (isSelectedResponsesEmpty.value) {
     isSelected.value = false;
+    isSelectedList.value = [];
   }
+}
+
+function pageLeft() {
+  carouselModel.value = Math.max(carouselModel.value - 1, 0);
+  isSelected.value = isSelectedList.value.includes(carouselModel.value);
+}
+
+function pageRight() {
+  carouselModel.value = Math.min(carouselModel.value + 1, maxPage.value);
+  isSelected.value = isSelectedList.value.includes(carouselModel.value);
 }
 </script>
 

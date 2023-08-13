@@ -177,6 +177,12 @@ async function updateActiveBots() {
     }
     activeBots[favBot.classname] =
       favBot.instance.isAvailable() && favBot.selected;
+    if (!activeBots[favBot.classname]) {
+      store.commit("setBotSelected", {
+        botClassname: favBot.classname,
+        selected: false,
+      });
+    }
   }
 }
 
