@@ -22,7 +22,8 @@
     "no": "否",
     "singleColumn": "单列",
     "doubleColumn": "双列",
-    "tripleColumn": "三列"
+    "tripleColumn": "三列",
+    "selectedResponsesCount": "已选择 { selectedCount } 个"
   },
   "footer": {
     "chooseFavorite": "选择你喜欢的 AI",
@@ -44,6 +45,7 @@
     "confirmHide": "删除这条消息？",
     "confirmHideChat": "删除这条对话？",
     "confirmHidePrompt": "删除这条提示？",
+    "confirmHideAction": "删除这条操作？",
     "done": "完成",
     "cancel": "取消"
   },
@@ -52,7 +54,15 @@
     "newChat": "新对话",
     "deleteAllChatHistory": "删除所有对话记录",
     "downloadAllChatHistory": "保存所有对话记录",
-    "confirmDeleteAllChatHistory": "你确定要删除所有对话记录吗？此操作无法撤消。"
+    "confirmDeleteAllChatHistory": "你确定要删除所有对话记录吗？此操作无法撤消。",
+    "actions": "操作",
+    "addAction": "添加操作",
+    "actionName": "名称",
+    "actionTemplate": "模板",
+    "preview": "预览",
+    "inNewChat": "在新对话",
+    "inCurrentChat": "在当前对话",
+    "actionTemplateGuide": "### 模板关键字:\n| 关键字 | 描述 |\n|-----------|-----------------------------------| \n| {loopStart} | 表示循环开始 |\n| {loopEnd} | 表示循环结束 |\n| {botName} | 所选响应的机器人名称 |\n| {botResponse} | 所选响应内容 |\n| {index} | 响应索引(从1开始) |\n\n占位符{index}、{botName}和{botResponse}需要放在{loopStart}和{loopEnd}之间,以便被替换。"
   },
   "bot": {
     "creatingConversation": "创建新对话...",

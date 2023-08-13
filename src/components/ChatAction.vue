@@ -64,8 +64,11 @@
         </div>
         <v-form class="d-flex">
           <v-radio-group v-model="chatRef" density="compact" hide-details>
-            <v-radio label="in new chat" value="new"></v-radio>
-            <v-radio label="in current chat" value="current"></v-radio>
+            <v-radio :label="$t('chat.inNewChat')" value="new"></v-radio>
+            <v-radio
+              :label="$t('chat.inCurrentChat')"
+              value="current"
+            ></v-radio>
           </v-radio-group>
         </v-form>
       </v-card-actions>
