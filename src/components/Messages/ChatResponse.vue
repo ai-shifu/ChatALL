@@ -218,7 +218,9 @@ const maxPage = computed(() => props.messages.length - 1);
 const carouselModel = ref(maxPage.value);
 const confirmModal = ref(null);
 const isSelected = ref(false);
-const isSelectedResponsesEmpty = ref(true);
+const isSelectedResponsesEmpty = ref(
+  store.state.selectedResponses.length === 0,
+);
 const botInstance = computed(() => {
   return bots.getBotByClassName(props.messages[0].className);
 });
