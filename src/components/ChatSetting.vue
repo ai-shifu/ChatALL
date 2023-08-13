@@ -36,7 +36,7 @@
   <v-list-item>
     <v-list-item-title>{{ $t("chat.MongoDBAtlas") }}</v-list-item-title>
     <v-text-field
-      v-model="MongoDB_URL"
+      v-model="mongoDbUrl"
       :hint="
         $t('settings.forExample', {
           example:
@@ -71,13 +71,13 @@ import i18n from "@/i18n";
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
 import ConfirmModal from "@/components/ConfirmModal.vue";
-import { get_messages } from "@/utils";
+import bots from "@/bots";
 
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
 const store = useStore();
 const jsonData = ref(null);
-const MongoDB_URL = ref(store.state.MongoDB_URL);
+const mongoDbUrl = ref(store.state.mongoDbUrl);
 const snackbar = reactive({
   show: false,
   text: "",
@@ -97,7 +97,7 @@ async function upload() {
     // don't know why there's _id prop in localStorage that would lead to duplicate key error
     delete data._id;
     const is_success = await ipcRenderer.invoke("upload", {
-      MongoDB_URL: MongoDB_URL.value,
+      mongoDbUrl: mongoDbUrl.value,
       data,
     });
     if (is_success) {
@@ -116,10 +116,7 @@ async function download() {
   if (result) {
     // eslint-disable-next-line
     const value = await ipcRenderer.invoke("download", MongoDB_URL.value);
-    // jsonData.value = value;
-    // eslint-disable-next-line no-debugger
-    // debugger;
-    reload(value[0]);
+    reload(value.at(-1));
   }
 }
 const readJson = async (event) => {
@@ -161,6 +158,52 @@ const downloadJson = () => {
   const content = "history";
   download_by_link(messages, content);
 };
+function get_messages() {
+  // Get the chat history from localStorage.
+  const chatallMessages = localStorage.getItem("chatall-messages");
+  if (!chatallMessages) {
+    return;
+  }
+
+  const chats = JSON.parse(chatallMessages)?.chats ?? [];
+  try {
+    // Create an array of messages from the chat history.
+    const messages = chats
+      .filter((d) => !d.hide)
+      .map((chat) => ({
+        // The title of the chat.
+        title: chat.title,
+        // The messages in the chat.
+        messages: chat.messages
+          .filter((d) => !d.hide)
+          .reduce((arr, message) => {
+            const t = message.type;
+            const content = message.content;
+            if (t == "prompt") {
+              arr.push({
+                prompt: content,
+                responses: [],
+              });
+            } else {
+              const botClassname = message.className;
+              const bot = bots.getBotByClassName(botClassname);
+              const botName = bot.getFullname();
+              arr.at(-1).responses.push({
+                content,
+                botName,
+                botClassname,
+                botModel: message.model,
+                highlight: message.highlight,
+              });
+            }
+            return arr;
+          }, []),
+      }));
+    return messages;
+  } catch (e) {
+    // debugger;
+  }
+}
 const downloadDataJson = () => {
   const content = "data";
   const messages = localStorage;
