@@ -97,7 +97,11 @@
         <label class="pl-4" style="font-size: 1.2rem">{{
           $t("chat.preview")
         }}</label>
-        <v-md-preview class="pa-4" :text="previewRef" />
+        <chat-prompt
+          :message="{ content: previewRef }"
+          :isThread="false"
+          :columns="3"
+        ></chat-prompt>
       </v-form>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -119,7 +123,12 @@
     v-on:after-leave="isShowTemplateGuideDialog = false"
   >
     <v-card>
-      <v-md-preview class="pa-4" :text="$t('chat.actionTemplateGuide')" />
+      <chat-prompt
+        class="w-100"
+        :message="{ content: $t('chat.actionTemplateGuide') }"
+        :isThread="false"
+        :columns="3"
+      ></chat-prompt>
     </v-card>
   </v-dialog>
   <ConfirmModal ref="confirmModal" />
@@ -129,6 +138,7 @@
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
+import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import bots from "@/bots";
 import {
@@ -331,5 +341,9 @@ async function deleteAction(item) {
 
 :deep() i.v-icon {
   color: rgb(var(--v-theme-primary));
+}
+
+:deep() .v-textarea .v-field {
+  padding: 0;
 }
 </style>

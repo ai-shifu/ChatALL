@@ -30,7 +30,12 @@
           @input="previewText = previewTextarea"
         >
         </v-textarea>
-        <v-md-preview v-show="!isEdit" :text="previewText"> </v-md-preview>
+        <chat-prompt
+          v-show="!isEdit"
+          :message="{ content: previewText }"
+          :isThread="false"
+          :columns="3"
+        ></chat-prompt>
       </v-card-text>
       <v-card-actions class="justify-end pr-6 pt-0" style="gap: 0.3rem">
         <v-btn
@@ -72,6 +77,7 @@
 import { ref, toRaw, watch, computed } from "vue";
 import { useStore } from "vuex";
 import { preview } from "../helpers/template-parser";
+import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import BotLogo from "@/components/Footer/BotLogo.vue";
 import _bots from "@/bots";
 
