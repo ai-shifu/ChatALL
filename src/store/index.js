@@ -113,7 +113,32 @@ export default createStore({
     selectedBots: null,
     messages: [],
     prompts: [],
-    actions: [],
+    actions: [
+      {
+        name: "Summarize 1",
+        template:
+          "Summarize the data below in a markdown table with the bot name, difference and response rating (1-5) columns.\nDo not include response column in your table.\nSimplify the data and identify the differences.\nResponse is delimited by `details` tag and bot name is delimited by `summary` tag.\n\n{loopStart}\n<details>\n  <summary>{botName}</summary>\n{botResponse}\n</details>\n{loopEnd}\n\nGive me the best response.",
+        index: 0,
+      },
+      {
+        name: "Summarize 2",
+        template:
+          "Summarize the data below in a markdown table with the bot name, difference and response rating (1-5) columns.\nDo not include response column in your table.\nSimplify the data and identify the differences.\n\n|Bot|Response|\n|-----|-------------|{loopStart}\n|{botName}|{botResponse}|{loopEnd}\n\nGive me the best response.",
+        index: 1,
+      },
+      {
+        name: "Summarize 3",
+        template:
+          "Summarize the data below in a markdown table with the bot name, difference and response rating (1-5) columns.\nDo not include response column in your table.\nSimplify the data and identify the differences.\nResponse is delimited by `details` tag and bot name is delimited by `summary` tag.\n\n{loopStart}\n<details>\n  <summary>Response {index}</summary>\n{botResponse}\n</details>\n{loopEnd}\n\nGive me the best response.",
+        index: 2,
+      },
+      {
+        name: "Summarize 4",
+        template:
+          "Summarize response from {loopStart}{botName}, {loopEnd} in a markdown table with the bot name, difference and response rating (1-5) columns.\nDo not include response column in your table.\nSimplify the data and identify the differences.\nResponse is delimited by `details` tag and bot name is delimited by `summary` tag.\n\n{loopStart}\n<details>\n  <summary>{botName}</summary>\n{botResponse}\n</details>\n{loopEnd}\n\nGive me the best response.",
+        index: 3,
+      },
+    ],
     selectedResponses: [],
     isMarkdown: true,
   },
