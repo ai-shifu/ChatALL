@@ -54,12 +54,7 @@
     "downloadAllChatHistory": "Save All Chat History",
     "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
     "backupToLocal": "Backup all data to local",
-    "restoreFromLocal": "Restore from backup",
-    "MongoDBAtlas":"MongoDB Atlas",
-    "upload": "Upload",
-    "download": "Download",
-    "confirmUpload": "Are you sure you want to upload all chat history?",
-    "confirmDownload": "Are you sure you want to download all chat history?"
+    "restoreFromLocal": "Restore from backup"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",

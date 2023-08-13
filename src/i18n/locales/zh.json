@@ -54,12 +54,7 @@
     "downloadAllChatHistory": "保存所有对话记录",
     "confirmDeleteAllChatHistory": "你确定要删除所有对话记录吗？此操作无法撤消。",
     "backupToLocal": "备份所有数据到本地",
-    "restoreFromLocal": "从备份恢复",
-    "MongoDBAtlas":"MongoDB 云数据库",
-    "upload": "上传",
-    "download": "下载",
-    "confirmUpload": "你确定要上传所有对话记录吗？",
-    "confirmDownload": "你确定要下载所有对话记录吗？"
+    "restoreFromLocal": "从备份恢复"
   },
   "bot": {
     "creatingConversation": "创建新对话...",

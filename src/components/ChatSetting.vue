@@ -75,14 +75,6 @@ async function reload(value) {
   const load = i18n.global.t("proxy.saveAndApply");
   const result = await confirmModal.value.showModal("", `${load}?`);
   if (result) {
-    // todo merge data if supporting merge local and new data
-    // let value_messages = JSON.parse(value["chatall-messages"]);
-    // const local_chats = JSON.parse(localStorage["chatall-messages"]).chats;
-    // value_messages.chats.forEach((element) => {
-    //   element.index += local_chats.length;
-    // });
-    // value_messages.chats = [...local_chats, ...value_chats.chats];
-    // value["chatall-messages"] = JSON.stringify(value_messages.chats);
     Object.keys(value).map((d) => (localStorage[d] = value[d]));
     await ipcRenderer.invoke("restart-app");
   }
