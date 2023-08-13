@@ -40,7 +40,6 @@ export default createStore({
       azureOpenAIApiDeploymentName: "",
       azureOpenAIApiVersion: "",
     },
-    mongoDbUrl: "",
     chatgpt: {
       refreshCycle: 0,
       riskConfirmed: false,
@@ -324,9 +323,6 @@ export default createStore({
       ];
       state.chats = newChats;
       state.currentChatIndex = 0;
-    },
-    setMongoDBURL(state, url) {
-      state.mongoDbUrl = url;
     },
     addPrompt(state, values) {
       const addPrompt = { ...values };

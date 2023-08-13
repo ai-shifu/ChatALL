@@ -317,31 +317,6 @@ ipcMain.handle("restart-app", async () => {
   return "";
 });
 // Proxy Setting End
-ipcMain.handle("upload", async (event, { mongoDbUrl, data }) => {
-  const client = new MongoClient(mongoDbUrl);
-  return client
-    .connect()
-    .then(() => {
-      const collection = client.db("test").collection("dialogs");
-      // const chunks = chunkify(data); // 将大对象拆分成块
-      return collection.insertOne(data);
-    })
-    .then(() => {
-      return true;
-    })
-    .catch(() => {
-      return false;
-    });
-});
-ipcMain.handle("download", async (event, mongoDbUrl) => {
-  const client = new MongoClient(mongoDbUrl);
-
-  client.connect();
-
-  const collection = client.db("test").collection("dialogs");
-  const results = await collection.find().toArray();
-  return results;
-});
 
 nativeTheme.on("updated", () => {
   mainWindow.webContents.send("on-updated-system-theme");

@@ -33,27 +33,6 @@
       style="width: 400px"
     ></v-file-input>
   </v-list-item>
-  <v-list-item>
-    <v-list-item-title>{{ $t("chat.MongoDBAtlas") }}</v-list-item-title>
-    <v-text-field
-      v-model="mongoDbUrl"
-      :hint="
-        $t('settings.forExample', {
-          example:
-            'mongodb+srv://user:password@cluster0.xxxxxx.mongodb.net/?retryWrites=true',
-        })
-      "
-      persistent-hint
-      @update:model-value="setMongoDBURL($event)"
-      style="margin: 10px"
-    ></v-text-field>
-    <v-btn @click="upload" variant="outlined" class="ma-2 pa-2">
-      {{ $t("chat.upload") }}
-    </v-btn>
-    <v-btn @click="download" variant="outlined" class="ma-2 pa-2">
-      {{ $t("chat.download") }}
-    </v-btn>
-  </v-list-item>
   <ConfirmModal ref="confirmModal" />
   <v-snackbar
     v-model="snackbar.show"
@@ -77,48 +56,12 @@ const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
 const store = useStore();
 const jsonData = ref(null);
-const mongoDbUrl = ref(store.state.mongoDbUrl);
 const snackbar = reactive({
   show: false,
   text: "",
   timeout: 1500,
   color: "success",
 });
-const setMongoDBURL = (url) => {
-  store.commit("setMongoDBURL", url);
-};
-async function upload() {
-  const result = await confirmModal.value.showModal(
-    "",
-    i18n.global.t("chat.confirmUpload"),
-  );
-  if (result) {
-    const data = JSON.parse(JSON.stringify(localStorage, null, 2));
-    // don't know why there's _id prop in localStorage that would lead to duplicate key error
-    delete data._id;
-    const is_success = await ipcRenderer.invoke("upload", {
-      mongoDbUrl: mongoDbUrl.value,
-      data,
-    });
-    if (is_success) {
-      snackbar.text = i18n.global.t("proxy.saveSuccess");
-      snackbar.color = "success";
-      snackbar.timeout = 1000;
-      snackbar.show = true;
-    }
-  }
-}
-async function download() {
-  const result = await confirmModal.value.showModal(
-    "",
-    i18n.global.t("chat.confirmDownload"),
-  );
-  if (result) {
-    // eslint-disable-next-line
-    const value = await ipcRenderer.invoke("download", MongoDB_URL.value);
-    reload(value.at(-1));
-  }
-}
 const readJson = async (event) => {
   const reader = new FileReader();
   reader.onload = (evt) => {
