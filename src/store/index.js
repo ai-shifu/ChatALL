@@ -115,6 +115,7 @@ export default createStore({
     prompts: [],
     actions: [],
     selectedResponses: [],
+    isMarkdown: true,
   },
   mutations: {
     changeColumns(state, n) {
@@ -368,6 +369,9 @@ export default createStore({
     },
     deleteAllSelectedResponses(state) {
       state.selectedResponses = [];
+    },
+    setIsMarkdown(state, value) {
+      state.isMarkdown = value;
     },
   },
   actions: {
