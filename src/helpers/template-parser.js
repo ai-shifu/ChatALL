@@ -11,15 +11,19 @@ const templateLoopKey = {
   loopEnd: templateKey.loopEnd,
 };
 
-const templatePlaceholder = `I want you to summarize data below in a markdown table format with bot name column and difference column only. Simplify and identify the difference.
-Below is the data, each data delimited by \`details\` tag and bot name is delimited by \`summary\` tag.
+const templatePlaceholder = `Summarize the data below in a markdown table with the bot name, difference and response rating (1-5) columns.
+Do not include response column in your table.
+Simplify the data and identify the differences.
+Response is delimited by \`details\` tag and bot name is delimited by \`summary\` tag.
+
 {loopStart}
 <details>
   <summary>{botName}</summary>
 {botResponse}
 </details>
 {loopEnd}
-`;
+
+Give me the best response.`;
 
 function lexer(template) {
   let tokens = [];
