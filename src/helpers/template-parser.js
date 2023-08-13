@@ -131,4 +131,4 @@ function preview(template, data) {
   return evaluate({ type: "Body", values: ast }, false, data);
 }
 
-export { templateKey, templatePlaceholder, preview };
+export { templatePlaceholder, preview };

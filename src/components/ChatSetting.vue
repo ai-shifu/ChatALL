@@ -71,7 +71,7 @@
           v-model="actionName"
           placeholder="Summarize"
           :label="$t('chat.actionName')"
-          :rules="[validationRules.required]"
+          :rules="[required]"
         ></v-text-field>
         <v-textarea
           required
@@ -79,7 +79,7 @@
           v-model="template"
           :placeholder="templatePlaceholder"
           :label="$t('chat.actionTemplate')"
-          :rules="[validationRules.required, validationRules.template]"
+          :rules="[required]"
           @input="onInputTemplate"
         >
           <template v-slot:append-inner>
@@ -98,6 +98,7 @@
           $t("chat.preview")
         }}</label>
         <chat-prompt
+          class="w-100"
           :message="{ content: previewRef }"
           :isThread="false"
           :columns="3"
@@ -141,11 +142,7 @@ import i18n from "@/i18n";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import bots from "@/bots";
-import {
-  preview,
-  templateKey,
-  templatePlaceholder,
-} from "../helpers/template-parser";
+import { preview, templatePlaceholder } from "../helpers/template-parser";
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
 const formRef = ref(null);
@@ -158,12 +155,6 @@ const store = useStore();
 const userActions = computed(() => {
   return store.state.actions.filter((p) => !p.hide);
 });
-const templateKeyRegex = {
-  loopStart: new RegExp(templateKey.loopStart, "gm"),
-  loopEnd: new RegExp(templateKey.loopEnd, "gm"),
-  botName: new RegExp(templateKey.botName, "gm"),
-  botResponse: new RegExp(templateKey.botResponse, "gm"),
-};
 const previewSampleData = [
   {
     botName: "Bing Chat (Creative)",
@@ -184,19 +175,8 @@ const previewSampleData = [
 ];
 let editIndex = undefined;
 let isEdit = false;
-const validationRules = {
-  required: (value) =>
-    value?.trim() ? true : i18n.global.t("prompt.required"),
-  template: (value) => {
-    let message = "";
-    for (const key in templateKey) {
-      if (!value.match(templateKeyRegex[key])) {
-        message += i18n.global.t(`chat.${key}Required`) + ", ";
-      }
-    }
-    return message ? message.substring(0, message.length - 2) : true;
-  },
-};
+const required = (value) =>
+  value?.trim() ? true : i18n.global.t("prompt.required");
 
 // This function downloads the chat history as a JSON file.
 const downloadJson = () => {
