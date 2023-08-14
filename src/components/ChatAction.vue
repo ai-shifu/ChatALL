@@ -79,7 +79,7 @@
 <script setup>
 import { ref, toRaw, watch, computed } from "vue";
 import { useStore } from "vuex";
-import { preview } from "../helpers/template-parser";
+import { preview } from "../helpers/template-helper";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import BotLogo from "@/components/Footer/BotLogo.vue";
 import _bots from "@/bots";
@@ -112,9 +112,11 @@ function onChangeOpenProp() {
   }
 }
 
-function updatePreview() {
-  previewTextarea.value = preview(
+async function updatePreview() {
+  previewTextarea.value = await preview(
+    props.action.prefix,
     props.action.template,
+    props.action.suffix,
     selectedResponses.value,
   );
   previewText.value = previewTextarea.value;

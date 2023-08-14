@@ -75,7 +75,16 @@
         ></v-text-field>
         <v-textarea
           required
-          rows="10"
+          rows="3"
+          v-model="prefix"
+          :placeholder="prefixPlaceholder"
+          :label="$t('chat.prefix')"
+          @input="onInputTemplate"
+        >
+        </v-textarea>
+        <v-textarea
+          required
+          rows="4"
           v-model="template"
           :placeholder="templatePlaceholder"
           :label="$t('chat.actionTemplate')"
@@ -93,6 +102,15 @@
             >
             </v-btn>
           </template>
+        </v-textarea>
+        <v-textarea
+          required
+          rows="3"
+          v-model="suffix"
+          :placeholder="suffixPlaceholder"
+          :label="$t('chat.suffix')"
+          @input="onInputTemplate"
+        >
         </v-textarea>
         <label class="pl-4" style="font-size: 1.2rem">{{
           $t("chat.preview")
@@ -124,12 +142,7 @@
     v-on:after-leave="isShowTemplateGuideDialog = false"
   >
     <v-card>
-      <chat-prompt
-        class="w-100"
-        :message="{ content: $t('chat.actionTemplateGuide') }"
-        :isThread="false"
-        :columns="3"
-      ></chat-prompt>
+      <v-md-preview class="pa-4" :text="$t('chat.actionTemplateGuide')" />
     </v-card>
   </v-dialog>
   <ConfirmModal ref="confirmModal" />
@@ -142,13 +155,20 @@ import i18n from "@/i18n";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import bots from "@/bots";
-import { preview, templatePlaceholder } from "../helpers/template-parser";
+import {
+  preview,
+  prefixPlaceholder,
+  templatePlaceholder,
+  suffixPlaceholder,
+} from "../helpers/template-helper";
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
 const formRef = ref(null);
 const isOpenAddEditAction = ref(false);
 const actionName = ref("");
+const prefix = ref("");
 const template = ref("");
+const suffix = ref("");
 const previewRef = ref("");
 const isShowTemplateGuideDialog = ref(false);
 const store = useStore();
@@ -269,7 +289,9 @@ async function deleteChats() {
 function add() {
   isEdit = false;
   actionName.value = "";
+  prefix.value = prefixPlaceholder;
   template.value = templatePlaceholder;
+  suffix.value = suffixPlaceholder;
   isOpenAddEditAction.value = true;
   onInputTemplate();
 }
@@ -277,14 +299,21 @@ function add() {
 function edit(item) {
   isEdit = true;
   actionName.value = item.name;
+  prefix.value = item.prefix;
   template.value = item.template;
+  suffix.value = item.suffix;
   editIndex = item.index;
   isOpenAddEditAction.value = true;
   onInputTemplate();
 }
 
 async function onInputTemplate() {
-  previewRef.value = preview(template.value, previewSampleData);
+  previewRef.value = await preview(
+    prefix.value,
+    template.value,
+    suffix.value,
+    previewSampleData,
+  );
 }
 
 async function addEditAction() {
@@ -292,13 +321,17 @@ async function addEditAction() {
     if (isEdit) {
       store.commit("editAction", {
         name: actionName.value,
+        prefix: prefix.value,
         template: template.value,
+        suffix: suffix.value,
         index: editIndex,
       });
     } else {
       store.commit("addAction", {
         name: actionName.value,
+        prefix: prefix.value,
         template: template.value,
+        suffix: suffix.value,
       });
     }
     isOpenAddEditAction.value = false;

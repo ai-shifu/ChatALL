@@ -58,11 +58,13 @@
     "actions": "操作",
     "addAction": "添加操作",
     "actionName": "名称",
+    "prefix": "前缀",
     "actionTemplate": "模板",
+    "suffix": "后缀",
     "preview": "预览",
     "inNewChat": "在新对话",
     "inCurrentChat": "在当前对话",
-    "actionTemplateGuide": "### 模板关键字:\n| 关键字 | 描述 |\n|-----------|-----------------------------------| \n| {loopStart} | 表示循环开始 |\n| {loopEnd} | 表示循环结束 |\n| {botName} | 所选响应的机器人名称 |\n| {botResponse} | 所选响应内容 |\n| {index} | 响应索引(从1开始) |\n\n占位符{index}、{botName}和{botResponse}需要放在{loopStart}和{loopEnd}之间,以便被替换。"
+    "actionTemplateGuide": "#### 模板参数:\n| 参数       | 描述                             |\n|-----------|-----------------------------------| \n| {botName} | 所选响应的机器人名称             |\n| {botResponse} | 所选响应内容                |\n"
   },
   "bot": {
     "creatingConversation": "创建新对话...",

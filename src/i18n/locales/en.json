@@ -58,11 +58,13 @@
     "actions": "Actions",
     "addAction": "Add Action",
     "actionName": "Name",
+    "prefix": "Prefix",
     "actionTemplate": "Template",
+    "suffix": "Suffix",
     "preview": "Preview",
     "inNewChat": "in new chat",
     "inCurrentChat": "in current chat",
-    "actionTemplateGuide": "### Template Keywords:\n| Keyword       | Description                         |\n|---------------|-------------------------------------|\n| {loopStart}   | indicates the start of a loop       |\n| {loopEnd}     | indicates the end of a loop         |\n| {botName}     | name of the selected response’s bot |\n| {botResponse} | the selected response               |\n| {index}       | the response index (start from 1)   |\n\nThe placeholders {index}, {botName}, and {botResponse} need to be within {loopStart} and {loopEnd} so they can be replaced."
+    "actionTemplateGuide": "#### Template Parameters:\n| Parameter     | Description                         |\n|---------------|-------------------------------------|\n| {botName}     | name of the selected response’s bot |\n| {botResponse} | the selected response               |\n"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",
