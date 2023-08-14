@@ -22,7 +22,7 @@
       variant="outlined"
       :text="$t('chat.backupToLocal')"
       @click="downloadDataJson"
-      style="margin: 10px; float: left"
+      style="margin: 10px 10px 0 0; float: left"
     ></v-btn>
     <!-- <pre v-if="jsonData">{{ jsonData }}</pre> -->
     <v-file-input
