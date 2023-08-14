@@ -52,7 +52,9 @@
     "newChat": "New Chat",
     "deleteAllChatHistory": "Delete All Chat History",
     "downloadAllChatHistory": "Save All Chat History",
-    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone."
+    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
+    "backupToLocal": "Backup all data to local",
+    "restoreFromLocal": "Restore from backup"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",

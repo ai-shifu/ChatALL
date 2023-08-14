@@ -20,7 +20,6 @@
             <v-tabs v-model="tab" direction="vertical" color="primary">
               <v-tab value="general">{{ $t("settings.general") }}</v-tab>
               <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
-              <v-tab value="chat">{{ $t("chat.name") }}</v-tab>
               <v-tab
                 v-for="(setting, index) in botSettings"
                 :key="index"
@@ -59,14 +58,11 @@
                     @update:model-value="setCurrentMode($event)"
                   ></v-select>
                 </v-list-item>
+                <component :is="chat" @close-dialog="closeDialog"></component>
               </div>
 
               <div v-if="tab == 'proxy'">
                 <component :is="proxy"></component>
-              </div>
-
-              <div v-if="tab == 'chat'">
-                <component :is="chat" @close-dialog="closeDialog"></component>
               </div>
 
               <template v-for="(setting, index) in botSettings" :key="index">
