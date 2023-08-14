@@ -42,6 +42,10 @@ export default class LMSYSBot extends GradioBot {
         "REFRESH THIS PAGE",
         `<a href="${this.constructor._loginUrl}" target="innerWindow">REFRESH THIS PAGE</a>`,
       );
+
+      // Refresh the session too
+      const context = this.createChatContext();
+      this.setChatContext(context);
     }
     return errorMsg;
   }
