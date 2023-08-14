@@ -3,7 +3,6 @@ import VuexPersist from "vuex-persist";
 import i18n from "@/i18n";
 import messagesPersist from "./messagesPersist";
 import promptsPersist from "./promptsPersist";
-import actionsPersist from "./actionsPersist";
 import { getMatomo } from "@/composables/matomo";
 
 let isThrottleMessage = false;
@@ -20,7 +19,6 @@ const vuexPersist = new VuexPersist({
       messages,
       chats,
       prompts,
-      actions,
       updateCounter,
       selectedResponses,
       ...persistedState
@@ -576,10 +574,5 @@ export default createStore({
   modules: {
     // ...你的模块
   },
-  plugins: [
-    vuexPersist.plugin,
-    messagesPersist.plugin,
-    promptsPersist.plugin,
-    actionsPersist.plugin,
-  ], // 添加插件到 store
+  plugins: [vuexPersist.plugin, messagesPersist.plugin, promptsPersist.plugin], // 添加插件到 store
 });
