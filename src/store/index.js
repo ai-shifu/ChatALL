@@ -337,6 +337,17 @@ export default createStore({
     },
   },
   actions: {
+    stopGenerating({ state, }, { bots }) {
+        bots?.map(v => v?.stopGenerating());
+        const currentChat = state.chats[state.currentChatIndex];
+        if (currentChat.messages) {
+            currentChat.messages.forEach(
+                item => {
+                    item.done = true;
+                }
+            );
+        }
+    },
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
       isThrottleMessage = false;
       const currentChat = state.chats[state.currentChatIndex];
