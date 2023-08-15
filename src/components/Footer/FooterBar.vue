@@ -119,6 +119,7 @@ const { ipcRenderer } = window.require("electron");
 
 const store = useStore();
 const matomo = useMatomo();
+const emit = defineEmits(["updateActiveBots"]);
 
 const confirmModal = ref(null);
 const promptTextArea = ref(null);
@@ -177,13 +178,8 @@ async function updateActiveBots() {
     }
     activeBots[favBot.classname] =
       favBot.instance.isAvailable() && favBot.selected;
-    if (!activeBots[favBot.classname]) {
-      store.commit("setBotSelected", {
-        botClassname: favBot.classname,
-        selected: false,
-      });
-    }
   }
+  emit("updateActiveBots", activeBots);
 }
 
 function focusPromptTextarea() {

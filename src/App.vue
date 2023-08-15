@@ -124,7 +124,10 @@
           :chat-index="store.state.currentChatIndex"
           :columns="columns"
         ></ChatMessages>
-        <FooterBar ref="footerBarRef"></FooterBar>
+        <FooterBar
+          ref="footerBarRef"
+          @update-active-bots="(bots) => (activeBots = bots)"
+        ></FooterBar>
       </v-main>
       <SettingsModal v-model:open="isSettingsOpen" />
       <ConfirmModal ref="confirmModal" />
@@ -137,6 +140,7 @@
         v-model:open="isChatActionOpen"
         :action="action"
         :responses="store.state.selectedResponses"
+        :activeBots="activeBots"
       ></ChatAction>
     </v-container>
   </v-app>
@@ -204,6 +208,7 @@ const userActions = computed(() => {
 const changeColumns = (columns) => store.commit("changeColumns", columns);
 const setUuid = (uuid) => store.commit("setUuid", uuid);
 let action;
+let activeBots;
 
 async function openSettingsModal() {
   if (isSettingsOpen.value) {

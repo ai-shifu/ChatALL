@@ -90,7 +90,7 @@ const previewText = ref("");
 const previewTextarea = ref("");
 const chatRef = ref(undefined);
 const emit = defineEmits(["update:open"]);
-const props = defineProps(["open", "action", "responses"]);
+const props = defineProps(["open", "action", "responses", "activeBots"]);
 watch(() => props.open, onChangeOpenProp);
 
 const selectedResponses = computed(() =>
@@ -123,17 +123,16 @@ async function updatePreview() {
 }
 
 function updateFavBots() {
-  favBots.value = store.getters.currentChat.favBots
-    .filter((bot) => bot.selected) // filter active bot
-    .map((bot) => {
-      return {
-        ...bot,
+  favBots.value = [];
+  for (const key in props.activeBots) {
+    if (props.activeBots[key]) {
+      favBots.value.push({
+        classname: key,
         selected: false,
-        instance: _bots.getBotByClassName(bot.classname),
-      };
-    })
-    .filter((bot) => bot.instance)
-    .sort((a, b) => a.order - b.order);
+        instance: _bots.getBotByClassName(key),
+      });
+    }
+  }
 }
 
 function closeDialog(value) {
