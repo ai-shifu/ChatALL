@@ -7,8 +7,9 @@
         @focus-textarea="focusPromptTextarea"
       ></ChatDrawer>
       <v-main class="content">
-        <v-app-bar class="header-content" style="padding: 0">
-          <div class="header-content">
+        <v-app-bar class="header-content pa-0">
+          <!-- Start Header  -->
+          <div class="header-content" v-show="isSelectedResponsesEmpty">
             <v-app-bar-nav-icon
               :id="SHORTCUT_CHAT_DRAWER.elementId"
               variant="text"
@@ -24,7 +25,10 @@
               alt="ChatALL"
             />
           </div>
-          <div class="column-icons header-content">
+          <div
+            class="column-icons header-content"
+            v-show="isSelectedResponsesEmpty"
+          >
             <img
               v-for="columnCount in 3"
               :id="`column-${columnCount}`"
@@ -39,7 +43,11 @@
               }"
             />
           </div>
-          <div class="header-content" style="padding-right: 16px">
+          <div
+            class="header-content"
+            style="padding-right: 16px"
+            v-show="isSelectedResponsesEmpty"
+          >
             <v-icon
               :id="SHORTCUT_FIND.elementId"
               class="cursor-pointer"
@@ -79,6 +87,36 @@
               @click="toggleShortcutGuide()"
             ></v-icon>
           </div>
+          <!-- End Header  -->
+          <!-- Start Selected Responses  -->
+          <div
+            class="header-content pr-3"
+            style="text-wrap: nowrap"
+            v-show="!isSelectedResponsesEmpty"
+          >
+            <v-btn icon color="primary" @click="deselectAll">
+              <v-icon>mdi-arrow-left</v-icon>
+            </v-btn>
+            {{
+              $t("header.selectedResponsesCount", {
+                selectedCount: store.state.selectedResponses.length,
+              })
+            }}
+          </div>
+          <div
+            class="header-content overflow-auto"
+            v-show="!isSelectedResponsesEmpty"
+          >
+            <v-btn
+              v-for="action in userActions"
+              color="primary"
+              class="no-text-transform"
+              :text="action.name"
+              :key="action.index"
+              @click="callAction(action)"
+            ></v-btn>
+          </div>
+          <!-- End Selected Responses  -->
         </v-app-bar>
         <FindModal ref="findRef"></FindModal>
 
@@ -86,7 +124,10 @@
           :chat-index="store.state.currentChatIndex"
           :columns="columns"
         ></ChatMessages>
-        <FooterBar ref="footerBarRef"></FooterBar>
+        <FooterBar
+          ref="footerBarRef"
+          @update-active-bots="(bots) => (activeBots = bots)"
+        ></FooterBar>
       </v-main>
       <SettingsModal v-model:open="isSettingsOpen" />
       <ConfirmModal ref="confirmModal" />
@@ -95,12 +136,18 @@
         ref="shortcutGuideRef"
         v-model:open="isShortcutGuideOpen"
       ></ShortcutGuide>
+      <ChatAction
+        v-model:open="isChatActionOpen"
+        :action="action"
+        :responses="store.state.selectedResponses"
+        :activeBots="activeBots"
+      ></ChatAction>
     </v-container>
   </v-app>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick } from "vue";
+import { ref, computed, onMounted, nextTick, watch } from "vue";
 
 import { useTheme } from "vuetify";
 import { useStore } from "vuex";
@@ -125,6 +172,7 @@ import FooterBar from "@/components/Footer/FooterBar.vue";
 import UpdateNotification from "@/components/Notification/UpdateNotificationModal.vue";
 import FindModal from "@/components/FindModal.vue";
 import ShortcutGuide from "@/components/ShortcutGuide/ShortcutGuide.vue";
+import ChatAction from "@/components/ChatAction.vue";
 
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
@@ -149,11 +197,18 @@ const isShortcutGuideOpen = ref(false);
 const isSettingsOpen = ref(false);
 const isChatDrawerOpen = ref(store.state.isChatDrawerOpen);
 const chatDrawerRef = ref();
+const isSelectedResponsesEmpty = ref(true);
+const isChatActionOpen = ref(false);
 
 const columns = computed(() => store.state.columns);
+const userActions = computed(() => {
+  return store.state.actions.filter((p) => !p.hide);
+});
 
 const changeColumns = (columns) => store.commit("changeColumns", columns);
 const setUuid = (uuid) => store.commit("setUuid", uuid);
+let action;
+let activeBots;
 
 async function openSettingsModal() {
   if (isSettingsOpen.value) {
@@ -202,8 +257,24 @@ onMounted(() => {
   document.title = `ChatALL.ai - v${ver}`;
 });
 
+watch(
+  () => store.state.selectedResponses.length,
+  () => {
+    isSelectedResponsesEmpty.value = store.state.selectedResponses.length === 0;
+  },
+);
+
 function getColumnImage(columnCount) {
   return require(`@/assets/column-${columnCount}.svg`);
+}
+
+function deselectAll() {
+  store.commit("deleteAllSelectedResponses");
+}
+
+function callAction(value) {
+  action = value;
+  isChatActionOpen.value = true;
 }
 </script>
 
@@ -299,5 +370,8 @@ img.selected {
 .vuepress-markdown-body pre code {
   color: #fff !important;
   background-color: initial !important;
+}
+.no-text-transform {
+  text-transform: none !important;
 }
 </style>

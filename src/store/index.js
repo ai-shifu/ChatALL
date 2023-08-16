@@ -14,9 +14,16 @@ const vuexPersist = new VuexPersist({
   key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
   storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
   reducer: (state) => {
-    // eslint-disable-next-line
-    const { messages, chats, prompts, updateCounter, ...persistedState } =
-      state;
+    /* eslint-disable no-unused-vars */
+    const {
+      messages,
+      chats,
+      prompts,
+      updateCounter,
+      selectedResponses,
+      ...persistedState
+    } = state;
+    /* eslint-enable no-unused-vars */
     return persistedState;
   },
 });
@@ -104,6 +111,18 @@ export default createStore({
     selectedBots: null,
     messages: [],
     prompts: [],
+    actions: [
+      {
+        name: "Summarize 1",
+        prefix:
+          "Summarize the data below in a markdown table with the bot name, difference, and response rating (1-5) columns.\nDo not include the response' value column in your table.\nSimplify the data and identify the differences.\nEach response is delimited by the `resp` tag.\nInside every response, the bot's name is delimited by the `name` tag, and the bot's response is delimited by the `value` tag.",
+        template:
+          "<resp>\n  <name>{botName}</name>\n  <value>{botResponse}</value>\n</resp>",
+        suffix: "Give me the best response.",
+        index: 0,
+      },
+    ],
+    selectedResponses: [],
   },
   mutations: {
     changeColumns(state, n) {
@@ -335,6 +354,29 @@ export default createStore({
     deletePrompt(state, values) {
       state.prompts[values.index].hide = true;
     },
+    addAction(state, values) {
+      const addAction = { ...values };
+      addAction.index = state.actions.push(addAction) - 1;
+    },
+    editAction(state, values) {
+      const { index } = values;
+      state.actions[index] = { ...state.actions[index], ...values };
+    },
+    deleteAction(state, values) {
+      state.actions[values.index].hide = true;
+    },
+    addSelectedResponses(state, value) {
+      value.selectedIndex = state.selectedResponses.push(value) - 1;
+    },
+    deleteSelectedResponses(state, value) {
+      const index = state.selectedResponses.findIndex(
+        (r) => r.selectedIndex === value,
+      );
+      state.selectedResponses.splice(index, 1);
+    },
+    deleteAllSelectedResponses(state) {
+      state.selectedResponses = [];
+    },
   },
   actions: {
     sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
@@ -506,6 +548,14 @@ export default createStore({
           message.content.length,
         );
       }
+    },
+    addSelectedResponses({ commit, state }, value) {
+      commit("addSelectedResponses", value);
+      return state.selectedResponses.length - 1;
+    },
+    createChatAndSelect({ commit, state }) {
+      commit("createChat");
+      commit("selectChat", state.chats.length - 1);
     },
   },
   getters: {

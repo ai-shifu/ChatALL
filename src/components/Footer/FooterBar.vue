@@ -119,6 +119,7 @@ const { ipcRenderer } = window.require("electron");
 
 const store = useStore();
 const matomo = useMatomo();
+const emit = defineEmits(["updateActiveBots"]);
 
 const confirmModal = ref(null);
 const promptTextArea = ref(null);
@@ -178,6 +179,7 @@ async function updateActiveBots() {
     activeBots[favBot.classname] =
       favBot.instance.isAvailable() && favBot.selected;
   }
+  emit("updateActiveBots", activeBots);
 }
 
 function focusPromptTextarea() {

@@ -22,7 +22,8 @@
     "no": "No",
     "singleColumn": "Single Column",
     "doubleColumn": "Double Column",
-    "tripleColumn": "Triple Column"
+    "tripleColumn": "Triple Column",
+    "selectedResponsesCount": "{ selectedCount } Selected"
   },
   "footer": {
     "chooseFavorite": "Choose your favorite AI bots",
@@ -44,6 +45,7 @@
     "confirmHide": "Delete this message?",
     "confirmHideChat": "Delete this chat?",
     "confirmHidePrompt": "Delete this prompt?",
+    "confirmHideAction": "Delete this action?",
     "done": "Done",
     "cancel": "Cancel"
   },
@@ -52,7 +54,17 @@
     "newChat": "New Chat",
     "deleteAllChatHistory": "Delete All Chat History",
     "downloadAllChatHistory": "Save All Chat History",
-    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone."
+    "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
+    "actions": "Actions",
+    "addAction": "Add Action",
+    "actionName": "Name",
+    "prefix": "Prefix",
+    "actionTemplate": "Template",
+    "suffix": "Suffix",
+    "preview": "Preview",
+    "inNewChat": "in new chat",
+    "inCurrentChat": "in current chat",
+    "actionTemplateGuide": "#### Template Parameters:\n| Parameter     | Description                         |\n|---------------|-------------------------------------|\n| {botName}     | name of the selected response’s bot |\n| {botResponse} | the selected response               |\n"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",

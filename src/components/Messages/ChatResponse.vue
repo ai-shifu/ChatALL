@@ -3,11 +3,15 @@
     ref="root"
     :class="[
       'message',
-      isHighlighted ? 'highlight-border' : '',
+      isHighlighted && isSelectedResponsesEmpty ? 'highlight-border' : '',
       props.isThread ? 'response-thread' : 'response',
+      isSelectedResponsesEmpty ? 'cursor-auto' : 'cursor-pointer',
+      isSelected ? 'highlight-border' : '',
     ]"
     :loading="isAllDone ? false : 'primary'"
     :flat="props.isThread"
+    :ripple="!isSelectedResponsesEmpty"
+    @click="!isSelectedResponsesEmpty && select($event)"
   >
     <v-card-title class="title">
       <img
@@ -24,6 +28,7 @@
         @click="toggleHighlight"
         :color="isHighlighted ? 'primary' : ''"
         :class="getButtonClass"
+        v-show="isSelectedResponsesEmpty"
       >
         <v-icon>mdi-lightbulb-on-outline</v-icon>
       </v-btn>
@@ -32,12 +37,31 @@
         size="x-small"
         icon
         @click="copyToClipboard"
+        v-show="isSelectedResponsesEmpty"
         :class="getButtonClass"
       >
         <v-icon>mdi-content-copy</v-icon>
       </v-btn>
-      <v-btn flat size="x-small" icon @click="hide" :class="getButtonClass">
+      <v-btn
+        flat
+        size="x-small"
+        v-show="isSelectedResponsesEmpty"
+        icon
+        @click="hide"
+        :class="getButtonClass"
+      >
         <v-icon>mdi-delete</v-icon>
+      </v-btn>
+      <v-btn
+        flat
+        size="x-small"
+        icon
+        :class="getSelectButtonClass"
+        @click="select($event)"
+      >
+        <v-icon>{{
+          isSelected ? "mdi-check-circle" : "mdi-check-circle-outline"
+        }}</v-icon>
       </v-btn>
     </v-card-title>
     <template v-if="props.messages.length === 1">
@@ -80,8 +104,9 @@
           flat
           icon
           size="x-small"
+          ref="pageLeftButton"
           v-if="isShowPagingButton"
-          @click="carouselModel = Math.max(carouselModel - 1, 0)"
+          @click="pageLeft"
           :disabled="carouselModel === 0"
         >
           <v-icon>mdi-menu-left</v-icon>
@@ -90,8 +115,9 @@
           flat
           icon
           size="x-small"
+          ref="pageRightButton"
           v-if="isShowPagingButton"
-          @click="carouselModel = Math.min(carouselModel + 1, maxPage)"
+          @click="pageRight"
           :disabled="carouselModel === maxPage"
         >
           <v-icon>mdi-menu-right</v-icon>
@@ -154,7 +180,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch, computed, nextTick } from "vue";
+import { onMounted, ref, watch, computed, nextTick, toRaw } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
 import { useMatomo } from "@/composables/matomo";
@@ -190,9 +216,16 @@ const store = useStore();
 const root = ref();
 const replyModel = ref("");
 const replyRef = ref();
+const pageLeftButton = ref();
+const pageRightButton = ref();
 const maxPage = computed(() => props.messages.length - 1);
 const carouselModel = ref(maxPage.value);
 const confirmModal = ref(null);
+const isSelected = ref(false);
+const isSelectedList = ref([]);
+const isSelectedResponsesEmpty = ref(
+  store.state.selectedResponses.length === 0,
+);
 const botInstance = computed(() => {
   return bots.getBotByClassName(props.messages[0].className);
 });
@@ -281,6 +314,10 @@ const getButtonClass = computed(() => ({
   "hide-btn": !props.isThread,
   "hide-thread-btn": props.isThread,
 }));
+const getSelectButtonClass = computed(() => ({
+  "hide-btn": !props.isThread && isSelectedResponsesEmpty.value,
+  "hide-thread-btn": props.isThread && isSelectedResponsesEmpty.value,
+}));
 
 // Send the prompt when the user presses enter and prevent the default behavior
 // But if the shift, ctrl, alt, or meta keys are pressed, do as default
@@ -325,6 +362,10 @@ const rerenderThreadWhenChatIndexChanged = () => {
   rerenderThread.value = Math.random();
 };
 watch(() => store.state.currentChatIndex, rerenderThreadWhenChatIndexChanged);
+watch(
+  () => store.state.selectedResponses.length,
+  updateIsSelectedResponsesEmpty,
+);
 
 const updateThreadMessage = (threadIndex, messageIndex, values) => {
   store.dispatch("updateThreadMessage", {
@@ -460,6 +501,49 @@ function toggleReplyButton() {
     nextTick().then(replyRef.value.focus);
   }
 }
+
+let selectedIndex = undefined;
+async function select(event) {
+  event.stopPropagation();
+  if (
+    pageLeftButton.value?.$el.contains(event.target) ||
+    pageRightButton.value?.$el.contains(event.target)
+  ) {
+    // return when click on page left, right button
+    return;
+  }
+
+  if (isSelected.value) {
+    store.commit("deleteSelectedResponses", selectedIndex);
+    isSelected.value = false;
+    const index = isSelectedList.value.indexOf(carouselModel.value);
+    isSelectedList.value.splice(index, 1);
+  } else {
+    selectedIndex = await store.dispatch("addSelectedResponses", {
+      ...toRaw(props.messages[carouselModel.value]),
+    });
+    isSelected.value = true;
+    isSelectedList.value.push(carouselModel.value);
+  }
+}
+
+function updateIsSelectedResponsesEmpty() {
+  isSelectedResponsesEmpty.value = store.state.selectedResponses.length === 0;
+  if (isSelectedResponsesEmpty.value) {
+    isSelected.value = false;
+    isSelectedList.value = [];
+  }
+}
+
+function pageLeft() {
+  carouselModel.value = Math.max(carouselModel.value - 1, 0);
+  isSelected.value = isSelectedList.value.includes(carouselModel.value);
+}
+
+function pageRight() {
+  carouselModel.value = Math.min(carouselModel.value + 1, maxPage.value);
+  isSelected.value = isSelectedList.value.includes(carouselModel.value);
+}
 </script>
 
 <style scoped>
@@ -541,5 +625,13 @@ function toggleReplyButton() {
 
 .invert {
   filter: invert(100%);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-auto {
+  cursor: auto;
 }
 </style>
