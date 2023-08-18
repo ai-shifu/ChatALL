@@ -26,6 +26,10 @@ export default class ChatGPTBot extends Bot {
     id: null,
   };
 
+  static _arkoseScriptLoaded = false;
+  static _myEnforcement = null;
+  static _arkosePromise = null;
+
   accessToken = "";
 
   constructor() {
@@ -49,6 +53,9 @@ export default class ChatGPTBot extends Bot {
     } catch (error) {
       console.error("Error checking ChatGPT login status:", error);
       this.constructor._isAvailable = false;
+    }
+    if (this.isAvailable()) {
+      this.loadArkoseScript();
     }
     // Toggle periodic session refreshing based on login status
     this.toggleSessionRefreshing(this.isAvailable());
@@ -93,17 +100,66 @@ export default class ChatGPTBot extends Bot {
     }
   }
 
-  // Credit: https://github.com/linweiyuan/go-chatgpt-api/issues/175
-  async getArkoseToken() {
-    let token = void 0;
+  loadArkoseScript() {
+    // Append the Arkose JS tag to the Document Body. Reference https://github.com/ArkoseLabs/arkose-examples/blob/main/vue-example/src/components/Arkose.vue
+    if (!ChatGPTBot._arkoseScriptLoaded) {
+      ChatGPTBot._arkoseScriptLoaded = true;
+      console.log("Loading Arkose API Script", this.getFullname());
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src =
+        "https://tcr9i.chat.openai.com/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147/api.js";
+      script.setAttribute("data-callback", "setupEnforcement");
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
 
-    if (this.constructor._model !== "text-davinci-002-render-sha") {
-      await axios.get("https://arkose-token.linweiyuan.com/").then((res) => {
-        token = res.data.token;
-      });
+      script.onload = () => {
+        console.log("Arkose API Script loaded");
+        window.setupEnforcement = this.setupEnforcement.bind(this);
+      };
+      script.onerror = () => {
+        console.log("Could not load the Arkose API Script!");
+      };
     }
+  }
 
-    return token;
+  setupEnforcement(myEnforcement) {
+    ChatGPTBot._myEnforcement = myEnforcement;
+    ChatGPTBot._myEnforcement.setConfig({
+      onReady: () => {},
+      onShown: () => {},
+      onShow: () => {},
+      onSuppress: () => {},
+      onCompleted: (response) => {
+        console.log("Arkose response:", response);
+        ChatGPTBot._arkosePromise.resolve(response.token);
+      },
+      onReset: () => {},
+      onHide: () => {},
+      onError: (response) => {
+        console.log("Arkose error:", response);
+        ChatGPTBot._arkosePromise.reject(response);
+      },
+      onFailed: (response) => {
+        console.log("Arkose failed:", response);
+        ChatGPTBot._arkosePromise.reject(response);
+      },
+    });
+  }
+
+  async getArkoseToken() {
+    if (
+      ChatGPTBot._myEnforcement &&
+      this.constructor._model !== "text-davinci-002-render-sha"
+    ) {
+      return new Promise((resolve, reject) => {
+        ChatGPTBot._arkosePromise = { resolve, reject };
+        ChatGPTBot._myEnforcement.run();
+      });
+    } else {
+      return null;
+    }
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
@@ -157,7 +213,7 @@ export default class ChatGPTBot extends Bot {
               const data = JSON.parse(event.data);
               this.setChatContext({
                 conversationId: data.conversation_id,
-                parentMessageId: data.message.id,
+                parentMessageId: data.message_id,
               });
               const content = data.message?.content;
               if (
