@@ -55,7 +55,8 @@ export default class BingChatBot extends Bot {
       .get("https://www.bing.com/turing/conversation/chats")
       .then((response) => {
         this.constructor._isAvailable =
-          response.data?.result?.value == "Success";
+          response.data?.result?.value == "Success" &&
+          !this.isAnonymous(response.data?.clientId); // Anonymous user is not supported any more
 
         // If login user is changed, clear the chat context
         const context = this.getChatContext(false);
@@ -173,7 +174,7 @@ export default class BingChatBot extends Bot {
                       new Error(i18n.global.t("bot.creatingConversation")),
                     );
                   } else if (event.item.result.value === "Throttled") {
-                    if (await this.isAnonymous(context.clientId)) {
+                    if (this.isAnonymous(context.clientId)) {
                       const url = this.getLoginUrl();
                       onUpdateResponse(callbackParam, {
                         content: i18n.global.t("bingChat.loginToContinue", {
@@ -267,7 +268,7 @@ export default class BingChatBot extends Bot {
     });
   }
 
-  async isAnonymous(clientId) {
+  isAnonymous(clientId) {
     return clientId.length > 30; // TODO: find a better way to check if anonymous
   }
 }
