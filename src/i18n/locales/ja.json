@@ -84,8 +84,6 @@
     "autoRefresh": "自動切断防止",
     "autoRefreshPrompt": "頻繁にログインするように求められない場合は、この機能を無効にしてください。",
     "notice": "ChatGPTプラス会員のみGPT-4をご利用いただけます。",
-    "riskWarningTitle": "記憶",
-    "riskWarningText": "OpenAIは、公式クライアント以外のアプリからChatGPTのGPT-4,GPT-4 モバイルおよびGPT-4ブラウジングモデルにアクセスする操作を検出および防止するために、Arkose Labsのサービスを使用しています。ChatALLが保護を回避したとしても、OpenAIはユーザーを簡単に識別できるため、アカウント停止されるリスクが高くなります。そのリスクを負いますか？",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "webブラウジング",

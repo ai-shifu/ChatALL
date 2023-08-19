@@ -99,8 +99,6 @@
     "autoRefresh": "Antidesconexión automática",
     "autoRefreshPrompt": "Si NO se le pide que inicie sesión con frecuencia, NO habilite esta función",
     "notice": "Solo los miembros Plus de pago pueden usar GPT-4",
-    "riskWarningTitle": "Recordatorio",
-    "riskWarningText": "OpenAI está utilizando servicios de Arkose Labs para detectar y evitar acciones que accedan a los modelos de navegación GPT-4, GPT-4 Mobie V2 y GPT-4 de ChatGPT a través de aplicaciones que no sean los clientes oficiales. Aunque ChatALL puede eludir su protección, OpenAI aún puede identificarlo fácilmente, lo que aumenta el riesgo de ser prohibido. \n\n¿Estás seguro de correr este riesgo? (El riesgo de usar GPT-3.5 es mucho menor)",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Navegación Web",
