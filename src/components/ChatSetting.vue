@@ -94,11 +94,12 @@
           <template v-slot:append-inner>
             <v-btn
               flat
-              v-bind="props"
               size="x-small"
               icon="mdi-help"
               style="background-color: inherit"
-              @click="isShowTemplateGuideDialog = !isShowTemplateGuideTooltip"
+              @click="
+                isShowTemplateParametersDialog = !isShowTemplateGuideTooltip
+              "
             >
             </v-btn>
           </template>
@@ -138,11 +139,11 @@
   </v-dialog>
   <v-dialog
     width="auto"
-    :model-value="isShowTemplateGuideDialog"
-    v-on:after-leave="isShowTemplateGuideDialog = false"
+    :model-value="isShowTemplateParametersDialog"
+    v-on:after-leave="isShowTemplateParametersDialog = false"
   >
     <v-card>
-      <v-md-preview class="pa-4" :text="$t('chat.actionTemplateGuide')" />
+      <v-md-preview class="pa-4" :text="templateParametersInfo" />
     </v-card>
   </v-dialog>
   <ConfirmModal ref="confirmModal" />
@@ -170,7 +171,13 @@ const prefix = ref("");
 const template = ref("");
 const suffix = ref("");
 const previewRef = ref("");
-const isShowTemplateGuideDialog = ref(false);
+const templateParametersInfo = `
+#### ${i18n.global.t("chat.templateParameters")}:
+| ${i18n.global.t("chat.parameter")}|${i18n.global.t("chat.description")}|
+|-|-|
+|{botName}|${i18n.global.t("chat.botNameDesc")}|
+|{botResponse}|${i18n.global.t("chat.botResponseDesc")}|`;
+const isShowTemplateParametersDialog = ref(false);
 const store = useStore();
 const userActions = computed(() => {
   return store.state.actions.filter((p) => !p.hide);
@@ -308,12 +315,16 @@ function edit(item) {
 }
 
 async function onInputTemplate() {
-  previewRef.value = await preview(
-    prefix.value,
-    template.value,
-    suffix.value,
-    previewSampleData,
-  );
+  try {
+    previewRef.value = await preview(
+      prefix.value,
+      template.value,
+      suffix.value,
+      previewSampleData,
+    );
+  } catch (error) {
+    previewRef.value = `Error:\n${error.message}`;
+  }
 }
 
 async function addEditAction() {

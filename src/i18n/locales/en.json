@@ -64,7 +64,11 @@
     "preview": "Preview",
     "inNewChat": "in new chat",
     "inCurrentChat": "in current chat",
-    "actionTemplateGuide": "#### Template Parameters:\n| Parameter     | Description                         |\n|---------------|-------------------------------------|\n| {botName}     | name of the selected response’s bot |\n| {botResponse} | the selected response               |\n"
+    "templateParameters": "Template Parameters",
+    "parameter": "Parameter",
+    "description": "Description",
+    "botNameDesc": "name of the selected response’s bot",
+    "botResponseDesc": "the selected response"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",
