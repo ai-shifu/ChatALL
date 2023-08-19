@@ -149,10 +149,7 @@ export default class ChatGPTBot extends Bot {
   }
 
   async getArkoseToken() {
-    if (
-      ChatGPTBot._myEnforcement &&
-      this.constructor._model !== "text-davinci-002-render-sha"
-    ) {
+    if (ChatGPTBot._myEnforcement) {
       return new Promise((resolve, reject) => {
         ChatGPTBot._arkosePromise = { resolve, reject };
         ChatGPTBot._myEnforcement.run();
