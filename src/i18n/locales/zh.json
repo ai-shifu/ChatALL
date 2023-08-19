@@ -64,7 +64,11 @@
     "preview": "预览",
     "inNewChat": "在新对话",
     "inCurrentChat": "在当前对话",
-    "actionTemplateGuide": "#### 模板参数:\n| 参数       | 描述                             |\n|-----------|-----------------------------------| \n| {botName} | 所选响应的机器人名称             |\n| {botResponse} | 所选响应内容                |\n"
+    "templateParameters": "模板参数",
+    "parameter": "参数",
+    "description": "描述",
+    "botNameDesc": "所选响应的机器人名称",
+    "botResponseDesc": "所选响应内容"
   },
   "bot": {
     "creatingConversation": "创建新对话...",
