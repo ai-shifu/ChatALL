@@ -307,12 +307,16 @@ function edit(item) {
 }
 
 async function onInputTemplate() {
-  previewRef.value = await preview(
-    prefix.value,
-    template.value,
-    suffix.value,
-    previewSampleData,
-  );
+  try {
+    previewRef.value = await preview(
+      prefix.value,
+      template.value,
+      suffix.value,
+      previewSampleData,
+    );
+  } catch (error) {
+    previewRef.value = `Error:\n${error.message}`;
+  }
 }
 
 async function addEditAction() {
