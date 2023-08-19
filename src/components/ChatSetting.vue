@@ -94,7 +94,6 @@
           <template v-slot:append-inner>
             <v-btn
               flat
-              v-bind="props"
               size="x-small"
               icon="mdi-help"
               style="background-color: inherit"
