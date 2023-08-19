@@ -59,10 +59,9 @@ export default class PoeBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
-    let isAvailable = false;
+  async _checkAvailability() {
+    let available = false;
 
     const modelHandles = {
       a2: "Claude-instant",
@@ -86,13 +85,12 @@ export default class PoeBot extends Bot {
       const chatId = response.data.match(/"chatId":(\d+),/);
       this.context.chatId = chatId[1];
 
-      isAvailable = true;
+      available = true;
     } catch (error) {
       console.error("Error checking Poe login status:", error);
     }
 
-    this.constructor._isAvailable = isAvailable;
-    return this.isAvailable(); // Always return like this
+    return available;
   }
 
   /**

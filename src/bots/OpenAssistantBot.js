@@ -19,29 +19,25 @@ export default class OpenAssistantBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
     await axios
       .get("https://open-assistant.io/api/auth/session")
       .then((response) => {
         if (response.data) {
-          this.constructor._isAvailable = false;
           // eslint-disable-next-line
           for (var i in response.data) {
             // if data object not empty, user logged in
-            this.constructor._isAvailable = true;
+            available = true;
             break;
           }
-        } else {
-          this.constructor._isAvailable = false;
         }
       })
       .catch((error) => {
         console.error("Error OpenAssistantBot check login:", error);
-        this.constructor._isAvailable = false;
       });
-    return this.isAvailable(); // Always return like this
+    return available;
   }
 
   /**

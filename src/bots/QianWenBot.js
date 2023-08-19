@@ -32,9 +32,9 @@ export default class QianWenBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
     await axios
       .post(
         "https://qianwen.aliyun.com/querySign",
@@ -42,17 +42,16 @@ export default class QianWenBot extends Bot {
         { headers: this.getRequestHeaders() },
       )
       .then((resp) => {
-        this.constructor._isAvailable = resp.data?.success;
+        available = resp.data?.success;
         if (!resp.data?.success) {
           console.error("Error QianWen check login:", resp.data);
         }
       })
       .catch((error) => {
         console.error("Error QianWen check login:", error);
-        this.constructor._isAvailable = false;
       });
 
-    return this.isAvailable(); // Always return like this
+    return available;
   }
 
   /**

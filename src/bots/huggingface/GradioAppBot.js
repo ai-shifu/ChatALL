@@ -14,10 +14,10 @@ export default class GradioAppBot extends GradioBot {
     this.constructor._fnIndexes[0] = store.state.gradio.fnIndex;
   }
 
-  checkAvailability() {
+  _checkAvailability() {
     this.constructor._loginUrl = store.state.gradio.url;
     this.constructor._fnIndexes[0] = store.state.gradio.fnIndex;
-    return super.checkAvailability();
+    return super._checkAvailability();
   }
 
   makeData(fn_index, prompt) {

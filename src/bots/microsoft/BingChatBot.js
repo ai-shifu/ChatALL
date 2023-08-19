@@ -50,11 +50,13 @@ export default class BingChatBot extends Bot {
     return conversation;
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
+
     await axios
       .get("https://www.bing.com/turing/conversation/chats")
       .then((response) => {
-        this.constructor._isAvailable =
+        available =
           response.data?.result?.value == "Success" &&
           !this.isAnonymous(response.data?.clientId); // Anonymous user is not supported any more
 
@@ -65,10 +67,10 @@ export default class BingChatBot extends Bot {
         }
       })
       .catch((error) => {
-        this.constructor._isAvailable = false;
         console.error("Error checking Bing Chat login status:", error);
       });
-    return this.isAvailable();
+
+    return available;
   }
 
   async makePromptRequest(prompt) {

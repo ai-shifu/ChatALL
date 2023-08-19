@@ -68,6 +68,7 @@
   },
   "bot": {
     "creatingConversation": "创建新对话...",
+    "disabled": "已禁用",
     "failedToCreateConversation": "创建对话失败",
     "nullBot": "虚无",
     "notImplemented": "建设中...",

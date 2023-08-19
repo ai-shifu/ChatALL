@@ -4,6 +4,7 @@ import store from "@/store";
 export default class Bot {
   static _logoPackedPaths = null;
   static _isAvailable = false;
+  static _isDisabled = false; // True if the bot is permanently disabled
 
   static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "Bot"; // Class name of the bot
@@ -42,9 +43,12 @@ export default class Bot {
   }
 
   getFullname() {
+    const prefix = this.isDisabled()
+      ? `(${i18n.global.t("bot.disabled")}) `
+      : "";
     if (this.getModelName())
-      return `${this.getBrandName()} (${this.getModelName()})`;
-    else return this.getBrandName();
+      return prefix + `${this.getModelName()}@${this.getBrandName()}`;
+    else return prefix + this.getBrandName();
   }
 
   getLoginUrl() {
@@ -86,6 +90,10 @@ export default class Bot {
 
   isAvailable() {
     return this.constructor._isAvailable;
+  }
+
+  isDisabled() {
+    return this.constructor._isDisabled;
   }
 
   /**
@@ -195,14 +203,23 @@ export default class Bot {
     }
   }
 
+  async checkAvailability() {
+    if (this.isDisabled()) return false;
+    this.constructor._isAvailable = await this._checkAvailability();
+    return this.isAvailable();
+  }
+
   /**
    * Subclass must implement this method.
    * Check if the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
+  async _checkAvailability() {
     return false;
+  }
+
+  disable() {
+    this.constructor._isDisabled = true;
   }
 
   /**

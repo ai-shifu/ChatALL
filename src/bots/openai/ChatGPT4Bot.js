@@ -10,12 +10,10 @@ export default class ChatGPT4Bot extends ChatGPTBot {
     super();
   }
 
-  async checkAvailability() {
-    const reserved = this.constructor._isAvailable; // To supress the availablity changing
-    const isAvailable = await super.checkAvailability();
-    this.constructor._isAvailable = reserved;
+  async _checkAvailability() {
+    let available = await super._checkAvailability();
 
-    if (isAvailable) {
+    if (available) {
       try {
         const headers = {
           "Content-Type": "application/json",
@@ -27,14 +25,13 @@ export default class ChatGPT4Bot extends ChatGPTBot {
         );
         const isPaidSubscriptionActive =
           response.data.account_plan.is_paid_subscription_active;
-        this.constructor._isAvailable = isPaidSubscriptionActive;
+        available = isPaidSubscriptionActive;
       } catch (error) {
         console.error("Error fetching paid status:", error);
-        this.constructor._isAvailable = false;
+        available = false;
       }
-    } else {
-      this.constructor._isAvailable = false;
     }
-    return this.isAvailable();
+
+    return available;
   }
 }

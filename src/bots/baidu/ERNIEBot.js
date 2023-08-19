@@ -11,19 +11,18 @@ export default class ERNIEBot extends Bot {
     super();
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
+
     try {
       const res = await axios.get("https://yiyan.baidu.com/eb/user/info");
       if (res.data.content.isLogin) {
-        this.constructor._isAvailable = true;
-      } else {
-        this.constructor._isAvailable = false;
+        available = true;
       }
     } catch (err) {
       console.log(err);
-      this.constructor._isAvailable = false;
     }
-    return this.isAvailable();
+    return available;
   }
 
   async sendPrompt(prompt, onUpdateResponse, callbackParam) {

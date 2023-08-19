@@ -20,21 +20,21 @@ export default class HuggingChatBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
+  async _checkAvailability() {
     // Create a conversation to test if the bot is available
     const conversationId = await this.createChatContext();
+    let available = false;
+
     if (conversationId) {
-      this.constructor._isAvailable = true;
+      available = true;
       // Delete the conversation after testing
       axios.delete(
         `https://huggingface.co/chat/conversation/${conversationId}`,
       );
-    } else {
-      this.constructor._isAvailable = false;
     }
-    return this.isAvailable(); // Always return like this
+
+    return available;
   }
 
   packRequest(prompt) {

@@ -12,15 +12,14 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
     super();
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
     if (
-      !store.state.azureOpenaiApi.azureApiKey ||
-      !store.state.azureOpenaiApi.azureApiInstanceName ||
-      !store.state.azureOpenaiApi.azureOpenAIApiDeploymentName ||
-      !store.state.azureOpenaiApi.azureOpenAIApiVersion
+      store.state.azureOpenaiApi.azureApiKey &&
+      store.state.azureOpenaiApi.azureApiInstanceName &&
+      store.state.azureOpenaiApi.azureOpenAIApiDeploymentName &&
+      store.state.azureOpenaiApi.azureOpenAIApiVersion
     ) {
-      this.constructor._isAvailable = false;
-    } else {
       const chatModel = new ChatOpenAI({
         azureOpenAIApiKey: store.state.azureOpenaiApi.azureApiKey,
         azureOpenAIApiInstanceName:
@@ -32,9 +31,9 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
         streaming: true,
       });
       this.constructor._chatModel = chatModel;
-      this.constructor._isAvailable = true;
+      available = true;
     }
-    return this.isAvailable();
+    return available;
   }
 
   getPastRounds() {

@@ -12,17 +12,19 @@ export default class Qihoo360AIBrainBot extends Bot {
     super();
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
+
     await axios
       .get("https://chat.360.cn/backend-api/apiz/user/info")
       .then((response) => {
-        this.constructor._isAvailable = response.data?.context?.message == "OK";
+        available = response.data?.context?.message == "OK";
       })
       .catch((error) => {
-        this.constructor._isAvailable = false;
         console.error("Error checking 360Bot Chat login status:", error);
       });
-    return this.isAvailable();
+
+    return available;
   }
 
   async createChatContext() {

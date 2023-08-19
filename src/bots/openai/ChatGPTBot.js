@@ -37,29 +37,28 @@ export default class ChatGPTBot extends Bot {
     this.setRefreshCycle(store.state.chatgpt.refreshCycle);
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
+
     try {
       const response = await axios.get(
         "https://chat.openai.com/api/auth/session",
       );
-      if (response.data?.error) {
-        this.constructor._isAvailable = false;
-      } else if (response.data?.accessToken) {
+      if (!response.data?.error && response.data?.accessToken) {
         this.accessToken = response.data.accessToken;
-        this.constructor._isAvailable = true;
-      } else {
-        this.constructor._isAvailable = false;
+        available = true;
       }
     } catch (error) {
       console.error("Error checking ChatGPT login status:", error);
-      this.constructor._isAvailable = false;
     }
-    if (this.isAvailable()) {
+
+    if (available) {
       this.loadArkoseScript();
     }
     // Toggle periodic session refreshing based on login status
-    this.toggleSessionRefreshing(this.isAvailable());
-    return this.isAvailable();
+    this.toggleSessionRefreshing(available);
+
+    return available;
   }
 
   async createChatContext() {

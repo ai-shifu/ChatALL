@@ -27,20 +27,18 @@ export default class CharacterAIBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
     try {
-      this.constructor._isAvailable = false;
-
       if (!store.state.characterAI.token) {
         console.error("Error CharacterAIBot check login: token not found");
-        return this.isAvailable();
+        return false;
       }
 
       if (new Date().getTime() >= store.state.characterAI?.ttl) {
         console.error("Error CharacterAIBot check login: token expired");
-        return this.isAvailable();
+        return false;
       }
 
       const userInfoResponse = await axios.get(
@@ -50,16 +48,16 @@ export default class CharacterAIBot extends Bot {
 
       if (userInfoResponse.status !== 200) {
         console.error("Error CharacterAIBot check login:", userInfoResponse);
-        return this.isAvailable();
+        return false;
       }
 
       if (userInfoResponse.data.user?.user?.username !== "ANONYMOUS") {
-        this.constructor._isAvailable = true;
+        available = true;
       }
     } catch (error) {
       console.error("Error CharacterAIBot check login:", error);
     }
-    return this.isAvailable();
+    return available;
   }
 
   /**

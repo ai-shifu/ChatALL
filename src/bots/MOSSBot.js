@@ -42,25 +42,19 @@ export default class MOSSBot extends Bot {
     }
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
     const token = store.state.moss?.token?.refresh;
+    let available = false;
 
-    if (!token) {
-      this.constructor._isAvailable = false;
-    } else {
+    if (token) {
       await axios
         .get("https://moss.fastnlp.top/api/users/me", this.getAuthHeader())
-        .then((res) => {
-          this.constructor._isAvailable = true;
-          return res;
-        })
-        .catch((err) => {
-          this.constructor._isAvailable = false;
-          return err;
+        .then(() => {
+          available = true;
         });
     }
 
-    return this.isAvailable();
+    return available;
   }
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {

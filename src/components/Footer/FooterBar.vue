@@ -133,7 +133,6 @@ const rerenderFavBotLogos = ref(0);
 const favBots = computed(() => {
   const _favBots = [];
   store.getters.currentChat.favBots.forEach((favBot) => {
-    if (_bots.isBotDisabled(favBot.classname)) return;
     _favBots.push({
       ...favBot,
       instance: _bots.getBotByClassName(favBot.classname),

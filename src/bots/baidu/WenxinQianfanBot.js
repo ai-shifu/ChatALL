@@ -14,7 +14,8 @@ export default class WenxinQianfanBot extends LangChainBot {
     super();
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
     const { apiKey, secretKey } = store.state.wenxinQianfan;
     if (apiKey && secretKey) {
       const chatModel = new ChatBaiduWenxin({
@@ -24,11 +25,9 @@ export default class WenxinQianfanBot extends LangChainBot {
         streaming: true,
       });
       this.constructor._chatModel = chatModel;
-      this.constructor._isAvailable = true;
-    } else {
-      this.constructor._isAvailable = false;
+      available = true;
     }
-    return this.isAvailable();
+    return available;
   }
 
   getPastRounds() {

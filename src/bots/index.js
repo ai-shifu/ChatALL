@@ -78,7 +78,7 @@ const all = [
   YouChatBot.getInstance(),
 ];
 
-const disabled = [];
+const disabled = ["ClaudeBot", "ChatGPTBrowsingBot"];
 
 if (process.env.NODE_ENV !== "production") {
   all.push(DevBot.getInstance());
@@ -87,17 +87,14 @@ if (process.env.NODE_ENV !== "production") {
 const bots = {
   all,
   getBotByClassName(className) {
-    const bot = disabled.find((bot) => bot.getClassname() === className);
-    if (bot) {
-      return bot;
-    } else {
-      return all.find((bot) => bot.getClassname() === className);
-    }
-  },
-  isBotDisabled(className) {
-    return disabled.some((bot) => bot.getClassname() === className);
+    return all.find((bot) => bot.getClassname() === className);
   },
 };
+
+disabled.forEach((className) => {
+  const bot = bots.getBotByClassName(className);
+  bot?.disable();
+});
 
 export const botTags = {
   free: [

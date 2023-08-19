@@ -20,25 +20,21 @@ export default class ClaudeAIBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
-    if (!store.state.claudeAi.org) {
-      this.constructor._isAvailable = false;
-      return this.isAvailable();
+  async _checkAvailability() {
+    let available = false;
+
+    if (store.state.claudeAi.org) {
+      const currentAcountResponse = await axios.get(
+        "https://claude.ai/api/auth/current_account",
+      );
+
+      if (currentAcountResponse.data.success) {
+        available = true;
+      }
     }
 
-    const currentAcountResponse = await axios.get(
-      "https://claude.ai/api/auth/current_account",
-    );
-
-    if (currentAcountResponse.data.success) {
-      this.constructor._isAvailable = true;
-    } else {
-      this.constructor._isAvailable = false;
-    }
-
-    return this.isAvailable(); // Always return like this
+    return available;
   }
 
   /**

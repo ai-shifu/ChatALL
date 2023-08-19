@@ -16,17 +16,17 @@ export default class SparkBot extends Bot {
     super();
   }
 
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
     try {
       const response = await axios.get(
         "https://xinghuo.xfyun.cn/iflygpt/userInfo",
       );
-      this.constructor._isAvailable = response.data.flag;
+      available = response.data.flag;
     } catch (error) {
       console.error("Error checking Spark login status:", error);
-      this.constructor._isAvailable = false;
     }
-    return this.isAvailable();
+    return available;
   }
 
   async createChatContext() {

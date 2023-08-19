@@ -19,12 +19,10 @@ export default class GradioBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
-    if (this.constructor._loginUrl === "") {
-      this.constructor._isAvailable = false;
-    } else {
+  async _checkAvailability() {
+    let available = false;
+    if (this.constructor._loginUrl !== "") {
       try {
         // Remove trailing slash
         this.constructor._loginUrl = this.constructor._loginUrl.replace(
@@ -39,14 +37,13 @@ export default class GradioBot extends Bot {
         this.config.path = response.data.path ?? "";
         this.config.root = this.constructor._loginUrl;
 
-        this.constructor._isAvailable = true;
+        available = true;
       } catch (err) {
         console.log(err);
-        this.constructor._isAvailable = false;
       }
     }
 
-    return this.isAvailable(); // Always return like this
+    return available;
   }
 
   /**

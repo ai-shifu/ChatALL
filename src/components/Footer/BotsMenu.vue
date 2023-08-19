@@ -95,7 +95,9 @@ const favorited = computed(() => {
 
 const tags = Object.keys(botTags);
 const selectedTags = ref([]);
-const shownBots = ref(bots.all);
+
+const notDisabledBots = bots.all.filter((bot) => !bot.isDisabled());
+const shownBots = ref(notDisabledBots);
 
 const toggleFavorite = (bot) => {
   const classname = bot.getClassname();
@@ -111,7 +113,7 @@ function toggleMenu() {
 }
 
 function filterBots(selectedTags) {
-  let filteredIn = bots.all;
+  let filteredIn = notDisabledBots;
 
   if (selectedTags.length) {
     const tagBots = selectedTags.map((tag) => botTags[tag]);

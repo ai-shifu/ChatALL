@@ -30,9 +30,10 @@ export default class SkyWorkBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
+  async _checkAvailability() {
+    let available = false;
+
     try {
       const { data } = await axios.post(
         "https://neice.tiangong.cn/api/v1/user/inviteVerify",
@@ -41,7 +42,7 @@ export default class SkyWorkBot extends Bot {
       );
 
       if (data.code === 200) {
-        this.constructor._isAvailable = true;
+        available = true;
       } else if (data.code >= 60100) {
         // Invite token expired, request a new one
         const { data } = await axios.post(
@@ -53,18 +54,13 @@ export default class SkyWorkBot extends Bot {
           await store.commit("setSkyWork", {
             inviteToken: data.resp_data?.invite_token,
           });
-          this.constructor._isAvailable = true;
-        } else {
-          this.constructor._isAvailable = false;
+          available = true;
         }
-      } else {
-        this.constructor._isAvailable = false;
       }
     } catch (err) {
       console.error("SkyWork login error:", err);
-      this.constructor._isAvailable = false;
     }
-    return this.isAvailable(); // Always return like this
+    return available;
   }
 
   /**

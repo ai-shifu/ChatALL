@@ -10,10 +10,10 @@ export default class OpenAIAPIBot extends LangChainBot {
     super();
   }
 
-  async checkAvailability() {
-    if (!store.state.openaiApi.apiKey) {
-      this.constructor._isAvailable = false;
-    } else {
+  async _checkAvailability() {
+    let available = false;
+
+    if (store.state.openaiApi.apiKey) {
       const chatModel = new ChatOpenAI({
         configuration: {
           basePath: store.state.openaiApi.alterUrl
@@ -26,9 +26,9 @@ export default class OpenAIAPIBot extends LangChainBot {
         streaming: true,
       });
       this.constructor._chatModel = chatModel;
-      this.constructor._isAvailable = true;
+      available = true;
     }
-    return this.isAvailable();
+    return available;
   }
 
   getPastRounds() {

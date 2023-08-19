@@ -68,6 +68,7 @@
   },
   "bot": {
     "creatingConversation": "Creating conversation...",
+    "disabled": "DISABLED",
     "failedToCreateConversation": "Failed to create conversation",
     "name": "Null Bot",
     "notImplemented": "Under construction...",

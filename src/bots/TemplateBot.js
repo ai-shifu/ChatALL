@@ -15,19 +15,17 @@ export default class YourAIBot extends Bot {
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.
-   * @sideeffect - Set this.constructor._isAvailable
    */
-  async checkAvailability() {
+  async _checkAvailability() {
     // Check:
     // 1. Whether the bot is logged in as needed
     // 2. Whether the bot settings are correct (e.g. API key is valid)
     // If yes:
-    //   this.constructor._isAvailable = true;
+    //   return true;
     // else:
-    //   this.constructor._isAvailable = false;
+    //   return false;
 
-    this.constructor._isAvailable = true; // For simplicity, default to true
-    return this.isAvailable(); // Always return like this
+    return true; // For simplicity, default to true
   }
 
   /**
