@@ -100,7 +100,8 @@ export default class HuggingChatBot extends Bot {
 
         source.addEventListener("error", (error) => {
           source.close();
-          reject(new Error(error.data.error));
+          const data = JSON.parse(error.data);
+          reject(new Error(data.message));
         });
 
         source.stream();
