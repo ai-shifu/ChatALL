@@ -37,6 +37,8 @@ import OpenAssistantBot from "./OpenAssistantBot";
 import CharacterAIBot from "./CharacterAIBot";
 import ClaudeAIBot from "./ClaudeAIBot";
 import Llama2HC70bBot from "./huggingface/Llama2HC70bBot";
+import Llama213bBot from "./lmsys/Llama213bBot";
+import Llama27bBot from "./lmsys/Llama27bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -64,6 +66,8 @@ const all = [
   ChatGPTBrowsingBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   GradioAppBot.getInstance(),
+  Llama27bBot.getInstance(),
+  Llama213bBot.getInstance(),
   Llama2HC70bBot.getInstance(),
   MOSSBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
@@ -108,6 +112,8 @@ export const botTags = {
     bots.getBotByClassName("ClaudeBot"),
     bots.getBotByClassName("ClaudeInstantPoeBot"),
     bots.getBotByClassName("HuggingChatBot"),
+    bots.getBotByClassName("Llama27bBot"),
+    bots.getBotByClassName("Llama213bBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),
@@ -136,6 +142,8 @@ export const botTags = {
     bots.getBotByClassName("AlpacaBot"),
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("HuggingChatBot"),
+    bots.getBotByClassName("Llama27bBot"),
+    bots.getBotByClassName("Llama213bBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),
