@@ -17,12 +17,22 @@ export default class LMSYSBot extends GradioBot {
     super();
   }
 
+  async _checkAvailability() {
+    let available = await super._checkAvailability();
+    if (available) {
+      this._sendFnIndex(43, "", () => {}, 0); // Refresh the session
+    }
+    return available;
+  }
+
   makeData(fn_index, prompt) {
     let r = null;
     if (fn_index === this.constructor._fnIndexes[0]) {
       r = [null, this.constructor._model, prompt];
     } else if (fn_index === this.constructor._fnIndexes[1]) {
       r = [null, 0.7, 1, 512];
+    } else if (fn_index === 43) {
+      r = [{}];
     }
     return r;
   }
