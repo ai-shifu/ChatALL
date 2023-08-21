@@ -23,11 +23,17 @@
     "singleColumn": "1열",
     "doubleColumn": "2열",
     "tripleColumn": "3열"
+    "selectedResponsesCount": "{ selectedCount } 선택됨"
   },
   "footer": {
     "chooseFavorite": "좋아하는 AI 봇 선택",
     "sendPrompt": "보내기:",
     "promptPlaceholder": "메시지를 입력합니다. (Shift+Enter를 입력하여 새 줄 추가)"
+    "madeInChina": "중국산",
+    "openSource": "오픈 소스",
+    "free": "무료",
+    "paid": "유료",
+    "api": "API"
   },
   "error": {
     "error": "오류",
@@ -39,6 +45,7 @@
     "confirmHide": "이 메시지를 삭제하시겠습니까?",
     "confirmHideChat": "이 대화를 삭제하시겠습니까?",
     "confirmHidePrompt": "이 프롬프트를 삭제하시겠습니까?",
+    "confirmHideAction": "이 동작을 삭제하시겠습니까?",
     "done": "완료",
     "cancel": "취소"
   },
@@ -48,9 +55,24 @@
     "deleteAllChatHistory": "모든 대화 기록 삭제",
     "downloadAllChatHistory": "모든 채팅 기록 저장",
     "confirmDeleteAllChatHistory": "모든 대화 기록을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+    "actions": "동작",
+    "addAction": "동작 추가",
+    "actionName": "이름",
+    "prefix": "접두사",
+    "actionTemplate": "템플릿",
+    "suffix": "접미사",
+    "preview": "미리보기",
+    "inNewChat": "새 대화에서",
+    "inCurrentChat": "현재 대화에서",
+    "templateParameters": "템픞릿 매개변수",
+    "parameter": "매개변수",
+    "description": "설명",
+    "botNameDesc": "선택한 응답의 봇 이름",
+    "botResponseDesc": "선택된 응답"
   },
   "bot": {
     "creatingConversation": "대화를 만드는 중...",
+    "disabled": "사용 안 함",
     "failedToCreateConversation": "대화를 만들지 못했습니다",
     "name": "Null 봇",
     "notImplemented": "공사 중...",
@@ -81,6 +103,7 @@
   },
   "bingChat": {
     "name": "Bing Chat",
+    "loginToContinue": "요청이 제한됩니다. 계속하려면 <a { attributes }>로그인</a>하십시오.",
     "solveCaptcha": "계속하려면 <a { attributes }>CAPTCHA를 해결</a>해야 합니다.",
     "h3imaginative": "창의적인",
     "galileo": "균형 잡힌",
@@ -122,9 +145,13 @@
   "lmsys": {
     "name": "LMSYS",
     "vicuna-13b": "vicuna-13b",
+    "vicuna-33b": "vicuna-33b",
     "chatglm-6b": "chatglm-6b",
+    "chatglm2-6b": "chatglm2-6b",
     "alpaca-13b": "alpaca-13b",
-    "claude-1": "claude-1"
+    "claude-1": "claude-1",
+    "llama-2-13b-chat": "llama-2-13b",
+    "llama-2-7b-chat": "llama-2-7b"
   },
   "moss": {
     "name": "MOSS"
