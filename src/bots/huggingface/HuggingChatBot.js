@@ -2,7 +2,7 @@ import AsyncLock from "async-lock";
 import axios from "axios";
 import { SSE } from "sse.js";
 import { v4 as uuidv4 } from "uuid";
-import Bot from "@/bots/Bot";
+import Bot, { LoginError } from "@/bots/Bot";
 import i18n from "@/i18n";
 
 export default class HuggingChatBot extends Bot {
@@ -101,7 +101,13 @@ export default class HuggingChatBot extends Bot {
         source.addEventListener("error", (error) => {
           source.close();
           const data = JSON.parse(error.data);
-          reject(new Error(data.message));
+          if (data.message === "Exceeded number of messages before login") {
+            reject(new LoginError(data.message));
+          } else if (data.message) {
+            reject(new Error(data.message));
+          } else {
+            reject(error);
+          }
         });
 
         source.stream();
@@ -126,6 +132,7 @@ export default class HuggingChatBot extends Bot {
       })
       .catch((error) => {
         console.error(error);
+        throw error;
       });
     return conversationId;
   }

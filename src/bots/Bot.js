@@ -196,8 +196,14 @@ export default class Bot {
       }
     } catch (err) {
       console.error(`Error send prompt to ${this.getFullname()}:`, err);
+      let message = err?.message || "";
+      if (err instanceof LoginError) {
+        message = `${message}\n${i18n.global.t("error.requireLogin", {
+          link: this.getLoginHyperlink(),
+        })}`;
+      }
       onUpdateResponse(callbackParam, {
-        content: this.wrapCollapsedSection(err),
+        content: this.wrapCollapsedSection(message),
         done: true,
       }); // Make sure stop loading
     }
@@ -279,5 +285,12 @@ export default class Bot {
   getLoginHyperlink() {
     const url = this.getLoginUrl();
     return `<a href="${url}" target="innerWindow">${url}</a>`;
+  }
+}
+
+export class LoginError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "LoginError";
   }
 }
