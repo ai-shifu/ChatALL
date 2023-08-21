@@ -104,7 +104,6 @@
   },
   "bingChat": {
     "name": "Bing Chat",
-    "loginToContinue": "Request is throttled. <a { attributes }>Log in</a> to continue.",
     "solveCaptcha": "You need to <a { attributes }>solve CAPTCHA</a> to continue.",
     "h3imaginative": "Creative",
     "galileo": "Balanced",

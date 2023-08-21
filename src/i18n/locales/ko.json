@@ -81,7 +81,6 @@
   },
   "bingChat": {
     "name": "Bing Chat",
-    "loginToContinue": "요청이 제한됩니다. 계속하려면 <a { attributes }>로그인</a>하십시오.",
     "solveCaptcha": "계속하려면 <a { attributes }>CAPTCHA를 해결</a>해야 합니다.",
     "h3imaginative": "창의적인",
     "galileo": "균형 잡힌",

@@ -1,4 +1,4 @@
-import Bot from "@/bots/Bot";
+import Bot, { LoginError } from "@/bots/Bot";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import WebSocketAsPromised from "websocket-as-promised";
@@ -177,14 +177,7 @@ export default class BingChatBot extends Bot {
                     );
                   } else if (event.item.result.value === "Throttled") {
                     if (this.isAnonymous(context.clientId)) {
-                      const url = this.getLoginUrl();
-                      onUpdateResponse(callbackParam, {
-                        content: i18n.global.t("bingChat.loginToContinue", {
-                          attributes: `href="${url}" title="${url}" target="innerWindow"`,
-                        }),
-                        format: "html",
-                        done: false,
-                      });
+                      reject(new LoginError(event.item.result.message));
                       this.setChatContext(null);
                     } else {
                       reject(new Error(event.item.result.message));

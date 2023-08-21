@@ -85,7 +85,6 @@
   },
   "bingChat": {
     "name": "Bing Chat",
-    "loginToContinue": "La solicitud está limitada. <a {=\"\" attributes=\"\" }=\"\">Inicie sesión</a> para continuar.",
     "solveCaptcha": "Necesitas <a {=\"\" attributes=\"\" }=\"\">resolver CAPTCHA</a> para continuar.",
     "h3imaginative": "Creativo",
     "galileo": "Equilibrado",

@@ -73,7 +73,6 @@
   },
   "bingChat": {
     "name": "Bing Chat",
-    "loginToContinue": "リクエストが制限されます。続行するには <a { attributes }>ログイン</a>してください.",
     "solveCaptcha": "続行するには <a { attributes }>CAPTCHA認証/a>をしてください。",
     "h3imaginative": "創造的に",
     "galileo": "バランスよく",

@@ -49,7 +49,6 @@
   },
   "bingChat": {
     "name": "Bing Chat",
-    "loginToContinue": "Richiesta limitata. <a { attributes }>Accedi</a> per continuare.",
     "h3imaginative": "Creativo",
     "galileo": "Equilibrato",
     "h3precise": "Preciso"
