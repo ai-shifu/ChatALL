@@ -22,13 +22,13 @@
     "no": "아니오",
     "singleColumn": "1열",
     "doubleColumn": "2열",
-    "tripleColumn": "3열"
+    "tripleColumn": "3열",
     "selectedResponsesCount": "{ selectedCount } 선택됨"
   },
   "footer": {
     "chooseFavorite": "좋아하는 AI 봇 선택",
     "sendPrompt": "보내기:",
-    "promptPlaceholder": "메시지를 입력합니다. (Shift+Enter를 입력하여 새 줄 추가)"
+    "promptPlaceholder": "메시지를 입력합니다. (Shift+Enter를 입력하여 새 줄 추가)",
     "madeInChina": "중국산",
     "openSource": "오픈 소스",
     "free": "무료",
@@ -54,7 +54,7 @@
     "newChat": "새 대화",
     "deleteAllChatHistory": "모든 대화 기록 삭제",
     "downloadAllChatHistory": "모든 채팅 기록 저장",
-    "confirmDeleteAllChatHistory": "모든 대화 기록을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+    "confirmDeleteAllChatHistory": "모든 대화 기록을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
     "actions": "동작",
     "addAction": "동작 추가",
     "actionName": "이름",
