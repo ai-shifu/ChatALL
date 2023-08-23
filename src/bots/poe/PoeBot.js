@@ -66,8 +66,8 @@ export default class PoeBot extends Bot {
     const modelHandles = {
       a2: "Claude-instant",
       a2_100k: "Claude-instant-100k",
-      a2_2: "Claude+",
-      capybara: "Sage",
+      a2_2: "Claude-2-100k",
+      capybara: "Assistant",
       chinchilla: "ChatGPT",
       beaver: "GPT-4",
     };
