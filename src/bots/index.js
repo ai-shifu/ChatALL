@@ -82,7 +82,7 @@ const all = [
   YouChatBot.getInstance(),
 ];
 
-const disabled = ["ClaudeBot", "ChatGPTBrowsingBot"];
+const disabled = ["ClaudeBot", "ChatGPTBrowsingBot", "ChatGLMBot", "AlpacaBot"];
 
 if (process.env.NODE_ENV !== "production") {
   all.push(DevBot.getInstance());
