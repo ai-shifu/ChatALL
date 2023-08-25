@@ -176,7 +176,8 @@
     "a2_2": "Claude-2-100k",
     "beaver": "GPT-4",
     "capybara": "Assistant",
-    "chinchilla": "ChatGPT 3.5"
+    "chinchilla": "ChatGPT 3.5",
+    "vizcacha": "GPT-4-32k"
   },
   "qianWen": {
     "name": "通义千问"

@@ -25,6 +25,7 @@ import ChatGPT4PoeBot from "./poe/ChatGPT4PoeBot";
 import ClaudeInstantPoeBot from "./poe/ClaudeInstantPoeBot";
 import ClaudeInstant100kPoeBot from "./poe/ClaudeInstant100kPoeBot";
 import ClaudePlusPoeBot from "./poe/ClaudePlusPoeBot";
+import ChatGPT432kPoeBot from "./poe/ChatGPT432kPoeBot";
 import SkyWorkBot from "./SkyWorkBot";
 import ChatGPT4MobileBot from "./openai/ChatGPT4MobileBot";
 import OpenAIAPI3516KBot from "./openai/OpenAIAPI3516KBot";
@@ -64,6 +65,7 @@ const all = [
   ChatGPT4Bot.getInstance(),
   ChatGPT4MobileBot.getInstance(),
   ChatGPT4PoeBot.getInstance(),
+  ChatGPT432kPoeBot.getInstance(),
   ChatGPTBrowsingBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   GradioAppBot.getInstance(),
@@ -137,6 +139,7 @@ export const botTags = {
     bots.getBotByClassName("ChatGPTBrowsingBot"),
     bots.getBotByClassName("ClaudeInstant100kPoeBot"),
     bots.getBotByClassName("ClaudePlusPoeBot"),
+    bots.getBotByClassName("ChatGPT432kPoeBot"),
   ],
   openSource: [
     bots.getBotByClassName("AlpacaBot"),
