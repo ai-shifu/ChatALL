@@ -32,7 +32,6 @@ export default class BingChatBot extends Bot {
       "https://www.bing.com/turing/conversation/create",
       { headers },
     );
-    console.log(response);
     if (response.status == 200 && response.data?.result?.value == "Success") {
       // Save the conversation context
       conversation = {
