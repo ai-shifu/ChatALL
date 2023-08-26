@@ -81,7 +81,7 @@ export default class SparkBot extends Bot {
           formData.append("isBot", "0");
 
           const source = new SSE(
-            "https://xinghuo.xfyun.cn/iflygpt/u/chat_message/chat",
+            "https://xinghuo.xfyun.cn/iflygpt-chat/u/chat_message/chat",
             { payload: formData },
           );
 
