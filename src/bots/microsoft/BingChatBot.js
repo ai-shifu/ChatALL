@@ -24,7 +24,7 @@ export default class BingChatBot extends Bot {
     const headers = {
       "x-ms-client-request-id": uuidv4(),
       "x-ms-useragent":
-        "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.0 OS/MacIntel",
+        "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.3 OS/macOS",
     };
     let conversation = null;
 
@@ -32,12 +32,20 @@ export default class BingChatBot extends Bot {
       "https://www.bing.com/turing/conversation/create",
       { headers },
     );
-    if (response.data && response.data.result.value == "Success") {
+    console.log(response);
+    if (
+      response.status == 200 &&
+      response.data &&
+      response.data.result.value == "Success"
+    ) {
       // Save the conversation context
       conversation = {
         clientId: response.data.clientId,
         conversationId: response.data.conversationId,
-        conversationSignature: response.data.conversationSignature,
+        conversationSignature:
+          response.headers["x-sydney-conversationsignature"],
+        secAccessToken:
+          response.headers["x-sydney-encryptedconversationsignature"],
         invocationId: 0,
       };
     } else {
@@ -111,7 +119,6 @@ export default class BingChatBot extends Bot {
           },
           tone: this.constructor._tone,
           requestId: uuid,
-          conversationSignature: context.conversationSignature,
           participant: { id: context.clientId },
           conversationId: context.conversationId,
         },
@@ -128,7 +135,9 @@ export default class BingChatBot extends Bot {
       try {
         const seperator = String.fromCharCode(30);
         const wsp = new WebSocketAsPromised(
-          "wss://sydney.bing.com/sydney/ChatHub",
+          `wss://sydney.bing.com/sydney/ChatHub?sec_access_token=${encodeURIComponent(
+            context.secAccessToken,
+          )}`,
           {
             packMessage: (data) => {
               return JSON.stringify(data) + seperator;
