@@ -33,16 +33,13 @@ export default class BingChatBot extends Bot {
       { headers },
     );
     console.log(response);
-    if (
-      response.status == 200 &&
-      response.data &&
-      response.data.result.value == "Success"
-    ) {
+    if (response.status == 200 && response.data?.result?.value == "Success") {
       // Save the conversation context
       conversation = {
         clientId: response.data.clientId,
         conversationId: response.data.conversationId,
         conversationSignature:
+          response.data.conversationSignature ??
           response.headers["x-sydney-conversationsignature"],
         secAccessToken:
           response.headers["x-sydney-encryptedconversationsignature"],
@@ -121,6 +118,7 @@ export default class BingChatBot extends Bot {
           requestId: uuid,
           participant: { id: context.clientId },
           conversationId: context.conversationId,
+          conversationSignature: context.conversationSignature, // TODO: test if this is needed when secAccessToken is set
         },
       ],
       invocationId: context.invocationId.toString(),
@@ -134,23 +132,24 @@ export default class BingChatBot extends Bot {
     return new Promise((resolve, reject) => {
       try {
         const seperator = String.fromCharCode(30);
-        const wsp = new WebSocketAsPromised(
-          `wss://sydney.bing.com/sydney/ChatHub?sec_access_token=${encodeURIComponent(
-            context.secAccessToken,
-          )}`,
-          {
-            packMessage: (data) => {
-              return JSON.stringify(data) + seperator;
-            },
-            unpackMessage: (data) => {
-              return data
-                .toString()
-                .split(seperator)
-                .filter(Boolean)
-                .map((r) => JSON.parse(r));
-            },
+        // If secAccessToken is not set, use the old way to pass conversationSignature
+        const url = context.secAccessToken
+          ? `wss://sydney.bing.com/sydney/ChatHub?sec_access_token=${encodeURIComponent(
+              context.secAccessToken,
+            )}`
+          : "wss://sydney.bing.com/sydney/ChatHub";
+        const wsp = new WebSocketAsPromised(url, {
+          packMessage: (data) => {
+            return JSON.stringify(data) + seperator;
           },
-        );
+          unpackMessage: (data) => {
+            return data
+              .toString()
+              .split(seperator)
+              .filter(Boolean)
+              .map((r) => JSON.parse(r));
+          },
+        });
 
         wsp.onOpen.addListener(() => {
           wsp.sendPacked({ protocol: "json", version: 1 });
