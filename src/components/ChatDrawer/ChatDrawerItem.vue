@@ -6,12 +6,12 @@
     :active="store.getters.currentChat.index === props.chat.index"
     :title="props.chat.title"
     :value="props.chat.index"
-    style="padding: 0.8rem; padding-right: 0"
+    class="pa-3 pr-0"
     :style="{ cursor: isCursorWait ? 'wait' : 'pointer' }"
     @click="onSelectChat"
   >
     <template v-slot:prepend>
-      <v-icon color="primary"> mdi-message-outline </v-icon>
+      <v-icon color="primary" class="mr-4"> mdi-message-outline </v-icon>
     </template>
     <template
       #append
@@ -42,7 +42,8 @@
     density="compact"
     @keydown="onPressEnter"
     @focus="$event.target.select()"
-    style="padding-top: 0.8rem; padding-bottom: 0.8rem"
+    style="padding: 6px"
+    class="pl-3 pr-0"
     hide-details
   >
     <template v-slot:prepend>
@@ -121,21 +122,17 @@ function onPressEnter(event) {
 </script>
 
 <style scoped>
-:deep() .v-input__prepend {
-  margin-left: 0.8rem;
-  margin-right: 0.25rem !important;
-}
 :deep() .v-input__append {
   margin-left: 0 !important;
 }
 
-:deep() .v-list-item__prepend > i {
-  margin-right: 0.5rem !important;
+:deep() .v-input__prepend {
+  margin-right: 0.25rem !important;
 }
 
-:deep() .v-field__field > input {
-  padding-left: 0.25rem;
-  padding-right: 0.5rem;
+:deep() .v-field__input {
+  padding-left: 12px;
+  padding-right: 0;
 }
 
 :deep() i.v-icon {
