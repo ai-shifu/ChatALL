@@ -40,6 +40,7 @@ import ClaudeAIBot from "./ClaudeAIBot";
 import Llama2HC70bBot from "./huggingface/Llama2HC70bBot";
 import Llama213bBot from "./lmsys/Llama213bBot";
 import Llama27bBot from "./lmsys/Llama27bBot";
+import Llama270bBot from "./lmsys/Llama270bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -71,6 +72,7 @@ const all = [
   GradioAppBot.getInstance(),
   Llama27bBot.getInstance(),
   Llama213bBot.getInstance(),
+  Llama270bBot.getInstance(),
   Llama2HC70bBot.getInstance(),
   MOSSBot.getInstance(),
   HuggingChatBot.getInstance(),
@@ -116,6 +118,7 @@ export const botTags = {
     bots.getBotByClassName("HuggingChatBot"),
     bots.getBotByClassName("Llama27bBot"),
     bots.getBotByClassName("Llama213bBot"),
+    bots.getBotByClassName("Llama270bBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),
@@ -147,6 +150,7 @@ export const botTags = {
     bots.getBotByClassName("HuggingChatBot"),
     bots.getBotByClassName("Llama27bBot"),
     bots.getBotByClassName("Llama213bBot"),
+    bots.getBotByClassName("Llama270bBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),

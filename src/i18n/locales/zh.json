@@ -151,7 +151,8 @@
     "alpaca-13b": "alpaca-13b",
     "claude-1": "claude-1",
     "llama-2-13b-chat": "llama-2-13b",
-    "llama-2-7b-chat": "llama-2-7b"
+    "llama-2-7b-chat": "llama-2-7b",
+    "llama-2-70b-chat": "llama-2-70b"
   },
   "moss": {
     "name": "MOSS"
