@@ -86,10 +86,12 @@ export default createStore({
         favBots: [
           // default bots
           { classname: "ChatGPT35Bot", selected: true },
+          { classname: "ChatGPT4Bot", selected: true },
           { classname: "BingChatCreativeBot", selected: true },
           { classname: "BingChatBalancedBot", selected: true },
           { classname: "BingChatPreciseBot", selected: true },
-          { classname: "Llama213bBot", selected: true },
+          { classname: "BardBot", selected: true },
+          { classname: "Llama270bBot", selected: true },
           { classname: "VicunaBot", selected: true },
         ],
         contexts: {},
