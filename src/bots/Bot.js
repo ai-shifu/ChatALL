@@ -196,11 +196,13 @@ export default class Bot {
       }
     } catch (err) {
       console.error(`Error send prompt to ${this.getFullname()}:`, err);
-      let message = err?.message || "";
+      let message;
       if (err instanceof LoginError) {
-        message = `${message}\n${i18n.global.t("error.requireLogin", {
+        message = `${err.message}\n${i18n.global.t("error.requireLogin", {
           link: this.getLoginHyperlink(),
         })}`;
+      } else {
+        message = err;
       }
       onUpdateResponse(callbackParam, {
         content: this.wrapCollapsedSection(message),
