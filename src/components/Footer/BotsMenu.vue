@@ -61,7 +61,6 @@
                 divided
                 color="primary"
                 group
-                multiple
                 variant="outlined"
                 rounded="xl"
                 @update:model-value="filterBots($event)"
@@ -114,6 +113,11 @@ function toggleMenu() {
 
 function filterBots(selectedTags) {
   let filteredIn = notDisabledBots;
+
+  // If the toggle is not multi-select, the selectedTags will be a string
+  if (typeof selectedTags === "string") {
+    selectedTags = [selectedTags];
+  }
 
   if (selectedTags.length) {
     const tagBots = selectedTags.map((tag) => botTags[tag]);
