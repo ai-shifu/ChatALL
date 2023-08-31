@@ -164,7 +164,7 @@ async function createWindow() {
     },
   );
 
-  // Modify the Referer header for each request.
+  // Modify the Referer header for each request and special patch for some sites.
   win.webContents.session.webRequest.onBeforeSendHeaders(
     (details, callback) => {
       const { url, requestHeaders } = details;
@@ -191,6 +191,11 @@ async function createWindow() {
       } else if (url.includes("BardChatUi")) {
         requestHeaders["origin"] = "https://bard.google.com";
         requestHeaders["sec-fetch-site"] = "same-origin";
+      }
+
+      // To make Bing Chat work
+      if (url.startsWith("wss://sydney.bing.com/")) {
+        requestHeaders["Origin"] = "https://www.bing.com";
       }
 
       callback({ requestHeaders });
