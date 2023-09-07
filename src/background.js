@@ -164,7 +164,7 @@ async function createWindow() {
     },
   );
 
-  // Modify the Referer header for each request.
+  // Modify the Referer header for each request and special patch for some sites.
   win.webContents.session.webRequest.onBeforeSendHeaders(
     (details, callback) => {
       const { url, requestHeaders } = details;
@@ -191,6 +191,11 @@ async function createWindow() {
       } else if (url.includes("BardChatUi")) {
         requestHeaders["origin"] = "https://bard.google.com";
         requestHeaders["sec-fetch-site"] = "same-origin";
+      }
+
+      // To make Bing Chat work
+      if (url.startsWith("wss://sydney.bing.com/")) {
+        requestHeaders["Origin"] = "https://www.bing.com";
       }
 
       callback({ requestHeaders });
@@ -233,38 +238,42 @@ function createNewWindow(url, userAgent = "") {
   newWin.on("close", async (e) => {
     e.preventDefault(); // Prevent the window from closing
 
-    // Hacking secrets
-    const getLocalStorage = async (key) => {
-      return await newWin.webContents.executeJavaScript(
-        `localStorage.getItem("${key}");`,
-      );
-    };
-    if (url.startsWith("https://moss.fastnlp.top/")) {
-      // Get the secret of MOSS
-      const secret = await getLocalStorage("flutter.token");
-      mainWindow.webContents.send("moss-secret", secret);
-    } else if (url.startsWith("https://qianwen.aliyun.com/")) {
-      // Get QianWen bot's XSRF-TOKEN
-      const token = await newWin.webContents.executeJavaScript(
-        'document.cookie.split("; ").find((cookie) => cookie.startsWith("XSRF-TOKEN="))?.split("=")[1];',
-      );
-      mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
-    } else if (url.startsWith("https://neice.tiangong.cn/")) {
-      // Get the tokens of SkyWork
-      const inviteToken = await getLocalStorage("formNatureQueueWaitToken");
-      const token = await getLocalStorage("formNatureResearchToken");
-      mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
-    } else if (url.startsWith("https://character.ai/")) {
-      const token = await getLocalStorage("char_token");
-      mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
-    } else if (url.startsWith("https://claude.ai/")) {
-      const org = await getLocalStorage("lastActiveOrg");
-      mainWindow.webContents.send("CLAUDE-2-ORG", org);
-    } else if (url.startsWith("https://poe.com/")) {
-      const formkey = await newWin.webContents.executeJavaScript(
-        "window.ereNdsRqhp2Rd3LEW();",
-      );
-      mainWindow.webContents.send("POE-FORMKEY", formkey);
+    try {
+      // Hacking secrets
+      const getLocalStorage = async (key) => {
+        return await newWin.webContents.executeJavaScript(
+          `localStorage.getItem("${key}");`,
+        );
+      };
+      if (url.startsWith("https://moss.fastnlp.top/")) {
+        // Get the secret of MOSS
+        const secret = await getLocalStorage("flutter.token");
+        mainWindow.webContents.send("moss-secret", secret);
+      } else if (url.startsWith("https://qianwen.aliyun.com/")) {
+        // Get QianWen bot's XSRF-TOKEN
+        const token = await newWin.webContents.executeJavaScript(
+          'document.cookie.split("; ").find((cookie) => cookie.startsWith("XSRF-TOKEN="))?.split("=")[1];',
+        );
+        mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
+      } else if (url.startsWith("https://neice.tiangong.cn/")) {
+        // Get the tokens of SkyWork
+        const inviteToken = await getLocalStorage("formNatureQueueWaitToken");
+        const token = await getLocalStorage("formNatureResearchToken");
+        mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
+      } else if (url.startsWith("https://character.ai/")) {
+        const token = await getLocalStorage("char_token");
+        mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
+      } else if (url.startsWith("https://claude.ai/")) {
+        const org = await getLocalStorage("lastActiveOrg");
+        mainWindow.webContents.send("CLAUDE-2-ORG", org);
+      } else if (url.startsWith("https://poe.com/")) {
+        const formkey = await newWin.webContents.executeJavaScript(
+          "window.ereNdsRqhp2Rd3LEW();",
+        );
+        mainWindow.webContents.send("POE-FORMKEY", formkey);
+      }
+    } catch (err) {
+      console.error(err);
     }
 
     newWin.destroy(); // Destroy the window manually
