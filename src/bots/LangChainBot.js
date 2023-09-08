@@ -12,12 +12,10 @@ export default class LangChainBot extends Bot {
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Fetch the chat messages from the buffer memory.
-    let messages = await this.bufferMemory.chatHistory.getMessages();
-    // Fetch the chat context if the above conditions are met.
-    let OriginMessages = await this.getChatContext();
+    let messages = await this.getChatContext();
     // Clear the buffer memory and set the new chat title as the memory key.
     await this.bufferMemory.clear();
-    messages = OriginMessages.map((item) => {
+    messages = messages.map((item) => {
       let storedMessage = JSON.parse(item); // Deserialize
       if (
         storedMessage.type.toLowerCase() ===
