@@ -255,15 +255,6 @@ export default class Bot {
   }
 
   /**
-   * Get the title from the store.
-   * @returns {object} - Chat title defined by the bot
-   */
-  async getChatTitle() {
-    let title = store.getters.currentChat?.title;
-    return title;
-  }
-
-  /**
    * @param {*} context
    * @returns Nothing
    */

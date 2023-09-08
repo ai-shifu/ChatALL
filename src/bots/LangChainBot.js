@@ -13,33 +13,26 @@ export default class LangChainBot extends Bot {
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     // Fetch the chat messages from the buffer memory.
     let messages = await this.bufferMemory.chatHistory.getMessages();
-    // Check if the messages are empty or if there's a chat title mismatch.
-    if (
-      messages.length === 0 ||
-      this.bufferMemory.memoryKey !== (await this.getChatTitle())
-    ) {
-      // Fetch the chat context if the above conditions are met.
-      messages = await this.getChatContext();
-      // Clear the buffer memory and set the new chat title as the memory key.
-      await this.bufferMemory.clear();
-      this.bufferMemory.memoryKey = await this.getChatTitle();
-      messages = messages.map((item) => {
-        let storedMessage = JSON.parse(item); // Deserialize
-        if (
-          storedMessage.type.toLowerCase() ===
-          this.bufferMemory.humanPrefix.toLowerCase()
-        ) {
-          this.bufferMemory.chatHistory.addUserMessage(storedMessage.data);
-        } else if (
-          storedMessage.type.toLowerCase() ===
-          this.bufferMemory.aiPrefix.toLowerCase()
-        ) {
-          this.bufferMemory.chatHistory.addAIChatMessage(storedMessage.data);
-        } else if (storedMessage.type === "system") {
-          this.bufferMemory.chatHistory.addMessage(storedMessage.data);
-        }
-      });
-    }
+    // Fetch the chat context if the above conditions are met.
+    let OriginMessages = await this.getChatContext();
+    // Clear the buffer memory and set the new chat title as the memory key.
+    await this.bufferMemory.clear();
+    messages = OriginMessages.map((item) => {
+      let storedMessage = JSON.parse(item); // Deserialize
+      if (
+        storedMessage.type.toLowerCase() ===
+        this.bufferMemory.humanPrefix.toLowerCase()
+      ) {
+        this.bufferMemory.chatHistory.addUserMessage(storedMessage.data);
+      } else if (
+        storedMessage.type.toLowerCase() ===
+        this.bufferMemory.aiPrefix.toLowerCase()
+      ) {
+        this.bufferMemory.chatHistory.addAIChatMessage(storedMessage.data);
+      } else if (storedMessage.type === "system") {
+        this.bufferMemory.chatHistory.addMessage(storedMessage.data);
+      }
+    });
     // Remove old messages if exceeding the pastRounds limit
     while (messages.length > this.getPastRounds() * 2) {
       messages.shift();
