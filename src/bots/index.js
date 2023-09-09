@@ -41,6 +41,7 @@ import Llama2HC70bBot from "./huggingface/Llama2HC70bBot";
 import Llama213bBot from "./lmsys/Llama213bBot";
 import Llama27bBot from "./lmsys/Llama27bBot";
 import Llama270bBot from "./lmsys/Llama270bBot";
+import Falcon180bBot from "./huggingface/Falcon180bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -69,6 +70,7 @@ const all = [
   ChatGPTBrowsingBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
+  Falcon180bBot.getInstance(),
   GradioAppBot.getInstance(),
   Llama27bBot.getInstance(),
   Llama213bBot.getInstance(),
@@ -134,6 +136,7 @@ export const botTags = {
     bots.getBotByClassName("ClaudeAIBot"),
     bots.getBotByClassName("PiBot"),
     bots.getBotByClassName("SageBot"),
+    bots.getBotByClassName("Falcon180bBot"),
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
