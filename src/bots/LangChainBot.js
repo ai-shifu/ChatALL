@@ -11,7 +11,6 @@ export default class LangChainBot extends Bot {
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     let messages = await this.getChatContext();
-
     let bufferMemory = new BufferMemory();
 
     // Remove old messages if exceeding the pastRounds limit
@@ -19,6 +18,7 @@ export default class LangChainBot extends Bot {
       messages.shift();
     }
 
+    // Deserialize the messages and convert them to the correct format
     messages.forEach((item) => {
       let storedMessage = JSON.parse(item); // Deserialize
       if (
@@ -34,8 +34,6 @@ export default class LangChainBot extends Bot {
         bufferMemory.chatHistory.addMessage(storedMessage.data);
       }
     });
-
-    // Deserialize the messages and convert them to the correct format
 
     // Add the prompt to the messages
     await bufferMemory.chatHistory.addUserMessage(prompt);
