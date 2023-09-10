@@ -1,5 +1,5 @@
 import Bot from "@/bots/Bot";
-import { HumanMessage, AIMessage, SystemMessage } from "langchain/schema";
+import { BufferMemory } from "langchain/memory";
 
 export default class LangChainBot extends Bot {
   static _brandId = "langChainBot";
@@ -11,28 +11,36 @@ export default class LangChainBot extends Bot {
 
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     let messages = await this.getChatContext();
+    let bufferMemory = new BufferMemory();
+
     // Remove old messages if exceeding the pastRounds limit
     while (messages.length > this.getPastRounds() * 2) {
       messages.shift();
     }
 
     // Deserialize the messages and convert them to the correct format
-    messages = messages.map((item) => {
+    messages.forEach((item) => {
       let storedMessage = JSON.parse(item); // Deserialize
-      if (storedMessage.type === "human") {
-        return new HumanMessage(storedMessage.data);
-      } else if (storedMessage.type === "ai") {
-        return new AIMessage(storedMessage.data);
+      if (
+        storedMessage.type.toLowerCase() ===
+        bufferMemory.humanPrefix.toLowerCase()
+      ) {
+        bufferMemory.chatHistory.addUserMessage(storedMessage.data);
+      } else if (
+        storedMessage.type.toLowerCase() === bufferMemory.aiPrefix.toLowerCase()
+      ) {
+        bufferMemory.chatHistory.addAIChatMessage(storedMessage.data);
       } else if (storedMessage.type === "system") {
-        return new SystemMessage(storedMessage.data);
+        bufferMemory.chatHistory.addMessage(storedMessage.data);
       }
     });
 
     // Add the prompt to the messages
-    messages.push(new HumanMessage(prompt));
+    await bufferMemory.chatHistory.addUserMessage(prompt);
 
     let res = "";
     const model = this.constructor._chatModel;
+    messages = await bufferMemory.chatHistory.getMessages();
     const callbacks = [
       {
         handleLLMNewToken(token) {
@@ -46,7 +54,7 @@ export default class LangChainBot extends Bot {
     ];
     model.callbacks = callbacks;
     await model.call(messages);
-    messages.push(new AIMessage(res));
+    await bufferMemory.chatHistory.addAIChatMessage(res);
     // Serialize the messages before storing
     messages = messages.map((item) => JSON.stringify(item.toDict()));
     this.setChatContext(messages);
