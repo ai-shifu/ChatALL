@@ -59,6 +59,7 @@ const all = [
   ClaudePlusPoeBot.getInstance(),
   WenxinQianfanBot.getInstance(),
   WenxinQianfanTurboBot.getInstance(),
+  Falcon180bBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
@@ -70,7 +71,6 @@ const all = [
   ChatGPTBrowsingBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
-  Falcon180bBot.getInstance(),
   GradioAppBot.getInstance(),
   Llama27bBot.getInstance(),
   Llama213bBot.getInstance(),
@@ -158,6 +158,7 @@ export const botTags = {
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),
     bots.getBotByClassName("VicunaBot"),
+    bots.getBotByClassName("Falcon180bBot"),
   ],
   api: [
     bots.getBotByClassName("AzureOpenAIAPIBot"),

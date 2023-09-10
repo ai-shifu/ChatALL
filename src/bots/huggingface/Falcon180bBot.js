@@ -8,7 +8,7 @@ export default class Falcon180bBot extends GradioBot {
   static _logoFilename = "falcon-180b-logo.jpeg"; // Place it in public/bots/
   static _loginUrl = "https://tiiuae-falcon-180b-demo.hf.space/"; // Any Gradio URL
   static _settingsComponent = "Falcon180bBotSettings"; // Vue component filename for settings
-  // static _model = "falcon-180b";
+  static _model = "falcon-180b";
   static _lock = new AsyncLock(); // Send requests in queue to save LMSYS
   static _fnIndexes = [3]; // Indexes of the APIs to call in order. Sniffer it by devtools.
 

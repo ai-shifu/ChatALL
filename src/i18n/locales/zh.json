@@ -206,7 +206,8 @@
     "queue": "当前有 { queue_size } 个请求在队列中，你在第 { queue_position } 位"
   },
   "falcon": {
-    "name": "Falcon"
+    "name": "Falcon",
+    "falcon-180b": "180b"
   },
   "dev": {
     "name": "开发专用 Bot"
