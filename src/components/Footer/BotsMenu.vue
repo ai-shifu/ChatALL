@@ -119,7 +119,7 @@ function filterBots(selectedTags) {
     selectedTags = [selectedTags];
   }
 
-  if (selectedTags.length) {
+  if (selectedTags?.length) {
     const tagBots = selectedTags.map((tag) => botTags[tag]);
     filteredIn = filteredIn.filter((bot) => {
       return tagBots.every((tagBot) => tagBot.includes(bot));
