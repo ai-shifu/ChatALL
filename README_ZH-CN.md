@@ -43,7 +43,7 @@ ChatALL 的典型用户是：
 | [HuggingChat](https://huggingface.co/chat/)                  | 支持     | 无 API   |
 | [天工](https://neice.tiangong.cn/)                           | 支持     | 即将推出 |                                          |
 | [You](https://you.com/)                                      | 支持     | 无 API   |                                          |
-| [Pi](https://pi.ai)                                      | 支持     | 无 API   |                                          |
+| [Pi](https://pi.ai)                                          | 支持     | 无 API   |                                          |
 | [360 智脑](https://ai.360.cn/)                               | 支持     | 无       |                                          |
 | [YouChat](https://you.com/)                                  | 支持     | 无       |                                          |
 | [Open Assistant](https://open-assistant.io/)                 | 支持     | 无       |                                          |
@@ -112,7 +112,7 @@ brew install --cask chatall
 1. **刷新** - 按下 `Ctrl + R` 或 `Cmd + R`。
 2. **重启** - 退出 ChatALL，再重新运行。
 3. **重新登录** - 点击右上角的设置按钮，在弹出的窗口中点击对应的登入/登出链接，重新登录网站。
-4. **清空消息** - 点击右上角的扫帚按钮。
+4. **创建新对话** - 创建一个新对话，再发送提示词。
 
 如果以上方法都不行，那么可以尝试**重置 ChatALL**。注意，这将丢失你所有的设置和消息历史。
 

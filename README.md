@@ -43,7 +43,7 @@ Typical users of ChatALL are:
 | [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      | Llama 2 included                            |
 | [SkyWork](https://neice.tiangong.cn/)                        | Yes         | Coming soon |                                             |
 | [You](https://you.com/)                                      | Yes         | No API      |                                             |
-| [Pi](https://pi.ai)                                      | Yes         | No API      |                                             |
+| [Pi](https://pi.ai)                                          | Yes         | No API      |                                             |
 | [360 AI Brain](https://ai.360.cn/)                           | Yes         | No API      |                                             |
 | [YouChat](https://you.com/)                                  | Yes         | No API      |                                             |
 | [Open Assistant](https://open-assistant.io/)                 | Yes         | No API      |                                             |
@@ -112,8 +112,8 @@ If you encounter any problems while using ChatALL, you can try the following met
 
 1. **Refresh** - press `Ctrl + R` or `Cmd + R`.
 2. **Restart** - exit ChatALL and run it again.
-3. **Re-login** - click the settings button in the upper right corner, then click the corresponding login/logout link in the pop-up window to log in to the website again.
-4. **Clear all messages** - click the broom button in the upper right corner.
+3. **Re-login** - click the settings button in the upper right corner, then click the corresponding login/logout link to relogin the website.
+4. **Create a new chat** - click the `New Chat` button and send prompt again.
 
 If none of the above methods work, you can try **resetting ChatALL**. Note that this will delete all your settings and message history.
 
