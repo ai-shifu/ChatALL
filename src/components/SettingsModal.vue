@@ -101,6 +101,7 @@ import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
 import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
+import Falcon180bBotSettings from "@/components/BotSettings/Falcon180bBotSettings.vue";
 import LMSYSBotSettings from "@/components/BotSettings/LMSYSBotSettings.vue";
 import HuggingChatBotSettings from "@/components/BotSettings/HuggingChatBotSettings.vue";
 import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue";
@@ -133,6 +134,7 @@ const botSettings = [
   { brand: "characterAI", component: CharacterAIBotSettings },
   { brand: "chatGpt", component: ChatGPTBotSettings },
   { brand: "claudeAi", component: ClaudeAIBotSettings },
+  { brand: "falcon", component: Falcon180bBotSettings },
   { brand: "gradio", component: GradioAppBotSettings },
   { brand: "huggingChat", component: HuggingChatBotSettings },
   { brand: "lmsys", component: LMSYSBotSettings },
