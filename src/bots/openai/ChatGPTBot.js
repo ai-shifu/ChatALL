@@ -200,7 +200,7 @@ export default class ChatGPTBot extends Bot {
         let preInfo = [];
         source.addEventListener("message", (event) => {
           const regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}$/;
-          if (event.data === "[DONE]") {
+          if (event.data.trim() === "[DONE]") {
             onUpdateResponse(callbackParam, { done: true });
             source.close();
             resolve();
