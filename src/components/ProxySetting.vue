@@ -66,7 +66,7 @@
     <v-list-item v-if="proxySettings.proxyMode == 'pacFile'">
       <v-list-item-title>{{ $t("proxy.pacFile") }}</v-list-item-title>
       <v-text-field
-        v-model="proxySettings.PACfile"
+        v-model="proxySettings.pacFile"
         :label="$t('proxy.pacFileUsing')"
         disabled
       ></v-text-field>
@@ -246,9 +246,9 @@ async function reload() {
 
 async function onlySave() {
   console.log(proxySettings.value);
-  const oldPacFile = proxySettings.value.PACfile;
+  const oldPacFile = proxySettings.value.pacFile;
   if (newInputfile.value) {
-    proxySettings.value.PACfile = newInputfile.value;
+    proxySettings.value.pacFile = newInputfile.value;
   }
   const data = JSON.parse(JSON.stringify(proxySettings.value));
   const reply = await ipcRenderer.invoke("save-proxy-setting", { data });
@@ -258,7 +258,7 @@ async function onlySave() {
     snackbar.color = "success";
     snackbar.timeout = 1000;
   } else {
-    proxySettings.value.PACfile = oldPacFile;
+    proxySettings.value.pacFile = oldPacFile;
     // snackbar.text = `Save failed: ${reply.error}`;
     snackbar.text = `${i18n.global.t("proxy.saveFailed")}: ${reply.error}`;
     snackbar.color = "error";

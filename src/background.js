@@ -72,25 +72,39 @@ async function getProxySetting() {
       }
 
       // Set the proxy
-      if (proxySetting.proxyServer && proxySetting.enableProxy) {
+      if (proxySetting.enableProxy) {
         if (proxySetting.proxyMode === "normal") {
-          app.commandLine.appendSwitch(
-            "proxy-server",
-            proxySetting.proxyServer,
-          );
-          app.commandLine.appendSwitch(
-            "proxy-bypass-list",
-            proxySetting.proxyBypassList ?? "<local>",
-          );
-        } else if (
-          proxySetting.proxyMode === "pacFile" &&
-          proxySetting.pacFile
-        ) {
-          // Note: proxy-pac-url can not load file via 'file://' , we need to change to base64 format
-          let data = getBase64(proxySetting.pacFile);
-          app.commandLine.appendSwitch("proxy-pac-url", data);
-        } else if (proxySetting.proxyMode === "pacUrl" && proxySetting.pacUrl) {
-          app.commandLine.appendSwitch("proxy-pac-url", proxySetting.pacUrl);
+          console.log("Set.proxySetting.normal");
+          if (proxySetting.proxyServer) {
+            app.commandLine.appendSwitch(
+              "proxy-server",
+              proxySetting.proxyServer,
+            );
+            app.commandLine.appendSwitch(
+              "proxy-bypass-list",
+              proxySetting.proxyBypassList ?? "",
+            );
+          } else {
+            console.log("Proxy enable but no set any proxy.");
+          }
+        } else if (proxySetting.proxyMode === "pacFile") {
+          if (proxySetting.pacFile) {
+            console.log("Set.proxySetting.pacFile");
+            let data = getBase64(proxySetting.pacFile);
+            console.log(data);
+            app.commandLine.appendSwitch("proxy-pac-url", data);
+          } else {
+            console.log(
+              "Proxy enable and pacFile mode set but no set any file.",
+            );
+          }
+        } else if (proxySetting.proxyMode === "pacUrl") {
+          console.log("Set.proxySetting.pacUrl");
+          if (proxySetting.pacUrl) {
+            app.commandLine.appendSwitch("proxy-pac-url", proxySetting.pacUrl);
+          } else {
+            console.log("Proxy enable and pacUrl mode set but no set any url.");
+          }
         }
       }
     } catch (err) {
