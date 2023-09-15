@@ -112,6 +112,7 @@ import Qihoo360AIBrainBotSettings from "./BotSettings/Qihoo360AIBrainBotSettings
 import OpenAssistantBotSettings from "./BotSettings/OpenAssistantBotSettings.vue";
 import CharacterAIBotSettings from "./BotSettings/CharacterAIBotSettings.vue";
 import ClaudeAIBotSettings from "./BotSettings/ClaudeAIBotSettings.vue";
+import ChatGLMBotSettings from "./BotSettings/ChatGLMBotSettings.vue";
 
 import { resolveTheme, applyTheme, Mode } from "../theme";
 
@@ -132,6 +133,7 @@ const botSettings = [
   { brand: "bingChat", component: BingChatBotSettings },
   { brand: "characterAI", component: CharacterAIBotSettings },
   { brand: "chatGpt", component: ChatGPTBotSettings },
+  { brand: "chatGLM", component: ChatGLMBotSettings },
   { brand: "claudeAi", component: ClaudeAIBotSettings },
   { brand: "gradio", component: GradioAppBotSettings },
   { brand: "huggingChat", component: HuggingChatBotSettings },

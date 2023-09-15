@@ -197,6 +197,9 @@
   "youChat": {
     "name": "YouChat"
   },
+  "chatGLM": {
+    "name": "chatGLM"
+  },
   "pi": {
     "name": "Pi",
     "waitPiIntro": "Please click the chatbot website link below and wait for the Pi introduction to finish, then close the window."

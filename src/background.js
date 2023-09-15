@@ -198,6 +198,13 @@ async function createWindow() {
         requestHeaders["Origin"] = "https://www.bing.com";
       }
 
+      // ChatGLM login
+      if (
+        url.startsWith("https://chatglm.cn/chatglm/backend-api/v1/user/login")
+      ) {
+        console.log("---chatglm---login---");
+      }
+
       callback({ requestHeaders });
     },
   );
@@ -245,6 +252,10 @@ function createNewWindow(url, userAgent = "") {
           `localStorage.getItem("${key}");`,
         );
       };
+      const getAllLocalStorage = async () => {
+        return await newWin.webContents.executeJavaScript(`localStorage`);
+      };
+
       if (url.startsWith("https://moss.fastnlp.top/")) {
         // Get the secret of MOSS
         const secret = await getLocalStorage("flutter.token");
@@ -271,6 +282,21 @@ function createNewWindow(url, userAgent = "") {
           "window.ereNdsRqhp2Rd3LEW();",
         );
         mainWindow.webContents.send("POE-FORMKEY", formkey);
+      } else if (url.startsWith("https://chatglm.cn/")) {
+        console.log("----chatglm.cn----closed----");
+        const allS = await getAllLocalStorage();
+        console.log("----chatglm.cn----allS----", allS);
+        allS
+          .then((res) => {
+            console.log(res);
+          })
+          .error((err) => {
+            console.log("----getlocalStore----error: ", err);
+          });
+
+        // allS.forEach((item) => {
+        //   console.log(item)
+        // })
       }
     } catch (err) {
       console.error(err);
@@ -280,6 +306,8 @@ function createNewWindow(url, userAgent = "") {
     // Tell renderer process to check aviability
     mainWindow.webContents.send("CHECK-AVAILABILITY", url);
   });
+
+  newWin.addListener;
 }
 
 ipcMain.handle("create-new-window", (event, url, userAgent) => {

@@ -58,6 +58,10 @@ export default createStore({
     moss: {
       token: "",
     },
+    chatglm: {
+      access_token: "",
+      refresh_token: "",
+    },
     qianWen: {
       xsrfToken: "",
     },
@@ -93,6 +97,7 @@ export default createStore({
           { classname: "BardBot", selected: true },
           { classname: "Llama270bBot", selected: true },
           { classname: "VicunaBot", selected: true },
+          { classname: "ChatGLMBot", selected: true },
         ],
         contexts: {},
         messages: [],
@@ -174,6 +179,9 @@ export default createStore({
     },
     setMoss(state, token) {
       state.moss.token = token;
+    },
+    setChatGLM(state, token) {
+      state.chatglm.token = token;
     },
     setQianWenToken(state, token) {
       state.qianWen.xsrfToken = token;
