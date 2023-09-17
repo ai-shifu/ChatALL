@@ -11,6 +11,10 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 let mainWindow = null;
 
+// Disable QUIC
+// Prevent Cloudflare from detecting the real IP when using a proxy that bypasses UDP traffic
+app.commandLine.appendSwitch("disable-quic");
+
 const userDataPath = app.getPath("userData");
 const proxySettingPath = path.join(userDataPath, "proxySetting.json");
 const defaultProxySetting = {
