@@ -11,12 +11,6 @@ export default class ChatGLMBot extends Bot {
   static _logoFilename = "chatglm-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://chatglm.cn/detail";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
-  // Remove Electron from the user agent to avoid blank login screen
-  static _userAgent =
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) chatall/1.29.40 Chrome/114.0.5735.134 Safari/537.36";
-  _glmLogin = "https://chatglm.cn/chatglm/backend-api/v1/user/login";
-  _glmLogout = "https://chatglm.cn/chatglm/backend-api/v1/user/logout";
-  _glmRefreshToken = "https://chatglm.cn/chatglm/backend-api/v1/user/refresh";
 
   constructor() {
     super();
