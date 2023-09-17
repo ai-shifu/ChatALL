@@ -30,7 +30,7 @@ export default class ChatGLMBot extends Bot {
    */
   async _checkAvailability() {
     let available = false;
-    let _glmUserInfo = "https://chatglm.cn/chatglm/backend-api/v3/user/info";
+    let userInfoUrl = "https://chatglm.cn/chatglm/backend-api/v3/user/info";
     const context = await this.getChatContext();
     await axios
       .get(_glmUserInfo, this.getAuthHeader())
