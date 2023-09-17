@@ -33,7 +33,7 @@ export default class ChatGLMBot extends Bot {
     let userInfoUrl = "https://chatglm.cn/chatglm/backend-api/v3/user/info";
     const context = await this.getChatContext();
     await axios
-      .get(_glmUserInfo, this.getAuthHeader())
+      .get(userInfoUrl, this.getAuthHeader())
       .then((response) => {
         available = response.data?.message == "success";
         this.setChatContext({
