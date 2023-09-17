@@ -197,6 +197,9 @@
   "youChat": {
     "name": "YouChat"
   },
+  "chatGlm": {
+    "name": "智谱清言"
+  },
   "pi": {
     "name": "Pi",
     "waitPiIntro": "请点击下面的网站链接，等待Pi介绍完成后，然后关闭窗口。"

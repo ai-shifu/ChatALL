@@ -13,7 +13,7 @@ import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
 import VicunaBot from "@/bots/lmsys/VicunaBot";
-import ChatGLMBot from "@/bots/lmsys/ChatGLMBot";
+import ChatGLMBot from "@/bots/ChatGLMBot";
 import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
@@ -88,7 +88,7 @@ const all = [
   YouChatBot.getInstance(),
 ];
 
-const disabled = ["ClaudeBot", "ChatGPTBrowsingBot", "ChatGLMBot", "AlpacaBot"];
+const disabled = ["ClaudeBot", "ChatGPTBrowsingBot", "AlpacaBot"];
 
 if (process.env.NODE_ENV !== "production") {
   all.push(DevBot.getInstance());
@@ -149,7 +149,6 @@ export const botTags = {
   ],
   openSource: [
     bots.getBotByClassName("AlpacaBot"),
-    bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("HuggingChatBot"),
     bots.getBotByClassName("Llama27bBot"),
     bots.getBotByClassName("Llama213bBot"),
@@ -176,6 +175,7 @@ export const botTags = {
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("MOSSBot"),
+    bots.getBotByClassName("ChatGLMBot"),
   ],
 };
 export default bots;

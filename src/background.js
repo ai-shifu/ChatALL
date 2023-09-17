@@ -259,6 +259,13 @@ function createNewWindow(url, userAgent = "") {
           `localStorage.getItem("${key}");`,
         );
       };
+
+      const getCookie = async (key) => {
+        return await newWin.webContents.executeJavaScript(
+          `document.cookie.split("; ").find((cookie) => cookie.startsWith("${key}="))?.split("=")[1];`,
+        );
+      };
+
       if (url.startsWith("https://moss.fastnlp.top/")) {
         // Get the secret of MOSS
         const secret = await getLocalStorage("flutter.token");
@@ -285,6 +292,9 @@ function createNewWindow(url, userAgent = "") {
           "window.ereNdsRqhp2Rd3LEW();",
         );
         mainWindow.webContents.send("POE-FORMKEY", formkey);
+      } else if (url.startsWith("https://chatglm.cn/")) {
+        const token = await getCookie("chatglm_token");
+        mainWindow.webContents.send("CHATGLM-TOKENS", { token });
       }
     } catch (err) {
       console.error(err);
