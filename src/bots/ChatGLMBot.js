@@ -66,7 +66,7 @@ export default class ChatGLMBot extends Bot {
       `https://chatglm.cn/chatglm/backend-api/v1/stream_context?__requestid=${uuid}`,
       {
         prompt: prompt,
-        seed: 80241,
+        seed: Math.floor(Math.random() * 100000),
         max_tokens: 512,
         conversation_task_id: context.conversation_task_id,
         retry: false,
