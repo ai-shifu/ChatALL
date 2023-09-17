@@ -1,8 +1,9 @@
 import AsyncLock from "async-lock";
 import Bot from "@/bots/Bot";
 import axios from "axios";
-// import store from "@/store";
+import store from "@/store";
 import { SSE } from "sse.js";
+import { v4 as uuidv4 } from "uuid";
 
 export default class ChatGLMBot extends Bot {
   static _brandId = "chatGLM"; // Brand id of the bot, should be unique. Used in i18n.
@@ -16,22 +17,15 @@ export default class ChatGLMBot extends Bot {
   _glmLogin = "https://chatglm.cn/chatglm/backend-api/v1/user/login";
   _glmLogout = "https://chatglm.cn/chatglm/backend-api/v1/user/logout";
   _glmRefreshToken = "https://chatglm.cn/chatglm/backend-api/v1/user/refresh";
-  _glmChat =
-    "https://chatglm.cn/chatglm/backend-api/v1/stream?App-Name=chatglm&context_id=dc68ac01-899a-4ef2-a8dd-ba1093cd8be7&institution=";
 
-  //https://chatglm.cn/chatglm/backend-api/v3/user/info -POST
-  //https://chatglm.cn/chatglm/backend-api/v1/user/refresh -POST
-  // https://chatglm.cn/chatglm/backend-api/v1/user/login -POST
-  // GET https://chatglm.cn/chatglm/backend-api/v1/stream?App-Name=chatglm&context_id=dc68ac01-899a-4ef2-a8dd-ba1093cd8be7&institution=  -GET
   constructor() {
     super();
   }
 
   getAuthHeader() {
-    // const token = store.state.chaglm?.token?.refresh;
     return {
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NDcwMDM0OCwianRpIjoiZjZmNzg2MzgtN2MyNi00YTBkLWEzMWQtMzgyMmZjNjE4YTk0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY4NTZlZjY0OGUwYTRiNDE5MDFkYzZmYWEwNjQ2YzY4IiwibmJmIjoxNjk0NzAwMzQ4LCJleHAiOjE2OTQ3ODY3NDgsInJvbGVzIjpbInVuYXV0aGVkX3VzZXIiXX0._XHshuWeCy79LOnUpZf0wRGzLpVx1KVEB7lo-15Agd4`,
+        Authorization: `Bearer ${store.state.chatglm?.token}`,
       },
     };
   }
@@ -43,11 +37,15 @@ export default class ChatGLMBot extends Bot {
   async _checkAvailability() {
     let available = false;
     let _glmUserInfo = "https://chatglm.cn/chatglm/backend-api/v3/user/info";
+    const context = await this.getChatContext();
     await axios
       .get(_glmUserInfo, this.getAuthHeader())
       .then((response) => {
-        console.log("---chatglm---statusCheck---: ", response.data);
         available = response.data?.message == "success";
+        this.setChatContext({
+          ...context,
+          user_id: response.data?.result._id,
+        });
       })
       .catch((error) => {
         console.error("Error checking ChatGLM login status:", error);
@@ -64,20 +62,23 @@ export default class ChatGLMBot extends Bot {
    * @param {object} callbackParam - Just pass it to onUpdateResponse() as is
    */
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
-    const context = await this.getChatContext();
-
+    let context = await this.getChatContext();
+    if (context.user_id == null || context.user_id == undefined) {
+      await this._checkAvailability();
+      context = await this.getChatContext();
+    }
+    const uuid = uuidv4();
     const streamContext = await axios.post(
-      "https://chatglm.cn/chatglm/backend-api/v1/stream_context?__requestid=c05cbed6-2d3e-468b-918b-a7edc4733fc3 ",
-      // { chat_id: context.id, content: prompt, parent_id: context.parent_id },
+      `https://chatglm.cn/chatglm/backend-api/v1/stream_context?__requestid=${uuid}`,
       {
         prompt: prompt,
         seed: 80241,
         max_tokens: 512,
-        conversation_task_id: "6503fc00273ae95a2c2f23d8", //context.id
+        conversation_task_id: context.conversation_task_id,
         retry: false,
         retry_history_task_id: null,
         institution: "",
-        __userid: "64efe1720d6374d0a8041748",
+        __userid: context.user_id,
       },
       this.getAuthHeader(),
     );
@@ -85,13 +86,8 @@ export default class ChatGLMBot extends Bot {
     if (streamContext.status !== 200) {
       throw new Error(streamContext);
     }
-    this.setChatContext({
-      ...context,
-      parent_id: "AAAAAAA", // save assistant response id for next prompt parent_id
-    });
 
     const context_id = streamContext.data.result.context_id;
-    console.log("----streamContext----", streamContext);
     return new Promise((resolve, reject) => {
       try {
         const source = new SSE(
@@ -101,8 +97,6 @@ export default class ChatGLMBot extends Bot {
         let text = "";
         source.addEventListener("add", (event) => {
           try {
-            // handle event data: ": ping - 2023-07-14 13:28:17.735145"
-            console.log("---add---event---- ", event.data);
             text = event.data;
             onUpdateResponse(callbackParam, { content: text, done: false });
           } catch {
@@ -110,8 +104,7 @@ export default class ChatGLMBot extends Bot {
             return;
           }
         });
-        source.addEventListener("finish", (event) => {
-          console.log("---add---finish---- ", event);
+        source.addEventListener("finish", () => {
           // after stream closed, done
           onUpdateResponse(callbackParam, {
             content: text,
@@ -137,6 +130,21 @@ export default class ChatGLMBot extends Bot {
    * @returns {any} - Conversation structure. null if not supported.
    */
   async createChatContext() {
-    return null;
+    let context = null;
+    await axios
+      .post(
+        `https://chatglm.cn/chatglm/backend-api/v1/conversation`,
+        {},
+        this.getAuthHeader(),
+      )
+      .then((response) => {
+        context = {
+          conversation_task_id: response.data?.result.task_id,
+        };
+      })
+      .catch((error) => {
+        console.error("Error ChatGLM createChatContext ", error);
+      });
+    return context;
   }
 }

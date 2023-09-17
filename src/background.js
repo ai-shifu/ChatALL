@@ -197,14 +197,6 @@ async function createWindow() {
       if (url.startsWith("wss://sydney.bing.com/")) {
         requestHeaders["Origin"] = "https://www.bing.com";
       }
-
-      // ChatGLM login
-      if (
-        url.startsWith("https://chatglm.cn/chatglm/backend-api/v1/user/login")
-      ) {
-        console.log("---chatglm---login---");
-      }
-
       callback({ requestHeaders });
     },
   );
@@ -252,9 +244,6 @@ function createNewWindow(url, userAgent = "") {
           `localStorage.getItem("${key}");`,
         );
       };
-      const getAllLocalStorage = async () => {
-        return await newWin.webContents.executeJavaScript(`localStorage`);
-      };
 
       if (url.startsWith("https://moss.fastnlp.top/")) {
         // Get the secret of MOSS
@@ -282,21 +271,17 @@ function createNewWindow(url, userAgent = "") {
           "window.ereNdsRqhp2Rd3LEW();",
         );
         mainWindow.webContents.send("POE-FORMKEY", formkey);
-      } else if (url.startsWith("https://chatglm.cn/")) {
-        console.log("----chatglm.cn----closed----");
-        const allS = await getAllLocalStorage();
-        console.log("----chatglm.cn----allS----", allS);
-        allS
-          .then((res) => {
-            console.log(res);
-          })
-          .error((err) => {
-            console.log("----getlocalStore----error: ", err);
-          });
+      }
 
-        // allS.forEach((item) => {
-        //   console.log(item)
-        // })
+      // chatGLM
+      if (url.startsWith("https://chatglm.cn/")) {
+        const token = await newWin.webContents.executeJavaScript(
+          'document.cookie.split("; ").find((cookie) => cookie.startsWith("chatglm_token="))?.split("=")[1];',
+        );
+        const refershToken = await newWin.webContents.executeJavaScript(
+          'document.cookie.split("; ").find((cookie) => cookie.startsWith("chatglm_refresh_token="))?.split("=")[1];',
+        );
+        mainWindow.webContents.send("CHATGLM-TOKENS", { token, refershToken });
       }
     } catch (err) {
       console.error(err);

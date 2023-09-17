@@ -59,8 +59,8 @@ export default createStore({
       token: "",
     },
     chatglm: {
-      access_token: "",
-      refresh_token: "",
+      token: "",
+      refreshToken: "",
     },
     qianWen: {
       xsrfToken: "",
@@ -180,8 +180,8 @@ export default createStore({
     setMoss(state, token) {
       state.moss.token = token;
     },
-    setChatGLM(state, token) {
-      state.chatglm.token = token;
+    setChatGLM(state, tokens) {
+      state.chatglm = { ...state.chatglm, ...tokens };
     },
     setQianWenToken(state, token) {
       state.qianWen.xsrfToken = token;
