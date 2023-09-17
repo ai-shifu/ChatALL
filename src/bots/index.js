@@ -146,7 +146,6 @@ export const botTags = {
   ],
   openSource: [
     bots.getBotByClassName("AlpacaBot"),
-    bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("HuggingChatBot"),
     bots.getBotByClassName("Llama27bBot"),
     bots.getBotByClassName("Llama213bBot"),
@@ -172,6 +171,7 @@ export const botTags = {
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("MOSSBot"),
+    bots.getBotByClassName("ChatGLMBot"),
   ],
 };
 export default bots;
