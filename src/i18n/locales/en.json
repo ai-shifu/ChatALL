@@ -197,8 +197,8 @@
   "youChat": {
     "name": "YouChat"
   },
-  "chatGLM": {
-    "name": "chatGLM"
+  "chatGlm": {
+    "name": "ChatGLM"
   },
   "pi": {
     "name": "Pi",
