@@ -6,7 +6,7 @@ import { SSE } from "sse.js";
 import { v4 as uuidv4 } from "uuid";
 
 export default class ChatGLMBot extends Bot {
-  static _brandId = "chatGLM"; // Brand id of the bot, should be unique. Used in i18n.
+  static _brandId = "chatGlm"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "ChatGLMBot"; // Class name of the bot
   static _logoFilename = "chatglm-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://chatglm.cn/detail";
