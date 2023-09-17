@@ -197,6 +197,7 @@ async function createWindow() {
       if (url.startsWith("wss://sydney.bing.com/")) {
         requestHeaders["Origin"] = "https://www.bing.com";
       }
+
       callback({ requestHeaders });
     },
   );
@@ -245,6 +246,12 @@ function createNewWindow(url, userAgent = "") {
         );
       };
 
+      const getCookie = async (key) => {
+        return await newWin.webContents.executeJavaScript(
+          `document.cookie.split("; ").find((cookie) => cookie.startsWith("${key}="))?.split("=")[1];`,
+        );
+      };
+
       if (url.startsWith("https://moss.fastnlp.top/")) {
         // Get the secret of MOSS
         const secret = await getLocalStorage("flutter.token");
@@ -271,16 +278,9 @@ function createNewWindow(url, userAgent = "") {
           "window.ereNdsRqhp2Rd3LEW();",
         );
         mainWindow.webContents.send("POE-FORMKEY", formkey);
-      }
-
-      // chatGLM
-      if (url.startsWith("https://chatglm.cn/")) {
-        const token = await newWin.webContents.executeJavaScript(
-          'document.cookie.split("; ").find((cookie) => cookie.startsWith("chatglm_token="))?.split("=")[1];',
-        );
-        const refershToken = await newWin.webContents.executeJavaScript(
-          'document.cookie.split("; ").find((cookie) => cookie.startsWith("chatglm_refresh_token="))?.split("=")[1];',
-        );
+      } else if (url.startsWith("https://chatglm.cn/")) {
+        const token = await getCookie("chatglm_token");
+        const refershToken = await getCookie("chatglm_refresh_token");
         mainWindow.webContents.send("CHATGLM-TOKENS", { token, refershToken });
       }
     } catch (err) {
@@ -291,8 +291,6 @@ function createNewWindow(url, userAgent = "") {
     // Tell renderer process to check aviability
     mainWindow.webContents.send("CHECK-AVAILABILITY", url);
   });
-
-  newWin.addListener;
 }
 
 ipcMain.handle("create-new-window", (event, url, userAgent) => {
