@@ -19,7 +19,7 @@ export default class ChatGLMBot extends Bot {
   getAuthHeader() {
     return {
       headers: {
-        Authorization: `Bearer ${store.state.chatglm?.token}`,
+        Authorization: `Bearer ${store.state.chatGlm?.token}`,
       },
     };
   }
