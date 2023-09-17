@@ -133,7 +133,7 @@ const botSettings = [
   { brand: "bingChat", component: BingChatBotSettings },
   { brand: "characterAI", component: CharacterAIBotSettings },
   { brand: "chatGpt", component: ChatGPTBotSettings },
-  { brand: "chatGLM", component: ChatGLMBotSettings },
+  { brand: "chatGlm", component: ChatGLMBotSettings },
   { brand: "claudeAi", component: ClaudeAIBotSettings },
   { brand: "gradio", component: GradioAppBotSettings },
   { brand: "huggingChat", component: HuggingChatBotSettings },
