@@ -19,8 +19,8 @@ export default {
   },
   mounted() {
     // Listen for the CHATGLM-TOKEN message from background.js
-    ipcRenderer.on("CHATGLM-TOKENS", (event, tokens) => {
-      this.setChatGLM(tokens);
+    ipcRenderer.on("CHATGLM-TOKENS", (event, token) => {
+      this.setChatGLM(token);
     });
   },
   methods: {

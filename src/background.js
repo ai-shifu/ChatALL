@@ -280,8 +280,7 @@ function createNewWindow(url, userAgent = "") {
         mainWindow.webContents.send("POE-FORMKEY", formkey);
       } else if (url.startsWith("https://chatglm.cn/")) {
         const token = await getCookie("chatglm_token");
-        const refershToken = await getCookie("chatglm_refresh_token");
-        mainWindow.webContents.send("CHATGLM-TOKENS", { token, refershToken });
+        mainWindow.webContents.send("CHATGLM-TOKENS", token);
       }
     } catch (err) {
       console.error(err);
