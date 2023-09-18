@@ -24,31 +24,33 @@ Typical users of ChatALL are:
 
 ### Supported bots
 
-| AI Bots                                                      | Web Access  | API         | Notes                                       |
-| ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
-| [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      | No login required                           |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                             |
-| [Bard](https://bard.google.com/)                             | Yes         | Coming soon |                                             |
-| [Poe](https://poe.com/)                                      | Yes         | Coming soon |                                             |
-| [MOSS](https://moss.fastnlp.top/)                            | Yes         | No API      |                                             |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Yes         | Coming soon |                                             |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Coming soon | No API      |                                             |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Yes         | Coming soon |                                             |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Yes         | No API      | No Login required                           |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | No Login required                           |
-| [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | No Login required                           |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | No Login required                           |
-| [Gradio](https://gradio.app/)                                | Yes         | No API      | For Hugging Face space/self-deployed models |
-| [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      | Llama 2 included                            |
-| [SkyWork](https://neice.tiangong.cn/)                        | Yes         | Coming soon |                                             |
-| [You](https://you.com/)                                      | Yes         | No API      |                                             |
-| [Pi](https://pi.ai)                                          | Yes         | No API      |                                             |
-| [360 AI Brain](https://ai.360.cn/)                           | Yes         | No API      |                                             |
-| [YouChat](https://you.com/)                                  | Yes         | No API      |                                             |
-| [Open Assistant](https://open-assistant.io/)                 | Yes         | No API      |                                             |
-| [Claude](https://claude.ai/)                                 | Yes         | No API      |                                             |
-| [Character.AI](https://character.ai/)                        | Yes         | No API      |                                             |
+| AI Bots                                                                        | Web Access  | API         | Notes                                       |
+| ------------------------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                                             | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
+| [Bing Chat](https://www.bing.com/new)                                          | Yes         | No API      |                                             |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | No          | Yes         |                                             |
+| [Bard](https://bard.google.com/)                                               | Yes         | Coming soon |                                             |
+| [Poe](https://poe.com/)                                                        | Yes         | Coming soon |                                             |
+| [MOSS](https://moss.fastnlp.top/)                                              | Yes         | No API      |                                             |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Yes         | Coming soon |                                             |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Coming soon | No API      |                                             |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Yes         | Coming soon |                                             |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                     | Yes         | No API      | No Login required                           |
+| [Vicuna 7B, 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)              | Yes         | No API      | No Login required                           |
+| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Yes         | No API      | No Login required                           |
+| [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                 | Yes         | No API      |                                             |
+| [Gradio](https://gradio.app/)                                                  | Yes         | No API      | For Hugging Face space/self-deployed models |
+| [HuggingChat](https://huggingface.co/chat/)                                    | Yes         | No API      |                                             |
+| [SkyWork](https://neice.tiangong.cn/)                                          | Yes         | Coming soon |                                             |
+| [You](https://you.com/)                                                        | Yes         | No API      |                                             |
+| [Pi](https://pi.ai)                                                            | Yes         | No API      |                                             |
+| [360 AI Brain](https://ai.360.cn/)                                             | Yes         | No API      |                                             |
+| [YouChat](https://you.com/)                                                    | Yes         | No API      |                                             |
+| [Open Assistant](https://open-assistant.io/)                                   | Yes         | No API      |                                             |
+| [Character.AI](https://character.ai/)                                          | Yes         | No API      |                                             |
+| [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | Yes         | No API      |                                             |
+| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Yes         | No API      |                                             |
+| [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | Yes         | No API      |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
