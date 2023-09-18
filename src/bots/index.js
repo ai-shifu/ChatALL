@@ -42,6 +42,7 @@ import Llama213bBot from "./lmsys/Llama213bBot";
 import Llama27bBot from "./lmsys/Llama27bBot";
 import Llama270bBot from "./lmsys/Llama270bBot";
 import Falcon180bBot from "./huggingface/Falcon180bBot";
+import ChatGLM6bBot from "./lmsys/ChatGLM6bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -52,6 +53,7 @@ const all = [
   BingChatPreciseBot.getInstance(),
   CharacterAIBot.getInstance(),
   ChatGLMBot.getInstance(),
+  ChatGLM6bBot.getInstance(),
   ClaudeInstantPoeBot.getInstance(),
   ClaudeInstant100kPoeBot.getInstance(),
   ClaudeBot.getInstance(),
@@ -113,6 +115,7 @@ export const botTags = {
     bots.getBotByClassName("BingChatCreativeBot"),
     bots.getBotByClassName("BingChatPreciseBot"),
     bots.getBotByClassName("ChatGLMBot"),
+    bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("ChatGPT35Bot"),
     bots.getBotByClassName("ChatGPT35PoeBot"),
     bots.getBotByClassName("ClaudeBot"),
@@ -158,6 +161,7 @@ export const botTags = {
     bots.getBotByClassName("OpenAssistantBot"),
     bots.getBotByClassName("VicunaBot"),
     bots.getBotByClassName("Falcon180bBot"),
+    bots.getBotByClassName("ChatGLM6bBot"),
   ],
   api: [
     bots.getBotByClassName("AzureOpenAIAPIBot"),
@@ -176,6 +180,7 @@ export const botTags = {
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("ChatGLMBot"),
+    bots.getBotByClassName("ChatGLM6bBot"),
   ],
 };
 export default bots;
