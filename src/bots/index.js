@@ -52,6 +52,7 @@ import Wizardlm70bBot from "./lmsys/Wizardlm70bBot";
 const all = [
   Qihoo360AIBrainBot.getInstance(),
   AlpacaBot.getInstance(),
+  SageBot.getInstance(), // Assistant@Poe
   BardBot.getInstance(),
   BingChatCreativeBot.getInstance(),
   BingChatBalancedBot.getInstance(),
@@ -89,7 +90,6 @@ const all = [
   OpenAssistantBot.getInstance(),
   PiBot.getInstance(),
   QianWenBot.getInstance(),
-  SageBot.getInstance(),
   SkyWorkBot.getInstance(),
   SparkBot.getInstance(),
   Vicuna7bBot.getInstance(),
