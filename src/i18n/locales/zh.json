@@ -144,6 +144,7 @@
   },
   "lmsys": {
     "name": "LMSYS",
+    "vicuna-7b": "vicuna-7b",
     "vicuna-13b": "vicuna-13b",
     "vicuna-33b": "vicuna-33b",
     "chatglm-6b": "chatglm-6b",

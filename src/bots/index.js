@@ -44,6 +44,8 @@ import Llama270bBot from "./lmsys/Llama270bBot";
 import Falcon180bBot from "./huggingface/Falcon180bBot";
 import ChatGLM6bBot from "./lmsys/ChatGLM6bBot";
 import CodeLlamaBot from "./lmsys/CodeLlamaBot";
+import Vicuna7bBot from "./lmsys/Vicuna7bBot";
+import Vicuna13bBot from "./lmsys/Vicuna13bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -88,6 +90,8 @@ const all = [
   SageBot.getInstance(),
   SkyWorkBot.getInstance(),
   SparkBot.getInstance(),
+  Vicuna7bBot.getInstance(),
+  Vicuna13bBot.getInstance(),
   VicunaBot.getInstance(),
   YouChatBot.getInstance(),
 ];
@@ -138,6 +142,8 @@ export const botTags = {
     bots.getBotByClassName("GradioAppBot"),
     bots.getBotByClassName("AlpacaBot"),
     bots.getBotByClassName("VicunaBot"),
+    bots.getBotByClassName("Vicuna7bBot"),
+    bots.getBotByClassName("Vicuna13bBot"),
     bots.getBotByClassName("CharacterAIBot"),
     bots.getBotByClassName("ClaudeAIBot"),
     bots.getBotByClassName("PiBot"),
@@ -163,6 +169,8 @@ export const botTags = {
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),
     bots.getBotByClassName("VicunaBot"),
+    bots.getBotByClassName("Vicuna7bBot"),
+    bots.getBotByClassName("Vicuna13bBot"),
     bots.getBotByClassName("Falcon180bBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("CodeLlamaBot"),
