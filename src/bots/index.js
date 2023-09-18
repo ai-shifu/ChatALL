@@ -46,6 +46,8 @@ import ChatGLM6bBot from "./lmsys/ChatGLM6bBot";
 import CodeLlamaBot from "./lmsys/CodeLlamaBot";
 import Vicuna7bBot from "./lmsys/Vicuna7bBot";
 import Vicuna13bBot from "./lmsys/Vicuna13bBot";
+import Wizardlm13bBot from "./lmsys/Wizardlm13bBot";
+import Wizardlm70bBot from "./lmsys/Wizardlm70bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -93,6 +95,8 @@ const all = [
   Vicuna7bBot.getInstance(),
   Vicuna13bBot.getInstance(),
   VicunaBot.getInstance(),
+  Wizardlm13bBot.getInstance(),
+  Wizardlm70bBot.getInstance(),
   YouChatBot.getInstance(),
 ];
 
@@ -149,6 +153,8 @@ export const botTags = {
     bots.getBotByClassName("PiBot"),
     bots.getBotByClassName("SageBot"),
     bots.getBotByClassName("Falcon180bBot"),
+    bots.getBotByClassName("Wizardlm13bBot"),
+    bots.getBotByClassName("Wizardlm70bBot"),
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
@@ -174,6 +180,8 @@ export const botTags = {
     bots.getBotByClassName("Falcon180bBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("CodeLlamaBot"),
+    bots.getBotByClassName("Wizardlm13bBot"),
+    bots.getBotByClassName("Wizardlm70bBot"),
   ],
   api: [
     bots.getBotByClassName("AzureOpenAIAPIBot"),
