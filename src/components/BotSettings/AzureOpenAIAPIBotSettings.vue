@@ -1,111 +1,77 @@
 <template>
-  <v-list-item>
-    <v-list-item-title>{{
-      $t("azureOpenaiApi.azureOpenAIApiKey")
-    }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("settings.secretPrompt")
-    }}</v-list-item-subtitle>
-    <v-text-field
-      v-model="azureOpenaiApi.azureApiKey"
-      outlined
-      dense
-      placeholder="b40..."
-      @update:model-value="setAzureOpenaiApi({ azureApiKey: $event })"
-    ></v-text-field>
-    <v-list-item-title>{{
-      $t("azureOpenaiApi.azureApiInstanceName")
-    }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("azureOpenaiApi.azureApiInstanceNamePrompt")
-    }}</v-list-item-subtitle>
-    <v-text-field
-      v-model="azureOpenaiApi.azureApiInstanceName"
-      outlined
-      dense
-      @update:model-value="setAzureOpenaiApi({ azureApiInstanceName: $event })"
-    ></v-text-field>
-    <v-list-item-title>{{
-      $t("azureOpenaiApi.azureOpenAIApiDeploymentName")
-    }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("azureOpenaiApi.azureOpenAIApiDeploymentNamePrompt")
-    }}</v-list-item-subtitle>
-    <v-text-field
-      v-model="azureOpenaiApi.azureOpenAIApiDeploymentName"
-      outlined
-      dense
-      @update:model-value="
-        setAzureOpenaiApi({ azureOpenAIApiDeploymentName: $event })
-      "
-    ></v-text-field>
-    <v-list-item-title>{{
-      $t("azureOpenaiApi.azureOpenAIApiVersion")
-    }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("azureOpenaiApi.azureOpenAIApiVersionPrompt")
-    }}</v-list-item-subtitle>
-    <v-text-field
-      v-model="azureOpenaiApi.azureOpenAIApiVersion"
-      outlined
-      dense
-      @update:model-value="setAzureOpenaiApi({ azureOpenAIApiVersion: $event })"
-    ></v-text-field>
-
-    <v-list-item-title>{{
-      $t("azureOpenaiApi.temperature")
-    }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("azureOpenaiApi.temperaturePrompt")
-    }}</v-list-item-subtitle>
-    <v-slider
-      v-model="azureOpenaiApi.temperature"
-      color="primary"
-      :min="0"
-      :max="2"
-      :step="0.1"
-      thumb-label
-      show-ticks="always"
-      :ticks="temperatureLabels"
-      @update:model-value="setAzureOpenaiApi({ temperature: $event })"
-    ></v-slider>
-
-    <v-list-item-title>{{ $t("bot.pastRounds") }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("bot.pastRoundsPrompt")
-    }}</v-list-item-subtitle>
-    <v-slider
-      v-model="azureOpenaiApi.pastRounds"
-      color="primary"
-      :min="0"
-      :max="10"
-      :step="1"
-      thumb-label
-      show-ticks
-      @update:model-value="setAzureOpenaiApi({ pastRounds: $event })"
-    ></v-slider>
-  </v-list-item>
+  <CommonBotSettings
+    :settings="settings"
+    :brand-id="brandId"
+    mutation-type="setAzureOpenaiApi"
+  ></CommonBotSettings>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 import Bot from "@/bots/microsoft/AzureOpenAIAPIBot";
+import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import i18n from "@/i18n";
+import { Type } from "./settings.const";
+
+const settings = [
+  {
+    type: Type.Text,
+    name: "azureApiKey",
+    title: i18n.global.t("azureOpenaiApi.azureOpenAIApiKey"),
+    description: i18n.global.t("settings.secretPrompt"),
+    placeholder: "b40...",
+  },
+  {
+    type: Type.Text,
+    name: "azureApiInstanceName",
+    title: i18n.global.t("azureOpenaiApi.azureApiInstanceName"),
+    description: i18n.global.t("azureOpenaiApi.azureApiInstanceNamePrompt"),
+  },
+  {
+    type: Type.Text,
+    name: "azureOpenAIApiDeploymentName",
+    title: i18n.global.t("azureOpenaiApi.azureOpenAIApiDeploymentName"),
+    description: i18n.global.t(
+      "azureOpenaiApi.azureOpenAIApiDeploymentNamePrompt",
+    ),
+  },
+  {
+    type: Type.Text,
+    name: "azureOpenAIApiVersion",
+    title: i18n.global.t("azureOpenaiApi.azureOpenAIApiVersion"),
+    description: i18n.global.t("azureOpenaiApi.azureOpenAIApiVersionPrompt"),
+  },
+  {
+    type: Type.Slider,
+    name: "temperature",
+    title: i18n.global.t("azureOpenaiApi.temperature"),
+    description: i18n.global.t("azureOpenaiApi.temperaturePrompt"),
+    min: 0,
+    max: 2,
+    step: 0.1,
+    ticks: {
+      0: i18n.global.t("azureOpenaiApi.temperature0"),
+      2: i18n.global.t("azureOpenaiApi.temperature2"),
+    },
+  },
+  {
+    type: Type.Slider,
+    name: "pastRounds",
+    title: i18n.global.t("bot.pastRounds"),
+    description: i18n.global.t("bot.pastRoundsPrompt"),
+    min: 0,
+    max: 10,
+    step: 1,
+  },
+];
 export default {
+  components: {
+    CommonBotSettings,
+  },
   data() {
     return {
-      bot: Bot.getInstance(),
-      temperatureLabels: {
-        0: i18n.global.t("azureOpenaiApi.temperature0"),
-        2: i18n.global.t("azureOpenaiApi.temperature2"),
-      },
+      settings: settings,
+      brandId: Bot._brandId,
     };
-  },
-  methods: {
-    ...mapMutations(["setAzureOpenaiApi"]),
-  },
-  computed: {
-    ...mapState(["azureOpenaiApi"]),
   },
 };
 </script>
