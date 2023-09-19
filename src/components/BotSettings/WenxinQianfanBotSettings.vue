@@ -18,12 +18,14 @@ const settings = [
     name: "apiKey",
     title: "API Key & Secret Key",
     description: i18n.global.t("settings.secretPrompt"),
+    label: "API Key",
     placeholder: "2125NA8mQy7gC52Pq9BK3tvk",
     hideDetails: true,
   },
   {
     type: Type.Text,
     name: "secretKey",
+    label: "Secret Key",
     placeholder: "IWf2pyYm26fz8GgNAHdkPkznHgazlffQ",
   },
   {

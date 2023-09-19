@@ -36,7 +36,7 @@ const settings = [
   {
     type: Type.Slider,
     name: "pastRounds",
-    title: i18n.global.t("bot.alterUrl"),
+    title: i18n.global.t("bot.pastRounds"),
     description: i18n.global.t("bot.pastRoundsPrompt"),
     min: 0,
     max: 10,
@@ -45,8 +45,8 @@ const settings = [
   {
     type: Type.Text,
     name: "alterUrl",
-    title: i18n.global.t("openaiApi.apiKey"),
-    description: i18n.global.t("settings.alterUrlPrompt"),
+    title: i18n.global.t("openaiApi.alterUrl"),
+    description: i18n.global.t("openaiApi.alterUrlPrompt"),
     placeholder: "https://your.proxy.com/v1",
   },
 ];
