@@ -214,7 +214,15 @@
   },
   "falcon": {
     "name": "Falcon",
-    "falcon-180b": "180b"
+    "falcon-180b": "180b",
+    "temperature": "Temperature",
+    "temperaturePrompt": "Higher values produce more diverse outputs",
+    "maxNewTokens": "Max new tokens",
+    "maxNewTokensPrompt": "The maximum numbers of new tokens",
+    "topP": "Top-p (nucleus sampling)",
+    "topPPrompt": "Higher values sample more low-probability tokens",
+    "repetitionPenalty": "Repetition penalty",
+    "repetitionPenaltyPrompt": "Penalize repeated tokens"
   },
   "dev": {
     "name": "Dev Bot"

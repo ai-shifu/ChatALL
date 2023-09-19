@@ -1,6 +1,7 @@
 import GradioBot from "@/bots/huggingface/GradioBot";
 import AsyncLock from "async-lock";
 import axios from "axios";
+import store from "@/store";
 
 export default class Falcon180bBot extends GradioBot {
   static _brandId = "falcon"; // Brand id of the bot, should be unique. Used in i18n.
@@ -49,7 +50,15 @@ export default class Falcon180bBot extends GradioBot {
   makeData(fn_index, prompt) {
     let r = null;
     if (fn_index === this.constructor._fnIndexes[0]) {
-      r = [null, null, "", 0.9, 256, 0.9, 1.2];
+      r = [
+        null,
+        null,
+        "",
+        store.state.falcon.temperature,
+        store.state.falcon.maxNewTokens,
+        store.state.falcon.topP,
+        store.state.falcon.repetitionPenalty,
+      ];
     }
     return r;
   }

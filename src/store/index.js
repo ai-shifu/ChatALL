@@ -83,6 +83,12 @@ export default createStore({
     poe: {
       formkey: "",
     },
+    falcon: {
+      temperature: 0.9,
+      maxNewTokens: 256,
+      topP: 0.9,
+      repetitionPenalty: 1.2,
+    },
     chats: [
       {
         title: "New Chat",
@@ -203,6 +209,9 @@ export default createStore({
     },
     setPoe(state, values) {
       state.poe = { ...state.poe, ...values };
+    },
+    setFalcon(state, values) {
+      state.falcon = { ...state.falcon, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];
