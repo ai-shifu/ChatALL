@@ -1,47 +1,45 @@
 <template>
-  <v-list-item>
-    <v-list-item-title>{{ $t("gradio.url") }}</v-list-item-title>
-    <v-list-item-subtitle>{{ $t("gradio.urlPrompt") }}</v-list-item-subtitle>
-    <v-text-field
-      v-model="gradio.url"
-      outlined
-      dense
-      :placeholder="
-        $t('settings.forExample', {
-          example: 'https://*.hf.space, http://127.0.0.1:7861',
-        })
-      "
-      @update:model-value="setGradio({ url: $event })"
-    ></v-text-field>
-    <v-list-item-title>{{ $t("gradio.fnIndex") }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("gradio.fnIndexPrompt")
-    }}</v-list-item-subtitle>
-    <v-text-field
-      v-model="gradio.fnIndex"
-      outlined
-      dense
-      placeholder="0"
-      @update:model-value="setGradio({ fnIndex: $event })"
-    ></v-text-field>
-  </v-list-item>
+  <CommonBotSettings
+    :settings="settings"
+    :brand-id="brandId"
+    mutation-type="setGradio"
+  ></CommonBotSettings>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 import Bot from "@/bots/huggingface/GradioAppBot";
+import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
+import i18n from "@/i18n";
+import { Type } from "./settings.const";
+
+const settings = [
+  {
+    type: Type.Text,
+    name: "url",
+    title: i18n.global.t("gradio.url"),
+    description: i18n.global.t("gradio.urlPrompt"),
+    placeholder: i18n.global.t("settings.forExample", {
+      example: "https://*.hf.space, http://127.0.0.1:7861",
+    }),
+  },
+  {
+    type: Type.Text,
+    name: "fnIndex",
+    title: i18n.global.t("gradio.fnIndex"),
+    description: i18n.global.t("gradio.fnIndexPrompt"),
+    placeholder: "0",
+  },
+];
 
 export default {
+  components: {
+    CommonBotSettings,
+  },
   data() {
     return {
-      bot: Bot.getInstance(),
+      settings: settings,
+      brandId: Bot._brandId,
     };
-  },
-  methods: {
-    ...mapMutations(["setGradio"]),
-  },
-  computed: {
-    ...mapState(["gradio"]),
   },
 };
 </script>
