@@ -57,7 +57,7 @@
             @update:model-value="
               /* setFalcon({ temperature: validateInput(temperature, $event) }) */
               store.commit(mutationType, {
-                [setting.name]: validateSliderInput(refs[setting.name], $event),
+                [setting.name]: validateSliderInput(setting, $event),
               })
             "
           ></v-text-field>
@@ -102,10 +102,10 @@ onMounted(() => {
   }
 });
 
-function validateSliderInput(element, value) {
+function validateSliderInput(setting, value) {
   // validate input via keyboard within setting min and max
   value = value || 0; // set zero if empty string
-  const input = this.getInputElement(element);
+  const input = getInputElement(refs.value[setting.name]);
   const valuefloat = parseFloat(value);
   const inputMaxFloat = parseFloat(input.max);
   const inputMinFloat = parseFloat(input.min);
