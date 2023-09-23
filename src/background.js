@@ -173,7 +173,13 @@ async function createWindow() {
           if (cookie.domain.startsWith(".")) {
             newCookie.domain = cookie.domain;
           }
-
+          // Handle the session cookie for QianWen
+          if (
+            cookie.domain.startsWith(".aliyun.com") ||
+            cookie.domain.startsWith("qianwen.aliyun.com")
+          ) {
+            newCookie.expirationDate = setCookieExpireDate(7);
+          }
           await win.webContents.session.cookies.set(newCookie);
         } catch (error) {
           console.error(error, cookie);
@@ -276,9 +282,7 @@ function createNewWindow(url, userAgent = "") {
         mainWindow.webContents.send("moss-secret", secret);
       } else if (url.startsWith("https://qianwen.aliyun.com/")) {
         // Get QianWen bot's XSRF-TOKEN
-        const token = await newWin.webContents.executeJavaScript(
-          'document.cookie.split("; ").find((cookie) => cookie.startsWith("XSRF-TOKEN="))?.split("=")[1];',
-        );
+        const token = await getCookie("XSRF-TOKEN");
         mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
       } else if (url.startsWith("https://neice.tiangong.cn/")) {
         // Get the tokens of SkyWork
@@ -407,4 +411,10 @@ if (isDevelopment) {
       app.quit();
     });
   }
+}
+
+function setCookieExpireDate(days) {
+  const expirationDate = new Date();
+  expirationDate.setTime(expirationDate.getTime() + days * 24 * 60 * 60 * 1000);
+  return expirationDate.getTime() / 1000;
 }
