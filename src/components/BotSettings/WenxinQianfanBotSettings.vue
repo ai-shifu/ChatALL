@@ -1,59 +1,52 @@
 <template>
-  <v-list-item>
-    <v-list-item-title>API Key & Secret Key</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("settings.secretPrompt")
-    }}</v-list-item-subtitle>
-    <v-text-field
-      v-model="wenxinQianfan.apiKey"
-      outlined
-      dense
-      hide-details
-      label="API Key"
-      :placeholder="'2125NA8mQy7gC52Pq9BK3tvk'"
-      @update:model-value="setWenxinQianfan({ apiKey: $event })"
-    ></v-text-field>
-    <v-text-field
-      v-model="wenxinQianfan.secretKey"
-      outlined
-      dense
-      label="Secret Key"
-      :placeholder="'IWf2pyYm26fz8GgNAHdkPkznHgazlffQ'"
-      @update:model-value="setWenxinQianfan({ secretKey: $event })"
-    ></v-text-field>
-
-    <v-list-item-title>{{ $t("bot.pastRounds") }}</v-list-item-title>
-    <v-list-item-subtitle>{{
-      $t("bot.pastRoundsPrompt")
-    }}</v-list-item-subtitle>
-    <v-slider
-      v-model="wenxinQianfan.pastRounds"
-      color="primary"
-      :min="0"
-      :max="10"
-      :step="1"
-      thumb-label
-      show-ticks
-      hide-details
-      @update:model-value="setWenxinQianfan({ pastRounds: $event })"
-    ></v-slider>
-  </v-list-item>
+  <CommonBotSettings
+    :settings="settings"
+    :brand-id="brandId"
+    mutation-type="setWenxinQianfan"
+  ></CommonBotSettings>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 import Bot from "@/bots/baidu/WenxinQianfanBot";
+import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
+import i18n from "@/i18n";
+import { Type } from "./settings.const";
+
+const settings = [
+  {
+    type: Type.Text,
+    name: "apiKey",
+    title: "API Key & Secret Key",
+    description: i18n.global.t("settings.secretPrompt"),
+    label: "API Key",
+    placeholder: "2125NA8mQy7gC52Pq9BK3tvk",
+    hideDetails: true,
+  },
+  {
+    type: Type.Text,
+    name: "secretKey",
+    label: "Secret Key",
+    placeholder: "IWf2pyYm26fz8GgNAHdkPkznHgazlffQ",
+  },
+  {
+    type: Type.Slider,
+    name: "pastRounds",
+    title: i18n.global.t("bot.pastRounds"),
+    description: i18n.global.t("bot.pastRoundsPrompt"),
+    min: 0,
+    max: 10,
+    step: 1,
+  },
+];
 export default {
+  components: {
+    CommonBotSettings,
+  },
   data() {
     return {
-      bot: Bot.getInstance(),
+      settings: settings,
+      brandId: Bot._brandId,
     };
-  },
-  methods: {
-    ...mapMutations(["setWenxinQianfan"]),
-  },
-  computed: {
-    ...mapState(["wenxinQianfan"]),
   },
 };
 </script>
