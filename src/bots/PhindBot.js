@@ -1,4 +1,5 @@
 import Bot from "@/bots/Bot";
+import store from "@/store";
 import AsyncLock from "async-lock";
 import axios from "axios";
 import { SSE } from "sse.js";
@@ -60,7 +61,7 @@ export default class PhindBot extends Bot {
           language: "en-GB",
           detailed: true,
           anonUserId: await this.getUUID(),
-          answerModel: "Phind Model", // GPT-3.5-Turbo // GPT-4
+          answerModel: store.state.phind.model,
           customLinks: [],
         },
         context: "",
@@ -103,6 +104,14 @@ export default class PhindBot extends Bot {
                   for (let i = 0; i < search.data.length; i++) {
                     const hostname = new URL(search.data[i].url).hostname;
                     text = text.replaceAll(`[Source${i}]`, `[${hostname}]`);
+                    text = text.replaceAll(
+                      `[^${i}^]`,
+                      ` [${hostname}](${search.data[i].url})`,
+                    );
+                    text = text.replaceAll(
+                      `^${i}^`,
+                      ` [${hostname}](${search.data[i].url})`,
+                    );
                   }
                 }
               }
