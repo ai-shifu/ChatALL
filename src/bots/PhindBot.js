@@ -102,7 +102,7 @@ export default class PhindBot extends Bot {
                 if (search.data && search.data.length) {
                   for (let i = 0; i < search.data.length; i++) {
                     const hostname = new URL(search.data[i].url).hostname;
-                    text = text.replaceAll(`Source${i}`, hostname);
+                    text = text.replaceAll(`[Source${i}]`, `[${hostname}]`);
                   }
                 }
               }
