@@ -89,6 +89,9 @@ export default createStore({
       topP: 0.9,
       repetitionPenalty: 1.2,
     },
+    phind: {
+      model: "Phind Model",
+    },
     chats: [
       {
         title: "New Chat",
@@ -209,9 +212,6 @@ export default createStore({
     },
     setPoe(state, values) {
       state.poe = { ...state.poe, ...values };
-    },
-    setFalcon(state, values) {
-      state.falcon = { ...state.falcon, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];

@@ -216,6 +216,9 @@
     "name": "Falcon",
     "falcon-180b": "180b"
   },
+  "phind": {
+    "name": "Phind"
+  },
   "dev": {
     "name": "开发专用 Bot"
   },

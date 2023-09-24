@@ -32,6 +32,7 @@ import OpenAIAPI3516KBot from "./openai/OpenAIAPI3516KBot";
 import AzureOpenAIAPIBot from "./microsoft/AzureOpenAIAPIBot";
 import WenxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
 import YouChatBot from "./YouChatBot";
+import PhindBot from "./PhindBot";
 import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
 import OpenAssistantBot from "./OpenAssistantBot";
@@ -88,6 +89,7 @@ const all = [
   MOSSBot.getInstance(),
   HuggingChatBot.getInstance(),
   OpenAssistantBot.getInstance(),
+  PhindBot.getInstance(),
   PiBot.getInstance(),
   QianWenBot.getInstance(),
   SkyWorkBot.getInstance(),
@@ -150,6 +152,7 @@ export const botTags = {
     bots.getBotByClassName("Vicuna13bBot"),
     bots.getBotByClassName("CharacterAIBot"),
     bots.getBotByClassName("ClaudeAIBot"),
+    bots.getBotByClassName("PhindBot"),
     bots.getBotByClassName("PiBot"),
     bots.getBotByClassName("SageBot"),
     bots.getBotByClassName("Falcon180bBot"),

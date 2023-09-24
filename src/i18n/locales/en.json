@@ -224,6 +224,9 @@
     "repetitionPenalty": "Repetition penalty",
     "repetitionPenaltyPrompt": "Penalize repeated tokens"
   },
+  "phind": {
+    "name": "Phind"
+  },
   "dev": {
     "name": "Dev Bot"
   },
