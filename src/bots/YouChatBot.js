@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 export default class YouChatBot extends Bot {
   static _brandId = "youChat"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "YouChatBot"; // Class name of the bot
-  static _logoFilename = "you-logo.svg"; // Place it in public/bots/
+  static _logoFilename = "you-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://you.com/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
