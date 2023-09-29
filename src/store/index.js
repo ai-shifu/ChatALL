@@ -213,6 +213,9 @@ export default createStore({
     setPoe(state, values) {
       state.poe = { ...state.poe, ...values };
     },
+    setPhind(state, values) {
+      state.phind = { ...state.phind, ...values };
+    },
     setLatestPromptIndex(state, promptIndex) {
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.latestPromptIndex = promptIndex;
