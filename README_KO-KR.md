@@ -44,6 +44,14 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [SkyWork](https://neice.tiangong.cn/)                        | 예         | 근일 개봉 |                                             |
 | [You](https://you.com/)                                      | 예         | API 없음      |                                             |
 | [Pi](https://pi.ai)                                      | 예         | API 없음      |                                             |
+| [360 AI Brain](https://ai.360.cn/)                                             | 예         | API 없음      |                                             |
+| [YouChat](https://you.com/)                                                    | 예         | API 없음      |                                             |
+| [Open Assistant](https://open-assistant.io/)                                   | 예         | API 없음      |                                             |
+| [Character.AI](https://character.ai/)                                          | 예         | API 없음      |                                             |
+| [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | 예         | API 없음      |                                             |
+| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예         | API 없음      |                                             |
+| [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | 예         | API 없음      |                                             |
+| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | 예         | API 없음      |                                             |
 
 그리고 더...
 
@@ -55,10 +63,11 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 - 언제든지 모든 봇 사용/사용 안 함
 - 1열, 2열 또는 3열 보기 간 전환
 - 최신 버전으로 자동 업데이트
-- 다크 모드 (@tanchekwei 기여)
-- 단축키. Ctrl + /`를 누르면 모든 단축키를 확인할 수 있습니다 (@tanchekwei 기여).
+- 어두운 모드 (@tanchekwei 기여)
+- 단축키. `Ctrl + /`를 누르면 모든 단축키를 확인할 수 있습니다 (@tanchekwei 기여).
 - 다중 채팅 (@tancheckwei 기여)
 - 프록시 설정 지원 (@msaong에서 제공)
+- 신속한 관리 (contributed by @tanchekwei)
 - 여러 언어 ( 한국어, 중국어, 영어, 독일어, 프랑스어, 러시아어, 베트남어, 일본어, 스페인어, 이탈리아어) 지원
 - Windows, macOS 및 Linux 지원
 
