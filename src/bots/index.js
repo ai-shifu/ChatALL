@@ -50,6 +50,7 @@ import Vicuna13bBot from "./lmsys/Vicuna13bBot";
 import Wizardlm13bBot from "./lmsys/Wizardlm13bBot";
 import Wizardlm70bBot from "./lmsys/Wizardlm70bBot";
 import FalconHC180bBot from "./huggingface/FalconHC180bBot";
+import CodeLlamaHCBot from "./huggingface/CodeLlamaHCBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -67,6 +68,7 @@ const all = [
   ClaudeBot.getInstance(),
   ClaudeAIBot.getInstance(),
   ClaudePlusPoeBot.getInstance(),
+  CodeLlamaHCBot.getInstance(),
   CodeLlamaBot.getInstance(),
   WenxinQianfanBot.getInstance(),
   WenxinQianfanTurboBot.getInstance(),
@@ -146,6 +148,7 @@ export const botTags = {
     bots.getBotByClassName("Llama270bBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("CodeLlamaBot"),
+    bots.getBotByClassName("CodeLlamaHCBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("OpenAssistantBot"),
     bots.getBotByClassName("Qihoo360AIBrainBot"),
@@ -192,6 +195,7 @@ export const botTags = {
     bots.getBotByClassName("Falcon180bBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("CodeLlamaBot"),
+    bots.getBotByClassName("CodeLlamaHCBot"),
     bots.getBotByClassName("Wizardlm13bBot"),
     bots.getBotByClassName("Wizardlm70bBot"),
     bots.getBotByClassName("FalconHC180bBot"),
