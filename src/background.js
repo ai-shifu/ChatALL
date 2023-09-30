@@ -314,6 +314,13 @@ function createNewWindow(url, userAgent = "") {
   });
 }
 
+async function getCookies(filter) {
+  const cookies = await mainWindow.webContents.session.cookies.get({
+    ...filter,
+  });
+  return cookies;
+}
+
 ipcMain.handle("create-new-window", (event, url, userAgent) => {
   createNewWindow(url, userAgent);
 });
@@ -357,6 +364,10 @@ ipcMain.handle("save-proxy-and-restart", async () => {
   return "";
 });
 // Proxy Setting End
+
+ipcMain.handle("get-cookies", async (event, filter) => {
+  return await getCookies(filter);
+});
 
 nativeTheme.on("updated", () => {
   mainWindow.webContents.send("on-updated-system-theme");

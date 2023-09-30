@@ -23,6 +23,20 @@
           store.commit(mutationType, { [setting.name]: $event })
         "
       ></v-text-field>
+      <v-select
+        v-if="setting.type === Type.Select"
+        v-model="settingState[setting.name]"
+        outlined
+        dense
+        :label="setting.label"
+        :placeholder="setting.placeholder"
+        :hide-details="setting.hideDetails"
+        :items="setting.items"
+        @update:model-value="
+          /* setFalcon({ temperature: $event }) */
+          store.commit(mutationType, { [setting.name]: $event })
+        "
+      ></v-select>
       <v-slider
         v-else-if="setting.type === Type.Slider"
         v-model="settingState[setting.name] /* falcon.temperature */"
