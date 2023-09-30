@@ -127,8 +127,7 @@ export default class PhindBot extends Bot {
             reject(this.getSSEDisplayError(event));
           });
 
-          let isPrevDataEmpty = false;
-          // override default _onStreamProgress to fix missing new line in response due to trimming, line modified mark with "// modified "
+          // override default _onStreamProgress to fix missing new line in response due to trimming
           source._onStreamProgress = function (e) {
             if (!source.xhr) {
               return;
@@ -147,21 +146,23 @@ export default class PhindBot extends Bot {
             var data = source.xhr.responseText.substring(source.progress);
 
             source.progress += data.length;
-            var parts = (source.chunk + data).split(/[\r\n]+/); // modified, split with newline character and avoid empty string in result array
+            var parts = (source.chunk + data).split(/\r\n\r\n/);
             var lastPart = parts.pop();
-            // modified
-            for (const part of parts) {
-              const event = source._parseEventChunk(part);
-              if (event.data === "") {
-                if (isPrevDataEmpty) {
-                  // for two consecutive empty string, display newline by set data to newline character
-                  event.data = "\n";
-                } else {
-                  isPrevDataEmpty = true; // set flag to true for first empty string
-                }
-              } else {
-                isPrevDataEmpty = false; // set flag to false if not empty string
+            for (let part of parts) {
+              // skip if data is empty
+              if (part === "data: ") {
+                continue;
               }
+
+              // newline
+              if (part === "data: \r\ndata: ") {
+                let event = new CustomEvent("message");
+                event.data = "\n";
+                source.dispatchEvent(event);
+                continue;
+              }
+
+              const event = source._parseEventChunk(part);
               source.dispatchEvent(event);
             }
             source.chunk = lastPart;
