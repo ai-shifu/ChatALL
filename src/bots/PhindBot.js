@@ -173,7 +173,14 @@ export default class PhindBot extends Bot {
         }
       });
     } catch (error) {
-      console.error("Error PhindBot _sendPrompt:", error);
+      if (error.request.status === 403) {
+        throw new Error(
+          `${error.request.status} ${error.request.responseText}`,
+        );
+      } else {
+        console.error("Error PhindBot _sendPrompt:", error);
+        throw error;
+      }
     }
   }
 
