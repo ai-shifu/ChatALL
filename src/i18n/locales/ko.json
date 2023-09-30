@@ -39,6 +39,7 @@
     "error": "오류",
     "failedConnectUrl": "{ url }을(를) 연결하지 못했습니다",
     "closedByServer": "서버가 연결을 닫았습니다",
+    "requireLogin": "로그인해주세요: { link }",
     "solveChallenge": "아래 링크를 클릭하고 페이지의 지침에 따라 과제/캡챠를 해결한 후 창을 닫습니다."
   },
   "modal": {
@@ -103,7 +104,6 @@
   },
   "bingChat": {
     "name": "Bing Chat",
-    "loginToContinue": "요청이 제한됩니다. 계속하려면 <a { attributes }>로그인</a>하십시오.",
     "solveCaptcha": "계속하려면 <a { attributes }>CAPTCHA를 해결</a>해야 합니다.",
     "h3imaginative": "창의적인",
     "galileo": "균형 잡힌",
@@ -130,8 +130,10 @@
   },
   "huggingChat": {
     "name": "HuggingChat",
+    "codellamaCodeLlama-34b-Instruct-hf": "Code Llama",
     "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
-    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b"
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b",
+    "tiiuaefalcon-180B-chat": "falcon-180b"
   },
   "gradio": {
     "fnIndex": "fn_index",
@@ -144,14 +146,19 @@
   },
   "lmsys": {
     "name": "LMSYS",
+    "vicuna-7b": "vicuna-7b",
     "vicuna-13b": "vicuna-13b",
     "vicuna-33b": "vicuna-33b",
     "chatglm-6b": "chatglm-6b",
     "chatglm2-6b": "chatglm2-6b",
     "alpaca-13b": "alpaca-13b",
     "claude-1": "claude-1",
+    "wizardlm-13b": "WizardLM-13B",
+    "wizardlm-70b": "WizardLM-70B",
+    "codellama-34b-instruct": "Code Llama",
     "llama-2-13b-chat": "llama-2-13b",
-    "llama-2-7b-chat": "llama-2-7b"
+    "llama-2-7b-chat": "llama-2-7b",
+    "llama-2-70b-chat": "llama-2-70b"
   },
   "moss": {
     "name": "MOSS"
@@ -176,7 +183,8 @@
     "a2_2": "Claude-2-100k",
     "beaver": "GPT-4",
     "capybara": "Assistant",
-    "chinchilla": "ChatGPT 3.5"
+    "chinchilla": "ChatGPT 3.5",
+    "vizcacha": "GPT-4-32k"
   },
   "qianWen": {
     "name": "QianWen"
@@ -195,6 +203,9 @@
   "youChat": {
     "name": "YouChat"
   },
+  "chatGlm": {
+    "name": "ChatGLM"
+  },
   "pi": {
     "name": "Pi",
     "waitPiIntro": "아래 챗봇 사이트 링크를 클릭하여 Pi 소개가 끝날 때까지 기다렸다가 창을 닫아주세요."
@@ -202,6 +213,21 @@
   "openAssistant": {
     "name": "길잡이 열기",
     "queue": "대기열에 {queue_size}개의 요청이 있습니다. 현재 {queue_position} 위입니다"
+  },
+  "falcon": {
+    "name": "Falcon",
+    "falcon-180b": "180b",
+    "temperature": "온도",
+    "temperaturePrompt": "값이 높을수록 보다 다양한 결과물을 생성합니다",
+    "maxNewTokens": "새 토큰 최대 수",
+    "maxNewTokensPrompt": "새 토큰의 최대 개수",
+    "topP": "Top-p (핵 표본 추출)",
+    "topPPrompt": "값이 높을수록 더 많은 저확률 토큰 표본 추출",
+    "repetitionPenalty": "반복 페널티",
+    "repetitionPenaltyPrompt": "반복되는 토큰에 벌칙 부여"
+  },
+  "phind": {
+    "name": "Phind"
   },
   "dev": {
     "name": "Dev Bot"
