@@ -4,7 +4,6 @@ import store from "@/store";
 export default class Bot {
   static _logoPackedPaths = null;
   static _isAvailable = false;
-  static _isDisabled = false; // True if the bot is permanently disabled
 
   static _brandId = "bot"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "Bot"; // Class name of the bot
@@ -16,6 +15,8 @@ export default class Bot {
   static _lock = null; // AsyncLock for prompt requests. `new AsyncLock()` in the subclass as needed.
   static _settingsComponent = ""; // Vue component filename for settings
   static _outputFormat = "markdown"; // "markdown" or "html"
+
+  disabled = false; // True if the bot is permanently disabled
 
   constructor() {}
 
@@ -93,7 +94,7 @@ export default class Bot {
   }
 
   isDisabled() {
-    return this.constructor._isDisabled;
+    return this.disabled;
   }
 
   /**
@@ -227,7 +228,7 @@ export default class Bot {
   }
 
   disable() {
-    this.constructor._isDisabled = true;
+    this.disabled = true;
   }
 
   /**
