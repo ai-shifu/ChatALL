@@ -131,7 +131,8 @@
   "huggingChat": {
     "name": "HuggingChat",
     "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
-    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b"
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b",
+    "tiiuaefalcon-180B-chat": "falcon-180b"
   },
   "gradio": {
     "fnIndex": "fn_index",

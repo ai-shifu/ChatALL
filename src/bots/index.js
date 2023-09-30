@@ -49,6 +49,7 @@ import Vicuna7bBot from "./lmsys/Vicuna7bBot";
 import Vicuna13bBot from "./lmsys/Vicuna13bBot";
 import Wizardlm13bBot from "./lmsys/Wizardlm13bBot";
 import Wizardlm70bBot from "./lmsys/Wizardlm70bBot";
+import FalconHC180bBot from "./huggingface/FalconHC180bBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -70,6 +71,7 @@ const all = [
   WenxinQianfanBot.getInstance(),
   WenxinQianfanTurboBot.getInstance(),
   Falcon180bBot.getInstance(),
+  FalconHC180bBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
@@ -107,6 +109,7 @@ const disabled = [
   "ChatGPTBrowsingBot",
   "AlpacaBot",
   "HuggingChatBot",
+  "Falcon180bBot",
 ];
 
 if (process.env.NODE_ENV !== "production") {
@@ -163,6 +166,7 @@ export const botTags = {
     bots.getBotByClassName("Falcon180bBot"),
     bots.getBotByClassName("Wizardlm13bBot"),
     bots.getBotByClassName("Wizardlm70bBot"),
+    bots.getBotByClassName("FalconHC180bBot"),
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
@@ -190,6 +194,7 @@ export const botTags = {
     bots.getBotByClassName("CodeLlamaBot"),
     bots.getBotByClassName("Wizardlm13bBot"),
     bots.getBotByClassName("Wizardlm70bBot"),
+    bots.getBotByClassName("FalconHC180bBot"),
   ],
   api: [
     bots.getBotByClassName("AzureOpenAIAPIBot"),
