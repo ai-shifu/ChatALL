@@ -51,7 +51,8 @@ ChatALL 的典型用户是：
 | [Llama 2 7B、13B 和 70B](https://ai.meta.com/llama/)                           | 支持     | 无 API   |                                          |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 支持     | 无 API   |                                          |
 | [WizardLM 13B 和 70B](https://github.com/nlpxucan/WizardLM)                    | 支持     | 无 API   |                                          |
-| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | 支持     | 无 API   |                                          |
+| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | 支持     | 无 API   |                                          |
+| [Phind](https://www.phind.com/)                                                | 支持     | 无 API   |                                          |
 
 还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 

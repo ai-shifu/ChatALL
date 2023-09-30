@@ -51,7 +51,8 @@ Typical users of ChatALL are:
 | [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | Yes         | No API      |                                             |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Yes         | No API      |                                             |
 | [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | Yes         | No API      |                                             |
-| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | Yes         | No API      |                                             |
+| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | Yes         | No API      |                                             |
+| [Phind](https://www.phind.com/)                                                | Yes         | No API      |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
