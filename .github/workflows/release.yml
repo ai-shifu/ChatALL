@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-release:
-    runs-on: macos-latest
+    runs-on: macos-latest-xlarge
 
     steps:
       - name: Checkout Git repository
