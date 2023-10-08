@@ -69,7 +69,8 @@
     "parameter": "Parameter",
     "description": "Description",
     "botNameDesc": "name of the selected response’s bot",
-    "botResponseDesc": "the selected response"
+    "botResponseDesc": "the selected response",
+    "loading": "Loading..."
   },
   "bot": {
     "creatingConversation": "Creating conversation...",
@@ -299,7 +300,8 @@
     },
     "input": {
       "clear": "Clear"
-    }
+    },
+    "open": "open"
   },
   "10": "10",
   "25": "25",

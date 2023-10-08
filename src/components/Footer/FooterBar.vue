@@ -114,12 +114,19 @@ import {
   SHORTCUT_PROMPT_MANAGEMENT,
   SHORTCUT_BOTS_MENU,
 } from "./../ShortcutGuide/shortcut.const";
+import Messages from "@/store/messages";
 
 const { ipcRenderer } = window.require("electron");
 
 const store = useStore();
 const matomo = useMatomo();
 const emit = defineEmits(["updateActiveBots"]);
+const props = defineProps({
+  chat: {
+    type: Object,
+    required: true,
+  },
+});
 
 const confirmModal = ref(null);
 const promptTextArea = ref(null);
@@ -131,8 +138,11 @@ const bots = ref(_bots.all);
 const activeBots = reactive({});
 const rerenderFavBotLogos = ref(0);
 const favBots = computed(() => {
+  if (!props.chat || !props.chat.favBots) {
+    return [];
+  }
   const _favBots = [];
-  store.getters.currentChat.favBots.forEach((favBot) => {
+  props.chat.favBots.forEach((favBot) => {
     _favBots.push({
       ...favBot,
       instance: _bots.getBotByClassName(favBot.classname),
@@ -228,7 +238,7 @@ function filterEnterKey(event) {
   }
 }
 
-function sendPromptToBots() {
+async function sendPromptToBots() {
   if (prompt.value.trim() === "") return;
 
   const toBots = favBots.value
@@ -237,13 +247,15 @@ function sendPromptToBots() {
 
   if (toBots.length === 0) return;
 
-  const isFirstPrompt = store.getters.currentChat.messages.length === 0;
-  store
-    .dispatch("sendPrompt", {
-      prompt: prompt.value,
-      bots: toBots,
-    })
-    .then(() => updateChatTitleWithFirstPrompt(isFirstPrompt));
+  const count = await Messages.getMessagesCount(store.state.currentChatIndex);
+  const isFirstPrompt = count === 0;
+  await store.dispatch("sendPrompt", {
+    prompt: prompt.value,
+    bots: toBots,
+  });
+  if (isFirstPrompt) {
+    updateChatTitleWithFirstPrompt();
+  }
 
   // Clear the textarea after sending the prompt
   prompt.value = "";
@@ -367,13 +379,15 @@ function initializeSortable() {
   });
 }
 
-function updateChatTitleWithFirstPrompt(isFirstPrompt) {
-  if (isFirstPrompt) {
-    // if this is first prompt, update chat title to first 30 characters of user prompt
-    store.commit("editChatTitle", {
-      title: store.getters.currentChat.messages[0].content.substring(0, 30),
-    });
-  }
+async function updateChatTitleWithFirstPrompt() {
+  // if this is first prompt, update chat title to first 30 characters of user prompt
+  const messages = await Messages.getMessages(store.state.currentChatIndex);
+  store.commit("editChatTitle", {
+    index: store.state.currentChatIndex,
+    payload: {
+      title: messages[0].content.substring(0, 30),
+    },
+  });
 }
 
 async function usePrompt(value) {

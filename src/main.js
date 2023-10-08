@@ -2,6 +2,8 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import i18n from "./i18n";
 import store from "./store";
+import Chats from "@/store/chats";
+import { migrateChatsMessagesThreads } from "@/store/migration";
 import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { useI18n } from "vue-i18n";
 import "material-design-icons/iconfont/material-icons.css";
@@ -38,8 +40,12 @@ VMdPreview.use(vuepressTheme, {
 
 const { ipcRenderer } = window.require("electron");
 
-// Init storage
-store.commit("init");
+(async () => {
+  await store.restored; // wait for state to be restore
+  store.commit("migrateSettingsPrompts");
+  await migrateChatsMessagesThreads();
+  await Chats.addFirstChatIfEmpty();
+})();
 
 const defaultTheme = await resolveTheme(store.state.mode, ipcRenderer);
 store.commit("setTheme", defaultTheme);

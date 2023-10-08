@@ -2,9 +2,9 @@
   <v-card
     ref="root"
     class="message prompt"
-    :class="props.isThread ? 'thread-prompt' : ''"
+    :class="isThread ? 'thread-prompt' : ''"
   >
-    <pre>{{ props.message.content }}</pre>
+    <pre>{{ message ? message.content : "" }}</pre>
   </v-card>
 </template>
 
