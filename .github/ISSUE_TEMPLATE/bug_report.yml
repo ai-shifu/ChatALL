@@ -4,6 +4,9 @@ title: "[BUG]"
 labels: [bug]
 
 body:
+  - type: markdown
+    attributes:
+      value: "Please follow the [troubleshooting steps](https://github.com/sunner/ChatALL#troubleshooting) before submitting a bug report. / 请在提交错误报告之前按照[故障排除步骤](https://github.com/sunner/ChatALL/blob/main/README_ZH-CN.md#%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3)进行操作。"
   - type: textarea
     attributes:
       label: Describe the bug / 描述问题
