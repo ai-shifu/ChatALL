@@ -8,6 +8,7 @@
         @click="deleteChats"
       ></v-btn>
       <v-btn
+        disabled
         color="primary"
         variant="outlined"
         :text="$t('chat.downloadAllChatHistory')"

@@ -6,8 +6,8 @@
         density="comfortable"
         class="mb-1 border"
         :title="$t('chat.newChat')"
-        @click="onAddNewChat"
-        @shortkey="onAddNewChat"
+        @click="onAddChat"
+        @shortkey="onAddChat"
         v-shortkey="SHORTCUT_NEW_CHAT.key"
       >
         <template v-slot:prepend>
@@ -16,13 +16,16 @@
       </v-list-item>
     </v-list>
 
-    <template v-for="chat in chatsReversed">
+    <template v-for="chat in drawerItems">
       <ChatDrawerItem
         v-if="!chat.hide"
-        :chat="chat"
-        @confirm-hide-chat="confirmHideChat"
-        @focus-textarea="focusTextarea"
         :key="chat.index"
+        :chat="chat"
+        :current-chat-index="store.state.currentChatIndex"
+        @hide-chat="hideChat"
+        @select-chat="selectChat"
+        @edit-chat-title="editChatTitle"
+        @focus-textarea="focusTextarea"
       ></ChatDrawerItem>
     </template>
   </v-navigation-drawer>
@@ -30,58 +33,69 @@
 </template>
 
 <script setup>
-import { ref, computed, onUpdated, nextTick } from "vue";
-import { useStore } from "vuex";
-import i18n from "@/i18n";
-import ConfirmModal from "@/components/ConfirmModal.vue";
 import ChatDrawerItem from "@/components/ChatDrawer/ChatDrawerItem.vue";
+import ConfirmModal from "@/components/ConfirmModal.vue";
 import { SHORTCUT_NEW_CHAT } from "@/components/ShortcutGuide/shortcut.const";
+import i18n from "@/i18n";
+import Chats from "@/store/chats";
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
+import { nextTick, onUpdated, ref } from "vue";
+import { useStore } from "vuex";
 
 const store = useStore();
-
 const props = defineProps(["open"]);
 const emit = defineEmits(["update:open", "focusTextarea"]);
 onUpdated(setIsChatDrawerOpen);
 
 const confirmModal = ref(null);
-const chatsReversed = computed(() => store.state.chats.slice().reverse());
+const drawerItems = useObservable(
+  liveQuery(() => Chats.table.orderBy("modifiedTime").reverse().toArray()),
+);
 
 function setIsChatDrawerOpen() {
   store.commit("setIsChatDrawerOpen", props.open);
 }
 
-function onAddNewChat() {
-  store.commit("createChat");
-  store.commit("selectChat", store.state.chats.length - 1);
+function selectChat(index) {
+  store.commit("selectChat", index);
   focusTextarea();
 }
 
-async function confirmHideChat() {
-  const result = await confirmModal.value.showModal(
+async function onAddChat() {
+  store.commit("selectChat", await Chats.add());
+  focusTextarea();
+}
+
+async function hideChat() {
+  const confirm = await confirmModal.value.showModal(
     i18n.global.t("modal.confirmHideChat"),
   );
-  if (result) {
-    store.commit("hideChat");
+  if (confirm) {
+    await Chats.update(store.state.currentChatIndex, { hide: true });
     selectLatestVisibleChat();
   }
 }
 
-function selectLatestVisibleChat() {
-  let isAnyChatVisible = false;
-  for (let i = 0; i < chatsReversed.value.length; i++) {
-    const chat = chatsReversed.value[i];
-    if (!chat.hide) {
-      isAnyChatVisible = true;
-      store.commit("selectChat", chat.index);
-      focusTextarea();
-      break;
-    }
-  }
-  if (!isAnyChatVisible) {
-    // if there is no visible chat, create a new chat
-    store.commit("createChat");
-    store.commit("selectChat", store.state.chats.length - 1);
+async function editChatTitle(payload) {
+  store.commit("editChatTitle", {
+    index: store.state.currentChatIndex,
+    payload,
+  });
+}
+
+async function selectLatestVisibleChat() {
+  const latestChat = await Chats.table
+    .orderBy("modifiedTime")
+    .reverse()
+    .filter((chat) => !chat.hide)
+    .first();
+  if (latestChat) {
+    store.commit("selectChat", latestChat.index);
     focusTextarea();
+  } else {
+    // if there is no visible chat, create a new chat
+    onAddChat();
   }
 }
 

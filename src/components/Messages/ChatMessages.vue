@@ -1,37 +1,38 @@
 <template>
+  <v-container v-if="loading" class="ma-0 position-fixed" style="z-index: 1">
+    <v-label class="bg-background" style="opacity: 1">{{
+      $t("chat.loading")
+    }}</v-label>
+  </v-container>
   <div class="messages">
     <div
       class="message-grid"
       :style="{ gridTemplateColumns: gridTemplateColumns }"
     >
-      <template v-for="(message, index) in messages" :key="index">
-        <!-- Check if the current message is a prompt
-          If true, render <chat-prompt> component and set responses array empty -->
+      <template v-for="(message, index) in currentChatMessages" :key="index">
         <chat-prompt
-          v-if="checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message)"
+          v-if="message.type === 'prompt'"
           :columns="columns"
           :message="message"
         ></chat-prompt>
-        <template v-else>
-          <!-- If current message is response, push current message to responses array.
-            Then check if next message.type === 'prompt', if true, render <chat-responses> -->
-          <chat-responses
-            v-if="pushResponseAndCheckIsNextMessagePromptType(index, message)"
-            :columns="columns"
-            :responses="responses"
-            :update-message="updateMessage"
-          ></chat-responses>
-        </template>
+        <chat-response
+          v-else
+          :chat="chat"
+          :columns="columns"
+          :messages="message"
+        ></chat-response>
       </template>
     </div>
   </div>
 </template>
 
 <script setup>
+import Messages from "@/store/messages";
+import { liveQuery } from "dexie";
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import ChatPrompt from "./ChatPrompt.vue";
-import ChatResponses from "./ChatResponses.vue";
+import ChatResponse from "./ChatResponse.vue";
 
 const store = useStore();
 
@@ -40,29 +41,54 @@ const props = defineProps({
     type: Number,
     default: 3,
   },
-  chatIndex: {
-    type: Number,
-    default: 0,
+  chat: {
+    type: Object,
   },
 });
 
 const autoScroll = ref(true);
+const loading = ref(false);
 const gridTemplateColumns = computed(() => `repeat(${props.columns}, 1fr)`);
-const messages = computed(() => store.state.chats[props.chatIndex].messages);
-
-const updateMessage = (index, values) => {
-  store.dispatch("updateMessage", {
-    indexes: { chatIndex: store.state.currentChatIndex, messageIndex: index },
-    message: values,
+const currentChatMessages = ref([]);
+let createChatMessageLiveQuery = (index) => {
+  return liveQuery(async () => {
+    const keys = await Messages.table
+      .where("chatIndex")
+      .equals(index)
+      .primaryKeys();
+    const messages = await Messages.table.bulkGet(keys);
+    messages.sort((a, b) => a.createdTime - b.createdTime);
+    const groupedMessage = [];
+    let responses = Object.create(null);
+    for (let i = 0; i < messages.length; i++) {
+      const message = messages[i];
+      if (message.type === "prompt") {
+        if (Object.keys(responses).length !== 0) {
+          groupedMessage.push.apply(groupedMessage, Object.values(responses));
+        }
+        groupedMessage.push(message);
+        responses = Object.create(null);
+        continue;
+      }
+      if (message.hide !== true) {
+        if (!responses[message.className]) {
+          // group responses with same bot for carousel
+          responses[message.className] = [];
+        }
+        responses[message.className].push(message);
+      }
+    }
+    if (Object.keys(responses).length !== 0) {
+      groupedMessage.push.apply(groupedMessage, Object.values(responses));
+    }
+    currentChatMessages.value = groupedMessage;
   });
 };
 
 const scrollToBottom = ({ immediately = false }) => {
-  nextTick(() => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: immediately ? "instant" : "smooth",
-    });
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: immediately ? "instant" : "smooth",
   });
 };
 
@@ -72,43 +98,49 @@ const autoScrollToBottom = () => {
   }
 };
 
-watch(() => store.getters.currentChat.messages.length, autoScrollToBottom);
+const currentChatIndex = computed(() => store.state.currentChatIndex);
+let currentMessageSub;
+let scrollToBottomFirst;
+watch(
+  currentChatIndex,
+  (newChat, oldChat) => {
+    if (newChat !== oldChat) {
+      loading.value = true;
+      scrollToBottomFirst = true;
+      if (currentMessageSub) {
+        currentMessageSub.unsubscribe();
+      }
+      currentMessageSub = createChatMessageLiveQuery(
+        store.state.currentChatIndex,
+      ).subscribe(() => {
+        loading.value = false;
+        if (scrollToBottomFirst) {
+          scrollToBottomFirst = false;
+          nextTick(() => scrollToBottom({ immediately: true }));
+        }
+      });
+    }
+  },
+  { immediate: true },
+);
+
 watch(() => store.state.updateCounter, autoScrollToBottom);
 
 const onScroll = () => {
   const scrollPosition = window.pageYOffset + window.innerHeight;
   autoScroll.value =
-    scrollPosition >= document.documentElement.scrollHeight - 10;
+    scrollPosition >= document.documentElement.scrollHeight - 40;
 };
 
-onMounted(() => {
-  store.getters.currentChat.messages.forEach((message) => {
-    message.done = true;
-  });
+onMounted(async () => {
+  await Messages.table
+    .filter((message) => message.done !== true)
+    .modify({ done: true });
   window.addEventListener("scroll", onScroll);
-  scrollToBottom({ immediately: true });
 });
 onUnmounted(() => {
   window.removeEventListener("scroll", onScroll);
 });
-
-let responses = []; // this array store a prompt responses
-function checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message) {
-  if (message.type === "prompt") {
-    responses = []; // clear responses for next prompt's responses
-    return true;
-  }
-  return false;
-}
-
-function pushResponseAndCheckIsNextMessagePromptType(index, response) {
-  const nextIndex = index + 1;
-  if (!response.hide) responses.push(response);
-  if (nextIndex >= messages.value.length) {
-    return true; // allow last element
-  }
-  return messages.value[nextIndex].type === "prompt";
-}
 </script>
 
 <style scoped>

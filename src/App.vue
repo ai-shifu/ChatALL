@@ -120,12 +120,10 @@
         </v-app-bar>
         <FindModal ref="findRef"></FindModal>
 
-        <ChatMessages
-          :chat-index="store.state.currentChatIndex"
-          :columns="columns"
-        ></ChatMessages>
+        <ChatMessages :chat="currentChat" :columns="columns"></ChatMessages>
         <FooterBar
           ref="footerBarRef"
+          :chat="currentChat"
           @update-active-bots="(bots) => (activeBots = bots)"
         ></FooterBar>
       </v-main>
@@ -162,6 +160,9 @@ import {
 } from "./components/ShortcutGuide/shortcut.const";
 
 import i18n from "./i18n";
+import Chats from "@/store/chats";
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
 
 // Components
 import ChatDrawer from "@/components/ChatDrawer/ChatDrawer.vue";
@@ -186,6 +187,15 @@ const onUpdatedSystemTheme = async () => {
   store.commit("setTheme", resolvedTheme);
   applyTheme(resolvedTheme, vuetifyTheme);
 };
+
+const currentChat = useObservable(
+  liveQuery(() => {
+    const chat = Chats.table.orderBy("selectedTime").last();
+    console.log("chat changed");
+    return chat;
+  }),
+  { initialValue: {} },
+);
 
 ipcRenderer.on("on-updated-system-theme", onUpdatedSystemTheme);
 

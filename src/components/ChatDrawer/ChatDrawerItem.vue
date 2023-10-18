@@ -3,7 +3,7 @@
     density="comfortable"
     v-if="!isEditMode"
     :key="`chat-${props.chat.index}`"
-    :active="store.getters.currentChat.index === props.chat.index"
+    :active="props.currentChatIndex === props.chat.index"
     :title="props.chat.title"
     :value="props.chat.index"
     class="pa-3 pr-0"
@@ -13,10 +13,7 @@
     <template v-slot:prepend>
       <v-icon color="primary" class="mr-4"> mdi-message-outline </v-icon>
     </template>
-    <template
-      #append
-      v-if="store.getters.currentChat.index === props.chat.index"
-    >
+    <template #append v-if="props.currentChatIndex === props.chat.index">
       <v-btn
         flat
         size="x-small"
@@ -62,43 +59,35 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import { useStore } from "vuex";
+import { ref } from "vue";
 
-const store = useStore();
-const emit = defineEmits(["confirmHideChat", "focusTextarea"]);
+const emit = defineEmits([
+  "hideChat",
+  "editChatTitle",
+  "selectChat",
+  "focusTextarea",
+]);
 const props = defineProps({
   chat: {
     type: Object,
     required: true,
   },
+  currentChatIndex: {
+    type: String,
+    required: true,
+  },
 });
-watch(() => store.state.currentChatIndex, unsetCursorWait);
 
 const isEditMode = ref(false);
 const isCursorWait = ref(false);
 const chatTitleEditModel = ref("");
 
 async function onSelectChat() {
-  if (props.chat.index === store.state.currentChatIndex) return;
-  setCursorWait();
-  await new Promise((r) => setTimeout(r, 25));
-  store.commit("selectChat", props.chat.index);
-  emit("focusTextarea");
-}
-
-function setCursorWait() {
-  document.body.style.cursor = "wait";
-  isCursorWait.value = true;
-}
-
-function unsetCursorWait() {
-  document.body.style.cursor = "";
-  isCursorWait.value = false;
+  emit("selectChat", props.chat.index);
 }
 
 async function confirmHideChat() {
-  emit("confirmHideChat");
+  emit("hideChat");
 }
 
 function editChat() {
@@ -107,7 +96,7 @@ function editChat() {
 }
 
 function confirmEdit() {
-  store.commit("editChatTitle", {
+  emit("editChatTitle", {
     title: chatTitleEditModel.value,
     isEditedByUser: true,
   });
@@ -137,5 +126,10 @@ function onPressEnter(event) {
 
 :deep() i.v-icon {
   color: rgb(var(--v-theme-primary));
+}
+
+:deep() div.v-list-item__prepend {
+  display: block;
+  margin-right: 0.1rem;
 }
 </style>

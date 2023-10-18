@@ -83,6 +83,7 @@ import { preview } from "../helpers/template-helper";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import BotLogo from "@/components/Footer/BotLogo.vue";
 import _bots from "@/bots";
+import Chats from "@/store/chats";
 
 const store = useStore();
 const isEdit = ref(false);
@@ -140,8 +141,10 @@ function closeDialog(value) {
 }
 
 async function send() {
+  let newChatIndex;
   if (chatRef.value === "new") {
-    await store.dispatch("createChatAndSelect");
+    newChatIndex = await Chats.add();
+    store.commit("selectChat", newChatIndex);
   }
   await store
     .dispatch("sendPrompt", {
@@ -151,7 +154,10 @@ async function send() {
     .then(() => {
       if (chatRef.value === "new") {
         store.commit("editChatTitle", {
-          title: previewTextarea.value.substring(0, 30),
+          index: newChatIndex,
+          payload: {
+            title: previewTextarea.value.substring(0, 30),
+          },
         });
       }
     });

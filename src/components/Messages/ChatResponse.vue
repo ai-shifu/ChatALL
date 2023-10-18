@@ -64,15 +64,13 @@
         }}</v-icon>
       </v-btn>
     </v-card-title>
-    <template v-if="props.messages.length === 1">
+    <template v-if="messages && messages.length === 1">
       <v-md-preview :text="messages[0].content" @click="handleClick" />
-      <template v-if="!props.isThread && messages[0].threadIndex !== undefined">
-        <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
-            we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
+      <template v-if="!isThread && messages.length && messages[0].hasThread">
         <chat-thread
-          :key="rerenderThread"
-          :threadIndex="messages[0].threadIndex"
-          :updateThreadMessage="updateThreadMessage"
+          :chat="chat"
+          :messageIndex="messages[0].index"
+          :messagePromptIndex="messages[0].promptIndex"
         ></chat-thread>
       </template>
     </template>
@@ -86,13 +84,11 @@
     >
       <v-carousel-item v-for="(message, i) in messages" :key="i">
         <v-md-preview :text="message.content" @click="handleClick" />
-        <template v-if="!props.isThread && message.threadIndex !== undefined">
-          <!-- if the repsonse is not a thread and there is value in message.threadIndex, means thread existed for this response
-          we pass in threadIndex into <chat-thread> to render based on the threadIndex -->
+        <template v-if="!isThread && message && message.hasThread">
           <chat-thread
-            :key="rerenderThread"
-            :threadIndex="message.threadIndex"
-            :updateThreadMessage="updateThreadMessage"
+            :chat="chat"
+            :messageIndex="message.index"
+            :messagePromptIndex="messages[0].promptIndex"
           ></chat-thread>
         </template>
       </v-carousel-item>
@@ -136,7 +132,7 @@
           flat
           icon
           size="x-small"
-          v-if="!(!isShowResendButton && !isShowReplyButton)"
+          v-if="isShowReplyButtonInDOM"
           :style="{ visibility: isShowReplyButton ? 'visible' : 'hidden' }"
           :color="isShowReplyTextField ? 'primary' : ''"
           @click="toggleReplyButton"
@@ -180,16 +176,21 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch, computed, nextTick, toRaw } from "vue";
-import { useStore } from "vuex";
-import i18n from "@/i18n";
-import { useMatomo } from "@/composables/matomo";
-import ConfirmModal from "@/components/ConfirmModal.vue";
-import ChatThread from "./ChatThread.vue";
 import bots from "@/bots";
+import ConfirmModal from "@/components/ConfirmModal.vue";
+import { useMatomo } from "@/composables/matomo";
+import i18n from "@/i18n";
+import Messages from "@/store/messages";
+import Threads from "@/store/threads";
 import { Theme } from "@/theme";
+import { computed, nextTick, onMounted, ref, toRaw, watch } from "vue";
+import { useStore } from "vuex";
+import ChatThread from "./ChatThread.vue";
 
 const props = defineProps({
+  chat: {
+    type: Object,
+  },
   messages: {
     type: Array,
     required: true,
@@ -198,9 +199,8 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  threadIndex: {
-    type: Number,
-    required: false,
+  messagePromptIndex: {
+    type: String,
   },
   isThread: {
     type: Boolean,
@@ -208,10 +208,17 @@ const props = defineProps({
   },
 });
 
-const emits = defineEmits(["update-message", "update-thread-message"]);
-
 const matomo = useMatomo();
 const store = useStore();
+const messages = computed(() => props.messages);
+const chat = computed(() => props.chat);
+watch(
+  messages,
+  async () => {
+    carouselModel.value = maxPage.value;
+  },
+  { deep: true },
+);
 
 const root = ref();
 const replyModel = ref("");
@@ -227,7 +234,9 @@ const isSelectedResponsesEmpty = ref(
   store.state.selectedResponses.length === 0,
 );
 const botInstance = computed(() => {
-  return bots.getBotByClassName(props.messages[0].className);
+  return messages.value && messages.value.length
+    ? bots.getBotByClassName(messages.value[0].className)
+    : undefined;
 });
 
 const botLogo = computed(() => {
@@ -242,33 +251,29 @@ const isBotLogoInverted = computed(() => {
   return store.state.theme === Theme.DARK && botInstance.value?.isDarkLogo();
 });
 
-const isHighlighted = computed(() => props.messages[maxPage.value].highlight); // if last response is hightlighted, return true
+const isHighlighted = computed(() =>
+  props.messages.length ? props.messages[maxPage.value].highlight : false,
+); // if last response is hightlighted, return true
 const isAllDone = computed(() => !props.messages.some((m) => !m.done)); // if any message is not done, return false
 const isLatestPrompt = computed(
   // if the current message response to user latest prompt, return true
   // this flag is used to determine whether to hide Resend button, hide it when is not latest prompt
-  // to ensure the prompt and response in messages array is in correct order
+  // to ensure the prompt and response in messagesRef array is in correct order
   () =>
-    props.messages[0].promptIndex !== undefined &&
-    store.getters.currentChat.latestPromptIndex !== undefined &&
-    store.getters.currentChat.latestPromptIndex ===
-      props.messages[0].promptIndex,
+    props.messages.length &&
+    props.chat?.latestPromptIndex === props.messages[0].promptIndex,
 );
 
 const isLatestPromptForThread = computed(() => {
   if (props.isThread) {
     // if the current thread is response latest prompt, return true
     // this flag is used to determine whether to hide Resend button in thread, hide it when is not latest prompt
-    // to ensure the prompt and response in messages array is in correct order
-    const responseIndex =
-      store.getters.currentChat.threads[props.threadIndex].responseIndex; // get responseIndex, from current thread
-    const threadPromptIndex =
-      store.getters.currentChat.messages[responseIndex].promptIndex; // using responseIndex to get response from messages, and in the repsonse we can retrieve promptIndex
-    return (
-      threadPromptIndex !== undefined &&
-      store.getters.currentChat.latestPromptIndex !== undefined &&
-      store.getters.currentChat.latestPromptIndex === threadPromptIndex
-    );
+    // to ensure the prompt and response in messagesRef array is in correct order
+    // const responseIndex = props.chat.threads[props.threadIndex].responseIndex; // get responseIndex, from current thread
+    const threadPromptIndex = messages.value?.length
+      ? messages.value[0].promptIndex
+      : undefined; // using responseIndex to get response from messagesRef, and in the repsonse we can retrieve promptIndex
+    return props.chat?.latestThreadPromptIndex === threadPromptIndex;
   }
   return false;
 });
@@ -278,33 +283,39 @@ const isShowReplyButton = computed(() => {
     // show the thread text field when all conditions met
     !props.isThread && // if current response is not a thread,
     isAllDone.value && // if all response done,
-    messageBotIsSelected() && // if responding bot selected,
+    messageBotIsSelected.value && // if responding bot selected,
     isLatestPrompt.value // if current response is a response to latest prompt,
   );
 });
+const isShowReplyButtonInDOM = computed(() => {
+  if (props.isThread) {
+    return false;
+  } else {
+    return !(!isShowResendButton.value && !isShowReplyButton.value);
+  }
+});
 const isSomeResponsesHasThread = computed(() =>
   // if some responses contain threadIndex, return true
-  props.messages.some((m) => m.threadIndex !== undefined),
+  props.messages.some((m) => m.hasThread),
 );
 
 const isShowResendButton = computed(() => {
   // show the resend button when all conditions met
   if (props.isThread) {
     return (
+      props.chat &&
       isAllDone.value && // if all response done
-      messageBotIsSelected() && // if responding bot selected
-      props.messages[0].promptIndex !== undefined && // if current threads is a response to latest prompt
-      store.getters.currentChat.threads[props.threadIndex].latestPromptIndex !==
-        undefined &&
-      store.getters.currentChat.threads[props.threadIndex].latestPromptIndex ===
-        props.messages[0].promptIndex &&
+      messageBotIsSelected.value && // if responding bot selected
+      props.messages[0].promptIndex && // if current threads is a response to latest prompt
+      props.chat.latestPromptIndex &&
+      props.chat.latestPromptIndex === props.messagePromptIndex &&
       isLatestPromptForThread.value
     );
   } else {
     return (
       !isSomeResponsesHasThread.value && // if all responses don't have thread
       isAllDone.value && // if all response done
-      messageBotIsSelected() && // if responding bot selected
+      messageBotIsSelected.value && // if responding bot selected
       isLatestPrompt.value // if current response is a response to latest prompt
     );
   }
@@ -318,6 +329,15 @@ const getSelectButtonClass = computed(() => ({
   "hide-btn": !props.isThread && isSelectedResponsesEmpty.value,
   "hide-thread-btn": props.isThread && isSelectedResponsesEmpty.value,
 }));
+const messageBotIsSelected = computed(() => {
+  if (!messages.value.length) {
+    return false;
+  }
+  var favBot = chat.value?.favBots.find(
+    (b) => b.classname === props.messages[0].className,
+  );
+  return favBot?.selected;
+});
 
 // Send the prompt when the user presses enter and prevent the default behavior
 // But if the shift, ctrl, alt, or meta keys are pressed, do as default
@@ -338,8 +358,7 @@ function sendPromptToBot() {
   if (replyModel.value.trim() === "") return;
 
   store.dispatch("sendPromptInThread", {
-    responseIndex: props.messages[maxPage.value].index, // always send prompt in thread to last page
-    threadIndex: props.messages[carouselModel.value].threadIndex,
+    messageIndex: messages.value[messages.value.length - 1].index, // always send prompt in thread to last page
     prompt: replyModel.value,
     bot: botInstance.value,
   });
@@ -357,26 +376,10 @@ watch(
   },
 );
 
-const rerenderThread = ref(0);
-const rerenderThreadWhenChatIndexChanged = () => {
-  rerenderThread.value = Math.random();
-};
-watch(() => store.state.currentChatIndex, rerenderThreadWhenChatIndexChanged);
 watch(
   () => store.state.selectedResponses.length,
   updateIsSelectedResponsesEmpty,
 );
-
-const updateThreadMessage = (threadIndex, messageIndex, values) => {
-  store.dispatch("updateThreadMessage", {
-    indexes: {
-      chatIndex: store.state.currentChatIndex,
-      messageIndex,
-      threadIndex,
-    },
-    message: values,
-  });
-};
 
 onMounted(() => {
   root.value.$el.style.setProperty("--columns", props.columns);
@@ -393,24 +396,19 @@ function copyToClipboard() {
 
 function toggleHighlight() {
   if (props.isThread) {
-    emits(
-      "update-thread-message",
-      props.threadIndex,
-      props.messages[maxPage.value].index,
-      {
-        highlight: !props.messages[maxPage.value].highlight, // only update last response highlight
-      },
-    );
+    Threads.update(props.messages[maxPage.value].index, {
+      highlight: !isHighlighted.value,
+    });
   } else {
-    emits("update-message", props.messages[maxPage.value].index, {
-      highlight: !props.messages[maxPage.value].highlight,
+    Messages.update(props.messages[maxPage.value].index, {
+      highlight: !isHighlighted.value,
     });
   }
   matomo.value?.trackEvent(
     "vote",
     "highlight",
-    props.messages[carouselModel.value].className,
-    props.messages[carouselModel.value].highlight ? -1 : 1,
+    props.messages[maxPage.value].className,
+    props.messages[maxPage.value].highlight ? -1 : 1,
   );
 }
 
@@ -420,14 +418,11 @@ async function hide() {
   );
   if (result) {
     if (props.isThread) {
-      emits(
-        "update-thread-message",
-        props.threadIndex,
-        props.messages[carouselModel.value].index,
-        { hide: true },
-      );
+      Threads.update(props.messages[carouselModel.value].index, {
+        hide: true,
+      });
     } else {
-      emits("update-message", props.messages[carouselModel.value].index, {
+      Messages.update(props.messages[carouselModel.value].index, {
         hide: true,
       });
     }
@@ -451,31 +446,26 @@ function handleClick(event) {
   electron.shell.openExternal(url);
 }
 
-function resendPrompt(responseMessage) {
+async function resendPrompt(responseMessage) {
   matomo.value?.trackEvent("vote", "resend", responseMessage.className, 1);
 
   if (responseMessage.promptIndex === undefined) {
     return;
   }
   if (props.isThread) {
-    const promptMessage =
-      store.getters.currentChat.threads[props.threadIndex].messages[
-        responseMessage.promptIndex
-      ];
+    const promptMessage = await Threads.table.get(responseMessage.promptIndex);
     if (promptMessage) {
       store.dispatch("sendPromptInThread", {
         prompt: promptMessage.content,
         bot: botInstance.value,
         promptIndex: responseMessage.promptIndex,
-        responseIndex: responseMessage.index,
-        threadIndex: props.threadIndex,
+        messageIndex: messages.value[maxPage.value].messageIndex, // always send prompt in thread to last page
       });
     } else {
       // show not found
     }
   } else {
-    const promptMessage =
-      store.getters.currentChat.messages[responseMessage.promptIndex];
+    const promptMessage = await Messages.table.get(responseMessage.promptIndex);
     if (promptMessage) {
       store.dispatch("sendPrompt", {
         prompt: promptMessage.content,
@@ -486,13 +476,6 @@ function resendPrompt(responseMessage) {
       // show not found
     }
   }
-}
-
-function messageBotIsSelected() {
-  var favBot = store.getters.currentChat.favBots.find(
-    (b) => b.classname === props.messages[0].className,
-  );
-  return favBot?.selected;
 }
 
 function toggleReplyButton() {

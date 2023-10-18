@@ -1,5 +1,6 @@
 import i18n from "@/i18n";
 import store from "@/store";
+import Chats from "@/store/chats";
 
 export default class Bot {
   static _logoPackedPaths = null;
@@ -247,7 +248,9 @@ export default class Bot {
    * @returns {object} - Chat context defined by the bot
    */
   async getChatContext(createIfNotExists = true) {
-    let context = store.getters.currentChat?.contexts?.[this.getClassname()];
+    let context = (await Chats.getCurrentChat())?.contexts?.[
+      this.getClassname()
+    ];
     if (!context && createIfNotExists) {
       context = await this.createChatContext();
       this.setChatContext(context);

@@ -69,7 +69,8 @@
     "parameter": "参数",
     "description": "描述",
     "botNameDesc": "所选响应的机器人名称",
-    "botResponseDesc": "所选响应内容"
+    "botResponseDesc": "所选响应内容",
+    "loading": "加载中..."
   },
   "bot": {
     "creatingConversation": "创建新对话...",

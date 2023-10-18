@@ -1,65 +1,80 @@
 <template>
-  <template v-for="(message, index) in messages" :key="index">
+  <template v-for="(message, index) in currentChatMessages" :key="index">
     <chat-prompt
-      v-if="checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message)"
+      v-if="message.type === 'prompt'"
       :message="message"
       :columns="1"
       :isThread="true"
     ></chat-prompt>
-    <template v-else>
-      <chat-responses
-        v-if="pushResponseAndCheckIsNextMessagePromptType(index, message)"
-        :columns="1"
-        :responses="responses"
-        :threadIndex="props.threadIndex"
-        :isThread="true"
-        :updateThreadMessage="props.updateThreadMessage"
-      ></chat-responses>
-    </template>
+    <chat-response
+      v-else
+      :chat="chat"
+      :columns="1"
+      :messages="message"
+      :messagePromptIndex="messagePromptIndex"
+      :isThread="true"
+    ></chat-response>
   </template>
 </template>
 
 <script setup>
-import { ref, computed, toRefs } from "vue";
-import { useStore } from "vuex";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
-import ChatResponses from "@/components/Messages/ChatResponses.vue";
-
-const store = useStore();
+import ChatResponse from "@/components/Messages/ChatResponse.vue";
+import Threads from "@/store/threads";
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
 
 const props = defineProps({
-  threadIndex: {
-    type: Number,
+  chat: {
+    type: Object,
+  },
+  messageIndex: {
+    type: String,
     required: true,
   },
-  updateThreadMessage: {
-    type: Function,
+  messagePromptIndex: {
+    type: String,
+    required: true,
   },
 });
 
-const { threadIndex } = toRefs(props);
-const thread = ref(store.getters.currentChat.threads[threadIndex.value]);
-const messages = computed(() => {
-  return (thread.value ? thread.value.messages : []).filter(
-    (message) => !message.hide,
-  );
-});
+const currentChatMessages = useObservable(
+  liveQuery(async () => {
+    const keys = await Threads.table
+      .where("messageIndex")
+      .equals(props.messageIndex)
+      .primaryKeys();
+    console.log("thread key count: ", keys.length);
+    const messages = await Threads.table.bulkGet(keys);
+    messages.sort((a, b) => a.createdTime - b.createdTime);
 
-let responses = []; // this array store a prompt responses in a thread
-function checkIsMessagePromptTypeAndEmptyResponsesIfTrue(message) {
-  if (message.type === "prompt") {
-    responses = []; // clear responses for next prompt's responses
-    return true;
-  }
-  return false;
-}
+    const groupedMessage = [];
+    let responses = Object.create(null);
+    for (let i = 0; i < messages.length; i++) {
+      const message = messages[i];
+      if (message.type === "prompt") {
+        if (Object.keys(responses).length !== 0) {
+          groupedMessage.push.apply(groupedMessage, Object.values(responses));
+        }
+        groupedMessage.push(message);
+        responses = Object.create(null);
+        continue;
+      }
 
-function pushResponseAndCheckIsNextMessagePromptType(index, response) {
-  const nextIndex = index + 1;
-  if (!response.hide) responses.push(response);
-  if (nextIndex >= messages.value.length) {
-    return true; // allow last element
-  }
-  return messages.value[nextIndex].type === "prompt";
-}
+      if (message.hide !== true) {
+        if (!responses[message.className]) {
+          responses[message.className] = [];
+        }
+        responses[message.className].push(message);
+      }
+    }
+    if (Object.keys(responses).length !== 0) {
+      groupedMessage.push.apply(groupedMessage, Object.values(responses));
+    }
+
+    currentChatMessages.value = groupedMessage;
+    console.log("groupedMessage threads: ", groupedMessage);
+    return groupedMessage;
+  }),
+);
 </script>

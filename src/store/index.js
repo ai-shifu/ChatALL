@@ -1,30 +1,27 @@
-import { createStore } from "vuex";
-import VuexPersist from "vuex-persist";
-import i18n from "@/i18n";
-import messagesPersist from "./messagesPersist";
-import promptsPersist from "./promptsPersist";
 import { getMatomo } from "@/composables/matomo";
+import i18n from "@/i18n";
+import localForage from "localforage";
+import { isProxy, isReactive, isRef, toRaw } from "vue";
+import { createStore } from "vuex";
+import VuexPersistence from "vuex-persist";
+import Chats from "@/store/chats";
+import Messages from "@/store/messages";
+import { v4 as uuidv4 } from "uuid";
+import Threads from "./threads";
 
 let isThrottleMessage = false;
 let isThrottleThreadMessage = false;
 let messageBuffer = [];
 let threadMessageBuffer = [];
-// 初始化 VuexPersist 实例
-const vuexPersist = new VuexPersist({
-  key: "chatall-app", // 用于存储的键名，可以根据你的应用更改
-  storage: window.localStorage, // 使用 localStorage，你还可以选择其他存储方式，如 sessionStorage
+const vuexPersist = new VuexPersistence({
+  key: "chatall-app",
+  storage: localForage,
+  asyncStorage: true,
   reducer: (state) => {
     /* eslint-disable no-unused-vars */
-    const {
-      messages,
-      chats,
-      prompts,
-      updateCounter,
-      selectedResponses,
-      ...persistedState
-    } = state;
+    const { updateCounter, selectedResponses, ...persistedState } = state;
     /* eslint-enable no-unused-vars */
-    return persistedState;
+    return deepToRaw(persistedState);
   },
 });
 
@@ -92,37 +89,11 @@ export default createStore({
     phind: {
       model: "Phind Model",
     },
-    chats: [
-      {
-        title: "New Chat",
-        favBots: [
-          // default bots
-          { classname: "ChatGPT35Bot", selected: true },
-          { classname: "ChatGPT4Bot", selected: true },
-          { classname: "BingChatCreativeBot", selected: true },
-          { classname: "BingChatBalancedBot", selected: true },
-          { classname: "BingChatPreciseBot", selected: true },
-          { classname: "BardBot", selected: true },
-          { classname: "ClaudeInstantPoeBot", selected: true },
-          { classname: "FalconHC180bBot", selected: true },
-          { classname: "Llama270bBot", selected: true },
-          { classname: "VicunaBot", selected: true },
-        ],
-        contexts: {},
-        messages: [],
-        threads: [],
-        hide: false,
-        createdTime: new Date().getTime(),
-      },
-    ],
     currentChatIndex: 0,
     updateCounter: 0,
     theme: undefined,
     mode: "system",
     isChatDrawerOpen: true,
-    // TODO: delete following fields
-    selectedBots: null,
-    messages: [],
     prompts: [],
     actions: [
       {
@@ -144,16 +115,21 @@ export default createStore({
     setUuid(state, uuid) {
       state.uuid = uuid;
     },
-    setBotSelected(state, { botClassname, selected }) {
-      const currentChat = state.chats[state.currentChatIndex];
-      const bot = currentChat.favBots.find(
-        (bot) => bot.classname === botClassname,
-      );
-      if (bot) bot.selected = selected;
-      else currentChat.favBots.push({ classname: botClassname, selected });
+    async setBotSelected(state, { botClassname, selected }) {
+      const currentChat = await Chats.getCurrentChat();
+      for (let i = 0; i < currentChat.favBots.length; i++) {
+        const bot = currentChat.favBots[i];
+        if (bot.classname === botClassname) {
+          bot.selected = selected;
+          await Chats.table.update(currentChat.index, {
+            favBots: currentChat.favBots,
+          });
+          return;
+        }
+      }
     },
-    setFavBotOrder(state, newOrder) {
-      const currentChat = state.chats[state.currentChatIndex];
+    async setFavBotOrder(state, newOrder) {
+      const currentChat = await Chats.getCurrentChat();
       newOrder.forEach((botClassname, order) => {
         const bot = currentChat.favBots.find(
           (bot) => bot.classname === botClassname,
@@ -161,17 +137,27 @@ export default createStore({
         if (bot) bot.order = order;
       });
     },
-    addFavoriteBot(state, botClassname) {
-      const currentChat = state.chats[state.currentChatIndex];
+    async addFavoriteBot(state, botClassname) {
+      const currentChat = await Chats.getCurrentChat();
       const favBots = currentChat.favBots;
-      if (favBots.find((bot) => bot.classname === botClassname) == undefined)
-        favBots.push({ classname: botClassname, selected: true });
+      currentChat.favBots.push({ classname: botClassname, selected: true });
+      Chats.table.update(currentChat.index, {
+        favBots,
+      });
     },
-    removeFavoriteBot(state, botClassname) {
-      const currentChat = state.chats[state.currentChatIndex];
-      const favBots = currentChat.favBots;
-      const index = favBots.findIndex((bot) => bot.classname === botClassname);
-      favBots.splice(index, 1);
+    async removeFavoriteBot(state, botClassname) {
+      const currentChat = await Chats.getCurrentChat();
+      for (let i = 0; i < currentChat.favBots.length; i++) {
+        const bot = currentChat.favBots[i];
+        if (bot.classname === botClassname) {
+          currentChat.favBots.splice(i, 1);
+
+          await Chats.table.update(currentChat.index, {
+            favBots: currentChat.favBots,
+          });
+          return;
+        }
+      }
     },
     setCurrentLanguage(state, language) {
       state.lang = language;
@@ -217,43 +203,41 @@ export default createStore({
       state.phind = { ...state.phind, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
-      const currentChat = state.chats[state.currentChatIndex];
-      currentChat.latestPromptIndex = promptIndex;
+      Chats.table.update(state.currentChatIndex, {
+        latestPromptIndex: promptIndex,
+      });
     },
-    setLatestThreadPromptIndex(state, { threadIndex, promptIndex }) {
-      const currentChat =
-        state.chats[state.currentChatIndex].threads[threadIndex];
-      currentChat.latestPromptIndex = promptIndex;
+    setLatestThreadPromptIndex(state, { promptIndex, messageIndex }) {
+      Chats.table.update(state.currentChatIndex, {
+        latestThreadPromptIndex: promptIndex,
+      });
+      Messages.table.update(messageIndex, {
+        hasThread: true,
+      });
     },
     setResponseThreadIndex(state, { responseIndex, threadIndex }) {
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.messages[responseIndex].threadIndex = threadIndex;
     },
-    updateMessage(state) {
-      messageBuffer.forEach((update) => {
-        const { indexes, message } = update;
-        const { chatIndex, messageIndex } = indexes;
-        const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
-        const chat = state.chats[i];
-        chat.messages[messageIndex] = {
-          ...chat.messages[messageIndex],
-          ...message,
-        };
-      });
+    async updateMessage(state) {
+      const keyAndChangesArr = [];
+      for (const update of messageBuffer) {
+        const { index, message } = update;
+        keyAndChangesArr.push({ key: index, changes: message });
+      }
+      await Messages.table.bulkUpdate(keyAndChangesArr);
+      state.updateCounter += 1;
       messageBuffer = [];
       isThrottleMessage = false;
     },
-    updateThreadMessage(state) {
-      threadMessageBuffer.forEach((update) => {
-        const { indexes, message } = update;
-        const { chatIndex, messageIndex, threadIndex } = indexes;
-        const i = chatIndex == -1 ? state.currentChatIndex : chatIndex;
-        const chat = state.chats[i];
-        chat.threads[threadIndex].messages[messageIndex] = {
-          ...chat.threads[threadIndex].messages[messageIndex],
-          ...message,
-        };
-      });
+    async updateThreadMessage(state) {
+      const keyAndChangesArr = [];
+      for (const update of threadMessageBuffer) {
+        const { index, message } = update;
+        keyAndChangesArr.push({ key: index, changes: message });
+      }
+      await Threads.table.bulkUpdate(keyAndChangesArr);
+      state.updateCounter += 1;
       threadMessageBuffer = [];
       isThrottleThreadMessage = false;
     },
@@ -265,45 +249,15 @@ export default createStore({
       state.updateCounter += 1;
     },
     setChatContext(state, { botClassname, context }) {
-      const currentChat = state.chats[state.currentChatIndex];
-      if (currentChat.contexts == undefined) currentChat.contexts = {};
-      currentChat.contexts[botClassname] = context;
+      Chats.table.update(state.currentChatIndex, {
+        [`contexts.${botClassname}`]: context,
+      });
     },
     clearMessages(state) {
-      const currentChat = state.chats[state.currentChatIndex];
-      currentChat.contexts = {};
-      currentChat.messages = [];
-      currentChat.threads = [];
-    },
-    init(state) {
-      // Upgrade messages data structure
-      if (state.messages.length > 0) {
-        const chat = {
-          title: i18n.global.t("chat.newChat"),
-          contexts: {},
-          messages: state.messages,
-        };
-        state.chats[0] = chat;
-        state.messages = [];
-      }
-      // Migrate to favorited bots
-      if (state.selectedBots) {
-        const bots = Object.keys(state.selectedBots);
-        state.chats[0].favBots = [];
-        for (const bot of bots) {
-          if (state.selectedBots[bot])
-            state.chats[0].favBots.push({ classname: bot, selected: true });
-        }
-        state.selectedBots = null;
-      }
-      if (state.chats[0].threads === undefined) {
-        state.chats[0].threads = [];
-      }
-      if (state.chats[0].index === undefined) {
-        state.chats[0].index = 0;
-        state.chats[0].createdTime = new Date().getTime();
-        state.isChatDrawerOpen = true;
-      }
+      Chats.table.where("index").equals(state.currentChatIndex).modify({
+        contexts: {},
+      });
+      Messages.table.where("chatIndex").equals(state.currentChatIndex).delete();
     },
     setTheme(state, theme) {
       state.theme = theme;
@@ -328,39 +282,41 @@ export default createStore({
     },
     selectChat(state, index) {
       state.currentChatIndex = index;
+      Chats.table.update(index, { selectedTime: new Date().getTime() });
     },
     hideChat(state) {
       state.chats[state.currentChatIndex].hide = true;
     },
-    editChatTitle(state, { title, isEditedByUser = false }) {
-      if (isEditedByUser) {
-        state.chats[state.currentChatIndex].title = title;
-        state.chats[state.currentChatIndex].isTitleUserEdited = true;
-      } else {
-        if (!state.chats[state.currentChatIndex].isTitleUserEdited) {
-          // if user has not edit title before, set title
-          state.chats[state.currentChatIndex].title = title;
-        } // else do not overwrite user title
+    async editChatTitle(state, { index, payload }) {
+      const currentChat = await Chats.table.get(index);
+      if (currentChat) {
+        if (
+          payload.isEditedByUser ||
+          (!currentChat.isTitleUserEdited && !payload.isEditedByUser)
+        ) {
+          Chats.update(index, {
+            ...payload,
+            isTitleUserEdited: payload.isEditedByUser
+              ? true
+              : currentChat.isTitleUserEdited,
+          });
+        }
       }
     },
     setIsChatDrawerOpen(state, isChatDrawerOpen) {
       state.isChatDrawerOpen = isChatDrawerOpen;
     },
-    deleteChats(state) {
-      const { favBots } = state.chats[state.currentChatIndex];
-      const newChats = [
-        {
-          favBots,
-          contexts: {},
-          messages: [],
-          threads: [],
-          index: 0,
-          title: i18n.global.t("chat.newChat"),
-          createdTime: new Date().getTime(),
-        },
-      ];
-      state.chats = newChats;
-      state.currentChatIndex = 0;
+    async deleteChats(state) {
+      const currentChat = await Chats.getCurrentChat();
+      await Chats.table.clear();
+      await Messages.table.clear();
+      await Threads.table.clear();
+      state.currentChatIndex = await Chats.add({
+        favBots: currentChat ? currentChat.favBots : [],
+      });
+      Chats.table.update(state.currentChatIndex, {
+        selectedTime: new Date().getTime(),
+      });
     },
     addPrompt(state, values) {
       const addPrompt = { ...values };
@@ -396,125 +352,107 @@ export default createStore({
     deleteAllSelectedResponses(state) {
       state.selectedResponses = [];
     },
+    migrateSettingsPrompts(state) {
+      if (localStorage.getItem("isMigratedSettingsPrompts") === "true") {
+        return;
+      }
+      const app = JSON.parse(localStorage.getItem("chatall-app"));
+      const promptsData = JSON.parse(localStorage.getItem("chatall-prompts"));
+      for (const key in app) {
+        state[key] = app[key];
+      }
+      state.prompts = promptsData ? promptsData.prompts : [];
+      localStorage.setItem("isMigratedSettingsPrompts", true);
+    },
   },
   actions: {
-    sendPrompt({ commit, state, dispatch }, { prompt, bots, promptIndex }) {
+    async sendPrompt({ commit, dispatch }, { prompt, bots, promptIndex }) {
       isThrottleMessage = false;
-      const currentChat = state.chats[state.currentChatIndex];
+      const currentChat = await Chats.getCurrentChat();
       if (promptIndex === undefined) {
         // if promptIndex not found, not resend, push to messages array
         const promptMessage = {
           type: "prompt",
           content: prompt,
           done: true,
-          hide: false,
         };
         // add message
-        const index = currentChat.messages.push(promptMessage);
-        promptMessage.index = index - 1;
-        promptIndex = promptMessage.index;
+        promptIndex = await Messages.add(currentChat.index, promptMessage);
       }
       commit("setLatestPromptIndex", promptIndex); // to keep track of the latest prompt index for hiding old prompt's resend button
 
+      const bulkAddReq = [];
       for (const bot of bots) {
-        const message = {
+        bulkAddReq.push({
+          index: uuidv4(),
+          promptIndex: promptIndex,
+          chatIndex: currentChat.index,
           type: "response",
           content: "",
           format: bot.getOutputFormat(),
           model: bot.constructor._model,
-          done: false,
-          highlight: false,
-          hide: false,
           className: bot.getClassname(),
-          promptIndex: promptIndex,
-        };
-
-        // workaround for tracking message position
-        message.index = currentChat.messages.push(message) - 1;
-
+          createdTime: new Date().getTime(),
+        });
+      }
+      await Messages.table.bulkAdd(bulkAddReq);
+      for (let i = 0; i < bots.length; i++) {
+        const bot = bots[i];
+        const message = bulkAddReq[i];
         bot.sendPrompt(
           prompt,
-          (indexes, values) =>
-            dispatch("updateMessage", { indexes, message: values }),
-          { chatIndex: state.currentChatIndex, messageIndex: message.index },
+          (index, values) =>
+            dispatch("updateMessage", { index, message: values }),
+          message.index,
         );
 
         getMatomo()?.trackEvent(
           "prompt",
           "sendTo",
-          bot.getClassname(),
+          message.className,
           prompt.length,
         );
       }
     },
-    sendPromptInThread(
+    async sendPromptInThread(
       { commit, state, dispatch },
-      { prompt, bot, responseIndex, threadIndex, promptIndex },
+      { prompt, bot, messageIndex, promptIndex },
     ) {
       isThrottleThreadMessage = false;
-      const currentChat = state.chats[state.currentChatIndex];
-      let thread;
-      if (threadIndex !== undefined) {
-        // existing thread
-        thread = currentChat.threads[threadIndex];
-      } else {
-        // new thread
-        const newThreadMessage = {
-          responseIndex: responseIndex,
-          messages: [],
-        };
-        newThreadMessage.index = currentChat.threads.push(newThreadMessage) - 1;
-        thread = newThreadMessage;
-        threadIndex = thread.index;
-        // update threadIndex to response
-        commit("setResponseThreadIndex", {
-          responseIndex,
-          threadIndex: thread.index,
-        });
-      }
 
-      if (promptIndex === undefined) {
-        // index starts at zero, using `if (!promptIndex)` will enter wrong condition for first time.
-        // if promptIndex not found, not resend, push to messages array
+      if (!promptIndex) {
+        // not resend
         const threadPromptMessage = {
           type: "prompt",
           content: prompt,
         };
-        // add message
-        threadPromptMessage.index =
-          thread.messages.push(threadPromptMessage) - 1;
-        promptIndex = threadPromptMessage.index;
+        promptIndex = await Threads.add(
+          state.currentChatIndex,
+          messageIndex,
+          threadPromptMessage,
+        );
       }
-      commit("setLatestThreadPromptIndex", {
-        threadIndex: thread.index,
-        promptIndex,
-      }); // to keep track of the latest prompt index for hiding old prompt's resend button
+      commit("setLatestThreadPromptIndex", { promptIndex, messageIndex }); // to keep track of the latest prompt index for hiding old prompt's resend button
 
       const threadResponseMessage = {
         type: "response",
         content: "",
         format: bot.getOutputFormat(),
         model: bot.constructor._model,
-        done: false,
-        highlight: false,
-        hide: false,
         className: bot.getClassname(),
         promptIndex: promptIndex,
       };
-
-      // workaround for tracking message position
-      threadResponseMessage.index =
-        thread.messages.push(threadResponseMessage) - 1;
+      threadResponseMessage.index = await Threads.add(
+        state.currentChatIndex,
+        messageIndex,
+        threadResponseMessage,
+      );
 
       bot.sendPrompt(
         prompt,
-        (indexes, values) =>
-          dispatch("updateThreadMessage", { indexes, message: values }),
-        {
-          chatIndex: state.currentChatIndex,
-          messageIndex: threadResponseMessage.index,
-          threadIndex: threadIndex,
-        },
+        (index, values) =>
+          dispatch("updateThreadMessage", { index, message: values }),
+        threadResponseMessage.index,
       );
 
       getMatomo()?.trackEvent(
@@ -524,8 +462,8 @@ export default createStore({
         prompt.length,
       );
     },
-    updateMessage({ commit, state }, { indexes, message: values }) {
-      messageBuffer.push({ indexes, message: values });
+    async updateMessage({ commit }, { index, message: values }) {
+      messageBuffer.push({ index, message: values });
       if (!isThrottleMessage) {
         isThrottleMessage = true;
         setTimeout(() => {
@@ -534,10 +472,8 @@ export default createStore({
         }, 200); // save every 0.2 seconds
       }
       if (values.done) {
-        const i =
-          indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
-        const chat = state.chats[i];
-        const message = { ...chat.messages[indexes.messageIndex], ...values };
+        const chat = await Messages.table.get(index);
+        const message = { ...chat, ...values };
         getMatomo()?.trackEvent(
           "prompt",
           "received",
@@ -546,8 +482,8 @@ export default createStore({
         );
       }
     },
-    updateThreadMessage({ commit, state }, { indexes, message: values }) {
-      threadMessageBuffer.push({ indexes, message: values });
+    async updateThreadMessage({ commit }, { index, message: values }) {
+      threadMessageBuffer.push({ index, message: values });
       if (!isThrottleThreadMessage) {
         isThrottleThreadMessage = true;
         setTimeout(() => {
@@ -556,10 +492,8 @@ export default createStore({
         }, 200); // save every 0.2 seconds
       }
       if (values.done) {
-        const i =
-          indexes.chatIndex == -1 ? state.currentChatIndex : indexes.chatIndex;
-        const chat = state.chats[i];
-        let message = { ...chat.threads[indexes.threadIndex], ...values };
+        const thread = await Threads.table.get(index);
+        let message = { ...thread, ...values };
         getMatomo()?.trackEvent(
           "prompt",
           "received",
@@ -572,17 +506,11 @@ export default createStore({
       commit("addSelectedResponses", value);
       return state.selectedResponses.length - 1;
     },
-    createChatAndSelect({ commit, state }) {
-      commit("createChat");
-      commit("selectChat", state.chats.length - 1);
-    },
   },
   getters: {
-    currentChat: (state) => {
-      if (state.chats.length === 0) {
-        return null;
-      }
-      return state.chats[state.currentChatIndex];
+    currentChat: async (state) => {
+      const currentChat = await Chats.table.get(state.currentChatIndex);
+      return currentChat;
     },
     // get current chat prompt
     getCurrentChatPrompt: (state, getters) => {
@@ -590,8 +518,31 @@ export default createStore({
       return messages.filter((message) => message?.type === "prompt");
     },
   },
-  modules: {
-    // ...你的模块
-  },
-  plugins: [vuexPersist.plugin, messagesPersist.plugin, promptsPersist.plugin], // 添加插件到 store
+  modules: {},
+  plugins: [vuexPersist.plugin],
 });
+
+// call toRaw to nested array before storing with localForage
+function deepToRaw(sourceObj) {
+  const objectIterator = (input) => {
+    if (Array.isArray(input)) {
+      const result = [];
+      for (const item of input) {
+        result.push(objectIterator(item));
+      }
+      return result;
+    }
+    if (isRef(input) || isReactive(input) || isProxy(input)) {
+      return objectIterator(toRaw(input));
+    }
+    if (input && typeof input === "object") {
+      return Object.keys(input).reduce((acc, key) => {
+        acc[key] = objectIterator(input[key]);
+        return acc;
+      }, {});
+    }
+    return input;
+  };
+
+  return objectIterator(sourceObj);
+}

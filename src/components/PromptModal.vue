@@ -52,39 +52,39 @@
           <template v-slot:item="{ item }">
             <tr>
               <td
-                @click="usePrompt(item.raw)"
+                @click="usePrompt(item)"
                 @mouseover="showFullText($event)"
                 @mouseleave="hideFullText($event)"
               >
-                {{ item.columns.title }}
+                {{ item.title }}
               </td>
               <td
-                @click="usePrompt(item.raw)"
+                @click="usePrompt(item)"
                 @mouseover="showFullText($event)"
                 @mouseleave="hideFullText($event)"
               >
-                {{ item.columns.prompt }}
+                {{ item.prompt }}
               </td>
               <td>
                 <v-btn
                   flat
                   size="x-small"
-                  :icon="item.raw.isPin ? 'mdi-star' : 'mdi-star-outline'"
-                  @click="pin(item.raw)"
+                  :icon="item.isPin ? 'mdi-star' : 'mdi-star-outline'"
+                  @click="pin(item)"
                 ></v-btn>
                 <v-btn
                   flat
                   size="x-small"
                   icon="mdi-pencil"
-                  @click="edit(item.raw)"
-                  v-if="item.raw.index >= 0"
+                  @click="edit(item)"
+                  v-if="item.index >= 0"
                 ></v-btn>
                 <v-btn
                   flat
                   size="x-small"
                   icon="mdi-delete-outline"
-                  @click="deletePrompt(item.raw)"
-                  v-if="item.raw.index >= 0"
+                  @click="deletePrompt(item)"
+                  v-if="item.index >= 0"
                 ></v-btn>
               </td>
             </tr>
