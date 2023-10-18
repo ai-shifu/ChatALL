@@ -77,15 +77,14 @@
                   size="x-small"
                   icon="mdi-pencil"
                   @click="edit(item.raw)"
-                  v-if="item.raw.index >= 0"
-                ></v-btn>
+                  ></v-btn>
                 <v-btn
                   flat
                   size="x-small"
                   icon="mdi-delete-outline"
                   @click="deletePrompt(item.raw)"
                   v-if="item.raw.index >= 0"
-                ></v-btn>
+                  ></v-btn>
               </td>
             </tr>
           </template>
@@ -185,7 +184,9 @@ const userPrompts = computed(() => {
     });
 });
 const data = computed(() => {
-  const defaultPrompts = prompts[language.value].map((prompt) => {
+  const userPromptsTitles = userPrompts.value.map(d => d.title);
+  const valid = prompts[language.value].filter(d=>!userPromptsTitles.includes(d.act));
+  const defaultPrompts = valid.map((prompt) => {
     return { title: prompt.act, prompt: prompt.prompt };
   });
 

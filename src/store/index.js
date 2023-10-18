@@ -367,7 +367,8 @@ export default createStore({
       addPrompt.index = state.prompts.push(addPrompt) - 1;
     },
     editPrompt(state, values) {
-      const { index } = values;
+      let { index } = values;
+      index=index || state.prompts.length
       state.prompts[index] = { ...state.prompts[index], ...values };
     },
     deletePrompt(state, values) {
