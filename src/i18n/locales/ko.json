@@ -69,7 +69,8 @@
     "parameter": "매개변수",
     "description": "설명",
     "botNameDesc": "선택한 응답의 봇 이름",
-    "botResponseDesc": "선택된 응답"
+    "botResponseDesc": "선택된 응답",
+    "loading": "로드 중..."
   },
   "bot": {
     "creatingConversation": "대화를 만드는 중...",
@@ -299,7 +300,8 @@
     },
     "input": {
       "clear": "지우기"
-    }
+    },
+    "open": "열기"
   },
   "10": "10",
   "25": "25",
