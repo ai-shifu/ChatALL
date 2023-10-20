@@ -39,6 +39,8 @@
     "langchain": "~0.0.156",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
+    "prismjs": "^1.13.0",
+    "query-string": "^5.0.1",
     "rxjs": "^7.8.1",
     "sortablejs": "^1.15.0",
     "update-electron-app": "^2.0.1",
