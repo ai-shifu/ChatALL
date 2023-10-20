@@ -78,13 +78,21 @@ You are welcome to contribute to these features.
 
 - [ ] Deploy front-end to GitHub Pages
 
+## Privacy
+
+All chat history, settings and login data are saved locally on your computer.
+
+ChatALL collect anonymous usage data to help us improve the product. Including:
+
+- Which AI bots are prompted and how long the prompt is. Not including the prompt content.
+- How long the response is and which response is deleted/highlighted. Not including the response content.
+
 ## Prerequisites
 
 ChatALL is a client, not a proxy. Therefore, you must:
 
 1. Have working accounts and/or API tokens for the bots.
 2. Have reliable network connections to the bots.
-3. If you are using a VPN, it must be set as system/global proxy.
 
 ## Download / Install
 
