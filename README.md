@@ -82,10 +82,10 @@ You are welcome to contribute to these features.
 
 All chat history, settings and login data are saved locally on your computer.
 
-ChatALL collect anonymous usage data to help us improve the product. Including:
+ChatALL collects anonymous usage data to help us improve the product. Including:
 
 - Which AI bots are prompted and how long the prompt is. Not including the prompt content.
-- How long the response is and which response is deleted/highlighted. Not including the response content.
+- How long the response is, and which response is deleted/highlighted. Not including the response content.
 
 ## Prerequisites
 
