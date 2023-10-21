@@ -136,6 +136,7 @@ export default createStore({
         );
         if (bot) bot.order = order;
       });
+      Chats.table.update(currentChat.index, { favBots: currentChat.favBots });
     },
     async addFavoriteBot(state, botClassname) {
       const currentChat = await Chats.getCurrentChat();
