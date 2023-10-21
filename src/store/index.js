@@ -220,23 +220,19 @@ export default createStore({
       currentChat.messages[responseIndex].threadIndex = threadIndex;
     },
     async updateMessage(state) {
-      const keyAndChangesArr = [];
       for (const update of messageBuffer) {
         const { index, message } = update;
-        keyAndChangesArr.push({ key: index, changes: message });
+        await Messages.table.update(index, message);
       }
-      await Messages.table.bulkUpdate(keyAndChangesArr);
       state.updateCounter += 1;
       messageBuffer = [];
       isThrottleMessage = false;
     },
     async updateThreadMessage(state) {
-      const keyAndChangesArr = [];
       for (const update of threadMessageBuffer) {
         const { index, message } = update;
-        keyAndChangesArr.push({ key: index, changes: message });
+        await Threads.table.update(index, message);
       }
-      await Threads.table.bulkUpdate(keyAndChangesArr);
       state.updateCounter += 1;
       threadMessageBuffer = [];
       isThrottleThreadMessage = false;
