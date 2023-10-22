@@ -378,9 +378,9 @@ export default createStore({
       }
       commit("setLatestPromptIndex", promptIndex); // to keep track of the latest prompt index for hiding old prompt's resend button
 
-      const bulkAddReq = [];
+      const msgs = [];
       for (const bot of bots) {
-        bulkAddReq.push({
+        const msg = {
           index: uuidv4(),
           promptIndex: promptIndex,
           chatIndex: currentChat.index,
@@ -390,12 +390,13 @@ export default createStore({
           model: bot.constructor._model,
           className: bot.getClassname(),
           createdTime: new Date().getTime(),
-        });
+        };
+        await Messages.table.add(msg);
+        msgs.push(msg);
       }
-      await Messages.table.bulkAdd(bulkAddReq);
       for (let i = 0; i < bots.length; i++) {
         const bot = bots[i];
-        const message = bulkAddReq[i];
+        const message = msgs[i];
         bot.sendPrompt(
           prompt,
           (index, values) =>
