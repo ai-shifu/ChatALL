@@ -12,6 +12,9 @@ const migrateChatsMessagesThreads = async () => {
   const threadsMigrateData = [];
   try {
     if (localStorage.getItem("isMigratedChatsMessagesThreads") === "true") {
+      if (localStorage.getItem("isMigratedHasThread") !== "true") {
+        migrateHasThread();
+      }
       return;
     }
     const data = JSON.parse(localStorage.getItem("chatall-messages"));
@@ -106,6 +109,7 @@ const migrateChatsMessagesThreads = async () => {
       console.error("Threads Migration error:", error);
     }
     localStorage.setItem("isMigratedChatsMessagesThreads", true);
+    localStorage.setItem("isMigratedHasThread", true);
     console.log("Migration done");
   } catch (error) {
     console.error("Migration error:", error);
@@ -125,6 +129,22 @@ function getIndex(map, key) {
     return uuidv4();
   }
   return key;
+}
+
+async function migrateHasThread() {
+  // update Message hasThread property to `true` if messageIndex existed in Thread
+  const messageIndexes = await Threads.table
+    .orderBy("messageIndex")
+    .distinct()
+    .uniqueKeys();
+  for (const index of messageIndexes) {
+    try {
+      await Messages.table.update(index, { hasThread: true });
+    } catch (error) {
+      console.error("migrateHasThread error:", error);
+    }
+  }
+  localStorage.setItem("isMigratedHasThread", true);
 }
 
 export { migrateChatsMessagesThreads };
