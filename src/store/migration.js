@@ -22,11 +22,19 @@ const migrateChatsMessagesThreads = async () => {
     const chats = data.chats;
     for (let i = 0; i < chats.length; i++) {
       const chat = chats[i];
+      if (!chat) {
+        continue;
+      }
+      chat.index = getIndex(chatIndexMap, chat.index);
       chat.index = getAndGenerateUuidIfNotExist(chatIndexMap, chat.index);
       chat.modifiedTime = chat.createdTime;
       let createdTime = chat.createdTime || 0;
       for (let j = 0; j < chat.messages.length; j++) {
         const message = chat.messages[j];
+        if (!message) {
+          continue;
+        }
+        message.index = getIndex(messageIndexMap, message.index);
         message.index = getAndGenerateUuidIfNotExist(
           messageIndexMap,
           message.index,
@@ -35,8 +43,15 @@ const migrateChatsMessagesThreads = async () => {
         message.createdTime = createdTime + j;
         messagesMigrateData.push(message);
       }
+      if (!chat.threads) {
+        // skip for old version do not have threads array
+        continue;
+      }
       for (let q = 0; q < chat.threads.length; q++) {
         const thread = chat.threads[q];
+        if (!thread) {
+          continue;
+        }
         const messageIndex = getAndGenerateUuidIfNotExist(
           messageIndexMap,
           thread.responseIndex,
@@ -44,6 +59,10 @@ const migrateChatsMessagesThreads = async () => {
         let createdTime = chat.createdTime || 0;
         for (let p = 0; p < thread.messages.length; p++) {
           const threadMessage = thread.messages[p];
+          if (!threadMessage) {
+            continue;
+          }
+          threadMessage.index = getIndex(threadIndexMap, threadMessage.index);
           threadMessage.index = getAndGenerateUuidIfNotExist(
             threadIndexMap,
             threadMessage.index,
@@ -95,6 +114,14 @@ function getAndGenerateUuidIfNotExist(map, key) {
     map[key] = uuidv4();
   }
   return map[key];
+}
+
+function getIndex(map, key) {
+  if (map[key] !== undefined) {
+    // duplicate key not allowed
+    return uuidv4();
+  }
+  return key;
 }
 
 export { migrateChatsMessagesThreads };
