@@ -51,6 +51,7 @@ import Wizardlm13bBot from "./lmsys/Wizardlm13bBot";
 import Wizardlm70bBot from "./lmsys/Wizardlm70bBot";
 import FalconHC180bBot from "./huggingface/FalconHC180bBot";
 import CodeLlamaHCBot from "./huggingface/CodeLlamaHCBot";
+import WenxinQianfan4Bot from "./baidu/WenxinQianfan4Bot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -72,6 +73,7 @@ const all = [
   CodeLlamaBot.getInstance(),
   WenxinQianfanBot.getInstance(),
   WenxinQianfanTurboBot.getInstance(),
+  WenxinQianfan4Bot.getInstance(),
   Falcon180bBot.getInstance(),
   FalconHC180bBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
@@ -201,6 +203,7 @@ export const botTags = {
     bots.getBotByClassName("OpenAIAPI4Bot"),
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
+    bots.getBotByClassName("WenxinQianfan4Bot"),
   ],
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),
@@ -209,6 +212,7 @@ export const botTags = {
     bots.getBotByClassName("SparkBot"),
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
+    bots.getBotByClassName("WenxinQianfan4Bot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
