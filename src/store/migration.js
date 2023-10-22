@@ -41,6 +41,9 @@ const migrateChatsMessagesThreads = async () => {
         );
         message.chatIndex = chat.index;
         message.createdTime = createdTime + j;
+        if (chat.threads && chat.threads.length) {
+          message.hasThread = true;
+        }
         messagesMigrateData.push(message);
       }
       if (!chat.threads) {
