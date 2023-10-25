@@ -130,6 +130,5 @@ function onPressEnter(event) {
 
 :deep() div.v-list-item__prepend {
   display: block;
-  margin-right: 0.1rem;
 }
 </style>
