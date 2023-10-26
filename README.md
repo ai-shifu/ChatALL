@@ -131,9 +131,9 @@ If none of the above methods work, you can try **resetting ChatALL**. Note that 
 
 You can reset ChatALL by deleting the following directories:
 
-- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
-- Linux: `/home/<user>/.config/ChatALL/`
-- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+- Windows: `C:\Users\<user>\AppData\Roaming\chatall\`
+- Linux: `/home/<user>/.config/chatall/`
+- macOS: `/Users/<user>/Library/Application Support/chatall/`
 
 If the problem persists, please [submit an issue](https://github.com/sunner/ChatALL/issues).
 

@@ -24,35 +24,35 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 
 ### 지원되는 봇
 
-| AI 봇                                                        | 웹 액세스 | API       | 참고                                |
-| ------------------------------------------------------------ | --------- | --------- | ----------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | 예        | 예        | 웹 브라우징 포함                    |
-| [Bing Chat](https://www.bing.com/new)                        | 예        | API 없음  | 로그인 필요 없음                    |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | 아니오    | 예        |                                     |
-| [Bard](https://bard.google.com/)                             | 예        | API 없음  |                                     |
-| [Poe](https://poe.com/)                                      | 예        | 근일 개봉 |                                     |
-| [MOSS](https://moss.fastnlp.top/)                            | 예        | API 없음  |                                     |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | 예        | 근일 개봉 |                                     |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             | 근일 개봉 | API 없음  |                                     |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | 예        | 근일 개봉 |                                     |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | 예        | API 없음  | 로그인 필요 없음                    |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | 예        | API 없음  | 로그인 필요 없음                    |
-| [ChatGLM](https://chatglm.cn/blog)                           | 예        | API 없음  | 로그인 필요 없음                    |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | 예        | API 없음  | No Login required                   |
-| [Gradio](https://gradio.app/)                                | 예        | API 없음  | Hugging Face space/자체 배포 모델용 |
-| [HuggingChat](https://huggingface.co/chat/)                  | 예        | API 없음  |                                     |
-| [SkyWork](https://neice.tiangong.cn/)                        | 예         | 근일 개봉 |                                             |
-| [You](https://you.com/)                                      | 예         | API 없음      |                                             |
-| [Pi](https://pi.ai)                                      | 예         | API 없음      |                                             |
-| [360 AI Brain](https://ai.360.cn/)                                             | 예         | API 없음      |                                             |
-| [YouChat](https://you.com/)                                                    | 예         | API 없음      |                                             |
-| [Open Assistant](https://open-assistant.io/)                                   | 예         | API 없음      |                                             |
-| [Character.AI](https://character.ai/)                                          | 예         | API 없음      |                                             |
-| [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | 예         | API 없음      |                                             |
-| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예         | API 없음      |                                             |
-| [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | 예         | API 없음      |                                             |
-| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | 예         | API 없음      |                                             |
-| [Phind](https://www.phind.com/)                                                | 예         | API 없음      |                                             |
+| AI 봇                                                                          | 웹 액세스 | API       | 참고                                |
+| ------------------------------------------------------------------------------ | --------- | --------- | ----------------------------------- |
+| [ChatGPT](https://chat.openai.com)                                             | 예        | 예        | 웹 브라우징 포함                    |
+| [Bing Chat](https://www.bing.com/new)                                          | 예        | API 없음  | 로그인 필요 없음                    |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | 아니오    | 예        |                                     |
+| [Bard](https://bard.google.com/)                                               | 예        | API 없음  |                                     |
+| [Poe](https://poe.com/)                                                        | 예        | 근일 개봉 |                                     |
+| [MOSS](https://moss.fastnlp.top/)                                              | 예        | API 없음  |                                     |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | 예        | 근일 개봉 |                                     |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | 근일 개봉 | API 없음  |                                     |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | 예        | 근일 개봉 |                                     |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                     | 예        | API 없음  | 로그인 필요 없음                    |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                            | 예        | API 없음  | 로그인 필요 없음                    |
+| [ChatGLM](https://chatglm.cn/blog)                                             | 예        | API 없음  | 로그인 필요 없음                    |
+| [Claude](https://www.anthropic.com/index/introducing-claude)                   | 예        | API 없음  | No Login required                   |
+| [Gradio](https://gradio.app/)                                                  | 예        | API 없음  | Hugging Face space/자체 배포 모델용 |
+| [HuggingChat](https://huggingface.co/chat/)                                    | 예        | API 없음  |                                     |
+| [SkyWork](https://neice.tiangong.cn/)                                          | 예        | 근일 개봉 |                                     |
+| [You](https://you.com/)                                                        | 예        | API 없음  |                                     |
+| [Pi](https://pi.ai)                                                            | 예        | API 없음  |                                     |
+| [360 AI Brain](https://ai.360.cn/)                                             | 예        | API 없음  |                                     |
+| [YouChat](https://you.com/)                                                    | 예        | API 없음  |                                     |
+| [Open Assistant](https://open-assistant.io/)                                   | 예        | API 없음  |                                     |
+| [Character.AI](https://character.ai/)                                          | 예        | API 없음  |                                     |
+| [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | 예        | API 없음  |                                     |
+| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예        | API 없음  |                                     |
+| [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | 예        | API 없음  |                                     |
+| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | 예        | API 없음  |                                     |
+| [Phind](https://www.phind.com/)                                                | 예        | API 없음  |                                     |
 
 그리고 더...
 
@@ -131,9 +131,9 @@ ChatALL을 사용하는 동안 문제가 발생하면 다음 방법을 사용하
 
 다음 디렉터리를 삭제하여 ChatALL을 재설정할 수 있습니다:
 
-- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
-- Linux: `/home/<user>/.config/ChatALL/`
-- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+- Windows: `C:\Users\<user>\AppData\Roaming\chatall\`
+- Linux: `/home/<user>/.config/chatall/`
+- macOS: `/Users/<user>/Library/Application Support/chatall/`
 
 문제가 지속되면 [문제 제출](https://github.com/sunner/ChatALL/issues)로 문의해 주세요.
 

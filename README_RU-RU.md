@@ -24,34 +24,34 @@
 
 ### Поддерживаемые боты
 
-| ИИ-боты                                                                        | Доступ к интернету  | API  | Подпись                                    |
-| ------------------------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                                             | Да         | Да         | Просмотр веб-страниц, включая службу Azure OpenAI |
-| [Bing Chat](https://www.bing.com/new)                                          | Да         | Нет API      |                                             |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | Нет          | Да         |                                             |
-| [Bard](https://bard.google.com/)                                               | Да         | Скоро будет |                                             |
-| [Poe](https://poe.com/)                                                        | Да         | Скоро будет |                                             |
-| [MOSS](https://moss.fastnlp.top/)                                              | Да         | Нет API      |                                             |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Да         | Скоро будет |                                             |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Скоро будет | Нет API      |                                             |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Да         | Скоро будет |                                             |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                     | Да         | Нет API      | Вход в ученую запись не требуется           |
-| [Vicuna 7B, 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)              | Да         | Нет API      | Вход в ученую запись не требуется           |
-| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Да         | Нет API      | Вход в ученую запись не требуется           |
-| [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                 | Да         | Нет API      |                                             |
-| [Gradio](https://gradio.app/)                                                  | Да         | Нет API      | For Hugging Face space/self-deployed models |
-| [HuggingChat](https://huggingface.co/chat/)                                    | Да         | Нет API      |                                             |
-| [SkyWork](https://neice.tiangong.cn/)                                          | Да         | Скоро будет |                                             |
-| [You](https://you.com/)                                                        | Да         | Нет API      |                                             |
-| [Pi](https://pi.ai)                                                            | Да         | Нет API      |                                             |
-| [360 AI Brain](https://ai.360.cn/)                                             | Да         | Нет API      |                                             |
-| [YouChat](https://you.com/)                                                    | Да         | Нет API      |                                             |
-| [Open Assistant](https://open-assistant.io/)                                   | Да         | Нет API      |                                             |
-| [Character.AI](https://character.ai/)                                          | Да         | Нет API      |                                             |
-| [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | Да         | Нет API      |                                             |
-| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Да         | Нет API      |                                             |
-| [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | Да         | Нет API      |                                             |
-| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | Да         | Нет API      |                                             |
+| ИИ-боты                                                                        | Доступ к интернету | API         | Подпись                                           |
+| ------------------------------------------------------------------------------ | ------------------ | ----------- | ------------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                                             | Да                 | Да          | Просмотр веб-страниц, включая службу Azure OpenAI |
+| [Bing Chat](https://www.bing.com/new)                                          | Да                 | Нет API     |                                                   |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | Нет                | Да          |                                                   |
+| [Bard](https://bard.google.com/)                                               | Да                 | Скоро будет |                                                   |
+| [Poe](https://poe.com/)                                                        | Да                 | Скоро будет |                                                   |
+| [MOSS](https://moss.fastnlp.top/)                                              | Да                 | Нет API     |                                                   |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Да                 | Скоро будет |                                                   |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Скоро будет        | Нет API     |                                                   |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Да                 | Скоро будет |                                                   |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                     | Да                 | Нет API     | Вход в ученую запись не требуется                 |
+| [Vicuna 7B, 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)              | Да                 | Нет API     | Вход в ученую запись не требуется                 |
+| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Да                 | Нет API     | Вход в ученую запись не требуется                 |
+| [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                 | Да                 | Нет API     |                                                   |
+| [Gradio](https://gradio.app/)                                                  | Да                 | Нет API     | For Hugging Face space/self-deployed models       |
+| [HuggingChat](https://huggingface.co/chat/)                                    | Да                 | Нет API     |                                                   |
+| [SkyWork](https://neice.tiangong.cn/)                                          | Да                 | Скоро будет |                                                   |
+| [You](https://you.com/)                                                        | Да                 | Нет API     |                                                   |
+| [Pi](https://pi.ai)                                                            | Да                 | Нет API     |                                                   |
+| [360 AI Brain](https://ai.360.cn/)                                             | Да                 | Нет API     |                                                   |
+| [YouChat](https://you.com/)                                                    | Да                 | Нет API     |                                                   |
+| [Open Assistant](https://open-assistant.io/)                                   | Да                 | Нет API     |                                                   |
+| [Character.AI](https://character.ai/)                                          | Да                 | Нет API     |                                                   |
+| [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | Да                 | Нет API     |                                                   |
+| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Да                 | Нет API     |                                                   |
+| [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | Да                 | Нет API     |                                                   |
+| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | Да                 | Нет API     |                                                   |
 
 Скоро будет еще больше. Проголосуйте за своих любимых ботов в [этих issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
@@ -122,11 +122,11 @@ brew install --cask chatall
 
 Вы можете сбросить настройки ChatALL, удалив следующие каталоги:
 
-- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
-- Linux: `/home/<user>/.config/ChatALL/`
-- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+- Windows: `C:\Users\<user>\AppData\Roaming\chatall\`
+- Linux: `/home/<user>/.config/chatall/`
+- macOS: `/Users/<user>/Library/Application Support/chatall/`
 
-Если проблема не устранена, пожалуйста, [отправьте issue](https://github.com/sunner/ChatALL/issues ).
+Если проблема не устранена, пожалуйста, [отправьте issue](https://github.com/sunner/ChatALL/issues).
 
 ## Для разработчиков
 

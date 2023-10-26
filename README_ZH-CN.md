@@ -131,9 +131,9 @@ brew install --cask chatall
 
 删除下面的目录可以重置 ChatALL：
 
-- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
-- Linux: `/home/<user>/.config/ChatALL/`
-- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+- Windows: `C:\Users\<user>\AppData\Roaming\chatall\`
+- Linux: `/home/<user>/.config/chatall/`
+- macOS: `/Users/<user>/Library/Application Support/chatall/`
 
 如果问题依旧，请[提交一个 issue](https://github.com/sunner/ChatALL/issues)。
 

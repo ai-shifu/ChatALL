@@ -43,7 +43,7 @@ Los usuarios típicos de ChatALL son:
 | [HuggingChat](https://huggingface.co/chat/)                  | Sí           | Sin API      | Llama 2 incluido                                     |
 | [SkyWork](https://neice.tiangong.cn/)                        | Sí           | Próximamente |                                                      |
 | [Tú](https://you.com/)                                       | Sí           | Sin API      |                                                      |
-| [Pi](https://pi.ai)                                      | Sí           | Sin API      |                                                      |
+| [Pi](https://pi.ai)                                          | Sí           | Sin API      |                                                      |
 | [Cerebro de IA 360](https://ai.360.cn/)                      | Sí           | Sin API      |                                                      |
 | [YouChat](https://you.com/)                                  | Sí           | Sin API      |                                                      |
 | [Asistente para abrir](https://open-assistant.io/)           | Sí           | Sin API      |                                                      |
@@ -119,9 +119,9 @@ Si ninguno de los métodos anteriores funciona, puede intentar **restablecer Cha
 
 Puede restablecer ChatALL eliminando los siguientes directorios:
 
-- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
-- Linux: `/home/<user>/.config/ChatALL/`
-- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+- Windows: `C:\Users\<user>\AppData\Roaming\chatall\`
+- Linux: `/home/<user>/.config/chatall/`
+- macOS: `/Users/<user>/Library/Application Support/chatall/`
 
 Si el problema persiste, [envíe un problema](https://github.com/sunner/ChatALL/issues).
 

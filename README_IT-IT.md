@@ -24,26 +24,26 @@ Gli utenti tipici di ChatALL sono:
 
 ### Bot supportati
 
-| IA Bots                                                      | Web Access  | API         | Notes                                       |
-| ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Sì          | Sì          | Navigazione Web,include servizi Azure-OpenAI|
-| [Bing Chat](https://www.bing.com/new)                        | Sì          | No API      | Nessun accesso richiesto                    |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Si          |                                             |
-| [Bard](https://bard.google.com/)                             | Sì          |Prossimamente|                                             |
-| [Poe](https://poe.com/)                                      | Sì          |Prossimamente|                                             |
-| [MOSS](https://moss.fastnlp.top/)                            | Sì          | No API      |                                             |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sì          |Prossimamente|                                             |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             |Prossimamente| No API      |                                             |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sì          |Prossimamente|                                             |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sì          | No API      | Nessun accesso richiesto                    |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì          | No API      | Nessun accesso richiesto                    |
-| [ChatGLM](https://chatglm.cn/blog)                           | Sì          | No API      | Nessun accesso richiesto                    |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Sì          | No API      | Nessun accesso richiesto                    |
-| [Gradio](https://gradio.app/)                                | Sì          | No API      | Per modelli Hugging Face/spazio auto-deploy |
-| [HuggingChat](https://huggingface.co/chat/)                  | Sì          | No API      |                                             |
-| [SkyWork](https://neice.tiangong.cn/)                        | Sì          |Prossimamente|                                             |
-| [You](https://you.com/)                                      | Sì          | No API      |                                             |
-| [Pi](https://pi.ai)                                      | Sì          | No API      |                                             |
+| IA Bots                                                      | Web Access    | API           | Notes                                        |
+| ------------------------------------------------------------ | ------------- | ------------- | -------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | Sì            | Sì            | Navigazione Web,include servizi Azure-OpenAI |
+| [Bing Chat](https://www.bing.com/new)                        | Sì            | No API        | Nessun accesso richiesto                     |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No            | Si            |                                              |
+| [Bard](https://bard.google.com/)                             | Sì            | Prossimamente |                                              |
+| [Poe](https://poe.com/)                                      | Sì            | Prossimamente |                                              |
+| [MOSS](https://moss.fastnlp.top/)                            | Sì            | No API        |                                              |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sì            | Prossimamente |                                              |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prossimamente | No API        |                                              |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sì            | Prossimamente |                                              |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sì            | No API        | Nessun accesso richiesto                     |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì            | No API        | Nessun accesso richiesto                     |
+| [ChatGLM](https://chatglm.cn/blog)                           | Sì            | No API        | Nessun accesso richiesto                     |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | Sì            | No API        | Nessun accesso richiesto                     |
+| [Gradio](https://gradio.app/)                                | Sì            | No API        | Per modelli Hugging Face/spazio auto-deploy  |
+| [HuggingChat](https://huggingface.co/chat/)                  | Sì            | No API        |                                              |
+| [SkyWork](https://neice.tiangong.cn/)                        | Sì            | Prossimamente |                                              |
+| [You](https://you.com/)                                      | Sì            | No API        |                                              |
+| [Pi](https://pi.ai)                                          | Sì            | No API        |                                              |
 
 Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
@@ -66,7 +66,7 @@ Funzionalità pianificate:
 
 Siete benvenuti a contribuire a queste funzionalità.
 
-- [ ] Deploy del front-end su Pagine GitHub 
+- [ ] Deploy del front-end su Pagine GitHub
 
 ## Prerequisiti
 
@@ -100,26 +100,26 @@ Gli utenti tipici di ChatALL sono:
 
 ### Bot supportati
 
-| AI Bots                                                      | Accesso Web | API         | Note                                       |
-| ------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Sì          | Sì          | Navigazione Web, include Azure OpenAI service |
-| [Bing Chat](https://www.bing.com/new)                        | Sì          | No API      | Nessun accesso richiesto                     |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Sì          |                                             |
-| [Bard](https://bard.google.com/)                             | Sì          | Prossimamente |                                             |
-| [Poe](https://poe.com/)                                      | Sì          | Prossimamente |                                             |
-| [MOSS](https://moss.fastnlp.top/)                            | Sì          | No API      |                                             |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sì          | Prossimamente |                                             |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prossimamente | No API      |                                             |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sì          | Prossimamente |                                             |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sì          | No API      | Nessun accesso richiesto                    |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì          | No API      | Nessun accesso richiesto                    |
-| [ChatGLM](https://chatglm.cn/blog)                           | Sì          | No API      | Nessun accesso richiesto                    |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Sì          | No API      | Nessun accesso richiesto                    |
-| [Gradio](https://gradio.app/)                                | Sì          | No API      | Per modelli Hugging Face/spazio auto-deploy |
-| [HuggingChat](https://huggingface.co/chat/)                  | Sì          | No API      |                                             |
-| [SkyWork](https://neice.tiangong.cn/)                        | Sì          | Prossimamente |                                             |
-| [You](https://you.com/)                                      | Sì          | No API      |                                             |
-| [Pi](https://pi.ai)                                      | Sì          | No API      |                                             |
+| AI Bots                                                      | Accesso Web   | API           | Note                                          |
+| ------------------------------------------------------------ | ------------- | ------------- | --------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                           | Sì            | Sì            | Navigazione Web, include Azure OpenAI service |
+| [Bing Chat](https://www.bing.com/new)                        | Sì            | No API        | Nessun accesso richiesto                      |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No            | Sì            |                                               |
+| [Bard](https://bard.google.com/)                             | Sì            | Prossimamente |                                               |
+| [Poe](https://poe.com/)                                      | Sì            | Prossimamente |                                               |
+| [MOSS](https://moss.fastnlp.top/)                            | Sì            | No API        |                                               |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sì            | Prossimamente |                                               |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prossimamente | No API        |                                               |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sì            | Prossimamente |                                               |
+| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sì            | No API        | Nessun accesso richiesto                      |
+| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì            | No API        | Nessun accesso richiesto                      |
+| [ChatGLM](https://chatglm.cn/blog)                           | Sì            | No API        | Nessun accesso richiesto                      |
+| [Claude](https://www.anthropic.com/index/introducing-claude) | Sì            | No API        | Nessun accesso richiesto                      |
+| [Gradio](https://gradio.app/)                                | Sì            | No API        | Per modelli Hugging Face/spazio auto-deploy   |
+| [HuggingChat](https://huggingface.co/chat/)                  | Sì            | No API        |                                               |
+| [SkyWork](https://neice.tiangong.cn/)                        | Sì            | Prossimamente |                                               |
+| [You](https://you.com/)                                      | Sì            | No API        |                                               |
+| [Pi](https://pi.ai)                                          | Sì            | No API        |                                               |
 
 Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
@@ -189,9 +189,9 @@ Se nessuno dei metodi sopra elencati funziona, puoi provare a **reimpostare Chat
 
 Puoi reimpostare ChatALL eliminando le seguenti directory:
 
-- Windows: `C:\Users\<user>\AppData\Roaming\ChatALL\`
-- Linux: `/home/<user>/.config/ChatALL/`
-- macOS: `/Users/<user>/Library/Application Support/ChatALL/`
+- Windows: `C:\Users\<user>\AppData\Roaming\chatall\`
+- Linux: `/home/<user>/.config/chatall/`
+- macOS: `/Users/<user>/Library/Application Support/chatall/`
 
 Se il problema persiste, per favore [segnala il problema](https://github.com/sunner/ChatALL/issues).
 
