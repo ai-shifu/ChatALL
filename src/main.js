@@ -40,12 +40,10 @@ VMdPreview.use(vuepressTheme, {
 
 const { ipcRenderer } = window.require("electron");
 
-(async () => {
-  await store.restored; // wait for state to be restore
-  store.commit("migrateSettingsPrompts");
-  await migrateChatsMessagesThreads();
-  await Chats.addFirstChatIfEmpty();
-})();
+await store.restored; // wait for state to be restore
+store.commit("migrateSettingsPrompts");
+await migrateChatsMessagesThreads();
+await Chats.addFirstChatIfEmpty();
 
 const defaultTheme = await resolveTheme(store.state.mode, ipcRenderer);
 store.commit("setTheme", defaultTheme);
@@ -58,7 +56,7 @@ const vuetify = createVuetify({
     adapter: createVueI18nAdapter({ i18n, useI18n }),
   },
   theme: {
-    defaultTheme: defaultTheme,
+    defaultTheme,
     themes: {
       light: {
         colors: {
