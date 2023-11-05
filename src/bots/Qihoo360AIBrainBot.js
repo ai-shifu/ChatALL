@@ -76,11 +76,13 @@ export default class Qihoo360AIBrainBot extends Bot {
         //Get CONVERSATIONID e.g: CONVERSATIONID####f9563471f24a088d
         source.addEventListener("100", (event) => {
           context.parentConversationId = event.data.split("####")[1];
+          this.setChatContext(context);
         });
 
         //Get MESSAGEID e.g: MESSAGEID####f9563471f24a088ddd34826b527ffdfb
         source.addEventListener("101", (event) => {
           context.parentMessageId = event.data.split("####")[1];
+          this.setChatContext(context);
         });
 
         //unable to answer the user's question.
