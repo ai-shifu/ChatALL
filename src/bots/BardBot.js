@@ -82,6 +82,7 @@ export default class BardBot extends Bot {
         .then(({ data: resp }) => {
           const { text, ids } = parseResponse(resp);
           context.contextIds = ids;
+          this.setChatContext(context);
           onUpdateResponse(callbackParam, { content: text, done: true });
           resolve();
         })

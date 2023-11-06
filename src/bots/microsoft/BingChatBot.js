@@ -168,6 +168,7 @@ export default class BingChatBot extends Bot {
                 wsp.sendPacked({ type: 6 });
                 wsp.sendPacked(await this.makePromptRequest(prompt));
                 context.invocationId += 1;
+                this.setChatContext(context);
               } else if (event.type === 6) {
                 wsp.sendPacked({ type: 6 });
               } else if (event.type === 3) {
