@@ -50,7 +50,7 @@ export default class HuggingChatBot extends Bot {
 
         try {
           const response = await fetch(
-            `https://huggingface.co/chat/conversation/${conversationId}`,
+            `${this.constructor._loginUrl}conversation/${conversationId}`,
             {
               method: "POST",
               headers: {
@@ -125,7 +125,7 @@ export default class HuggingChatBot extends Bot {
   async createChatContext() {
     let conversationId = "";
     await axios
-      .post("https://huggingface.co/chat/conversation", {
+      .post(`${this.constructor._loginUrl}conversation`, {
         model: this.constructor._model,
       })
       .then(({ data: resp }) => {
