@@ -55,6 +55,7 @@
     "newChat": "New Chat",
     "deleteAllChatHistory": "Delete All Chat History",
     "downloadAllChatHistory": "Save All Chat History",
+    "exportData": "Export Data (without secrets)",
     "confirmDeleteAllChatHistory": "Are you sure you want to delete all chat history? This action cannot be undone.",
     "actions": "Actions",
     "addAction": "Add Action",

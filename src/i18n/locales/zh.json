@@ -55,6 +55,7 @@
     "newChat": "新对话",
     "deleteAllChatHistory": "删除所有对话记录",
     "downloadAllChatHistory": "保存所有对话记录",
+    "exportData": "导出数据（不含机密）",
     "confirmDeleteAllChatHistory": "你确定要删除所有对话记录吗？此操作无法撤消。",
     "actions": "操作",
     "addAction": "添加操作",

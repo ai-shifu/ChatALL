@@ -8,11 +8,10 @@
         @click="deleteChats"
       ></v-btn>
       <v-btn
-        disabled
         color="primary"
         variant="outlined"
-        :text="$t('chat.downloadAllChatHistory')"
-        @click="downloadJson"
+        :text="$t('chat.exportData')"
+        @click="exportData"
         style="margin-left: 10px"
       ></v-btn>
     </v-list-item>
@@ -154,6 +153,9 @@
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import i18n from "@/i18n";
+import localForage from "localforage";
+import Dexie from "dexie";
+import { exportDB } from "dexie-export-import";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import bots from "@/bots";
@@ -163,6 +165,8 @@ import {
   templatePlaceholder,
   suffixPlaceholder,
 } from "../helpers/template-helper";
+import db from "@/store/db";
+
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
 const formRef = ref(null);
@@ -206,83 +210,71 @@ let isEdit = false;
 const required = (value) =>
   value?.trim() ? true : i18n.global.t("prompt.required");
 
-// This function downloads the chat history as a JSON file.
-const downloadJson = () => {
-  // Get the chat history from localStorage.
-  const chatallMessages = localStorage.getItem("chatall-messages");
-  if (!chatallMessages) {
-    console.error("chatall-messages not found in localStorage");
-    return;
+const SETTING_FILE_NAME = "localforage.json";
+const CHAT_HISTORY_FILE_NAME = "ChatALL.json";
+async function exportData() {
+  try {
+    const settingBlob = getSettingWithoutBotSetting();
+    const chatHistoryBlob = await exportDB(db);
+
+    const { default: JSZip } = await import("jszip");
+    const zip = new JSZip();
+    zip.file(SETTING_FILE_NAME, settingBlob);
+    zip.file(CHAT_HISTORY_FILE_NAME, chatHistoryBlob);
+
+    // Create a file name for the ZIP file.
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // months are 0-based in JavaScript
+    const day = String(date.getDate()).padStart(2, "0");
+    const hour = String(date.getHours()).padStart(2, "0");
+    const minute = String(date.getMinutes()).padStart(2, "0");
+    const second = String(date.getSeconds()).padStart(2, "0");
+    const fileName = `chatall-history-${year}${month}${day}-${hour}${minute}${second}`;
+    zip.generateAsync({ type: "blob" }).then(function (zipBlob) {
+      const url = URL.createObjectURL(zipBlob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${fileName}.zip`;
+      document.body.appendChild(a);
+
+      // Click the anchor element to download the file.
+      a.click();
+
+      // Remove the anchor element from the document body.
+      document.body.removeChild(a);
+
+      // Revoke the URL for the blob.
+      URL.revokeObjectURL(url);
+    });
+  } catch (error) {
+    console.error(error);
+    snackbarWithCloseButton.text = `${i18n.global.t("chat.exportFailed")}: ${
+      error.message
+    }`;
+    snackbarWithReloadButton.color = "error";
+    snackbarWithCloseButton.show = true;
   }
+}
 
-  const chats = JSON.parse(chatallMessages)?.chats ?? [];
-
-  // Create an array of messages from the chat history.
-  const messages = chats
-    .filter((d) => !d.hide)
-    .map((chat) => ({
-      // The title of the chat.
-      title: chat.title,
-      // The messages in the chat.
-      messages: chat.messages
-        .filter((d) => !d.hide)
-        .reduce((arr, message) => {
-          const t = message.type;
-          const content = message.content;
-          if (t == "prompt") {
-            arr.push({
-              prompt: content,
-              responses: [],
-            });
-          } else {
-            const botClassname = message.className;
-            const bot = bots.getBotByClassName(botClassname);
-            const botName = bot.getFullname();
-            arr.at(-1).responses.push({
-              content,
-              botName,
-              botClassname,
-              botModel: message.model,
-              highlight: message.highlight,
-            });
-          }
-          return arr;
-        }, []),
-    }));
-
-  // Create a blob that contains the JSON data.
-  // The space parameter specifies the indentation of nested objects in the string representation.
-  const blob = new Blob([JSON.stringify({ chats: messages }, null, 2)], {
-    // The type of the blob.
-    type: "application/json",
+async function getSettingWithoutBotSetting() {
+  await localForage._dbInfo.db.close();
+  const settingDb = await new Dexie("localforage").open();
+  const userSettingBlob = await exportDB(settingDb);
+  const userSettingText = await userSettingBlob.text();
+  const userSettingJson = JSON.parse(userSettingText);
+  const allBotBrandId = bots.all.map((bot) => bot.constructor._brandId);
+  for (const brandId of allBotBrandId) {
+    // delete bot related setting
+    delete userSettingJson.data.data[0].rows[0].$[1][brandId];
+  }
+  const str = JSON.stringify(userSettingJson);
+  const bytes = new TextEncoder().encode(str);
+  return new Blob([bytes], {
+    type: "application/json;charset=utf-8",
   });
+}
 
-  const url = URL.createObjectURL(blob);
-
-  // Create a file name for the JSON file.
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // months are 0-based in JavaScript
-  const day = String(date.getDate()).padStart(2, "0");
-  const hour = String(date.getHours()).padStart(2, "0");
-  const minute = String(date.getMinutes()).padStart(2, "0");
-  const second = String(date.getSeconds()).padStart(2, "0");
-  const fileName = `chatall-history-${year}${month}${day}-${hour}${minute}${second}`;
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `${fileName}.json`;
-  document.body.appendChild(a);
-
-  // Click the anchor element to download the file.
-  a.click();
-
-  // Remove the anchor element from the document body.
-  document.body.removeChild(a);
-
-  // Revoke the URL for the blob.
-  URL.revokeObjectURL(url);
-};
 async function deleteChats() {
   const confirm = await confirmModal.value.showModal(
     "",
