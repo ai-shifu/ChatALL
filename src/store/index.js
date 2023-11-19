@@ -369,6 +369,17 @@ export default createStore({
       state.prompts = promptsData ? promptsData.prompts : [];
       localStorage.setItem("isMigratedSettingsPrompts", true);
     },
+    updateSetting(state, { key, value }) {
+      state[key] = value;
+    },
+    updateSettingArray(state, { key, value, index }) {
+      for (const prop in state[key][index]) {
+        state[key][index][prop] = value[prop];
+      }
+    },
+    pushSettingArray(state, { key, value }) {
+      state[key].push(value);
+    },
     migrateSettingArrayIndexUseUUID(state) {
       if (
         localStorage.getItem("isMigrateSettingArrayIndexUseUUID") === "true"

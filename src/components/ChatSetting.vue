@@ -14,6 +14,14 @@
         @click="exportData"
         style="margin-left: 10px"
       ></v-btn>
+      <v-btn
+        color="primary"
+        variant="outlined"
+        :text="$t('chat.importData')"
+        @click="importData"
+        style="margin-left: 10px"
+      >
+      </v-btn>
     </v-list-item>
     <v-list-item>
       <v-row>
@@ -147,25 +155,49 @@
     </v-card>
   </v-dialog>
   <ConfirmModal ref="confirmModal" />
+  <v-snackbar
+    v-model="snackbarWithReloadButton.show"
+    :timeout="snackbarWithReloadButton.timeout"
+    :color="snackbarWithReloadButton.color"
+  >
+    {{ snackbarWithReloadButton.text }}
+    <template v-slot:actions>
+      <v-btn variant="text" @click="reloadPage">
+        {{ $t("chat.reloadPage") }}
+      </v-btn>
+    </template>
+  </v-snackbar>
+  <v-snackbar
+    v-model="snackbarWithCloseButton.show"
+    :timeout="snackbarWithCloseButton.timeout"
+    :color="snackbarWithCloseButton.color"
+  >
+    {{ snackbarWithCloseButton.text }}
+    <template v-slot:actions>
+      <v-btn variant="text" @click="snackbarWithCloseButton.show = false">
+        {{ $t("updates.close") }}
+      </v-btn>
+    </template>
+  </v-snackbar>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useStore } from "vuex";
-import i18n from "@/i18n";
-import localForage from "localforage";
-import Dexie from "dexie";
-import { exportDB } from "dexie-export-import";
-import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
-import ConfirmModal from "@/components/ConfirmModal.vue";
 import bots from "@/bots";
-import {
-  preview,
-  prefixPlaceholder,
-  templatePlaceholder,
-  suffixPlaceholder,
-} from "../helpers/template-helper";
+import ConfirmModal from "@/components/ConfirmModal.vue";
+import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
+import i18n from "@/i18n";
 import db from "@/store/db";
+import Dexie from "dexie";
+import { exportDB, importInto } from "dexie-export-import";
+import localForage from "localforage";
+import { computed, reactive, ref } from "vue";
+import { useStore } from "vuex";
+import {
+  prefixPlaceholder,
+  preview,
+  suffixPlaceholder,
+  templatePlaceholder,
+} from "../helpers/template-helper";
 
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
@@ -176,6 +208,18 @@ const prefix = ref("");
 const template = ref("");
 const suffix = ref("");
 const previewRef = ref("");
+const snackbarWithReloadButton = reactive({
+  show: false,
+  text: "",
+  timeout: -1,
+  color: "",
+});
+const snackbarWithCloseButton = reactive({
+  show: false,
+  text: "",
+  timeout: -1,
+  color: "",
+});
 const templateParametersInfo = `
 #### ${i18n.global.t("chat.templateParameters")}:
 | ${i18n.global.t("chat.parameter")}|${i18n.global.t("chat.description")}|
@@ -255,6 +299,104 @@ async function exportData() {
     snackbarWithReloadButton.color = "error";
     snackbarWithCloseButton.show = true;
   }
+}
+
+function importData() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "application/ZIP";
+  input.addEventListener("change", importDataOnChangeFile);
+  document.body.appendChild(input);
+
+  // Click the input element to select the file.
+  input.click();
+}
+
+async function importDataOnChangeFile(event) {
+  try {
+    const file = event.target.files[0];
+    const { default: JSZip } = await import("jszip");
+    const zip = await JSZip.loadAsync(file);
+
+    let chatHistoryString;
+    let settingFileString;
+    await new Promise((resolve, reject) => {
+      let fileCount = 0;
+      zip.forEach(async (relativePath, zipEntry) => {
+        try {
+          const exportedString = await zipEntry.async("string");
+          if (relativePath === CHAT_HISTORY_FILE_NAME) {
+            chatHistoryString = exportedString;
+          } else if (relativePath === SETTING_FILE_NAME) {
+            settingFileString = exportedString;
+          }
+          fileCount++;
+          if (fileCount === 2) {
+            resolve();
+          }
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+
+    // import ChatALL db
+    const chatHistoryBlob = new Blob([chatHistoryString]);
+    await importInto(db, chatHistoryBlob, {
+      overwriteValues: true,
+    });
+
+    // import localforage keyvaluepairs
+    const settingDbObject = JSON.parse(settingFileString);
+    const rows = settingDbObject.data.data.find(
+      (d) => d.tableName === "keyvaluepairs",
+    )?.rows;
+    if (rows.length && rows[0].$ && rows[0].$.length > 1) {
+      const chatallKey = rows[0].$[1];
+      for (const key in chatallKey) {
+        if (Array.isArray(chatallKey[key])) {
+          const storeIndexes = store.state[key].map((item) => item.index);
+          for (const importItem of chatallKey[key]) {
+            let index = storeIndexes.indexOf(importItem.index);
+            if (index === -1) {
+              store.commit("pushSettingArray", {
+                key,
+                value: importItem,
+              });
+            } else {
+              store.commit("updateSettingArray", {
+                key,
+                index,
+                value: importItem,
+              });
+            }
+          }
+        } else {
+          store.commit("updateSetting", {
+            key,
+            value: chatallKey[key],
+          });
+        }
+      }
+    }
+    snackbarWithReloadButton.text = i18n.global.t("chat.importSuccess");
+    snackbarWithReloadButton.color = "success";
+    snackbarWithReloadButton.show = true;
+  } catch (error) {
+    console.error(error);
+    snackbarWithCloseButton.text = `${i18n.global.t("chat.importFailed")}: ${
+      error.message
+    }`;
+    snackbarWithReloadButton.color = "error";
+    snackbarWithCloseButton.show = true;
+  } finally {
+    // Remove the input element from the document body.
+    document.body.removeChild(event.target);
+  }
+}
+
+function reloadPage() {
+  window.location.reload();
 }
 
 async function getSettingWithoutBotSetting() {
