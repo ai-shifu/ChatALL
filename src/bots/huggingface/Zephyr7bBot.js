@@ -9,4 +9,8 @@ export default class Zephyr7bBot extends HuggingChatBot {
   constructor() {
     super();
   }
+
+  getFullname() {
+    return "Zephyr";
+  }
 }
