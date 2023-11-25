@@ -77,14 +77,14 @@
                   size="x-small"
                   icon="mdi-pencil"
                   @click="edit(item)"
-                  v-if="item.index >= 0"
+                  v-if="item.index"
                 ></v-btn>
                 <v-btn
                   flat
                   size="x-small"
                   icon="mdi-delete-outline"
                   @click="deletePrompt(item)"
-                  v-if="item.index >= 0"
+                  v-if="item.index"
                 ></v-btn>
               </td>
             </tr>
@@ -197,7 +197,7 @@ const closeDialog = (value) => {
 };
 
 function pin(row) {
-  if (row.index >= 0) {
+  if (row.index) {
     store.commit("editPrompt", {
       ...row,
       isPin: !row.isPin,

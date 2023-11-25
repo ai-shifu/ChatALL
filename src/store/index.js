@@ -316,26 +316,34 @@ export default createStore({
       });
     },
     addPrompt(state, values) {
-      const addPrompt = { ...values };
-      addPrompt.index = state.prompts.push(addPrompt) - 1;
+      state.prompts.push({ ...values, index: uuidv4() });
     },
     editPrompt(state, values) {
       const { index } = values;
-      state.prompts[index] = { ...state.prompts[index], ...values };
+      const prompt = state.prompts.find((item) => item.index === index);
+      for (const key in values) {
+        prompt[key] = values[key];
+      }
     },
     deletePrompt(state, values) {
-      state.prompts[values.index].hide = true;
+      const { index } = values;
+      let prompt = state.prompts.find((item) => item.index === index);
+      prompt.hide = true;
     },
     addAction(state, values) {
-      const addAction = { ...values };
-      addAction.index = state.actions.push(addAction) - 1;
+      state.actions.push({ ...values, index: uuidv4() });
     },
     editAction(state, values) {
       const { index } = values;
-      state.actions[index] = { ...state.actions[index], ...values };
+      const action = state.actions.find((item) => item.index === index);
+      for (const key in values) {
+        action[key] = values[key];
+      }
     },
     deleteAction(state, values) {
-      state.actions[values.index].hide = true;
+      const { index } = values;
+      let action = state.actions.find((item) => item.index === index);
+      action.hide = true;
     },
     addSelectedResponses(state, value) {
       value.selectedIndex = state.selectedResponses.push(value) - 1;
@@ -360,6 +368,35 @@ export default createStore({
       }
       state.prompts = promptsData ? promptsData.prompts : [];
       localStorage.setItem("isMigratedSettingsPrompts", true);
+    },
+    updateSetting(state, { key, value }) {
+      state[key] = value;
+    },
+    updateSettingArray(state, { key, value, index }) {
+      for (const prop in state[key][index]) {
+        state[key][index][prop] = value[prop];
+      }
+    },
+    pushSettingArray(state, { key, value }) {
+      state[key].push(value);
+    },
+    migrateSettingArrayIndexUseUUID(state) {
+      if (
+        localStorage.getItem("isMigrateSettingArrayIndexUseUUID") === "true"
+      ) {
+        return;
+      }
+      const settings = toRaw(state);
+      for (const key in settings) {
+        if (Array.isArray(state[key])) {
+          for (const item of state[key]) {
+            if (typeof item.index === "number" || !item.index) {
+              item.index = uuidv4();
+            }
+          }
+        }
+      }
+      localStorage.setItem("isMigrateSettingArrayIndexUseUUID", true);
     },
   },
   actions: {

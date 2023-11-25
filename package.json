@@ -1,6 +1,6 @@
 {
   "name": "chatall",
-  "version": "1.51.79",
+  "version": "1.51.80",
   "description": "Chat with multiple AI bots and discover the best.",
   "author": {
     "name": "Sun Zhigang",
@@ -34,7 +34,9 @@
     "compare-versions": "^6.1.0",
     "core-js": "^3.32.2",
     "dexie": "^4.0.1-alpha.25",
+    "dexie-export-import": "^4.0.7",
     "electron-builder": "^24.6.4",
+    "jszip": "^3.10.1",
     "katex": "^0.16.8",
     "langchain": "~0.0.156",
     "localforage": "^1.10.0",
@@ -50,7 +52,7 @@
     "vue-i18n": "^9.5.0",
     "vue-matomo": "^4.2.0",
     "vue3-shortkey": "^4.0.0",
-    "vuetify": "^3.3.19",
+    "vuetify": "^3.4.3",
     "vuex": "^4.1.0",
     "vuex-persist": "^3.1.3",
     "websocket-as-promised": "^2.0.1"
