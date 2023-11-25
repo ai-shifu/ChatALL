@@ -44,6 +44,7 @@ import Llama27bBot from "./lmsys/Llama27bBot";
 import Llama270bBot from "./lmsys/Llama270bBot";
 import Falcon180bBot from "./huggingface/Falcon180bBot";
 import ChatGLM6bBot from "./lmsys/ChatGLM6bBot";
+import ChatGLM36bBot from "./lmsys/ChatGLM36bBot";
 import CodeLlamaBot from "./lmsys/CodeLlamaBot";
 import Vicuna7bBot from "./lmsys/Vicuna7bBot";
 import Vicuna13bBot from "./lmsys/Vicuna13bBot";
@@ -64,6 +65,7 @@ const all = [
   CharacterAIBot.getInstance(),
   ChatGLMBot.getInstance(),
   ChatGLM6bBot.getInstance(),
+  ChatGLM36bBot.getInstance(),
   ClaudeInstantPoeBot.getInstance(),
   ClaudeInstant100kPoeBot.getInstance(),
   ClaudeBot.getInstance(),
@@ -134,6 +136,7 @@ export const botTags = {
     bots.getBotByClassName("BingChatPreciseBot"),
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
+    bots.getBotByClassName("ChatGLM36bBot"),
     bots.getBotByClassName("ChatGPT35Bot"),
     bots.getBotByClassName("ChatGPT35PoeBot"),
     bots.getBotByClassName("ClaudeBot"),
@@ -190,6 +193,7 @@ export const botTags = {
     bots.getBotByClassName("Vicuna13bBot"),
     bots.getBotByClassName("Falcon180bBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
+    bots.getBotByClassName("ChatGLM36bBot"),
     bots.getBotByClassName("CodeLlamaBot"),
     bots.getBotByClassName("CodeLlamaHCBot"),
     bots.getBotByClassName("Wizardlm13bBot"),
@@ -216,6 +220,7 @@ export const botTags = {
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
+    bots.getBotByClassName("ChatGLM36bBot"),
   ],
 };
 export default bots;
