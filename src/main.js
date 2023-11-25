@@ -41,6 +41,7 @@ const { ipcRenderer } = window.require("electron");
 
 await store.restored; // wait for state to be restore
 store.commit("migrateSettingsPrompts");
+store.commit("migrateSettingArrayIndexUseUUID");
 await migrateChatsMessagesThreads();
 await Chats.addFirstChatIfEmpty();
 
