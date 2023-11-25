@@ -11,6 +11,6 @@ export default class Zephyr7bBot extends HuggingChatBot {
   }
 
   getFullname() {
-    return "Zephyr";
+    return "Zephyr-7B-β";
   }
 }
