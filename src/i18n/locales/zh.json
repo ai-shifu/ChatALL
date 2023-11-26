@@ -145,7 +145,8 @@
     "codellamaCodeLlama-34b-Instruct-hf": "Code Llama",
     "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
     "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b",
-    "tiiuaefalcon-180B-chat": "falcon-180b"
+    "tiiuaefalcon-180B-chat": "falcon-180b",
+    "HuggingFaceH4zephyr-7b-beta": "zephyr-7b"
   },
   "gradio": {
     "fnIndex": "fn_index",

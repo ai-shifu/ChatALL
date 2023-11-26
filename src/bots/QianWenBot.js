@@ -86,6 +86,14 @@ export default class QianWenBot extends Bot {
     });
 
     return new Promise((resolve, reject) => {
+      if (context.exception) {
+        reject(
+          new Error(
+            `${context.exception?.errorCode} ${context.exception?.errorMsg}`,
+          ),
+        );
+        return;
+      }
       try {
         const source = new SSE("https://qianwen.aliyun.com/conversation", {
           headers,
@@ -138,7 +146,10 @@ export default class QianWenBot extends Bot {
     await axios
       .post(
         "https://qianwen.aliyun.com/addSession",
-        { firstQuery: "ChatALL" }, // A hack to set session name
+        {
+          firstQuery: "ChatALL",
+          sessionType: "text_chat",
+        }, // A hack to set session name
         { headers: this.getRequestHeaders() },
       )
       .then((resp) => {
@@ -147,6 +158,14 @@ export default class QianWenBot extends Bot {
           const userId = resp.data?.data?.userId;
           const parentMsgId = "0";
           context = { sessionId, parentMsgId, userId };
+        } else if (resp.data) {
+          context = {
+            exception: resp.data,
+          };
+          console.error(
+            "Error QianWen adding sesion resp:",
+            JSON.stringify(resp.data),
+          );
         }
       })
       .catch((err) => {
