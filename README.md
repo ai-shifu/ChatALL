@@ -53,6 +53,7 @@ Typical users of ChatALL are:
 | [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | Yes         | No API      |                                             |
 | [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | Yes         | No API      |                                             |
 | [Phind](https://www.phind.com/)                                                | Yes         | No API      |                                             |
+| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Yes         | No API      |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
