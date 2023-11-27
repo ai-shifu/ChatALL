@@ -1,0 +1,315 @@
+{
+  "settings": {
+    "enable": "啟用",
+    "forExample": "例如：{ example }",
+    "title": "設定",
+    "general": "一般",
+    "language": "語言",
+    "languagePrompt": "新語言將在程式重新啟動後生效",
+    "loginOrOut": "登入/登出",
+    "loginOrOutPrompt": "點選下方連結，在新視窗內登入或登出，然後關閉此視窗",
+    "notice": "注意",
+    "secretPrompt": "你的私密 token 只會儲存在本地，任何其他人都無法存取",
+    "theme": "主題",
+    "system": "系統",
+    "light": "淺色",
+    "dark": "深色",
+    "bots": "AI 模型"
+  },
+  "header": {
+    "clearMessages": "清空目前對話的所有訊息？",
+    "yes": "是",
+    "no": "否",
+    "singleColumn": "單欄",
+    "doubleColumn": "雙欄",
+    "tripleColumn": "三欄",
+    "selectedResponsesCount": "已選擇 { selectedCount } 個"
+  },
+  "footer": {
+    "chooseFavorite": "選擇你喜歡的 AI",
+    "sendPrompt": "傳送到：",
+    "promptPlaceholder": "輸入訊息。（Shift+Enter 換行）",
+    "madeInChina": "中國製造",
+    "openSource": "開源",
+    "free": "免費",
+    "paid": "付費",
+    "api": "API"
+  },
+  "error": {
+    "error": "錯誤",
+    "failedConnectUrl": "連線 { url } 失敗",
+    "closedByServer": "連線被伺服器關閉",
+    "requireLogin": "請登入：{ link }",
+    "solveChallenge": "請點選下方連結，按頁面指示完成驗證 / 驗證碼，然後關閉視窗。"
+  },
+  "modal": {
+    "confirmHide": "刪除這條訊息？",
+    "confirmHideChat": "刪除這條對話？",
+    "confirmHidePrompt": "刪除這條提示？",
+    "confirmHideAction": "刪除這條操作？",
+    "done": "完成",
+    "cancel": "取消"
+  },
+  "chat": {
+    "name": "對話",
+    "newChat": "新對話",
+    "deleteAllChatHistory": "刪除所有對話記錄",
+    "downloadAllChatHistory": "儲存所有對話記錄",
+    "exportImport": "匯出 / 匯入",
+    "exportImportDesc": "匯出 / 匯入設定和聊天，不包括機器人設定和 API 金鑰。",
+    "export": "匯出資料",
+    "exportDesc": "匯出器將建立一個包含不包括機器人設定和 API 金鑰的資料的 .ChatALL 檔案。確認匯出？",
+    "exportFailed": "匯出資料失敗",
+    "exportSuccess": "資料匯出成功",
+    "import": "匯入資料",
+    "importDesc": "匯入器將嘗試將您目前的聊天與所選的 .ChatALL 匯出檔案合併和更新。點選匯出按鈕備份資料，儲存目前聊天歷史和設定。這允許在匯入錯誤時進行恢復。確認匯入？",
+    "importLog": "匯入日誌",
+    "importSuccess": "資料匯入成功",
+    "importFailed": "匯入資料失敗",
+    "confirmDeleteAllChatHistory": "你確定要刪除所有對話記錄嗎？此操作無法撤銷。",
+    "actions": "操作",
+    "addAction": "新增操作",
+    "actionName": "名稱",
+    "prefix": "前綴",
+    "actionTemplate": "範本",
+    "suffix": "後綴",
+    "preview": "預覽",
+    "inNewChat": "在新對話",
+    "inCurrentChat": "在目前對話",
+    "templateParameters": "範本參數",
+    "parameter": "參數",
+    "description": "描述",
+    "botNameDesc": "所選回應的機器人名稱",
+    "botResponseDesc": "所選回應內容",
+    "loading": "載入中..."
+  },
+  "bot": {
+    "creatingConversation": "建立新對話...",
+    "disabled": "已停用",
+    "failedToCreateConversation": "建立對話失敗",
+    "nullBot": "虛無",
+    "notImplemented": "開發中...",
+    "notAvailable": "這個對話機器人現在無法使用。可能因為未登入，或者設定不正確。",
+    "waiting": "等待其它 { botName } 請求結束...",
+    "pastRounds": "攜帶多少輪過去的對話？",
+    "pastRoundsPrompt": "帶的歷史對話越多，多輪對話效果越好，但也會消耗更多費用"
+  },
+  "360AiBrain": {
+    "name": "360 智腦"
+  },
+  "azureOpenaiApi": {
+    "name": "Azure OpenAI 服務",
+    "temperature": "Temperature",
+    "temperaturePrompt": "Temperature 越高，生成的文字越有創造性，但也越沒條理",
+    "temperature0": "更具確定性",
+    "temperature2": "更具隨機性",
+    "azureOpenAIApiKey": "金鑰",
+    "azureApiInstanceName": "執行個體名稱",
+    "azureApiInstanceNamePrompt": "在 https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI 檢視",
+    "azureOpenAIApiDeploymentName": "部署名稱",
+    "azureOpenAIApiDeploymentNamePrompt": "在 https://oai.azure.com/ 的「管理 -> 部署」下檢視",
+    "azureOpenAIApiVersion": "模型版本",
+    "azureOpenAIApiVersionPrompt": "在 https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#completions 檢視支援的版本"
+  },
+  "bard": {
+    "name": "Bard"
+  },
+  "bingChat": {
+    "name": "必應對話",
+    "solveCaptcha": "你需要<a { attributes }>通過真人驗證</a>才能繼續。",
+    "h3imaginative": "創造力",
+    "galileo": "平衡",
+    "h3precise": "精確"
+  },
+  "characterAI": {
+    "name": "Character.AI"
+  },
+  "chatGpt": {
+    "name": "ChatGPT",
+    "autoRefresh": "自動防斷線",
+    "autoRefreshPrompt": "如果沒有被要求頻繁登入，不需要啟用此功能",
+    "notice": "只有付費的 ChatGPT Plus 使用者才能使用 GPT-4",
+    "text-davinci-002-render-sha": "GPT-3.5",
+    "gpt-4": "GPT-4",
+    "gpt-4-browsing": "Web 瀏覽",
+    "gpt-4-mobile": "GPT-4 行動裝置版 V2"
+  },
+  "claudeAi": {
+    "name": "Claude 2"
+  },
+  "ernie": {
+    "name": "文心一言"
+  },
+  "huggingChat": {
+    "name": "HuggingChat",
+    "codellamaCodeLlama-34b-Instruct-hf": "Code Llama",
+    "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b",
+    "tiiuaefalcon-180B-chat": "falcon-180b",
+    "HuggingFaceH4zephyr-7b-beta": "zephyr-7b"
+  },
+  "gradio": {
+    "fnIndex": "fn_index",
+    "fnIndexPrompt": "要呼叫的功能的 fn_index。通常是 0",
+    "name": "Gradio",
+    "queueFull": "佇列已滿，請稍後再試",
+    "url": "Gradio App URL",
+    "urlPrompt": "您自己的 Gradio app URL。如使用 Hugging Face 的 space，點選 space 右上角的 \"Embed this space\" 取得 direct URL",
+    "waiting": "目前有 { queue_size } 個請求在佇列中，你在第 { rank } 位，預計還要等待 { queue_eta } 秒"
+  },
+  "lmsys": {
+    "name": "LMSYS",
+    "vicuna-7b": "vicuna-7b",
+    "vicuna-13b": "vicuna-13b",
+    "vicuna-33b": "vicuna-33b",
+    "chatglm-6b": "chatglm-6b",
+    "chatglm2-6b": "chatglm2-6b",
+    "chatglm3-6b": "chatglm3-6b",
+    "alpaca-13b": "alpaca-13b",
+    "claude-1": "claude-1",
+    "wizardlm-13b": "WizardLM-13B",
+    "wizardlm-70b": "WizardLM-70B",
+    "codellama-34b-instruct": "Code Llama",
+    "llama-2-13b-chat": "llama-2-13b",
+    "llama-2-7b-chat": "llama-2-7b",
+    "llama-2-70b-chat": "llama-2-70b"
+  },
+  "moss": {
+    "name": "MOSS"
+  },
+  "openaiApi": {
+    "name": "OpenAI API",
+    "alterUrl": "自訂基礎 URL",
+    "alterUrlPrompt": "API 請求的基礎 URL 路徑。如果沒有使用代理或服務模擬器，就留空",
+    "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-35-turbo-16k": "gpt-3.5-turbo-16k",
+    "gpt-4": "gpt-4",
+    "temperature": "Temperature",
+    "temperaturePrompt": "Temperature 越高，生成的文字越有創造性，但也越沒條理",
+    "temperature0": "更具確定性",
+    "temperature2": "更具隨機性",
+    "apiKey": "API 金鑰"
+  },
+  "poe": {
+    "name": "Poe",
+    "a2": "Claude-instant",
+    "a2_100k": "Claude-instant-100k",
+    "a2_2": "Claude-2-100k",
+    "beaver": "GPT-4",
+    "capybara": "Assistant",
+    "chinchilla": "ChatGPT 3.5",
+    "vizcacha": "GPT-4-32k"
+  },
+  "qianWen": {
+    "name": "通義千問"
+  },
+  "skyWork": {
+    "name": "天工"
+  },
+  "spark": {
+    "name": "訊飛星火"
+  },
+  "wenxinQianfan": {
+    "name": "文心千帆",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo",
+    "ERNIE-Bot-4": "ERNIE-Bot-4"
+  },
+  "youChat": {
+    "name": "YouChat"
+  },
+  "chatGlm": {
+    "name": "智譜清言"
+  },
+  "pi": {
+    "name": "Pi",
+    "waitPiIntro": "請點選下方的網站連結，等待 Pi 介紹完成後，然後關閉視窗。"
+  },
+  "openAssistant": {
+    "name": "Open Assistant",
+    "queue": "目前有 { queue_size } 個請求在佇列中，你在第 { queue_position } 位"
+  },
+  "falcon": {
+    "name": "Falcon",
+    "falcon-180b": "180b"
+  },
+  "phind": {
+    "name": "Phind"
+  },
+  "dev": {
+    "name": "開發專用 Bot"
+  },
+  "updates": {
+    "updateAvailable": "有更新！",
+    "currentVersion": "您目前的版本",
+    "latestVersion": "最新版本",
+    "downloadFromGitHub": "前往 GitHub 下載",
+    "skipThisVersion": "跳過此版本",
+    "close": "關閉"
+  },
+  "find": {
+    "find": "尋找",
+    "noMatches": "未找到結果",
+    "matchCase": "區分大小寫",
+    "wrapAround": "迴圈尋找"
+  },
+  "proxy": {
+    "name": "代理伺服器",
+    "address": "代理伺服器地址",
+    "addressExample": "http://127.0.0.1:7890，socks5://127.0.0.1:1080",
+    "enableProxy": "啟用代理",
+    "proxyMode": "代理模式",
+    "globalMode": "普通模式",
+    "pacFileMode": "PAC 檔案模式",
+    "pacUrlMode": "PAC URL 模式",
+    "byPass": "不使用代理的 網址（僅對普通模式生效）",
+    "byPassHint": "用英文 ';' 分隔，但最後不要出現;號，如'<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
+    "fromFile": "從檔案載入",
+    "fromURL": "從 URL 載入",
+    "pacUrl": "PAC URL 地址",
+    "pacFile": "PAC 檔案",
+    "pacFileUsing": "目前使用的 PAC 檔案",
+    "pacFileNew": "選擇其他 PAC 檔案",
+    "quickSet": "快捷設定",
+    "fullSet": "進階設定",
+    "action": "操作",
+    "onlySave": "僅儲存",
+    "saveAndApply": "儲存並套用",
+    "reload": "重新載入",
+    "reset": "重設",
+    "proxyFilePath": "代理設定檔案路徑",
+    "proxyFilePathHint": "你可以備份這個檔案，或者用其他程式修改",
+    "saveSuccess": "儲存成功",
+    "saveFailed": "儲存失敗",
+    "resetAllMessage": "所有代理的設定（包括已儲存的）都會遺失。確定重設到預設狀態嗎？",
+    "reloadMessage": "所有未經儲存的設定都會遺失。確定重新載入設定檔案嗎？",
+    "saveAndActiveMessage": "應用代理需要重新啟動 ChatALL。確定重新啟動嗎？",
+    "googleService": "Google 各種資源"
+  },
+  "prompt": {
+    "addPrompt": "新增提示",
+    "title": "標題",
+    "prompt": "提示",
+    "action": "操作",
+    "required": "必填"
+  },
+  "$vuetify": {
+    "firstPage": "無資料顯示",
+    "dataFooter": {
+      "itemsPerPageText": "每頁顯示數目",
+      "pageText": "",
+      "firstPage": "第一頁",
+      "prevPage": "上一頁",
+      "lastPage": "最後一頁",
+      "nextPage": "下一頁",
+      "itemsPerPageAll": "全部"
+    },
+    "input": {
+      "clear": "清除"
+    }
+  },
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100"
+}
