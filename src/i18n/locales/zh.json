@@ -164,6 +164,7 @@
     "vicuna-33b": "vicuna-33b",
     "chatglm-6b": "chatglm-6b",
     "chatglm2-6b": "chatglm2-6b",
+    "chatglm3-6b": "chatglm3-6b",
     "alpaca-13b": "alpaca-13b",
     "claude-1": "claude-1",
     "wizardlm-13b": "WizardLM-13B",
