@@ -76,7 +76,7 @@
     "md5": "^2.3.0",
     "prettier": "^3.0.3",
     "prettier-plugin-vue": "^1.1.6",
-    "sse.js": "^1.0.0"
+    "sse.js": "^2.0.2"
   },
   "eslintConfig": {
     "root": true,
