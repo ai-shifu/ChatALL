@@ -168,6 +168,7 @@ const languages = computed(() => [
   { name: "Русский", code: "ru" },
   { name: "Tiếng Việt", code: "vi" },
   { name: "简体中文", code: "zh" },
+  { name: "繁體中文", code: "zhtw" },
 ]);
 
 const modes = computed(() => [

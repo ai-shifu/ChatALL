@@ -11,6 +11,7 @@ if (lang == "auto") {
 // Import translation files here
 import enMessages from "./locales/en.json";
 import zhMessages from "./locales/zh.json";
+import zhtwMessages from "./locales/zhtw.json";
 import deMessages from "./locales/de.json";
 import ruMessages from "./locales/ru.json";
 import viMessages from "./locales/vi.json";
@@ -23,6 +24,7 @@ import jaMessages from "./locales/ja.json";
 const messages = {
   en: enMessages,
   zh: zhMessages,
+  zhtw: zhtwMessages,
   de: deMessages,
   ru: ruMessages,
   vi: viMessages,
