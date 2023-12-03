@@ -140,6 +140,7 @@
     "gpt-35-turbo": "GPT-3.5-turbo",
     "gpt-35-turbo-16k": "GPT-3.5-Turbo-16K",
     "gpt-4": "GPT-4",
+    "gpt-4-1106-preview": "gpt-4-1106-preview",
     "temperature": "Temperatura",
     "temperaturePrompt": "Cuanto mayor sea la temperatura, más creativo será el texto, pero más probable es que sea incoherente.",
     "temperature0": "Más determinista",
@@ -153,7 +154,8 @@
     "a2_2": "Claude-2-100k",
     "beaver": "GPT-4",
     "capybara": "Assistant",
-    "chinchilla": "ChatGPT 3.5"
+    "chinchilla": "ChatGPT 3.5",
+    "vizcacha": "GPT-4-32k"
   },
   "qianWen": {
     "name": "QianWen"
