@@ -171,6 +171,7 @@
     "gpt-35-turbo": "gpt-3.5-터보",
     "gpt-35-turbo-16k": "gpt-3.5-터보-16k",
     "gpt-4": "gpt-4",
+    "gpt-4-1106-preview": "gpt-4-1106-preview",
     "temperature": "온도",
     "temperaturePrompt": "온도가 높을수록 텍스트는 창의적이지만 일관성이 없을 가능성이 높습니다",
     "temperature0": "더 결정론적인",
