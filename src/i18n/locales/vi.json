@@ -109,7 +109,7 @@
     "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
     "azureOpenAIApiDeploymentNamePrompt": "Xem tên nhà phát triển được liệt kê tại https://oai.azure.com/",
     "azureOpenAIApiVersion": "Azure OpenAI API Version",
-    "azureOpenAIApiVersionPrompt": "Xem phiên bản hổ trợ tại https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions",
+    "azureOpenAIApiVersionPrompt": "Xem phiên bản hổ trợ tại https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {
     "name": "Bard"
