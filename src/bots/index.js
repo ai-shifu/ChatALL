@@ -27,6 +27,9 @@ import ClaudeInstantPoeBot from "./poe/ClaudeInstantPoeBot";
 import ClaudeInstant100kPoeBot from "./poe/ClaudeInstant100kPoeBot";
 import ClaudePlusPoeBot from "./poe/ClaudePlusPoeBot";
 import ChatGPT432kPoeBot from "./poe/ChatGPT432kPoeBot";
+import Llama270bPoeBot from "./poe/Llama270bPoeBot";
+import GooglePalm2PoeBot from "./poe/GooglePalm2PoeBot";
+import CodeLlama34bPoeBot from "./poe/CodeLlama34bPoeBot";
 import SkyWorkBot from "./SkyWorkBot";
 import ChatGPT4MobileBot from "./openai/ChatGPT4MobileBot";
 import OpenAIAPI3516KBot from "./openai/OpenAIAPI3516KBot";
@@ -73,6 +76,7 @@ const all = [
   ClaudeBot.getInstance(),
   ClaudeAIBot.getInstance(),
   ClaudePlusPoeBot.getInstance(),
+  CodeLlama34bPoeBot.getInstance(),
   CodeLlamaHCBot.getInstance(),
   CodeLlamaBot.getInstance(),
   WenxinQianfanBot.getInstance(),
@@ -92,9 +96,11 @@ const all = [
   OpenAIAPI4Bot.getInstance(),
   OpenAIAPI4128KBot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
+  GooglePalm2PoeBot.getInstance(),
   GradioAppBot.getInstance(),
   Llama27bBot.getInstance(),
   Llama213bBot.getInstance(),
+  Llama270bPoeBot.getInstance(),
   Llama270bBot.getInstance(),
   Llama2HC70bBot.getInstance(),
   MOSSBot.getInstance(),
@@ -145,6 +151,9 @@ export const botTags = {
     bots.getBotByClassName("ChatGPT35PoeBot"),
     bots.getBotByClassName("ClaudeBot"),
     bots.getBotByClassName("ClaudeInstantPoeBot"),
+    bots.getBotByClassName("Llama270bPoeBot"),
+    bots.getBotByClassName("GooglePalm2PoeBot"),
+    bots.getBotByClassName("CodeLlama34bPoeBot"),
     bots.getBotByClassName("HuggingChatBot"),
     bots.getBotByClassName("Llama27bBot"),
     bots.getBotByClassName("Llama213bBot"),
@@ -197,10 +206,12 @@ export const botTags = {
     bots.getBotByClassName("Vicuna7bBot"),
     bots.getBotByClassName("Vicuna13bBot"),
     bots.getBotByClassName("Falcon180bBot"),
+    bots.getBotByClassName("GooglePalm2PoeBot"),
     bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("ChatGLM36bBot"),
     bots.getBotByClassName("CodeLlamaBot"),
     bots.getBotByClassName("CodeLlamaHCBot"),
+    bots.getBotByClassName("CodeLlama34bPoeBot"),
     bots.getBotByClassName("Wizardlm13bBot"),
     bots.getBotByClassName("Wizardlm70bBot"),
     bots.getBotByClassName("FalconHC180bBot"),
