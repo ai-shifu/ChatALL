@@ -71,6 +71,9 @@ export default class PoeBot extends Bot {
       chinchilla: "ChatGPT",
       beaver: "GPT-4",
       vizcacha: "GPT-4-32k",
+      code_llama_34b_instruct: "Code-Llama-34b",
+      acouchy: "Google-PaLM-2",
+      llama_2_70b_chat: "Llama-2-70b",
     };
     const url =
       this.constructor._loginUrl + modelHandles[this.constructor._model];
