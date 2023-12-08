@@ -181,7 +181,10 @@ export default class BingChatBot extends Bot {
               } else if (event.type === 2) {
                 if (event.item.result.value !== "Success") {
                   console.error("Error sending prompt to Copilot:", event);
-                  if (event.item.result.value === "InvalidSession") {
+                  if (
+                    event.item.result.value === "InvalidSession" ||
+                    event.item.result.value === "UnauthorizedRequest"
+                  ) {
                     // Create a new conversation and retry
                     context = await this.createChatContext();
                     this.setChatContext(context);
