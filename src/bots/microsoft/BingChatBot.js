@@ -9,7 +9,7 @@ export default class BingChatBot extends Bot {
   static _className = "BingChatBot"; // Class name of the bot
   static _model = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _logoFilename = "bing-logo.svg"; // Place it in public/bots/
-  static _loginUrl = "https://www.bing.com/new";
+  static _loginUrl = "https://www.bing.com/chat";
   static _userAgent =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
 
