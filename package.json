@@ -25,6 +25,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@langchain/google-genai": "^0.0.2",
     "@kangc/v-md-editor": "^2.3.16",
     "@mdi/font": "^7.2.96",
     "@vueuse/rxjs": "^10.4.1",
@@ -38,7 +39,7 @@
     "electron-builder": "^24.6.4",
     "jszip": "^3.10.1",
     "katex": "^0.16.8",
-    "langchain": "~0.0.156",
+    "langchain": "0.0.207",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
     "prismjs": "^1.13.0",
@@ -107,6 +108,7 @@
   ],
   "license": "Apache-2.0",
   "overrides": {
+    "@langchain/core": "0.1.5",
     "vue-cli-plugin-electron-builder": {
       "electron-builder": "^24.0.0"
     }
