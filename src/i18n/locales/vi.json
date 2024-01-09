@@ -134,6 +134,14 @@
     "gpt-4-browsing": "Web Browsing",
     "gpt-4-mobile": "GPT-4 Mobile V2"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "Một topK của 1 có nghĩa là token được chọn là có khả năng cao nhất trong tất cả các token trong từ vựng của mô hình (còn được gọi là giải mã tham lam)",
+    "topP": "topP",
+    "topPPrompt": "Các token được chọn từ có khả năng cao nhất đến thấp nhất cho đến khi tổng xác suất của chúng bằng với giá trị topP"
+  },
   "claudeAi": {
     "name": "Claude 2"
   },

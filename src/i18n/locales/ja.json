@@ -88,6 +88,14 @@
     "gpt-4-browsing": "webブラウジング",
     "gpt-4-mobile": "GPT-4 モバイル V2"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "topKの1は、モデルの語彙の中で選択されたトークンが最も確からしいことを意味します（貪欲デコードとも呼ばれます）",
+    "topP": "topP",
+    "topPPrompt": "トークンは最も確からしいものから最も確からしくないものまで選ばれ、それらの確率の合計がtopPの値に等しくなるまで選択されます"
+  },
   "ernie": {
     "name": "ERNIE"
   },

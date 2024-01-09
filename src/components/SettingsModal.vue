@@ -94,6 +94,7 @@ import ChatSettings from "@/components/ChatSetting.vue";
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
+import GeminiBotSettings from "@/components/BotSettings/GeminiBotSettings.vue";
 import AzureOpenAIAPIBotSettings from "./BotSettings/AzureOpenAIAPIBotSettings.vue";
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
 import SparkBotSettings from "./BotSettings/SparkBotSettings.vue";
@@ -143,6 +144,7 @@ const botSettings = [
   { brand: "lmsys", component: LMSYSBotSettings },
   { brand: "moss", component: MOSSBotSettings },
   { brand: "openaiApi", component: OpenAIAPIBotSettings },
+  { brand: "gemini", component: GeminiBotSettings },
   { brand: "openAssistant", component: OpenAssistantBotSettings },
   { brand: "phind", component: PhindBotSettings },
   { brand: "pi", component: PiBotSettings },

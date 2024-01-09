@@ -1,4 +1,5 @@
 // Bots
+import GeminiBot from "@/bots/GeminiBot";
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
@@ -57,6 +58,7 @@ import WenxinQianfan4Bot from "./baidu/WenxinQianfan4Bot";
 import Zephyr7bBot from "./huggingface/Zephyr7bBot";
 
 const all = [
+  GeminiBot.getInstance(),
   Qihoo360AIBrainBot.getInstance(),
   AlpacaBot.getInstance(),
   SageBot.getInstance(), // Assistant@Poe
@@ -207,6 +209,7 @@ export const botTags = {
     bots.getBotByClassName("Zephyr7bBot"),
   ],
   api: [
+    bots.getBotByClassName("GeminiBot"),
     bots.getBotByClassName("AzureOpenAIAPIBot"),
     bots.getBotByClassName("OpenAIAPI35Bot"),
     bots.getBotByClassName("OpenAIAPI3516KBot"),

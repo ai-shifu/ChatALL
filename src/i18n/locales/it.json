@@ -62,6 +62,14 @@
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Navigazione Web"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "Un topK di 1 significa che il token selezionato è il più probabile tra tutti i token nel vocabolario del modello (chiamato anche decodifica avida).",
+    "topP": "topP",
+    "topPPrompt": "I token vengono selezionati dal più al meno probabile fino a quando la somma delle loro probabilità eguaglia il valore topP"
+  },
   "ernie": {
     "name": "ERNIE"
   },

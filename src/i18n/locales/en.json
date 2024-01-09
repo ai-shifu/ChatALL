@@ -134,6 +134,14 @@
     "gpt-4-browsing": "Web Browsing",
     "gpt-4-mobile": "GPT-4 Mobile V2"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "A topK of 1 means the selected token is the most probable among all the tokens in the model's vocabulary (also called greedy decoding)",
+    "topP": "topP",
+    "topPPrompt": "Tokens are selected from the most to least probable until the sum of their probabilities equals the topP value."
+  },
   "claudeAi": {
     "name": "Claude 2"
   },

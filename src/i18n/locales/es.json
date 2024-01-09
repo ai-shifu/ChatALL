@@ -103,6 +103,14 @@
     "gpt-4-browsing": "Navegación Web",
     "gpt-4-mobile": "GPT-4 móvil V2"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "Un topK de 1 significa que el token seleccionado es el más probable entre todos los tokens en el vocabulario del modelo (también llamado decodificación voraz).",
+    "topP": "topP",
+    "topPPrompt": "Los tokens se seleccionan desde el más probable hasta el menos probable hasta que la suma de sus probabilidades iguale el valor de topP"
+  },
   "claudeAi": {
     "name": "Claude 2"
   },
