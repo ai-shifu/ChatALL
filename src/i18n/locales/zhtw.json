@@ -134,6 +134,14 @@
     "gpt-4-browsing": "Web 瀏覽",
     "gpt-4-mobile": "GPT-4 行動裝置版 V2"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "topK為1表示選定的標記是模型詞彙中所有標記中最可能的（也稱為貪婪解碼）",
+    "topP": "topP",
+    "topPPrompt": "從最可能到最不可能的標記被選出，直到它們的概率總和等於topP值"
+  },
   "claudeAi": {
     "name": "Claude 2"
   },
