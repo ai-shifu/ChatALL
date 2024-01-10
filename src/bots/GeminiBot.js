@@ -33,4 +33,16 @@ export default class GeminiBot extends LangChainBot {
   getPastRounds() {
     return store.state.gemini.pastRounds;
   }
+
+  setupModel() {
+    const chatModel = new ChatGoogleGenerativeAI({
+      apiKey: store.state.gemini.apiKey,
+      modelName: this.constructor._model ? this.constructor._model : "",
+      temperature: store.state.gemini.temperature,
+      streaming: true,
+      topK: store.state.gemini.topK,
+      topP: store.state.gemini.topP,
+    });
+    this.constructor._chatModel = chatModel;
+  }
 }

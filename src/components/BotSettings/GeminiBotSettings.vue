@@ -7,7 +7,10 @@
 </template>
 
 <script>
+import _bots from "@/bots";
 import Bot from "@/bots/GeminiBot";
+import { watch } from "vue";
+import { useStore } from "vuex";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import i18n from "@/i18n";
 import { Type } from "./settings.const";
@@ -70,6 +73,20 @@ export default {
       settings: settings,
       brandId: Bot._brandId,
     };
+  },
+  setup() {
+    const store = useStore();
+
+    watch(
+      () => store.state.gemini,
+      (newValue, oldValue) => {
+        const nv = JSON.stringify(newValue);
+        const ov = JSON.stringify(oldValue);
+        console.log(`State changed from ${ov} to ${nv}`);
+        const bot = _bots.getBotByClassName("GeminiBot");
+        bot.setupModel();
+      },
+    );
   },
 };
 </script>
