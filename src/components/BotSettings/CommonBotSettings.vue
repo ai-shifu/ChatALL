@@ -82,7 +82,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Type } from "./settings.const";
 const store = useStore();
@@ -101,7 +101,24 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  needWatch: {
+    type: Boolean,
+    default: false,
+  },
+  watcher: {
+    type: Function,
+  },
 });
+
+if (props.needWatch) {
+  watch(
+    () => settingState.value,
+    (newValue) => {
+      console.log(JSON.stringify(newValue));
+      props.watcher();
+    },
+  );
+}
 
 onMounted(() => {
   for (const setting of props.settings) {

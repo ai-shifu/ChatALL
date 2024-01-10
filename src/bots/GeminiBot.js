@@ -35,6 +35,7 @@ export default class GeminiBot extends LangChainBot {
   }
 
   setupModel() {
+    console.log("Setting up model...");
     const chatModel = new ChatGoogleGenerativeAI({
       apiKey: store.state.gemini.apiKey,
       modelName: this.constructor._model ? this.constructor._model : "",

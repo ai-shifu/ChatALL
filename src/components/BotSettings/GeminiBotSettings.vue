@@ -3,14 +3,14 @@
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setGemini"
+    :need-watch="true"
+    :watcher="watcher"
   ></CommonBotSettings>
 </template>
 
 <script>
 import _bots from "@/bots";
 import Bot from "@/bots/GeminiBot";
-import { watch } from "vue";
-import { useStore } from "vuex";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import i18n from "@/i18n";
 import { Type } from "./settings.const";
@@ -64,6 +64,7 @@ const settings = [
     step: 1,
   },
 ];
+
 export default {
   components: {
     CommonBotSettings,
@@ -74,19 +75,11 @@ export default {
       brandId: Bot._brandId,
     };
   },
-  setup() {
-    const store = useStore();
-
-    watch(
-      () => store.state.gemini,
-      (newValue, oldValue) => {
-        const nv = JSON.stringify(newValue);
-        const ov = JSON.stringify(oldValue);
-        console.log(`State changed from ${ov} to ${nv}`);
-        const bot = _bots.getBotByClassName("GeminiBot");
-        bot.setupModel();
-      },
-    );
+  methods: {
+    watcher() {
+      const bot = _bots.getBotByClassName("GeminiBot");
+      bot.setupModel();
+    },
   },
 };
 </script>
