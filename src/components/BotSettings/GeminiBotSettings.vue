@@ -3,7 +3,6 @@
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setGemini"
-    :need-watch="true"
     :watcher="watcher"
   ></CommonBotSettings>
 </template>

@@ -101,21 +101,18 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  needWatch: {
-    type: Boolean,
-    default: false,
-  },
   watcher: {
     type: Function,
+    default: undefined,
   },
 });
 
-if (props.needWatch) {
+if (props.watcher) {
   watch(
     () => settingState.value,
     (newValue) => {
-      console.log(JSON.stringify(newValue));
-      props.watcher();
+      console.log(`${props.brandId}: ${JSON.stringify(newValue)}`);
+      props.watcher(newValue);
     },
   );
 }
