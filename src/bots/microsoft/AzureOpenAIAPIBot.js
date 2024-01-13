@@ -20,20 +20,24 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
       store.state.azureOpenaiApi.azureOpenAIApiDeploymentName &&
       store.state.azureOpenaiApi.azureOpenAIApiVersion
     ) {
-      const chatModel = new ChatOpenAI({
-        azureOpenAIApiKey: store.state.azureOpenaiApi.azureApiKey,
-        azureOpenAIApiInstanceName:
-          store.state.azureOpenaiApi.azureApiInstanceName,
-        azureOpenAIApiDeploymentName:
-          store.state.azureOpenaiApi.azureOpenAIApiDeploymentName,
-        azureOpenAIApiVersion: store.state.azureOpenaiApi.azureOpenAIApiVersion,
-        temperature: store.state.azureOpenaiApi.temperature,
-        streaming: true,
-      });
-      this.constructor._chatModel = chatModel;
+      this.setupModel();
       available = true;
     }
     return available;
+  }
+
+  setupModel() {
+    const chatModel = new ChatOpenAI({
+      azureOpenAIApiKey: store.state.azureOpenaiApi.azureApiKey,
+      azureOpenAIApiInstanceName:
+        store.state.azureOpenaiApi.azureApiInstanceName,
+      azureOpenAIApiDeploymentName:
+        store.state.azureOpenaiApi.azureOpenAIApiDeploymentName,
+      azureOpenAIApiVersion: store.state.azureOpenaiApi.azureOpenAIApiVersion,
+      temperature: store.state.azureOpenaiApi.temperature,
+      streaming: true,
+    });
+    this.constructor._chatModel = chatModel;
   }
 
   getPastRounds() {
