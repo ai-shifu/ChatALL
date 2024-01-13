@@ -45,6 +45,14 @@
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "Ein topK von 1 bedeutet, dass das ausgewählte Token das wahrscheinlichste unter allen Token im Vokabular des Modells ist (auch gieriges Decodieren genannt).",
+    "topP": "topP",
+    "topPPrompt": "Token werden vom wahrscheinlichsten bis zum am wenigsten wahrscheinlichen ausgewählt, bis die Summe ihrer Wahrscheinlichkeiten den topP-Wert ergibt."
+  },
   "bingChat": {
     "name": "Bing Chat",
     "h3imaginative": "Kreativ",

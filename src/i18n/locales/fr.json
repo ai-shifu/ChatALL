@@ -55,6 +55,14 @@
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Navigation Web"
   },
+  "gemini": {
+    "name": "Gemini",
+    "gemini-pro": "Gemini-Pro",
+    "topK": "topK",
+    "topKPrompt": "Un topK de 1 signifie que le jeton sélectionné est le plus probable parmi tous les jetons dans le vocabulaire du modèle (également appelé décodage gourmand).",
+    "topP": "topP",
+    "topPPrompt": "Les jetons sont sélectionnés du plus probable au moins probable jusqu'à ce que la somme de leurs probabilités égale la valeur topP."
+  },
   "ernie": {
     "name": "ERNIE"
   },
