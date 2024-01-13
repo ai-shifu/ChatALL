@@ -54,7 +54,7 @@ export default class ClaudeAIBot extends Bot {
       attachments: [],
       completion: {
         incremental: true,
-        model: "claude-2.1",
+        model: "claude-2.0",
         prompt: prompt,
       },
       conversation_uuid: context.uuid,
