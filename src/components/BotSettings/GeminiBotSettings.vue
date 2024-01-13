@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import _bots from "@/bots";
 import Bot from "@/bots/GeminiBot";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import i18n from "@/i18n";
@@ -76,8 +75,7 @@ export default {
   },
   methods: {
     watcher() {
-      const bot = _bots.getBotByClassName("GeminiBot");
-      bot.setupModel();
+      Bot.getInstance().setupModel();
     },
   },
 };
