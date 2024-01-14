@@ -82,7 +82,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Type } from "./settings.const";
 const store = useStore();
@@ -101,7 +101,21 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  watcher: {
+    type: Function,
+    default: undefined,
+  },
 });
+
+if (props.watcher) {
+  watch(
+    () => settingState.value,
+    (newValue) => {
+      console.log(`${props.brandId}: ${JSON.stringify(newValue)}`);
+      props.watcher(newValue);
+    },
+  );
+}
 
 onMounted(() => {
   for (const setting of props.settings) {

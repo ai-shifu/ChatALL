@@ -16,15 +16,7 @@ export default class GeminiBot extends LangChainBot {
     let available = false;
 
     if (store.state.gemini.apiKey) {
-      const chatModel = new ChatGoogleGenerativeAI({
-        apiKey: store.state.gemini.apiKey,
-        modelName: this.constructor._model ? this.constructor._model : "",
-        temperature: store.state.gemini.temperature,
-        streaming: true,
-        topK: store.state.gemini.topK,
-        topP: store.state.gemini.topP,
-      });
-      this.constructor._chatModel = chatModel;
+      this.setupModel();
       available = true;
     }
     return available;
@@ -32,5 +24,18 @@ export default class GeminiBot extends LangChainBot {
 
   getPastRounds() {
     return store.state.gemini.pastRounds;
+  }
+
+  setupModel() {
+    console.log("Setting up model...");
+    const chatModel = new ChatGoogleGenerativeAI({
+      apiKey: store.state.gemini.apiKey,
+      modelName: this.constructor._model ? this.constructor._model : "",
+      temperature: store.state.gemini.temperature,
+      streaming: true,
+      topK: store.state.gemini.topK,
+      topP: store.state.gemini.topP,
+    });
+    this.constructor._chatModel = chatModel;
   }
 }
