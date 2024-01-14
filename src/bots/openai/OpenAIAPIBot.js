@@ -14,21 +14,25 @@ export default class OpenAIAPIBot extends LangChainBot {
     let available = false;
 
     if (store.state.openaiApi.apiKey) {
-      const chatModel = new ChatOpenAI({
-        configuration: {
-          basePath: store.state.openaiApi.alterUrl
-            ? store.state.openaiApi.alterUrl
-            : "",
-        },
-        openAIApiKey: store.state.openaiApi.apiKey,
-        modelName: this.constructor._model ? this.constructor._model : "",
-        temperature: store.state.openaiApi.temperature,
-        streaming: true,
-      });
-      this.constructor._chatModel = chatModel;
+      this.setupModel();
       available = true;
     }
     return available;
+  }
+
+  setupModel() {
+    const chatModel = new ChatOpenAI({
+      configuration: {
+        basePath: store.state.openaiApi.alterUrl
+          ? store.state.openaiApi.alterUrl
+          : "",
+      },
+      openAIApiKey: store.state.openaiApi.apiKey,
+      modelName: this.constructor._model ? this.constructor._model : "",
+      temperature: store.state.openaiApi.temperature,
+      streaming: true,
+    });
+    this.constructor._chatModel = chatModel;
   }
 
   getPastRounds() {

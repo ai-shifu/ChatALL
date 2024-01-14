@@ -3,10 +3,12 @@
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setOpenaiApi"
+    :watcher="watcher"
   ></CommonBotSettings>
 </template>
 
 <script>
+import _bots from "@/bots";
 import Bot from "@/bots/openai/OpenAIAPIBot";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import i18n from "@/i18n";
@@ -59,6 +61,13 @@ export default {
       settings: settings,
       brandId: Bot._brandId,
     };
+  },
+  methods: {
+    watcher() {
+      _bots.all
+        .filter((bot) => bot instanceof Bot)
+        .map((bot) => bot.setupModel());
+    },
   },
 };
 </script>
