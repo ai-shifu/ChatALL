@@ -16,8 +16,8 @@ const settings = [
   {
     type: Type.Text,
     name: "url",
-    title: i18n.global.t("gradio.url"),
-    description: i18n.global.t("gradio.urlPrompt"),
+    title: "gradio.url",
+    description: "gradio.urlPrompt",
     placeholder: i18n.global.t("settings.forExample", {
       example: "https://*.hf.space, http://127.0.0.1:7861",
     }),
@@ -25,8 +25,8 @@ const settings = [
   {
     type: Type.Text,
     name: "fnIndex",
-    title: i18n.global.t("gradio.fnIndex"),
-    description: i18n.global.t("gradio.fnIndexPrompt"),
+    title: "gradio.fnIndex",
+    description: "gradio.fnIndexPrompt",
     placeholder: "0",
   },
 ];

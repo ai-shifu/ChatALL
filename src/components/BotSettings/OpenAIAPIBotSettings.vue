@@ -11,35 +11,34 @@
 import _bots from "@/bots";
 import Bot from "@/bots/openai/OpenAIAPIBot";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
-import i18n from "@/i18n";
 import { Type } from "./settings.const";
 
 const settings = [
   {
     type: Type.Text,
     name: "apiKey",
-    title: i18n.global.t("openaiApi.apiKey"),
-    description: i18n.global.t("settings.secretPrompt"),
+    title: "openaiApi.apiKey",
+    description: "settings.secretPrompt",
     placeholder: "sk-...",
   },
   {
     type: Type.Slider,
     name: "temperature",
-    title: i18n.global.t("openaiApi.temperature"),
-    description: i18n.global.t("openaiApi.temperaturePrompt"),
+    title: "openaiApi.temperature",
+    description: "openaiApi.temperaturePrompt",
     min: 0,
     max: 2,
     step: 0.1,
     ticks: {
-      0: i18n.global.t("openaiApi.temperature0"),
-      2: i18n.global.t("openaiApi.temperature2"),
+      0: "openaiApi.temperature0",
+      2: "openaiApi.temperature2",
     },
   },
   {
     type: Type.Slider,
     name: "pastRounds",
-    title: i18n.global.t("bot.pastRounds"),
-    description: i18n.global.t("bot.pastRoundsPrompt"),
+    title: "bot.pastRounds",
+    description: "bot.pastRoundsPrompt",
     min: 0,
     max: 10,
     step: 1,
@@ -47,8 +46,8 @@ const settings = [
   {
     type: Type.Text,
     name: "alterUrl",
-    title: i18n.global.t("openaiApi.alterUrl"),
-    description: i18n.global.t("openaiApi.alterUrlPrompt"),
+    title: "openaiApi.alterUrl",
+    description: "openaiApi.alterUrlPrompt",
     placeholder: "https://your.proxy.com/v1",
   },
 ];
