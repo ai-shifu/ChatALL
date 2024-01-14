@@ -180,7 +180,9 @@ npm run electron:build -- -wml --x64 --arm64
 
 ## 赞助
 
-如果您喜欢这个项目，可以通过以下方式支持：
+本项目的支持经费来自于：
 
-<img src="https://sunner.cn/sponsor/alipay.jpg" width="200" />
-<img src="https://sunner.cn/sponsor/wepay.jpg" width="200" />
+1. [AI 大模型全栈工程师培养计划 - AGIClass.ai](https://agiclass.ai)
+2. [孙志岗讲解 AI 为什么](https://note.mowen.cn/note-intro/?noteUuid=vKwymX8n5BEpqD5nCZPRo)
+
+欢迎传播、购买以上课程和专栏来支持本项目，谢谢。
