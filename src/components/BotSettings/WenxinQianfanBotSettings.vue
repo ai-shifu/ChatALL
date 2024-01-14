@@ -9,7 +9,6 @@
 <script>
 import Bot from "@/bots/baidu/WenxinQianfanBot";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
-import i18n from "@/i18n";
 import { Type } from "./settings.const";
 
 const settings = [
@@ -17,7 +16,7 @@ const settings = [
     type: Type.Text,
     name: "apiKey",
     title: "API Key & Secret Key",
-    description: i18n.global.t("settings.secretPrompt"),
+    description: "settings.secretPrompt",
     label: "API Key",
     placeholder: "2125NA8mQy7gC52Pq9BK3tvk",
     hideDetails: true,
@@ -31,8 +30,8 @@ const settings = [
   {
     type: Type.Slider,
     name: "pastRounds",
-    title: i18n.global.t("bot.pastRounds"),
-    description: i18n.global.t("bot.pastRoundsPrompt"),
+    title: "bot.pastRounds",
+    description: "bot.pastRoundsPrompt",
     min: 0,
     max: 10,
     step: 1,
