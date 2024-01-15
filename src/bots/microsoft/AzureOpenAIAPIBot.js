@@ -20,7 +20,7 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
       store.state.azureOpenaiApi.azureOpenAIApiDeploymentName &&
       store.state.azureOpenaiApi.azureOpenAIApiVersion
     ) {
-      this._setupModel();
+      this.setupModel();
       available = true;
     }
     return available;
@@ -37,7 +37,7 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
       temperature: store.state.azureOpenaiApi.temperature,
       streaming: true,
     });
-    this.constructor._chatModel = chatModel;
+    return chatModel;
   }
 
   getPastRounds() {

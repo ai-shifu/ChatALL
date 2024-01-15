@@ -65,7 +65,7 @@ export default class LangChainBot extends Bot {
   }
 
   setupModel() {
-    this._setupModel();
+    this.constructor._chatModel = this._setupModel();
   }
 
   _setupModel() {

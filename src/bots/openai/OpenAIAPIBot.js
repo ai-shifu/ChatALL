@@ -14,7 +14,7 @@ export default class OpenAIAPIBot extends LangChainBot {
     let available = false;
 
     if (store.state.openaiApi.apiKey) {
-      this._setupModel();
+      this.setupModel();
       available = true;
     }
     return available;
@@ -32,7 +32,7 @@ export default class OpenAIAPIBot extends LangChainBot {
       temperature: store.state.openaiApi.temperature,
       streaming: true,
     });
-    this.constructor._chatModel = chatModel;
+    return chatModel;
   }
 
   getPastRounds() {

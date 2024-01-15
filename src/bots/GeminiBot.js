@@ -16,7 +16,7 @@ export default class GeminiBot extends LangChainBot {
     let available = false;
 
     if (store.state.gemini.apiKey) {
-      this._setupModel();
+      this.setupModel();
       available = true;
     }
     return available;
@@ -35,6 +35,6 @@ export default class GeminiBot extends LangChainBot {
       topK: store.state.gemini.topK,
       topP: store.state.gemini.topP,
     });
-    this.constructor._chatModel = chatModel;
+    return chatModel;
   }
 }
