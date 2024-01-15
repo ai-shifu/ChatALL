@@ -50,26 +50,22 @@ export default class ClaudeAIBot extends Bot {
       accept: "text/event-stream, text/event-stream",
       "Content-Type": "application/json",
     };
+    const url = `https://claude.ai/api/organizations/${store.state.claudeAi.org}/chat_conversations/${context.uuid}/completion`;
     const payload = JSON.stringify({
       attachments: [],
-      completion: {
-        incremental: true,
-        model: "claude-2.0",
-        prompt: prompt,
-      },
-      conversation_uuid: context.uuid,
-      organization_uuid: store.state.claudeAi.org,
-      text: prompt,
+      model: "claude-2.1",
+      prompt: prompt,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     });
     return new Promise((resolve, reject) => {
       try {
-        const source = new SSE("https://claude.ai/api/append_message", {
+        const source = new SSE(url, {
           headers,
           payload,
           withCredentials: true,
         });
         let text = "";
-        source.addEventListener("message", (event) => {
+        source.addEventListener("completion", (event) => {
           try {
             const data = JSON.parse(event.data);
             if (data.completion) {
