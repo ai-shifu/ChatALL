@@ -16,7 +16,7 @@ export default class GeminiBot extends LangChainBot {
     let available = false;
 
     if (store.state.gemini.apiKey) {
-      this.setupModel();
+      this._setupModel();
       available = true;
     }
     return available;
@@ -26,8 +26,7 @@ export default class GeminiBot extends LangChainBot {
     return store.state.gemini.pastRounds;
   }
 
-  setupModel() {
-    console.log("Setting up model...");
+  _setupModel() {
     const chatModel = new ChatGoogleGenerativeAI({
       apiKey: store.state.gemini.apiKey,
       modelName: this.constructor._model ? this.constructor._model : "",

@@ -20,13 +20,13 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
       store.state.azureOpenaiApi.azureOpenAIApiDeploymentName &&
       store.state.azureOpenaiApi.azureOpenAIApiVersion
     ) {
-      this.setupModel();
+      this._setupModel();
       available = true;
     }
     return available;
   }
 
-  setupModel() {
+  _setupModel() {
     const chatModel = new ChatOpenAI({
       azureOpenAIApiKey: store.state.azureOpenaiApi.azureApiKey,
       azureOpenAIApiInstanceName:

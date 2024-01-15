@@ -14,13 +14,13 @@ export default class OpenAIAPIBot extends LangChainBot {
     let available = false;
 
     if (store.state.openaiApi.apiKey) {
-      this.setupModel();
+      this._setupModel();
       available = true;
     }
     return available;
   }
 
-  setupModel() {
+  _setupModel() {
     const chatModel = new ChatOpenAI({
       configuration: {
         basePath: store.state.openaiApi.alterUrl
