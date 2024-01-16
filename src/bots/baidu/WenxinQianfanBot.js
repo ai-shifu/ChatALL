@@ -18,16 +18,21 @@ export default class WenxinQianfanBot extends LangChainBot {
     let available = false;
     const { apiKey, secretKey } = store.state.wenxinQianfan;
     if (apiKey && secretKey) {
-      const chatModel = new ChatBaiduWenxin({
-        modelName: this.constructor._model,
-        baiduApiKey: apiKey,
-        baiduSecretKey: secretKey,
-        streaming: true,
-      });
-      this.constructor._chatModel = chatModel;
+      this.setupModel();
       available = true;
     }
     return available;
+  }
+
+  _setupModel() {
+    const { apiKey, secretKey } = store.state.wenxinQianfan;
+    const chatModel = new ChatBaiduWenxin({
+      modelName: this.constructor._model,
+      baiduApiKey: apiKey,
+      baiduSecretKey: secretKey,
+      streaming: true,
+    });
+    return chatModel;
   }
 
   getPastRounds() {

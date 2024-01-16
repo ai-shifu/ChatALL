@@ -64,6 +64,16 @@ export default class LangChainBot extends Bot {
     return [];
   }
 
+  setupModel() {
+    this.constructor._chatModel = this._setupModel();
+  }
+
+  _setupModel() {
+    throw new Error(
+      "Abstract property '_setupModel' must be implemented in the subclass.",
+    );
+  }
+
   getPastRounds() {
     throw new Error(
       "Abstract property 'pastRounds' must be implemented in the subclass.",

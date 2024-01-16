@@ -3,6 +3,7 @@
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setAzureOpenaiApi"
+    :watcher="watcher"
   ></CommonBotSettings>
 </template>
 
@@ -72,6 +73,11 @@ export default {
       settings: settings,
       brandId: Bot._brandId,
     };
+  },
+  methods: {
+    watcher() {
+      Bot.getInstance().setupModel();
+    },
   },
 };
 </script>
