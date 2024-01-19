@@ -1,0 +1,5 @@
+👋 Welcome to ChatALL! You are running on a custom image defined in the devcontainer.json.
+
+📝 Edit away, then run the build command 'npm run electron:serve' to see the code running in the browser
+
+📖 Head over to the ./README.md file to know more
