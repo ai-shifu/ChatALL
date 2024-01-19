@@ -1,0 +1,43 @@
+{
+    "name": "ChatALL Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens",
+                "mhutchie.git-graph",
+                "EditorConfig.EditorConfig",
+                "vscode-icons-team.vscode-icons",
+                "aaron-bond.better-comments",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "esbenp.prettier-vscode",
+                "yzhang.markdown-all-in-one",
+                "bierner.github-markdown-preview",
+                "ecmel.vscode-html-css",
+                "pranaygp.vscode-css-peek",
+                "Zignd.html-css-class-completion",
+                "formulahendry.auto-rename-tag",
+                "xabikos.JavaScriptSnippets",
+                "ambar.bundle-size",
+                "dbaeumer.vscode-eslint",
+                "cssho.vscode-svgviewer",
+                "gaurav-gosain.GDSC-nextjs",
+                "Vue.volar",
+                "mgmcdermott.vscode-language-babel"
+            ]
+        }
+    },
+    "postCreateCommand": "sudo cp .devcontainer/welcome.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt ; npm install",
+    "forwardPorts": [8080],
+	"portsAttributes": {
+		"8080": {
+			"label": "ChatALL App",
+			"onAutoForward": "openPreview"
+		}
+	}
+}
