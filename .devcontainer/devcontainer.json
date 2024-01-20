@@ -18,17 +18,23 @@
                 "esbenp.prettier-vscode",
                 "yzhang.markdown-all-in-one",
                 "bierner.github-markdown-preview",
+                "dotenv.dotenv-vscode",
+                // HTML, CSS
                 "ecmel.vscode-html-css",
                 "pranaygp.vscode-css-peek",
                 "Zignd.html-css-class-completion",
                 "formulahendry.auto-rename-tag",
+                // JavaScript
                 "xabikos.JavaScriptSnippets",
-                "ambar.bundle-size",
+                "meganrogge.template-string-converter",
                 "dbaeumer.vscode-eslint",
-                "cssho.vscode-svgviewer",
-                "gaurav-gosain.GDSC-nextjs",
+                // Node.js
+                "ambar.bundle-size",
+                "steoates.autoimport",
+                "BriteSnow.vscode-toggle-quotes",
+                "mgmcdermott.vscode-language-babel",
                 "Vue.volar",
-                "mgmcdermott.vscode-language-babel"
+                "cssho.vscode-svgviewer"
             ]
         }
     },
