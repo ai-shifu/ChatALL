@@ -1,5 +1,5 @@
 import LangChainBot from "@/bots/LangChainBot";
-import { ChatBaiduWenxin } from "langchain/chat_models/baiduwenxin";
+import { ChatBaiduWenxin } from "@langchain/community/chat_models/baiduwenxin";
 import AsyncLock from "async-lock";
 import store from "@/store";
 

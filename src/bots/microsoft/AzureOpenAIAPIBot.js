@@ -1,6 +1,6 @@
 import LangChainBot from "@/bots/LangChainBot";
 import store from "@/store";
-import { ChatOpenAI } from "langchain/chat_models/openai";
+import { ChatOpenAI } from "@langchain/openai";
 
 export default class AzureOpenAIAPIBot extends LangChainBot {
   static _brandId = "azureOpenaiApi";
