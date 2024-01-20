@@ -32,7 +32,8 @@
             ]
         }
     },
-    "postCreateCommand": "sudo cp .devcontainer/welcome.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt ; npm install",
+    "updateContentCommand": "sudo cp .devcontainer/welcome.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
+    "postCreateCommand": "npm install",
     "forwardPorts": [8080],
 	"portsAttributes": {
 		"8080": {
