@@ -3,11 +3,11 @@
     <template v-for="setting in settings" :key="setting.name">
       <v-list-item-title v-if="setting.title">
         <!-- falcon.temperature -->
-        {{ setting.title }}</v-list-item-title
+        {{ $t(setting.title) }}</v-list-item-title
       >
       <v-list-item-subtitle v-if="setting.description">
         <!-- falcon.temperaturePrompt -->
-        {{ setting.description }}</v-list-item-subtitle
+        {{ $t(setting.description) }}</v-list-item-subtitle
       >
 
       <v-text-field
@@ -44,7 +44,7 @@
         :min="setting.min"
         :max="setting.max"
         :step="setting.step"
-        :ticks="setting.ticks"
+        :ticks="translate(setting.ticks)"
         :show-ticks="
           /* 'show-ticks' cause lag issue when the possible value to slide is large */
           setting.ticks ? 'always' : false
@@ -82,6 +82,7 @@
 </template>
 
 <script setup>
+import i18n from "@/i18n";
 import { computed, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Type } from "./settings.const";
@@ -129,6 +130,17 @@ onMounted(() => {
     inputElement.step = setting.step;
   }
 });
+
+function translate(settings) {
+  if (settings) {
+    let rets = {};
+    Object.keys(settings).forEach((key) => {
+      rets[key] = i18n.global.t(settings[key]);
+    });
+    return rets;
+  }
+  return settings;
+}
 
 function validateSliderInput(setting, value) {
   // validate input via keyboard within setting min and max
