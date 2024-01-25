@@ -4,6 +4,8 @@
 
 [Deutsch](README_DE-DE.md) | English | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+
 </div>
 
 ## Screenshots
@@ -66,7 +68,7 @@ More is coming. Upvote your favorite bots in [these issues](https://github.com/s
 - Switch between one, two, or three-column view
 - Auto update to the latest version
 - Dark mode (contributed by @tanchekwei)
-- Short keys. Press `Ctrl + /` to know all of them (contributed by @tanchekwei)
+- Short keys. Press <kbd>Ctrl</kbd> + <kbd>/</kbd> to know all of them (contributed by @tanchekwei)
 - Multiple chats (contributed by @tanchekwei)
 - Proxy setting (contributed by @msaong)
 - Prompt management (contributed by @tanchekwei)
@@ -123,7 +125,7 @@ Download the .AppImage file, make it executable, and enjoy the click-to-run expe
 
 If you encounter any problems while using ChatALL, you can try the following methods to resolve them:
 
-1. **Refresh** - press `Ctrl + R` or `Cmd + R`.
+1. **Refresh** - press <kbd>Ctrl</kbd> + <kbd>R</kbd> or <kbd>⌘</kbd> + <kbd>R</kbd>.
 2. **Restart** - exit ChatALL and run it again.
 3. **Re-login** - click the settings button in the upper right corner, then click the corresponding login/logout link to relogin the website.
 4. **Create a new chat** - click the `New Chat` button and send prompt again.

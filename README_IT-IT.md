@@ -4,6 +4,8 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | Italian | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+
 </div>
 
 ## Screenshots
@@ -56,7 +58,7 @@ Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://git
 - Passa tra la vista a una, due o tre colonne.
 - Aggiornamento automatico all'ultima versione.
 - Modalità scura (contribuita da @tanchekwei).
-- Scorciatoie da tastiera. Premi `Ctrl + /` per conoscerle tutte (contribuite da @tanchekwei).
+- Scorciatoie da tastiera. Premi <kbd>Ctrl</kbd> + <kbd>/</kbd> per conoscerle tutte (contribuite da @tanchekwei).
 - Chat multiple (contribuite da @tanchekwei).
 - Supporto per l'impostazione del proxy (contribuito da @msaong).
 - Supporto per diverse lingue (cinese, inglese, tedesco, francese, russo, vietnamita, coreano, giapponese, spagnolo, italiano).
@@ -132,7 +134,7 @@ Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://git
 - Passa tra la vista a una, due o tre colonne.
 - Aggiornamento automatico all'ultima versione.
 - Modalità scura (contribuita da @tanchekwei).
-- Scorciatoie da tastiera. Premi `Ctrl + /` per conoscerle tutte (contribuite da @tanchekwei).
+- Scorciatoie da tastiera. Premi <kbd>Ctrl</kbd> + <kbd>/</kbd> per conoscerle tutte (contribuite da @tanchekwei).
 - Chat multiple (contribuite da @tanchekwei).
 - Supporto per l'impostazione del proxy (contribuito da @msaong).
 - Supporto per diverse lingue (cinese, inglese, tedesco, francese, russo, vietnamita, coreano, giapponese, spagnolo, italiano).
@@ -180,7 +182,7 @@ Scarica il file .AppImage, rendilo eseguibile e goditi l'esperienza del clic.
 
 If you encounter any problems while using ChatALL, you can try the following methods to resolve them:
 
-1. **Ricarica** - premi `Ctrl + R` o `Cmd + R`.
+1. **Ricarica** - premi <kbd>Ctrl</kbd> + <kbd>R</kbd> o <kbd>⌘</kbd> + <kbd>R</kbd>.
 2. **Riavvia** - esci da ChatALL e avvialo nuovamente.
 3. **Rilogin** - clicca sul pulsante delle impostazioni nell'angolo in alto a destra, quindi clicca sul link di accesso/uscita corrispondente nella finestra popup per accedere nuovamente al sito web.
 4. **Cancella tutti i messaggi** - clicca sul pulsante della scopa nell'angolo in alto a destra.

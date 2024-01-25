@@ -4,6 +4,8 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | 日本語 | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+
 </div>
 
 ## 画像
@@ -56,7 +58,7 @@ ChatALLのユーザーはこんな感じ：
 - 回答を1列～3列の表示切替
 - 最新バージョンへの自動通知と自動アップデート
 - ダークモード対応（提供者 @tanchekwei）
-- `Ctrl + /` または `Cmd + /` で全てのショートカットキーが表示 (提供者 @tanchekwei)
+- <kbd>Ctrl</kbd> + <kbd>/</kbd> または `Cmd + /` で全てのショートカットキーが表示 (提供者 @tanchekwei)
 - マルチチャット対応 (提供者 @tanchekwei)
 - プロキシ設定をサポート (提供者 @msaong)
 - 対応言語：日本語、英語、中国語、スペイン語、ドイツ語、フランス語、ロシア語、ベトナム語、韓国語
@@ -104,7 +106,7 @@ brew install --cask chatall
 
 ChatALLをご利用中に問題が発生した場合は、以下の解決策をお試しください。：
 
-1. **再読み込み** - `Ctrl + R` または `Cmd + R` を押す。
+1. **再読み込み** - <kbd>Ctrl</kbd> + <kbd>R</kbd> または <kbd>⌘</kbd> + <kbd>R</kbd> を押す。
 2. **アプリを再起動** - ChatALLを終了し、再度実行する。
 3. **再ログイン** - 右上の設定ボタンをクリックし、各AIの `ログイン/ログアウト`をクリックして、サイトに再ログインします。
 4. **すべてのメッセージを削除する** - 右上のほうきボタンをクリックし"はい"をクリックする。

@@ -1,0 +1,50 @@
+{
+    "name": "ChatALL Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens",
+                "mhutchie.git-graph",
+                "EditorConfig.EditorConfig",
+                "vscode-icons-team.vscode-icons",
+                "aaron-bond.better-comments",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "esbenp.prettier-vscode",
+                "yzhang.markdown-all-in-one",
+                "bierner.github-markdown-preview",
+                "dotenv.dotenv-vscode",
+                // HTML, CSS
+                "ecmel.vscode-html-css",
+                "pranaygp.vscode-css-peek",
+                "Zignd.html-css-class-completion",
+                "formulahendry.auto-rename-tag",
+                // JavaScript
+                "xabikos.JavaScriptSnippets",
+                "meganrogge.template-string-converter",
+                "dbaeumer.vscode-eslint",
+                // Node.js
+                "ambar.bundle-size",
+                "steoates.autoimport",
+                "BriteSnow.vscode-toggle-quotes",
+                "mgmcdermott.vscode-language-babel",
+                "Vue.volar",
+                "cssho.vscode-svgviewer"
+            ]
+        }
+    },
+    "updateContentCommand": "sudo cp .devcontainer/welcome.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
+    "postCreateCommand": "npm install",
+    "forwardPorts": [8080],
+	"portsAttributes": {
+		"8080": {
+			"label": "ChatALL App",
+			"onAutoForward": "openPreview"
+		}
+	}
+}

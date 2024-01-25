@@ -4,6 +4,8 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | 简体中文
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+
 </div>
 
 ## 屏幕截图
@@ -65,7 +67,7 @@ ChatALL 的典型用户是：
 - 在一列、两列或三列视图之间切换
 - 自动更新到最新版
 - 夜间模式（由 @tanchekwei 贡献）
-- 快捷键。按 `Ctrl + /` 可以看到所有快捷键（由 @tanchekwei 贡献）
+- 快捷键。按 <kbd>Ctrl</kbd> + <kbd>/</kbd> 可以看到所有快捷键（由 @tanchekwei 贡献）
 - 多对话窗口（由 @tanchekwei 贡献）
 - 支持设置代理（由 @msaong 贡献）
 - 提示词管理（由 @tanchekwei 贡献）
@@ -122,7 +124,7 @@ brew install --cask chatall
 
 使用中如果遇到问题，可以尝试如下方法解决：
 
-1. **刷新** - 按下 `Ctrl + R` 或 `Cmd + R`。
+1. **刷新** - 按下 <kbd>Ctrl</kbd> + <kbd>R</kbd> 或 <kbd>⌘</kbd> + <kbd>R</kbd>。
 2. **重启** - 退出 ChatALL，再重新运行。
 3. **重新登录** - 点击右上角的设置按钮，在弹出的窗口中点击对应的登入/登出链接，重新登录网站。
 4. **创建新对话** - 创建一个新对话，再发送提示词。

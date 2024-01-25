@@ -4,6 +4,8 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | 한국어 | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+
 </div>
 
 ## 스크린샷
@@ -65,7 +67,7 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 - 1열, 2열 또는 3열 보기 간 전환
 - 최신 버전으로 자동 업데이트
 - 어두운 모드 (@tanchekwei 기여)
-- 단축키. `Ctrl + /`를 누르면 모든 단축키를 확인할 수 있습니다 (@tanchekwei 기여).
+- 단축키. <kbd>Ctrl</kbd> + <kbd>/</kbd>를 누르면 모든 단축키를 확인할 수 있습니다 (@tanchekwei 기여).
 - 다중 채팅 (@tancheckwei 기여)
 - 프록시 설정 지원 (@msaong에서 제공)
 - 신속한 관리 (contributed by @tanchekwei)
@@ -122,7 +124,7 @@ brew install --cask chatall
 
 ChatALL을 사용하는 동안 문제가 발생하면 다음 방법을 사용하여 문제를 해결할 수 있습니다:
 
-1. **새로 고침** - `Ctrl + R` 또는 `Cmd + R` 을 누릅니다.
+1. **새로 고침** - <kbd>Ctrl</kbd> + <kbd>R</kbd> 또는 <kbd>⌘</kbd> + <kbd>R</kbd> 을 누릅니다.
 2. **다시 시작** - ChatALL을 종료하고 다시 실행합니다.
 3. **다시 로그인** - 오른쪽 상단 모서리의 설정 버튼을 클릭한 다음 팝업 창에서 해당 로그인/로그아웃 링크를 클릭하여 웹 사이트에 다시 로그인합니다.
 4. **새 채팅 만들기** - `새 채팅` 버튼을 클릭한 후 프롬프트를 다시 보냅니다.

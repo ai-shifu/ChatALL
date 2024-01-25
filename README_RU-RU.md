@@ -4,6 +4,8 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | Русский | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+
 </div>
 
 ## Скриншоты
@@ -113,7 +115,7 @@ brew install --cask chatall
 
 Если вы столкнетесь с какими-либо проблемами при использовании ChatALL, вы можете попробовать следующие методы их устранения:
 
-1. **Обновить** - нажмите `Ctrl + R` или `Cmd + R`.
+1. **Обновить** - нажмите <kbd>Ctrl</kbd> + <kbd>R</kbd> или <kbd>⌘</kbd> + <kbd>R</kbd>.
 2. **Перезапустить** - выйдите из ChatALL и запустите его снова.
 3. **Повторный вход в систему** - нажмите кнопку настройки в правом верхнем углу, затем перейдите по соответствующей ссылке входа/выхода из системы, чтобы повторно войти на вебсайт.
 4. **Создайте новый чат** - нажмите кнопку "Создать чат" и отправьте запрос еще раз.

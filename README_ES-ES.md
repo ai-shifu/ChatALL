@@ -4,6 +4,8 @@
 
 [Alemán](README_DE-DE.md) | Español | [English](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italiano](README_IT-IT.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+
 </div>
 
 ## Capturas de pantalla
@@ -61,7 +63,7 @@ Más está por venir. Vota a tus bots favoritos en [estos temas](https://github.
 - Cambiar entre una vista de una, dos o tres columnas
 - Actualización automática a la última versión
 - Modo oscuro (contribución de @tanchekwei)
-- Teclas cortas. Pulsa `Ctrl + /` para conocerlos todos (contribución de @tanchekwei)
+- Teclas cortas. Pulsa <kbd>Ctrl</kbd> + <kbd>/</kbd> para conocerlos todos (contribución de @tanchekwei)
 - Múltiples chats (contribución de @tanchekwei)
 - Configuración de proxy (contribución de @msaong)
 - Gestión rápida (contribución de @tanchekwei)
@@ -110,7 +112,7 @@ Descargue el archivo . AppImage, hágalo ejecutable y disfrute de la experiencia
 
 Si encuentra algún problema al usar ChatALL, puede probar los siguientes métodos para resolverlo:
 
-1. **Actualizar** : pulse `Ctrl + R` o `Cmd + R`.
+1. **Actualizar** : pulse <kbd>Ctrl</kbd> + <kbd>R</kbd> o <kbd>⌘</kbd> + <kbd>R</kbd>.
 2. **Reiniciar** : salga de ChatALL y ejecútelo de nuevo.
 3. **Volver a iniciar sesión: haga clic en el botón de configuración en la ** esquina superior derecha, luego haga clic en el enlace de inicio / cierre de sesión correspondiente en la ventana emergente para iniciar sesión nuevamente en el sitio web.
 4. **Borrar todos los mensajes** : haga clic en el botón de la escoba en la esquina superior derecha.
