@@ -53,7 +53,7 @@ export default class ClaudeAIBot extends Bot {
     const url = `https://claude.ai/api/organizations/${store.state.claudeAi.org}/chat_conversations/${context.uuid}/completion`;
     const payload = JSON.stringify({
       attachments: [],
-      model: "claude-2.1",
+      model: store.state.claudeAi.model,
       prompt: prompt,
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     });
