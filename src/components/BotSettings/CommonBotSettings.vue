@@ -77,6 +77,19 @@
           ></v-text-field>
         </template>
       </v-slider>
+      <v-combobox
+        v-if="setting.type === Type.Combobox"
+        v-model="settingState[setting.name]"
+        outlined
+        dense
+        :label="setting.label"
+        :placeholder="setting.placeholder"
+        :hide-details="setting.hideDetails"
+        :items="setting.items"
+        @update:model-value="
+          store.commit(mutationType, { [setting.name]: $event })
+        "
+      ></v-combobox>
     </template>
   </v-list-item>
 </template>
