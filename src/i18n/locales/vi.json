@@ -108,7 +108,7 @@
     "azureApiInstanceNamePrompt": "Xem InstanceName ở mục Cognitive Services tại https://portal.azure.com/",
     "azureOpenAIApiDeploymentName": "Azure OpenAI API DeploymentName",
     "azureOpenAIApiDeploymentNamePrompt": "Xem tên nhà phát triển được liệt kê tại https://oai.azure.com/",
-    "azureOpenAIApiVersion": "Azure OpenAI API Version",
+    "azureOpenAIApiVersion": "Phiên bản Azure OpenAI API",
     "azureOpenAIApiVersionPrompt": "Xem phiên bản hổ trợ tại https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {
