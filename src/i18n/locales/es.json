@@ -77,7 +77,7 @@
     "azureApiInstanceNamePrompt": "Ver el nombre de la instancia en https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI",
     "azureOpenAIApiDeploymentName": "Nombre de implementación",
     "azureOpenAIApiDeploymentNamePrompt": "Ver el nombre de la implementación en Management -> Deployments at https://oai.azure.com/",
-    "azureOpenAIApiVersion": "Versión",
+    "azureOpenAIApiVersion": "Versión de la API",
     "azureOpenAIApiVersionPrompt": "Obtenga las versiones compatibles de https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {

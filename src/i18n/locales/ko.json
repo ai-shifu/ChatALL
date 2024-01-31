@@ -108,7 +108,7 @@
     "azureApiInstanceNamePrompt": "https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI에서 인스턴스 이름 보기",
     "azureOpenAIApiDeploymentName": "Azure OpenAI API 배포 이름",
     "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ 에서 관리 -> 배포에서 배포 이름을 확인합니다",
-    "azureOpenAIApiVersion": "버전",
+    "azureOpenAIApiVersion": "API 버전",
     "azureOpenAIApiVersionPrompt": "https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions에서 지원되는 버전 다운로드"
   },
   "bard": {

@@ -65,7 +65,7 @@
     "azureApiInstanceNamePrompt": "https://portal.azure.com/ の Cognitive Services でインスタンス名を表示する。",
     "azureOpenAIApiDeploymentName": "デプロイメント名",
     "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ の[管理] -> [デプロイメント]でデプロイメント名を表示します。",
-    "azureOpenAIApiVersion": "バージョン",
+    "azureOpenAIApiVersion": "API バージョン",
     "azureOpenAIApiVersionPrompt": "サポートされているバージョンを https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions から入手する。"
   },
   "bard": {
