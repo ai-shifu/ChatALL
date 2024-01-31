@@ -54,7 +54,7 @@
     "topPPrompt": "Token werden vom wahrscheinlichsten bis zum am wenigsten wahrscheinlichen ausgewählt, bis die Summe ihrer Wahrscheinlichkeiten den topP-Wert ergibt."
   },
   "bingChat": {
-    "name": "Bing Chat",
+    "name": "Copilot",
     "h3imaginative": "Kreativ",
     "galileo": "Ausgewogen",
     "h3precise": "Präzise"

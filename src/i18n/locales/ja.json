@@ -72,7 +72,7 @@
     "name": "Bard"
   },
   "bingChat": {
-    "name": "Bing Chat",
+    "name": "Copilot",
     "solveCaptcha": "続行するには <a { attributes }>CAPTCHA認証/a>をしてください。",
     "h3imaginative": "創造的に",
     "galileo": "バランスよく",

@@ -255,7 +255,7 @@ const userActions = computed(() => {
 });
 const previewSampleData = [
   {
-    botName: "Bing Chat (Creative)",
+    botName: "Copilot (Creative)",
     botResponse: "Hello, this is Bing. How are you today? 😊",
   },
   {

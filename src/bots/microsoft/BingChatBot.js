@@ -9,10 +9,7 @@ export default class BingChatBot extends Bot {
   static _className = "BingChatBot"; // Class name of the bot
   static _model = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _logoFilename = "bing-logo.svg"; // Place it in public/bots/
-  static _loginUrl = "https://www.bing.com/chat";
-  static _userAgent =
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48";
-
+  static _loginUrl = "https://copilot.microsoft.com/";
   static _optionsSets = null; // Set by the subclass
   static _tone = ""; // Set by the subclass
 
@@ -24,12 +21,12 @@ export default class BingChatBot extends Bot {
     const headers = {
       "x-ms-client-request-id": uuidv4(),
       "x-ms-useragent":
-        "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.3 OS/macOS",
+        "azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.12.3 OS/macOS",
     };
     let conversation = null;
 
     const response = await axios.get(
-      "https://www.bing.com/turing/conversation/create",
+      "https://copilot.microsoft.com/turing/conversation/create",
       { headers },
     );
     if (response.status == 200 && response.data?.result?.value == "Success") {
@@ -45,7 +42,7 @@ export default class BingChatBot extends Bot {
         invocationId: 0,
       };
     } else {
-      console.error("Error creating Bing Chat conversation:", response);
+      console.error("Error creating Copilot conversation:", response);
       throw new Error(
         i18n.global.t("bot.failedToCreateConversation") + " " + response.data,
       );
@@ -58,7 +55,7 @@ export default class BingChatBot extends Bot {
     let available = false;
 
     await axios
-      .get("https://www.bing.com/turing/conversation/chats")
+      .get("https://copilot.microsoft.com/turing/conversation/chats")
       .then((response) => {
         available =
           response.data?.result?.value == "Success" &&
@@ -71,7 +68,7 @@ export default class BingChatBot extends Bot {
         }
       })
       .catch((error) => {
-        console.error("Error checking Bing Chat login status:", error);
+        console.error("Error checking Copilot login status:", error);
       });
 
     return available;
@@ -87,21 +84,26 @@ export default class BingChatBot extends Bot {
           optionsSets: this.constructor._optionsSets,
           allowedMessageTypes: ["Chat", "InternalSearchQuery"],
           sliceIds: [
-            "629adsredir",
-            "gbaa",
-            "gba",
-            "divkorbl2p",
-            "emovoicecf",
-            "tts3cf",
-            "crtrgxnew",
-            "wrapuxslimt",
-            "norbingchrome",
-            "sydconfigoptt",
-            "803iyjbexps0",
-            "178gentechs0",
-            "824fluxhi52s0",
-            "0825agicert",
-            "821iypapyrust",
+            "tnamobcf",
+            "adssqovr",
+            "inlineadsv2",
+            "inlineadscont",
+            "1542",
+            "1211enbackfix",
+            "cmcallcf",
+            "ctvismctrl",
+            "sydtransview",
+            "exptonecf",
+            "bgstream",
+            "abv2cl",
+            "1215persc",
+            "0212boptpsc",
+            "14bicfluxv2",
+            "111mem",
+            "116langwb",
+            "0124dv1s0",
+            "0126hpctas0",
+            "1pgptwdess0",
           ],
           verbosity: "verbose",
           scenario: "SERP",
@@ -178,7 +180,7 @@ export default class BingChatBot extends Bot {
                 resolve();
               } else if (event.type === 2) {
                 if (event.item.result.value !== "Success") {
-                  console.error("Error sending prompt to Bing Chat:", event);
+                  console.error("Error sending prompt to Copilot:", event);
                   if (event.item.result.value === "InvalidSession") {
                     // Create a new conversation and retry
                     context = await this.createChatContext();
@@ -244,7 +246,7 @@ export default class BingChatBot extends Bot {
                 wsp.close();
                 reject(new Error(event.error));
               } else {
-                console.warn("Unknown Bing Chat response:", event);
+                console.warn("Unknown Copilot response:", event);
               }
             }
           } catch (error) {

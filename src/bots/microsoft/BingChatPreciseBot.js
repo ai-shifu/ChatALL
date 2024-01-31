@@ -15,17 +15,18 @@ export default class BingChatPreciseBot extends BingChatBot {
     "responsible_ai_policy_235",
     "enablemm",
     "dv3sugg",
-    "machine_affinity",
     "autosave",
     "iyxapbing",
     "iycapbing",
     "h3precise",
+    "bicfluxv2",
+    "memmidlat",
+    "langdtwb",
+    "014CB21D",
     "clgalileo",
     "gencontentv3",
-    "adsredirecturl",
-    "agicert",
-    "iypapyrus",
-    "eredirecturl",
+    "fluxmemcst",
+    "enable_user_consent",
   ];
   static _tone = "Precise";
 

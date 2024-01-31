@@ -15,18 +15,15 @@ export default class BingChatBalancedBot extends BingChatBot {
     "responsible_ai_policy_235",
     "enablemm",
     "dv3sugg",
-    "machine_affinity",
     "autosave",
     "iyxapbing",
     "iycapbing",
     "galileo",
+    "bicfluxv2",
+    "memmidlat",
+    "langdtwb",
+    "014CB21D",
     "saharagenconv5",
-    "fluxhint",
-    "glfluxv13",
-    "adsredirecturl",
-    "agicert",
-    "iypapyrus",
-    "eredirecturl",
   ];
   static _tone = "Balanced";
 

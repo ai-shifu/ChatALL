@@ -217,9 +217,9 @@ async function createWindow() {
         requestHeaders["sec-fetch-site"] = "same-origin";
       }
 
-      // To make Bing Chat work
+      // To make Copilot work
       if (url.startsWith("wss://sydney.bing.com/")) {
-        requestHeaders["Origin"] = "https://www.bing.com";
+        requestHeaders["Origin"] = "https://copilot.microsoft.com";
       }
 
       callback({ requestHeaders });

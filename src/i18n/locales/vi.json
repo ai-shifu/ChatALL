@@ -50,7 +50,7 @@
     "done": "Xong",
     "cancel": "Hủy"
   },
-   "chat": {
+  "chat": {
     "name": "Hội thoại",
     "newChat": "Hội thoại mới",
     "deleteAllChatHistory": "Xóa tất cả lịch sử hội thoại",
@@ -115,7 +115,7 @@
     "name": "Bard"
   },
   "bingChat": {
-    "name": "Bing Chat",
+    "name": "Copilot",
     "solveCaptcha": "Vui lòng giải captcha để tiếp tục: <a { attributes }>solve CAPTCHA</a>",
     "h3imaginative": "Sáng tạo",
     "galileo": "Cân bằng",
@@ -199,7 +199,7 @@
     "temperature2": "Tự nhiên hơn",
     "apiKey": "API Key"
   },
-   "poe": {
+  "poe": {
     "name": "Poe",
     "a2": "Claude-instant",
     "a2_100k": "Claude-instant-100k",
@@ -227,7 +227,7 @@
     "ERNIE-Bot-turbo": "ERNIE-Bot-turbo",
     "ERNIE-Bot-4": "ERNIE-Bot-4"
   },
-   "youChat": {
+  "youChat": {
     "name": "YouChat"
   },
   "chatGlm": {
@@ -273,7 +273,7 @@
     "matchCase": "Trường hợp phù hợp",
     "wrapAround": "Quay lại đầu"
   },
-   "proxy": {
+  "proxy": {
     "name": "Proxy",
     "address": "Proxy Server Address",
     "addressExample": "http://127.0.0.1:7890, socks5://127.0.0.1:1080",

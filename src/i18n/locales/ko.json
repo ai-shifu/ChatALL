@@ -115,7 +115,7 @@
     "name": "Bard"
   },
   "bingChat": {
-    "name": "Bing Chat",
+    "name": "Copilot",
     "solveCaptcha": "계속하려면 <a { attributes }>CAPTCHA를 해결</a>해야 합니다.",
     "h3imaginative": "창의적인",
     "galileo": "균형 있는",

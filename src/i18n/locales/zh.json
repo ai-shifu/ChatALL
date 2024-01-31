@@ -115,7 +115,7 @@
     "name": "Bard"
   },
   "bingChat": {
-    "name": "必应对话",
+    "name": "Copilot",
     "solveCaptcha": "你需要<a { attributes }>通过真人验证</a>才能继续。",
     "h3imaginative": "创造力",
     "galileo": "平衡",
