@@ -45,7 +45,7 @@ const getLatestVersionFromGithub = () => {
 const updateApp = (mainWindow) => {
   localMainWindow = mainWindow;
   autoUpdater.on("error", getLatestVersionFromGithub);
-  require("update-electron-app")();
+  require("update-electron-app").updateElectronApp();
 };
 
 export default updateApp;
