@@ -161,6 +161,7 @@ import {
 
 import i18n from "./i18n";
 import Chats from "@/store/chats";
+import { initializeQueues, startQueuesProcessing } from "@/store/queue";
 import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
 
@@ -265,6 +266,9 @@ onMounted(() => {
 
   const ver = require("../package.json").version;
   document.title = `ChatALL.ai - v${ver}`;
+
+  initializeQueues(store);
+  startQueuesProcessing();
 });
 
 watch(

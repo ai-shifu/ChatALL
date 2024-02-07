@@ -82,6 +82,7 @@ let createChatMessageLiveQuery = (index) => {
       groupedMessage.push.apply(groupedMessage, Object.values(responses));
     }
     currentChatMessages.value = groupedMessage;
+    nextTick(() => autoScrollToBottom());
   });
 };
 
@@ -123,8 +124,6 @@ watch(
   },
   { immediate: true },
 );
-
-watch(() => store.state.updateCounter, autoScrollToBottom);
 
 const onScroll = () => {
   const scrollPosition = window.pageYOffset + window.innerHeight;
