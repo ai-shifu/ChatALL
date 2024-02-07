@@ -164,6 +164,7 @@ import Chats from "@/store/chats";
 import { initializeQueues, startQueuesProcessing } from "@/store/queue";
 import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
+import { onScroll } from "./helpers/scroll-helper";
 
 // Components
 import ChatDrawer from "@/components/ChatDrawer/ChatDrawer.vue";
@@ -269,6 +270,8 @@ onMounted(() => {
 
   initializeQueues(store);
   startQueuesProcessing();
+
+  window.addEventListener("scroll", onScroll);
 });
 
 watch(

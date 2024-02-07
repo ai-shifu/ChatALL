@@ -23,6 +23,8 @@ import ChatResponse from "@/components/Messages/ChatResponse.vue";
 import Threads from "@/store/threads";
 import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
+import { nextTick } from "vue";
+import { autoScrollToBottom } from "@/helpers/scroll-helper";
 
 const props = defineProps({
   chat: {
@@ -73,6 +75,7 @@ const currentChatMessages = useObservable(
     }
 
     currentChatMessages.value = groupedMessage;
+    nextTick(() => autoScrollToBottom());
     console.log("groupedMessage threads: ", groupedMessage);
     return groupedMessage;
   }),
