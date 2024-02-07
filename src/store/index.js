@@ -8,11 +8,8 @@ import Chats from "@/store/chats";
 import Messages from "@/store/messages";
 import { v4 as uuidv4 } from "uuid";
 import Threads from "./threads";
+import { messageQueue, threadMessageQueue } from "./queue";
 
-let isThrottleMessage = false;
-let isThrottleThreadMessage = false;
-let messageBuffer = [];
-let threadMessageBuffer = [];
 const vuexPersist = new VuexPersistence({
   key: "chatall-app",
   storage: localForage,
@@ -115,6 +112,9 @@ export default createStore({
       },
     ],
     selectedResponses: [],
+    chat: {
+      updateDebounceInterval: 100,
+    },
   },
   mutations: {
     changeColumns(state, n) {
@@ -230,24 +230,6 @@ export default createStore({
     setResponseThreadIndex(state, { responseIndex, threadIndex }) {
       const currentChat = state.chats[state.currentChatIndex];
       currentChat.messages[responseIndex].threadIndex = threadIndex;
-    },
-    async updateMessage(state) {
-      for (const update of messageBuffer) {
-        const { index, message } = update;
-        await Messages.table.update(index, message);
-      }
-      state.updateCounter += 1;
-      messageBuffer = [];
-      isThrottleMessage = false;
-    },
-    async updateThreadMessage(state) {
-      for (const update of threadMessageBuffer) {
-        const { index, message } = update;
-        await Threads.table.update(index, message);
-      }
-      state.updateCounter += 1;
-      threadMessageBuffer = [];
-      isThrottleThreadMessage = false;
     },
     setMessages(state, messages) {
       const currentChat = state.chats[state.currentChatIndex];
@@ -409,10 +391,16 @@ export default createStore({
       }
       localStorage.setItem("isMigrateSettingArrayIndexUseUUID", true);
     },
+    setChat(state, values) {
+      values = {
+        ...values,
+        updateDebounceInterval: parseInt(values.updateDebounceInterval),
+      };
+      state.chat = { ...state.chat, ...values };
+    },
   },
   actions: {
     async sendPrompt({ commit, dispatch }, { prompt, bots, promptIndex }) {
-      isThrottleMessage = false;
       const currentChat = await Chats.getCurrentChat();
       if (promptIndex === undefined) {
         // if promptIndex not found, not resend, push to messages array
@@ -464,8 +452,6 @@ export default createStore({
       { commit, state, dispatch },
       { prompt, bot, messageIndex, promptIndex },
     ) {
-      isThrottleThreadMessage = false;
-
       if (!promptIndex) {
         // not resend
         const threadPromptMessage = {
@@ -508,15 +494,8 @@ export default createStore({
         prompt.length,
       );
     },
-    async updateMessage({ commit }, { index, message: values }) {
-      messageBuffer.push({ index, message: values });
-      if (!isThrottleMessage) {
-        isThrottleMessage = true;
-        setTimeout(() => {
-          commit("updateMessage");
-          commit("incrementUpdateCounter");
-        }, 200); // save every 0.2 seconds
-      }
+    async updateMessage(_, { index, message: values }) {
+      messageQueue.queue.push({ index, message: values });
       if (values.done) {
         const chat = await Messages.table.get(index);
         const message = { ...chat, ...values };
@@ -528,15 +507,8 @@ export default createStore({
         );
       }
     },
-    async updateThreadMessage({ commit }, { index, message: values }) {
-      threadMessageBuffer.push({ index, message: values });
-      if (!isThrottleThreadMessage) {
-        isThrottleThreadMessage = true;
-        setTimeout(() => {
-          commit("updateThreadMessage");
-          commit("incrementUpdateCounter");
-        }, 200); // save every 0.2 seconds
-      }
+    async updateThreadMessage(_, { index, message: values }) {
+      threadMessageQueue.queue.push({ index, message: values });
       if (values.done) {
         const thread = await Threads.table.get(index);
         let message = { ...thread, ...values };

@@ -1,4 +1,9 @@
 <template>
+  <CommonBotSettings
+    :settings="settings"
+    :brand-id="brandId"
+    mutation-type="setChat"
+  ></CommonBotSettings>
   <v-list>
     <v-list-item>
       <v-btn
@@ -206,6 +211,7 @@
 import bots from "@/bots";
 import ConfirmModal from "@/components/ConfirmModal.vue";
 import ChatPrompt from "@/components/Messages/ChatPrompt.vue";
+import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import i18n from "@/i18n";
 import Chats from "@/store/chats";
 import db from "@/store/db";
@@ -223,6 +229,7 @@ import {
   templatePlaceholder,
 } from "../helpers/template-helper";
 import { nextTick } from "vue";
+import { Type } from "./BotSettings/settings.const";
 
 const emit = defineEmits(["close-dialog"]);
 const confirmModal = ref();
@@ -269,6 +276,18 @@ const previewSampleData = [
   {
     botName: "YouChat",
     botResponse: "Hi there! How can I assist you today?",
+  },
+];
+const brandId = "chat";
+const settings = [
+  {
+    type: Type.Slider,
+    name: "updateDebounceInterval",
+    title: "chat.updateDebounceInterval",
+    description: "chat.updateDebounceIntervalDesc",
+    min: 0,
+    max: 2000,
+    step: 100,
   },
 ];
 let editIndex = undefined;
