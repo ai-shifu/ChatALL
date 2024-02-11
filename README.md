@@ -120,6 +120,7 @@ brew install --cask chatall
 ### On Linux
 
 Debian-based Distributions: Download the .deb file, double click it and install the software.
+Arch-based Distributions: You can clone ChatALL from the AUR [here](https://aur.archlinux.org/packages/chatall-bin). You can install it manually or using an AUR helper like yay or paru.
 Other Distributions: Download the .AppImage file, make it executable, and enjoy the click-to-run experience.
 
 ## Troubleshooting
