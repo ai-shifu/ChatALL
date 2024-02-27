@@ -31,7 +31,7 @@ Typical users of ChatALL are:
 | [ChatGPT](https://chat.openai.com)                                             | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
 | [Bing Chat](https://www.bing.com/new)                                          | Yes         | No API      |                                             |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                        | No          | Yes         |                                             |
-| [Bard](https://bard.google.com/)                                               | Yes         | Coming soon |                                             |
+| [Gemini](https://gemini.google.com/)                                           | Yes         | Coming soon |                                             |
 | [Poe](https://poe.com/)                                                        | Yes         | Coming soon |                                             |
 | [MOSS](https://moss.fastnlp.top/)                                              | Yes         | No API      |                                             |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Yes         | Coming soon |                                             |
@@ -119,7 +119,9 @@ brew install --cask chatall
 
 ### On Linux
 
-Download the .AppImage file, make it executable, and enjoy the click-to-run experience.
+Debian-based Distributions: Download the .deb file, double click it and install the software.
+Arch-based Distributions: You can clone ChatALL from the AUR [here](https://aur.archlinux.org/packages/chatall-bin). You can install it manually or using an AUR helper like yay or paru.
+Other Distributions: Download the .AppImage file, make it executable, and enjoy the click-to-run experience. You can also use [AppimageLauncher](https://github.com/TheAssassin/AppImageLauncher).
 
 ## Troubleshooting
 
