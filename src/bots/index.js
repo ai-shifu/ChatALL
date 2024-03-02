@@ -1,5 +1,5 @@
 // Bots
-import GeminiBot from "@/bots/GeminiBot";
+import GeminiBot from "@/bots/google/GeminiBot";
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
@@ -8,7 +8,7 @@ import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
 import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
 import SageBot from "@/bots/poe/SageBot";
 import SparkBot from "@/bots/SparkBot";
-import BardBot from "@/bots/BardBot";
+import BardBot from "@/bots/google/BardBot";
 import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
 import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import OpenAIAPI4128KBot from "@/bots/openai/OpenAIAPI4128KBot";

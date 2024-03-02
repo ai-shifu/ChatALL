@@ -1,5 +1,5 @@
 import axios from "axios";
-import Bot from "./Bot";
+import Bot from "../Bot";
 import AsyncLock from "async-lock";
 
 function parseResponse(resp) {

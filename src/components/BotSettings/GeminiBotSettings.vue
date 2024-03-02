@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Bot from "@/bots/GeminiBot";
+import Bot from "@/bots/google/GeminiBot";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import { Type } from "./settings.const";
 
