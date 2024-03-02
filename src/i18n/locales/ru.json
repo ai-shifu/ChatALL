@@ -38,7 +38,7 @@
     "waiting": "Ожидание завершения других запросов от{ botName } ..."
   },
   "bard": {
-    "name": "Bard"
+    "name": "Gemini"
   },
   "bingChat": {
     "name": "Copilot",

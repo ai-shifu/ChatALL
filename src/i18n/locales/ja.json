@@ -69,7 +69,7 @@
     "azureOpenAIApiVersionPrompt": "サポートされているバージョンを https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions から入手する。"
   },
   "bard": {
-    "name": "Bard"
+    "name": "Gemini"
   },
   "bingChat": {
     "name": "Copilot",
