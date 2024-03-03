@@ -60,6 +60,8 @@ import CodeLlamaHCBot from "./huggingface/CodeLlamaHCBot";
 import WenxinQianfan4Bot from "./baidu/WenxinQianfan4Bot";
 import Zephyr7bBot from "./huggingface/Zephyr7bBot";
 import GeminiAdvBot from "./google/GeminiAdvBot";
+import Gemma7bItBot from "./lmsys/Gemma7bItBot";
+import Gemma2bItBot from "./lmsys/Gemma2bItBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -88,6 +90,8 @@ const all = [
   BardBot.getInstance(),
   GeminiAdvBot.getInstance(),
   GeminiBot.getInstance(),
+  Gemma2bItBot.getInstance(),
+  Gemma7bItBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
@@ -196,6 +200,8 @@ export const botTags = {
     bots.getBotByClassName("Wizardlm70bBot"),
     bots.getBotByClassName("FalconHC180bBot"),
     bots.getBotByClassName("Zephyr7bBot"),
+    bots.getBotByClassName("Gemma2bItBot"),
+    bots.getBotByClassName("Gemma7bItBot"),
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
@@ -230,6 +236,8 @@ export const botTags = {
     bots.getBotByClassName("Wizardlm70bBot"),
     bots.getBotByClassName("FalconHC180bBot"),
     bots.getBotByClassName("Zephyr7bBot"),
+    bots.getBotByClassName("Gemma2bItBot"),
+    bots.getBotByClassName("Gemma7bItBot"),
   ],
   api: [
     bots.getBotByClassName("GeminiBot"),
