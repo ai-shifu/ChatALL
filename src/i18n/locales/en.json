@@ -114,7 +114,9 @@
     "azureOpenAIApiVersionPrompt": "Get the supported versions from https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {
-    "name": "Gemini"
+    "name": "Gemini",
+    "gemini-pro": "Gemini",
+    "gemini-ultra": "Gemini Advanced"
   },
   "bingChat": {
     "name": "Copilot",

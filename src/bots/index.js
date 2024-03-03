@@ -59,13 +59,12 @@ import FalconHC180bBot from "./huggingface/FalconHC180bBot";
 import CodeLlamaHCBot from "./huggingface/CodeLlamaHCBot";
 import WenxinQianfan4Bot from "./baidu/WenxinQianfan4Bot";
 import Zephyr7bBot from "./huggingface/Zephyr7bBot";
+import GeminiAdvBot from "./google/GeminiAdvBot";
 
 const all = [
-  GeminiBot.getInstance(),
   Qihoo360AIBrainBot.getInstance(),
   AlpacaBot.getInstance(),
   SageBot.getInstance(), // Assistant@Poe
-  BardBot.getInstance(),
   BingChatCreativeBot.getInstance(),
   BingChatBalancedBot.getInstance(),
   BingChatPreciseBot.getInstance(),
@@ -86,6 +85,9 @@ const all = [
   WenxinQianfan4Bot.getInstance(),
   Falcon180bBot.getInstance(),
   FalconHC180bBot.getInstance(),
+  BardBot.getInstance(),
+  GeminiAdvBot.getInstance(),
+  GeminiBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
@@ -193,6 +195,7 @@ export const botTags = {
     bots.getBotByClassName("ClaudeInstant100kPoeBot"),
     bots.getBotByClassName("ClaudePlusPoeBot"),
     bots.getBotByClassName("ChatGPT432kPoeBot"),
+    bots.getBotByClassName("GeminiAdvBot"),
   ],
   openSource: [
     bots.getBotByClassName("AlpacaBot"),
