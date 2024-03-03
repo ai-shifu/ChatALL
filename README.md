@@ -32,6 +32,7 @@ Typical users of ChatALL are:
 | [Bing Chat](https://www.bing.com/new)                                          | Yes         | No API      |                                             |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                        | No          | Yes         |                                             |
 | [Gemini](https://gemini.google.com/)                                           | Yes         | Coming soon |                                             |
+| [Gemma 2B & 7B](https://blog.google/technology/developers/gemma-open-models/)  | Yes         | No API      |                                             |
 | [Poe](https://poe.com/)                                                        | Yes         | Coming soon |                                             |
 | [MOSS](https://moss.fastnlp.top/)                                              | Yes         | No API      |                                             |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Yes         | Coming soon |                                             |

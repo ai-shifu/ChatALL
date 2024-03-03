@@ -184,7 +184,9 @@
     "codellama-34b-instruct": "Code Llama",
     "llama-2-13b-chat": "llama-2-13b",
     "llama-2-7b-chat": "llama-2-7b",
-    "llama-2-70b-chat": "llama-2-70b"
+    "llama-2-70b-chat": "llama-2-70b",
+    "gemma-7b-it": "gemma-7b-it",
+    "gemma-2b-it": "gemma-2b-it"
   },
   "moss": {
     "name": "MOSS"
