@@ -40,7 +40,7 @@ function generateReq(model, prompt) {
     "",
     null,
     [1],
-    1,
+    0,
     null,
     null,
     1,
