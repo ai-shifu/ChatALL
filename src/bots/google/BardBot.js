@@ -29,13 +29,13 @@ function parseResponse(resp) {
   return { text, ids };
 }
 
-function generateReq(model, prompt) {
+function generateReq(model, prompt, contextIds) {
   let modelNumber = model == "gemini-ultra" ? 2 : 1;
   // The JSON is ugly and meaningless, but it works
   let innerJSON = [
     [prompt, 0, null, null, null, null, 0],
     ["en"],
-    ["", "", ""],
+    contextIds,
     "",
     "",
     null,
