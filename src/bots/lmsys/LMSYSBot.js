@@ -11,7 +11,8 @@ export default class LMSYSBot extends GradioBot {
   static _outputFormat = "html"; // "markdown" or "html"
   static _lock = new AsyncLock(); // Send requests in queue to save LMSYS
 
-  static _fnIndexes = [39, 40]; // Indexes of the APIs to call in order. Sniffer it by devtools.
+  static _fnIndexes = [41, 42]; // Indexes of the APIs to call in order. Sniffer it by devtools.
+  _triggerId = 93; // From devtools
 
   constructor() {
     super();
@@ -28,7 +29,7 @@ export default class LMSYSBot extends GradioBot {
   makeData(fn_index, prompt) {
     let r = null;
     if (fn_index === this.constructor._fnIndexes[0]) {
-      r = [null, this.constructor._model, prompt];
+      r = [null, this.constructor._model, prompt, null];
     } else if (fn_index === this.constructor._fnIndexes[1]) {
       r = [null, 0.7, 1, 512];
     } else if (fn_index === 43) {
@@ -40,7 +41,13 @@ export default class LMSYSBot extends GradioBot {
   parseData(fn_index, data) {
     let r = undefined;
     if (fn_index === this.constructor._fnIndexes[1]) {
-      r = data[1][data[1].length - 1][1];
+      const dataOne = data[1];
+
+      if (dataOne.length > 0) {
+        const dataTwo = dataOne[dataOne.length - 1];
+        const dataThree = dataTwo[1];
+        r = dataThree;
+      }
     }
     if (!r) r = ""; // Sometimes the result from data[] is null
     return r;
