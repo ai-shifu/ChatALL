@@ -31,16 +31,16 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [ChatGPT](https://chat.openai.com)                                             | 예        | 예        | 웹 브라우징 포함                    |
 | [Bing Chat](https://www.bing.com/new)                                          | 예        | API 없음  | 로그인 필요 없음                    |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                        | 아니오    | 예        |                                     |
-| [Bard](https://bard.google.com/)                                               | 예        | API 없음  |                                     |
+| [Gemini](https://gemini.google.com/)                                               | 예        | API 없음  |                                     |
 | [Poe](https://poe.com/)                                                        | 예        | 근일 개봉 |                                     |
 | [MOSS](https://moss.fastnlp.top/)                                              | 예        | API 없음  |                                     |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | 예        | 근일 개봉 |                                     |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)                               | 근일 개봉 | API 없음  |                                     |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | 예        | 근일 개봉 |                                     |
 | [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)                     | 예        | API 없음  | 로그인 필요 없음                    |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)                            | 예        | API 없음  | 로그인 필요 없음                    |
-| [ChatGLM](https://chatglm.cn/blog)                                             | 예        | API 없음  | 로그인 필요 없음                    |
-| [Claude](https://www.anthropic.com/index/introducing-claude)                   | 예        | API 없음  | No Login required                   |
+| [Vicuna 7B, 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                       | 예        | API 없음  | 로그인 필요 없음                    |
+| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                            | 예        | API 없음  | 로그인 필요 없음                    |
+| [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                    | 예        | API 없음  | 로그인 필요 없음                   |
 | [Gradio](https://gradio.app/)                                                  | 예        | API 없음  | Hugging Face space/자체 배포 모델용 |
 | [HuggingChat](https://huggingface.co/chat/)                                    | 예        | API 없음  |                                     |
 | [SkyWork](https://neice.tiangong.cn/)                                          | 예        | 근일 개봉 |                                     |
@@ -53,10 +53,11 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [Llama 2 7B, 13B & 70B](https://ai.meta.com/llama/)                            | 예        | API 없음  |                                     |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예        | API 없음  |                                     |
 | [WizardLM 13B & 70B](https://github.com/nlpxucan/WizardLM)                     | 예        | API 없음  |                                     |
-| [Falcon 180B](https://tiiuae-falcon-180b-demo.hf.space/)                       | 예        | API 없음  |                                     |
+| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                     | 예        | API 없음  |                                     |
 | [Phind](https://www.phind.com/)                                                | 예        | API 없음  |                                     |
+| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 예         | API 없음     |                                             |
 
-그리고 더...
+더 많은 것이 오고 있습니다. [이 문제들](https://github.com/sunner/ChatALL/labels/more%20LLMs)에서 좋아하는 봇을 추천하세요.
 
 ### 기타 기능
 
@@ -118,7 +119,9 @@ brew install --cask chatall
 
 ### Linux에서
 
-.AppImage 파일을 다운로드하여 실행 파일로 만들고 클릭하고 실행 환경을 즐기십시오.
+Debian 기반 배포: .deb 파일을 다운로드한 후 두 번 클릭하여 소프트웨어를 설치합니다.
+아치 기반 배포판: AUR [여기](https://aur.archlinux.org/packages/chatall-bin)에서 ChatALL을 복제할 수 있습니다. 수동으로 설치하거나 yay 또는 paru와 같은 AUR 도우미를 사용하여 설치할 수 있습니다.
+기타 배포: .AppImage 파일을 다운로드하여 실행 가능하게 만들고 클릭해서 실행 경험을 즐기실 수 있습니다. [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher) 를 이용하실 수도 있습니다.
 
 ## 문제 해결
 
