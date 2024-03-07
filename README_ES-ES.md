@@ -29,16 +29,15 @@ Los usuarios típicos de ChatALL son:
 | Bots de IA                                                   | Acceso Web   | API          | Notas                                                |
 | ------------------------------------------------------------ | ------------ | ------------ | ---------------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Sí           | Sí           | Exploración web, servicio Azure OpenAI incluido      |
-| [Chat de Bing](https://www.bing.com/new)                     | Sí           | Sin API      | No se requiere inicio de sesión                      |
+| [Copilot](https://www.bing.com/new)                     | Sí           | Sin API      | No se requiere inicio de sesión                      |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No           | Sí           |                                                      |
-| [Bardo](https://bard.google.com/)                            | Sí           | Próximamente |                                                      |
+| [Gemini](https://gemini.google.com/)                            | Sí           | Próximamente |                                                      |
 | [Poe](https://poe.com/)                                      | Sí           | Próximamente |                                                      |
 | [MUSGO](https://moss.fastnlp.top/)                           | Sí           | Sin API      |                                                      |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sí           | Próximamente |                                                      |
 | [Asistente de aprendizaje de Dedao](https://ai.dedao.cn/)    | Próximamente | Sin API      |                                                      |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sí           | Próximamente |                                                      |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sí           | Sin API      | No se requiere inicio de sesión                      |
-| [Vicuña](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sí           | Sin API      | No se requiere inicio de sesión                      |
+| [Vicuña 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sí           | Sin API      | No se requiere inicio de sesión                      |
 | [ChatGLM](https://chatglm.cn/blog)                           | Sí           | Sin API      | No se requiere inicio de sesión                      |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Sí           | Sin API      | No se requiere inicio de sesión                      |
 | [Gradio](https://gradio.app/)                                | Sí           | Sin API      | Para modelos de espacio Hugging Face/autodesplegados |
@@ -165,7 +164,7 @@ npm run electron:build -- -wml --x64 --arm64
 ### Otros
 
 - GPT-4 contribuyó con gran parte del código
-- ChatGPT, Bing Chat y Google proporcionan muchas soluciones (clasificadas en orden)
+- ChatGPT, Copilot y Google proporcionan muchas soluciones (clasificadas en orden)
 - Inspirado en [ChatHub](https://github.com/chathub-dev/chathub). ¡Respeto!
 
 ## Patrocinador

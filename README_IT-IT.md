@@ -29,16 +29,15 @@ Gli utenti tipici di ChatALL sono:
 | IA Bots                                                      | Web Access    | API           | Notes                                        |
 | ------------------------------------------------------------ | ------------- | ------------- | -------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Sì            | Sì            | Navigazione Web,include servizi Azure-OpenAI |
-| [Bing Chat](https://www.bing.com/new)                        | Sì            | No API        | Nessun accesso richiesto                     |
+| [Copilot](https://www.bing.com/new)                        | Sì            | No API        | Nessun accesso richiesto                     |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No            | Si            |                                              |
-| [Bard](https://bard.google.com/)                             | Sì            | Prossimamente |                                              |
+| [Gemini](https://gemini.google.com/)                             | Sì            | Prossimamente |                                              |
 | [Poe](https://poe.com/)                                      | Sì            | Prossimamente |                                              |
 | [MOSS](https://moss.fastnlp.top/)                            | Sì            | No API        |                                              |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sì            | Prossimamente |                                              |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prossimamente | No API        |                                              |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sì            | Prossimamente |                                              |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sì            | No API        | Nessun accesso richiesto                     |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì            | No API        | Nessun accesso richiesto                     |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì            | No API        | Nessun accesso richiesto                     |
 | [ChatGLM](https://chatglm.cn/blog)                           | Sì            | No API        | Nessun accesso richiesto                     |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Sì            | No API        | Nessun accesso richiesto                     |
 | [Gradio](https://gradio.app/)                                | Sì            | No API        | Per modelli Hugging Face/spazio auto-deploy  |
@@ -105,16 +104,15 @@ Gli utenti tipici di ChatALL sono:
 | AI Bots                                                      | Accesso Web   | API           | Note                                          |
 | ------------------------------------------------------------ | ------------- | ------------- | --------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Sì            | Sì            | Navigazione Web, include Azure OpenAI service |
-| [Bing Chat](https://www.bing.com/new)                        | Sì            | No API        | Nessun accesso richiesto                      |
+| [Copilot](https://www.bing.com/new)                        | Sì            | No API        | Nessun accesso richiesto                      |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No            | Sì            |                                               |
-| [Bard](https://bard.google.com/)                             | Sì            | Prossimamente |                                               |
+| [Gemini](https://gemini.google.com/)                             | Sì            | Prossimamente |                                               |
 | [Poe](https://poe.com/)                                      | Sì            | Prossimamente |                                               |
 | [MOSS](https://moss.fastnlp.top/)                            | Sì            | No API        |                                               |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Sì            | Prossimamente |                                               |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prossimamente | No API        |                                               |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Sì            | Prossimamente |                                               |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Sì            | No API        | Nessun accesso richiesto                      |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì            | No API        | Nessun accesso richiesto                      |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Sì            | No API        | Nessun accesso richiesto                      |
 | [ChatGLM](https://chatglm.cn/blog)                           | Sì            | No API        | Nessun accesso richiesto                      |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Sì            | No API        | Nessun accesso richiesto                      |
 | [Gradio](https://gradio.app/)                                | Sì            | No API        | Per modelli Hugging Face/spazio auto-deploy   |
@@ -235,7 +233,7 @@ npm run electron:build -- -wml --x64 --arm64
 ### Altri
 
 - GPT-4 ha contribuito gran parte del codice.
-- ChatGPT, Bing Chat e Google hanno fornito molte soluzioni (elencati in ordine).
+- ChatGPT, Copilot e Google hanno fornito molte soluzioni (elencati in ordine).
 - Progetto ispirato da [ChatHub](https://github.com/chathub-dev/chathub). Rispetto!
 
 ## Sponsor
