@@ -21,16 +21,15 @@ Các Chat bots AI dựa trên Mô hình ngôn ngữ lớn (Large Language Models
 | AI Bots                                                      | Truy cập Web | API          | Ghi chú                                               |
 | ------------------------------------------------------------ | ------------ | ------------ | ----------------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Có           | Có           | Bao gồm cả trình duyệt Web                            |
-| [Bing Chat](https://www.bing.com/new)                        | Có           | Không có API |                                                       |
+| [Copilot](https://www.bing.com/new)                        | Có           | Không có API |                                                       |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No           | Có           |                                                       |
-| [Bard](https://bard.google.com/)                             | Có           | Không có API |                                                       |
+| [Gemini](https://gemini.google.com/)                             | Có           | Không có API |                                                       |
 | [Poe](https://poe.com/)                                      | Có           | Sắp ra mắt   |                                                       |
 | [MOSS](https://moss.fastnlp.top/)                            | Có           | Không có API |                                                       |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Có           | Sắp ra mắt   |                                                       |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Sắp ra mắt   | Không có API |                                                       |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Có           | Sắp ra mắt   |                                                       |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
 | [ChatGLM](https://chatglm.cn/blog)                           | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
 | [Gradio](https://gradio.app/)                                | Có           | Không có API | Dành cho models Hugging Face không gian/tự triển khai |
@@ -114,7 +113,7 @@ npm run electron:build -- -wml --x64 --arm64
 ### Vài thông tin khác
 
 - GPT-4 đóng góp rất nhiều mã nguồn
-- ChatGPT, Bing Chat và Google cung cấp nhiều giải pháp (được xếp hạng theo thứ tự)
+- ChatGPT, Copilot và Google cung cấp nhiều giải pháp (được xếp hạng theo thứ tự)
 - Lấy cảm hứng từ [ChatHub](https://github.com/chathub-dev/chathub). Tôn trọng!
 
 ## Sponsor

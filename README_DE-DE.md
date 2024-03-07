@@ -21,16 +21,15 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 | AI Bots                                                      | Web Zugang  | API         | Notizen                                      |
 | ------------------------------------------------------------ | ----------- | ----------- | -------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web-Browsing inklusive                       |
-| [Bing Chat](https://www.bing.com/new)                        | Yes         | No API      | Kein Login erforderlich                      |
+| [Copilot](https://www.bing.com/new)                        | Yes         | No API      | Kein Login erforderlich                      |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                              |
-| [Bard](https://bard.google.com/)                             | Yes         | Coming soon |                                              |
+| [Gemini](https://gemini.google.com/)                             | Yes         | Coming soon |                                              |
 | [Poe](https://poe.com/)                                      | Yes         | Coming soon |                                              |
 | [MOSS](https://moss.fastnlp.top/)                            | Yes         | No API      |                                              |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Yes         | Coming soon |                                              |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Coming soon | No API      |                                              |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Yes         | Coming soon |                                              |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Yes         | No API      | Kein Login erforderlich                      |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | Kein Login erforderlich                      |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | Kein Login erforderlich                      |
 | [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | Kein Login erforderlich                      |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | Kein Login erforderlich                      |
 | [Gradio](https://gradio.app/)                                | Yes         | No API      | Für Hugging Face space/self-deployed Modelle |
@@ -116,7 +115,7 @@ npm run electron:build -- -wml --x64 --arm64
 ### Andere
 
 - GPT-4 hat einen Großteil des Codes beigesteuert
-- ChatGPT, Bing Chat und Google bieten viele Lösungen (in dieser Reihenfolge)
+- ChatGPT, Copilot und Google bieten viele Lösungen (in dieser Reihenfolge)
 - Inspiriert von [ChatHub](https://github.com/chathub-dev/chathub). Respekt!
 
 ## Sponsor

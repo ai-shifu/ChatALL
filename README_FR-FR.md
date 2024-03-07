@@ -21,16 +21,15 @@ Les robots d'intelligence artificielle basés sur les grands modèles de langage
 | AI Bots                                                      | Accès web     | API           | Notes                                             |
 | ------------------------------------------------------------ | ------------- | ------------- | ------------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                           | Oui           | Oui           | Navigation web incluse                            |
-| [Bing Chat](https://www.bing.com/new)                        | Oui           | Non           |                                                   |
+| [Copilot](https://www.bing.com/new)                        | Oui           | Non           |                                                   |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                      | Non           | Oui           |                                                   |
-| [Bard](https://bard.google.com/)                             | Oui           | Non           |                                                   |
+| [Gemini](https://gemini.google.com/)                             | Oui           | Non           |                                                   |
 | [Poe](https://poe.com/)                                      | Oui           | Prochainement |                                                   |
 | [MOSS](https://moss.fastnlp.top/)                            | Oui           | Non           |                                                   |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Oui           | Prochainement |                                                   |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prochainement | Non           |                                                   |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Oui           | Prochainement |                                                   |
-| [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)   | Oui           | Non           | Pas besoin de compte ou de clé API                |
-| [Vicuna](https://lmsys.org/blog/2023-03-30-vicuna/)          | Oui           | Non           | Pas besoin de compte ou de clé API                |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Oui           | Non           | Pas besoin de compte ou de clé API                |
 | [ChatGLM](https://chatglm.cn/blog)                           | Oui           | Non           | Pas besoin de compte ou de clé API                |
 | [Claude](https://www.anthropic.com/index/introducing-claude) | Oui           | Non           | Pas besoin de compte ou de clé API                |
 | [Gradio](https://gradio.app/)                                | Oui           | Non           | Pour les modèles Hugging Face space/self-deployed |
@@ -114,7 +113,7 @@ npm run electron:build -- -wml --x64 --arm64
 ### Autres
 
 - GPT-4 a contribué à une grande partie du code
-- ChatGPT, Bing Chat et Google fournissent de nombreuses solutions (classées par ordre).
+- ChatGPT, Copilot et Google fournissent de nombreuses solutions (classées par ordre).
 - Inspiré par [ChatHub] (https://github.com/chathub-dev/chathub). Respect !
 
 ## Sponsor
