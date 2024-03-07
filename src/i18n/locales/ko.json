@@ -81,7 +81,9 @@
     "description": "설명",
     "botNameDesc": "선택한 응답의 봇 이름",
     "botResponseDesc": "선택된 응답",
-    "loading": "로드 중..."
+    "loading": "로드 중...",
+    "updateDebounceInterval": "메시지 업데이트 간격 (밀리초)",
+    "updateDebounceIntervalDesc": "이 값은 AI봇이 응답할 때 메시지 업데이트 속도를 조절합니다. 값이 높으면 메시지 처리가 지연되고 한 번에 업데이트되는 것이 더 효율적입니다. 값이 낮으면 메시지가 더 빨리 업데이트되지만 성능 문제가 발생할 수 있습니다."
   },
   "bot": {
     "creatingConversation": "대화를 만드는 중...",
@@ -112,7 +114,9 @@
     "azureOpenAIApiVersionPrompt": "https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions에서 지원되는 버전 다운로드"
   },
   "bard": {
-    "name": "Gemini"
+    "name": "Gemini",
+    "gemini-pro": "Gemini",
+    "gemini-ultra": "Gemini 고급"
   },
   "bingChat": {
     "name": "Copilot",
