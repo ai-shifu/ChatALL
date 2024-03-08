@@ -186,7 +186,9 @@
     "llama-2-7b-chat": "llama-2-7b",
     "llama-2-70b-chat": "llama-2-70b",
     "gemma-7b-it": "gemma-7b-it",
-    "gemma-2b-it": "gemma-2b-it"
+    "gemma-2b-it": "gemma-2b-it",
+    "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
+    "claude-3-opus-20240229": "claude-3-opus-20240229"
   },
   "moss": {
     "name": "MOSS"

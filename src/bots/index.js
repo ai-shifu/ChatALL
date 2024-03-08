@@ -62,6 +62,8 @@ import Zephyr7bBot from "./huggingface/Zephyr7bBot";
 import GeminiAdvBot from "./google/GeminiAdvBot";
 import Gemma7bItBot from "./lmsys/Gemma7bItBot";
 import Gemma2bItBot from "./lmsys/Gemma2bItBot";
+import Claude3SonnetBot from "./lmsys/Claude3SonnetBot";
+import Claude3OpusBot from "./lmsys/Claude3OpusBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -79,6 +81,8 @@ const all = [
   ClaudeBot.getInstance(),
   ClaudeAIBot.getInstance(),
   ClaudePlusPoeBot.getInstance(),
+  Claude3OpusBot.getInstance(),
+  Claude3SonnetBot.getInstance(),
   CodeLlama34bPoeBot.getInstance(),
   CodeLlamaHCBot.getInstance(),
   CodeLlamaBot.getInstance(),
@@ -202,6 +206,8 @@ export const botTags = {
     bots.getBotByClassName("Zephyr7bBot"),
     bots.getBotByClassName("Gemma2bItBot"),
     bots.getBotByClassName("Gemma7bItBot"),
+    bots.getBotByClassName("Claude3SonnetBot"),
+    bots.getBotByClassName("Claude3OpusBot"),
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
@@ -238,6 +244,8 @@ export const botTags = {
     bots.getBotByClassName("Zephyr7bBot"),
     bots.getBotByClassName("Gemma2bItBot"),
     bots.getBotByClassName("Gemma7bItBot"),
+    bots.getBotByClassName("Claude3SonnetBot"),
+    bots.getBotByClassName("Claude3OpusBot"),
   ],
   api: [
     bots.getBotByClassName("GeminiBot"),
