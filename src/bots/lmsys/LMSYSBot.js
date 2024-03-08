@@ -45,7 +45,7 @@ export default class LMSYSBot extends GradioBot {
 
       if (dataOne.length > 0) {
         const dataTwo = dataOne[dataOne.length - 1];
-        const dataThree = dataTwo[1];
+        const dataThree = dataTwo[dataTwo.length - 1];
         r = dataThree;
       }
     }
