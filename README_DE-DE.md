@@ -18,23 +18,23 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 
 ### Supported bots
 
-| AI Bots                                                      | Web Zugang  | API         | Notizen                                      |
-| ------------------------------------------------------------ | ----------- | ----------- | -------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Yes         | Yes         | Web-Browsing inklusive                       |
-| [Copilot](https://www.bing.com/new)                        | Yes         | No API      | Kein Login erforderlich                      |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No          | Yes         |                                              |
-| [Gemini](https://gemini.google.com/)                             | Yes         | Coming soon |                                              |
-| [Poe](https://poe.com/)                                      | Yes         | Coming soon |                                              |
-| [MOSS](https://moss.fastnlp.top/)                            | Yes         | No API      |                                              |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Yes         | Coming soon |                                              |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Coming soon | No API      |                                              |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Yes         | Coming soon |                                              |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Yes         | No API      | Kein Login erforderlich                      |
-| [ChatGLM](https://chatglm.cn/blog)                           | Yes         | No API      | Kein Login erforderlich                      |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Yes         | No API      | Kein Login erforderlich                      |
-| [Gradio](https://gradio.app/)                                | Yes         | No API      | Für Hugging Face space/self-deployed Modelle |
-| [HuggingChat](https://huggingface.co/chat/)                  | Yes         | No API      |                                              |
-| [QianWen](https://qianwen.aliyun.com/)                       | Yes         | Coming soon |                                              |
+| AI Bots                                                       | Web Zugang  | API         | Notizen                                      |
+| ------------------------------------------------------------- | ----------- | ----------- | -------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                            | Yes         | Yes         | Web-Browsing inklusive                       |
+| [Copilot](https://copilot.microsoft.com/)                     | Yes         | No API      | Kein Login erforderlich                      |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                       | No          | Yes         |                                              |
+| [Gemini](https://gemini.google.com/)                          | Yes         | Coming soon |                                              |
+| [Poe](https://poe.com/)                                       | Yes         | Coming soon |                                              |
+| [MOSS](https://moss.fastnlp.top/)                             | Yes         | No API      |                                              |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                   | Yes         | Coming soon |                                              |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)              | Coming soon | No API      |                                              |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                     | Yes         | Coming soon |                                              |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/) | Yes         | No API      | Kein Login erforderlich                      |
+| [ChatGLM](https://chatglm.cn/blog)                            | Yes         | No API      | Kein Login erforderlich                      |
+| [Claude](https://www.anthropic.com/index/introducing-claude)  | Yes         | No API      | Kein Login erforderlich                      |
+| [Gradio](https://gradio.app/)                                 | Yes         | No API      | Für Hugging Face space/self-deployed Modelle |
+| [HuggingChat](https://huggingface.co/chat/)                   | Yes         | No API      |                                              |
+| [QianWen](https://qianwen.aliyun.com/)                        | Yes         | Coming soon |                                              |
 
 Und mehr...
 

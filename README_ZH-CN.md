@@ -29,15 +29,15 @@ ChatALL 的典型用户是：
 | AI 机器人                                                                      | 网页访问 | API      | 说明                                     |
 | ------------------------------------------------------------------------------ | -------- | -------- | ---------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                                             | 支持     | 支持     | 包含 Web Browsing、Azure OpenAI service  |
-| [Copilot](https://www.bing.com/new)                                          | 支持     | 无 API   | 不需要帐号                               |
+| [Copilot](https://copilot.microsoft.com/)                                      | 支持     | 无 API   | 不需要帐号                               |
 | [文心一言](https://yiyan.baidu.com/)                                           | 否       | 支持     |                                          |
-| [Gemini](https://gemini.google.com/)                                               | 支持     | 即将推出 |                                          |
+| [Gemini](https://gemini.google.com/)                                           | 支持     | 即将推出 |                                          |
 | [Poe](https://poe.com/)                                                        | 支持     | 即将推出 |                                          |
 | [MOSS](https://moss.fastnlp.top/)                                              | 支持     | 无 API   |                                          |
 | [通义千问](http://tongyi.aliyun.com/)                                          | 支持     | 即将推出 |                                          |
 | [得到学习助手](https://ai.dedao.cn/)                                           | 即将推出 | 无 API   |                                          |
 | [讯飞星火](http://xinghuo.xfyun.cn/)                                           | 支持     | 即将推出 |                                          |
-| [Vicuna 13B 和 33B](https://lmsys.org/blog/2023-03-30-vicuna/)             | 支持     | 无 API   | 不需要帐号                               |
+| [Vicuna 13B 和 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                 | 支持     | 无 API   | 不需要帐号                               |
 | [ChatGLM2 6B 和 130B](https://chatglm.cn/blog)                                 | 支持     | 无 API   | 不需要帐号                               |
 | [Claude 2 和 Instant](https://www.anthropic.com/index/claude-2)                | 支持     | 无 API   | 不需要帐号                               |
 | [Gradio](httpps://gradio.app/)                                                 | 支持     | 无 API   | 用于 Hugging Face space 或自己部署的模型 |
@@ -49,9 +49,9 @@ ChatALL 的典型用户是：
 | [YouChat](https://you.com/)                                                    | 支持     | 无       |                                          |
 | [Open Assistant](https://open-assistant.io/)                                   | 支持     | 无       |                                          |
 | [Character.AI](https://character.ai/)                                          | 支持     | 无       |                                          |
-| [Llama 2 13B 和 70B](https://ai.meta.com/llama/)                           | 支持     | 无 API   |                                          |
+| [Llama 2 13B 和 70B](https://ai.meta.com/llama/)                               | 支持     | 无 API   |                                          |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 支持     | 无 API   |                                          |
-| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                    | 支持     | 无 API   |                                          |
+| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | 支持     | 无 API   |                                          |
 | [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | 支持     | 无 API   |                                          |
 | [Phind](https://www.phind.com/)                                                | 支持     | 无 API   |                                          |
 

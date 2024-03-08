@@ -18,23 +18,23 @@ Các Chat bots AI dựa trên Mô hình ngôn ngữ lớn (Large Language Models
 
 ### Danh sách AI Bots được hỗ trợ
 
-| AI Bots                                                      | Truy cập Web | API          | Ghi chú                                               |
-| ------------------------------------------------------------ | ------------ | ------------ | ----------------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Có           | Có           | Bao gồm cả trình duyệt Web                            |
-| [Copilot](https://www.bing.com/new)                        | Có           | Không có API |                                                       |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | No           | Có           |                                                       |
-| [Gemini](https://gemini.google.com/)                             | Có           | Không có API |                                                       |
-| [Poe](https://poe.com/)                                      | Có           | Sắp ra mắt   |                                                       |
-| [MOSS](https://moss.fastnlp.top/)                            | Có           | Không có API |                                                       |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Có           | Sắp ra mắt   |                                                       |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Sắp ra mắt   | Không có API |                                                       |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Có           | Sắp ra mắt   |                                                       |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
-| [ChatGLM](https://chatglm.cn/blog)                           | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
-| [Gradio](https://gradio.app/)                                | Có           | Không có API | Dành cho models Hugging Face không gian/tự triển khai |
-| [HuggingChat](https://huggingface.co/chat/)                  | Có           | Không có API |                                                       |
-| [QianWen](https://qianwen.aliyun.com/)                       | Có           | Sắp ra mắt   |                                                       |
+| AI Bots                                                       | Truy cập Web | API          | Ghi chú                                               |
+| ------------------------------------------------------------- | ------------ | ------------ | ----------------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                            | Có           | Có           | Bao gồm cả trình duyệt Web                            |
+| [Copilot](https://copilot.microsoft.com/)                     | Có           | Không có API |                                                       |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                       | No           | Có           |                                                       |
+| [Gemini](https://gemini.google.com/)                          | Có           | Không có API |                                                       |
+| [Poe](https://poe.com/)                                       | Có           | Sắp ra mắt   |                                                       |
+| [MOSS](https://moss.fastnlp.top/)                             | Có           | Không có API |                                                       |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                   | Có           | Sắp ra mắt   |                                                       |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)              | Sắp ra mắt   | Không có API |                                                       |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                     | Có           | Sắp ra mắt   |                                                       |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/) | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
+| [ChatGLM](https://chatglm.cn/blog)                            | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
+| [Claude](https://www.anthropic.com/index/introducing-claude)  | Có           | Không có API | Không yêu cầu tài khoản hoặc khóa API                 |
+| [Gradio](https://gradio.app/)                                 | Có           | Không có API | Dành cho models Hugging Face không gian/tự triển khai |
+| [HuggingChat](https://huggingface.co/chat/)                   | Có           | Không có API |                                                       |
+| [QianWen](https://qianwen.aliyun.com/)                        | Có           | Sắp ra mắt   |                                                       |
 
 Và hơn thế nữa ...
 

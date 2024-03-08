@@ -29,7 +29,7 @@ Typical users of ChatALL are:
 | AI Bots                                                                        | Web Access  | API         | Notes                                       |
 | ------------------------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                                             | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
-| [Copilot](https://www.bing.com/new)                                          | Yes         | No API      |                                             |
+| [Copilot](https://copilot.microsoft.com/)                                      | Yes         | No API      |                                             |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                        | No          | Yes         |                                             |
 | [Gemini](https://gemini.google.com/)                                           | Yes         | Coming soon |                                             |
 | [Poe](https://poe.com/)                                                        | Yes         | Coming soon |                                             |
@@ -37,7 +37,7 @@ Typical users of ChatALL are:
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Yes         | Coming soon |                                             |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Coming soon | No API      |                                             |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Yes         | Coming soon |                                             |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)              | Yes         | No API      | No Login required                           |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Yes         | No API      | No Login required                           |
 | [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Yes         | No API      | No Login required                           |
 | [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                 | Yes         | No API      |                                             |
 | [Gradio](https://gradio.app/)                                                  | Yes         | No API      | For Hugging Face space/self-deployed models |
@@ -49,9 +49,9 @@ Typical users of ChatALL are:
 | [YouChat](https://you.com/)                                                    | Yes         | No API      |                                             |
 | [Open Assistant](https://open-assistant.io/)                                   | Yes         | No API      |                                             |
 | [Character.AI](https://character.ai/)                                          | Yes         | No API      |                                             |
-| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                            | Yes         | No API      |                                             |
+| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Yes         | No API      |                                             |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Yes         | No API      |                                             |
-| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                     | Yes         | No API      |                                             |
+| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Yes         | No API      |                                             |
 | [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | Yes         | No API      |                                             |
 | [Phind](https://www.phind.com/)                                                | Yes         | No API      |                                             |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Yes         | No API      |                                             |

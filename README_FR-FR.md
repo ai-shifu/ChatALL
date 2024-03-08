@@ -18,23 +18,23 @@ Les robots d'intelligence artificielle basés sur les grands modèles de langage
 
 ### Bots pris en charge
 
-| AI Bots                                                      | Accès web     | API           | Notes                                             |
-| ------------------------------------------------------------ | ------------- | ------------- | ------------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                           | Oui           | Oui           | Navigation web incluse                            |
-| [Copilot](https://www.bing.com/new)                        | Oui           | Non           |                                                   |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                      | Non           | Oui           |                                                   |
-| [Gemini](https://gemini.google.com/)                             | Oui           | Non           |                                                   |
-| [Poe](https://poe.com/)                                      | Oui           | Prochainement |                                                   |
-| [MOSS](https://moss.fastnlp.top/)                            | Oui           | Non           |                                                   |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                  | Oui           | Prochainement |                                                   |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)             | Prochainement | Non           |                                                   |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                    | Oui           | Prochainement |                                                   |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)          | Oui           | Non           | Pas besoin de compte ou de clé API                |
-| [ChatGLM](https://chatglm.cn/blog)                           | Oui           | Non           | Pas besoin de compte ou de clé API                |
-| [Claude](https://www.anthropic.com/index/introducing-claude) | Oui           | Non           | Pas besoin de compte ou de clé API                |
-| [Gradio](https://gradio.app/)                                | Oui           | Non           | Pour les modèles Hugging Face space/self-deployed |
-| [HuggingChat](https://huggingface.co/chat/)                  | Oui           | Non           |                                                   |
-| [QianWen](https://qianwen.aliyun.com/)                       | Oui           | Prochainement |                                                   |
+| AI Bots                                                       | Accès web     | API           | Notes                                             |
+| ------------------------------------------------------------- | ------------- | ------------- | ------------------------------------------------- |
+| [ChatGPT](https://chat.openai.com)                            | Oui           | Oui           | Navigation web incluse                            |
+| [Copilot](https://copilot.microsoft.com/)                     | Oui           | Non           |                                                   |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                       | Non           | Oui           |                                                   |
+| [Gemini](https://gemini.google.com/)                          | Oui           | Non           |                                                   |
+| [Poe](https://poe.com/)                                       | Oui           | Prochainement |                                                   |
+| [MOSS](https://moss.fastnlp.top/)                             | Oui           | Non           |                                                   |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                   | Oui           | Prochainement |                                                   |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)              | Prochainement | Non           |                                                   |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                     | Oui           | Prochainement |                                                   |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/) | Oui           | Non           | Pas besoin de compte ou de clé API                |
+| [ChatGLM](https://chatglm.cn/blog)                            | Oui           | Non           | Pas besoin de compte ou de clé API                |
+| [Claude](https://www.anthropic.com/index/introducing-claude)  | Oui           | Non           | Pas besoin de compte ou de clé API                |
+| [Gradio](https://gradio.app/)                                 | Oui           | Non           | Pour les modèles Hugging Face space/self-deployed |
+| [HuggingChat](https://huggingface.co/chat/)                   | Oui           | Non           |                                                   |
+| [QianWen](https://qianwen.aliyun.com/)                        | Oui           | Prochainement |                                                   |
 
 Et plus...
 

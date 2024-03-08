@@ -29,17 +29,17 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | AI 봇                                                                          | 웹 액세스 | API       | 참고                                |
 | ------------------------------------------------------------------------------ | --------- | --------- | ----------------------------------- |
 | [ChatGPT](https://chat.openai.com)                                             | 예        | 예        | 웹 브라우징 포함                    |
-| [Copilot](https://www.bing.com/new)                                          | 예        | API 없음  | 로그인 필요 없음                    |
+| [Copilot](https://copilot.microsoft.com/)                                      | 예        | API 없음  | 로그인 필요 없음                    |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                        | 아니오    | 예        |                                     |
-| [Gemini](https://gemini.google.com/)                                               | 예        | API 없음  |                                     |
+| [Gemini](https://gemini.google.com/)                                           | 예        | API 없음  |                                     |
 | [Poe](https://poe.com/)                                                        | 예        | 근일 개봉 |                                     |
 | [MOSS](https://moss.fastnlp.top/)                                              | 예        | API 없음  |                                     |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | 예        | 근일 개봉 |                                     |
 | [Dedao Learning Assistant](https://ai.dedao.cn/)                               | 근일 개봉 | API 없음  |                                     |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | 예        | 근일 개봉 |                                     |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                       | 예        | API 없음  | 로그인 필요 없음                    |
-| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                            | 예        | API 없음  | 로그인 필요 없음                    |
-| [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                    | 예        | API 없음  | 로그인 필요 없음                   |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | 예        | API 없음  | 로그인 필요 없음                    |
+| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | 예        | API 없음  | 로그인 필요 없음                    |
+| [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                 | 예        | API 없음  | 로그인 필요 없음                    |
 | [Gradio](https://gradio.app/)                                                  | 예        | API 없음  | Hugging Face space/자체 배포 모델용 |
 | [HuggingChat](https://huggingface.co/chat/)                                    | 예        | API 없음  |                                     |
 | [SkyWork](https://neice.tiangong.cn/)                                          | 예        | 근일 개봉 |                                     |
@@ -49,12 +49,12 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [YouChat](https://you.com/)                                                    | 예        | API 없음  |                                     |
 | [Open Assistant](https://open-assistant.io/)                                   | 예        | API 없음  |                                     |
 | [Character.AI](https://character.ai/)                                          | 예        | API 없음  |                                     |
-| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                            | 예        | API 없음  |                                     |
+| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | 예        | API 없음  |                                     |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예        | API 없음  |                                     |
-| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                     | 예        | API 없음  |                                     |
-| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                     | 예        | API 없음  |                                     |
+| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | 예        | API 없음  |                                     |
+| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | 예        | API 없음  |                                     |
 | [Phind](https://www.phind.com/)                                                | 예        | API 없음  |                                     |
-| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 예         | API 없음     |                                             |
+| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 예        | API 없음  |                                     |
 
 더 많은 것이 오고 있습니다. [이 문제들](https://github.com/sunner/ChatALL/labels/more%20LLMs)에서 좋아하는 봇을 추천하세요.
 
