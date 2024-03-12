@@ -80,7 +80,6 @@ export default createStore({
     },
     claudeAi: {
       org: "",
-      model: "claude-2.0",
     },
     poe: {
       formkey: "",
