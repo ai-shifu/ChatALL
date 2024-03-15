@@ -59,6 +59,11 @@
                     @update:model-value="setCurrentMode($event)"
                   ></v-select>
                 </v-list-item>
+                <CommonBotSettings
+                  :settings="settings"
+                  brand-id="general"
+                  mutation-type="setGeneral"
+                ></CommonBotSettings>
               </div>
 
               <div v-if="tab == 'proxy'">
@@ -84,13 +89,15 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
 import { useTheme } from "vuetify";
+import { Type } from "@/components/BotSettings/settings.const";
 
 import ProxySettings from "@/components/ProxySetting.vue";
 import ChatSettings from "@/components/ChatSetting.vue";
+import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 
 import ChatGPTBotSettings from "@/components/BotSettings/ChatGPTBotSettings.vue";
 import OpenAIAPIBotSettings from "@/components/BotSettings/OpenAIAPIBotSettings.vue";
@@ -196,6 +203,23 @@ const closeDialog = () => {
   emit("update:open", false);
   emit("done");
 };
+
+const settings = [
+  {
+    type: Type.Checkbox,
+    name: "isShowMenuBar",
+    label: "Show Menu Bar",
+  },
+];
+
+watch(
+  () => store.state.general.isShowMenuBar,
+  () =>
+    ipcRenderer.invoke(
+      "set-is-show-menu-bar",
+      store.state.general.isShowMenuBar,
+    ),
+);
 </script>
 
 <style scoped>

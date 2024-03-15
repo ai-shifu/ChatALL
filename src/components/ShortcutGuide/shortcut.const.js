@@ -93,6 +93,16 @@ export const SHORTCUT_PROMPT_MANAGEMENT = {
   flexDirection: "column",
 };
 
+export const SHORTCUT_APP_BAR = {
+  elementId: "app-bar",
+  key: [modifier, "f11"],
+  offset: {
+    top: 20,
+    left: -200,
+  },
+  alignHorizontallyCenter: true,
+};
+
 export const SHORTCUT_LIST = [
   SHORTCUT_FIND,
   SHORTCUT_SETTINGS,
@@ -104,6 +114,7 @@ export const SHORTCUT_LIST = [
   SHORTCUT_NEW_CHAT,
   SHORTCUT_PROMPT_MANAGEMENT,
   SHORTCUT_PROMPT_PRE_NEXT,
+  SHORTCUT_APP_BAR,
   {
     elementId: "column-1",
     key: ["f1"],
