@@ -114,6 +114,10 @@ export default createStore({
     chat: {
       updateDebounceInterval: 100,
     },
+    general: {
+      isShowMenuBar: true,
+      isShowAppBar: true,
+    },
   },
   mutations: {
     changeColumns(state, n) {
@@ -253,6 +257,9 @@ export default createStore({
     },
     setMode(state, mode) {
       state.mode = mode;
+    },
+    setGeneral(state, values) {
+      state.general = { ...state.general, ...values };
     },
     createChat(state) {
       const { favBots } = state.chats[state.currentChatIndex];

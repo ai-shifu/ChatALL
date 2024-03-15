@@ -365,6 +365,10 @@ ipcMain.handle("save-proxy-and-restart", async () => {
 });
 // Proxy Setting End
 
+ipcMain.handle("set-is-show-menu-bar", (_, isShowMenuBar) => {
+  mainWindow.setMenuBarVisibility(isShowMenuBar);
+});
+
 ipcMain.handle("get-cookies", async (event, filter) => {
   return await getCookies(filter);
 });

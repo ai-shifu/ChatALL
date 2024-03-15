@@ -24,7 +24,7 @@
         "
       ></v-text-field>
       <v-select
-        v-if="setting.type === Type.Select"
+        v-else-if="setting.type === Type.Select"
         v-model="settingState[setting.name]"
         outlined
         dense
@@ -78,7 +78,7 @@
         </template>
       </v-slider>
       <v-combobox
-        v-if="setting.type === Type.Combobox"
+        v-else-if="setting.type === Type.Combobox"
         v-model="settingState[setting.name]"
         outlined
         dense
@@ -90,6 +90,19 @@
           store.commit(mutationType, { [setting.name]: $event })
         "
       ></v-combobox>
+      <v-checkbox
+        v-else-if="setting.type === Type.Checkbox"
+        v-model="settingState[setting.name]"
+        outlined
+        dense
+        color="primary"
+        :label="setting.label"
+        :placeholder="setting.placeholder"
+        :hide-details="setting.hideDetails"
+        @update:model-value="
+          store.commit(mutationType, { [setting.name]: $event })
+        "
+      ></v-checkbox>
     </template>
   </v-list-item>
 </template>

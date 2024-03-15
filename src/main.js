@@ -48,6 +48,7 @@ await Chats.addFirstChatIfEmpty();
 const defaultTheme = await resolveTheme(store.state.mode, ipcRenderer);
 store.commit("setTheme", defaultTheme);
 applyTheme(defaultTheme);
+ipcRenderer.invoke("set-is-show-menu-bar", store.state.general.isShowMenuBar);
 
 const vuetify = createVuetify({
   components: { ...components },
