@@ -284,10 +284,10 @@ function createNewWindow(url, userAgent = "") {
         // Get QianWen bot's XSRF-TOKEN
         const token = await getCookie("XSRF-TOKEN");
         mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
-      } else if (url.startsWith("https://neice.tiangong.cn/")) {
+      } else if (url.startsWith("https://chat.tiangong.cn/")) {
         // Get the tokens of SkyWork
-        const inviteToken = await getLocalStorage("formNatureQueueWaitToken");
-        const token = await getLocalStorage("formNatureResearchToken");
+        const inviteToken = await getLocalStorage("aiChatQueueWaitToken");
+        const token = await getLocalStorage("aiChatResearchToken");
         mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
       } else if (url.startsWith("https://character.ai/")) {
         const token = await getLocalStorage("char_token");
