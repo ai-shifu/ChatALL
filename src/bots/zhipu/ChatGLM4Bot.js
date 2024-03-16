@@ -51,7 +51,11 @@ export default class ChatGLM4Bot extends ChatGLMBot {
             withCredentials: true,
           },
         );
+
+        let beginning = "";
         source.addEventListener("message", (event) => {
+          let body = "";
+          let ending = "";
           let data = JSON.parse(event.data);
 
           if (!context.conversation_id && data.conversation_id) {
@@ -59,12 +63,32 @@ export default class ChatGLM4Bot extends ChatGLMBot {
             this.setChatContext(context);
           }
 
-          const text = data.parts?.[0]?.content?.[0]?.text || "";
+          const response = data.parts?.[0];
+          if (!response || response.role !== "assistant") return;
+          const content = response.content[0];
+          if (!content) return;
+
+          // Parse search tool calls
+          if (content.type === "tool_calls" && response.status === "init") {
+            if (content.tool_calls.name === "browser") {
+              const info = content.tool_calls.arguments;
+              if (info.startsWith("search")) {
+                beginning += `> ${info}\n`;
+              }
+            }
+          } else if (content.type === "text") {
+            body = content.text;
+            response.meta_data?.citations?.forEach((citation) => {
+              ending += `> 1. [${citation.metadata.title}](${citation.metadata.url})\n`;
+            });
+          }
+
+          const done = data.status === "finish";
           onUpdateResponse(callbackParam, {
-            content: text,
-            done: data.status === "finish",
+            content: `${beginning}\n${body}\n${ending}`,
+            done,
           });
-          resolve();
+          done && resolve();
         });
         source.stream();
       } catch (err) {
