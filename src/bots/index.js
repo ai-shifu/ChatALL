@@ -15,7 +15,7 @@ import OpenAIAPI4128KBot from "@/bots/openai/OpenAIAPI4128KBot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
 import VicunaBot from "@/bots/lmsys/VicunaBot";
-import ChatGLMBot from "@/bots/ChatGLMBot";
+import ChatGLMBot from "@/bots/zhipu/ChatGLMBot";
 import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
@@ -64,6 +64,7 @@ import Gemma7bItBot from "./lmsys/Gemma7bItBot";
 import Gemma2bItBot from "./lmsys/Gemma2bItBot";
 import Claude3SonnetBot from "./lmsys/Claude3SonnetBot";
 import Claude3OpusBot from "./lmsys/Claude3OpusBot";
+import ChatGLM4Bot from "./zhipu/ChatGLM4Bot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -73,9 +74,10 @@ const all = [
   BingChatBalancedBot.getInstance(),
   BingChatPreciseBot.getInstance(),
   CharacterAIBot.getInstance(),
-  ChatGLMBot.getInstance(),
   ChatGLM6bBot.getInstance(),
   ChatGLM36bBot.getInstance(),
+  ChatGLMBot.getInstance(),
+  ChatGLM4Bot.getInstance(),
   ClaudeInstantPoeBot.getInstance(),
   ClaudeInstant100kPoeBot.getInstance(),
   ClaudeBot.getInstance(),
@@ -167,6 +169,7 @@ export const botTags = {
     bots.getBotByClassName("BingChatCreativeBot"),
     bots.getBotByClassName("BingChatPreciseBot"),
     bots.getBotByClassName("ChatGLMBot"),
+    bots.getBotByClassName("ChatGLM4Bot"),
     bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("ChatGLM36bBot"),
     bots.getBotByClassName("ChatGPT35Bot"),
@@ -268,6 +271,7 @@ export const botTags = {
     bots.getBotByClassName("WenxinQianfan4Bot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("ChatGLMBot"),
+    bots.getBotByClassName("ChatGLM4Bot"),
     bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("ChatGLM36bBot"),
   ],

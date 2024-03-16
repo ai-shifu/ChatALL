@@ -239,7 +239,9 @@
     "name": "YouChat"
   },
   "chatGlm": {
-    "name": "ChatGLM"
+    "name": "ChatGLM",
+    "GLM-3": "GLM-3",
+    "GLM-4": "GLM-4"
   },
   "pi": {
     "name": "Pi",
