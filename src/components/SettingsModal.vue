@@ -123,6 +123,7 @@ import OpenAssistantBotSettings from "./BotSettings/OpenAssistantBotSettings.vue
 import CharacterAIBotSettings from "./BotSettings/CharacterAIBotSettings.vue";
 import ClaudeAIBotSettings from "./BotSettings/ClaudeAIBotSettings.vue";
 import ChatGLMBotSettings from "./BotSettings/ChatGLMBotSettings.vue";
+import KimiBotSettings from "./BotSettings/KimiBotSettings.vue";
 
 import { resolveTheme, applyTheme, Mode } from "../theme";
 
@@ -148,6 +149,7 @@ const botSettings = [
   { brand: "falcon", component: Falcon180bBotSettings },
   { brand: "gradio", component: GradioAppBotSettings },
   { brand: "huggingChat", component: HuggingChatBotSettings },
+  { brand: "kimi", component: KimiBotSettings },
   { brand: "lmsys", component: LMSYSBotSettings },
   { brand: "moss", component: MOSSBotSettings },
   { brand: "openaiApi", component: OpenAIAPIBotSettings },
