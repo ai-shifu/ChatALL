@@ -102,6 +102,8 @@ export default class QianWenBot extends Bot {
         });
 
         source.addEventListener("message", (event) => {
+          if (event.data === "[DONE]") return;
+
           if (event.data === "") {
             // Empty message usually means error
             const resp = JSON.parse(source.chunk);
