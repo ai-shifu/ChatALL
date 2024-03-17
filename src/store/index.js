@@ -62,6 +62,10 @@ export default createStore({
     chatGlm: {
       token: "",
     },
+    kimi: {
+      access_token: "",
+      refresh_token: "",
+    },
     qianWen: {
       xsrfToken: "",
     },
@@ -198,6 +202,9 @@ export default createStore({
     },
     setSkyWork(state, tokens) {
       state.skyWork = { ...state.skyWork, ...tokens };
+    },
+    setKimi(state, tokens) {
+      state.kimi = { ...state.kimi, ...tokens };
     },
     setWenxinQianfan(state, values) {
       state.wenxinQianfan = { ...state.wenxinQianfan, ...values };

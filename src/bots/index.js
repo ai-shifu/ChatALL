@@ -65,6 +65,7 @@ import Gemma2bItBot from "./lmsys/Gemma2bItBot";
 import Claude3SonnetBot from "./lmsys/Claude3SonnetBot";
 import Claude3OpusBot from "./lmsys/Claude3OpusBot";
 import ChatGLM4Bot from "./zhipu/ChatGLM4Bot";
+import KimiBot from "./moonshot/KimiBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -111,6 +112,7 @@ const all = [
   OpenAIAPI4128KBot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
   GradioAppBot.getInstance(),
+  KimiBot.getInstance(),
   Llama27bBot.getInstance(),
   Llama213bBot.getInstance(),
   Llama270bPoeBot.getInstance(),
@@ -211,6 +213,7 @@ export const botTags = {
     bots.getBotByClassName("Gemma7bItBot"),
     bots.getBotByClassName("Claude3SonnetBot"),
     bots.getBotByClassName("Claude3OpusBot"),
+    bots.getBotByClassName("KimiBot"),
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
@@ -274,6 +277,7 @@ export const botTags = {
     bots.getBotByClassName("ChatGLM4Bot"),
     bots.getBotByClassName("ChatGLM6bBot"),
     bots.getBotByClassName("ChatGLM36bBot"),
+    bots.getBotByClassName("KimiBot"),
   ],
 };
 export default bots;

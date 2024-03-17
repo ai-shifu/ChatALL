@@ -169,6 +169,11 @@
     "urlPrompt": "您自己的 Gradio app URL。如使用 Hugging Face 的 space，点击 space 右上角的 \"Embed this space\" 获取 direct URL",
     "waiting": "当前有 { queue_size } 个请求在队列中，你在第 { rank } 位，预计还要等待 { queue_eta } 秒"
   },
+  "kimi": {
+    "name": "Kimi",
+    "found": "找到了第 {num} 篇资料：",
+    "searching": "搜索中..."
+  },
   "lmsys": {
     "name": "LMSYS",
     "vicuna-7b": "vicuna-7b",

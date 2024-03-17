@@ -303,6 +303,13 @@ function createNewWindow(url, userAgent = "") {
       } else if (url.startsWith("https://chatglm.cn/")) {
         const token = await getCookie("chatglm_token");
         mainWindow.webContents.send("CHATGLM-TOKENS", { token });
+      } else if (url.startsWith("https://kimi.moonshot.cn/")) {
+        const access_token = await getLocalStorage("access_token");
+        const refresh_token = await getLocalStorage("refresh_token");
+        mainWindow.webContents.send("KIMI-TOKENS", {
+          access_token,
+          refresh_token,
+        });
       }
     } catch (err) {
       console.error(err);
