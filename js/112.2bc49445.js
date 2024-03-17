@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkchatall"]=self["webpackChunkchatall"]||[]).push([[112],{96112:function(t,n,e){e.r(n),e.d(n,{default:function(){return h}});var o=e(66252);function r(t,n,e,r,i,u){const a=(0,o.up)("login-setting");return(0,o.wg)(),(0,o.j4)(a,{bot:i.bot},null,8,["bot"])}var i=e(33907),u=e(25888),a=e(35562);const c=window.require("electron"),s=c.ipcRenderer;var l={components:{LoginSetting:a["default"]},data(){return{bot:u.Z.getInstance()}},mounted(){s.on("KIMI-TOKENS",((t,n)=>{this.setKimi(n)}))},methods:{...(0,i.OI)(["setKimi"])}},d=e(83744);const f=(0,d.Z)(l,[["render",r]]);var h=f}}]);
-//# sourceMappingURL=112.414f5624.js.map
+//# sourceMappingURL=112.2bc49445.js.map
