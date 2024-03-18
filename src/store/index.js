@@ -62,10 +62,6 @@ export default createStore({
     chatGlm: {
       token: "",
     },
-    kimi: {
-      access_token: "",
-      refresh_token: "",
-    },
     qianWen: {
       xsrfToken: "",
     },
@@ -117,10 +113,6 @@ export default createStore({
     selectedResponses: [],
     chat: {
       updateDebounceInterval: 100,
-    },
-    general: {
-      isShowMenuBar: true,
-      isShowAppBar: true,
     },
   },
   mutations: {
@@ -203,9 +195,6 @@ export default createStore({
     setSkyWork(state, tokens) {
       state.skyWork = { ...state.skyWork, ...tokens };
     },
-    setKimi(state, tokens) {
-      state.kimi = { ...state.kimi, ...tokens };
-    },
     setWenxinQianfan(state, values) {
       state.wenxinQianfan = { ...state.wenxinQianfan, ...values };
     },
@@ -264,9 +253,6 @@ export default createStore({
     },
     setMode(state, mode) {
       state.mode = mode;
-    },
-    setGeneral(state, values) {
-      state.general = { ...state.general, ...values };
     },
     createChat(state) {
       const { favBots } = state.chats[state.currentChatIndex];
