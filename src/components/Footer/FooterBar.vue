@@ -53,7 +53,23 @@
       >
         {{ $t("footer.sendPrompt") }}
       </v-btn>
-      <div class="bot-logos" ref="favBotLogosRef" :key="rerenderFavBotLogos">
+      <div
+        class="bot-logos"
+        ref="favBotLogosRef"
+        :key="rerenderFavBotLogos"
+        @contextmenu="show"
+      >
+        <v-menu
+          v-model="showMenu"
+          class="position-fixed"
+          :style="{ left: `${x}px`, top: `${y}px` }"
+          absolute
+          offset-y
+          style=""
+        >
+          <v-btn color="primary" @click="disableAllBots"> Disable all </v-btn>
+          <v-btn color="secondary" @click="enableAllBots"> Enable all </v-btn>
+        </v-menu>
         <BotLogo
           v-for="(bot, index) in favBots"
           :id="`fav-bot-${index + 1}`"
@@ -394,6 +410,46 @@ async function usePrompt(value) {
   await nextTick();
   focusPromptTextarea();
   document.execCommand("insertText", false, value);
+}
+
+const showMenu = ref(false);
+const x = ref(0);
+const y = ref(0);
+function show(e) {
+  x.value = e.clientX;
+  y.value = e.clientY - 72;
+  showMenu.value = true;
+}
+
+async function disableAllBots() {
+  for (const botClassname in activeBots) {
+    if (activeBots[botClassname]) {
+      await store.dispatch("setBotSelected", { botClassname, selected: false });
+    }
+  }
+}
+
+async function enableAllBots() {
+  for (const botClassname in activeBots) {
+    if (!activeBots[botClassname]) {
+      const bot = favBots.value.find((bot) => bot.classname === botClassname);
+      if (bot && bot.instance && !bot.instance.isAvailable()) {
+        const availability = await bot.instance.checkAvailability();
+        if (!availability) {
+          clickedBot.value = bot.instance;
+          // Open the bot's settings dialog
+          isMakeAvailableOpen.value = true;
+        } else {
+          updateActiveBots();
+        }
+      } else {
+        await store.dispatch("setBotSelected", {
+          botClassname,
+          selected: true,
+        });
+      }
+    }
+  }
 }
 
 defineExpose({

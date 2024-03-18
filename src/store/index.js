@@ -62,6 +62,10 @@ export default createStore({
     chatGlm: {
       token: "",
     },
+    kimi: {
+      access_token: "",
+      refresh_token: "",
+    },
     qianWen: {
       xsrfToken: "",
     },
@@ -80,7 +84,6 @@ export default createStore({
     },
     claudeAi: {
       org: "",
-      model: "claude-2.0",
     },
     poe: {
       formkey: "",
@@ -114,6 +117,10 @@ export default createStore({
     selectedResponses: [],
     chat: {
       updateDebounceInterval: 100,
+    },
+    general: {
+      isShowMenuBar: true,
+      isShowAppBar: true,
     },
   },
   mutations: {
@@ -196,6 +203,9 @@ export default createStore({
     setSkyWork(state, tokens) {
       state.skyWork = { ...state.skyWork, ...tokens };
     },
+    setKimi(state, tokens) {
+      state.kimi = { ...state.kimi, ...tokens };
+    },
     setWenxinQianfan(state, values) {
       state.wenxinQianfan = { ...state.wenxinQianfan, ...values };
     },
@@ -254,6 +264,9 @@ export default createStore({
     },
     setMode(state, mode) {
       state.mode = mode;
+    },
+    setGeneral(state, values) {
+      state.general = { ...state.general, ...values };
     },
     createChat(state) {
       const { favBots } = state.chats[state.currentChatIndex];
@@ -400,6 +413,19 @@ export default createStore({
     },
   },
   actions: {
+    async setBotSelected(_, { botClassname, selected }) {
+      const currentChat = await Chats.getCurrentChat();
+      for (let i = 0; i < currentChat.favBots.length; i++) {
+        const bot = currentChat.favBots[i];
+        if (bot.classname === botClassname) {
+          bot.selected = selected;
+          await Chats.table.update(currentChat.index, {
+            favBots: currentChat.favBots,
+          });
+          return;
+        }
+      }
+    },
     async sendPrompt({ commit, dispatch }, { prompt, bots, promptIndex }) {
       const currentChat = await Chats.getCurrentChat();
       if (promptIndex === undefined) {
