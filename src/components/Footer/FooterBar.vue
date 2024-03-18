@@ -63,9 +63,6 @@
           v-model="showMenu"
           class="position-fixed"
           :style="{ left: `${x}px`, top: `${y}px` }"
-          absolute
-          offset-y
-          style=""
         >
           <v-btn color="primary" @click="disableAllBots"> Disable all </v-btn>
           <v-btn color="secondary" @click="enableAllBots"> Enable all </v-btn>
