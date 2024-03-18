@@ -41,8 +41,14 @@ export default class KimiBot extends Bot {
           error.response?.status == 401 &&
           error.response?.data?.error_type == "auth.token.invalid"
         ) {
-          await this.refreshTokens();
-          available = await this._checkAvailability();
+          try {
+            await this.refreshTokens();
+            await this._checkAvailability();
+            available = true;
+          } catch (e) {
+            available = false;
+            console.error("Error checking Kimi login status:", error);
+          }
         } else {
           console.error("Error checking Kimi login status:", error);
         }
@@ -53,7 +59,7 @@ export default class KimiBot extends Bot {
 
   async refreshTokens() {
     let refreshUrl = "https://kimi.moonshot.cn/api/auth/token/refresh";
-    await axios
+    return await axios
       .get(refreshUrl, {
         headers: {
           Authorization: `Bearer ${store.state.kimi?.refresh_token}`,
@@ -64,9 +70,6 @@ export default class KimiBot extends Bot {
           access_token: response.data?.access_token,
           refresh_token: response.data?.refresh_token,
         });
-      })
-      .catch((error) => {
-        console.error("Error refreshing Kimi tokens:", error);
       });
   }
 
