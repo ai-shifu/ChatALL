@@ -5,6 +5,7 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import fs from "fs";
 import path from "path";
+import { setMenuItems } from "./menu";
 import updateApp from "./update";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -417,6 +418,7 @@ app.on("ready", async () => {
   }
 
   createWindow();
+  setMenuItems();
   updateApp(mainWindow);
 });
 
