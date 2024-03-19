@@ -30,30 +30,13 @@ export default class KimiBot extends Bot {
    */
   async _checkAvailability() {
     let available = false;
-    let userInfoUrl = "https://kimi.moonshot.cn/api/user";
-    await axios
-      .get(userInfoUrl, this.getAuthHeader())
-      .then((response) => {
-        available = response.data?.status == "normal";
-      })
-      .catch(async (error) => {
-        if (
-          error.response?.status == 401 &&
-          error.response?.data?.error_type == "auth.token.invalid"
-        ) {
-          try {
-            await this.refreshTokens();
-            await this._checkAvailability();
-            available = true;
-          } catch (e) {
-            available = false;
-            console.error("Error checking Kimi login status:", error);
-          }
-        } else {
-          console.error("Error checking Kimi login status:", error);
-        }
-      });
-
+    try {
+      await this.refreshTokens();
+      available = true;
+    } catch (e) {
+      available = false;
+      console.error("Error checking Kimi login status:", e);
+    }
     return available;
   }
 
