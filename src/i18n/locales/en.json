@@ -169,6 +169,11 @@
     "urlPrompt": "URL of your Gradio app. If using Hugging Face space, get the direct url by clicking the \"Embed this space\" in the upper right corner.",
     "waiting": "There are { queue_size } requests in the queue, you are in { rank }th place, and you are expected to wait for { queue_eta } seconds"
   },
+  "kimi": {
+    "name": "Kimi",
+    "found": "Found {num}: ",
+    "searching": "Searching..."
+  },
   "lmsys": {
     "name": "LMSYS",
     "vicuna-7b": "vicuna-7b",
@@ -186,7 +191,9 @@
     "llama-2-7b-chat": "llama-2-7b",
     "llama-2-70b-chat": "llama-2-70b",
     "gemma-7b-it": "gemma-7b-it",
-    "gemma-2b-it": "gemma-2b-it"
+    "gemma-2b-it": "gemma-2b-it",
+    "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
+    "claude-3-opus-20240229": "claude-3-opus-20240229"
   },
   "moss": {
     "name": "MOSS"
@@ -237,7 +244,9 @@
     "name": "YouChat"
   },
   "chatGlm": {
-    "name": "ChatGLM"
+    "name": "ChatGLM",
+    "GLM-3": "GLM-3",
+    "GLM-4": "GLM-4"
   },
   "pi": {
     "name": "Pi",

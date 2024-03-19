@@ -9,7 +9,7 @@ export default class SkyWorkBot extends Bot {
   static _className = "SkyWorkBot"; // Class name of the bot
   static _logoFilename = "skywork-logo.png"; // Place it in public/bots/
   static _isDarkLogo = true; // The main color of logo is dark
-  static _loginUrl = "https://neice.tiangong.cn/";
+  static _loginUrl = "https://chat.tiangong.cn/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
   currentPrompt = ""; // Used by createChatContext() only
@@ -36,7 +36,7 @@ export default class SkyWorkBot extends Bot {
 
     try {
       const { data } = await axios.post(
-        "https://neice.tiangong.cn/api/v1/user/inviteVerify",
+        "https://api-chat.tiangong.cn/api/v1/user/inviteVerify",
         { data: {} },
         this.getAuthHeaders(),
       );
@@ -46,7 +46,7 @@ export default class SkyWorkBot extends Bot {
       } else if (data.code >= 60100) {
         // Invite token expired, request a new one
         const { data } = await axios.post(
-          "https://neice.tiangong.cn/api/v1/queue/waitAccess",
+          "https://api-chat.tiangong.cn/api/v1/queue/waitAccess",
           { data: { token: "" } },
           this.getAuthHeaders(),
         );
@@ -87,7 +87,7 @@ export default class SkyWorkBot extends Bot {
           if (!messageId) {
             await axios
               .post(
-                "https://neice.tiangong.cn/api/v1/chat/chat",
+                "https://api-chat.tiangong.cn/api/v1/chat/chat",
                 { data: { content: prompt, session_id: context.sessionId } },
                 this.getAuthHeaders(),
               )
@@ -114,7 +114,7 @@ export default class SkyWorkBot extends Bot {
               await new Promise((resolve) => setTimeout(resolve, 1000));
               await axios
                 .post(
-                  "https://neice.tiangong.cn/api/v1/chat/getMessage",
+                  "https://api-chat.tiangong.cn/api/v1/chat/getMessage",
                   { data: { message_id: messageId } },
                   this.getAuthHeaders(),
                 )
@@ -152,7 +152,7 @@ export default class SkyWorkBot extends Bot {
     let context = null;
     await axios
       .post(
-        "https://neice.tiangong.cn/api/v1/session/newSession",
+        "https://api-chat.tiangong.cn/api/v1/session/newSession",
         { data: { content: this.currentPrompt } },
         this.getAuthHeaders(),
       )

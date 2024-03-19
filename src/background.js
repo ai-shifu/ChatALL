@@ -284,10 +284,10 @@ function createNewWindow(url, userAgent = "") {
         // Get QianWen bot's XSRF-TOKEN
         const token = await getCookie("XSRF-TOKEN");
         mainWindow.webContents.send("QIANWEN-XSRF-TOKEN", token);
-      } else if (url.startsWith("https://neice.tiangong.cn/")) {
+      } else if (url.startsWith("https://chat.tiangong.cn/")) {
         // Get the tokens of SkyWork
-        const inviteToken = await getLocalStorage("formNatureQueueWaitToken");
-        const token = await getLocalStorage("formNatureResearchToken");
+        const inviteToken = await getLocalStorage("aiChatQueueWaitToken");
+        const token = await getLocalStorage("aiChatResearchToken");
         mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
       } else if (url.startsWith("https://character.ai/")) {
         const token = await getLocalStorage("char_token");
@@ -303,6 +303,13 @@ function createNewWindow(url, userAgent = "") {
       } else if (url.startsWith("https://chatglm.cn/")) {
         const token = await getCookie("chatglm_token");
         mainWindow.webContents.send("CHATGLM-TOKENS", { token });
+      } else if (url.startsWith("https://kimi.moonshot.cn/")) {
+        const access_token = await getLocalStorage("access_token");
+        const refresh_token = await getLocalStorage("refresh_token");
+        mainWindow.webContents.send("KIMI-TOKENS", {
+          access_token,
+          refresh_token,
+        });
       }
     } catch (err) {
       console.error(err);
@@ -364,6 +371,10 @@ ipcMain.handle("save-proxy-and-restart", async () => {
   return "";
 });
 // Proxy Setting End
+
+ipcMain.handle("set-is-show-menu-bar", (_, isShowMenuBar) => {
+  mainWindow.setMenuBarVisibility(isShowMenuBar);
+});
 
 ipcMain.handle("get-cookies", async (event, filter) => {
   return await getCookies(filter);

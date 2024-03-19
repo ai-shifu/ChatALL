@@ -8,8 +8,9 @@ import { v4 as uuidv4 } from "uuid";
 export default class ChatGLMBot extends Bot {
   static _brandId = "chatGlm"; // Brand id of the bot, should be unique. Used in i18n.
   static _className = "ChatGLMBot"; // Class name of the bot
-  static _logoFilename = "chatglm-logo.png"; // Place it in public/bots/
-  static _loginUrl = "https://chatglm.cn/detail";
+  static _logoFilename = "chatglm-3-logo.png"; // Place it in public/bots/
+  static _loginUrl = "https://chatglm.cn/main/detail";
+  static _model = "GLM-3"; // Model name
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
   constructor() {
