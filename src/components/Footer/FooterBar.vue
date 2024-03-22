@@ -64,8 +64,18 @@
           class="position-fixed"
           :style="{ left: `${x}px`, top: `${y}px` }"
         >
-          <v-btn color="primary" @click="disableAllBots"> Disable all </v-btn>
-          <v-btn color="secondary" @click="enableAllBots"> Enable all </v-btn>
+          <v-list>
+            <v-list-item @click="disableAllBots">
+              <v-list-item-title>{{
+                $t("footer.disableAll")
+              }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="enableAllBots">
+              <v-list-item-title>{{
+                $t("footer.enableAll")
+              }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
         </v-menu>
         <BotLogo
           v-for="(bot, index) in favBots"

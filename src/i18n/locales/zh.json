@@ -33,7 +33,8 @@
     "openSource": "开源",
     "free": "免费",
     "paid": "付费",
-    "api": "API"
+    "enableAll": "启用所有",
+    "disableAll": "禁用所有"
   },
   "error": {
     "error": "错误",
