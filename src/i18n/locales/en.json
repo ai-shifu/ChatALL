@@ -33,7 +33,9 @@
     "openSource": "Open Source",
     "free": "Free",
     "paid": "Paid",
-    "api": "API"
+    "api": "API",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "error": {
     "error": "Error",

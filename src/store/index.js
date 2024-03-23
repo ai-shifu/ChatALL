@@ -413,6 +413,19 @@ export default createStore({
     },
   },
   actions: {
+    async setBotSelected(_, { botClassname, selected }) {
+      const currentChat = await Chats.getCurrentChat();
+      for (let i = 0; i < currentChat.favBots.length; i++) {
+        const bot = currentChat.favBots[i];
+        if (bot.classname === botClassname) {
+          bot.selected = selected;
+          await Chats.table.update(currentChat.index, {
+            favBots: currentChat.favBots,
+          });
+          return;
+        }
+      }
+    },
     async sendPrompt({ commit, dispatch }, { prompt, bots, promptIndex }) {
       const currentChat = await Chats.getCurrentChat();
       if (promptIndex === undefined) {
