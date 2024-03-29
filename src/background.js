@@ -12,6 +12,21 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 let mainWindow = null;
 
+// start - makes  application a Single Instance Application
+const singleInstanceLock = app.requestSingleInstanceLock();
+if (!singleInstanceLock) {
+  app.quit();
+} else {
+  app.on("second-instance", () => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }
+  });
+}
+// end - makes application a Single Instance Application
+
 // Disable QUIC
 // Prevent Cloudflare from detecting the real IP when using a proxy that bypasses UDP traffic
 app.commandLine.appendSwitch("disable-quic");
