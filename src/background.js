@@ -309,7 +309,7 @@ function createNewWindow(url, userAgent = "") {
         const token = await getLocalStorage("char_token");
         mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
       } else if (url.startsWith("https://claude.ai/")) {
-        const org = await getLocalStorage("lastActiveOrg");
+        const org = await getCookie("lastActiveOrg");
         mainWindow.webContents.send("CLAUDE-2-ORG", org);
       } else if (url.startsWith("https://poe.com/")) {
         const formkey = await newWin.webContents.executeJavaScript(
