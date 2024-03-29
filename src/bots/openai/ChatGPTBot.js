@@ -161,11 +161,31 @@ export default class ChatGPTBot extends Bot {
     // Make sure the access token is available
     if (!this.accessToken) await this.checkAvailability();
 
-    // Send the prompt to the ChatGPT API
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${this.accessToken}`,
     };
+
+    let reqToken;
+    try {
+      const reqTokenResponse = await axios.post(
+        "https://chat.openai.com/backend-api/sentinel/chat-requirements",
+        undefined,
+        { headers },
+      );
+      if (reqTokenResponse?.data) {
+        reqToken = reqTokenResponse.data.token;
+      }
+    } catch (error) {
+      console.error("Error get chat-requirements token:", error);
+      console.error("ChatGPT response:", event);
+    }
+
+    if (reqToken) {
+      headers["Openai-Sentinel-Chat-Requirements-Token"] = reqToken;
+    }
+
+    // Send the prompt to the ChatGPT API
     const context = await this.getChatContext();
     const payload = JSON.stringify({
       action: "next",
