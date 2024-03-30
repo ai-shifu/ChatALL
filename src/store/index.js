@@ -34,6 +34,12 @@ export default createStore({
       topK: 16,
       topP: 0.95,
     },
+    claudeApi: {
+      apiKey: "",
+      temperature: 0,
+      alterUrl: "",
+      maxTokens: 1000,
+    },
     openaiApi: {
       apiKey: "",
       temperature: 1,
@@ -217,6 +223,9 @@ export default createStore({
     },
     setClaudeAi(state, values) {
       state.claudeAi = { ...state.claudeAi, ...values };
+    },
+    setClaudeApi(state, values) {
+      state.claudeApi = { ...state.claudeApi, ...values };
     },
     setPoe(state, values) {
       state.poe = { ...state.poe, ...values };
