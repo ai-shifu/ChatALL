@@ -66,6 +66,12 @@ import Claude3SonnetBot from "./lmsys/Claude3SonnetBot";
 import Claude3OpusBot from "./lmsys/Claude3OpusBot";
 import ChatGLM4Bot from "./zhipu/ChatGLM4Bot";
 import KimiBot from "./moonshot/KimiBot";
+import ClaudeAPIOpusBot from "./anthropic/ClaudeAPIOpusBot";
+import ClaudeAPI20Bot from "./anthropic/ClaudeAPI20Bot";
+import ClaudeAPI21Bot from "./anthropic/ClaudeAPI21Bot";
+import ClaudeAPISonnetBot from "./anthropic/ClaudeAPISonnetBot";
+import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
+import ClaudeAPIInstant12Bot from "./anthropic/ClaudeAPIInstant12Bot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -134,6 +140,12 @@ const all = [
   Wizardlm70bBot.getInstance(),
   Zephyr7bBot.getInstance(),
   YouChatBot.getInstance(),
+  ClaudeAPIOpusBot.getInstance(),
+  ClaudeAPISonnetBot.getInstance(),
+  ClaudeAPIHaikuBot.getInstance(),
+  ClaudeAPI20Bot.getInstance(),
+  ClaudeAPI21Bot.getInstance(),
+  ClaudeAPIInstant12Bot.getInstance(),
 ];
 
 const disabled = [
@@ -263,6 +275,12 @@ export const botTags = {
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("WenxinQianfan4Bot"),
+    bots.getBotByClassName("ClaudeAPI20Bot"),
+    bots.getBotByClassName("ClaudeAPI21Bot"),
+    bots.getBotByClassName("ClaudeAPIHaikuBot"),
+    bots.getBotByClassName("ClaudeAPIInstant12Bot"),
+    bots.getBotByClassName("ClaudeAPIOpusBot"),
+    bots.getBotByClassName("ClaudeAPISonnetBot"),
   ],
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),
