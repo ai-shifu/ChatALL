@@ -92,6 +92,12 @@ const all = [
   ClaudePlusPoeBot.getInstance(),
   Claude3OpusBot.getInstance(),
   Claude3SonnetBot.getInstance(),
+  ClaudeAPIOpusBot.getInstance(),
+  ClaudeAPISonnetBot.getInstance(),
+  ClaudeAPIHaikuBot.getInstance(),
+  ClaudeAPI20Bot.getInstance(),
+  ClaudeAPI21Bot.getInstance(),
+  ClaudeAPIInstant12Bot.getInstance(),
   CodeLlama34bPoeBot.getInstance(),
   CodeLlamaHCBot.getInstance(),
   CodeLlamaBot.getInstance(),
@@ -140,12 +146,6 @@ const all = [
   Wizardlm70bBot.getInstance(),
   Zephyr7bBot.getInstance(),
   YouChatBot.getInstance(),
-  ClaudeAPIOpusBot.getInstance(),
-  ClaudeAPISonnetBot.getInstance(),
-  ClaudeAPIHaikuBot.getInstance(),
-  ClaudeAPI20Bot.getInstance(),
-  ClaudeAPI21Bot.getInstance(),
-  ClaudeAPIInstant12Bot.getInstance(),
 ];
 
 const disabled = [
