@@ -89,7 +89,7 @@
     "gpt-4-mobile": "GPT-4 モバイル V2"
   },
   "gemini": {
-    "name": "Gemini",
+    "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
     "topKPrompt": "topKの1は、モデルの語彙の中で選択されたトークンが最も確からしいことを意味します（貪欲デコードとも呼ばれます）",

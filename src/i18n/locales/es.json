@@ -104,7 +104,7 @@
     "gpt-4-mobile": "GPT-4 móvil V2"
   },
   "gemini": {
-    "name": "Gemini",
+    "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
     "topKPrompt": "Un topK de 1 significa que el token seleccionado es el más probable entre todos los tokens en el vocabulario del modelo (también llamado decodificación voraz).",

@@ -1,5 +1,5 @@
 // Bots
-import GeminiBot from "@/bots/google/GeminiBot";
+import GeminiAPIBot from "@/bots/google/GeminiAPIBot";
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
@@ -108,7 +108,7 @@ const all = [
   FalconHC180bBot.getInstance(),
   BardBot.getInstance(),
   GeminiAdvBot.getInstance(),
-  GeminiBot.getInstance(),
+  GeminiAPIBot.getInstance(),
   Gemma2bItBot.getInstance(),
   Gemma7bItBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
@@ -266,7 +266,7 @@ export const botTags = {
     bots.getBotByClassName("Claude3OpusBot"),
   ],
   api: [
-    bots.getBotByClassName("GeminiBot"),
+    bots.getBotByClassName("GeminiAPIBot"),
     bots.getBotByClassName("AzureOpenAIAPIBot"),
     bots.getBotByClassName("OpenAIAPI35Bot"),
     bots.getBotByClassName("OpenAIAPI3516KBot"),

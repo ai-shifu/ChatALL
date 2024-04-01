@@ -46,7 +46,7 @@
     "gpt-4": "GPT-4"
   },
   "gemini": {
-    "name": "Gemini",
+    "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
     "topKPrompt": "Ein topK von 1 bedeutet, dass das ausgewählte Token das wahrscheinlichste unter allen Token im Vokabular des Modells ist (auch gieriges Decodieren genannt).",

@@ -27,7 +27,7 @@ export default createStore({
     uuid: "",
     lang: "auto",
     columns: 2,
-    gemini: {
+    geminiApi: {
       apiKey: "",
       temperature: 0.7,
       pastRounds: 5,
@@ -188,8 +188,8 @@ export default createStore({
     setChatgpt(state, refreshCycle) {
       state.chatgpt.refreshCycle = refreshCycle;
     },
-    setGemini(state, values) {
-      state.gemini = { ...state.gemini, ...values };
+    setGeminiApi(state, values) {
+      state.geminiApi = { ...state.geminiApi, ...values };
     },
     setOpenaiApi(state, values) {
       state.openaiApi = { ...state.openaiApi, ...values };
