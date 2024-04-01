@@ -2,9 +2,9 @@ import LangChainBot from "@/bots/LangChainBot";
 import store from "@/store";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
-export default class GeminiBot extends LangChainBot {
-  static _brandId = "gemini";
-  static _className = "GeminiBot";
+export default class GeminiAPIBot extends LangChainBot {
+  static _brandId = "geminiApi";
+  static _className = "GeminiAPIBot";
   static _logoFilename = "gemini-logo.png"; // Place it in public/bots/
   static _model = "gemini-pro";
 
@@ -15,7 +15,7 @@ export default class GeminiBot extends LangChainBot {
   async _checkAvailability() {
     let available = false;
 
-    if (store.state.gemini.apiKey) {
+    if (store.state.geminiApi.apiKey) {
       this.setupModel();
       available = true;
     }
@@ -23,17 +23,17 @@ export default class GeminiBot extends LangChainBot {
   }
 
   getPastRounds() {
-    return store.state.gemini.pastRounds;
+    return store.state.geminiApi.pastRounds;
   }
 
   _setupModel() {
     const chatModel = new ChatGoogleGenerativeAI({
-      apiKey: store.state.gemini.apiKey,
+      apiKey: store.state.geminiApi.apiKey,
       modelName: this.constructor._model ? this.constructor._model : "",
-      temperature: store.state.gemini.temperature,
+      temperature: store.state.geminiApi.temperature,
       streaming: true,
-      topK: store.state.gemini.topK,
-      topP: store.state.gemini.topP,
+      topK: store.state.geminiApi.topK,
+      topP: store.state.geminiApi.topP,
     });
     return chatModel;
   }

@@ -150,7 +150,7 @@
     "gpt-4-mobile": "GPT-4 Mobile V2"
   },
   "gemini": {
-    "name": "Gemini",
+    "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
     "topKPrompt": "A topK of 1 means the selected token is the most probable among all the tokens in the model's vocabulary (also called greedy decoding)",

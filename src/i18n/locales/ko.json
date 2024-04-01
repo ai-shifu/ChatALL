@@ -139,7 +139,7 @@
     "gpt-4-mobile": "GPT-4 모바일 V2"
   },
   "gemini": {
-    "name": "Gemini",
+    "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
     "topKPrompt": "topK가 1이라는 것은 선택된 토큰이 모델의 어휘 중에서 가장 가능성이 높은 것을 의미합니다 (탐욕스러운 디코딩이라고도 함).",
