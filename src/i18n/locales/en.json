@@ -120,6 +120,15 @@
     "gemini-pro": "Gemini",
     "gemini-ultra": "Gemini Advanced"
   },
+  "claudeApi":{
+    "name": "Claude API",
+    "claude-3-opus-20240229" : "claude-3-opus",
+    "claude-3-sonnet-20240229": "claude-3-sonnet",
+    "claude-3-haiku-20240307": "claude-3-haiku",
+    "claude-21":"claude-2.1",
+    "claude-20":"claude-2.0",
+    "claude-instant-12":"claude-instant"
+  },
   "bingChat": {
     "name": "Copilot",
     "solveCaptcha": "You need to <a { attributes }>solve CAPTCHA</a> to continue.",
