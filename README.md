@@ -29,6 +29,7 @@ Typical users of ChatALL are:
 | AI Bots                                                                        | Web Access  | API         | Notes                                       |
 | ------------------------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
 | [ChatGPT](https://chat.openai.com)                                             | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
+| [Tune Chat](https://chat.tune.app/)              | Yes         | Yes     |                                             |
 | [Copilot](https://copilot.microsoft.com/)                                      | Yes         | No API      |                                             |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                        | No          | Yes         |                                             |
 | [Gemini](https://gemini.google.com/)                                           | Yes         | Coming soon |                                             |
@@ -56,6 +57,7 @@ Typical users of ChatALL are:
 | [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | Yes         | No API      |                                             |
 | [Phind](https://www.phind.com/)                                                | Yes         | No API      |                                             |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Yes         | No API      |                                             |
+
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
