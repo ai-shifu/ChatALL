@@ -21,7 +21,7 @@ class Chats {
             { classname: "BingChatCreativeBot", selected: true },
             { classname: "BingChatBalancedBot", selected: true },
             { classname: "BingChatPreciseBot", selected: true },
-            { classname: "BardBot", selected: true },
+            { classname: "GeminiBot", selected: true },
             { classname: "ClaudeInstantPoeBot", selected: true },
             { classname: "FalconHC180bBot", selected: true },
             { classname: "Llama270bBot", selected: true },

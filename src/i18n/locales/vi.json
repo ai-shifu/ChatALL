@@ -111,7 +111,7 @@
     "azureOpenAIApiVersion": "Phiên bản Azure OpenAI API",
     "azureOpenAIApiVersionPrompt": "Xem phiên bản hổ trợ tại https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
-  "bard": {
+  "gemini": {
     "name": "Gemini"
   },
   "bingChat": {

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Bot from "@/bots/google/BardBot";
+import Bot from "@/bots/google/GeminiBot";
 import LoginSetting from "@/components/BotSettings/LoginSetting.vue";
 
 export default {

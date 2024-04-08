@@ -80,7 +80,7 @@
     "azureOpenAIApiVersion": "Versión de la API",
     "azureOpenAIApiVersionPrompt": "Obtenga las versiones compatibles de https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions"
   },
-  "bard": {
+  "gemini": {
     "name": "Bardo"
   },
   "bingChat": {

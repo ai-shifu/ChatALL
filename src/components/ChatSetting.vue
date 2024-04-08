@@ -270,7 +270,7 @@ const previewSampleData = [
     botResponse: "Hello! How can I assist you today?",
   },
   {
-    botName: "Bard",
+    botName: "Gemini",
     botResponse: "Hi there! How can I help you today?",
   },
   {

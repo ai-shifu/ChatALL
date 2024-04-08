@@ -37,7 +37,7 @@
     "notAvailable": "Le bot n'est pas disponible car vous n'êtes pas connecté ou la configuration est incorrecte.",
     "waiting": "En attente des autres demandes { botName } pour se terminer..."
   },
-  "bard": {
+  "gemini": {
     "name": "Gemini"
   },
   "bingChat": {

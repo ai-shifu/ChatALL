@@ -6,7 +6,7 @@ function parseResponse(resp) {
   let data = JSON.parse(resp.split("\n")[3]);
   data = JSON.parse(data[0][2]);
   if (!data) {
-    throw new Error("Failed to parse Bard response");
+    throw new Error("Failed to parse Gemini response");
   }
 
   const ids = [...data[1], data[4][0][0]];
@@ -138,9 +138,9 @@ function generateReq(model, prompt, contextIds) {
   return JSON.stringify([null, JSON.stringify(innerJSON)]);
 }
 
-export default class BardBot extends Bot {
-  static _brandId = "bard";
-  static _className = "BardBot"; // Class name of the bot
+export default class GeminiBot extends Bot {
+  static _brandId = "gemini";
+  static _className = "GeminiBot"; // Class name of the bot
   static _model = "gemini-pro"; // gemini-pro or gemini-ultra
   static _logoFilename = "gemini-chat-logo.svg"; // Place it in public/bots/
   static _loginUrl = "https://gemini.google.com/";
@@ -202,7 +202,7 @@ export default class BardBot extends Bot {
     const atValue = resp.data.match(/"SNlM0e":"([^"]+)"/)?.[1];
     const blValue = resp.data.match(/"cfb2h":"([^"]+)"/)?.[1];
     if (!atValue || !blValue) {
-      throw new Error("Failed to fetch Bard at/bl values");
+      throw new Error("Failed to fetch Gemini at/bl values");
     }
 
     return {

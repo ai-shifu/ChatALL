@@ -149,7 +149,7 @@ const snackbar = reactive({
 
 const bots = ref([
   {
-    name: i18n.global.t("bard.name"),
+    name: i18n.global.t("gemini.name"),
     bypassList: "*.google.com",
   },
   {

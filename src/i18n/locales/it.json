@@ -44,7 +44,7 @@
     "pastRounds": "Quanti round di chat precedenti mantenere?",
     "pastRoundsPrompt": "Più chat storiche vengono mantenute, migliore è l'effetto del dialogo multi-round, ma richiede anche più risorse"
   },
-  "bard": {
+  "gemini": {
     "name": "Gemini"
   },
   "bingChat": {

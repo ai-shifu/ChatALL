@@ -62,7 +62,7 @@
   "spark": {
     "name": "iFlytek Spark"
   },
-  "bard": {
+  "gemini": {
     "name": "Gemini"
   },
   "ernie": {

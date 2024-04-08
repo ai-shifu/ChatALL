@@ -105,7 +105,7 @@ import GeminiAPIBotSettings from "@/components/BotSettings/GeminiAPIBotSettings.
 import AzureOpenAIAPIBotSettings from "./BotSettings/AzureOpenAIAPIBotSettings.vue";
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
 import SparkBotSettings from "./BotSettings/SparkBotSettings.vue";
-import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
+import GeminiBotSettings from "@/components/BotSettings/GeminiBotSettings.vue";
 import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
@@ -141,7 +141,7 @@ const tab = ref(null);
 const botSettings = [
   { brand: "360AiBrain", component: Qihoo360AIBrainBotSettings },
   { brand: "azureOpenaiApi", component: AzureOpenAIAPIBotSettings },
-  { brand: "bard", component: BardBotSettings },
+  { brand: "gemini", component: GeminiBotSettings },
   { brand: "bingChat", component: BingChatBotSettings },
   { brand: "characterAI", component: CharacterAIBotSettings },
   { brand: "chatGpt", component: ChatGPTBotSettings },

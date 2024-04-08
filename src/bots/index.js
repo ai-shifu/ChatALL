@@ -8,7 +8,7 @@ import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
 import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
 import SageBot from "@/bots/poe/SageBot";
 import SparkBot from "@/bots/SparkBot";
-import BardBot from "@/bots/google/BardBot";
+import GeminiBot from "@/bots/google/GeminiBot";
 import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
 import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import OpenAIAPI4128KBot from "@/bots/openai/OpenAIAPI4128KBot";
@@ -106,7 +106,7 @@ const all = [
   WenxinQianfan4Bot.getInstance(),
   Falcon180bBot.getInstance(),
   FalconHC180bBot.getInstance(),
-  BardBot.getInstance(),
+  GeminiBot.getInstance(),
   GeminiAdvBot.getInstance(),
   GeminiAPIBot.getInstance(),
   Gemma2bItBot.getInstance(),
@@ -178,7 +178,7 @@ disabled.forEach((className) => {
 
 export const botTags = {
   free: [
-    bots.getBotByClassName("BardBot"),
+    bots.getBotByClassName("GeminiBot"),
     bots.getBotByClassName("BingChatBalancedBot"),
     bots.getBotByClassName("BingChatCreativeBot"),
     bots.getBotByClassName("BingChatPreciseBot"),

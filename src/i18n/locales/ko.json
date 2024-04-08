@@ -113,7 +113,7 @@
     "azureOpenAIApiVersion": "API 버전",
     "azureOpenAIApiVersionPrompt": "https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions에서 지원되는 버전 다운로드"
   },
-  "bard": {
+  "gemini": {
     "name": "Gemini",
     "gemini-pro": "Gemini",
     "gemini-ultra": "Gemini 고급"

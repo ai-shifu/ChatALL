@@ -68,7 +68,7 @@
     "azureOpenAIApiVersion": "API バージョン",
     "azureOpenAIApiVersionPrompt": "サポートされているバージョンを https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions から入手する。"
   },
-  "bard": {
+  "gemini": {
     "name": "Gemini"
   },
   "bingChat": {
