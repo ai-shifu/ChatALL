@@ -52,8 +52,7 @@
     "autoRefreshPrompt": "Si on ne vous demande PAS souvent de vous connecter, NE activez PAS cette fonctionnalité",
     "notice": "Seuls les membres payants Plus peuvent utiliser GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-browsing": "Navigation Web"
+    "gpt-4": "GPT-4"
   },
   "gemini": {
     "name": "Gemini API",

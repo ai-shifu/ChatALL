@@ -2,7 +2,6 @@
 import GeminiAPIBot from "@/bots/google/GeminiAPIBot";
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
-import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
 import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
 import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
 import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
@@ -119,7 +118,6 @@ const all = [
   ChatGPT4Bot.getInstance(),
   ChatGPT4MobileBot.getInstance(),
   ChatGPT4PoeBot.getInstance(),
-  ChatGPTBrowsingBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   OpenAIAPI4128KBot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
@@ -231,7 +229,6 @@ export const botTags = {
     bots.getBotByClassName("ChatGPT4Bot"),
     bots.getBotByClassName("ChatGPT4MobileBot"),
     bots.getBotByClassName("ChatGPT4PoeBot"),
-    bots.getBotByClassName("ChatGPTBrowsingBot"),
     bots.getBotByClassName("ClaudeInstant100kPoeBot"),
     bots.getBotByClassName("ClaudePlusPoeBot"),
     bots.getBotByClassName("ChatGPT432kPoeBot"),
