@@ -45,7 +45,7 @@
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
