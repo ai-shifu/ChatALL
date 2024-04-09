@@ -134,7 +134,7 @@
     "gpt-4-browsing": "Web 瀏覽",
     "gpt-4-mobile": "GPT-4 行動裝置版 V2"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",

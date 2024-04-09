@@ -55,7 +55,7 @@
     "gpt-4": "GPT-4",
     "gpt-4-browsing": "Navigation Web"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
