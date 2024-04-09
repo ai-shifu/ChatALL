@@ -62,6 +62,9 @@ export default createStore({
       url: "",
       fnIndex: 0,
     },
+    mistral: {
+      model: "mistral-large",
+    },
     moss: {
       token: "",
     },
@@ -238,6 +241,9 @@ export default createStore({
     },
     setPhind(state, values) {
       state.phind = { ...state.phind, ...values };
+    },
+    setMistral(state, values) {
+      state.mistral = { ...state.mistral, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       Chats.table.update(state.currentChatIndex, {

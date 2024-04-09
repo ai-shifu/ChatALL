@@ -106,6 +106,7 @@ import AzureOpenAIAPIBotSettings from "./BotSettings/AzureOpenAIAPIBotSettings.v
 import BingChatBotSettings from "@/components/BotSettings/BingChatBotSettings.vue";
 import SparkBotSettings from "./BotSettings/SparkBotSettings.vue";
 import BardBotSettings from "@/components/BotSettings/BardBotSettings.vue";
+import MistralBotSettings from "@/components/BotSettings/MistralBotSettings.vue";
 import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
@@ -151,6 +152,7 @@ const botSettings = [
   { brand: "huggingChat", component: HuggingChatBotSettings },
   { brand: "kimi", component: KimiBotSettings },
   { brand: "lmsys", component: LMSYSBotSettings },
+  { brand: "mistral", component: MistralBotSettings },
   { brand: "moss", component: MOSSBotSettings },
   { brand: "openaiApi", component: OpenAIAPIBotSettings },
   { brand: "geminiApi", component: GeminiAPIBotSettings },

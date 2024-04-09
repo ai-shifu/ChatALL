@@ -12,6 +12,7 @@ import BardBot from "@/bots/google/BardBot";
 import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
 import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import OpenAIAPI4128KBot from "@/bots/openai/OpenAIAPI4128KBot";
+import MistralBot from "./MistralBot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
 import VicunaBot from "@/bots/lmsys/VicunaBot";
@@ -129,6 +130,7 @@ const all = [
   Llama270bPoeBot.getInstance(),
   Llama270bBot.getInstance(),
   Llama2HC70bBot.getInstance(),
+  MistralBot.getInstance(),
   MOSSBot.getInstance(),
   HuggingChatBot.getInstance(),
   GooglePalm2PoeBot.getInstance(),
@@ -197,6 +199,7 @@ export const botTags = {
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("CodeLlamaBot"),
     bots.getBotByClassName("CodeLlamaHCBot"),
+    bots.getBotByClassName("MistralBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("Qihoo360AIBrainBot"),
     bots.getBotByClassName("QianWenBot"),
