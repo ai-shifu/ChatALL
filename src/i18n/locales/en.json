@@ -147,7 +147,6 @@
     "notice": "Only paid Plus members can use GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "Web Browsing",
     "gpt-4-mobile": "GPT-4 Mobile V2"
   },
   "geminiApi": {
