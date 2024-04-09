@@ -91,6 +91,9 @@ export default createStore({
     claudeAi: {
       org: "",
     },
+    perplexity: {
+      version: "2.5",
+    },
     poe: {
       formkey: "",
     },
@@ -226,6 +229,9 @@ export default createStore({
     },
     setClaudeApi(state, values) {
       state.claudeApi = { ...state.claudeApi, ...values };
+    },
+    setPerplexity(state, values) {
+      state.perplexity = { ...state.perplexity, ...values };
     },
     setPoe(state, values) {
       state.poe = { ...state.poe, ...values };

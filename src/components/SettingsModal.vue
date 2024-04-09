@@ -116,6 +116,7 @@ import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue"
 import PoeBotSettings from "@/components/BotSettings/PoeBotSettings.vue";
 import SkyWorkBotSettings from "@/components/BotSettings/SkyWorkBotSettings.vue";
 import YouChatBotSettings from "@/components/BotSettings/YouChatBotSettings.vue";
+import PerplexityBotSettings from "@/components/BotSettings/PerplexityBotSettings.vue";
 import PhindBotSettings from "@/components/BotSettings/PhindBotSettings.vue";
 import PiBotSettings from "@/components/BotSettings/PiBotSettings.vue";
 import Qihoo360AIBrainBotSettings from "./BotSettings/Qihoo360AIBrainBotSettings.vue";
@@ -156,6 +157,7 @@ const botSettings = [
   { brand: "openaiApi", component: OpenAIAPIBotSettings },
   { brand: "geminiApi", component: GeminiAPIBotSettings },
   { brand: "openAssistant", component: OpenAssistantBotSettings },
+  { brand: "perplexity", component: PerplexityBotSettings },
   { brand: "phind", component: PhindBotSettings },
   { brand: "pi", component: PiBotSettings },
   { brand: "poe", component: PoeBotSettings },
