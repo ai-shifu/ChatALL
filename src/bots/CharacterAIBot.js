@@ -76,10 +76,7 @@ export default class CharacterAIBot extends Bot {
               throw new Error(JSON.stringify(data));
             }
             if (data?.turn) {
-              if (
-                data.turn.author?.author_id !==
-                store.state.characterAI.characterId
-              ) {
+              if (data.turn.author?.author_id !== context.characterId) {
                 return;
               }
               if (data.turn.candidates?.length) {
@@ -134,9 +131,9 @@ export default class CharacterAIBot extends Bot {
               payload: {
                 chat: {
                   chat_id: context.chatId,
-                  creator_id: store.state.characterAI.id.toString(),
+                  creator_id: context.id,
                   visibility: "VISIBILITY_PRIVATE",
-                  character_id: store.state.characterAI.characterId,
+                  character_id: context.characterId,
                   type: "TYPE_ONE_ON_ONE",
                 },
                 with_greeting: false,
@@ -152,17 +149,17 @@ export default class CharacterAIBot extends Bot {
               num_candidates: 1,
               tts_enabled: false,
               selected_language: "",
-              character_id: store.state.characterAI.characterId,
-              user_name: store.state.characterAI.username,
+              character_id: context.characterId,
+              user_name: context.username,
               turn: {
                 turn_key: {
                   turn_id: turnId,
                   chat_id: context.chatId,
                 },
                 author: {
-                  author_id: store.state.characterAI.id.toString(),
+                  author_id: context.id,
                   is_human: true,
-                  name: store.state.characterAI.username,
+                  name: context.username,
                 },
                 candidates: [
                   {
@@ -194,6 +191,9 @@ export default class CharacterAIBot extends Bot {
     context = {
       chatId: uuidv4(),
       isFirstMessage: true,
+      characterId: store.state.characterAI.characterId,
+      username: store.state.characterAI.username,
+      id: store.state.characterAI.id.toString(),
     };
     return context;
   }
