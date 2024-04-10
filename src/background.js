@@ -324,9 +324,6 @@ function createNewWindow({ url, userAgent = "", loginScript }) {
         const inviteToken = await getLocalStorage("aiChatQueueWaitToken");
         const token = await getLocalStorage("aiChatResearchToken");
         mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
-      } else if (url.startsWith("https://character.ai/")) {
-        const token = await getLocalStorage("char_token");
-        mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
       } else if (url.startsWith("https://claude.ai/")) {
         const org = await getCookie("lastActiveOrg");
         mainWindow.webContents.send("CLAUDE-2-ORG", org);
