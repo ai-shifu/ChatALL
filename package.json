@@ -41,7 +41,7 @@
     "electron-builder": "^24.13.3",
     "jszip": "^3.10.1",
     "katex": "^0.16.10",
-    "langchain": "^0.1.4",
+    "langchain": "^0.1.32",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
     "prismjs": "^1.29.0",
@@ -110,7 +110,7 @@
   ],
   "license": "Apache-2.0",
   "overrides": {
-    "@langchain/core": "~0.1.17",
+    "@langchain/core": "~0.1.55",
     "vue-cli-plugin-electron-builder": {
       "electron-builder": "^24.0.0"
     }
