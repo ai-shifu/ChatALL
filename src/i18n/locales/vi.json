@@ -237,10 +237,6 @@
     "name": "Pi",
     "waitPiIntro": "Bấm vào link bên dưới để xem hướng dẫn sử dụng Pi, rồi đóng cửa sổ này lại"
   },
-  "openAssistant": {
-    "name": "Open Assistant",
-    "queue": "Đang có { queue_size } requests trong hàng đợi, bạn đang ở vị trí { queue_position }"
-  },
   "falcon": {
     "name": "Falcon",
     "falcon-180b": "180b",

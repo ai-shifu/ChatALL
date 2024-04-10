@@ -40,7 +40,6 @@ import YouChatBot from "./YouChatBot";
 import PhindBot from "./PhindBot";
 import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
-import OpenAssistantBot from "./OpenAssistantBot";
 import CharacterAIBot from "./CharacterAIBot";
 import ClaudeAIBot from "./ClaudeAIBot";
 import Llama2HC70bBot from "./huggingface/Llama2HC70bBot";
@@ -120,7 +119,6 @@ const all = [
   Llama2HC70bBot.getInstance(),
   MOSSBot.getInstance(),
   HuggingChatBot.getInstance(),
-  OpenAssistantBot.getInstance(),
   GooglePalm2PoeBot.getInstance(),
   PhindBot.getInstance(),
   PiBot.getInstance(),
@@ -188,7 +186,6 @@ export const botTags = {
     bots.getBotByClassName("CodeLlamaBot"),
     bots.getBotByClassName("CodeLlamaHCBot"),
     bots.getBotByClassName("MOSSBot"),
-    bots.getBotByClassName("OpenAssistantBot"),
     bots.getBotByClassName("Qihoo360AIBrainBot"),
     bots.getBotByClassName("QianWenBot"),
     bots.getBotByClassName("SkyWorkBot"),
@@ -234,7 +231,6 @@ export const botTags = {
     bots.getBotByClassName("Llama270bPoeBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
-    bots.getBotByClassName("OpenAssistantBot"),
     bots.getBotByClassName("VicunaBot"),
     bots.getBotByClassName("Vicuna7bBot"),
     bots.getBotByClassName("Vicuna13bBot"),

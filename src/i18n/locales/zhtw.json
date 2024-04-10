@@ -237,10 +237,6 @@
     "name": "Pi",
     "waitPiIntro": "請點選下方的網站連結，等待 Pi 介紹完成後，然後關閉視窗。"
   },
-  "openAssistant": {
-    "name": "Open Assistant",
-    "queue": "目前有 { queue_size } 個請求在佇列中，你在第 { queue_position } 位"
-  },
   "falcon": {
     "name": "Falcon",
     "falcon-180b": "180b"
