@@ -94,8 +94,10 @@ export default createStore({
       pastRounds: 5,
     },
     characterAI: {
-      token: "",
-      ttl: 0,
+      characterId: "YntB_ZeqRq2l_aVf2gWDCZl4oBttQzDvhj9cXafWcF8",
+      version: "",
+      username: "",
+      id: "",
     },
     claudeAi: {
       org: "",
