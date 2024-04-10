@@ -167,6 +167,12 @@ export default createStore({
         favBots,
       });
     },
+    async setFavoriteBot(state, favBots) {
+      const currentChat = await Chats.getCurrentChat();
+      Chats.table.update(currentChat.index, {
+        favBots,
+      });
+    },
     async removeFavoriteBot(state, botClassname) {
       const currentChat = await Chats.getCurrentChat();
       for (let i = 0; i < currentChat.favBots.length; i++) {
