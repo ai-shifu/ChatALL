@@ -75,6 +75,11 @@
                 $t("footer.enableAll")
               }}</v-list-item-title>
             </v-list-item>
+            <v-list-item @click="removeAllBots">
+              <v-list-item-title>{{
+                $t("footer.removeAll")
+              }}</v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-menu>
         <BotLogo
@@ -424,7 +429,7 @@ const x = ref(0);
 const y = ref(0);
 function show(e) {
   x.value = e.clientX;
-  y.value = e.clientY - 72;
+  y.value = e.clientY - 160;
   showMenu.value = true;
 }
 
@@ -457,6 +462,10 @@ async function enableAllBots() {
       }
     }
   }
+}
+
+function removeAllBots() {
+  store.commit("setFavoriteBot", []);
 }
 
 defineExpose({

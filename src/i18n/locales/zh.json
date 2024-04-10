@@ -34,7 +34,8 @@
     "free": "免费",
     "paid": "付费",
     "enableAll": "全部启用",
-    "disableAll": "全部禁用"
+    "disableAll": "全部禁用",
+    "removeAll": "全部删除"
   },
   "error": {
     "error": "错误",
