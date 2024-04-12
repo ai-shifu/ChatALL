@@ -241,7 +241,7 @@ async function createWindow() {
 
       if (
         url.startsWith("https://character.ai/_next/data/") &&
-        /^https:\/\/character\.ai\/_next\/data\/[a-zA-Z0-9]+\/index\.json/.test(
+        /^https:\/\/character\.ai\/_next\/data\/.+\/index\.json/.test(
           url,
         )
       ) {
