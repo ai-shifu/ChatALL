@@ -29,7 +29,11 @@ export default class CharacterAIBot extends Bot {
   async _checkAvailability() {
     let available = false;
     try {
-      if (store.state.characterAI.id && store.state.characterAI.username) {
+      if (
+        store.state.characterAI.id &&
+        store.state.characterAI.username &&
+        store.state.characterAI.version
+      ) {
         available = true;
       } else {
         const response = await axios.get(
