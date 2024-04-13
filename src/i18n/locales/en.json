@@ -207,6 +207,9 @@
     "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
     "claude-3-opus-20240229": "claude-3-opus-20240229"
   },
+  "mistral": {
+    "name": "Mistral"
+  },
   "moss": {
     "name": "MOSS"
   },
