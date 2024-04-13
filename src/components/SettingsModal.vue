@@ -154,7 +154,6 @@ const botSettings = [
   { brand: "moss", component: MOSSBotSettings },
   { brand: "openaiApi", component: OpenAIAPIBotSettings },
   { brand: "geminiApi", component: GeminiAPIBotSettings },
-  { brand: "openAssistant", component: OpenAssistantBotSettings },
   { brand: "phind", component: PhindBotSettings },
   { brand: "pi", component: PiBotSettings },
   { brand: "poe", component: PoeBotSettings },
