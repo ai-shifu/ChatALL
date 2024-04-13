@@ -241,10 +241,6 @@
     "name": "Pi",
     "waitPiIntro": "아래 챗봇 사이트 링크를 클릭하여 Pi 소개가 끝날 때까지 기다렸다가 창을 닫아주세요."
   },
-  "openAssistant": {
-    "name": "Open Assistant",
-    "queue": "대기열에 {queue_size}개의 요청이 있습니다. 현재 {queue_position} 위입니다"
-  },
   "falcon": {
     "name": "Falcon",
     "falcon-180b": "180b",

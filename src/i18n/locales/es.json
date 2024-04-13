@@ -189,10 +189,6 @@
     "name": "Pi",
     "waitPiIntro": "Haga clic en el enlace del sitio web del chatbot a continuación y espere a que finalice la introducción de Pi, luego cierre la ventana."
   },
-  "openAssistant": {
-    "name": "Asistente para abrir",
-    "queue": "Hay { queue_size } solicitudes en la cola, estás en { queue_position }º lugar"
-  },
   "dev": {
     "name": "Bot de desarrollo"
   },
