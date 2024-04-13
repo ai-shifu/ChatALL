@@ -107,5 +107,11 @@
   },
   "dev": {
     "name": "Dev Bot"
+  },
+  "groqApi": {
+    "name": "Groq API",
+    "llama2-70b-4096": "LLaMA2 70b",
+    "mixtral-8x7b-32768": "Mixtral 8x7b",
+    "gemma-7b-it": "Gemma 7b"
   }
 }

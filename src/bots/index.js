@@ -20,6 +20,9 @@ import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
+import Gemma7bGroqAPIBot from "@/bots/groq/Gemma7bGroqAPIBot";
+import Llama270bGroqAPIBot from "@/bots/groq/Llama270bGroqAPIBot";
+import Mixtral8x7bGroqAPIBot from "@/bots/groq/Mixtral8x7bGroqAPIBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
 import ChatGPT35PoeBot from "./poe/ChatGPT35PoeBot";
@@ -123,6 +126,9 @@ const all = [
   OpenAIAPI4128KBot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
   GradioAppBot.getInstance(),
+  Gemma7bGroqAPIBot.getInstance(),
+  Llama270bGroqAPIBot.getInstance(),
+  Mixtral8x7bGroqAPIBot.getInstance(),
   KimiBot.getInstance(),
   Llama27bBot.getInstance(),
   Llama213bBot.getInstance(),
@@ -280,6 +286,9 @@ export const botTags = {
     bots.getBotByClassName("ClaudeAPIInstant12Bot"),
     bots.getBotByClassName("ClaudeAPIOpusBot"),
     bots.getBotByClassName("ClaudeAPISonnetBot"),
+    bots.getBotByClassName("Gemma7bGroqAPIBot"),
+    bots.getBotByClassName("Llama270bGroqAPIBot"),
+    bots.getBotByClassName("Mixtral8x7bGroqAPIBot"),
   ],
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),

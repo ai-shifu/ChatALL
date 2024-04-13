@@ -65,6 +65,12 @@ export default createStore({
     mistral: {
       model: "mistral-large",
     },
+    groqApi: {
+      apiKey: "",
+      temperature: 0,
+      maxTokens: 1000,
+      pastRounds: 1,
+    },
     moss: {
       token: "",
     },
@@ -229,6 +235,9 @@ export default createStore({
     },
     setGradio(state, values) {
       state.gradio = { ...state.gradio, ...values };
+    },
+    setGroq(state, values) {
+      state.groq = { ...state.groq, ...values };
     },
     setCharacterAI(state, values) {
       state.characterAI = { ...state.characterAI, ...values };
