@@ -14,7 +14,8 @@
     "system": "系统",
     "light": "浅色",
     "dark": "深色",
-    "bots": "AI 模型"
+    "bots": "AI 模型",
+    "api": "API"
   },
   "header": {
     "clearMessages": "清空当前对话的所有消息？",
@@ -91,7 +92,7 @@
     "creatingConversation": "创建新对话...",
     "disabled": "已禁用",
     "failedToCreateConversation": "创建对话失败",
-    "nullBot": "虚无",
+    "name": "虚无",
     "notImplemented": "建设中...",
     "notAvailable": "这个对话机器人现在不可用。可能因为未登录，或者配置不正确。",
     "waiting": "等待其它 { botName } 请求结束...",
@@ -119,6 +120,15 @@
     "name": "Gemini",
     "gemini-pro": "Gemini",
     "gemini-ultra": "Gemini Advanced"
+  },
+  "claudeApi":{
+    "name": "Claude API",
+    "claude-3-opus-20240229" : "claude-3-opus",
+    "claude-3-sonnet-20240229": "claude-3-sonnet",
+    "claude-3-haiku-20240307": "claude-3-haiku",
+    "claude-21":"claude-2.1",
+    "claude-20":"claude-2.0",
+    "claude-instant-12":"claude-instant"
   },
   "bingChat": {
     "name": "Copilot",
@@ -190,7 +200,14 @@
     "codellama-34b-instruct": "Code Llama",
     "llama-2-13b-chat": "llama-2-13b",
     "llama-2-7b-chat": "llama-2-7b",
-    "llama-2-70b-chat": "llama-2-70b"
+    "llama-2-70b-chat": "llama-2-70b",
+    "gemma-7b-it": "gemma-7b-it",
+    "gemma-2b-it": "gemma-2b-it",
+    "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
+    "claude-3-opus-20240229": "claude-3-opus-20240229"
+  },
+  "mistral": {
+    "name": "Mistral"
   },
   "moss": {
     "name": "MOSS"
@@ -251,7 +268,15 @@
   },
   "falcon": {
     "name": "Falcon",
-    "falcon-180b": "180b"
+    "falcon-180b": "180b",
+    "temperature": "Temperature",
+    "temperaturePrompt": "较高的值会产生更多元的输出",
+    "maxNewTokens": "最大新 token 数量",
+    "maxNewTokensPrompt": "新 token 的最大数量",
+    "topP": "Top-p （核心抽样）",
+    "topPPrompt": "从最可能到最不可能的 token 被选出，直到它们的概率总和等于 topP 值",
+    "repetitionPenalty": "重复惩罚",
+    "repetitionPenaltyPrompt": "对重复的 token 进行惩罚"
   },
   "phind": {
     "name": "Phind"
@@ -326,7 +351,8 @@
     },
     "input": {
       "clear": "清除"
-    }
+    },
+    "open": "打开"
   },
   "10": "10",
   "25": "25",
