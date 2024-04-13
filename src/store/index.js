@@ -27,12 +27,18 @@ export default createStore({
     uuid: "",
     lang: "auto",
     columns: 2,
-    gemini: {
+    geminiApi: {
       apiKey: "",
       temperature: 0.7,
       pastRounds: 5,
       topK: 16,
       topP: 0.95,
+    },
+    claudeApi: {
+      apiKey: "",
+      temperature: 0,
+      alterUrl: "",
+      maxTokens: 1000,
     },
     openaiApi: {
       apiKey: "",
@@ -161,6 +167,12 @@ export default createStore({
         favBots,
       });
     },
+    async setFavoriteBot(state, favBots) {
+      const currentChat = await Chats.getCurrentChat();
+      Chats.table.update(currentChat.index, {
+        favBots,
+      });
+    },
     async removeFavoriteBot(state, botClassname) {
       const currentChat = await Chats.getCurrentChat();
       for (let i = 0; i < currentChat.favBots.length; i++) {
@@ -182,8 +194,8 @@ export default createStore({
     setChatgpt(state, refreshCycle) {
       state.chatgpt.refreshCycle = refreshCycle;
     },
-    setGemini(state, values) {
-      state.gemini = { ...state.gemini, ...values };
+    setGeminiApi(state, values) {
+      state.geminiApi = { ...state.geminiApi, ...values };
     },
     setOpenaiApi(state, values) {
       state.openaiApi = { ...state.openaiApi, ...values };
@@ -217,6 +229,9 @@ export default createStore({
     },
     setClaudeAi(state, values) {
       state.claudeAi = { ...state.claudeAi, ...values };
+    },
+    setClaudeApi(state, values) {
+      state.claudeApi = { ...state.claudeApi, ...values };
     },
     setPoe(state, values) {
       state.poe = { ...state.poe, ...values };
@@ -413,6 +428,19 @@ export default createStore({
     },
   },
   actions: {
+    async setBotSelected(_, { botClassname, selected }) {
+      const currentChat = await Chats.getCurrentChat();
+      for (let i = 0; i < currentChat.favBots.length; i++) {
+        const bot = currentChat.favBots[i];
+        if (bot.classname === botClassname) {
+          bot.selected = selected;
+          await Chats.table.update(currentChat.index, {
+            favBots: currentChat.favBots,
+          });
+          return;
+        }
+      }
+    },
     async sendPrompt({ commit, dispatch }, { prompt, bots, promptIndex }) {
       const currentChat = await Chats.getCurrentChat();
       if (promptIndex === undefined) {

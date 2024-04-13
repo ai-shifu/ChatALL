@@ -6,7 +6,7 @@ export default class Qihoo360AIBrainBot extends Bot {
   static _brandId = "360AiBrain";
   static _className = "Qihoo360AIBrainBot"; // Class name of the bot
   static _logoFilename = "360-ai-brain-logo.png";
-  static _loginUrl = "https://chat.360.cn/";
+  static _loginUrl = "https://chat.360.com/";
 
   constructor() {
     super();
@@ -16,7 +16,7 @@ export default class Qihoo360AIBrainBot extends Bot {
     let available = false;
 
     await axios
-      .get("https://chat.360.cn/backend-api/apiz/user/info")
+      .get("https://chat.360.com/backend-api/api/user/info")
       .then((response) => {
         available = response.data?.context?.message == "OK";
       })
@@ -57,7 +57,7 @@ export default class Qihoo360AIBrainBot extends Bot {
     return new Promise((resolve, reject) => {
       try {
         const source = new SSE(
-          "https://chat.360.cn/backend-api/api/common/chat",
+          "https://chat.360.com/backend-api/api/common/chat",
           {
             headers,
             payload,

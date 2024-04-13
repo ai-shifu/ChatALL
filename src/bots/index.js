@@ -1,5 +1,5 @@
 // Bots
-import GeminiBot from "@/bots/google/GeminiBot";
+import GeminiAPIBot from "@/bots/google/GeminiAPIBot";
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import ChatGPTBrowsingBot from "@/bots/openai/ChatGPTBrowsingBot";
@@ -65,6 +65,12 @@ import Claude3SonnetBot from "./lmsys/Claude3SonnetBot";
 import Claude3OpusBot from "./lmsys/Claude3OpusBot";
 import ChatGLM4Bot from "./zhipu/ChatGLM4Bot";
 import KimiBot from "./moonshot/KimiBot";
+import ClaudeAPIOpusBot from "./anthropic/ClaudeAPIOpusBot";
+import ClaudeAPI20Bot from "./anthropic/ClaudeAPI20Bot";
+import ClaudeAPI21Bot from "./anthropic/ClaudeAPI21Bot";
+import ClaudeAPISonnetBot from "./anthropic/ClaudeAPISonnetBot";
+import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
+import ClaudeAPIInstant12Bot from "./anthropic/ClaudeAPIInstant12Bot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -85,6 +91,12 @@ const all = [
   ClaudePlusPoeBot.getInstance(),
   Claude3OpusBot.getInstance(),
   Claude3SonnetBot.getInstance(),
+  ClaudeAPIOpusBot.getInstance(),
+  ClaudeAPISonnetBot.getInstance(),
+  ClaudeAPIHaikuBot.getInstance(),
+  ClaudeAPI20Bot.getInstance(),
+  ClaudeAPI21Bot.getInstance(),
+  ClaudeAPIInstant12Bot.getInstance(),
   CodeLlama34bPoeBot.getInstance(),
   CodeLlamaHCBot.getInstance(),
   CodeLlamaBot.getInstance(),
@@ -95,7 +107,7 @@ const all = [
   FalconHC180bBot.getInstance(),
   BardBot.getInstance(),
   GeminiAdvBot.getInstance(),
-  GeminiBot.getInstance(),
+  GeminiAPIBot.getInstance(),
   Gemma2bItBot.getInstance(),
   Gemma7bItBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
@@ -250,7 +262,7 @@ export const botTags = {
     bots.getBotByClassName("Claude3OpusBot"),
   ],
   api: [
-    bots.getBotByClassName("GeminiBot"),
+    bots.getBotByClassName("GeminiAPIBot"),
     bots.getBotByClassName("AzureOpenAIAPIBot"),
     bots.getBotByClassName("OpenAIAPI35Bot"),
     bots.getBotByClassName("OpenAIAPI3516KBot"),
@@ -259,6 +271,12 @@ export const botTags = {
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("WenxinQianfan4Bot"),
+    bots.getBotByClassName("ClaudeAPI20Bot"),
+    bots.getBotByClassName("ClaudeAPI21Bot"),
+    bots.getBotByClassName("ClaudeAPIHaikuBot"),
+    bots.getBotByClassName("ClaudeAPIInstant12Bot"),
+    bots.getBotByClassName("ClaudeAPIOpusBot"),
+    bots.getBotByClassName("ClaudeAPISonnetBot"),
   ],
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),

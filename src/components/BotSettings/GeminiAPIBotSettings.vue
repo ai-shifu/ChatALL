@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Bot from "@/bots/google/GeminiBot";
+import Bot from "@/bots/google/GeminiAPIBot";
 import CommonBotSettings from "@/components/BotSettings/CommonBotSettings.vue";
 import { Type } from "./settings.const";
 
@@ -36,8 +36,8 @@ const settings = [
   {
     type: Type.Slider,
     name: "topK",
-    title: "gemini.topK",
-    description: "gemini.topKPrompt",
+    title: "geminiApi.topK",
+    description: "geminiApi.topKPrompt",
     min: 1,
     max: 100,
     step: 1,
@@ -45,8 +45,8 @@ const settings = [
   {
     type: Type.Slider,
     name: "topP",
-    title: "gemini.topP",
-    description: "gemini.topPPrompt",
+    title: "geminiApi.topP",
+    description: "geminiApi.topPPrompt",
     min: 0.1,
     max: 1,
     step: 0.01,

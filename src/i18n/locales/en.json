@@ -33,7 +33,10 @@
     "openSource": "Open Source",
     "free": "Free",
     "paid": "Paid",
-    "api": "API"
+    "api": "API",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All",
+    "removeAll": "Remove All"
   },
   "error": {
     "error": "Error",
@@ -118,6 +121,15 @@
     "gemini-pro": "Gemini",
     "gemini-ultra": "Gemini Advanced"
   },
+  "claudeApi": {
+    "name": "Claude API",
+    "claude-3-opus-20240229": "claude-3-opus",
+    "claude-3-sonnet-20240229": "claude-3-sonnet",
+    "claude-3-haiku-20240307": "claude-3-haiku",
+    "claude-21": "claude-2.1",
+    "claude-20": "claude-2.0",
+    "claude-instant-12": "claude-instant"
+  },
   "bingChat": {
     "name": "Copilot",
     "solveCaptcha": "You need to <a { attributes }>solve CAPTCHA</a> to continue.",
@@ -139,7 +151,7 @@
     "gpt-4-mobile": "GPT-4 Mobile V2"
   },
   "gemini": {
-    "name": "Gemini",
+    "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
     "topKPrompt": "A topK of 1 means the selected token is the most probable among all the tokens in the model's vocabulary (also called greedy decoding)",

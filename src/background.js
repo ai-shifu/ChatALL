@@ -5,11 +5,27 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import fs from "fs";
 import path from "path";
+import { setMenuItems } from "./menu";
 import updateApp from "./update";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 let mainWindow = null;
+
+// start - makes  application a Single Instance Application
+const singleInstanceLock = app.requestSingleInstanceLock();
+if (!singleInstanceLock) {
+  app.quit();
+} else {
+  app.on("second-instance", () => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }
+  });
+}
+// end - makes application a Single Instance Application
 
 // Disable QUIC
 // Prevent Cloudflare from detecting the real IP when using a proxy that bypasses UDP traffic
@@ -293,7 +309,7 @@ function createNewWindow(url, userAgent = "") {
         const token = await getLocalStorage("char_token");
         mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
       } else if (url.startsWith("https://claude.ai/")) {
-        const org = await getLocalStorage("lastActiveOrg");
+        const org = await getCookie("lastActiveOrg");
         mainWindow.webContents.send("CLAUDE-2-ORG", org);
       } else if (url.startsWith("https://poe.com/")) {
         const formkey = await newWin.webContents.executeJavaScript(
@@ -417,6 +433,7 @@ app.on("ready", async () => {
   }
 
   createWindow();
+  setMenuItems();
   updateApp(mainWindow);
 });
 

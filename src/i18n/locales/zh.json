@@ -33,7 +33,9 @@
     "openSource": "开源",
     "free": "免费",
     "paid": "付费",
-    "api": "API"
+    "enableAll": "全部启用",
+    "disableAll": "全部禁用",
+    "removeAll": "全部删除"
   },
   "error": {
     "error": "错误",
@@ -139,7 +141,7 @@
     "gpt-4-mobile": "GPT-4 移动版V2"
   },
   "gemini": {
-    "name": "Gemini",
+    "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
     "topKPrompt": "topK为1意味着选定的标记在模型词汇中所有标记里是最有可能的（也称为贪婪解码）",

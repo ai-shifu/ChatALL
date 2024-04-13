@@ -1,6 +1,6 @@
 {
   "name": "chatall",
-  "version": "1.63.95",
+  "version": "1.69.99",
   "description": "Chat with multiple AI bots and discover the best.",
   "author": {
     "name": "Sun Zhigang",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@kangc/v-md-editor": "^2.3.16",
+    "@langchain/anthropic": "^0.1.9",
     "@langchain/google-genai": "^0.0.7",
     "@langchain/openai": "^0.0.12",
     "@mdi/font": "^7.4.47",
@@ -39,8 +40,8 @@
     "dexie-export-import": "^4.0.7",
     "electron-builder": "^24.13.3",
     "jszip": "^3.10.1",
-    "katex": "^0.16.9",
-    "langchain": "^0.1.4",
+    "katex": "^0.16.10",
+    "langchain": "^0.1.32",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
     "prismjs": "^1.29.0",
@@ -67,7 +68,7 @@
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
-    "electron": "^28.1.3",
+    "electron": "^28.2.10",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -109,7 +110,7 @@
   ],
   "license": "Apache-2.0",
   "overrides": {
-    "@langchain/core": "~0.1.17",
+    "@langchain/core": "~0.1.55",
     "vue-cli-plugin-electron-builder": {
       "electron-builder": "^24.0.0"
     }
