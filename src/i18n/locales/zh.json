@@ -34,7 +34,8 @@
     "free": "免费",
     "paid": "付费",
     "enableAll": "全部启用",
-    "disableAll": "全部禁用"
+    "disableAll": "全部禁用",
+    "removeAll": "全部删除"
   },
   "error": {
     "error": "错误",
@@ -136,10 +137,9 @@
     "notice": "只有付费的 Plus 用户才能使用 GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "Web 浏览",
     "gpt-4-mobile": "GPT-4 移动版V2"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
@@ -248,10 +248,6 @@
   "pi": {
     "name": "Pi",
     "waitPiIntro": "请点击下面的网站链接，等待Pi介绍完成后，然后关闭窗口。"
-  },
-  "openAssistant": {
-    "name": "Open Assistant",
-    "queue": "当前有 { queue_size } 个请求在队列中，你在第 { queue_position } 位"
   },
   "falcon": {
     "name": "Falcon",

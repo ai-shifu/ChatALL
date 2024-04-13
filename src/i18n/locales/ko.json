@@ -135,10 +135,9 @@
     "notice": "유료 플러스 회원만 GPT-4를 사용할 수 있습니다",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "웹 브라우징",
     "gpt-4-mobile": "GPT-4 모바일 V2"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
@@ -240,10 +239,6 @@
   "pi": {
     "name": "Pi",
     "waitPiIntro": "아래 챗봇 사이트 링크를 클릭하여 Pi 소개가 끝날 때까지 기다렸다가 창을 닫아주세요."
-  },
-  "openAssistant": {
-    "name": "Open Assistant",
-    "queue": "대기열에 {queue_size}개의 요청이 있습니다. 현재 {queue_position} 위입니다"
   },
   "falcon": {
     "name": "Falcon",

@@ -62,6 +62,9 @@ export default createStore({
       url: "",
       fnIndex: 0,
     },
+    mistral: {
+      model: "mistral-large",
+    },
     moss: {
       token: "",
     },
@@ -170,6 +173,12 @@ export default createStore({
         favBots,
       });
     },
+    async setFavoriteBot(state, favBots) {
+      const currentChat = await Chats.getCurrentChat();
+      Chats.table.update(currentChat.index, {
+        favBots,
+      });
+    },
     async removeFavoriteBot(state, botClassname) {
       const currentChat = await Chats.getCurrentChat();
       for (let i = 0; i < currentChat.favBots.length; i++) {
@@ -238,6 +247,9 @@ export default createStore({
     },
     setPhind(state, values) {
       state.phind = { ...state.phind, ...values };
+    },
+    setMistral(state, values) {
+      state.mistral = { ...state.mistral, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       Chats.table.update(state.currentChatIndex, {

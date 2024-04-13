@@ -35,7 +35,8 @@
     "paid": "Paid",
     "api": "API",
     "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "disableAll": "Disable All",
+    "removeAll": "Remove All"
   },
   "error": {
     "error": "Error",
@@ -120,14 +121,14 @@
     "gemini-pro": "Gemini",
     "gemini-ultra": "Gemini Advanced"
   },
-  "claudeApi":{
+  "claudeApi": {
     "name": "Claude API",
-    "claude-3-opus-20240229" : "claude-3-opus",
+    "claude-3-opus-20240229": "claude-3-opus",
     "claude-3-sonnet-20240229": "claude-3-sonnet",
     "claude-3-haiku-20240307": "claude-3-haiku",
-    "claude-21":"claude-2.1",
-    "claude-20":"claude-2.0",
-    "claude-instant-12":"claude-instant"
+    "claude-21": "claude-2.1",
+    "claude-20": "claude-2.0",
+    "claude-instant-12": "claude-instant"
   },
   "bingChat": {
     "name": "Copilot",
@@ -146,10 +147,9 @@
     "notice": "Only paid Plus members can use GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "Web Browsing",
     "gpt-4-mobile": "GPT-4 Mobile V2"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
@@ -205,6 +205,9 @@
     "gemma-2b-it": "gemma-2b-it",
     "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
     "claude-3-opus-20240229": "claude-3-opus-20240229"
+  },
+  "mistral": {
+    "name": "Mistral"
   },
   "moss": {
     "name": "MOSS"
@@ -262,10 +265,6 @@
   "pi": {
     "name": "Pi",
     "waitPiIntro": "Please click the chatbot website link below and wait for the Pi introduction to finish, then close the window."
-  },
-  "openAssistant": {
-    "name": "Open Assistant",
-    "queue": "There are { queue_size } requests in the queue, you are in { queue_position }th place"
   },
   "falcon": {
     "name": "Falcon",

@@ -131,10 +131,9 @@
     "notice": "只有付費的 ChatGPT Plus 使用者才能使用 GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "Web 瀏覽",
     "gpt-4-mobile": "GPT-4 行動裝置版 V2"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
@@ -236,10 +235,6 @@
   "pi": {
     "name": "Pi",
     "waitPiIntro": "請點選下方的網站連結，等待 Pi 介紹完成後，然後關閉視窗。"
-  },
-  "openAssistant": {
-    "name": "Open Assistant",
-    "queue": "目前有 { queue_size } 個請求在佇列中，你在第 { queue_position } 位"
   },
   "falcon": {
     "name": "Falcon",

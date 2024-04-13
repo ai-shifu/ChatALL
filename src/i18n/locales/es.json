@@ -100,10 +100,9 @@
     "notice": "Solo los miembros Plus de pago pueden usar GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "Navegación Web",
     "gpt-4-mobile": "GPT-4 móvil V2"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
@@ -188,10 +187,6 @@
   "pi": {
     "name": "Pi",
     "waitPiIntro": "Haga clic en el enlace del sitio web del chatbot a continuación y espere a que finalice la introducción de Pi, luego cierre la ventana."
-  },
-  "openAssistant": {
-    "name": "Asistente para abrir",
-    "queue": "Hay { queue_size } solicitudes en la cola, estás en { queue_position }º lugar"
   },
   "dev": {
     "name": "Bot de desarrollo"

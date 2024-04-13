@@ -85,10 +85,9 @@
     "notice": "ChatGPTプラス会員のみGPT-4をご利用いただけます。",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
-    "gpt-4-browsing": "webブラウジング",
     "gpt-4-mobile": "GPT-4 モバイル V2"
   },
-  "gemini": {
+  "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "topK": "topK",
