@@ -161,15 +161,40 @@ export default class ChatGPTBot extends Bot {
     // Make sure the access token is available
     if (!this.accessToken) await this.checkAvailability();
 
-    // Send the prompt to the ChatGPT API
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${this.accessToken}`,
     };
+
+    let requirement;
+    try {
+      const result = await axios.post(
+        "https://chat.openai.com/backend-api/sentinel/chat-requirements",
+        undefined,
+        { headers },
+      );
+      if (result) {
+        requirement = result.data;
+      }
+    } catch (error) {
+      console.error("Error get chat-requirements token:", error);
+      console.error("ChatGPT response:", event);
+    }
+
+    if (requirement.token) {
+      headers["Openai-Sentinel-Chat-Requirements-Token"] = requirement.token;
+    }
+
+    // Send the prompt to the ChatGPT API
     const context = await this.getChatContext();
     const payload = JSON.stringify({
       action: "next",
-      arkose_token: await this.getArkoseToken(),
+      conversation_mode: {
+        kind: "primary_assistant",
+      },
+      arkose_token: requirement?.arkose?.required
+        ? await this.getArkoseToken()
+        : undefined,
       messages: [
         {
           id: uuidv4(),
@@ -178,6 +203,7 @@ export default class ChatGPTBot extends Bot {
             content_type: "text",
             parts: [prompt],
           },
+          metadata: {},
         },
       ],
       conversation_id: context.conversationId,
@@ -190,7 +216,13 @@ export default class ChatGPTBot extends Bot {
       try {
         const source = new SSE(
           "https://chat.openai.com/backend-api/conversation",
-          { headers, payload },
+          {
+            headers: {
+              ...headers,
+              accept: "text/event-stream",
+            },
+            payload,
+          },
         );
 
         let preInfo = [];
@@ -253,7 +285,7 @@ export default class ChatGPTBot extends Bot {
             } catch (error) {
               console.error("Error parsing ChatGPT response:", error);
               console.error("ChatGPT response:", event);
-              return;
+              reject(error);
             }
         });
 
@@ -278,6 +310,16 @@ export default class ChatGPTBot extends Bot {
           }
 
           reject(new Error(message));
+        });
+
+        source.addEventListener("readystatechange", (event) => {
+          if (event.readyState === source.CLOSED) {
+            // after stream closed, done
+            onUpdateResponse(callbackParam, {
+              done: true,
+            });
+            resolve();
+          }
         });
 
         source.stream();
