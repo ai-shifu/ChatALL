@@ -281,6 +281,9 @@
   "phind": {
     "name": "Phind"
   },
+  "perplexity": {
+    "name": "Perplexity"
+  },
   "dev": {
     "name": "Dev Bot"
   },
