@@ -158,7 +158,7 @@
     "topPPrompt": "Tokens are selected from the most to least probable until the sum of their probabilities equals the topP value."
   },
   "claudeAi": {
-    "name": "Claude 2"
+    "name": "Claude"
   },
   "ernie": {
     "name": "ERNIE"
