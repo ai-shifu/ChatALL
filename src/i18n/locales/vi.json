@@ -142,7 +142,7 @@
     "topPPrompt": "Các token được chọn từ có khả năng cao nhất đến thấp nhất cho đến khi tổng xác suất của chúng bằng với giá trị topP"
   },
   "claudeAi": {
-    "name": "Claude 2"
+    "name": "Claude"
   },
   "ernie": {
     "name": "ERNIE"

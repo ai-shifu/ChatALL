@@ -158,7 +158,7 @@
     "topPPrompt": "從最可能到最不可能的 token 被選出，直到它們的概率總和等於 topP 值。"
   },
   "claudeAi": {
-    "name": "Claude 2"
+    "name": "Claude"
   },
   "ernie": {
     "name": "文心一言"

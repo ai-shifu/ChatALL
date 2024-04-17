@@ -146,7 +146,7 @@
     "topPPrompt": "토큰은 가장 가능성이 높은 것부터 가장 낮은 것까지 선택되며, 그 확률의 합이 topP 값과 같아질 때까지 선택됩니다"
   },
   "claudeAi": {
-    "name": "Claude 2"
+    "name": "Claude"
   },
   "ernie": {
     "name": "ERNIE"
