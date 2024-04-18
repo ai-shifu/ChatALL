@@ -128,6 +128,7 @@ import KimiBotSettings from "./BotSettings/KimiBotSettings.vue";
 
 import { resolveTheme, applyTheme, Mode } from "../theme";
 import ClaudeAPIBotSettings from "./BotSettings/ClaudeAPIBotSettings.vue";
+import GroqAPIBotSettings from "./BotSettings/GroqAPIBotSettings.vue";
 
 const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
@@ -167,6 +168,7 @@ const botSettings = [
   { brand: "wenxinQianfan", component: WenxinQianfanBotSettings },
   { brand: "youChat", component: YouChatBotSettings },
   { brand: "claudeApi", component: ClaudeAPIBotSettings },
+  { brand: "groqApi", component: GroqAPIBotSettings },
 ];
 
 const proxy = ProxySettings;

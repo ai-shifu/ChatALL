@@ -28,6 +28,7 @@
     "@kangc/v-md-editor": "^2.3.16",
     "@langchain/anthropic": "^0.1.9",
     "@langchain/google-genai": "^0.0.7",
+    "@langchain/groq": "^0.0.6",
     "@langchain/openai": "^0.0.12",
     "@mdi/font": "^7.4.47",
     "@vueuse/rxjs": "^10.7.1",
