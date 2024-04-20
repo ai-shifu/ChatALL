@@ -48,7 +48,6 @@ Typical users of ChatALL are:
 | [Pi](https://pi.ai)                                                            | Yes         | No API      |                                             |
 | [360 AI Brain](https://ai.360.cn/)                                             | Yes         | No API      |                                             |
 | [YouChat](https://you.com/)                                                    | Yes         | No API      |                                             |
-| [Open Assistant](https://open-assistant.io/)                                   | Yes         | No API      |                                             |
 | [Character.AI](https://character.ai/)                                          | Yes         | No API      |                                             |
 | [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Yes         | No API      |                                             |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Yes         | No API      |                                             |

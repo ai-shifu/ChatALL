@@ -47,7 +47,6 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [Pi](https://pi.ai)                                                            | 예        | API 없음  |                                     |
 | [360 AI Brain](https://ai.360.cn/)                                             | 예        | API 없음  |                                     |
 | [YouChat](https://you.com/)                                                    | 예        | API 없음  |                                     |
-| [Open Assistant](https://open-assistant.io/)                                   | 예        | API 없음  |                                     |
 | [Character.AI](https://character.ai/)                                          | 예        | API 없음  |                                     |
 | [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | 예        | API 없음  |                                     |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예        | API 없음  |                                     |

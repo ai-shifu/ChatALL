@@ -47,7 +47,6 @@ Los usuarios típicos de ChatALL son:
 | [Pi](https://pi.ai)                                           | Sí           | Sin API      |                                                      |
 | [Cerebro de IA 360](https://ai.360.cn/)                       | Sí           | Sin API      |                                                      |
 | [YouChat](https://you.com/)                                   | Sí           | Sin API      |                                                      |
-| [Asistente para abrir](https://open-assistant.io/)            | Sí           | Sin API      |                                                      |
 | [Claude](https://claude.ai/)                                  | Sí           | Sin API      |                                                      |
 | [Character.AI](https://character.ai/)                         | Sí           | Sin API      |                                                      |
 
