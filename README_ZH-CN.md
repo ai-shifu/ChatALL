@@ -47,7 +47,6 @@ ChatALL 的典型用户是：
 | [Pi](https://pi.ai)                                                            | 支持     | 无 API   |                                          |
 | [360 智脑](https://ai.360.cn/)                                                 | 支持     | 无       |                                          |
 | [YouChat](https://you.com/)                                                    | 支持     | 无       |                                          |
-| [Open Assistant](https://open-assistant.io/)                                   | 支持     | 无       |                                          |
 | [Character.AI](https://character.ai/)                                          | 支持     | 无       |                                          |
 | [Llama 2 13B 和 70B](https://ai.meta.com/llama/)                               | 支持     | 无 API   |                                          |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 支持     | 无 API   |                                          |

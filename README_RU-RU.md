@@ -47,7 +47,6 @@
 | [Pi](https://pi.ai)                                                            | Да                 | Нет API     |                                                   |
 | [360 AI Brain](https://ai.360.cn/)                                             | Да                 | Нет API     |                                                   |
 | [YouChat](https://you.com/)                                                    | Да                 | Нет API     |                                                   |
-| [Open Assistant](https://open-assistant.io/)                                   | Да                 | Нет API     |                                                   |
 | [Character.AI](https://character.ai/)                                          | Да                 | Нет API     |                                                   |
 | [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Да                 | Нет API     |                                                   |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Да                 | Нет API     |                                                   |
