@@ -53,6 +53,16 @@
     "topP": "topP",
     "topPPrompt": "Token werden vom wahrscheinlichsten bis zum am wenigsten wahrscheinlichen ausgewählt, bis die Summe ihrer Wahrscheinlichkeiten den topP-Wert ergibt."
   },
+  "cohereApi": {
+    "name": "Cohere API",
+    "command": "Command",
+    "command-light": "Command Light",
+    "command-r": "Command R",
+    "command-r-plus": "Command R+",
+    "temperature": "Temperatur",
+    "temperaturePrompt": "Die Einstellung der Zufälligkeit der Modellausgaben reicht von 0 bis 5. Niedrigere Werte gewährleisten eine präzise und konsistente Ausgabe, ideal für Aufgaben, die genaue Informationen erfordern, wie das Erstellen von Zusammenfassungen. Höhere Einstellungen fördern die Kreativität, können jedoch die Kohärenz bei spezifischen Kontexten oder kurzen Antworten beeinträchtigen.",
+    "apiKey": "API Key"
+  },
   "bingChat": {
     "name": "Copilot",
     "h3imaginative": "Kreativ",

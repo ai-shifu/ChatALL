@@ -124,6 +124,7 @@ import Qihoo360AIBrainBotSettings from "./BotSettings/Qihoo360AIBrainBotSettings
 import CharacterAIBotSettings from "./BotSettings/CharacterAIBotSettings.vue";
 import ClaudeAIBotSettings from "./BotSettings/ClaudeAIBotSettings.vue";
 import ChatGLMBotSettings from "./BotSettings/ChatGLMBotSettings.vue";
+import CohereAPIBotSettings from "./BotSettings/CohereAPIBotSettings.vue";
 import KimiBotSettings from "./BotSettings/KimiBotSettings.vue";
 
 import { resolveTheme, applyTheme, Mode } from "../theme";
@@ -150,6 +151,7 @@ const botSettings = [
   { brand: "chatGpt", component: ChatGPTBotSettings },
   { brand: "claudeAi", component: ClaudeAIBotSettings },
   { brand: "claudeApi", component: ClaudeAPIBotSettings },
+  { brand: "cohereApi", component: CohereAPIBotSettings },
   { brand: "falcon", component: Falcon180bBotSettings },
   { brand: "geminiApi", component: GeminiAPIBotSettings },
   { brand: "gradio", component: GradioAppBotSettings },

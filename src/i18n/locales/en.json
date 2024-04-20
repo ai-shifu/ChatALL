@@ -130,6 +130,16 @@
     "claude-20": "claude-2.0",
     "claude-instant-12": "claude-instant"
   },
+  "cohereApi": {
+    "name": "Cohere API",
+    "command": "Command",
+    "command-light": "Command Light",
+    "command-r": "Command R",
+    "command-r-plus": "Command R+",
+    "temperature": "Temperature",
+    "temperaturePrompt": "Adjust output randomness from 0 to 5. Lower temperatures ensure precise, consistent answers, suitable for tasks like summarization. Higher temperatures promote creativity but may reduce coherence, especially in brief or context-specific prompts.",
+    "apiKey": "API Key"
+  },
   "bingChat": {
     "name": "Copilot",
     "solveCaptcha": "You need to <a { attributes }>solve CAPTCHA</a> to continue.",
