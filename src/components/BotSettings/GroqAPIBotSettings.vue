@@ -34,6 +34,15 @@ const settings = [
       1: "openaiApi.temperature2",
     },
   },
+  {
+    type: Type.Slider,
+    name: "pastRounds",
+    title: "bot.pastRounds",
+    description: "bot.pastRoundsPrompt",
+    min: 0,
+    max: 10,
+    step: 1,
+  },
 ];
 export default {
   components: {
