@@ -2,6 +2,10 @@
 import GeminiAPIBot from "@/bots/google/GeminiAPIBot";
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
+import CohereAPICommandBot from "@/bots/cohere/CohereAPICommandBot";
+import CohereAPICommandLightBot from "@/bots/cohere/CohereAPICommandLightBot";
+import CohereAPICommandRBot from "@/bots/cohere/CohereAPICommandRBot";
+import CohereAPICommandRPlusBot from "@/bots/cohere/CohereAPICommandRPlusBot";
 import BingChatPreciseBot from "@/bots/microsoft/BingChatPreciseBot";
 import BingChatBalancedBot from "@/bots/microsoft/BingChatBalancedBot";
 import BingChatCreativeBot from "@/bots/microsoft/BingChatCreativeBot";
@@ -106,6 +110,10 @@ const all = [
   CodeLlama34bPoeBot.getInstance(),
   CodeLlamaHCBot.getInstance(),
   CodeLlamaBot.getInstance(),
+  CohereAPICommandBot.getInstance(),
+  CohereAPICommandLightBot.getInstance(),
+  CohereAPICommandRBot.getInstance(),
+  CohereAPICommandRPlusBot.getInstance(),
   WenxinQianfanBot.getInstance(),
   WenxinQianfanTurboBot.getInstance(),
   WenxinQianfan4Bot.getInstance(),
@@ -290,6 +298,10 @@ export const botTags = {
     bots.getBotByClassName("ClaudeAPIInstant12Bot"),
     bots.getBotByClassName("ClaudeAPIOpusBot"),
     bots.getBotByClassName("ClaudeAPISonnetBot"),
+    bots.getBotByClassName("CohereAPICommandBot"),
+    bots.getBotByClassName("CohereAPICommandLightBot"),
+    bots.getBotByClassName("CohereAPICommandRBot"),
+    bots.getBotByClassName("CohereAPICommandRPlusBot"),
     bots.getBotByClassName("Gemma7bGroqAPIBot"),
     bots.getBotByClassName("Llama270bGroqAPIBot"),
     bots.getBotByClassName("Llama38bGroqAPIBot"),

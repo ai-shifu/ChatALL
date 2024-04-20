@@ -40,6 +40,11 @@ export default createStore({
       alterUrl: "",
       maxTokens: 1000,
     },
+    cohereApi: {
+      apiKey: "",
+      temperature: 0.8,
+      pastRounds: 5,
+    },
     openaiApi: {
       apiKey: "",
       temperature: 1,
@@ -249,6 +254,9 @@ export default createStore({
     },
     setClaudeApi(state, values) {
       state.claudeApi = { ...state.claudeApi, ...values };
+    },
+    setCohereApi(state, values) {
+      state.cohereApi = { ...state.cohereApi, ...values };
     },
     setPerplexity(state, values) {
       state.perplexity = { ...state.perplexity, ...values };
