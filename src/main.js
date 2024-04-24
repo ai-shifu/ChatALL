@@ -40,6 +40,7 @@ VMdPreview.use(vuepressTheme, {
 const { ipcRenderer } = window.require("electron");
 
 await store.restored; // wait for state to be restore
+i18n.global.locale.value = store.state.lang;
 store.commit("migrateSettingsPrompts");
 store.commit("migrateSettingArrayIndexUseUUID");
 await migrateChatsMessagesThreads();
