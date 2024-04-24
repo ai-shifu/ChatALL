@@ -28,32 +28,36 @@ Typical users of ChatALL are:
 
 | AI Bots                                                                        | Web Access  | API         | Notes                                       |
 | ------------------------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                                             | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
-| [Copilot](https://copilot.microsoft.com/)                                      | Yes         | No API      |                                             |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | No          | Yes         |                                             |
-| [Gemini](https://gemini.google.com/)                                           | Yes         | Coming soon |                                             |
-| [Gemma 2B & 7B](https://blog.google/technology/developers/gemma-open-models/)  | Yes         | No API      |                                             |
-| [Poe](https://poe.com/)                                                        | Yes         | Coming soon |                                             |
-| [MOSS](https://moss.fastnlp.top/)                                              | Yes         | No API      |                                             |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Yes         | Coming soon |                                             |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Coming soon | No API      |                                             |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Yes         | Coming soon |                                             |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Yes         | No API      | No Login required                           |
-| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Yes         | No API      | No Login required                           |
-| [Claude 2 & Instant](https://www.anthropic.com/index/claude-2)                 | Yes         | No API      |                                             |
-| [Gradio](https://gradio.app/)                                                  | Yes         | No API      | For Hugging Face space/self-deployed models |
-| [HuggingChat](https://huggingface.co/chat/)                                    | Yes         | No API      |                                             |
-| [SkyWork](https://neice.tiangong.cn/)                                          | Yes         | Coming soon |                                             |
-| [You](https://you.com/)                                                        | Yes         | No API      |                                             |
-| [Pi](https://pi.ai)                                                            | Yes         | No API      |                                             |
 | [360 AI Brain](https://ai.360.cn/)                                             | Yes         | No API      |                                             |
-| [YouChat](https://you.com/)                                                    | Yes         | No API      |                                             |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | No          | Yes         |                                             |
 | [Character.AI](https://character.ai/)                                          | Yes         | No API      |                                             |
-| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Yes         | No API      |                                             |
+| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Yes         | No API      | No Login required                           |
+| [ChatGPT](https://chat.openai.com)                                             | Yes         | Yes         | Web Browsing, Azure OpenAI service included |
+| [Claude](https://www.anthropic.com/claude)                                     | Yes         | Yes         |                                             |
 | [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Yes         | No API      |                                             |
-| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Yes         | No API      |                                             |
+| [Cohere Command R Models](https://cohere.com/command)                          | No          | Yes         |                                             |
+| [Copilot](https://copilot.microsoft.com/)                                      | Yes         | No API      |                                             |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Coming soon | No API      |                                             |
 | [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | Yes         | No API      |                                             |
+| [Gemini](https://gemini.google.com/)                                           | Yes         | Yes         |                                             |
+| [Gemma 2B & 7B](https://blog.google/technology/developers/gemma-open-models/)  | Yes         | No API      |                                             |
+| [Gradio](https://gradio.app/)                                                  | Yes         | No API      | For Hugging Face space/self-deployed models |
+| [Groq Cloud](https://console.groq.com/docs/models)                             | No          | Yes         |                                             |
+| [HuggingChat](https://huggingface.co/chat/)                                    | Yes         | No API      |                                             |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Yes         | Coming soon |                                             |
+| [Kimi](https://kimi.moonshot.cn/               )                               | Yes         | No API      |                                             |
+| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Yes         | No API      |                                             |
+| [MOSS](https://moss.fastnlp.top/)                                              | Yes         | No API      |                                             |
+| [Perplexity](https://www.perplexity.ai/)                                       | Yes         | No API      |                                             |
 | [Phind](https://www.phind.com/)                                                | Yes         | No API      |                                             |
+| [Pi](https://pi.ai)                                                            | Yes         | No API      |                                             |
+| [Poe](https://poe.com/)                                                        | Yes         | Coming soon |                                             |
+| [SkyWork](https://neice.tiangong.cn/)                                          | Yes         | Coming soon |                                             |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Yes         | Coming soon |                                             |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Yes         | No API      | No Login required                           |
+| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Yes         | No API      |                                             |
+| [YouChat](https://you.com/)                                                    | Yes         | No API      |                                             |
+| [You](https://you.com/)                                                        | Yes         | No API      |                                             |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Yes         | No API      |                                             |
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
