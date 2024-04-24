@@ -14,7 +14,8 @@
     "system": "시스템",
     "light": "밝은",
     "dark": "어두운",
-    "bots": "AI 봇"
+    "bots": "AI 봇",
+    "showMenuBar": "메뉴 바 표시"
   },
   "header": {
     "clearMessages": "모든 메시지를 지우시겠습니까?",

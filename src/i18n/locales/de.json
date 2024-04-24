@@ -9,7 +9,8 @@
     "loginOrOut": "Einloggen/Ausloggen",
     "loginOrOutPrompt": "Klicken Sie auf den nachstehenden Link, um sich in einem neuen Fenster an- oder abzumelden und schließen Sie es dann",
     "notice": "Hinweis",
-    "secretPrompt": "Ihr geheimer Token verbleibt auf Ihrem Gerät und wird nicht an andere Personen weitergegeben"
+    "secretPrompt": "Ihr geheimer Token verbleibt auf Ihrem Gerät und wird nicht an andere Personen weitergegeben",
+    "showMenuBar": "Menüleiste anzeigen"
   },
   "header": {
     "clearMessages": "Alle Nachrichten löschen?",

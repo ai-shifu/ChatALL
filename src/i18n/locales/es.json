@@ -18,7 +18,8 @@
     "system": "Sistema",
     "light": "Luz",
     "dark": "Oscuro",
-    "bots": "Bots de IA"
+    "bots": "Bots de IA",
+    "showMenuBar": "Mostrar barra de menús"
   },
   "header": {
     "clearMessages": "¿Borrar todos los mensajes en este chat?",

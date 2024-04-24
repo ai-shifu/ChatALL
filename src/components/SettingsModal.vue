@@ -218,7 +218,7 @@ const settings = [
   {
     type: Type.Checkbox,
     name: "isShowMenuBar",
-    label: "Show Menu Bar",
+    label: $t("settings.showMenuBar"),
   },
 ];
 

@@ -15,7 +15,8 @@
     "light": "浅色",
     "dark": "深色",
     "bots": "AI 模型",
-    "api": "API"
+    "api": "API",
+    "showMenuBar": "显示菜单栏"
   },
   "header": {
     "clearMessages": "清空当前对话的所有消息？",

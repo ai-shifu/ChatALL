@@ -14,7 +14,8 @@
     "system": "System",
     "light": "Light",
     "dark": "Dark",
-    "bots": "AI Bots"
+    "bots": "AI Bots",
+    "showMenuBar": "Show Menu Bar"
   },
   "header": {
     "clearMessages": "Clear all messages in this chat?",
