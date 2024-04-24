@@ -14,7 +14,8 @@
     "system": "Hệ thống",
     "light": "Sáng",
     "dark": "Tối",
-    "bots": "AI Bots"
+    "bots": "AI Bots",
+    "showMenuBar": "Hiển thị thanh menu"
   },
   "header": {
     "clearMessages": "Xóa tất cả tin?",

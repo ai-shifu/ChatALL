@@ -9,7 +9,8 @@
     "loginOrOut": "Connexion/Déconnexion",
     "loginOrOutPrompt": "Cliquez sur le lien ci-dessous pour vous connecter ou vous déconnecter dans une nouvelle fenêtre, puis fermez-la",
     "notice": "Remarque",
-    "secretPrompt": "Votre jeton secret restera sur votre appareil et ne sera partagé avec personne d'autre"
+    "secretPrompt": "Votre jeton secret restera sur votre appareil et ne sera partagé avec personne d'autre",
+    "showMenuBar": "Afficher la barre de menu"
   },
   "header": {
     "clearMessages": "Effacer tous les messages ?",

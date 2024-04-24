@@ -14,7 +14,8 @@
     "system": "システムと同期",
     "light": "ライト",
     "dark": "ダーク",
-    "bots": "AIボット"
+    "bots": "AIボット",
+    "showMenuBar": "メニューバーを表示"
   },
   "header": {
     "clearMessages": "このチャットの会話を全て削除しますか？",

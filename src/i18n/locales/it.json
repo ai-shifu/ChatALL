@@ -9,7 +9,8 @@
     "loginOrOut": "Accedi/Esci",
     "loginOrOutPrompt": "Clicca sul link sottostante per accedere o uscire nella nuova finestra, quindi chiudila",
     "notice": "Avviso",
-    "secretPrompt": "Il tuo token segreto rimarrà sul tuo dispositivo e non sarà condiviso con nessun'altra persona"
+    "secretPrompt": "Il tuo token segreto rimarrà sul tuo dispositivo e non sarà condiviso con nessun'altra persona",
+    "showMenuBar": "Mostra barra dei menu"
   },
   "header": {
     "clearMessages": "Cancellare tutti i messaggi?",

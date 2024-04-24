@@ -14,7 +14,8 @@
     "system": "系統",
     "light": "淺色",
     "dark": "深色",
-    "bots": "AI 模型"
+    "bots": "AI 模型",
+    "showMenuBar": "顯示工具列"
   },
   "header": {
     "clearMessages": "清空目前對話的所有訊息？",
