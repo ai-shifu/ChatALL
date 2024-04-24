@@ -2,6 +2,8 @@ import Bot from "@/bots/Bot";
 import store from "@/store";
 import AsyncLock from "async-lock";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import WebSocketAsPromised from "websocket-as-promised";
 
 export default class CharacterAIBot extends Bot {
   static _brandId = "characterAI"; // Brand id of the bot, should be unique. Used in i18n.
@@ -10,18 +12,14 @@ export default class CharacterAIBot extends Bot {
   static _isDarkLogo = true;
   static _loginUrl = "https://character.ai/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
+  static _loginScript = "document.getElementsByTagName('a')[0].click();";
 
-  static _characterId = "YntB_ZeqRq2l_aVf2gWDCZl4oBttQzDvhj9cXafWcF8"; // Character Assistant id
-  constructor() {
-    super();
+  get requestId() {
+    return uuidv4().split("-").fill("vhj9cXafWcF8", 4, 5).join("-");
   }
 
-  getAuthHeaders() {
-    return {
-      headers: {
-        Authorization: `Token ${store.state.characterAI.token}`,
-      },
-    };
+  constructor() {
+    super();
   }
 
   /**
@@ -31,28 +29,28 @@ export default class CharacterAIBot extends Bot {
   async _checkAvailability() {
     let available = false;
     try {
-      if (!store.state.characterAI.token) {
-        console.error("Error CharacterAIBot check login: token not found");
-        return false;
-      }
-
-      if (new Date().getTime() >= store.state.characterAI?.ttl) {
-        console.error("Error CharacterAIBot check login: token expired");
-        return false;
-      }
-
-      const userInfoResponse = await axios.get(
-        "https://beta.character.ai/chat/user/",
-        this.getAuthHeaders(),
-      );
-
-      if (userInfoResponse.status !== 200) {
-        console.error("Error CharacterAIBot check login:", userInfoResponse);
-        return false;
-      }
-
-      if (userInfoResponse.data.user?.user?.username !== "ANONYMOUS") {
+      if (
+        store.state.characterAI.id &&
+        store.state.characterAI.username &&
+        store.state.characterAI.version
+      ) {
         available = true;
+      } else {
+        const response = await axios.get(
+          `https://character.ai/_next/data/${store.state.characterAI.version}/chat/${store.state.characterAI.characterId}.json?character=${store.state.characterAI.characterId}`,
+          {
+            headers: {
+              "x-nextjs-data": 1,
+            },
+          },
+        );
+        if (response?.data?.pageProps?.user?.user) {
+          store.commit("setCharacterAI", {
+            id: response.data.pageProps.user.user?.id,
+            username: response.data.pageProps.user.user?.username,
+          });
+          available = true;
+        }
       }
     } catch (error) {
       console.error("Error CharacterAIBot check login:", error);
@@ -69,82 +67,121 @@ export default class CharacterAIBot extends Bot {
    */
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     const context = await this.getChatContext();
-
     return new Promise((resolve, reject) => {
       try {
-        const headers = {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-          ...this.getAuthHeaders().headers,
-        };
-        const payload = {
-          history_external_id: context.history_external_id,
-          character_external_id: this.constructor._characterId,
-          text: prompt,
-          tgt: context.tgt,
-        };
-        axios
-          .post("https://beta.character.ai/chat/streaming/", payload, {
-            headers: headers,
-            onDownloadProgress: (progressEvent) => {
-              this.onResponseDownloadProgress(
-                progressEvent,
-                onUpdateResponse,
-                callbackParam,
-                reject,
-              );
-            },
-          })
-          .then((response) => {
-            if (response.status === 200) {
-              resolve();
-            } else {
-              reject(response);
+        const url = "wss://neo.character.ai/ws/";
+        const wsp = new WebSocketAsPromised(url, {
+          packMessage: (data) => JSON.stringify(data),
+          unpackMessage: (data) => JSON.parse(data),
+        });
+        wsp.onUnpackedMessage.addListener(async (data) => {
+          try {
+            if (data.command === "neo_error" || data.error_code) {
+              throw new Error(JSON.stringify(data));
             }
-          })
-          .catch((error) => {
+            if (data?.turn) {
+              if (data.turn.author?.author_id !== context.characterId) {
+                return;
+              }
+              if (data.turn.candidates?.length) {
+                onUpdateResponse(callbackParam, {
+                  content: data.turn.candidates
+                    .map((candidate) => candidate.raw_content)
+                    .join(`\n---\n`),
+                });
+              }
+              if (
+                data.turn.candidates?.every((candidate) => candidate.is_final)
+              ) {
+                onUpdateResponse(callbackParam, {
+                  done: true,
+                });
+                wsp.removeAllListeners();
+                wsp.close();
+                resolve();
+              }
+            }
+          } catch (error) {
+            console.error("Error CharacterAIBot onUnpackedMessage:", error);
+            wsp.removeAllListeners();
+            wsp.close();
             reject(error);
+          }
+        });
+
+        wsp.onError.addListener((event) => {
+          wsp.removeAllListeners();
+          wsp.close();
+          reject(new Error(JSON.stringify(event)));
+        });
+
+        wsp.onClose.addListener(() => {
+          onUpdateResponse(callbackParam, { done: true });
+          resolve();
+        });
+
+        wsp.open().then(() => {
+          if (context.isFirstMessage) {
+            this.setChatContext({
+              ...context,
+              isFirstMessage: false,
+            });
+            store.commit("setCharacterAI", {
+              isFirstMessage: false,
+            });
+            wsp.sendPacked({
+              command: "create_chat",
+              request_id: this.requestId,
+              payload: {
+                chat: {
+                  chat_id: context.chatId,
+                  creator_id: context.id,
+                  visibility: "VISIBILITY_PRIVATE",
+                  character_id: context.characterId,
+                  type: "TYPE_ONE_ON_ONE",
+                },
+                with_greeting: false,
+              },
+              origin_id: "web-next",
+            });
+          }
+          const turnId = uuidv4();
+          wsp.sendPacked({
+            command: "create_and_generate_turn",
+            request_id: this.requestId,
+            payload: {
+              num_candidates: 1,
+              tts_enabled: false,
+              selected_language: "",
+              character_id: context.characterId,
+              user_name: context.username,
+              turn: {
+                turn_key: {
+                  turn_id: turnId,
+                  chat_id: context.chatId,
+                },
+                author: {
+                  author_id: context.id,
+                  is_human: true,
+                  name: context.username,
+                },
+                candidates: [
+                  {
+                    candidate_id: turnId,
+                    raw_content: prompt,
+                  },
+                ],
+                primary_candidate_id: turnId,
+              },
+            },
+            origin_id: "web-next",
           });
+        });
       } catch (error) {
+        console.error("Error CharacterAIBot _sendPrompt", error);
         reject(error);
       }
     });
-  }
-
-  text = "";
-  onResponseDownloadProgress(
-    progressEvent,
-    onUpdateResponse,
-    callbackParam,
-    reject,
-  ) {
-    try {
-      const responses = progressEvent?.event?.currentTarget?.response
-        ?.split("\n") // split with new line
-        ?.filter((n) => n); //  filter empty string in array
-
-      // take last response item only
-      const lastResponse = JSON.parse(responses[responses.length - 1]);
-      if (Array.isArray(lastResponse.replies) && lastResponse.replies.length) {
-        this.text = lastResponse.replies[0].text;
-        onUpdateResponse(callbackParam, {
-          content: lastResponse.replies[0].text,
-          done: lastResponse.is_final_chunk,
-        });
-      } else {
-        // handle exception
-        // {"abort": true, "error": "No eligible candidates", "last_user_msg_id": 123, "last_user_msg_uuid": "1111-uuid"}
-        onUpdateResponse(callbackParam, {
-          content: `${this.text}\n${this.wrapCollapsedSection(
-            JSON.stringify(lastResponse),
-          )}`,
-          done: true,
-        });
-      }
-    } catch (error) {
-      reject(error);
-      console.error("Error CharacterAIBot onChatDownloadProgress", error);
-    }
   }
 
   /**
@@ -155,59 +192,13 @@ export default class CharacterAIBot extends Bot {
    */
   async createChatContext() {
     let context = null;
-    let characterInfoResponse = await axios.post(
-      "https://beta.character.ai/chat/character/info/",
-      { external_id: this.constructor._characterId },
-      this.getAuthHeaders(),
-    );
-
-    if (characterInfoResponse.status !== 200) {
-      console.error(
-        "CharacterAIBot characterInfoResponse",
-        characterInfoResponse,
-      );
-      throw new Error(characterInfoResponse);
-    }
-
-    let chatContinueResponse;
-    try {
-      chatContinueResponse = await axios.post(
-        "https://beta.character.ai/chat/history/continue/",
-        {
-          character_external_id: this.constructor._characterId,
-          history_external_id: null,
-        },
-        this.getAuthHeaders(),
-      );
-    } catch (error) {
-      if (
-        error.response.status === 404 &&
-        error.response.data === "there is no history between user and character"
-      ) {
-        // no history, create
-        chatContinueResponse = await axios
-          .post(
-            "https://beta.character.ai/chat/history/create/",
-            {
-              character_external_id: this.constructor._characterId,
-            },
-            this.getAuthHeaders(),
-          )
-          .catch((error) => {
-            console.error("CharacterAIBot chatCreateResponse", error);
-            throw Error(error);
-          });
-      } else {
-        console.error("CharacterAIBot chatContinueResponse", error);
-        throw Error(error);
-      }
-    }
-
     context = {
-      history_external_id: chatContinueResponse?.data?.external_id,
-      tgt: characterInfoResponse?.data?.character?.participant__user__username,
+      chatId: uuidv4(),
+      isFirstMessage: true,
+      characterId: store.state.characterAI.characterId,
+      username: store.state.characterAI.username,
+      id: store.state.characterAI.id.toString(),
     };
-
     return context;
   }
 }

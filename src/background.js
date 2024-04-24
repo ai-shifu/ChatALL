@@ -10,6 +10,7 @@ import updateApp from "./update";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
+/** @type {BrowserWindow} */
 let mainWindow = null;
 
 // start - makes  application a Single Instance Application
@@ -238,6 +239,20 @@ async function createWindow() {
         requestHeaders["Origin"] = "https://copilot.microsoft.com";
       }
 
+      if (
+        url.startsWith("https://character.ai/_next/data/") &&
+        /^https:\/\/character\.ai\/_next\/data\/.+\/index\.json/.test(
+          url,
+        )
+      ) {
+        const parts = url.split("/");
+        if (parts.length >= 6) {
+          mainWindow.webContents.send("commit", "setCharacterAI", {
+            version: parts[5],
+          });
+        }
+      }
+
       callback({ requestHeaders });
     },
   );
@@ -255,7 +270,7 @@ async function createWindow() {
   }
 }
 
-function createNewWindow(url, userAgent = "") {
+function createNewWindow({ url, userAgent = "", loginScript }) {
   const newWin = new BrowserWindow({
     width: 800,
     height: 600,
@@ -274,7 +289,11 @@ function createNewWindow(url, userAgent = "") {
   if (process.platform !== "darwin") newWin.minimize();
   newWin.loadURL(url);
   newWin.show();
-
+  newWin.webContents.once("dom-ready", () => {
+    if (loginScript) {
+      newWin.webContents.executeJavaScript(loginScript);
+    }
+  });
   newWin.on("close", async (e) => {
     e.preventDefault(); // Prevent the window from closing
 
@@ -305,9 +324,6 @@ function createNewWindow(url, userAgent = "") {
         const inviteToken = await getLocalStorage("aiChatQueueWaitToken");
         const token = await getLocalStorage("aiChatResearchToken");
         mainWindow.webContents.send("SKYWORK-TOKENS", { inviteToken, token });
-      } else if (url.startsWith("https://character.ai/")) {
-        const token = await getLocalStorage("char_token");
-        mainWindow.webContents.send("CHARACTER-AI-TOKENS", token);
       } else if (url.startsWith("https://claude.ai/")) {
         const org = await getCookie("lastActiveOrg");
         mainWindow.webContents.send("CLAUDE-2-ORG", org);
@@ -344,9 +360,12 @@ async function getCookies(filter) {
   return cookies;
 }
 
-ipcMain.handle("create-new-window", (event, url, userAgent) => {
-  createNewWindow(url, userAgent);
-});
+ipcMain.handle(
+  "create-new-window",
+  (event, { url, userAgent, loginScript }) => {
+    createNewWindow({ url, userAgent, loginScript });
+  },
+);
 
 ipcMain.handle("get-native-theme", () => {
   return Promise.resolve({

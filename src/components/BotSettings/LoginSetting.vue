@@ -25,7 +25,12 @@ export default {
       event.preventDefault();
       const loginUrl = this.bot.getLoginUrl();
       const userAgent = this.bot.getUserAgent();
-      ipcRenderer.invoke("create-new-window", loginUrl, userAgent);
+      const loginScript = this.bot.getLoginScript();
+      ipcRenderer.invoke("create-new-window", {
+        userAgent,
+        loginScript,
+        url: loginUrl,
+      });
     },
   },
 };

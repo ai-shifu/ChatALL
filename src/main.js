@@ -49,6 +49,9 @@ const defaultTheme = await resolveTheme(store.state.mode, ipcRenderer);
 store.commit("setTheme", defaultTheme);
 applyTheme(defaultTheme);
 ipcRenderer.invoke("set-is-show-menu-bar", store.state.general.isShowMenuBar);
+ipcRenderer.on("commit", (e, mutation, value) => {
+  store.commit(mutation, value);
+});
 
 const vuetify = createVuetify({
   components: { ...components },

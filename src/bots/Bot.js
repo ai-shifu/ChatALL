@@ -61,6 +61,10 @@ export default class Bot {
     return this.constructor._userAgent;
   }
 
+  getLoginScript() {
+    return this.constructor._loginScript;
+  }
+
   getOutputFormat() {
     return this.constructor._outputFormat;
   }
