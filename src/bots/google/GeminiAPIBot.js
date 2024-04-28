@@ -5,7 +5,7 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 export default class GeminiAPIBot extends LangChainBot {
   static _brandId = "geminiApi";
   static _className = "GeminiAPIBot";
-  static _logoFilename = "gemini-logo.png"; // Place it in public/bots/
+  static _logoFilename = "gemini-1.0-logo.png"; // Place it in public/bots/
   static _model = "gemini-pro";
 
   constructor() {
