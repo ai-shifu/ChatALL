@@ -52,26 +52,27 @@ export default class BingChatBot extends Bot {
   }
 
   async _checkAvailability() {
-    let available = false;
-
-    await axios
-      .get("https://copilot.microsoft.com/turing/conversation/chats")
-      .then((response) => {
-        available =
-          response.data?.result?.value == "Success" &&
-          !this.isAnonymous(response.data?.clientId); // Anonymous user is not supported any more
-
-        // If login user is changed, clear the chat context
-        const context = this.getChatContext(false);
-        if (response.data?.clientId != context?.clientId) {
-          this.setChatContext(null);
-        }
-      })
-      .catch((error) => {
-        console.error("Error checking Copilot login status:", error);
-      });
-
-    return available;
+    return true;
+    // let available = false;
+    //
+    // await axios
+    //   .get("https://copilot.microsoft.com/turing/conversation/chats")
+    //   .then((response) => {
+    //     available =
+    //       response.data?.result?.value == "Success" &&
+    //       !this.isAnonymous(response.data?.clientId); // Anonymous user is not supported any more
+    //
+    //     // If login user is changed, clear the chat context
+    //     const context = this.getChatContext(false);
+    //     if (response.data?.clientId != context?.clientId) {
+    //       this.setChatContext(null);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error checking Copilot login status:", error);
+    //   });
+    //
+    // return available;
   }
 
   async makePromptRequest(prompt) {

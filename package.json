@@ -28,6 +28,7 @@
     "@kangc/v-md-editor": "^2.3.16",
     "@langchain/anthropic": "^0.1.9",
     "@langchain/cohere": "^0.0.7",
+    "@langchain/community": "^0.0.53",
     "@langchain/google-genai": "^0.0.7",
     "@langchain/groq": "^0.0.6",
     "@langchain/openai": "^0.0.12",
