@@ -18,23 +18,39 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 
 ### Supported bots
 
-| AI Bots                                                       | Web Zugang  | API         | Notizen                                      |
-| ------------------------------------------------------------- | ----------- | ----------- | -------------------------------------------- |
-| [ChatGPT](https://chat.openai.com)                            | Yes         | Yes         | Web-Browsing inklusive                       |
-| [Copilot](https://copilot.microsoft.com/)                     | Yes         | No API      | Kein Login erforderlich                      |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                       | No          | Yes         |                                              |
-| [Gemini](https://gemini.google.com/)                          | Yes         | Coming soon |                                              |
-| [Poe](https://poe.com/)                                       | Yes         | Coming soon |                                              |
-| [MOSS](https://moss.fastnlp.top/)                             | Yes         | No API      |                                              |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                   | Yes         | Coming soon |                                              |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)              | Coming soon | No API      |                                              |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                     | Yes         | Coming soon |                                              |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/) | Yes         | No API      | Kein Login erforderlich                      |
-| [ChatGLM](https://chatglm.cn/blog)                            | Yes         | No API      | Kein Login erforderlich                      |
-| [Claude](https://www.anthropic.com/index/introducing-claude)  | Yes         | No API      | Kein Login erforderlich                      |
-| [Gradio](https://gradio.app/)                                 | Yes         | No API      | Für Hugging Face space/self-deployed Modelle |
-| [HuggingChat](https://huggingface.co/chat/)                   | Yes         | No API      |                                              |
-| [QianWen](https://qianwen.aliyun.com/)                        | Yes         | Coming soon |                                              |
+| AI Bots                                                                        | Web Zugang    | API           | Notizen                                                 |
+| ------------------------------------------------------------------------------ | ------------- | ------------- | ------------------------------------------------------ |
+| [360 AI Brain](https://ai.360.cn/)                                             | Ja            | Nein          |                                                        |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | Nein          | Ja            |                                                        |
+| [Character.AI](https://character.ai/)                                          | Ja            | Nein          |                                                        |
+| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Ja            | Nein          | Kein Login erforderlich                                |
+| [ChatGPT](https://chat.openai.com)                                             | Ja            | Ja            | Web-Browsing inklusive, Azure OpenAI Services          |
+| [Claude](https://www.anthropic.com/claude)                                     | Ja            | Ja            |                                                        |
+| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Ja            | Nein          |                                                        |
+| [Cohere Command R Models](https://cohere.com/command)                          | Nein          | Ja            |                                                        |
+| [Copilot](https://copilot.microsoft.com/)                                      | Ja            | Nein          |                                                        |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Demnächst     | Nein          |                                                        |
+| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | Ja            | Nein          |                                                        |
+| [Gemini](https://gemini.google.com/)                                           | Ja            | Ja            |                                                        |
+| [Gemma 2B & 7B](https://blog.google/technology/developers/gemma-open-models/)  | Ja            | Nein          |                                                        |
+| [Gradio](https://gradio.app/)                                                  | Ja            | Nein          | Für Hugging Face space/self-deployed Modelle           |
+| [Groq Cloud](https://console.groq.com/docs/models)                             | Nein          | Ja            |                                                        |
+| [HuggingChat](https://huggingface.co/chat/)                                    | Ja            | Nein          |                                                        |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Ja            | Demnächst     |                                                        |
+| [Kimi](https://kimi.moonshot.cn/)                                              | Ja            | Nein          |                                                        |
+| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Ja            | Nein          |                                                        |
+| [MOSS](https://moss.fastnlp.top/)                                              | Ja            | Nein          |                                                        |
+| [Perplexity](https://www.perplexity.ai/)                                       | Ja            | Nein          |                                                        |
+| [Phind](https://www.phind.com/)                                                | Ja            | Nein          |                                                        |
+| [Pi](https://pi.ai)                                                            | Ja            | Nein          |                                                        |
+| [Poe](https://poe.com/)                                                        | Ja            | Demnächst     |                                                        |
+| [SkyWork](https://neice.tiangong.cn/)                                          | Ja            | Demnächst     |                                                        |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Ja            | Demnächst     |                                                        |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Ja            | Nein          | Kein Login erforderlich                                |
+| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Ja            | Nein          |                                                        |
+| [YouChat](https://you.com/)                                                    | Ja            | Nein          |                                                        |
+| [You](https://you.com/)                                                        | Ja            | Nein          |                                                        |
+| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Ja            | Nein          |                                                        |
 
 Und mehr...
 
