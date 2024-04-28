@@ -120,6 +120,7 @@
   "bard": {
     "name": "Gemini",
     "gemini-pro": "Gemini",
+    "gemini-15-pro-latest": "Gemini 1.5 Pro",
     "gemini-ultra": "Gemini 進階版"
   },
   "claudeApi":{

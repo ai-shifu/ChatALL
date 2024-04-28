@@ -106,6 +106,7 @@
   "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
+    "gemini-15-pro-latest": "Gemini 1.5 Pro",
     "topK": "topK",
     "topKPrompt": "Un topK de 1 significa que el token seleccionado es el más probable entre todos los tokens en el vocabulario del modelo (también llamado decodificación voraz).",
     "topP": "topP",
