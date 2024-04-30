@@ -9,7 +9,7 @@ export default class BingChatBot extends Bot {
   static _className = "BingChatBot"; // Class name of the bot
   static _model = "h3precise"; // Bing styles: h3imaginative, harmonyv3, h3precise
   static _logoFilename = "bing-logo.svg"; // Place it in public/bots/
-  static _loginUrl = "https://copilot.microsoft.com/";
+  static _loginUrl = "https://www.bing.com/chat/";
   static _optionsSets = null; // Set by the subclass
   static _tone = ""; // Set by the subclass
 
@@ -26,7 +26,7 @@ export default class BingChatBot extends Bot {
     let conversation = null;
 
     const response = await axios.get(
-      "https://copilot.microsoft.com/turing/conversation/create",
+      "https://www.bing.com/turing/conversation/create",
       { headers },
     );
     if (response.status == 200 && response.data?.result?.value == "Success") {
@@ -55,7 +55,7 @@ export default class BingChatBot extends Bot {
     let available = false;
 
     await axios
-      .get("https://copilot.microsoft.com/turing/conversation/chats")
+      .get("https://www.bing.com/turing/conversation/chats")
       .then((response) => {
         available =
           response.data?.result?.value == "Success" &&
