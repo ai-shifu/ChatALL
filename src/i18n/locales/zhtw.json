@@ -120,7 +120,6 @@
   "bard": {
     "name": "Gemini",
     "gemini-pro": "Gemini",
-    "gemini-15-pro-latest": "Gemini 1.5 Pro",
     "gemini-ultra": "Gemini 進階版"
   },
   "claudeApi":{
@@ -164,6 +163,7 @@
   "geminiApi": {
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
+    "gemini-15-pro-latest": "Gemini 1.5 Pro",
     "topK": "topK",
     "topKPrompt": "topK 為 1 表示選定的 token 是模型詞彙中所有 token 中最可能的（也稱為貪婪解碼）",
     "topP": "topP",
