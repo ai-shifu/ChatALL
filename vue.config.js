@@ -32,7 +32,6 @@ module.exports = defineConfig({
         },
         linux: {
           target: ["AppImage", "deb"],
-          icon: "src/assets/icon.png",
         },
         nsis: {
           oneClick: false,
