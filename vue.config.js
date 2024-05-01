@@ -12,6 +12,7 @@ module.exports = defineConfig({
         directories: {
           buildResources: "src/assets",
         },
+        compression: "maximum",
         mac: {
           category: "public.app-category.utilities",
           target: "default",
