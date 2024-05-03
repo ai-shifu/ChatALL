@@ -52,7 +52,8 @@
     "newChat": "Nuevo chat",
     "deleteAllChatHistory": "Eliminar todo el historial de chat",
     "downloadAllChatHistory": "Guardar todo el historial de chat",
-    "confirmDeleteAllChatHistory": "¿Está seguro de que desea eliminar todo el historial de chat? Esta acción no se puede deshacer."
+    "confirmDeleteAllChatHistory": "¿Está seguro de que desea eliminar todo el historial de chat? Esta acción no se puede deshacer.",
+    "promptTitle": "Entrada"
   },
   "bot": {
     "creatingConversation": "Creando conversación...",

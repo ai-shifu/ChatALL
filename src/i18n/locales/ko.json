@@ -84,7 +84,8 @@
     "botResponseDesc": "선택된 응답",
     "loading": "로드 중...",
     "updateDebounceInterval": "메시지 업데이트 간격 (밀리초)",
-    "updateDebounceIntervalDesc": "이 값은 AI봇이 응답할 때 메시지 업데이트 속도를 조절합니다. 값이 높으면 메시지 처리가 지연되고 한 번에 업데이트되는 것이 더 효율적입니다. 값이 낮으면 메시지가 더 빨리 업데이트되지만 성능 문제가 발생할 수 있습니다."
+    "updateDebounceIntervalDesc": "이 값은 AI봇이 응답할 때 메시지 업데이트 속도를 조절합니다. 값이 높으면 메시지 처리가 지연되고 한 번에 업데이트되는 것이 더 효율적입니다. 값이 낮으면 메시지가 더 빨리 업데이트되지만 성능 문제가 발생할 수 있습니다.",
+    "promptTitle": "프롬프트"
   },
   "bot": {
     "creatingConversation": "대화를 만드는 중...",

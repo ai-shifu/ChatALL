@@ -33,7 +33,8 @@
     "done": "Fatto"
   },
   "chat": {
-    "newChat": "Nuova Chat"
+    "newChat": "Nuova Chat",
+    "promptTitle": "Prompt"
   },
   "bot": {
     "creatingConversation": "Creazione della conversazione in corso...",
