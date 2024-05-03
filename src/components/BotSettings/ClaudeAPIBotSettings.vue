@@ -17,7 +17,7 @@ const settings = [
   {
     type: Type.Text,
     name: "apiKey",
-    title: "claudeApi.apiKey",
+    title: "common.apiKey",
     description: "settings.secretPrompt",
     placeholder: "sk-...",
   },

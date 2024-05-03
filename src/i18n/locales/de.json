@@ -12,6 +12,9 @@
     "secretPrompt": "Ihr geheimer Token verbleibt auf Ihrem Gerät und wird nicht an andere Personen weitergegeben",
     "showMenuBar": "Menüleiste anzeigen"
   },
+  "common": {
+    "apiKey": "API Key"
+  },
   "header": {
     "clearMessages": "Alle Nachrichten löschen?",
     "singleColumn": "Einzelne Spalte",
@@ -62,8 +65,7 @@
     "command-r": "Command R",
     "command-r-plus": "Command R+",
     "temperature": "Temperatur",
-    "temperaturePrompt": "Die Einstellung der Zufälligkeit der Modellausgaben reicht von 0 bis 5. Niedrigere Werte gewährleisten eine präzise und konsistente Ausgabe, ideal für Aufgaben, die genaue Informationen erfordern, wie das Erstellen von Zusammenfassungen. Höhere Einstellungen fördern die Kreativität, können jedoch die Kohärenz bei spezifischen Kontexten oder kurzen Antworten beeinträchtigen.",
-    "apiKey": "API Key"
+    "temperaturePrompt": "Die Einstellung der Zufälligkeit der Modellausgaben reicht von 0 bis 5. Niedrigere Werte gewährleisten eine präzise und konsistente Ausgabe, ideal für Aufgaben, die genaue Informationen erfordern, wie das Erstellen von Zusammenfassungen. Höhere Einstellungen fördern die Kreativität, können jedoch die Kohärenz bei spezifischen Kontexten oder kurzen Antworten beeinträchtigen."
   },
   "bingChat": {
     "name": "Copilot",
@@ -89,8 +91,7 @@
     "temperature": "Temperatur",
     "temperaturePrompt": "Je höher die Temperatur, desto kreativer der Text, aber desto wahrscheinlicher ist es, dass er inkohärent ist",
     "temperature0": "Stärker deterministisch",
-    "temperature2": "Mehr zufällig",
-    "apiKey": "API Key"
+    "temperature2": "Mehr zufällig"
   },
   "moss": {
     "name": "MOSS"

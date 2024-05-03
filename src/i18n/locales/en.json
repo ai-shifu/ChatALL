@@ -17,6 +17,9 @@
     "bots": "AI Bots",
     "showMenuBar": "Show Menu Bar"
   },
+  "common": {
+    "apiKey": "API Key"
+  },
   "header": {
     "clearMessages": "Clear all messages in this chat?",
     "yes": "Yes",
@@ -138,8 +141,7 @@
     "command-r": "Command R",
     "command-r-plus": "Command R+",
     "temperature": "Temperature",
-    "temperaturePrompt": "Adjust output randomness from 0 to 5. Lower temperatures ensure precise, consistent answers, suitable for tasks like summarization. Higher temperatures promote creativity but may reduce coherence, especially in brief or context-specific prompts.",
-    "apiKey": "API Key"
+    "temperaturePrompt": "Adjust output randomness from 0 to 5. Lower temperatures ensure precise, consistent answers, suitable for tasks like summarization. Higher temperatures promote creativity but may reduce coherence, especially in brief or context-specific prompts."
   },
   "bingChat": {
     "name": "Copilot",
@@ -235,8 +237,7 @@
     "temperature": "Temperature",
     "temperaturePrompt": "The higher the temperature, the more creative the text, but the more likely it is to be incoherent",
     "temperature0": "More deterministic",
-    "temperature2": "More random",
-    "apiKey": "API Key"
+    "temperature2": "More random"
   },
   "poe": {
     "name": "Poe",

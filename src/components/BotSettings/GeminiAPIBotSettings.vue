@@ -16,7 +16,7 @@ const settings = [
   {
     type: Type.Text,
     name: "apiKey",
-    title: "openaiApi.apiKey",
+    title: "common.apiKey",
     description: "settings.secretPrompt",
     placeholder: "...",
   },

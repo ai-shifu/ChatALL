@@ -18,6 +18,9 @@
     "api": "API",
     "showMenuBar": "显示菜单栏"
   },
+  "common": {
+    "apiKey": "API 密钥"
+  },
   "header": {
     "clearMessages": "清空当前对话的所有消息？",
     "yes": "是",
@@ -138,8 +141,7 @@
     "command-r": "Command R",
     "command-r-plus": "Command R+",
     "temperature": "Temperature",
-    "temperaturePrompt": "调整模型的输出随机性设置范围为 0 至 5。较低的设置值能够确保输出结果的精确性和一致性，非常适合用于需要精确信息的任务，如撰写摘要。相反，较高的设置值则有助于激发创造性思维，但可能使内容在特定情境或简短回应中显得不够连贯。",
-    "apiKey": "API 密钥"
+    "temperaturePrompt": "调整模型的输出随机性设置范围为 0 至 5。较低的设置值能够确保输出结果的精确性和一致性，非常适合用于需要精确信息的任务，如撰写摘要。相反，较高的设置值则有助于激发创造性思维，但可能使内容在特定情境或简短回应中显得不够连贯。"
   },
   "bingChat": {
     "name": "Copilot",
@@ -235,8 +237,7 @@
     "temperature": "Temperature",
     "temperaturePrompt": "Temperature 越高，生成的文本越有创造性，但也越没条理",
     "temperature0": "更具确定性",
-    "temperature2": "更具随机性",
-    "apiKey": "API 密钥"
+    "temperature2": "更具随机性"
   },
   "poe": {
     "name": "Poe",
