@@ -17,6 +17,9 @@
     "bots": "AI 봇",
     "showMenuBar": "메뉴 바 표시"
   },
+  "common": {
+    "apiKey": "API 키"
+  },
   "header": {
     "clearMessages": "모든 메시지를 지우시겠습니까?",
     "yes": "예",
@@ -133,8 +136,7 @@
     "command-r": "Command R",
     "command-r-plus": "Command R+",
     "temperature": "온도",
-    "temperaturePrompt": "모델 출력의 무작위성 설정은 0에서 5까지입니다. 낮은 설정값은 요약 작성과 같이 정확한 정보가 필요한 작업에 적합하며, 출력의 정확성과 일관성을 보장합니다. 반면, 높은 설정값은 창의성을 촉진하지만 특정 상황이나 간단한 응답에서는 일관성이 떨어질 수 있습니다.",
-    "apiKey": "API 키"
+    "temperaturePrompt": "모델 출력의 무작위성 설정은 0에서 5까지입니다. 낮은 설정값은 요약 작성과 같이 정확한 정보가 필요한 작업에 적합하며, 출력의 정확성과 일관성을 보장합니다. 반면, 높은 설정값은 창의성을 촉진하지만 특정 상황이나 간단한 응답에서는 일관성이 떨어질 수 있습니다."
   },
   "characterAI": {
     "name": "Character.AI"
@@ -211,8 +213,7 @@
     "temperature": "온도",
     "temperaturePrompt": "온도가 높을수록 텍스트는 창의적이지만 일관성이 없을 가능성이 높습니다",
     "temperature0": "더 결정론적인",
-    "temperature2": "더 무작위적인",
-    "apiKey": "API 키"
+    "temperature2": "더 무작위적인"
   },
   "poe": {
     "name": "Poe",

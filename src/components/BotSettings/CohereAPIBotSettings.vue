@@ -18,7 +18,7 @@ const settings = [
   {
     type: Type.Text,
     name: "apiKey",
-    title: "cohereApi.apiKey",
+    title: "common.apiKey",
     description: "settings.secretPrompt",
     placeholder: "...",
   },

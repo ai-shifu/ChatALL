@@ -12,6 +12,9 @@
     "secretPrompt": "Il tuo token segreto rimarrà sul tuo dispositivo e non sarà condiviso con nessun'altra persona",
     "showMenuBar": "Mostra barra dei menu"
   },
+  "common": {
+    "apiKey": "Chiave API"
+  },
   "header": {
     "clearMessages": "Cancellare tutti i messaggi?",
     "yes": "Sì",
@@ -61,8 +64,7 @@
     "command-r": "Command R",
     "command-r-plus": "Command R+",
     "temperature": "Temperatura",
-    "temperaturePrompt": "L'impostazione della casualità delle risposte del modello varia da 0 a 5. Un valore più basso assicura precisione e coerenza nelle uscite, ideale per compiti che richiedono informazioni precise, come la redazione di riassunti. Al contrario, un valore più alto promuove la creatività, ma può ridurre la coerenza in contesti specifici o in risposte brevi.",
-    "apiKey": "Chiave API"
+    "temperaturePrompt": "L'impostazione della casualità delle risposte del modello varia da 0 a 5. Un valore più basso assicura precisione e coerenza nelle uscite, ideale per compiti che richiedono informazioni precise, come la redazione di riassunti. Al contrario, un valore più alto promuove la creatività, ma può ridurre la coerenza in contesti specifici o in risposte brevi."
   },
   "chatGpt": {
     "name": "ChatGPT",
@@ -115,8 +117,7 @@
     "temperature": "Temperatura",
     "temperaturePrompt": "Più alta è la temperatura, più creativo è il testo, ma maggiore è la probabilità che sia incoerente",
     "temperature0": "Più deterministico",
-    "temperature2": "Più casuale",
-    "apiKey": "Chiave API"
+    "temperature2": "Più casuale"
   },
   "spark": {
     "name": "iFlytek Spark"
