@@ -234,7 +234,6 @@
     "alterUrl": "URL de base alternative",
     "alterUrlPrompt": "Chemin de l'URL de base pour les requêtes API, laissez vide si vous n'utilisez pas de proxy ou d'émulateur de service",
     "gpt-35-turbo": "gpt-3.5-turbo",
-    "gpt-35-turbo-16k": "gpt-3.5-turbo-16k",
     "gpt-4": "gpt-4",
     "gpt-4-turbo": "gpt-4-turbo",
     "gpt-4o": "gpt-4o",
