@@ -16,6 +16,7 @@ import BardBot from "@/bots/google/BardBot";
 import OpenAIAPI35Bot from "@/bots/openai/OpenAIAPI35Bot";
 import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import OpenAIAPI4128KBot from "@/bots/openai/OpenAIAPI4128KBot";
+import OpenAIAPI4oBot from "@/bots/openai/OpenAIAPI4oBot";
 import MistralBot from "./MistralBot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
@@ -136,6 +137,7 @@ const all = [
   ChatGPT4PoeBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   OpenAIAPI4128KBot.getInstance(),
+  OpenAIAPI4oBot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
   GradioAppBot.getInstance(),
   Gemma7bGroqAPIBot.getInstance(),
@@ -292,6 +294,7 @@ export const botTags = {
     bots.getBotByClassName("OpenAIAPI3516KBot"),
     bots.getBotByClassName("OpenAIAPI4Bot"),
     bots.getBotByClassName("OpenAIAPI4128KBot"),
+    bots.getBotByClassName("OpenAIAPI4oBot"),
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("WenxinQianfan4Bot"),

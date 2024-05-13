@@ -142,6 +142,7 @@
     "gpt-35-turbo-16k": "gpt-3.5-turbo-16k",
     "gpt-4": "gpt-4",
     "gpt-4-turbo": "gpt-4-turbo",
+    "gpt-4o": "gpt-4o",
     "temperature": "温度",
     "temperaturePrompt": "温度が高いほど、テキストは創造的ですが、一貫性がない可能性が高いです。",
     "temperature0": "より決定論的な",
