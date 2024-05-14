@@ -150,6 +150,7 @@
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
+    "gemini-15-flash-latest": "Gemini 1.5 Flash",
     "topK": "topK",
     "topKPrompt": "Một topK của 1 có nghĩa là token được chọn là có khả năng cao nhất trong tất cả các token trong từ vựng của mô hình (còn được gọi là giải mã tham lam)",
     "topP": "topP",

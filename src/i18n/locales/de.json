@@ -53,6 +53,7 @@
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
+    "gemini-15-flash-latest": "Gemini 1.5 Flash",
     "topK": "topK",
     "topKPrompt": "Ein topK von 1 bedeutet, dass das ausgewählte Token das wahrscheinlichste unter allen Token im Vokabular des Modells ist (auch gieriges Decodieren genannt).",
     "topP": "topP",

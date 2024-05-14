@@ -71,6 +71,7 @@
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
+    "gemini-15-flash-latest": "Gemini 1.5 Flash",
     "topK": "topK",
     "topKPrompt": "Un topK de 1 signifie que le jeton sélectionné est le plus probable parmi tous les jetons dans le vocabulaire du modèle (également appelé décodage gourmand).",
     "topP": "topP",

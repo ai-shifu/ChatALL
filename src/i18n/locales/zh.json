@@ -166,6 +166,7 @@
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
+    "gemini-15-flash-latest": "Gemini 1.5 Flash",
     "topK": "topK",
     "topKPrompt": "topK为1意味着选定的标记在模型词汇中所有标记里是最有可能的（也称为贪婪解码）",
     "topP": "topP",

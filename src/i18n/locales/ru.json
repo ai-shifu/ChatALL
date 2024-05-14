@@ -71,6 +71,7 @@
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
+    "gemini-15-flash-latest": "Gemini 1.5 Flash",
     "topK": "topK",
     "topKPrompt": "topK, равный 1, означает, что выбранный токен является наиболее вероятным среди всех токенов в словаре модели (это также называется жадным декодированием).",
     "topP": "topP",

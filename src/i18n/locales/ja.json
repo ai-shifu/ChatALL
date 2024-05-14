@@ -104,6 +104,7 @@
     "name": "Gemini API",
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
+    "gemini-15-flash-latest": "Gemini 1.5 Flash",
     "topK": "topK",
     "topKPrompt": "topKの1は、モデルの語彙の中で選択されたトークンが最も確からしいことを意味します（貪欲デコードとも呼ばれます）",
     "topP": "topP",
