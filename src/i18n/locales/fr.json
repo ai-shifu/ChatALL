@@ -140,6 +140,7 @@
     "command-light": "Command Light",
     "command-r": "Command R",
     "command-r-plus": "Command R+",
+    "c4ai-aya-23": "Aya 23",
     "temperature": "Température",
     "temperaturePrompt": "Ajustez la variabilité des sorties du modèle de 0 à 5. Des températures plus basses garantissent des réponses précises et cohérentes, adaptées à des tâches comme la rédaction de résumés. Des températures plus élevées favorisent la créativité mais peuvent réduire la cohérence, surtout dans des contextes brefs ou spécifiques."
   },

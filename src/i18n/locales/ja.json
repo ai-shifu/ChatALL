@@ -140,6 +140,7 @@
     "command-light": "Command Light",
     "command-r": "Command R",
     "command-r-plus": "Command R+",
+    "c4ai-aya-23": "Aya 23",
     "temperature": "温度",
     "temperaturePrompt": "出力のランダム性を0から5の範囲で調整できます。温度を低く設定すると、より正確で一貫した回答が得られ、要約タスクなどに適しています。一方、温度を高く設定すると、より創造的な出力が期待できますが、特に短いプロンプトや特定のコンテキストでは一貫性が低下する可能性があります。"
   },
