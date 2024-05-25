@@ -140,6 +140,7 @@
     "command-light": "Command Light",
     "command-r": "Command R",
     "command-r-plus": "Command R+",
+    "c4ai-aya-23": "Aya 23",
     "temperature": "Temperatura",
     "temperaturePrompt": "Regola la casualità dell'output da 0 a 5. Temperature più basse garantiscono risposte precise e coerenti, adatte per compiti come la sintesi. Temperature più alte promuovono la creatività ma possono ridurre la coerenza, specialmente in prompt brevi o specifici."
   },
