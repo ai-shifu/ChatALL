@@ -23,7 +23,7 @@ export default class CohereAPIBot extends LangChainBot {
   _setupModel() {
     const chatModel = new ChatCohere({
       apiKey: store.state.cohereApi.apiKey,
-      modelName: this.constructor._model ? this.constructor._model : "",
+      model: this.constructor._model ? this.constructor._model : "",
       streaming: true,
       temperature: store.state.cohereApi.temperature,
     });
