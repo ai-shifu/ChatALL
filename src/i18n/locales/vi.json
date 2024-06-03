@@ -85,7 +85,8 @@
     "description": "Mô tả",
     "botNameDesc": "Tên của bot",
     "botResponseDesc": "Phản hồi của bot",
-    "loading": "Đang tải..."
+    "loading": "Đang tải...",
+    "promptTitle": "Nhập liệu"
   },
   "bot": {
     "creatingConversation": "Đang tạo hội thoại...",

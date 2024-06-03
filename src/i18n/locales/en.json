@@ -90,7 +90,8 @@
     "botResponseDesc": "the selected response",
     "loading": "Loading...",
     "updateDebounceInterval": "Message Updating Interval (milliseconds)",
-    "updateDebounceIntervalDesc": "The value controls the message update speed when the AI bot responds. A higher value delays the message processing and updates them all at once, which is more efficient. A lower value updates the messages faster, but may cause performance issues."
+    "updateDebounceIntervalDesc": "The value controls the message update speed when the AI bot responds. A higher value delays the message processing and updates them all at once, which is more efficient. A lower value updates the messages faster, but may cause performance issues.",
+    "promptTitle": "Prompt"
   },
   "bot": {
     "creatingConversation": "Creating conversation...",

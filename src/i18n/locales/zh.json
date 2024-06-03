@@ -90,7 +90,8 @@
     "botResponseDesc": "所选响应内容",
     "loading": "加载中...",
     "updateDebounceInterval": "消息更新间隔（毫秒）",
-    "updateDebounceIntervalDesc": "此值控制 AI 机器人回复时，消息更新速度。更高的值会延迟消息处理，并一次性更新所有消息，效率更高。更低的值会更快更新消息，但可能会导致性能问题。"
+    "updateDebounceIntervalDesc": "此值控制 AI 机器人回复时，消息更新速度。更高的值会延迟消息处理，并一次性更新所有消息，效率更高。更低的值会更快更新消息，但可能会导致性能问题。",
+    "promptTitle": "提示"
   },
   "bot": {
     "creatingConversation": "创建新对话...",
