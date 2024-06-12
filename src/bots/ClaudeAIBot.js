@@ -29,7 +29,7 @@ export default class ClaudeAIBot extends Bot {
         "https://claude.ai/api/account",
       );
 
-      if (currentAcountResponse.status == 200) {
+      if (currentAcountResponse.status === 200) {
         available = true;
       }
     }
@@ -105,7 +105,6 @@ export default class ClaudeAIBot extends Bot {
   /**
    * Should implement this method if the bot supports conversation.
    * The conversation structure is defined by the subclass.
-   * @param null
    * @returns {any} - Conversation structure. null if not supported.
    */
   async createChatContext() {
