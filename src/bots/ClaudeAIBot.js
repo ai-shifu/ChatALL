@@ -26,10 +26,10 @@ export default class ClaudeAIBot extends Bot {
 
     if (store.state.claudeAi.org) {
       const currentAcountResponse = await axios.get(
-        "https://claude.ai/api/auth/current_account",
+        "https://claude.ai/api/account",
       );
 
-      if (currentAcountResponse.data.success) {
+      if (currentAcountResponse.status == 200) {
         available = true;
       }
     }
