@@ -10,52 +10,129 @@
     "loginOrOutPrompt": "Clicca sul link sottostante per accedere o uscire nella nuova finestra, quindi chiudila",
     "notice": "Avviso",
     "secretPrompt": "Il tuo token segreto rimarrà sul tuo dispositivo e non sarà condiviso con nessun'altra persona",
+    "theme": "Tema",
+    "system": "Sistema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "bots": "AI Bot",
     "showMenuBar": "Mostra barra dei menu"
   },
   "common": {
     "apiKey": "Chiave API"
   },
   "header": {
-    "clearMessages": "Cancellare tutti i messaggi?",
+    "clearMessages": "Cancellare tutti i messaggi in questa chat?",
     "yes": "Sì",
     "no": "No",
     "singleColumn": "Colonna singola",
     "doubleColumn": "Colonna doppia",
-    "tripleColumn": "Colonna tripla"
+    "tripleColumn": "Colonna tripla",
+    "selectedResponsesCount": "{ selectedCount } Selezionati"
   },
   "footer": {
+    "chooseFavorite": "Scegli i tuoi bot AI preferiti",
     "sendPrompt": "Invia a:",
-    "promptPlaceholder": "Digita un messaggio. (Shift+Invio per aggiungere una nuova riga)"
+    "promptPlaceholder": "Digita un messaggio. (Shift+Invio per aggiungere una nuova riga)",
+    "madeInChina": "Prodotto in Cina",
+    "openSource": "Open Source",
+    "free": "Gratuito",
+    "paid": "A pagamento",
+    "api": "API",
+    "enableAll": "Abilita tutto",
+    "disableAll": "Disabilita tutto",
+    "removeAll": "Rimuovi tutto"
   },
   "error": {
+    "error": "Errore",
     "failedConnectUrl": "Connessione a { url } non riuscita",
-    "closedByServer": "Connessione chiusa dal server"
+    "closedByServer": "Connessione chiusa dal server",
+    "requireLogin": "Per favore accedi: { link }",
+    "solveChallenge": "Clicca gentilmente sul link sottostante, segui le istruzioni sulla pagina per risolvere le sfide / CAPTCHA, quindi chiudi la finestra."
   },
   "modal": {
     "confirmHide": "Eliminare questo messaggio?",
-    "done": "Fatto"
+    "confirmHideChat": "Eliminare questa chat?",
+    "confirmHidePrompt": "Eliminare questo prompt?",
+    "confirmHideAction": "Eliminare questa azione?",
+    "done": "Fatto",
+    "cancel": "Annulla"
   },
   "chat": {
-    "newChat": "Nuova Chat"
+    "name": "Chat",
+    "newChat": "Nuova Chat",
+    "deleteAllChatHistory": "Elimina tutta la cronologia delle chat",
+    "downloadAllChatHistory": "Salva tutta la cronologia delle chat",
+    "exportImport": "Esporta / Importa",
+    "exportImportDesc": "Esporta / Importa impostazioni e chat, esclusi i settaggi dei bot e le chiavi API.",
+    "export": "Esporta dati",
+    "exportDesc": "L'esportatore creerà un file .ChatALL contenente dati esclusi i settaggi dei bot e le chiavi API. Confermi l'esportazione?",
+    "exportFailed": "Esportazione dati fallita",
+    "exportSuccess": "Esportazione dati riuscita",
+    "import": "Importa dati",
+    "importDesc": "L'importatore tenterà di unire e aggiornare la tua chat corrente con il file .ChatALL selezionato. Fai un backup dei tuoi dati cliccando su Esporta per salvare la cronologia delle chat e le impostazioni correnti. Questo permette il ripristino in caso di errori di importazione. Confermi l'importazione?",
+    "importLog": "Log di importazione",
+    "importSuccess": "Importazione dati riuscita",
+    "importFailed": "Importazione dati fallita",
+    "confirmDeleteAllChatHistory": "Sei sicuro di voler eliminare tutta la cronologia delle chat? Questa azione non può essere annullata.",
+    "actions": "Azioni",
+    "addAction": "Aggiungi azione",
+    "actionName": "Nome",
+    "prefix": "Prefisso",
+    "actionTemplate": "Template",
+    "suffix": "Suffisso",
+    "preview": "Anteprima",
+    "inNewChat": "in nuova chat",
+    "inCurrentChat": "in chat corrente",
+    "templateParameters": "Parametri del template",
+    "parameter": "Parametro",
+    "description": "Descrizione",
+    "botNameDesc": "nome del bot della risposta selezionata",
+    "botResponseDesc": "la risposta selezionata",
+    "loading": "Caricamento...",
+    "updateDebounceInterval": "Intervallo di aggiornamento dei messaggi (millisecondi)",
+    "updateDebounceIntervalDesc": "Il valore controlla la velocità di aggiornamento dei messaggi quando il bot AI risponde. Un valore più alto ritarda l'elaborazione dei messaggi e li aggiorna tutti in una volta, il che è più efficiente. Un valore più basso aggiorna i messaggi più velocemente, ma può causare problemi di prestazioni."
   },
   "bot": {
     "creatingConversation": "Creazione della conversazione in corso...",
+    "disabled": "DISABILITATO",
     "failedToCreateConversation": "Creazione della conversazione non riuscita",
     "name": "Bot Nullo",
     "notImplemented": "In costruzione...",
     "notAvailable": "Il bot non è disponibile perché non è stato effettuato l'accesso o la configurazione non è corretta.",
     "waiting": "In attesa del completamento di altre richieste di { botName }...",
-    "pastRounds": "Quanti round di chat precedenti mantenere?",
-    "pastRoundsPrompt": "Più chat storiche vengono mantenute, migliore è l'effetto del dialogo multi-round, ma richiede anche più risorse"
+    "pastRounds": "Quanti turni di chat precedenti mantenere?",
+    "pastRoundsPrompt": "Più turni di chat vengono mantenuti, migliore sarà il contesto del dialogo, ma verrà anche consumata più potenza di calcolo"
+  },
+  "360AiBrain": {
+    "name": "360 AI Brain"
+  },
+  "azureOpenaiApi": {
+    "name": "Azure OpenAI Service",
+    "temperature": "Temperatura",
+    "temperaturePrompt": "Più alta è la temperatura, più creativo è il testo, ma maggiore è la probabilità che sia incoerente",
+    "temperature0": "Più deterministico",
+    "temperature2": "Più casuale",
+    "azureOpenAIApiKey": "Chiave",
+    "azureApiInstanceName": "Nome dell'istanza",
+    "azureApiInstanceNamePrompt": "Visualizza il nome dell'istanza su https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI",
+    "azureOpenAIApiDeploymentName": "Nome del deployment",
+    "azureOpenAIApiDeploymentNamePrompt": "Visualizza il nome del deployment in Gestione -> Deployment su https://oai.azure.com/",
+    "azureOpenAIApiVersion": "Versione dell'API OpenAI di Azure",
+    "azureOpenAIApiVersionPrompt": "Ottieni le versioni supportate da https://learn.microsoft.com/it-it/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {
-    "name": "Gemini"
+    "name": "Gemini",
+    "gemini-pro": "Gemini",
+    "gemini-ultra": "Gemini Avanzato"
   },
-  "bingChat": {
-    "name": "Copilot",
-    "h3imaginative": "Creativo",
-    "galileo": "Equilibrato",
-    "h3precise": "Preciso"
+  "claudeApi": {
+    "name": "Claude API",
+    "claude-3-opus-20240229": "claude-3-opus",
+    "claude-3-sonnet-20240229": "claude-3-sonnet",
+    "claude-3-haiku-20240307": "claude-3-haiku",
+    "claude-21": "claude-2.1",
+    "claude-20": "claude-2.0",
+    "claude-instant-12": "claude-instant"
   },
   "cohereApi": {
     "name": "Cohere API",
@@ -64,15 +141,27 @@
     "command-r": "Command R",
     "command-r-plus": "Command R+",
     "temperature": "Temperatura",
-    "temperaturePrompt": "L'impostazione della casualità delle risposte del modello varia da 0 a 5. Un valore più basso assicura precisione e coerenza nelle uscite, ideale per compiti che richiedono informazioni precise, come la redazione di riassunti. Al contrario, un valore più alto promuove la creatività, ma può ridurre la coerenza in contesti specifici o in risposte brevi."
+    "temperaturePrompt": "Regola la casualità dell'output da 0 a 5. Temperature più basse garantiscono risposte precise e coerenti, adatte per compiti come la sintesi. Temperature più alte promuovono la creatività ma possono ridurre la coerenza, specialmente in prompt brevi o specifici."
+  },
+  "bingChat": {
+    "name": "Copilot",
+    "solveCaptcha": "Devi <a { attributes }>risolvere il CAPTCHA</a> per continuare.",
+    "h3imaginative": "Creativo",
+    "galileo": "Equilibrato",
+    "h3precise": "Preciso"
+  },
+  "characterAI": {
+    "name": "Character.AI",
+    "description": "Servizio di creazione di personaggi virtuali"
   },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "Anti-disconnessione automatica",
     "autoRefreshPrompt": "Se non ti viene chiesto di effettuare frequentemente l'accesso, NON abilitare questa funzione",
-    "notice": "Solo i membri Plus a pagamento possono utilizzare GPT-4",
+    "notice": "Solo gli utenti ChatGPT Plus a pagamento possono utilizzare GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4"
+    "gpt-4": "GPT-4",
+    "gpt-4-mobile": "GPT-4 Mobile V2"
   },
   "geminiApi": {
     "name": "Gemini API",
@@ -84,11 +173,19 @@
     "topP": "topP",
     "topPPrompt": "I token vengono selezionati dal più al meno probabile fino a quando la somma delle loro probabilità eguaglia il valore topP"
   },
+  "claudeAi": {
+    "name": "Claude"
+  },
   "ernie": {
     "name": "ERNIE"
   },
   "huggingChat": {
-    "name": "HuggingChat"
+    "name": "HuggingChat",
+    "codellamaCodeLlama-34b-Instruct-hf": "Code Llama",
+    "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b",
+    "tiiuaefalcon-180B-chat": "falcon-180b",
+    "HuggingFaceH4zephyr-7b-beta": "zephyr-7b"
   },
   "gradio": {
     "fnIndex": "fn_index",
@@ -99,12 +196,34 @@
     "urlPrompt": "URL della tua app Gradio. Se stai usando lo spazio di Hugging Face, ottieni l'URL diretto cliccando su Embed this space nell'angolo in alto a destra.",
     "waiting": "Ci sono { queue_size } richieste in coda, sei al { rank }º posto e l'attesa stimata è di { queue_eta } secondi"
   },
+  "kimi": {
+    "name": "Kimi",
+    "found": "Trovato {num}: ",
+    "searching": "Ricerca in corso..."
+  },
   "lmsys": {
     "name": "LMSYS",
+    "vicuna-7b": "vicuna-7b",
     "vicuna-13b": "vicuna-13b",
+    "vicuna-33b": "vicuna-33b",
     "chatglm-6b": "chatglm-6b",
+    "chatglm2-6b": "chatglm2-6b",
+    "chatglm3-6b": "chatglm3-6b",
     "alpaca-13b": "alpaca-13b",
-    "claude-1": "claude-1"
+    "claude-1": "claude-1",
+    "wizardlm-13b": "WizardLM-13B",
+    "wizardlm-70b": "WizardLM-70B",
+    "codellama-34b-instruct": "Code Llama",
+    "llama-2-13b-chat": "llama-2-13b",
+    "llama-2-7b-chat": "llama-2-7b",
+    "llama-2-70b-chat": "llama-2-70b",
+    "gemma-7b-it": "gemma-7b-it",
+    "gemma-2b-it": "gemma-2b-it",
+    "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
+    "claude-3-opus-20240229": "claude-3-opus-20240229"
+  },
+  "mistral": {
+    "name": "Mistral"
   },
   "moss": {
     "name": "MOSS"
@@ -114,17 +233,70 @@
     "alterUrl": "URL API alternativo",
     "alterUrlPrompt": "Se stai utilizzando un URL API personalizzato, puoi inserirlo qui",
     "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-35-turbo-16k": "gpt-3.5-turbo-16k",
     "gpt-4": "gpt-4",
+    "gpt-4-turbo": "gpt-4-turbo",
+    "gpt-4o": "gpt-4o",
     "temperature": "Temperatura",
     "temperaturePrompt": "Più alta è la temperatura, più creativo è il testo, ma maggiore è la probabilità che sia incoerente",
     "temperature0": "Più deterministico",
     "temperature2": "Più casuale"
   },
+  "poe": {
+    "name": "Poe",
+    "a2": "Claude-instant",
+    "a2_100k": "Claude-instant-100k",
+    "a2_2": "Claude-2-100k",
+    "beaver": "GPT-4",
+    "capybara": "Assistant",
+    "chinchilla": "ChatGPT 3.5",
+    "vizcacha": "GPT-4-32k",
+    "code_llama_34b_instruct": "Code-Llama-34b",
+    "acouchy": "Google-PaLM-2",
+    "llama_2_70b_chat": "Llama-2-70b"
+  },
+  "qianWen": {
+    "name": "通義千問 (QianWen)"
+  },
+  "skyWork": {
+    "name": "天工 (SkyWork)"
+  },
   "spark": {
-    "name": "iFlytek Spark"
+    "name": "Spark di iFlytek"
   },
   "wenxinQianfan": {
-    "name": "Wenxin Qianfan"
+    "name": "Wenxin Qianfan",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo",
+    "ERNIE-Bot-4": "ERNIE-Bot-4"
+  },
+  "youChat": {
+    "name": "YouChat"
+  },
+  "chatGlm": {
+    "name": "ChatGLM",
+    "GLM-3": "GLM-3",
+    "GLM-4": "GLM-4"
+  },
+  "pi": {
+    "name": "Pi",
+    "waitPiIntro": "Clicca sul link del sito web del chatbot sottostante e attendi che l'introduzione di Pi finisca, quindi chiudi la finestra."
+  },
+  "falcon": {
+    "name": "Falcon",
+    "falcon-180b": "180b",
+    "temperature": "Temperatura",
+    "temperaturePrompt": "Valori più alti producono output più diversificati",
+    "maxNewTokens": "Numero massimo di nuovi token",
+    "maxNewTokensPrompt": "Il numero massimo di nuovi token",
+    "topP": "Top-p (campionamento nucleare)",
+    "topPPrompt": "I token vengono selezionati dal più al meno probabile fino a quando la somma delle loro probabilità eguaglia il valore topP",
+    "repetitionPenalty": "Penalità di ripetizione",
+    "repetitionPenaltyPrompt": "Penalizza i token ripetuti"
+  },
+  "phind": {
+    "name": "Phind",
+    "description": "Assistente potenziato da Phind"
   },
   "dev": {
     "name": "Bot Dev"
@@ -136,5 +308,79 @@
     "llama3-70b-8192": "Llama 3 70b",
     "mixtral-8x7b-32768": "Mixtral 8x7b",
     "gemma-7b-it": "Gemma 7b"
-  }
+  },
+  "updates": {
+    "updateAvailable": "Aggiornamento disponibile!",
+    "currentVersion": "La tua versione",
+    "latestVersion": "Ultima versione",
+    "downloadFromGitHub": "Scarica da GitHub",
+    "skipThisVersion": "Salta questa versione",
+    "close": "Chiudi"
+  },
+  "find": {
+    "find": "Trova",
+    "noMatches": "Nessuna corrispondenza",
+    "matchCase": "Maiuscole/minuscole",
+    "wrapAround": "Avvolgi"
+  },
+  "proxy": {
+    "name": "Proxy",
+    "address": "Indirizzo del server proxy",
+    "addressExample": "http://127.0.0.1:7890, socks5://127.0.0.1:1080",
+    "enableProxy": "Abilita Proxy",
+    "proxyMode": "Modalità Proxy",
+    "globalMode": "Modalità Normale",
+    "pacFileMode": "Modalità File PAC",
+    "pacUrlMode": "Modalità URL PAC",
+    "byPass": "Indirizzi non proxy (valido solo per la Modalità Normale)",
+    "byPassHint": "Indirizzi non proxy, separati da ';', ma senza ';' alla fine. Esempio: '<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
+    "fromFile": "Carica da File",
+    "fromURL": "Carica da URL",
+    "pacUrl": "Indirizzo URL PAC",
+    "pacFile": "File PAC",
+    "pacFileUsing": "File PAC attualmente in uso",
+    "pacFileNew": "Seleziona un altro file PAC",
+    "quickSet": "Configurazione Rapida",
+    "fullSet": "Configurazione Avanzata",
+    "action": "Azione",
+    "onlySave": "Solo Salva",
+    "saveAndApply": "Salva e Applica",
+    "reload": "Ricarica",
+    "reset": "Reimposta",
+    "proxyFilePath": "Percorso del file di configurazione del proxy",
+    "proxyFilePathHint": "Puoi fare il backup di questo file o modificarlo con altri programmi",
+    "saveSuccess": "Salvataggio riuscito",
+    "saveFailed": "Salvataggio fallito",
+    "resetAllMessage": "Tutte le impostazioni (inclusi i salvataggi) andranno perse. Sei sicuro di voler reimpostare ai valori predefiniti?",
+    "reloadMessage": "Tutte le impostazioni non salvate andranno perse. Sei sicuro di voler ricaricare il file di configurazione?",
+    "saveAndActiveMessage": "Applicare la configurazione del proxy riavvierà ChatALL. Sei sicuro?",
+    "googleService": "Servizio Google"
+  },
+  "prompt": {
+    "addPrompt": "Aggiungi Prompt",
+    "title": "Titolo",
+    "prompt": "Prompt",
+    "action": "Azione",
+    "required": "Richiesto"
+  },
+  "$vuetify": {
+    "firstPage": "Nessun Dato",
+    "dataFooter": {
+      "itemsPerPageText": "Elementi per pagina",
+      "pageText": "",
+      "firstPage": "Prima Pagina",
+      "prevPage": "Pagina Precedente",
+      "lastPage": "Ultima Pagina",
+      "nextPage": "Pagina Successiva",
+      "itemsPerPageAll": "Tutti"
+    },
+    "input": {
+      "clear": "Cancella"
+    },
+    "open": "aprire"
+  },
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100"
 }

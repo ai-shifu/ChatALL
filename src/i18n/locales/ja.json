@@ -1,17 +1,17 @@
 {
   "settings": {
-    "enable": "適用",
+    "enable": "有効",
     "forExample": "例: { example }",
     "title": "設定",
     "general": "一般",
     "language": "言語",
-    "languagePrompt": "新しい言語を適用するためにアプリを再起動してください。",
+    "languagePrompt": "新しい言語設定を適用するためには、アプリケーションを再起動する必要があります。",
     "loginOrOut": "ログイン/ログアウト",
-    "loginOrOutPrompt": "リンクをクリックしてサイトににログインまたはログアウトして閉じてください。",
+    "loginOrOutPrompt": "下記リンクをクリックし、新しいウィンドウでログイン/ログアウトを行った後、そのウィンドウを閉じてください。",
     "notice": "注意",
-    "secretPrompt": "シークレットトークンは端末に残り、他の人と共有されません。",
+    "secretPrompt": "シークレットトークンはこのデバイス上に保存され、他者と共有されることはありません。",
     "theme": "テーマ",
-    "system": "システムと同期",
+    "system": "システム",
     "light": "ライト",
     "dark": "ダーク",
     "bots": "AIボット",
@@ -26,61 +26,113 @@
     "no": "いいえ",
     "singleColumn": "1列",
     "doubleColumn": "2列",
-    "tripleColumn": "3列"
+    "tripleColumn": "3列",
+    "selectedResponsesCount": "{ selectedCount } 件の応答を選択中"
   },
   "footer": {
     "chooseFavorite": "お気に入りのAIを選択",
     "sendPrompt": "送信:",
-    "promptPlaceholder": "メッセージを入力。 (Shift+Enterキーで改行)"
+    "promptPlaceholder": "ここにメッセージを入力してください。(Shift+Enterで改行)",
+    "madeInChina": "中国製",
+    "openSource": "オープンソース",
+    "free": "無料",
+    "paid": "有料",
+    "api": "API",
+    "enableAll": "全て有効",
+    "disableAll": "全て無効",
+    "removeAll": "全て削除"
   },
   "error": {
-    "failedConnectUrl": "{ url }を接続できませんでした",
-    "closedByServer": "サーバーが接続を終了しました"
+    "error": "エラー",
+    "failedConnectUrl": "{ url }に接続できませんでした",
+    "closedByServer": "サーバーが接続を終了しました",
+    "requireLogin": "ログインしてください: { link }",
+    "solveChallenge": "次のリンクをクリックし、そのページの指示に従ってチャレンジ/CAPTCHAを解決した後、ウィンドウを閉じてください。"
   },
   "modal": {
     "confirmHide": "このメッセージを削除しますか？",
-    "confirmHideChat": "チャットを削除しますか？",
-    "done": "完了"
+    "confirmHideChat": "このチャットを削除しますか？",
+    "confirmHidePrompt": "このプロンプトを削除しますか？",
+    "confirmHideAction": "このアクションを削除しますか？",
+    "done": "完了",
+    "cancel": "キャンセル"
   },
   "chat": {
     "name": "チャット",
     "newChat": "新しいチャット",
     "deleteAllChatHistory": "全てのチャット履歴を削除",
-    "confirmDeleteAllChatHistory": "全てのチャット履歴を削除しますか？この操作は取り消せません。"
+    "downloadAllChatHistory": "全てのチャット履歴を保存",
+    "exportImport": "エクスポート/インポート",
+    "exportImportDesc": "設定とチャットをエクスポート / インポートします。ボット設定とAPIキーは含まれません。",
+    "export": "データをエクスポート",
+    "exportDesc": "エクスポーターは、ボット設定とAPIキーを除くデータを含む.ChatALLファイルを作成します。エクスポートを確認しますか？",
+    "exportFailed": "データのエクスポートに失敗しました",
+    "exportSuccess": "データのエクスポートに成功しました",
+    "import": "データをインポート",
+    "importDesc": "インポーターは、選択した.ChatALLエクスポートファイルと現在のチャットをマージおよび更新しようとします。エクスポートをクリックして現在のチャット履歴と設定を保存し、データをバックアップします。これにより、インポートエラーが発生した場合に復元できます。インポートを確認しますか？",
+    "importLog": "インポートログ",
+    "importSuccess": "データのインポートに成功しました",
+    "importFailed": "データのインポートに失敗しました",
+    "confirmDeleteAllChatHistory": "全てのチャット履歴を削除しますか？この操作は取り消せません。",
+    "actions": "アクション",
+    "addAction": "アクションを追加",
+    "actionName": "名前",
+    "prefix": "プレフィックス",
+    "actionTemplate": "テンプレート",
+    "suffix": "サフィックス",
+    "preview": "プレビュー",
+    "inNewChat": "新しいチャットで",
+    "inCurrentChat": "現在のチャットで",
+    "templateParameters": "テンプレートパラメータ",
+    "parameter": "パラメータ",
+    "description": "説明",
+    "botNameDesc": "選択された応答のボット名",
+    "botResponseDesc": "選択された応答",
+    "loading": "読み込み中...",
+    "updateDebounceInterval": "メッセージ更新間隔（ミリ秒）",
+    "updateDebounceIntervalDesc": "この値は、AIボットが応答する際のメッセージ更新速度を制御します。値が高いほど、メッセージ処理が遅れ、一度に更新されるため、効率が向上します。値が低いほど、メッセージの更新が速くなりますが、パフォーマンスの問題が発生する可能性があります。"
   },
   "bot": {
     "creatingConversation": "会話を作成中...",
-    "failedToCreateConversation": "会話を作ることができませんでした",
+    "disabled": "無効",
+    "failedToCreateConversation": "会話を作成できませんでした",
     "name": "Null Bot",
     "notImplemented": "工事中...",
-    "notAvailable": "ログインしていないか、正しく設定されていないため、AIを使用できません。",
-    "waiting": "その他の{botName}リクエストが完了するのを待っています...",
-    "pastRounds": "チャットのターン数を設定",
-    "pastRoundsPrompt": "過去の会話記録が多ければ多いほど、多者間会話の効果は高くなりますが、コストもかかります。"
+    "notAvailable": "ログインしていないか、正しく設定されていないため、ボットを使用できません。",
+    "waiting": "他の{botName}リクエストが完了するのを待っています...",
+    "pastRounds": "過去のチャットのラウンド数",
+    "pastRoundsPrompt": "過去のチャットラウンドを多く含めることで、マルチラウンド対話の効果は向上しますが、その分コストも高くなります。"
+  },
+  "360AiBrain": {
+    "name": "360 AI Brain"
   },
   "azureOpenaiApi": {
     "name": "Azure OpenAI サービス",
     "temperature": "温度",
-    "temperaturePrompt": "温度が高ければ高いほど、独創的な文章になるが、支離滅裂な文章になりやすい。",
+    "temperaturePrompt": "温度が高いほど、生成されるテキストは創造的になりますが、一貫性がなくなる可能性が高くなります。",
     "temperature0": "より決定論的",
     "temperature2": "よりランダム",
     "azureOpenAIApiKey": "キー",
     "azureApiInstanceName": "インスタンス名",
     "azureApiInstanceNamePrompt": "https://portal.azure.com/ の Cognitive Services でインスタンス名を表示する。",
     "azureOpenAIApiDeploymentName": "デプロイメント名",
-    "azureOpenAIApiDeploymentNamePrompt": "https://oai.azure.com/ の[管理] -> [デプロイメント]でデプロイメント名を表示します。",
+    "azureOpenAIApiDeploymentNamePrompt": "デプロイメント名は https://oai.azure.com の「管理」->「デプロイメント」から確認できます。",
     "azureOpenAIApiVersion": "API バージョン",
     "azureOpenAIApiVersionPrompt": "サポートされているバージョンを https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference#completions から入手する。"
   },
   "bard": {
-    "name": "Gemini"
+    "name": "Gemini",
+    "gemini-pro": "Gemini",
+    "gemini-ultra": "Gemini Advanced"
   },
-  "bingChat": {
-    "name": "Copilot",
-    "solveCaptcha": "続行するには <a { attributes }>CAPTCHA認証/a>をしてください。",
-    "h3imaginative": "創造的に",
-    "galileo": "バランスよく",
-    "h3precise": "厳密に"
+  "claudeApi": {
+    "name": "Claude API",
+    "claude-3-opus-20240229": "claude-3-opus",
+    "claude-3-sonnet-20240229": "claude-3-sonnet",
+    "claude-3-haiku-20240307": "claude-3-haiku",
+    "claude-21": "claude-2.1",
+    "claude-20": "claude-2.0",
+    "claude-instant-12": "claude-instant"
   },
   "cohereApi": {
     "name": "Cohere API",
@@ -89,12 +141,22 @@
     "command-r": "Command R",
     "command-r-plus": "Command R+",
     "temperature": "温度",
-    "temperaturePrompt": "モデルの出力のランダム性の設定範囲は0から5です。低い設定値は、要約の作成など、正確な情報が必要なタスクに適しており、出力の精度と一貫性を保証します。一方、高い設定値は創造性を促進しますが、特定の状況や短い回答では一貫性が低下する可能性があります。"
+    "temperaturePrompt": "出力のランダム性を0から5の範囲で調整できます。温度を低く設定すると、より正確で一貫した回答が得られ、要約タスクなどに適しています。一方、温度を高く設定すると、より創造的な出力が期待できますが、特に短いプロンプトや特定のコンテキストでは一貫性が低下する可能性があります。"
+  },
+  "bingChat": {
+    "name": "Copilot",
+    "solveCaptcha": "続行するには <a { attributes }>CAPTCHA認証</a>をしてください。",
+    "h3imaginative": "創造的",
+    "galileo": "バランス",
+    "h3precise": "正確"
+  },
+  "characterAI": {
+    "name": "Character.AI"
   },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "自動切断防止",
-    "autoRefreshPrompt": "頻繁にログインするように求められない場合は、この機能を無効にしてください。",
+    "autoRefreshPrompt": "頻繁にログインを求められない場合は、この自動更新機能を無効にすることをお勧めします。",
     "notice": "ChatGPTプラス会員のみGPT-4をご利用いただけます。",
     "text-davinci-002-render-sha": "GPT-3.5",
     "gpt-4": "GPT-4",
@@ -110,27 +172,57 @@
     "topP": "topP",
     "topPPrompt": "トークンは最も確からしいものから最も確からしくないものまで選ばれ、それらの確率の合計がtopPの値に等しくなるまで選択されます"
   },
+  "claudeAi": {
+    "name": "Claude"
+  },
   "ernie": {
     "name": "ERNIE"
   },
   "huggingChat": {
-    "name": "HuggingChat"
+    "name": "HuggingChat",
+    "codellamaCodeLlama-34b-Instruct-hf": "Code Llama",
+    "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b",
+    "tiiuaefalcon-180B-chat": "falcon-180b",
+    "HuggingFaceH4zephyr-7b-beta": "zephyr-7b"
   },
   "gradio": {
     "fnIndex": "fn_index",
-    "fnIndexPrompt": "リクエストする関数の fn_indexです。推奨は0です",
+    "fnIndexPrompt": "呼び出す関数の fn_index (関数インデックス) です。デフォルトは通常 0 になります。",
     "name": "Gradio",
     "queueFull": "キューがいっぱいです。後で再試行してください",
-    "url": "GradioアプリURL",
-    "urlPrompt": "GradioアプリのURLです。Hugging Faceスペースを使用している場合、右上隅の \"Embed this space\"をクリックして直接URLを取得します。",
-    "waiting": "キューに {queue_size}件のリクエストがあり{rank}上にあり{queue_eta}秒間待つ必要があります"
+    "url": "GradioアプリケーションのURL",
+    "urlPrompt": "GradioアプリケーションのURLを入力します。Hugging Face スペースを利用している場合は、右上の「Embed this space」をクリックすると、直接URLを取得できます。",
+    "waiting": "現在キューに {queue_size} 件のリクエストが存在し、あなたは {rank} 番目の順番で、おおよそ {queue_eta} 秒ほど待つ必要があります。"
+  },
+  "kimi": {
+    "name": "Kimi",
+    "found": "{num}件見つかりました：",
+    "searching": "検索中..."
   },
   "lmsys": {
     "name": "LMSYS",
+    "vicuna-7b": "vicuna-7b",
     "vicuna-13b": "vicuna-13b",
+    "vicuna-33b": "vicuna-33b",
     "chatglm-6b": "chatglm-6b",
+    "chatglm2-6b": "chatglm2-6b",
+    "chatglm3-6b": "chatglm3-6b",
     "alpaca-13b": "alpaca-13b",
-    "claude-1": "claude-1"
+    "claude-1": "claude-1",
+    "wizardlm-13b": "WizardLM-13B",
+    "wizardlm-70b": "WizardLM-70B",
+    "codellama-34b-instruct": "Code Llama",
+    "llama-2-13b-chat": "llama-2-13b",
+    "llama-2-7b-chat": "llama-2-7b",
+    "llama-2-70b-chat": "llama-2-70b",
+    "gemma-7b-it": "gemma-7b-it",
+    "gemma-2b-it": "gemma-2b-it",
+    "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
+    "claude-3-opus-20240229": "claude-3-opus-20240229"
+  },
+  "mistral": {
+    "name": "Mistral"
   },
   "moss": {
     "name": "MOSS"
@@ -165,9 +257,6 @@
   "qianWen": {
     "name": "QianWen"
   },
-  "360AiBrain": {
-    "name": "360 AI Brain"
-  },
   "skyWork": {
     "name": "SkyWork"
   },
@@ -177,14 +266,35 @@
   "wenxinQianfan": {
     "name": "Wenxin Qianfan",
     "ERNIE-Bot": "ERNIE-Bot",
-    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo"
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo",
+    "ERNIE-Bot-4": "ERNIE-Bot-4"
   },
   "youChat": {
     "name": "YouChat"
   },
+  "chatGlm": {
+    "name": "ChatGLM",
+    "GLM-3": "GLM-3",
+    "GLM-4": "GLM-4"
+  },
   "pi": {
     "name": "Pi",
     "waitPiIntro": "下記のチャットボットサイトのリンクをクリックし、Piの紹介が終わるのを待ち、ウィンドウを閉じてください。"
+  },
+  "falcon": {
+    "name": "Falcon",
+    "falcon-180b": "180b",
+    "temperature": "温度",
+    "temperaturePrompt": "高い値はより多様な出力を生成します",
+    "maxNewTokens": "最大新トークン数",
+    "maxNewTokensPrompt": "新しいトークンの最大数",
+    "topP": "Top-p（核サンプリング）",
+    "topPPrompt": "トークンは最も確からしいものから最も確からしくないものまで選ばれ、それらの確率の合計がtopPの値に等しくなるまで選択されます",
+    "repetitionPenalty": "繰り返しペナルティ",
+    "repetitionPenaltyPrompt": "繰り返しトークンにペナルティを課す"
+  },
+  "phind": {
+    "name": "Phind"
   },
   "dev": {
     "name": "Dev Bot"
@@ -198,36 +308,36 @@
     "gemma-7b-it": "Gemma 7b"
   },
   "updates": {
-    "updateAvailable": "アップデート利用可能!",
+    "updateAvailable": "新しいバージョンが利用可能です。",
     "currentVersion": "現バージョン",
     "latestVersion": "新バージョン",
-    "downloadFromGitHub": "GitHub(外部サイト)からダウンロード",
+    "downloadFromGitHub": "GitHubからダウンロード",
     "skipThisVersion": "このバージョンをスキップ",
-    "close": "後で"
+    "close": "閉じる"
   },
   "find": {
     "find": "検索",
     "noMatches": "結果はありません。",
-    "matchCase": "大文字と小文字を区別する",
+    "matchCase": "大文字/小文字を区別する",
     "wrapAround": "結果を繰り返す"
   },
   "proxy": {
     "name": "プロキシ",
     "address": "プロキシサーバーアドレス",
     "addressExample": "http://127.0.0.1:7890, socks5://127.0.0.1:1080",
-    "enableProxy": "プロキシを有効",
-    "proxyMode": "プロキシモード",
+    "enableProxy": "プロキシを有効にする",
+    "proxyMode": "プロキシのモードを選択する",
     "globalMode": "ノーマルモード",
-    "pacFileMode": "プロキシ自動設定ファイルモード",
-    "pacUrlMode": "プロキシ自動設定URLモード",
-    "byPass": "非プロキシ アドレス (ノーマルモードでのみ有効)",
-    "byPassHint": "非プロキシアドレス。';'で区切られるが、最後に';'は付けない。例：'<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
+    "pacFileMode": "PACファイルモード",
+    "pacUrlMode": "PAC URLモード",
+    "byPass": "非プロキシアドレス (ノーマルモードでのみ有効)",
+    "byPassHint": "対象外(プロキシを利用しない)のアドレスを';'で区切って入力してください。最後に';'は不要です。例: <local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com",
     "fromFile": "ファイルから読み込む",
     "fromURL": "URLから読み込む",
-    "pacUrl": "プロキシ自動設定URLアドレス",
-    "pacFile": "プロキシ自動設定ファイル",
-    "pacFileUsing": "現在使用中のプロキシ自動設定ファイル",
-    "pacFileNew": "他のプロキシ自動設定ファイルを選択",
+    "pacUrl": "PAC URLアドレス",
+    "pacFile": "PACファイル",
+    "pacFileUsing": "現在使用中のPACファイル",
+    "pacFileNew": "他のPACファイルを選択",
     "quickSet": "クイック設定",
     "fullSet": "詳細設定",
     "action": "アクション",
@@ -239,9 +349,36 @@
     "proxyFilePathHint": "このファイルをバックアップしたり、他のプログラムで修正することができます。",
     "saveSuccess": "保存成功",
     "saveFailed": "保存失敗",
-    "resetAllMessage": "全ての設定（保存されているものも含む）が失われます。本当にリセットしますか？",
-    "reloadMessage": "保存していない設定はすべて失われます。設定ファイルを再読み込みしてよろしいですか？",
-    "saveAndActiveMessage": "プロキシ設定を適用するにはChatALLを再起動する必要があります。よろしいですか？",
-    "googleService": "Google Service"
-  }
+    "resetAllMessage": "プロキシに関する全ての設定(保存済みのものも含む)が初期状態に戻されます。よろしいですか？",
+    "reloadMessage": "保存されていない変更は失われますが、設定ファイルを再読み込みしますか？",
+    "saveAndActiveMessage": "プロキシ設定を有効にするには、ChatALLを再起動する必要があります。再起動を実行しますか？",
+    "googleService": "Googleサービス"
+  },
+  "prompt": {
+    "addPrompt": "プロンプトを追加",
+    "title": "タイトル",
+    "prompt": "プロンプト",
+    "action": "アクション",
+    "required": "必須"
+  },
+  "$vuetify": {
+    "firstPage": "データなし",
+    "dataFooter": {
+      "itemsPerPageText": "ページあたりの項目数",
+      "pageText": "",
+      "firstPage": "最初のページ",
+      "prevPage": "前のページ",
+      "lastPage": "最後のページ",
+      "nextPage": "次のページ",
+      "itemsPerPageAll": "全て"
+    },
+    "input": {
+      "clear": "クリア"
+    },
+    "open": "開く"
+  },
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100"
 }
