@@ -3,52 +3,136 @@
     "enable": "Включить",
     "forExample": "Например { example }",
     "title": "Настройки",
-    "general": "Главная",
+    "general": "Общие",
     "language": "Язык",
     "languagePrompt": "Перезапустите приложение, чтобы применить новый язык",
     "loginOrOut": "Вход/выход",
     "loginOrOutPrompt": "Нажмите на ссылку ниже, чтобы войти или выйти из аккаунта в новом окне, а затем закройте его",
     "notice": "Уведомление",
     "secretPrompt": "Ваш секретный токен останется на вашем устройстве и не будет передан никому другому",
+    "theme": "Тема",
+    "system": "Система",
+    "light": "Светлая",
+    "dark": "Темная",
+    "bots": "AI Боты",
     "showMenuBar": "Показать строку меню"
   },
   "common": {
-    "apiKey": "Ключ API"
+    "apiKey": "Ключ для доступа к API"
   },
   "header": {
-    "clearMessages": "Очистить все сообщения?",
-    "singleColumn": "Одиночная колонна",
-    "doubleColumn": "Двойная колонна",
-    "tripleColumn": "Тройная колонна"
+    "clearMessages": "Очистить все сообщения в этом чате?",
+    "yes": "Да",
+    "no": "Нет",
+    "singleColumn": "Одиночная колонка",
+    "doubleColumn": "Двойная колонка",
+    "tripleColumn": "Тройная колонка",
+    "selectedResponsesCount": "Выбрано { selectedCount }"
   },
   "footer": {
+    "chooseFavorite": "Выберите любимые AI боты",
     "sendPrompt": "Отправить:",
-    "promptPlaceholder": "Введите сообщение. (Shift+Enter для добавления новой строки)"
+    "promptPlaceholder": "Введите сообщение. (Shift+Enter для добавления новой строки)",
+    "madeInChina": "Сделано в Китае",
+    "openSource": "Открытое ПО",
+    "free": "Бесплатно",
+    "paid": "Платно",
+    "api": "API",
+    "enableAll": "Включить все",
+    "disableAll": "Отключить все",
+    "removeAll": "Удалить все"
   },
   "error": {
-    "failedConnectUrl": "Не удалось подключиться { url }",
-    "closedByServer": "Соединение закрыто сервером"
+    "error": "Ошибка",
+    "failedConnectUrl": "Не удалось подключиться к { url }",
+    "closedByServer": "Соединение закрыто сервером",
+    "requireLogin": "Пожалуйста, войдите: { link }",
+    "solveChallenge": "Пожалуйста, нажмите на ссылку ниже, следуйте инструкциям на странице для решения задач / CAPTCHA, затем закройте окно."
   },
   "modal": {
     "confirmHide": "Удалить это сообщение?",
-    "done": "Готово"
+    "confirmHideChat": "Удалить этот чат?",
+    "confirmHidePrompt": "Удалить этот запрос?",
+    "confirmHideAction": "Удалить это действие?",
+    "done": "Готово",
+    "cancel": "Отмена"
+  },
+  "chat": {
+    "name": "Чаты",
+    "newChat": "Новый чат",
+    "deleteAllChatHistory": "Удалить всю историю чатов",
+    "downloadAllChatHistory": "Сохранить всю историю чатов",
+    "exportImport": "Экспорт / Импорт",
+    "exportImportDesc": "Экспорт / Импорт настроек и чатов, исключая настройки ботов и ключи API.",
+    "export": "Экспорт данных",
+    "exportDesc": "Экспортер создаст файл .ChatALL, содержащий данные, исключая настройки ботов и ключи API. Подтвердить экспорт?",
+    "exportFailed": "Не удалось экспортировать данные",
+    "exportSuccess": "Данные успешно экспортированы",
+    "import": "Импорт данных",
+    "importDesc": "Импортер попытается объединить и обновить ваш текущий чат с выбранным экспортированным файлом .ChatALL. Сделайте резервную копию данных, нажав Экспорт, чтобы сохранить текущую историю чатов и настройки. Это позволит восстановить данные в случае ошибок импорта. Подтвердить импорт?",
+    "importLog": "Журнал импорта",
+    "importSuccess": "Данные успешно импортированы",
+    "importFailed": "Не удалось импортировать данные",
+    "confirmDeleteAllChatHistory": "Вы уверены, что хотите удалить всю историю чатов? Это действие нельзя отменить.",
+    "actions": "Действия",
+    "addAction": "Добавить действие",
+    "actionName": "Название",
+    "prefix": "Префикс",
+    "actionTemplate": "Шаблон",
+    "suffix": "Суффикс",
+    "preview": "Предпросмотр",
+    "inNewChat": "в новом чате",
+    "inCurrentChat": "в текущем чате",
+    "templateParameters": "Параметры шаблона",
+    "parameter": "Параметр",
+    "description": "Описание",
+    "botNameDesc": "имя выбранного бота",
+    "botResponseDesc": "выбранный ответ",
+    "loading": "Загрузка...",
+    "updateDebounceInterval": "Интервал обновления сообщений (миллисекунды)",
+    "updateDebounceIntervalDesc": "Это значение контролирует скорость обновления сообщений, когда бот AI отвечает. Более высокое значение задерживает обработку сообщений и обновляет их все сразу, что более эффективно. Более низкое значение обновляет сообщения быстрее, но может вызвать проблемы с производительностью."
   },
   "bot": {
     "creatingConversation": "Создание диалога...",
+    "disabled": "ОТКЛЮЧЕН",
     "failedToCreateConversation": "Не удалось создать диалог",
     "name": "Нулевой бот",
     "notImplemented": "В разработке...",
     "notAvailable": "Бот недоступен из-за неправильного входа в аккаунт или неправильной настройки.",
-    "waiting": "Ожидание завершения других запросов от{ botName } ..."
+    "waiting": "Ожидание завершения других запросов от { botName }...",
+    "pastRounds": "Сколько раундов прошлых чатов переносить?",
+    "pastRoundsPrompt": "Чем больше исторических чатов переносится, тем лучше эффект многораундового диалога, но это также потребует больше затрат"
+  },
+  "360AiBrain": {
+    "name": "360 AI Brain"
+  },
+  "azureOpenaiApi": {
+    "name": "Azure OpenAI Service",
+    "temperature": "Температура",
+    "temperaturePrompt": "Чем выше температура, тем креативнее текст, но тем больше вероятность того, что он будет бессвязным",
+    "temperature0": "Более определенный",
+    "temperature2": "Более рандомный",
+    "azureOpenAIApiKey": "Ключ",
+    "azureApiInstanceName": "Имя экземпляра",
+    "azureApiInstanceNamePrompt": "Вы можете найти имя экземпляра на https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI",
+    "azureOpenAIApiDeploymentName": "Имя развертывания",
+    "azureOpenAIApiDeploymentNamePrompt": "Вы можете найти имя развертывания в разделе Управление -> Развертывания на https://oai.azure.com/",
+    "azureOpenAIApiVersion": "Версия API",
+    "azureOpenAIApiVersionPrompt": "Получите поддерживаемые версии на https://learn.microsoft.com/ru-ru/azure/cognitive-services/openai/reference#completions"
   },
   "bard": {
-    "name": "Gemini"
+    "name": "Gemini",
+    "gemini-pro": "Gemini",
+    "gemini-ultra": "Gemini Advanced"
   },
-  "bingChat": {
-    "name": "Copilot",
-    "h3imaginative": "Творческий",
-    "galileo": "Сбалансированный",
-    "h3precise": "Точный"
+  "claudeApi": {
+    "name": "Claude API",
+    "claude-3-opus-20240229": "claude-3-opus",
+    "claude-3-sonnet-20240229": "claude-3-sonnet",
+    "claude-3-haiku-20240307": "claude-3-haiku",
+    "claude-21": "claude-2.1",
+    "claude-20": "claude-2.0",
+    "claude-instant-12": "claude-instant"
   },
   "cohereApi": {
     "name": "Cohere API",
@@ -59,13 +143,24 @@
     "temperature": "Температура",
     "temperaturePrompt": "Настройка случайности ответов модели варьируется от 0 до 5. Более низкие значения обеспечивают точность и согласованность результатов, что идеально подходит для задач, требующих точной информации, например, при составлении резюме. Высокие значения способствуют креативности, но могут снизить связность в специфических контекстах или кратких ответах."
   },
+  "bingChat": {
+    "name": "Copilot",
+    "solveCaptcha": "Вам нужно <a { attributes }>пройти CAPTCHA</a>, чтобы продолжить.",
+    "h3imaginative": "Творческий",
+    "galileo": "Сбалансированный",
+    "h3precise": "Точный"
+  },
+  "characterAI": {
+    "name": "Character.AI"
+  },
   "chatGpt": {
     "name": "ChatGPT",
     "autoRefresh": "Автоматическое отключение",
     "autoRefreshPrompt": "Если вас не часто просят войти в систему, не включайте эту функцию!",
     "notice": "Только платные пользователи Plus могут использовать GPT-4",
     "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4"
+    "gpt-4": "GPT-4",
+    "gpt-4-mobile": "GPT-4 Mobile V2"
   },
   "geminiApi": {
     "name": "Gemini API",
@@ -77,11 +172,19 @@
     "topP": "topP",
     "topPPrompt": "Токены выбираются от наиболее вероятного к наименее вероятному до тех пор, пока сумма их вероятностей не станет равной значению topP"
   },
+  "claudeAi": {
+    "name": "Claude"
+  },
   "ernie": {
     "name": "ERNIE"
   },
   "huggingChat": {
-    "name": "HuggingChat"
+    "name": "HuggingChat",
+    "codellamaCodeLlama-34b-Instruct-hf": "Code Llama",
+    "OpenAssistantoasst-sft-6-llama-30b-xor": "oasst-sft-6-llama-30b",
+    "meta-llamaLlama-2-70b-chat-hf": "llama-2-70b",
+    "tiiuaefalcon-180B-chat": "falcon-180b",
+    "HuggingFaceH4zephyr-7b-beta": "zephyr-7b"
   },
   "gradio": {
     "fnIndex": "fn_index",
@@ -92,12 +195,34 @@
     "urlPrompt": "URL-адрес приложения Gradio. Если вы используете пространство для Hugging Face, получите прямой URL-адрес, нажав на \"Embed this space\" в правом верхнем углу.",
     "waiting": "Есть { queue_size } запросы в очереди, вы находитесь на { rank } месте, и ожидается, что вы будете ждать { queue_eta } секунд"
   },
+  "kimi": {
+    "name": "Kimi",
+    "found": "Найдено {num}: ",
+    "searching": "Поиск..."
+  },
   "lmsys": {
     "name": "LMSYS",
+    "vicuna-7b": "vicuna-7b",
     "vicuna-13b": "vicuna-13b",
+    "vicuna-33b": "vicuna-33b",
     "chatglm-6b": "chatglm-6b",
+    "chatglm2-6b": "chatglm2-6b",
+    "chatglm3-6b": "chatglm3-6b",
     "alpaca-13b": "alpaca-13b",
-    "claude-1": "claude-1"
+    "claude-1": "claude-1",
+    "wizardlm-13b": "WizardLM-13B",
+    "wizardlm-70b": "WizardLM-70B",
+    "codellama-34b-instruct": "Code Llama",
+    "llama-2-13b-chat": "llama-2-13b",
+    "llama-2-7b-chat": "llama-2-7b",
+    "llama-2-70b-chat": "llama-2-70b",
+    "gemma-7b-it": "gemma-7b-it",
+    "gemma-2b-it": "gemma-2b-it",
+    "claude-3-sonnet-20240229": "claude-3-sonnet-20240229",
+    "claude-3-opus-20240229": "claude-3-opus-20240229"
+  },
+  "mistral": {
+    "name": "Mistral"
   },
   "moss": {
     "name": "MOSS"
@@ -107,17 +232,69 @@
     "alterUrl": "Альтернативный URL API",
     "alterUrlPrompt": "Если вы используете пользовательский URL API, вы можете ввести его здесь",
     "gpt-35-turbo": "gpt-3.5-turbo",
+    "gpt-35-turbo-16k": "gpt-3.5-turbo-16k",
     "gpt-4": "gpt-4",
+    "gpt-4-turbo": "gpt-4-turbo",
+    "gpt-4o": "gpt-4o",
     "temperature": "Температура",
     "temperaturePrompt": "Чем выше температура, тем креативнее текст, но тем больше вероятность того, что он будет бессвязным",
     "temperature0": "Более определенный",
     "temperature2": "Более рандомный"
   },
+  "poe": {
+    "name": "Poe",
+    "a2": "Claude-instant",
+    "a2_100k": "Claude-instant-100k",
+    "a2_2": "Claude-2-100k",
+    "beaver": "GPT-4",
+    "capybara": "Assistant",
+    "chinchilla": "ChatGPT 3.5",
+    "vizcacha": "GPT-4-32k",
+    "code_llama_34b_instruct": "Code-Llama-34b",
+    "acouchy": "Google-PaLM-2",
+    "llama_2_70b_chat": "Llama-2-70b"
+  },
+  "qianWen": {
+    "name": "QianWen"
+  },
+  "skyWork": {
+    "name": "SkyWork"
+  },
   "spark": {
     "name": "iFlytek Spark"
   },
   "wenxinQianfan": {
-    "name": "Wenxin Qianfan"
+    "name": "Wenxin Qianfan",
+    "ERNIE-Bot": "ERNIE-Bot",
+    "ERNIE-Bot-turbo": "ERNIE-Bot-turbo",
+    "ERNIE-Bot-4": "ERNIE-Bot-4"
+  },
+  "youChat": {
+    "name": "YouChat"
+  },
+  "chatGlm": {
+    "name": "ChatGLM",
+    "GLM-3": "GLM-3",
+    "GLM-4": "GLM-4"
+  },
+  "pi": {
+    "name": "Pi",
+    "waitPiIntro": "Пожалуйста, нажмите на ссылку на сайт ниже и дождитесь завершения введения Pi, затем закройте окно."
+  },
+  "falcon": {
+    "name": "Falcon",
+    "falcon-180b": "180b",
+    "temperature": "Температура",
+    "temperaturePrompt": "Более высокие значения создают более разнообразные выходные данные",
+    "maxNewTokens": "Максимальное количество новых токенов",
+    "maxNewTokensPrompt": "Максимальное количество новых токенов",
+    "topP": "Top-p (ядро выборки)",
+    "topPPrompt": "Токены выбираются от наиболее вероятного к наименее вероятному до тех пор, пока сумма их вероятностей не станет равной значению topP",
+    "repetitionPenalty": "Штраф за повторение",
+    "repetitionPenaltyPrompt": "Наказание за повторяющиеся токены"
+  },
+  "phind": {
+    "name": "Phind"
   },
   "dev": {
     "name": "Dev Bot"
@@ -129,5 +306,79 @@
     "llama3-70b-8192": "Llama 3 70b",
     "mixtral-8x7b-32768": "Mixtral 8x7b",
     "gemma-7b-it": "Gemma 7b"
-  }
+  },
+  "updates": {
+    "updateAvailable": "Доступно обновление!",
+    "currentVersion": "Ваша версия",
+    "latestVersion": "Новейшая версия",
+    "downloadFromGitHub": "Скачать с GitHub",
+    "skipThisVersion": "Пропустить эту версию",
+    "close": "Закрыть"
+  },
+  "find": {
+    "find": "Найти",
+    "noMatches": "Совпадений не найдено",
+    "matchCase": "С учетом регистра",
+    "wrapAround": "Обход по кругу"
+  },
+  "proxy": {
+    "name": "Прокси",
+    "address": "Адрес прокси-сервера",
+    "addressExample": "http://127.0.0.1:7890, socks5://127.0.0.1:1080",
+    "enableProxy": "Включить прокси",
+    "proxyMode": "Режим проксирования",
+    "globalMode": "Обычный режим",
+    "pacFileMode": "Режим проксирования файла PAC",
+    "pacUrlMode": "Режим проксирования по PAC URL",
+    "byPass": "Адреса без прокси (только для обычного режима)",
+    "byPassHint": "Адреса без прокси, разделенные ';', но без ';' в конце. Например, '<local>;*.aliyun.com;*.tiangong.cn;*.xfyun.cn;*.baidu.com;*.baidubce.com'",
+    "fromFile": "Загрузить из файла",
+    "fromURL": "Загрузить из URL",
+    "pacUrl": "Адрес PAC URL",
+    "pacFile": "PAC файл",
+    "pacFileUsing": "Используемый PAC файл",
+    "pacFileNew": "Выбрать другой PAC файл",
+    "quickSet": "Быстрая настройка",
+    "fullSet": "Расширенная настройка",
+    "action": "Действие",
+    "onlySave": "Только сохранить",
+    "saveAndApply": "Сохранить и применить",
+    "reload": "Перезагрузить",
+    "reset": "Сбросить",
+    "proxyFilePath": "Путь к файлу настроек проксирования",
+    "proxyFilePathHint": "Вы можете сделать резервную копию этого файла или изменить его с помощью других программ",
+    "saveSuccess": "Сохранение успешно",
+    "saveFailed": "Сохранение не удалось",
+    "resetAllMessage": "Все настройки (включая сохраненные) будут потеряны. Вы уверены, что хотите сбросить настройки по умолчанию?",
+    "reloadMessage": "Все несохраненные настройки будут потеряны. Вы уверены, что хотите перезагрузить файл конфигурации?",
+    "saveAndActiveMessage": "Применение новых настроек проксирования потребует перезапуска ChatALL. Продолжить?",
+    "googleService": "Сервисы Google"
+  },
+  "prompt": {
+    "addPrompt": "Добавить запрос",
+    "title": "Заголовок",
+    "prompt": "Запрос",
+    "action": "Действие",
+    "required": "Обязательно"
+  },
+  "$vuetify": {
+    "firstPage": "Нет данных",
+    "dataFooter": {
+      "itemsPerPageText": "Элементов на странице",
+      "pageText": "",
+      "firstPage": "Первая страница",
+      "prevPage": "Предыдущая страница",
+      "lastPage": "Последняя страница",
+      "nextPage": "Следующая страница",
+      "itemsPerPageAll": "Все"
+    },
+    "input": {
+      "clear": "Очистить"
+    },
+    "open": "открыть"
+  },
+  "10": "10",
+  "25": "25",
+  "50": "50",
+  "100": "100"
 }
