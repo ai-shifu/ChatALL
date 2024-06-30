@@ -7,7 +7,11 @@ on:
 
 jobs:
   build-and-release:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, macos-10.15]
 
     steps:
       - name: Checkout Git repository
@@ -37,3 +41,4 @@ jobs:
         run: |
           export PYTHON_PATH=`which python`
           npm run release
+        if: matrix.os == 'macos-latest' || matrix.os == 'macos-10.15'
