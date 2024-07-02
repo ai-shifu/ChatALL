@@ -26,13 +26,13 @@
   },
   "dependencies": {
     "@kangc/v-md-editor": "^2.3.16",
-    "@langchain/anthropic": "^0.1.9",
-    "@langchain/cohere": "^0.0.10",
-    "@langchain/google-genai": "^0.0.12",
-    "@langchain/groq": "^0.0.6",
-    "@langchain/openai": "^0.0.12",
+    "@langchain/anthropic": "^0.2.3",
+    "@langchain/cohere": "^0.0.11",
+    "@langchain/google-genai": "^0.0.21",
+    "@langchain/groq": "^0.0.13",
+    "@langchain/openai": "^0.2.1",
     "@mdi/font": "^7.4.47",
-    "@vueuse/rxjs": "^10.9.0",
+    "@vueuse/rxjs": "^10.11.0",
     "async-lock": "^1.4.1",
     "axios": "^1.7.2",
     "babel-plugin-prismjs": "^2.1.0",
@@ -42,7 +42,7 @@
     "dexie-export-import": "^4.1.2",
     "electron-builder": "^24.13.3",
     "jszip": "^3.10.1",
-    "katex": "^0.16.10",
+    "katex": "^0.16.11",
     "langchain": "^0.1.32",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
@@ -51,37 +51,37 @@
     "rxjs": "^7.8.1",
     "sortablejs": "^1.15.2",
     "update-electron-app": "^3.0.0",
-    "uuid": "^9.0.1",
-    "vue": "^3.4.27",
+    "uuid": "^10.0.0",
+    "vue": "^3.4.31",
     "vue-cli-plugin-electron-builder": "^3.0.0-alpha.4",
     "vue-i18n": "^9.13.1",
     "vue-matomo": "^4.2.0",
     "vue3-shortkey": "^4.0.0",
-    "vuetify": "^3.6.7",
+    "vuetify": "^3.6.10",
     "vuex": "^4.1.0",
     "vuex-persist": "^3.1.3",
     "websocket-as-promised": "^2.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.6",
-    "@babel/eslint-parser": "^7.24.6",
+    "@babel/core": "^7.24.7",
+    "@babel/eslint-parser": "^7.24.7",
     "@electron/osx-sign": "^1.3.0",
     "@vue/cli": "^5.0.8",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
-    "electron": "^30.0.8",
+    "electron": "^31.1.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-vue": "^9.26.0",
+    "eslint-plugin-vue": "^9.27.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.7",
     "md5": "^2.3.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.2",
     "prettier-plugin-vue": "^1.1.6",
-    "sse.js": "^2.4.1"
+    "sse.js": "^2.5.0"
   },
   "eslintConfig": {
     "root": true,
@@ -112,9 +112,9 @@
   ],
   "license": "Apache-2.0",
   "overrides": {
-    "@langchain/core": "~0.1.55",
+    "@langchain/core": "~0.2.12",
     "vue-cli-plugin-electron-builder": {
-      "electron-builder": "^24.0.0"
+      "electron-builder": "^24.13.3"
     }
   }
 }
