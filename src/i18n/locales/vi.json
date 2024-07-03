@@ -125,6 +125,16 @@
     "galileo": "Cân bằng",
     "h3precise": "Chính xác"
   },
+  "claudeApi":{
+    "name": "Claude API",
+    "claude-3-opus-20240229" : "claude-3-opus",
+    "claude-3-sonnet-20240229": "claude-3-sonnet",
+    "claude-3-haiku-20240307": "claude-3-haiku",
+    "claude-3-5-sonnet-20240620": "claude-3.5-sonnet",
+    "claude-21":"claude-2.1",
+    "claude-20":"claude-2.0",
+    "claude-instant-12":"claude-instant"
+  },
   "cohereApi": {
     "name": "Cohere API",
     "command": "Command",
