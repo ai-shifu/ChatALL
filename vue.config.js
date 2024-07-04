@@ -15,12 +15,7 @@ module.exports = defineConfig({
         compression: "maximum",
         mac: {
           category: "public.app-category.utilities",
-          target: [
-            {
-              target: "default",
-              arch: ["x64", "arm64"] // Target both Intel (x64) and Apple Silicon (arm64) architectures
-            }
-          ],
+          target: "default",
           icon: "src/assets/icon.icns",
           hardenedRuntime: true,
           notarize: {
