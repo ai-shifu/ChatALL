@@ -71,18 +71,22 @@ export default class QianWenBot extends Bot {
     };
     const payload = JSON.stringify({
       action: "next",
-      msgId: generateRandomId(),
-      parentMsgId: context.parentMessageId || "0",
       contents: [
         {
           contentType: "text",
           content: prompt,
+          role: "user",
         },
       ],
-      timeout: 17,
-      openSearch: false,
-      sessionId: context.sessionId,
+      mode: "chat",
       model: "",
+      parentMsgId: context.parentMessageId || "",
+      requenstId: generateRandomId(),
+      // timeout: 17,
+      // openSearch: false,
+      sessionId: context.sessionId,
+      sessionType: "text_chat",
+      userAction: context.parentMessageId ? "chat" : "new_top",
     });
 
     return new Promise((resolve, reject) => {
@@ -95,16 +99,23 @@ export default class QianWenBot extends Bot {
         return;
       }
       try {
-        const source = new SSE("https://qianwen.aliyun.com/conversation", {
-          headers,
-          payload,
-          withCredentials: true,
-        });
+        const source = new SSE(
+          "https://qianwen.biz.aliyun.com/dialog/conversation",
+          {
+            headers,
+            payload,
+            withCredentials: true,
+          },
+        );
 
         source.addEventListener("message", (event) => {
           if (event.data === "[DONE]") return;
 
           if (event.data === "") {
+            // sometimes the last chunk is \n
+            if (source.chunk.trim() === "") {
+              return;
+            }
             // Empty message usually means error
             const resp = JSON.parse(source.chunk);
             if (resp?.failed) {
@@ -113,8 +124,12 @@ export default class QianWenBot extends Bot {
             }
           }
           const data = JSON.parse(event.data);
+          // the first message data's contents is undefined
+          if ((data?.contents?.length ?? 0) == 0) {
+            return;
+          }
           onUpdateResponse(callbackParam, {
-            content: data.content[0],
+            content: data.contents[0].content,
             done: false,
           });
           if (data.stopReason === undefined || data.stopReason === "stop") {
