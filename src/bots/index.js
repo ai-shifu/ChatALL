@@ -85,6 +85,8 @@ import ClaudeAPISonnetBot from "./anthropic/ClaudeAPISonnetBot";
 import ClaudeAPI35SonnetBot from "./anthropic/ClaudeAPI35SonnetBot";
 import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
 import ClaudeAPIInstant12Bot from "./anthropic/ClaudeAPIInstant12Bot";
+import DeepSeekAPICoderBot from "./deepseek/DeepSeekAPICoderBot";
+import DeepSeekAPIChatBot from "./deepseek/DeepSeekAPIChatBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -172,6 +174,8 @@ const all = [
   Wizardlm70bBot.getInstance(),
   Zephyr7bBot.getInstance(),
   YouChatBot.getInstance(),
+  DeepSeekAPICoderBot.getInstance(),
+  DeepSeekAPIChatBot.getInstance(),
 ];
 
 const disabled = [
