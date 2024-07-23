@@ -128,8 +128,26 @@ export default class QianWenBot extends Bot {
           if ((data?.contents?.length ?? 0) == 0) {
             return;
           }
+          let content = "";
+          for (let contentItem of data.contents) {
+            if (contentItem.contentType == "plugin") {
+              content += "> Plugin: " + contentItem.pluginName + "\n\n";
+            } else if (contentItem.contentType == "text") {
+              content += contentItem.content + "\n\n";
+            } else if (contentItem.contentType == "referenceLink") {
+              let links = JSON.parse(contentItem.content)?.["links"] ?? [];
+              content +=
+                `> 相关链接 · ${links.length}\n` +
+                links
+                  .map((link) => `> - [${link.title}](${link.url})`)
+                  .join("\n") +
+                "\n\n";
+            } else {
+              content += `> *UNKNOWN CONTENT TYPE:* ${contentItem.contentType}\n`;
+            }
+          }
           onUpdateResponse(callbackParam, {
-            content: data.contents[0].content,
+            content: content.trim(),
             done: false,
           });
           if (data.stopReason === undefined || data.stopReason === "stop") {
