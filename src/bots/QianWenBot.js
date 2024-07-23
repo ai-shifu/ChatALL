@@ -143,7 +143,7 @@ export default class QianWenBot extends Bot {
                   .join("\n") +
                 "\n\n";
             } else {
-              content += `> *UNKNOWN CONTENT TYPE:* ${contentItem.contentType}\n`;
+              content += `> **UNKNOWN CONTENT TYPE:** ${contentItem.contentType}\n`;
             }
           }
           onUpdateResponse(callbackParam, {
