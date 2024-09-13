@@ -34,7 +34,7 @@
     "@mdi/font": "^7.4.47",
     "@vueuse/rxjs": "^10.11.0",
     "async-lock": "^1.4.1",
-    "axios": "^1.7.2",
+    "axios": "^1.7.4",
     "babel-plugin-prismjs": "^2.1.0",
     "compare-versions": "^6.1.0",
     "core-js": "^3.37.1",
