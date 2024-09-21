@@ -128,7 +128,6 @@ export default class QianWenBot extends Bot {
           if ((data?.contents?.length ?? 0) == 0) {
             return;
           }
-          let content = "";
           let contentPieces = [];
           for (let contentItem of data.contents) {
             switch (contentItem.contentType) {
@@ -138,7 +137,7 @@ export default class QianWenBot extends Bot {
               case "text":
                 contentPieces.push(`${contentItem.content}\n`);
                 break;
-              case "referenceLink":
+              case "referenceLink": {
                 let links = [];
                 try {
                   let parsedContent = JSON.parse(contentItem.content);
@@ -148,16 +147,24 @@ export default class QianWenBot extends Bot {
                 }
                 contentPieces.push(
                   `> 相关链接 · ${links.length}\n` +
-                    links.map((link) => `> - [${link.title}](${link.url})`).join("\n") +
-                    "\n"
+                    links
+                      .map((link) => `> - [${link.title}](${link.url})`)
+                      .join("\n") +
+                    "\n",
                 );
                 break;
+              }
               default:
-                contentPieces.push(`> *UNKNOWN CONTENT TYPE:* ${contentItem.contentType}\n`);
+                contentPieces.push(
+                  `> *UNKNOWN CONTENT TYPE:* ${contentItem.contentType}\n`,
+                );
             }
           }
           let content = contentPieces.join("\n");
-          onUpdateResponse(callbackParam, { content: content.trim(), done: false });
+          onUpdateResponse(callbackParam, {
+            content: content.trim(),
+            done: false,
+          });
           onUpdateResponse(callbackParam, {
             content: content.trim(),
             done: false,
