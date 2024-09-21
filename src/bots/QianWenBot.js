@@ -129,23 +129,35 @@ export default class QianWenBot extends Bot {
             return;
           }
           let content = "";
+          let contentPieces = [];
           for (let contentItem of data.contents) {
-            if (contentItem.contentType == "plugin") {
-              content += "> Plugin: " + contentItem.pluginName + "\n\n";
-            } else if (contentItem.contentType == "text") {
-              content += contentItem.content + "\n\n";
-            } else if (contentItem.contentType == "referenceLink") {
-              let links = JSON.parse(contentItem.content)?.["links"] ?? [];
-              content +=
-                `> 相关链接 · ${links.length}\n` +
-                links
-                  .map((link) => `> - [${link.title}](${link.url})`)
-                  .join("\n") +
-                "\n\n";
-            } else {
-              content += `> *UNKNOWN CONTENT TYPE:* ${contentItem.contentType}\n`;
+            switch (contentItem.contentType) {
+              case "plugin":
+                contentPieces.push(`> Plugin: ${contentItem.pluginName}\n`);
+                break;
+              case "text":
+                contentPieces.push(`${contentItem.content}\n`);
+                break;
+              case "referenceLink":
+                let links = [];
+                try {
+                  let parsedContent = JSON.parse(contentItem.content);
+                  links = parsedContent?.["links"] ?? [];
+                } catch (e) {
+                  console.error("Failed to parse contentItem.content:", e);
+                }
+                contentPieces.push(
+                  `> 相关链接 · ${links.length}\n` +
+                    links.map((link) => `> - [${link.title}](${link.url})`).join("\n") +
+                    "\n"
+                );
+                break;
+              default:
+                contentPieces.push(`> *UNKNOWN CONTENT TYPE:* ${contentItem.contentType}\n`);
             }
           }
+          let content = contentPieces.join("\n");
+          onUpdateResponse(callbackParam, { content: content.trim(), done: false });
           onUpdateResponse(callbackParam, {
             content: content.trim(),
             done: false,
