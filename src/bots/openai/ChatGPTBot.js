@@ -8,13 +8,13 @@ import store from "@/store";
 
 // Inspired by https://v2ex.com/t/926890
 const REFRESH_SESSION_URL =
-  "https://chat.openai.com/_next/static/k9OKjvwgjWES7JT3k-6g9/_ssgManifest.js";
+  "https://chatgpt.com/_next/static/k9OKjvwgjWES7JT3k-6g9/_ssgManifest.js";
 
 export default class ChatGPTBot extends Bot {
   static _brandId = "chatGpt";
   static _className = "ChatGPTBot"; // Class name of the bot
   static _logoFilename = "chatgpt-logo.svg"; // Place it in public/bots/
-  static _loginUrl = "https://chat.openai.com/";
+  static _loginUrl = "https://chatgpt.com/";
   // Remove Electron from the user agent to avoid blank login screen of Google
   static _userAgent =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) chatall/1.29.40 Chrome/114.0.5735.134 Safari/537.36";
@@ -42,7 +42,7 @@ export default class ChatGPTBot extends Bot {
 
     try {
       const response = await axios.get(
-        "https://chat.openai.com/api/auth/session",
+        "https://chatgpt.com/api/auth/session",
       );
       if (!response.data?.error && response.data?.accessToken) {
         this.accessToken = response.data.accessToken;
@@ -107,7 +107,7 @@ export default class ChatGPTBot extends Bot {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src =
-        "https://tcr9i.chat.openai.com/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147/api.js";
+        "https://tcr9i.chatgpt.com/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147/api.js";
       script.setAttribute("data-callback", "setupEnforcement");
       script.async = true;
       script.defer = true;
@@ -169,7 +169,7 @@ export default class ChatGPTBot extends Bot {
     let requirement;
     try {
       const result = await axios.post(
-        "https://chat.openai.com/backend-api/sentinel/chat-requirements",
+        "https://chatgpt.com/backend-api/sentinel/chat-requirements",
         undefined,
         { headers },
       );
@@ -215,7 +215,7 @@ export default class ChatGPTBot extends Bot {
     return new Promise((resolve, reject) => {
       try {
         const source = new SSE(
-          "https://chat.openai.com/backend-api/conversation",
+          "https://chatgpt.com/backend-api/conversation",
           {
             headers: {
               ...headers,
