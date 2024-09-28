@@ -20,7 +20,7 @@ export default class ChatGPT4Bot extends ChatGPTBot {
           Authorization: `Bearer ${this.accessToken}`,
         };
         const response = await axios.get(
-          "https://chat.openai.com/backend-api/accounts/check",
+          "https://chatgpt.com/backend-api/accounts/check",
           { headers },
         );
         const isPaidSubscriptionActive =
