@@ -41,9 +41,7 @@ export default class ChatGPTBot extends Bot {
     let available = false;
 
     try {
-      const response = await axios.get(
-        "https://chatgpt.com/api/auth/session",
-      );
+      const response = await axios.get("https://chatgpt.com/api/auth/session");
       if (!response.data?.error && response.data?.accessToken) {
         this.accessToken = response.data.accessToken;
         available = true;
@@ -214,16 +212,13 @@ export default class ChatGPTBot extends Bot {
 
     return new Promise((resolve, reject) => {
       try {
-        const source = new SSE(
-          "https://chatgpt.com/backend-api/conversation",
-          {
-            headers: {
-              ...headers,
-              accept: "text/event-stream",
-            },
-            payload,
+        const source = new SSE("https://chatgpt.com/backend-api/conversation", {
+          headers: {
+            ...headers,
+            accept: "text/event-stream",
           },
-        );
+          payload,
+        });
 
         let preInfo = [];
         source.addEventListener("message", (event) => {
