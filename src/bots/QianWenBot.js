@@ -163,10 +163,6 @@ export default class QianWenBot extends Bot {
             content: content.trim(),
             done: false,
           });
-          onUpdateResponse(callbackParam, {
-            content: content.trim(),
-            done: false,
-          });
           if (data.stopReason === undefined || data.stopReason === "stop") {
             onUpdateResponse(callbackParam, { done: true });
             context.parentMessageId = data.msgId;
