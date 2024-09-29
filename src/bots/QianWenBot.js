@@ -71,18 +71,20 @@ export default class QianWenBot extends Bot {
     };
     const payload = JSON.stringify({
       action: "next",
-      msgId: generateRandomId(),
-      parentMsgId: context.parentMessageId || "0",
       contents: [
         {
           contentType: "text",
           content: prompt,
+          role: "user",
         },
       ],
-      timeout: 17,
-      openSearch: false,
-      sessionId: context.sessionId,
+      mode: "chat",
       model: "",
+      parentMsgId: context.parentMessageId || "",
+      requestId: generateRandomId(),
+      sessionId: context.sessionId,
+      sessionType: "text_chat",
+      userAction: context.parentMessageId ? "chat" : "new_top",
     });
 
     return new Promise((resolve, reject) => {
@@ -95,16 +97,23 @@ export default class QianWenBot extends Bot {
         return;
       }
       try {
-        const source = new SSE("https://qianwen.aliyun.com/conversation", {
-          headers,
-          payload,
-          withCredentials: true,
-        });
+        const source = new SSE(
+          "https://qianwen.biz.aliyun.com/dialog/conversation",
+          {
+            headers,
+            payload,
+            withCredentials: true,
+          },
+        );
 
         source.addEventListener("message", (event) => {
           if (event.data === "[DONE]") return;
 
           if (event.data === "") {
+            // sometimes the last chunk is \n
+            if (source.chunk.trim() === "") {
+              return;
+            }
             // Empty message usually means error
             const resp = JSON.parse(source.chunk);
             if (resp?.failed) {
@@ -113,8 +122,45 @@ export default class QianWenBot extends Bot {
             }
           }
           const data = JSON.parse(event.data);
+          // the first message data's contents is undefined
+          if ((data?.contents?.length ?? 0) == 0) {
+            return;
+          }
+          let contentPieces = [];
+          for (let contentItem of data.contents) {
+            switch (contentItem.contentType) {
+              case "plugin":
+                contentPieces.push(`> Plugin: ${contentItem.pluginName}\n`);
+                break;
+              case "text":
+                contentPieces.push(`${contentItem.content}\n`);
+                break;
+              case "referenceLink": {
+                let links = [];
+                try {
+                  let parsedContent = JSON.parse(contentItem.content);
+                  links = parsedContent?.["links"] ?? [];
+                } catch (e) {
+                  console.error("Failed to parse contentItem.content:", e);
+                }
+                contentPieces.push(
+                  `> 相关链接 · ${links.length}\n` +
+                    links
+                      .map((link) => `> - [${link.title}](${link.url})`)
+                      .join("\n") +
+                    "\n",
+                );
+                break;
+              }
+              default:
+                contentPieces.push(
+                  `> *UNKNOWN CONTENT TYPE:* ${contentItem.contentType}\n`,
+                );
+            }
+          }
+          let content = contentPieces.join("\n");
           onUpdateResponse(callbackParam, {
-            content: data.content[0],
+            content: content.trim(),
             done: false,
           });
           if (data.stopReason === undefined || data.stopReason === "stop") {
