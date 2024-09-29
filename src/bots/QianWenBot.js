@@ -82,8 +82,6 @@ export default class QianWenBot extends Bot {
       model: "",
       parentMsgId: context.parentMessageId || "",
       requestId: generateRandomId(),
-      // timeout: 17,
-      // openSearch: false,
       sessionId: context.sessionId,
       sessionType: "text_chat",
       userAction: context.parentMessageId ? "chat" : "new_top",
