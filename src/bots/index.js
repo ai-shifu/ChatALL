@@ -47,7 +47,6 @@ import GooglePalm2PoeBot from "./poe/GooglePalm2PoeBot";
 import CodeLlama34bPoeBot from "./poe/CodeLlama34bPoeBot";
 import SkyWorkBot from "./SkyWorkBot";
 import ChatGPT4MobileBot from "./openai/ChatGPT4MobileBot";
-import OpenAIAPI3516KBot from "./openai/OpenAIAPI3516KBot";
 import AzureOpenAIAPIBot from "./microsoft/AzureOpenAIAPIBot";
 import WenxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
 import YouChatBot from "./YouChatBot";
@@ -138,7 +137,6 @@ const all = [
   ChatGPT35Bot.getInstance(),
   ChatGPT35PoeBot.getInstance(),
   OpenAIAPI35Bot.getInstance(),
-  OpenAIAPI3516KBot.getInstance(),
   ChatGPT4Bot.getInstance(),
   ChatGPT4MobileBot.getInstance(),
   ChatGPT4PoeBot.getInstance(),
@@ -300,7 +298,6 @@ export const botTags = {
     bots.getBotByClassName("Gemini15FlashAPIBot"),
     bots.getBotByClassName("AzureOpenAIAPIBot"),
     bots.getBotByClassName("OpenAIAPI35Bot"),
-    bots.getBotByClassName("OpenAIAPI3516KBot"),
     bots.getBotByClassName("OpenAIAPI4Bot"),
     bots.getBotByClassName("OpenAIAPI4128KBot"),
     bots.getBotByClassName("OpenAIAPI4oBot"),
