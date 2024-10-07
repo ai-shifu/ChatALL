@@ -3,18 +3,17 @@ name: Build and Release
 on:
   push:
     tags:
-      - v*
+      - "v*.*.*"
 
 jobs:
-  build-and-release:
+  build-and-release-macos:
     runs-on: macos-latest
-
     steps:
-      - name: Checkout Git repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -24,8 +23,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
 
       - name: Build and release
         env:
@@ -36,4 +34,52 @@ jobs:
           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
         run: |
           export PYTHON_PATH=`which python`
-          npm run release
+          npm run release-macos
+
+  build-and-release-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run release-linux
+
+  build-and-release-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run release-windows

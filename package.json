@@ -21,7 +21,10 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron .",
-    "release": "vue-cli-service electron:build -wml --x64 --arm64",
+    "release-all": "vue-cli-service electron:build -wml --x64 --arm64",
+    "release-macos": "vue-cli-service electron:build --mac --x64 --arm64",
+    "release-linux": "vue-cli-service electron:build --linux --x64 --arm64",
+    "release-windows": "vue-cli-service electron:build --win --x64 --arm64",
     "prepare": "husky install"
   },
   "dependencies": {
