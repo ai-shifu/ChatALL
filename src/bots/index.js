@@ -26,7 +26,6 @@ import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
 import VicunaBot from "@/bots/lmsys/VicunaBot";
 import ChatGLMBot from "@/bots/zhipu/ChatGLMBot";
 import AlpacaBot from "@/bots/lmsys/AlpacaBot";
-import ClaudeBot from "@/bots/lmsys/ClaudeBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
 import Gemma7bGroqAPIBot from "@/bots/groq/Gemma7bGroqAPIBot";
@@ -38,9 +37,6 @@ import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
 import ChatGPT35PoeBot from "./poe/ChatGPT35PoeBot";
 import ChatGPT4PoeBot from "./poe/ChatGPT4PoeBot";
-import ClaudeInstantPoeBot from "./poe/ClaudeInstantPoeBot";
-import ClaudeInstant100kPoeBot from "./poe/ClaudeInstant100kPoeBot";
-import ClaudePlusPoeBot from "./poe/ClaudePlusPoeBot";
 import ChatGPT432kPoeBot from "./poe/ChatGPT432kPoeBot";
 import Llama270bPoeBot from "./poe/Llama270bPoeBot";
 import GooglePalm2PoeBot from "./poe/GooglePalm2PoeBot";
@@ -85,7 +81,6 @@ import ClaudeAPI21Bot from "./anthropic/ClaudeAPI21Bot";
 import ClaudeAPISonnetBot from "./anthropic/ClaudeAPISonnetBot";
 import ClaudeAPI35SonnetBot from "./anthropic/ClaudeAPI35SonnetBot";
 import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
-import ClaudeAPIInstant12Bot from "./anthropic/ClaudeAPIInstant12Bot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -99,11 +94,7 @@ const all = [
   ChatGLM36bBot.getInstance(),
   ChatGLMBot.getInstance(),
   ChatGLM4Bot.getInstance(),
-  ClaudeInstantPoeBot.getInstance(),
-  ClaudeInstant100kPoeBot.getInstance(),
-  ClaudeBot.getInstance(),
   ClaudeAIBot.getInstance(),
-  ClaudePlusPoeBot.getInstance(),
   Claude3OpusBot.getInstance(),
   Claude3SonnetBot.getInstance(),
   ClaudeAPIOpusBot.getInstance(),
@@ -112,7 +103,6 @@ const all = [
   ClaudeAPIHaikuBot.getInstance(),
   ClaudeAPI20Bot.getInstance(),
   ClaudeAPI21Bot.getInstance(),
-  ClaudeAPIInstant12Bot.getInstance(),
   CodeLlama34bPoeBot.getInstance(),
   CodeLlamaHCBot.getInstance(),
   CodeLlamaBot.getInstance(),
@@ -177,7 +167,6 @@ const all = [
 ];
 
 const disabled = [
-  "ClaudeBot",
   "AlpacaBot",
   "HuggingChatBot",
   "Falcon180bBot",
@@ -216,8 +205,6 @@ export const botTags = {
     bots.getBotByClassName("ChatGLM36bBot"),
     bots.getBotByClassName("ChatGPT35Bot"),
     bots.getBotByClassName("ChatGPT35PoeBot"),
-    bots.getBotByClassName("ClaudeBot"),
-    bots.getBotByClassName("ClaudeInstantPoeBot"),
     bots.getBotByClassName("GooglePalm2PoeBot"),
     bots.getBotByClassName("CodeLlama34bPoeBot"),
     bots.getBotByClassName("HuggingChatBot"),
@@ -260,8 +247,6 @@ export const botTags = {
     bots.getBotByClassName("ChatGPT4Bot"),
     bots.getBotByClassName("ChatGPT4MobileBot"),
     bots.getBotByClassName("ChatGPT4PoeBot"),
-    bots.getBotByClassName("ClaudeInstant100kPoeBot"),
-    bots.getBotByClassName("ClaudePlusPoeBot"),
     bots.getBotByClassName("ChatGPT432kPoeBot"),
     bots.getBotByClassName("GeminiAdvBot"),
   ],
@@ -308,7 +293,6 @@ export const botTags = {
     bots.getBotByClassName("ClaudeAPI20Bot"),
     bots.getBotByClassName("ClaudeAPI21Bot"),
     bots.getBotByClassName("ClaudeAPIHaikuBot"),
-    bots.getBotByClassName("ClaudeAPIInstant12Bot"),
     bots.getBotByClassName("ClaudeAPIOpusBot"),
     bots.getBotByClassName("ClaudeAPISonnetBot"),
     bots.getBotByClassName("ClaudeAPI35SonnetBot"),
