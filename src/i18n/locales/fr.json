@@ -133,7 +133,6 @@
     "claude-3-5-sonnet-20240620": "claude-3.5-sonnet",
     "claude-21": "claude-2.1",
     "claude-20": "claude-2.0",
-    "claude-instant-12": "claude-instant"
   },
   "cohereApi": {
     "name": "Cohere API",
@@ -211,7 +210,6 @@
     "chatglm2-6b": "chatglm2-6b",
     "chatglm3-6b": "chatglm3-6b",
     "alpaca-13b": "alpaca-13b",
-    "claude-1": "claude-1",
     "wizardlm-13b": "WizardLM-13B",
     "wizardlm-70b": "WizardLM-70B",
     "codellama-34b-instruct": "Code Llama",
@@ -245,9 +243,6 @@
   },
   "poe": {
     "name": "Poe",
-    "a2": "Claude-instant",
-    "a2_100k": "Claude-instant-100k",
-    "a2_2": "Claude-2-100k",
     "beaver": "GPT-4",
     "capybara": "Assistant",
     "chinchilla": "ChatGPT 3.5",
