@@ -54,7 +54,7 @@
     "rxjs": "^7.8.1",
     "sortablejs": "^1.15.2",
     "update-electron-app": "^3.0.0",
-    "uuid": "^10.0.0",
+    "uuid": "^11.0.3",
     "vue": "^3.4.31",
     "vue-cli-plugin-electron-builder": "^3.0.0-alpha.4",
     "vue-i18n": "^9.14.1",
@@ -73,7 +73,7 @@
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
-    "electron": "^31.7.1",
+    "electron": "^33.2.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -115,9 +115,9 @@
   ],
   "license": "Apache-2.0",
   "overrides": {
-    "@langchain/core": "~0.2.12",
+    "@langchain/core": "~0.2.36",
     "vue-cli-plugin-electron-builder": {
-      "electron-builder": "^25.0.5"
+      "electron-builder": "^25.1.8"
     }
   }
 }
