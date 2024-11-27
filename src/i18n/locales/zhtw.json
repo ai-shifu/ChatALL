@@ -73,7 +73,7 @@
     "importLog": "匯入日誌",
     "importSuccess": "資料匯入成功",
     "importFailed": "匯入資料失敗",
-    "confirmDeleteAllChatHistory": "您確定要刪除所有對話記錄嗎？此操作無法撤銷。",
+    "confirmDeleteAllChatHistory": "您確定要刪除所有對話記錄嗎？此操作無法復原。",
     "actions": "操作",
     "addAction": "新增操作",
     "actionName": "名稱",
@@ -101,7 +101,7 @@
     "notAvailable": "這個對話 AI 目前無法使用。可能因為未登入，或者設定不正確。",
     "waiting": "等待其它 { botName } 請求結束...",
     "pastRounds": "攜帶多少輪過去的對話？",
-    "pastRoundsPrompt": "攜帶的歷史對話越多，多輪對話效果越好，但也會消耗更多費用"
+    "pastRoundsPrompt": "攜帶的歷史對話越多，多輪對話效果越好，但也會花費更多費用"
   },
   "360AiBrain": {
     "name": "360 智腦"
@@ -109,7 +109,7 @@
   "azureOpenaiApi": {
     "name": "Azure OpenAI 服務",
     "temperature": "Temperature",
-    "temperaturePrompt": "Temperature 越高，生成的文字越有創造性，但也可能越沒條理",
+    "temperaturePrompt": "Temperature 越高，產生的結果會越隨機、越有創造性，而較低的值則會使輸出更集中且具確定性",
     "temperature0": "更具確定性",
     "temperature2": "更具隨機性",
     "azureOpenAIApiKey": "金鑰",
