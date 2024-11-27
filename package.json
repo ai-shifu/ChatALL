@@ -46,7 +46,7 @@
     "electron-builder": "^25.0.5",
     "jszip": "^3.10.1",
     "katex": "^0.16.11",
-    "langchain": "^0.1.32",
+    "langchain": "^0.3.5",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
     "prismjs": "^1.29.0",
