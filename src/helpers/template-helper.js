@@ -2,7 +2,7 @@ import {
   PromptTemplate,
   FewShotPromptTemplate,
   LengthBasedExampleSelector,
-} from "langchain/prompts";
+} from "@langchain/core/prompts";
 
 const prefixPlaceholder = `Summarize the data below in a markdown table with the bot name, difference, and response rating (1-5) columns.
 Do not include the response' value column in your table.
