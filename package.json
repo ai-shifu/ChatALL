@@ -35,6 +35,7 @@
     "@langchain/google-genai": "^0.0.21",
     "@langchain/groq": "^0.1.2",
     "@langchain/openai": "^0.2.1",
+    "@langchain/xai": "^0.0.1",
     "@mdi/font": "^7.4.47",
     "@vueuse/rxjs": "^11.1.0",
     "async-lock": "^1.4.1",

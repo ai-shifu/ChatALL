@@ -122,6 +122,10 @@ export default createStore({
     phind: {
       model: "Phind Model",
     },
+    xaiApi: {
+      apiKey: "",
+      pastRounds: 1,
+    },
     currentChatIndex: 0,
     updateCounter: 0,
     theme: undefined,
@@ -269,6 +273,9 @@ export default createStore({
     },
     setMistral(state, values) {
       state.mistral = { ...state.mistral, ...values };
+    },
+    setxAI(state, values) {
+      state.xai = { ...state.xai, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       Chats.table.update(state.currentChatIndex, {

@@ -130,6 +130,7 @@ import KimiBotSettings from "./BotSettings/KimiBotSettings.vue";
 import { resolveTheme, applyTheme, Mode } from "../theme";
 import ClaudeAPIBotSettings from "./BotSettings/ClaudeAPIBotSettings.vue";
 import GroqAPIBotSettings from "./BotSettings/GroqAPIBotSettings.vue";
+import xAIAPIBotSettings from "./BotSettings/xAIAPIBotSettings.vue";
 
 const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
@@ -170,6 +171,7 @@ const botSettings = [
   { brand: "skyWork", component: SkyWorkBotSettings },
   { brand: "spark", component: SparkBotSettings },
   { brand: "wenxinQianfan", component: WenxinQianfanBotSettings },
+  { brand: "xaiApi", component: xAIAPIBotSettings },
   { brand: "youChat", component: YouChatBotSettings },
 ];
 

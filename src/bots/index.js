@@ -80,6 +80,7 @@ import ClaudeAPI20Bot from "./anthropic/ClaudeAPI20Bot";
 import ClaudeAPI21Bot from "./anthropic/ClaudeAPI21Bot";
 import ClaudeAPISonnetBot from "./anthropic/ClaudeAPISonnetBot";
 import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
+import GrokAPIBot from "./xai/GrokAPIBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -162,6 +163,7 @@ const all = [
   Wizardlm70bBot.getInstance(),
   Zephyr7bBot.getInstance(),
   YouChatBot.getInstance(),
+  GrokAPIBot.getInstance(),
 ];
 
 const disabled = [
@@ -303,6 +305,7 @@ export const botTags = {
     bots.getBotByClassName("Llama38bGroqAPIBot"),
     bots.getBotByClassName("Llama370bGroqAPIBot"),
     bots.getBotByClassName("Mixtral8x7bGroqAPIBot"),
+    bots.getBotByClassName("GrokAPIBot"),
   ],
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),

@@ -282,6 +282,10 @@
     "gemma-7b-it": "Gemma 7b",
     "gemma2-9b-it": "Gemma2 9b"
   },
+  "xaiApi": {
+    "name": "xAI API",
+    "grok-beta": "Grok Beta"
+  },
   "updates": {
     "updateAvailable": "Cập nhập mới đã có!",
     "currentVersion": "Phiên bản của bạn",
