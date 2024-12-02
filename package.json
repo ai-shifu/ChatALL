@@ -58,7 +58,7 @@
     "uuid": "^11.0.3",
     "vue": "^3.4.31",
     "vue-cli-plugin-electron-builder": "^3.0.0-alpha.4",
-    "vue-i18n": "^9.14.1",
+    "vue-i18n": "^9.14.2",
     "vue-matomo": "^4.2.0",
     "vue3-shortkey": "^4.0.0",
     "vuetify": "^3.6.10",
