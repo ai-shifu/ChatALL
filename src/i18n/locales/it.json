@@ -168,6 +168,8 @@
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
     "gemini-15-flash-latest": "Gemini 1.5 Flash",
+    "gemini-20-flash-exp": "Gemini 2.0 Flash",
+    "gemini-exp-1206": "Gemini Exp 1206",
     "topK": "topK",
     "topKPrompt": "Un topK di 1 significa che il token selezionato è il più probabile tra tutti i token nel vocabolario del modello (chiamato anche decodifica avida).",
     "topP": "topP",
