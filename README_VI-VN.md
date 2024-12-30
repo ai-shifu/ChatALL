@@ -49,6 +49,7 @@ Các Chat bots AI dựa trên Mô hình ngôn ngữ lớn (Large Language Models
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Có           | Sắp ra mắt   |                                                       |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Có           | Không có API | Không yêu cầu tài khoản                              |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Có           | Không có     |                                                       |
+| [xAI Grok](https://x.ai)                                                       | Không        | Có           |                                                       |
 | [YouChat](https://you.com/)                                                    | Có           | Không có     |                                                       |
 | [You](https://you.com/)                                                        | Có           | Không có     |                                                       |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Có           | Không có     |                                                       |

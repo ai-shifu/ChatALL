@@ -57,6 +57,7 @@
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Да                 | Скоро будет |                                                         |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Да                 | Нет API     | Вход в ученую запись не требуется                       |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Да                 | Нет         |                                                         |
+| [xAI Grok](https://x.ai)                                                       | Нет                | Да          |                                                         |
 | [YouChat](https://you.com/)                                                    | Да                 | Нет         |                                                         |
 | [You](https://you.com/)                                                        | Да                 | Нет         |                                                         |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Да                 | Нет         |                                                         |

@@ -57,6 +57,7 @@ ChatALL 的典型用户是：
 | [通义千问](http://tongyi.aliyun.com/)                                          | 支持     | 即将推出 |                                            |
 | [Vicuna 13B 和 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                 | 支持     | 无 API   | 不需要帐号                                 |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | 支持     | 无 API   |                                            |
+| [xAI Grok](https://x.ai)                                                       | 否       | 支持     |                                            |
 | [YouChat](https://you.com/)                                                    | 支持     | 无       |                                            |
 | [You](https://you.com/)                                                        | 支持     | 无 API   |                                            |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 支持     | 无       |                                            |
