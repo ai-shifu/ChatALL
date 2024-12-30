@@ -306,6 +306,11 @@
     "gemma-7b-it": "Gemma 7b",
     "gemma2-9b-it": "Gemma2 9b"
   },
+  "xaiApi": {
+    "name": "xAI API",
+    "grok-beta": "Grok Beta",
+    "grok-2-latest": "Grok-2"
+  },
   "updates": {
     "updateAvailable": "Update Available!",
     "currentVersion": "Your Version",

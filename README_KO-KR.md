@@ -57,6 +57,7 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | 예        | 근일 개봉 |                                                       |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | 예        | 없음      | 로그인 필요 없음                                      |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | 예        | 없음      |                                                       |
+| [xAI Grok](https://x.ai)                                                       | 아니오    | 예        |                                                       |
 | [YouChat](https://you.com/)                                                    | 예        | 없음      |                                                       |
 | [You](https://you.com/)                                                        | 예        | 없음      |                                                       |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 예        | 없음      |                                                       |

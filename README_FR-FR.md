@@ -49,6 +49,7 @@ Les robots d'intelligence artificielle basés sur les grands modèles de langage
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Oui           | Prochainement |                                                   |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Oui           | Non           | Pas besoin de compte ou de clé API                |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Oui           | Non           |                                                   |
+| [xAI Grok](https://x.ai)                                                       | Non           | Oui           |                                                   |
 | [YouChat](https://you.com/)                                                    | Oui           | Non           |                                                   |
 | [You](https://you.com/)                                                        | Oui           | Non           |                                                   |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Oui           | Non           |                                                   |

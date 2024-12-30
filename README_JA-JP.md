@@ -56,6 +56,7 @@ ChatALLのユーザーはこんな感じ：
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                   | はい        | 近日登場   |                                                          |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                 | はい        | なし       | ログイン不要                                             |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                          | はい        | なし       |                                                          |
+| [xAI Grok](https://x.ai)                                                      | いいえ      | あり       |                                                          |
 | [YouChat](https://you.com/)                                                   | はい        | なし       |                                                          |
 | [You](https://you.com/)                                                       | はい        | なし       |                                                          |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)             | はい        | なし       |                                                          |

@@ -49,6 +49,7 @@ Auf großen Sprachmodellen (LLMs) basierende KI-Bots sind erstaunlich. Ihr Verha
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Ja            | Demnächst     |                                                        |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Ja            | Nein          | Kein Login erforderlich                                |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Ja            | Nein          |                                                        |
+| [xAI Grok](https://x.ai)                                                       | Nein          | Ja            |                                                        |
 | [YouChat](https://you.com/)                                                    | Ja            | Nein          |                                                        |
 | [You](https://you.com/)                                                        | Ja            | Nein          |                                                        |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Ja            | Nein          |                                                        |
