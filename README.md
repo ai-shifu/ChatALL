@@ -57,6 +57,7 @@ Typical users of ChatALL are:
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Yes         | Coming soon |                                             |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Yes         | No API      | No Login required                           |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Yes         | No API      |                                             |
+| [xAI Grok](https://x.ai)                                                       | No          | Yes         |                                             |
 | [YouChat](https://you.com/)                                                    | Yes         | No API      |                                             |
 | [You](https://you.com/)                                                        | Yes         | No API      |                                             |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Yes         | No API      |                                             |
