@@ -139,3 +139,7 @@ npm run electron:build -- -wml --x64 --arm64
 Nếu bạn thích dự án này, xin vui lòng xem xét:
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)
+
+### Lưu ý về độ tin cậy của các bot AI dựa trên Web
+
+Các bot AI dựa trên Web (được đánh dấu là "Web Access") vốn kém tin cậy hơn và thường xuyên gặp vấn đề về tính ổn định. Điều này là do các nhà cung cấp dịch vụ thường xuyên cập nhật giao diện web và các biện pháp bảo mật của họ, đòi hỏi phải liên tục bảo trì thông qua kỹ thuật dịch ngược. Kiểu kết nối này khó duy trì và có thể ngừng hoạt động đột ngột. Để có trải nghiệm đáng tin cậy hơn, chúng tôi đặc biệt khuyến nghị sử dụng các bot có hỗ trợ API khi có thể.

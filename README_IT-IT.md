@@ -64,6 +64,10 @@ Gli utenti tipici di ChatALL sono:
 
 Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
+### Nota sull'affidabilità dei bot AI basati sul Web
+
+I bot AI basati sul Web (contrassegnati con "Web Access") sono intrinsecamente meno affidabili e spesso incontrano problemi di stabilità. Questo è dovuto agli aggiornamenti regolari delle interfacce web e delle misure di sicurezza da parte dei fornitori di servizi, che richiedono una costante manutenzione attraverso il reverse engineering. Questo tipo di connessione è difficile da mantenere e può smettere di funzionare inaspettatamente. Per un'esperienza più affidabile, raccomandiamo vivamente di utilizzare bot che offrono accesso API quando possibile.
+
 ### Altre funzionalità
 
 - Modalità prompt rapido: invia il prompt successivo senza attendere il completamento della richiesta precedente.
@@ -138,6 +142,10 @@ Gli utenti tipici di ChatALL sono:
 | [Pi](https://pi.ai)                                           | Sì            | No API        |                                               |
 
 Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/sunner/ChatALL/labels/more%20LLMs).
+
+### Nota sull'affidabilità dei bot AI basati sul Web
+
+I bot AI basati sul Web (contrassegnati con "Web Access") sono intrinsecamente meno affidabili e spesso incontrano problemi di stabilità. Questo è dovuto agli aggiornamenti regolari delle interfacce web e delle misure di sicurezza da parte dei fornitori di servizi, che richiedono una costante manutenzione attraverso il reverse engineering. Questo tipo di connessione è difficile da mantenere e può smettere di funzionare inaspettatamente. Per un'esperienza più affidabile, raccomandiamo vivamente di utilizzare bot che offrono accesso API quando possibile.
 
 ### Altre funzionalità
 
