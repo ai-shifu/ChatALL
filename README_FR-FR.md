@@ -56,6 +56,10 @@ Les robots d'intelligence artificielle basés sur les grands modèles de langage
 
 Et plus...
 
+### Note sur la fiabilité des robots IA basés sur le Web
+
+Les robots IA basés sur le Web (marqués "Web Access") sont intrinsèquement moins fiables et rencontrent fréquemment des problèmes de stabilité. Cela est dû aux mises à jour régulières des interfaces Web et des mesures de sécurité par les fournisseurs de services, nécessitant une maintenance par rétro-ingénierie constante. Ce type de connexion est difficile à maintenir et peut cesser de fonctionner de manière inattendue. Pour une expérience plus fiable, nous recommandons vivement d'utiliser des robots offrant un accès API lorsque c'est possible.
+
 ### Autres fonctionalités
 
 - Mode d'invite rapide : envoyez l'invite suivante sans attendre la fin de la demande précédente.

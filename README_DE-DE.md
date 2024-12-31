@@ -141,3 +141,7 @@ npm run electron:build -- -wml --x64 --arm64
 Wenn Ihnen dieses Projekt gefällt, erwägen Sie bitte:
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8KZJGJ)
+
+### Hinweis zur Zuverlässigkeit webbasierter KI-Bots
+
+Webbasierte KI-Bots (gekennzeichnet mit "Web Access") sind von Natur aus weniger zuverlässig und haben häufig mit Stabilitätsproblemen zu kämpfen. Dies liegt daran, dass Dienstanbieter ihre Webschnittstellen und Sicherheitsmaßnahmen regelmäßig aktualisieren, was ein kontinuierliches Reverse Engineering für die Wartung erforderlich macht. Diese Art der Verbindung ist schwer zu warten und kann unerwartet ausfallen. Für eine zuverlässigere Nutzung empfehlen wir dringend, wenn möglich Bots mit API-Zugang zu verwenden.

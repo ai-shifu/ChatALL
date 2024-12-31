@@ -64,6 +64,10 @@ Los usuarios típicos de ChatALL son:
 
 Más está por venir. Vota a tus bots favoritos en [estos temas](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
+### Nota sobre la fiabilidad de los bots de IA basados en Web
+
+Los bots de IA basados en Web (marcados como "Web Access") son inherentemente menos fiables y frecuentemente enfrentan problemas de estabilidad. Esto se debe a que los proveedores de servicios actualizan regularmente sus interfaces web y medidas de seguridad, lo que requiere un mantenimiento constante mediante ingeniería inversa. Este tipo de conexión es difícil de mantener y puede dejar de funcionar inesperadamente. Para una experiencia más confiable, recomendamos encarecidamente utilizar bots que ofrezcan acceso API cuando sea posible.
+
 ### Otras características
 
 - Modo de solicitud rápida: envíe la siguiente solicitud sin esperar a que se complete la solicitud anterior

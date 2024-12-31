@@ -63,6 +63,10 @@ Typical users of ChatALL are:
 
 More is coming. Upvote your favorite bots in [these issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
 
+### Note on Web-connected Bot Reliability
+
+Web-connected AI bots (those marked with "Web Access") are inherently less reliable and frequently face stability issues, as service providers regularly update their web interfaces and security measures. These web-based connections rely on reverse engineering and are difficult to maintain, often breaking unexpectedly. For a dependable experience, we strongly recommend using bots that offer API access whenever possible.
+
 ### Other features
 
 - Quick-prompt mode: send the next prompt without waiting for the previous request to complete
