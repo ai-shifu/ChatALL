@@ -236,6 +236,8 @@
     "gpt-4-turbo": "gpt-4-turbo",
     "gpt-4o": "gpt-4o",
     "gpt-4o-mini": "gpt-4o-mini",
+    "o1": "o1",
+    "o1-mini": "o1-mini",
     "temperature": "Temperatura",
     "temperaturePrompt": "Più alta è la temperatura, più creativo è il testo, ma maggiore è la probabilità che sia incoerente",
     "temperature0": "Più deterministico",
