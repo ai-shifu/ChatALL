@@ -37,7 +37,7 @@ import Gemma7bGroqAPIBot from "@/bots/groq/Gemma7bGroqAPIBot";
 import Gemma29bGroqAPIBot from "@/bots/groq/Gemma29bGroqAPIBot";
 import Llama38bGroqAPIBot from "@/bots/groq/Llama38bGroqAPIBot";
 import Llama370bGroqAPIBot from "@/bots/groq/Llama370bGroqAPIBot";
-import Llama3170bGroqAPIBot from "@/bots/groq/Llama3.170bGroqAPIBot";
+import Llama318bGroqAPIBot from "@/bots/groq/Llama3.18bGroqAPIBot";
 import Llama3290bGroqAPIBot from "@/bots/groq/Llama3.290bGroqAPIBot";
 import Llama3370bGroqAPIBot from "@/bots/groq/Llama3.370bGroqAPIBot";
 import Mixtral8x7bGroqAPIBot from "@/bots/groq/Mixtral8x7bGroqAPIBot";
@@ -153,7 +153,7 @@ const all = [
   Gemma29bGroqAPIBot.getInstance(),
   Llama38bGroqAPIBot.getInstance(),
   Llama370bGroqAPIBot.getInstance(),
-  Llama3170bGroqAPIBot.getInstance(),
+  Llama318bGroqAPIBot.getInstance(),
   Llama3290bGroqAPIBot.getInstance(),
   Llama3370bGroqAPIBot.getInstance(),
   Mixtral8x7bGroqAPIBot.getInstance(),
@@ -327,7 +327,7 @@ export const botTags = {
     bots.getBotByClassName("Gemma29bGroqAPIBot"),
     bots.getBotByClassName("Llama38bGroqAPIBot"),
     bots.getBotByClassName("Llama370bGroqAPIBot"),
-    bots.getBotByClassName("Llama3170bGroqAPIBot"),
+    bots.getBotByClassName("Llama318bGroqAPIBot"),
     bots.getBotByClassName("Llama3290bGroqAPIBot"),
     bots.getBotByClassName("Llama3370bGroqAPIBot"),
     bots.getBotByClassName("Mixtral8x7bGroqAPIBot"),

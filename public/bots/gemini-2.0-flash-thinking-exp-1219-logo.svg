@@ -58,28 +58,19 @@
     </radialGradient>
   </defs>
   <text
-     x="8.2264957"
-     y="5.3758698"
+     x="11.775017"
+     y="3.8444884"
      text-anchor="middle"
      font-size="6.33776px"
      fill="#000000"
      dominant-baseline="text-bottom"
      id="text3"
-     transform="scale(1.1793324,0.84793736)"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.24328px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-anchor:middle;fill:#000000;stroke-width:0.724328"><tspan
+     transform="scale(0.8433686,1.1857212)"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.17994px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-anchor:middle;fill:#000000;stroke-width:0.517993"><tspan
        sodipodi:role="line"
-       id="tspan3"
-       x="8.2264957"
-       y="5.3758698"
-       style="stroke-width:0.724328">2.0</tspan><tspan
+       id="tspan7">2.0 Flash</tspan><tspan
        sodipodi:role="line"
-       id="tspan4"
-       x="8.2264957"
-       y="14.429967"
-       style="stroke-width:0.724328">FTE</tspan><tspan
+       id="tspan8">Thinking</tspan><tspan
        sodipodi:role="line"
-       id="tspan5"
-       x="8.2264957"
-       y="23.484062"
-       style="stroke-width:0.724328">1219</tspan></text>
+       id="tspan9">Exp 1219</tspan></text>
 </svg>
