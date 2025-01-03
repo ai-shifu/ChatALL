@@ -3,6 +3,8 @@ import GeminiAPIBot from "@/bots/google/GeminiAPIBot";
 import Gemini15ProAPIBot from "@/bots/google/Gemini15ProAPIBot";
 import Gemini15FlashAPIBot from "@/bots/google/Gemini15FlashAPIBot";
 import Gemini20FlashExpAPIBot from "@/bots/google/Gemini20FlashExpAPIBot";
+import GeminiExp1206APIBot from "@/bots/google/GeminiExp1206APIBot";
+import Gemini20FlashThinkingExp1219APIBot from "@/bots/google/Gemini20FlashThinkingExp1219APIBot";
 import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import CohereAPICommandBot from "@/bots/cohere/CohereAPICommandBot";
@@ -21,6 +23,8 @@ import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import OpenAIAPI4128KBot from "@/bots/openai/OpenAIAPI4128KBot";
 import OpenAIAPI4oBot from "@/bots/openai/OpenAIAPI4oBot";
 import OpenAIAPI4oMiniBot from "./openai/OpenAIAPI4oMiniBot";
+import OpenAIAPIo1Bot from "@/bots/openai/OpenAIAPIo1Bot";
+import OpenAIAPIo1MiniBot from "./openai/OpenAIAPIo1MiniBot";
 import MistralBot from "./MistralBot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
@@ -33,6 +37,9 @@ import Gemma7bGroqAPIBot from "@/bots/groq/Gemma7bGroqAPIBot";
 import Gemma29bGroqAPIBot from "@/bots/groq/Gemma29bGroqAPIBot";
 import Llama38bGroqAPIBot from "@/bots/groq/Llama38bGroqAPIBot";
 import Llama370bGroqAPIBot from "@/bots/groq/Llama370bGroqAPIBot";
+import Llama3170bGroqAPIBot from "@/bots/groq/Llama3.170bGroqAPIBot";
+import Llama3290bGroqAPIBot from "@/bots/groq/Llama3.290bGroqAPIBot";
+import Llama3370bGroqAPIBot from "@/bots/groq/Llama3.370bGroqAPIBot";
 import Mixtral8x7bGroqAPIBot from "@/bots/groq/Mixtral8x7bGroqAPIBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
@@ -123,6 +130,8 @@ const all = [
   Gemini15ProAPIBot.getInstance(),
   Gemini15FlashAPIBot.getInstance(),
   Gemini20FlashExpAPIBot.getInstance(),
+  GeminiExp1206APIBot.getInstance(),
+  Gemini20FlashThinkingExp1219APIBot.getInstance(),
   Gemma2bItBot.getInstance(),
   Gemma7bItBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
@@ -136,12 +145,17 @@ const all = [
   OpenAIAPI4128KBot.getInstance(),
   OpenAIAPI4oBot.getInstance(),
   OpenAIAPI4oMiniBot.getInstance(),
+  OpenAIAPIo1Bot.getInstance(),
+  OpenAIAPIo1MiniBot.getInstance(),
   ChatGPT432kPoeBot.getInstance(),
   GradioAppBot.getInstance(),
   Gemma7bGroqAPIBot.getInstance(),
   Gemma29bGroqAPIBot.getInstance(),
   Llama38bGroqAPIBot.getInstance(),
   Llama370bGroqAPIBot.getInstance(),
+  Llama3170bGroqAPIBot.getInstance(),
+  Llama3290bGroqAPIBot.getInstance(),
+  Llama3370bGroqAPIBot.getInstance(),
   Mixtral8x7bGroqAPIBot.getInstance(),
   KimiBot.getInstance(),
   Llama27bBot.getInstance(),
@@ -286,12 +300,16 @@ export const botTags = {
     bots.getBotByClassName("Gemini15ProAPIBot"),
     bots.getBotByClassName("Gemini15FlashAPIBot"),
     bots.getBotByClassName("Gemini20FlashExpAPIBot"),
+    bots.getBotByClassName("GeminiExp1206APIBot"),
+    bots.getBotByClassName("Gemini20FlashThinkingExp1219APIBot"),
     bots.getBotByClassName("AzureOpenAIAPIBot"),
     bots.getBotByClassName("OpenAIAPI35Bot"),
     bots.getBotByClassName("OpenAIAPI4Bot"),
     bots.getBotByClassName("OpenAIAPI4128KBot"),
     bots.getBotByClassName("OpenAIAPI4oBot"),
+    bots.getBotByClassName("OpenAIAPIo1Bot"),
     bots.getBotByClassName("OpenAIAPI4oMiniBot"),
+    bots.getBotByClassName("OpenAIAPIo1MiniBot"),
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("WenxinQianfan4Bot"),
@@ -309,6 +327,9 @@ export const botTags = {
     bots.getBotByClassName("Gemma29bGroqAPIBot"),
     bots.getBotByClassName("Llama38bGroqAPIBot"),
     bots.getBotByClassName("Llama370bGroqAPIBot"),
+    bots.getBotByClassName("Llama3170bGroqAPIBot"),
+    bots.getBotByClassName("Llama3290bGroqAPIBot"),
+    bots.getBotByClassName("Llama3370bGroqAPIBot"),
     bots.getBotByClassName("Mixtral8x7bGroqAPIBot"),
     bots.getBotByClassName("GrokBetaAPIBot"),
     bots.getBotByClassName("Grok2APIBot"),
