@@ -4,7 +4,7 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | Italian | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-shifu/ChatALL)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## Caratteristiche
 
-I Bot IA basati su Large Language Models (LLMs) sono sorprendenti. Tuttavia, il loro comportamento può essere casuale e diversi bot eccellono in diverse attività. Se desideri la migliore esperienza, non provarli uno per uno. ChatALL (nome cinese: 齐叨) può inviare prompt a diversi IA Bot contemporaneamente, aiutandoti a scoprire i migliori risultati. Tutto ciò che devi fare è [scaricare, installare](https://github.com/sunner/ChatALL/releases) e chiedere .
+I Bot IA basati su Large Language Models (LLMs) sono sorprendenti. Tuttavia, il loro comportamento può essere casuale e diversi bot eccellono in diverse attività. Se desideri la migliore esperienza, non provarli uno per uno. ChatALL (nome cinese: 齐叨) può inviare prompt a diversi IA Bot contemporaneamente, aiutandoti a scoprire i migliori risultati. Tutto ciò che devi fare è [scaricare, installare](https://github.com/ai-shifu/ChatALL/releases) e chiedere .
 
 ### Sei uno di questi?
 
@@ -62,7 +62,7 @@ Gli utenti tipici di ChatALL sono:
 | [You](https://you.com/)                                                        | Sì            | No            |                                                        |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Sì            | No            |                                                        |
 
-Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/sunner/ChatALL/labels/more%20LLMs).
+Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://github.com/ai-shifu/ChatALL/labels/more%20LLMs).
 
 ### Nota sull'affidabilità dei bot AI basati sul Web
 
@@ -99,7 +99,7 @@ ChatALL è un client, non un proxy. Pertanto, devi:
 
 ## Download / Installazione
 
-Scarica da https://github.com/sunner/ChatALL/releases
+Scarica da https://github.com/ai-shifu/ChatALL/releases
 
 ### Su Windows
 
@@ -138,13 +138,13 @@ Puoi reimpostare ChatALL eliminando le seguenti directory:
 - Linux: `/home/<user>/.config/chatall/`
 - macOS: `/Users/<user>/Library/Application Support/chatall/`
 
-Se il problema persiste, per favore [segnala il problema](https://github.com/sunner/ChatALL/issues).
+Se il problema persiste, per favore [segnala il problema](https://github.com/ai-shifu/ChatALL/issues).
 
 ## Per gli sviluppatori
 
 ### Contribuisci con un Bot
 
-[Guida](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) potrebbe esserti utile.
+[Guida](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) potrebbe esserti utile.
 
 ### Esegui
 
@@ -171,8 +171,8 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### Collaboratori
 
-<a href="https://github.com/sunner/ChatALL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+<a href="https://github.com/ai-shifu/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ai-shifu/ChatALL" />
 </a>
 
 ### Altri

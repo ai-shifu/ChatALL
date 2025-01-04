@@ -4,7 +4,7 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | 简体中文
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-shifu/ChatALL)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## 功能
 
-基于大型语言模型（LLMs）的 AI 机器人非常神奇。然而，它们的行为可能是随机的，不同的机器人在不同的任务上表现也有差异。如果你想获得最佳体验，不要一个一个尝试。ChatALL（中文名：齐叨）可以把一条指令同时发给多个 AI，帮助您发现最好的回答。你需要做的只是[下载、安装](https://github.com/sunner/ChatALL/releases)和提问。
+基于大型语言模型（LLMs）的 AI 机器人非常神奇。然而，它们的行为可能是随机的，不同的机器人在不同的任务上表现也有差异。如果你想获得最佳体验，不要一个一个尝试。ChatALL（中文名：齐叨）可以把一条指令同时发给多个 AI，帮助您发现最好的回答。你需要做的只是[下载、安装](https://github.com/ai-shifu/ChatALL/releases)和提问。
 
 ### 这是你吗？
 
@@ -62,7 +62,7 @@ ChatALL 的典型用户是：
 | [You](https://you.com/)                                                        | 支持     | 无 API   |                                            |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 支持     | 无       |                                            |
 
-还会有更多。[到这里](https://github.com/sunner/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
+还会有更多。[到这里](https://github.com/ai-shifu/ChatALL/labels/more%20LLMs)为你喜欢的 AI 投票吧。
 
 ### 关于网页版AI机器人的可靠性说明
 
@@ -108,7 +108,7 @@ ChatALL 是一个客户端，而不是代理。因此，您必须：
 
 ## 下载 / 安装
 
-从 https://github.com/sunner/ChatALL/releases 下载
+从 https://github.com/ai-shifu/ChatALL/releases 下载
 
 ### Windows 系统
 
@@ -147,13 +147,13 @@ brew install --cask chatall
 - Linux: `/home/<user>/.config/chatall/`
 - macOS: `/Users/<user>/Library/Application Support/chatall/`
 
-如果问题依旧，请[提交一个 issue](https://github.com/sunner/ChatALL/issues)。
+如果问题依旧，请[提交一个 issue](https://github.com/ai-shifu/ChatALL/issues)。
 
 ## 给开发者
 
 ### 贡献新的 AI 机器人
 
-[这份文档](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)能提供一些帮助。
+[这份文档](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)能提供一些帮助。
 
 ### Run
 
@@ -180,8 +180,8 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### 贡献者
 
-<a href="https://github.com/sunner/ChatALL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+<a href="https://github.com/ai-shifu/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ai-shifu/ChatALL" />
 </a>
 
 ### 其它

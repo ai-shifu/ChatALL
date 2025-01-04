@@ -4,7 +4,7 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | Tiếng Việt | [简体中文](README_ZH-CN.md)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-shifu/ChatALL)
 
 </div>
 
@@ -77,7 +77,7 @@ ChatALL là một client, không phải là proxy. Vì vậy, bạn cần:
 
 ## Tải xuống / Cài đặt
 
-Tải xuống từ: https://github.com/sunner/ChatALL/releases
+Tải xuống từ: https://github.com/ai-shifu/ChatALL/releases
 
 ### Windows
 
@@ -97,7 +97,7 @@ Tải xuống và chạy tệp .AppImage sau đó tận hưởng trải nghiệm
 
 ### Đóng góp Bot
 
-[Hướng dẫn](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) này sẽ giúp bạn.
+[Hướng dẫn](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) này sẽ giúp bạn.
 
 ### Chạy thử
 
@@ -124,8 +124,8 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### Các nhà đóng góp
 
-<a href="https://github.com/sunner/ChatALL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+<a href="https://github.com/ai-shifu/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ai-shifu/ChatALL" />
 </a>
 
 ### Vài thông tin khác

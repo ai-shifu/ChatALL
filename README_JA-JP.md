@@ -4,7 +4,7 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | 日本語 | [한국어](README_KO-KR.md) | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-shifu/ChatALL)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## 特徴
 
-大規模言語モデル（LLM）ベースの AIは素晴らしいです。しかし、その回答はAIによってバラバラで、AIによって得意とする処理が異なります。最高の体験をしたいのであれば、AIを別々に毎回試すのはやめましょう！ChatALLは、同時に複数のAIにメッセージを送信することができ、各AIの回答を見て比較するのに役立ちます。ChatALLを使うのに必要なのは[ダウンロード・インストール](https://github.com/sunner/ChatALL/releases)・質問それだけです。
+大規模言語モデル（LLM）ベースの AIは素晴らしいです。しかし、その回答はAIによってバラバラで、AIによって得意とする処理が異なります。最高の体験をしたいのであれば、AIを別々に毎回試すのはやめましょう！ChatALLは、同時に複数のAIにメッセージを送信することができ、各AIの回答を見て比較するのに役立ちます。ChatALLを使うのに必要なのは[ダウンロード・インストール](https://github.com/ai-shifu/ChatALL/releases)・質問それだけです。
 
 ### あなたの目的は？
 
@@ -61,7 +61,7 @@ ChatALLのユーザーはこんな感じ：
 | [You](https://you.com/)                                                       | はい        | なし       |                                                          |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)             | はい        | なし       |                                                          |
 
-まだまだ続きます。[Issuesタブ](https://github.com/sunner/ChatALL/labels/more%20LLMs)でお気に入りのAIを提案してください。
+まだまだ続きます。[Issuesタブ](https://github.com/ai-shifu/ChatALL/labels/more%20LLMs)でお気に入りのAIを提案してください。
 
 ### Webベース接続のAIボットの信頼性について
 
@@ -98,7 +98,7 @@ ChatALL はプロキシではなく、クライアントです。そのため、
 
 ## ダウンロード / インストール
 
-https://github.com/sunner/ChatALL/releases からダウンロードできます。
+https://github.com/ai-shifu/ChatALL/releases からダウンロードできます。
 
 ### Windowsの場合
 
@@ -137,13 +137,13 @@ ChatALLを初期化するには、以下のディレクトリを削除します�
 - Linux: `/home/<user>/.config/chatall/`
 - macOS: `/Users/<user>/Library/Application Support/chatall/`
 
-問題が解決しない場合は、[報告してください。](https://github.com/sunner/ChatALL/issues)
+問題が解決しない場合は、[報告してください。](https://github.com/ai-shifu/ChatALL/issues)
 
 ## デベロッパー向け
 
 ### AIの提供
 
-[ガイド](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)を参考にしてください。
+[ガイド](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)を参考にしてください。
 
 ### 実行
 
@@ -170,8 +170,8 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### 貢献者
 
-<a href="https://github.com/sunner/ChatALL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+<a href="https://github.com/ai-shifu/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ai-shifu/ChatALL" />
 </a>
 
 ### その他

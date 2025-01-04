@@ -10,8 +10,8 @@ ChatALL is a project that allows users to chat with multiple AI bots concurrentl
 
 If you find any issues while using ChatALL, please follow these steps to report them:
 
-1. **Check for existing issues**: Before reporting a new issue, please check the [issue tracker](https://github.com/sunner/ChatALL/issues) to see if the issue has already been reported.
-2. **Create a new issue**: If the issue has not been reported, create a new issue using the appropriate [issue template](https://github.com/sunner/ChatALL/issues/new/choose).
+1. **Check for existing issues**: Before reporting a new issue, please check the [issue tracker](https://github.com/ai-shifu/ChatALL/issues) to see if the issue has already been reported.
+2. **Create a new issue**: If the issue has not been reported, create a new issue using the appropriate [issue template](https://github.com/ai-shifu/ChatALL/issues/new/choose).
 3. **Provide detailed information**: Include as much information as possible, such as the steps to reproduce the issue, your operating system, and any relevant screenshots.
 
 ## Submitting Pull Requests
@@ -60,7 +60,7 @@ To maintain a consistent codebase, please follow these code style guidelines:
 
 We believe that community involvement is crucial for the success of ChatALL. Here are some ways you can contribute:
 
-- **Report issues**: If you encounter any issues, please report them using the [issue tracker](https://github.com/sunner/ChatALL/issues).
+- **Report issues**: If you encounter any issues, please report them using the [issue tracker](https://github.com/ai-shifu/ChatALL/issues).
 - **Submit pull requests**: If you have a fix or improvement, please submit a pull request.
 - **Suggest new features**: If you have an idea for a new feature, please create a new issue to discuss it with the community.
 - **Improve documentation**: If you find any errors or omissions in the documentation, please submit a pull request to improve it.

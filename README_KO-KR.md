@@ -4,7 +4,7 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | 한국어 | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-shifu/ChatALL)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## 기능
 
-대규모 언어 모델(LLMs) 기반 AI 봇은 놀랍습니다. 하지만 봇의 행동은 무작위적일 수 있으며, 봇마다 다른 작업에서 뛰어난 능력을 발휘합니다. 최상의 경험을 원한다면 하나씩 사용해 보지 마세요. ChatALL (중국명: 齐叨)은 여러 AI 봇에 동시에 프롬프트를 전송하여 최상의 결과를 찾을 수 있도록 도와줍니다. [다운로드, 설치](https://github.com/sunner/ChatALL/releases)한 후 물어보기만 하면 됩니다.
+대규모 언어 모델(LLMs) 기반 AI 봇은 놀랍습니다. 하지만 봇의 행동은 무작위적일 수 있으며, 봇마다 다른 작업에서 뛰어난 능력을 발휘합니다. 최상의 경험을 원한다면 하나씩 사용해 보지 마세요. ChatALL (중국명: 齐叨)은 여러 AI 봇에 동시에 프롬프트를 전송하여 최상의 결과를 찾을 수 있도록 도와줍니다. [다운로드, 설치](https://github.com/ai-shifu/ChatALL/releases)한 후 물어보기만 하면 됩니다.
 
 ### 본인인가요?
 
@@ -62,7 +62,7 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 | [You](https://you.com/)                                                        | 예        | 없음      |                                                       |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 예        | 없음      |                                                       |
 
-더 많은 것이 오고 있습니다. [이 문제들](https://github.com/sunner/ChatALL/labels/more%20LLMs)에서 좋아하는 봇을 추천하세요.
+더 많은 것이 오고 있습니다. [이 문제들](https://github.com/ai-shifu/ChatALL/labels/more%20LLMs)에서 좋아하는 봇을 추천하세요.
 
 ### 웹 기반 AI 봇의 신뢰성 관련 안내
 
@@ -108,7 +108,7 @@ ChatALL은 프록시가 아닌 클라이언트이므로 다음 작업을 수행�
 
 ## 다운로드 / 설치
 
-https://github.com/sunner/ChatALL/releases에서 다운로드
+https://github.com/ai-shifu/ChatALL/releases에서 다운로드
 
 ### Windows에서
 
@@ -149,13 +149,13 @@ ChatALL을 사용하는 동안 문제가 발생하면 다음 방법을 사용하
 - Linux: `/home/<user>/.config/chatall/`
 - macOS: `/Users/<user>/Library/Application Support/chatall/`
 
-문제가 지속되면 [문제 제출](https://github.com/sunner/ChatALL/issues)로 문의해 주세요.
+문제가 지속되면 [문제 제출](https://github.com/ai-shifu/ChatALL/issues)로 문의해 주세요.
 
 ## 개발자용
 
 ### 봇 기부
 
-[가이드](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)가 도움이 될 수 있습니다.
+[가이드](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)가 도움이 될 수 있습니다.
 
 ### 실행
 
@@ -182,8 +182,8 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### 기여자
 
-<a href="https://github.com/sunner/ChatALL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+<a href="https://github.com/ai-shifu/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ai-shifu/ChatALL" />
 </a>
 
 ### 기타

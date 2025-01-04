@@ -4,7 +4,7 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | [한국어](README_KO-KR.md) | Русский | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-shifu/ChatALL)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## Возможности
 
-ИИ-боты, основанные на больших языковых моделях (LLM) потрясающи. Однако их поведение может быть случайным, и разные боты преуспевают в выполнении разных задач. Если вы хотите получить наилучшие впечатления, не пробуйте их по одному. ChatALL (китайское название: 齐叨) может отправлять запросы нескольким ботам с искусственным интеллектом одновременно, помогая вам находить наилучшие результаты. Все, что вам нужно сделать, это [загрузить, установить](https://github.com/sunner/ChatALL/releases) и спросить.
+ИИ-боты, основанные на больших языковых моделях (LLM) потрясающи. Однако их поведение может быть случайным, и разные боты преуспевают в выполнении разных задач. Если вы хотите получить наилучшие впечатления, не пробуйте их по одному. ChatALL (китайское название: 齐叨) может отправлять запросы нескольким ботам с искусственным интеллектом одновременно, помогая вам находить наилучшие результаты. Все, что вам нужно сделать, это [загрузить, установить](https://github.com/ai-shifu/ChatALL/releases) и спросить.
 
 ### Это вы?
 
@@ -62,7 +62,7 @@
 | [You](https://you.com/)                                                        | Да                 | Нет         |                                                         |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Да                 | Нет         |                                                         |
 
-Скоро будет еще больше. Проголосуйте за своих любимых ботов в [этих issues](https://github.com/sunner/ChatALL/labels/more%20LLMs).
+Скоро будет еще больше. Проголосуйте за своих любимых ботов в [этих issues](https://github.com/ai-shifu/ChatALL/labels/more%20LLMs).
 
 ### Примечание о надёжности веб-ботов ИИ
 
@@ -100,7 +100,7 @@ ChatALL - это клиент, а не прокси. Следовательно,
 
 ## Скачать / установить
 
-Скачать с https://github.com/sunner/ChatALL/releases
+Скачать с https://github.com/ai-shifu/ChatALL/releases
 
 ### В Windows
 
@@ -139,13 +139,13 @@ brew install --cask chatall
 - Linux: `/home/<user>/.config/chatall/`
 - macOS: `/Users/<user>/Library/Application Support/chatall/`
 
-Если проблема не устранена, пожалуйста, [отправьте issue](https://github.com/sunner/ChatALL/issues).
+Если проблема не устранена, пожалуйста, [отправьте issue](https://github.com/ai-shifu/ChatALL/issues).
 
 ## Для разработчиков
 
 ### Сделать бота
 
-[Этот гайд](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) может помочь вам.
+[Этот гайд](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) может помочь вам.
 
 ### Запуск
 
@@ -172,8 +172,8 @@ npm run electron:build -- -wml --x64 --arm64
 
 ### Участники
 
-<a href="https://github.com/sunner/ChatALL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunner/ChatALL" />
+<a href="https://github.com/ai-shifu/ChatALL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ai-shifu/ChatALL" />
 </a>
 
 ### Другие
