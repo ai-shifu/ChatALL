@@ -60,7 +60,7 @@ function skip() {
 
 function openReleasePage() {
   snackbar.value = false;
-  shell.openExternal(`https://github.com/sunner/ChatALL/releases/latest`);
+  shell.openExternal(`https://github.com/ai-shifu/ChatALL/releases/latest`);
 }
 </script>
 <style scoped>

@@ -33,7 +33,7 @@ const getLatestVersionFromGithub = () => {
     method: "GET",
     protocol: "https:",
     hostname: "api.github.com",
-    path: "/repos/sunner/ChatALL/releases/latest",
+    path: "/repos/ai-shifu/ChatALL/releases/latest",
   });
   request.on("response", (response) => {
     response.on("data", (data) => saveLatestVersion(data));

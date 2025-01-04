@@ -9,7 +9,7 @@ export const setMenuItems = () => {
         new MenuItem({
           label: "View on GitHub",
           click: () => {
-            shell.openExternal("https://github.com/sunner/ChatALL");
+            shell.openExternal("https://github.com/ai-shifu/ChatALL");
           },
         }),
       );
