@@ -14,7 +14,7 @@
 
 ## Fonctionnalités
 
-Les robots d'intelligence artificielle basés sur les grands modèles de langage (Large Language Models ou LLMs) sont incroyables. Cependant, leur comportement peut être aléatoire et différents robots excellent dans différentes tâches. Si vous voulez la meilleure expérience, ne les essayez pas un par un. ChatALL (nom chinois : 齐叨) peut envoyer des invites à plusieurs robots IA simultanément afin de vous permettre de sélectionner la réponse qui vous semblera la plus pertinante. Tout ce que vous avez à faire est de [télécharger, installer](https://github.com/ai-shifu/ChatALL/releases) et poser votre question.
+Les robots d'intelligence artificielle basés sur les grands modèles de langage (Large Language Models ou LLMs) sont incroyables. Cependant, leur comportement peut être aléatoire et différents robots excellent dans différentes tâches. Si vous voulez la meilleure expérience, ne les essayez pas un par un. ChatALL (nom chinois : 齐叨) peut envoyer des invites à plusieurs robots IA simultanément afin de vous permettre de sélectionner la réponse qui vous semblera la plus pertinente. Tout ce que vous avez à faire est de [télécharger, installer](https://github.com/ai-shifu/ChatALL/releases) et poser votre question.
 
 ### Est-ce vous ?
 
