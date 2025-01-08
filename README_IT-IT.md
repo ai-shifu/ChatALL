@@ -57,7 +57,7 @@ Gli utenti tipici di ChatALL sono:
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Sì            | Prossimamente |                                                        |
 | [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Sì            | No            | Nessun accesso richiesto                               |
 | [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Sì            | No            |                                                        |
-| [xAI Grok](https://x.ai)                                                       | No            | Sì            |                                                   |
+| [xAI Grok](https://x.ai)                                                       | No            | Sì            |                                                        |
 | [YouChat](https://you.com/)                                                    | Sì            | No            |                                                        |
 | [You](https://you.com/)                                                        | Sì            | No            |                                                        |
 | [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Sì            | No            |                                                        |
@@ -66,7 +66,7 @@ Altri sono in arrivo. Vota i tuoi bot preferiti in [questi problemi](https://git
 
 ### Nota sull'affidabilità dei bot AI basati sul Web
 
-I bot AI basati sul Web (contrassegnati con "Web Access") sono intrinsecamente meno affidabili e spesso incontrano problemi di stabilità. Questo è dovuto agli aggiornamenti regolari delle interfacce web e delle misure di sicurezza da parte dei fornitori di servizi, che richiedono una costante manutenzione attraverso il reverse engineering. Questo tipo di connessione è difficile da mantenere e può smettere di funzionare inaspettatamente. Per un'esperienza più affidabile, raccomandiamo vivamente di utilizzare bot che offrono accesso API quando possibile.
+I bot AI basati sul Web (contrassegnati con "Web Access") sono intrinsecamente meno affidabili e spesso incontrano problemi di stabilità, poiché i fornitori di servizi aggiornano regolarmente le loro interfacce web e misure di sicurezza. Queste connessioni basate sul web si basano sul reverse engineering e sono difficili da mantenere, spesso smettendo di funzionare inaspettatamente. Per un'esperienza più affidabile, raccomandiamo vivamente di utilizzare bot che offrono accesso API quando possibile.
 
 ### Altre funzionalità
 
@@ -79,7 +79,8 @@ I bot AI basati sul Web (contrassegnati con "Web Access") sono intrinsecamente m
 - Modalità scura (contribuita da @tanchekwei).
 - Scorciatoie da tastiera. Premi <kbd>Ctrl</kbd> + <kbd>/</kbd> per conoscerle tutte (contribuite da @tanchekwei).
 - Chat multiple (contribuite da @tanchekwei).
-- Supporto per l'impostazione del proxy (contribuito da @msaong).
+- Impostazione proxy (contribuito da @msaong).
+- Gestione dei prompt (contribuito da @tanchekwei).
 - Supporto per diverse lingue (cinese, inglese, tedesco, francese, russo, vietnamita, coreano, giapponese, spagnolo, italiano).
 - Supporto per Windows, macOS e Linux.
 
@@ -87,7 +88,16 @@ Funzionalità pianificate:
 
 Siete benvenuti a contribuire a queste funzionalità.
 
-- [ ] Deploy del front-end su GitHub Pages
+- [ ] Deploy del front-end su Pagine GitHub
+
+## Privacy
+
+Tutta la cronologia delle chat, le impostazioni e i dati di accesso vengono salvati localmente sul tuo computer.
+
+ChatALL raccoglie dati anonimi sull'utilizzo per aiutarci a migliorare il prodotto. Inclusi:
+
+- Quali bot AI vengono sollecitati e quanto è lungo il prompt. Non include il contenuto del prompt.
+- Quanto è lunga la risposta e quale risposta viene eliminata/evidenziata. Non include il contenuto della risposta.
 
 ## Prerequisiti
 
@@ -95,7 +105,6 @@ ChatALL è un client, non un proxy. Pertanto, devi:
 
 1. Avere account funzionanti e/o token API per i bot.
 2. Avere connessioni di rete affidabili ai bot.
-3. Se stai usando una VPN, devi impostarla come proxy di sistema/globale.
 
 ## Download / Installazione
 
@@ -119,16 +128,18 @@ brew install --cask chatall
 
 ### Su Linux
 
-Scarica il file .AppImage, rendilo eseguibile e goditi l'esperienza del clic.
+Distribuzioni basate su Debian: Scarica il file .deb, fai doppio clic su di esso e installa il software.
+Distribuzioni basate su Arch: Puoi clonare ChatALL da AUR [qui](https://aur.archlinux.org/packages/chatall-bin). Puoi installarlo manualmente o utilizzando un helper AUR come yay o paru.
+Altre distribuzioni: Scarica il file .AppImage, rendilo eseguibile e goditi l'esperienza del clic. Puoi anche utilizzare [AppimageLauncher](https://github.com/TheAssassin/AppImageLauncher).
 
 ## Risoluzione dei problemi
 
-If you encounter any problems while using ChatALL, you can try the following methods to resolve them:
+Se incontri problemi durante l'utilizzo di ChatALL, puoi provare i seguenti metodi per risolverli:
 
 1. **Ricarica** - premi <kbd>Ctrl</kbd> + <kbd>R</kbd> o <kbd>⌘</kbd> + <kbd>R</kbd>.
 2. **Riavvia** - esci da ChatALL e avvialo nuovamente.
-3. **Rilogin** - clicca sul pulsante delle impostazioni nell'angolo in alto a destra, quindi clicca sul link di accesso/uscita corrispondente nella finestra popup per accedere nuovamente al sito web.
-4. **Cancella tutti i messaggi** - clicca sul pulsante della scopa nell'angolo in alto a destra.
+3. **Rilogin** - clicca sul pulsante delle impostazioni nell'angolo in alto a destra, quindi clicca sul link di accesso/uscita corrispondente per accedere nuovamente al sito web.
+4. **Crea una nuova chat** - clicca sul pulsante `Nuova Chat` e invia nuovamente il prompt.
 
 Se nessuno dei metodi sopra elencati funziona, puoi provare a **reimpostare ChatALL**. Nota che ciò cancellerà tutte le tue impostazioni e la cronologia dei messaggi.
 

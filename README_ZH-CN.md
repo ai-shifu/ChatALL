@@ -128,7 +128,9 @@ brew install --cask chatall
 
 ### Linux 系统
 
-下载 .AppImage 文件，将其设置为可执行，然后双击就可运行。
+基于 Debian 的发行版：下载 .deb 文件，双击即可安装。
+基于 Arch 的发行版：你可以从 AUR [这里](https://aur.archlinux.org/packages/chatall-bin)克隆 ChatALL。你可以手动安装或使用 yay、paru 等 AUR 助手安装。
+其他发行版：下载 .AppImage 文件，将其设置为可执行，然后双击就可运行。你也可以使用 [AppimageLauncher](https://github.com/TheAssassin/AppImageLauncher)。
 
 ## 问题解决
 
