@@ -24,9 +24,7 @@ import OpenAIAPIo3MiniBot from "./openai/OpenAIAPIo3MiniBot";
 import MistralBot from "./MistralBot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
-import VicunaBot from "@/bots/lmsys/VicunaBot";
 import ChatGLMBot from "@/bots/zhipu/ChatGLMBot";
-import AlpacaBot from "@/bots/lmsys/AlpacaBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
 import Gemma7bGroqAPIBot from "@/bots/groq/Gemma7bGroqAPIBot";
@@ -48,26 +46,12 @@ import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
 import CharacterAIBot from "./CharacterAIBot";
 import ClaudeAIBot from "./ClaudeAIBot";
 import Llama2HC70bBot from "./huggingface/Llama2HC70bBot";
-import Llama213bBot from "./lmsys/Llama213bBot";
-import Llama27bBot from "./lmsys/Llama27bBot";
-import Llama270bBot from "./lmsys/Llama270bBot";
 import Falcon180bBot from "./huggingface/Falcon180bBot";
-import ChatGLM6bBot from "./lmsys/ChatGLM6bBot";
-import ChatGLM36bBot from "./lmsys/ChatGLM36bBot";
-import CodeLlamaBot from "./lmsys/CodeLlamaBot";
-import Vicuna7bBot from "./lmsys/Vicuna7bBot";
-import Vicuna13bBot from "./lmsys/Vicuna13bBot";
-import Wizardlm13bBot from "./lmsys/Wizardlm13bBot";
-import Wizardlm70bBot from "./lmsys/Wizardlm70bBot";
 import FalconHC180bBot from "./huggingface/FalconHC180bBot";
 import CodeLlamaHCBot from "./huggingface/CodeLlamaHCBot";
 import WenxinQianfan4Bot from "./baidu/WenxinQianfan4Bot";
 import Zephyr7bBot from "./huggingface/Zephyr7bBot";
 import GeminiAdvBot from "./google/GeminiAdvBot";
-import Gemma7bItBot from "./lmsys/Gemma7bItBot";
-import Gemma2bItBot from "./lmsys/Gemma2bItBot";
-import Claude3SonnetBot from "./lmsys/Claude3SonnetBot";
-import Claude3OpusBot from "./lmsys/Claude3OpusBot";
 import ChatGLM4Bot from "./zhipu/ChatGLM4Bot";
 import KimiBot from "./moonshot/KimiBot";
 import ClaudeAPIOpusBot from "./anthropic/ClaudeAPIOpusBot";
@@ -80,25 +64,19 @@ import Grok2APIBot from "./xai/Grok2APIBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
-  AlpacaBot.getInstance(),
   BingChatCreativeBot.getInstance(),
   BingChatBalancedBot.getInstance(),
   BingChatPreciseBot.getInstance(),
   CharacterAIBot.getInstance(),
-  ChatGLM6bBot.getInstance(),
-  ChatGLM36bBot.getInstance(),
   ChatGLMBot.getInstance(),
   ChatGLM4Bot.getInstance(),
   ClaudeAIBot.getInstance(),
-  Claude3OpusBot.getInstance(),
-  Claude3SonnetBot.getInstance(),
   ClaudeAPIOpusBot.getInstance(),
   ClaudeAPISonnetBot.getInstance(),
   ClaudeAPIHaikuBot.getInstance(),
   ClaudeAPI20Bot.getInstance(),
   ClaudeAPI21Bot.getInstance(),
   CodeLlamaHCBot.getInstance(),
-  CodeLlamaBot.getInstance(),
   CohereAPICommandBot.getInstance(),
   CohereAPICommandLightBot.getInstance(),
   CohereAPICommandRBot.getInstance(),
@@ -114,8 +92,6 @@ const all = [
   GeminiAPIBot.getInstance(),
   Gemini15ProAPIBot.getInstance(),
   Gemini15FlashAPIBot.getInstance(),
-  Gemma2bItBot.getInstance(),
-  Gemma7bItBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
   ChatGPT35Bot.getInstance(),
   OpenAIAPI35Bot.getInstance(),
@@ -134,9 +110,6 @@ const all = [
   Llama370bGroqAPIBot.getInstance(),
   Mixtral8x7bGroqAPIBot.getInstance(),
   KimiBot.getInstance(),
-  Llama27bBot.getInstance(),
-  Llama213bBot.getInstance(),
-  Llama270bBot.getInstance(),
   Llama2HC70bBot.getInstance(),
   MistralBot.getInstance(),
   MOSSBot.getInstance(),
@@ -147,27 +120,13 @@ const all = [
   QianWenBot.getInstance(),
   SkyWorkBot.getInstance(),
   SparkBot.getInstance(),
-  Vicuna7bBot.getInstance(),
-  Vicuna13bBot.getInstance(),
-  VicunaBot.getInstance(),
-  Wizardlm13bBot.getInstance(),
-  Wizardlm70bBot.getInstance(),
   Zephyr7bBot.getInstance(),
   YouChatBot.getInstance(),
   GrokBetaAPIBot.getInstance(),
   Grok2APIBot.getInstance(),
 ];
 
-const disabled = [
-  "AlpacaBot",
-  "HuggingChatBot",
-  "Falcon180bBot",
-  "ChatGLM6bBot",
-  "ChatGLM36bBot",
-  "CodeLlamaBot",
-  "Vicuna7bBot",
-  "Wizardlm13bBot",
-];
+const disabled = ["HuggingChatBot", "Falcon180bBot"];
 
 if (process.env.NODE_ENV !== "production") {
   all.push(DevBot.getInstance());
@@ -193,15 +152,9 @@ export const botTags = {
     bots.getBotByClassName("BingChatPreciseBot"),
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGLM4Bot"),
-    bots.getBotByClassName("ChatGLM6bBot"),
-    bots.getBotByClassName("ChatGLM36bBot"),
     bots.getBotByClassName("ChatGPT35Bot"),
     bots.getBotByClassName("HuggingChatBot"),
-    bots.getBotByClassName("Llama27bBot"),
-    bots.getBotByClassName("Llama213bBot"),
-    bots.getBotByClassName("Llama270bBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
-    bots.getBotByClassName("CodeLlamaBot"),
     bots.getBotByClassName("CodeLlamaHCBot"),
     bots.getBotByClassName("MistralBot"),
     bots.getBotByClassName("MOSSBot"),
@@ -211,24 +164,14 @@ export const botTags = {
     bots.getBotByClassName("SparkBot"),
     bots.getBotByClassName("YouChatBot"),
     bots.getBotByClassName("GradioAppBot"),
-    bots.getBotByClassName("AlpacaBot"),
-    bots.getBotByClassName("VicunaBot"),
-    bots.getBotByClassName("Vicuna7bBot"),
-    bots.getBotByClassName("Vicuna13bBot"),
     bots.getBotByClassName("CharacterAIBot"),
     bots.getBotByClassName("ClaudeAIBot"),
     bots.getBotByClassName("PerplexityBot"),
     bots.getBotByClassName("PhindBot"),
     bots.getBotByClassName("PiBot"),
     bots.getBotByClassName("Falcon180bBot"),
-    bots.getBotByClassName("Wizardlm13bBot"),
-    bots.getBotByClassName("Wizardlm70bBot"),
     bots.getBotByClassName("FalconHC180bBot"),
     bots.getBotByClassName("Zephyr7bBot"),
-    bots.getBotByClassName("Gemma2bItBot"),
-    bots.getBotByClassName("Gemma7bItBot"),
-    bots.getBotByClassName("Claude3SonnetBot"),
-    bots.getBotByClassName("Claude3OpusBot"),
     bots.getBotByClassName("KimiBot"),
   ],
   paid: [
@@ -237,29 +180,13 @@ export const botTags = {
     bots.getBotByClassName("GeminiAdvBot"),
   ],
   openSource: [
-    bots.getBotByClassName("AlpacaBot"),
     bots.getBotByClassName("HuggingChatBot"),
-    bots.getBotByClassName("Llama27bBot"),
-    bots.getBotByClassName("Llama213bBot"),
-    bots.getBotByClassName("Llama270bBot"),
     bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
-    bots.getBotByClassName("VicunaBot"),
-    bots.getBotByClassName("Vicuna7bBot"),
-    bots.getBotByClassName("Vicuna13bBot"),
     bots.getBotByClassName("Falcon180bBot"),
-    bots.getBotByClassName("ChatGLM6bBot"),
-    bots.getBotByClassName("ChatGLM36bBot"),
-    bots.getBotByClassName("CodeLlamaBot"),
     bots.getBotByClassName("CodeLlamaHCBot"),
-    bots.getBotByClassName("Wizardlm13bBot"),
-    bots.getBotByClassName("Wizardlm70bBot"),
     bots.getBotByClassName("FalconHC180bBot"),
     bots.getBotByClassName("Zephyr7bBot"),
-    bots.getBotByClassName("Gemma2bItBot"),
-    bots.getBotByClassName("Gemma7bItBot"),
-    bots.getBotByClassName("Claude3SonnetBot"),
-    bots.getBotByClassName("Claude3OpusBot"),
   ],
   api: [
     bots.getBotByClassName("GeminiAPIBot"),
@@ -305,8 +232,6 @@ export const botTags = {
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGLM4Bot"),
-    bots.getBotByClassName("ChatGLM6bBot"),
-    bots.getBotByClassName("ChatGLM36bBot"),
     bots.getBotByClassName("KimiBot"),
   ],
 };
