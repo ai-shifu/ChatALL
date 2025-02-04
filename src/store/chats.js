@@ -16,14 +16,14 @@ class Chats {
         await Chats.add({
           favBots: [
             // default bots
-            { classname: "ChatGPT35Bot", selected: true },
-            { classname: "ChatGPT4Bot", selected: true },
-            { classname: "BingChatCreativeBot", selected: true },
-            { classname: "BingChatBalancedBot", selected: true },
-            { classname: "BingChatPreciseBot", selected: true },
-            { classname: "BardBot", selected: true },
-            { classname: "ClaudeInstantPoeBot", selected: true },
-            { classname: "FalconHC180bBot", selected: true },
+            { classname: "AzureOpenAIAPIBot", selected: false },
+            { classname: "ClaudeAPISonnetBot", selected: false },
+            { classname: "Gemini15ProAPIBot", selected: false },
+            { classname: "Gemma29bGroqAPIBot", selected: false },
+            { classname: "Grok2APIBot", selected: false },
+            { classname: "Llama370bGroqAPIBot", selected: false },
+            { classname: "Mixtral8x7bGroqAPIBot", selected: false },
+            { classname: "OpenAIAPI4oBot", selected: false },
           ],
         }),
       );
