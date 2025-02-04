@@ -24,8 +24,6 @@ class Chats {
             { classname: "BardBot", selected: true },
             { classname: "ClaudeInstantPoeBot", selected: true },
             { classname: "FalconHC180bBot", selected: true },
-            { classname: "Llama270bBot", selected: true },
-            { classname: "VicunaBot", selected: true },
           ],
         }),
       );
