@@ -45,12 +45,7 @@ import PiBot from "./PiBot";
 import Qihoo360AIBrainBot from "./Qihoo360AIBrainBot";
 import CharacterAIBot from "./CharacterAIBot";
 import ClaudeAIBot from "./ClaudeAIBot";
-import Llama2HC70bBot from "./huggingface/Llama2HC70bBot";
-import Falcon180bBot from "./huggingface/Falcon180bBot";
-import FalconHC180bBot from "./huggingface/FalconHC180bBot";
-import CodeLlamaHCBot from "./huggingface/CodeLlamaHCBot";
 import WenxinQianfan4Bot from "./baidu/WenxinQianfan4Bot";
-import Zephyr7bBot from "./huggingface/Zephyr7bBot";
 import GeminiAdvBot from "./google/GeminiAdvBot";
 import ChatGLM4Bot from "./zhipu/ChatGLM4Bot";
 import KimiBot from "./moonshot/KimiBot";
@@ -76,7 +71,6 @@ const all = [
   ClaudeAPIHaikuBot.getInstance(),
   ClaudeAPI20Bot.getInstance(),
   ClaudeAPI21Bot.getInstance(),
-  CodeLlamaHCBot.getInstance(),
   CohereAPICommandBot.getInstance(),
   CohereAPICommandLightBot.getInstance(),
   CohereAPICommandRBot.getInstance(),
@@ -85,8 +79,6 @@ const all = [
   WenxinQianfanBot.getInstance(),
   WenxinQianfanTurboBot.getInstance(),
   WenxinQianfan4Bot.getInstance(),
-  Falcon180bBot.getInstance(),
-  FalconHC180bBot.getInstance(),
   BardBot.getInstance(),
   GeminiAdvBot.getInstance(),
   GeminiAPIBot.getInstance(),
@@ -110,7 +102,6 @@ const all = [
   Llama370bGroqAPIBot.getInstance(),
   Mixtral8x7bGroqAPIBot.getInstance(),
   KimiBot.getInstance(),
-  Llama2HC70bBot.getInstance(),
   MistralBot.getInstance(),
   MOSSBot.getInstance(),
   HuggingChatBot.getInstance(),
@@ -120,13 +111,12 @@ const all = [
   QianWenBot.getInstance(),
   SkyWorkBot.getInstance(),
   SparkBot.getInstance(),
-  Zephyr7bBot.getInstance(),
   YouChatBot.getInstance(),
   GrokBetaAPIBot.getInstance(),
   Grok2APIBot.getInstance(),
 ];
 
-const disabled = ["HuggingChatBot", "Falcon180bBot"];
+const disabled = ["HuggingChatBot"];
 
 if (process.env.NODE_ENV !== "production") {
   all.push(DevBot.getInstance());
@@ -154,8 +144,6 @@ export const botTags = {
     bots.getBotByClassName("ChatGLM4Bot"),
     bots.getBotByClassName("ChatGPT35Bot"),
     bots.getBotByClassName("HuggingChatBot"),
-    bots.getBotByClassName("Llama2HC70bBot"),
-    bots.getBotByClassName("CodeLlamaHCBot"),
     bots.getBotByClassName("MistralBot"),
     bots.getBotByClassName("MOSSBot"),
     bots.getBotByClassName("Qihoo360AIBrainBot"),
@@ -169,9 +157,6 @@ export const botTags = {
     bots.getBotByClassName("PerplexityBot"),
     bots.getBotByClassName("PhindBot"),
     bots.getBotByClassName("PiBot"),
-    bots.getBotByClassName("Falcon180bBot"),
-    bots.getBotByClassName("FalconHC180bBot"),
-    bots.getBotByClassName("Zephyr7bBot"),
     bots.getBotByClassName("KimiBot"),
   ],
   paid: [
@@ -181,12 +166,7 @@ export const botTags = {
   ],
   openSource: [
     bots.getBotByClassName("HuggingChatBot"),
-    bots.getBotByClassName("Llama2HC70bBot"),
     bots.getBotByClassName("MOSSBot"),
-    bots.getBotByClassName("Falcon180bBot"),
-    bots.getBotByClassName("CodeLlamaHCBot"),
-    bots.getBotByClassName("FalconHC180bBot"),
-    bots.getBotByClassName("Zephyr7bBot"),
   ],
   api: [
     bots.getBotByClassName("GeminiAPIBot"),

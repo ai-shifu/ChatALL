@@ -110,7 +110,6 @@ import MistralBotSettings from "@/components/BotSettings/MistralBotSettings.vue"
 import MOSSBotSettings from "@/components/BotSettings/MOSSBotSettings.vue";
 import WenxinQianfanBotSettings from "@/components/BotSettings/WenxinQianfanBotSettings.vue";
 import GradioAppBotSettings from "@/components/BotSettings/GradioAppBotSettings.vue";
-import Falcon180bBotSettings from "@/components/BotSettings/Falcon180bBotSettings.vue";
 import LMSYSBotSettings from "@/components/BotSettings/LMSYSBotSettings.vue";
 import HuggingChatBotSettings from "@/components/BotSettings/HuggingChatBotSettings.vue";
 import QianWenBotSettings from "@/components/BotSettings/QianWenBotSettings.vue";
@@ -153,7 +152,6 @@ const botSettings = [
   { brand: "claudeAi", component: ClaudeAIBotSettings },
   { brand: "claudeApi", component: ClaudeAPIBotSettings },
   { brand: "cohereApi", component: CohereAPIBotSettings },
-  { brand: "falcon", component: Falcon180bBotSettings },
   { brand: "geminiApi", component: GeminiAPIBotSettings },
   { brand: "gradio", component: GradioAppBotSettings },
   { brand: "groqApi", component: GroqAPIBotSettings },
