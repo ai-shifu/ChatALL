@@ -167,6 +167,7 @@
     "gemini-pro": "Gemini-Pro",
     "gemini-15-pro-latest": "Gemini 1.5 Pro",
     "gemini-15-flash-latest": "Gemini 1.5 Flash",
+    "gemini-20-flash-001": "Gemini 2.0 Flash",
     "topK": "topK",
     "topKPrompt": "topK가 1이라는 것은 선택된 토큰이 모델의 어휘 중에서 가장 가능성이 높은 것을 의미합니다 (탐욕스러운 디코딩이라고도 함).",
     "topP": "topP",
