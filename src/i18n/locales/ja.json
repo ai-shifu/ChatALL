@@ -244,6 +244,21 @@
     "temperature0": "より決定論的な",
     "temperature2": "もっとランダム"
   },
+  "deepSeekApi": {
+    "name": "DeepSeek API",
+    "deepseek-chat": "deepseek-chat",
+    "deepseek-coder": "deepseek-coder"
+  },
+  "gitHubApi": {
+    "name": "GitHub Models API",
+    "gpt-4o": "GPT-4o",
+    "gpt-4o-mini": "GPT-4o-Mini",
+    "Meta-Llama-31-8B-Instruct": "Llama-3.1-8B",
+    "Meta-Llama-31-70B-Instruct": "Llama-3.1-70B",
+    "Meta-Llama-31-405B-Instruct": "Llama-3.1-405B",
+    "Mistral-large-2407": "Mistral-Large",
+    "Mistral-nemo": "Mistral-Nemo"
+  },
   "poe": {
     "name": "Poe",
     "beaver": "GPT-4",
