@@ -24,6 +24,7 @@ import OpenAIAPI4oMiniBot from "./openai/OpenAIAPI4oMiniBot";
 import OpenAIAPIo1Bot from "./openai/OpenAIAPIo1Bot";
 import OpenAIAPIo1MiniBot from "./openai/OpenAIAPIo1MiniBot";
 import OpenAIAPIo3MiniBot from "./openai/OpenAIAPIo3MiniBot";
+import OpenAIAPI45Bot from "./openai/OpenAIAPI45Bot";
 import MistralBot from "./MistralBot";
 import MOSSBot from "@/bots/MOSSBot";
 import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
@@ -103,6 +104,7 @@ const all = [
   OpenAIAPIo1Bot.getInstance(),
   OpenAIAPIo1MiniBot.getInstance(),
   OpenAIAPIo3MiniBot.getInstance(),
+  OpenAIAPI45Bot.getInstance(),
   GradioAppBot.getInstance(),
   Gemma7bGroqAPIBot.getInstance(),
   Gemma29bGroqAPIBot.getInstance(),
@@ -191,6 +193,7 @@ export const botTags = {
     bots.getBotByClassName("OpenAIAPIo1Bot"),
     bots.getBotByClassName("OpenAIAPIo1MiniBot"),
     bots.getBotByClassName("OpenAIAPIo3MiniBot"),
+    bots.getBotByClassName("OpenAIAPI45Bot"),
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("WenxinQianfan4Bot"),
