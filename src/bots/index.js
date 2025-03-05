@@ -55,6 +55,7 @@ import ClaudeAPIOpusBot from "./anthropic/ClaudeAPIOpusBot";
 import ClaudeAPI20Bot from "./anthropic/ClaudeAPI20Bot";
 import ClaudeAPI21Bot from "./anthropic/ClaudeAPI21Bot";
 import ClaudeAPISonnetBot from "./anthropic/ClaudeAPISonnetBot";
+import ClaudeAPI37SonnetBot from "./anthropic/ClaudeAPI37SonnetBot";
 import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
 import GrokBetaAPIBot from "./xai/GrokBetaAPIBot";
 import Grok2APIBot from "./xai/Grok2APIBot";
@@ -70,6 +71,7 @@ const all = [
   ClaudeAIBot.getInstance(),
   ClaudeAPIOpusBot.getInstance(),
   ClaudeAPISonnetBot.getInstance(),
+  ClaudeAPI37SonnetBot.getInstance(),
   ClaudeAPIHaikuBot.getInstance(),
   ClaudeAPI20Bot.getInstance(),
   ClaudeAPI21Bot.getInstance(),
@@ -194,6 +196,7 @@ export const botTags = {
     bots.getBotByClassName("ClaudeAPIHaikuBot"),
     bots.getBotByClassName("ClaudeAPIOpusBot"),
     bots.getBotByClassName("ClaudeAPISonnetBot"),
+    bots.getBotByClassName("ClaudeAPI37SonnetBot"),
     bots.getBotByClassName("CohereAPICommandBot"),
     bots.getBotByClassName("CohereAPICommandLightBot"),
     bots.getBotByClassName("CohereAPICommandRBot"),
