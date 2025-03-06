@@ -159,9 +159,7 @@
     "autoRefresh": "Автоматическое отключение",
     "autoRefreshPrompt": "Если вас не часто просят войти в систему, не включайте эту функцию!",
     "notice": "Только платные пользователи Plus могут использовать GPT-4",
-    "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-mobile": "GPT-4 Mobile V2"
+    "gpt-4": "GPT-4"
   },
   "geminiApi": {
     "name": "Gemini API",

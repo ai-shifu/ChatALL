@@ -159,9 +159,7 @@
     "autoRefresh": "自動切断防止",
     "autoRefreshPrompt": "頻繁にログインを求められない場合は、この自動更新機能を無効にすることをお勧めします。",
     "notice": "ChatGPTプラス会員のみGPT-4をご利用いただけます。",
-    "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-mobile": "GPT-4 モバイル V2"
+    "gpt-4": "GPT-4"
   },
   "geminiApi": {
     "name": "Gemini API",
