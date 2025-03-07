@@ -45,6 +45,11 @@ export default createStore({
       temperature: 0.8,
       pastRounds: 5,
     },
+    gitHubApi: {
+      apiKey: "",
+      temperature: 1.0,
+      pastRounds: 10,
+    },
     openaiApi: {
       apiKey: "",
       temperature: 1,
@@ -216,6 +221,9 @@ export default createStore({
     },
     setChatgpt(state, refreshCycle) {
       state.chatgpt.refreshCycle = refreshCycle;
+    },
+    setGitHubApi(state, values) {
+      state.gitHubApi = { ...state.gitHubApi, ...values };
     },
     setGeminiApi(state, values) {
       state.geminiApi = { ...state.geminiApi, ...values };
