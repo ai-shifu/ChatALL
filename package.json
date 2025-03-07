@@ -16,7 +16,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "format": "prettier --write --cache src/",
-    "electron:build": "vue-cli-service electron:build --${npm_config_platform:-auto} --${npm_config_arch:-auto}",
+    "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
