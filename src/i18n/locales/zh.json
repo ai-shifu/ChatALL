@@ -159,9 +159,7 @@
     "autoRefresh": "自动防掉线",
     "autoRefreshPrompt": "如果没有被要求频繁登录，不需要启用此功能",
     "notice": "只有付费的 Plus 用户才能使用 GPT-4",
-    "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-mobile": "GPT-4 移动版V2"
+    "gpt-4": "GPT-4"
   },
   "geminiApi": {
     "name": "Gemini API",

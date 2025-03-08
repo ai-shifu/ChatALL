@@ -159,9 +159,7 @@
     "autoRefresh": "自動防斷線",
     "autoRefreshPrompt": "您如果沒有被要求頻繁登入，不需要啟用此功能",
     "notice": "只有付費的 ChatGPT Plus 使用者才能使用 GPT-4",
-    "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-mobile": "GPT-4 行動裝置版 V2"
+    "gpt-4": "GPT-4"
   },
   "geminiApi": {
     "name": "Gemini API",
