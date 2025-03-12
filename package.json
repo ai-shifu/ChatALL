@@ -51,7 +51,7 @@
     "langchain": "^0.3.19",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
-    "prismjs": "^1.29.0",
+    "prismjs": "^1.30.0",
     "query-string": "^9.1.1",
     "rxjs": "^7.8.2",
     "sortablejs": "^1.15.6",
