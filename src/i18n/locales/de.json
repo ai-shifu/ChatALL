@@ -159,9 +159,7 @@
     "autoRefresh": "Automatischer Schutz vor Verbindungsabbruch",
     "autoRefreshPrompt": "Aktivieren Sie diese Funktion nur, wenn Sie häufig aufgefordert werden, sich anzumelden.",
     "notice": "Nur bezahlte Plus-Mitglieder können GPT-4 nutzen.",
-    "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-mobile": "GPT-4 Mobile V2"
+    "gpt-4": "GPT-4"
   },
   "geminiApi": {
     "name": "Gemini API",

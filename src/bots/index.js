@@ -4,7 +4,6 @@ import Gemini15ProAPIBot from "@/bots/google/Gemini15ProAPIBot";
 import Gemini15FlashAPIBot from "@/bots/google/Gemini15FlashAPIBot";
 import Gemini20FlashAPIBot from "@/bots/google/Gemini20FlashAPIBot";
 import Gemini20FlashLiteAPIBot from "@/bots/google/Gemini20FlashLiteAPIBot";
-import ChatGPT35Bot from "@/bots/openai/ChatGPT35Bot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import CohereAPICommandBot from "@/bots/cohere/CohereAPICommandBot";
 import CohereAPICommandLightBot from "@/bots/cohere/CohereAPICommandLightBot";
@@ -39,7 +38,6 @@ import Mixtral8x7bGroqAPIBot from "@/bots/groq/Mixtral8x7bGroqAPIBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
 import SkyWorkBot from "./SkyWorkBot";
-import ChatGPT4MobileBot from "./openai/ChatGPT4MobileBot";
 import AzureOpenAIAPIBot from "./microsoft/AzureOpenAIAPIBot";
 import WenxinQianfanTurboBot from "./baidu/WenxinQianfanTurboBot";
 import YouChatBot from "./YouChatBot";
@@ -93,10 +91,8 @@ const all = [
   Gemini20FlashAPIBot.getInstance(),
   Gemini20FlashLiteAPIBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
-  ChatGPT35Bot.getInstance(),
   OpenAIAPI35Bot.getInstance(),
   ChatGPT4Bot.getInstance(),
-  ChatGPT4MobileBot.getInstance(),
   OpenAIAPI4Bot.getInstance(),
   OpenAIAPI4128KBot.getInstance(),
   OpenAIAPI4oBot.getInstance(),
@@ -152,7 +148,6 @@ export const botTags = {
     bots.getBotByClassName("BingChatPreciseBot"),
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGLM4Bot"),
-    bots.getBotByClassName("ChatGPT35Bot"),
     bots.getBotByClassName("HuggingChatBot"),
     bots.getBotByClassName("MistralBot"),
     bots.getBotByClassName("MOSSBot"),
@@ -171,7 +166,6 @@ export const botTags = {
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
-    bots.getBotByClassName("ChatGPT4MobileBot"),
     bots.getBotByClassName("GeminiAdvBot"),
   ],
   openSource: [

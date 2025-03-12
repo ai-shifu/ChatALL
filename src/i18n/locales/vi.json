@@ -152,9 +152,7 @@
     "autoRefresh": "Tự động làm mới",
     "autoRefreshPrompt": "Nếu bạn không bị yêu cầu đăng nhập thường xuyên, đừng bật tính năng này",
     "notice": "Chỉ thành viên trả phí Plus mới có thể sử dụng GPT-4",
-    "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-mobile": "GPT-4 Mobile V2"
+    "gpt-4": "GPT-4"
   },
   "geminiApi": {
     "name": "Gemini API",

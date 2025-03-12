@@ -159,9 +159,7 @@
     "autoRefresh": "Antidesconexión automática",
     "autoRefreshPrompt": "Si NO se le solicita iniciar sesión frecuentemente, NO habilite esta función",
     "notice": "Solo los miembros Plus de pago pueden usar GPT-4",
-    "text-davinci-002-render-sha": "GPT-3.5",
-    "gpt-4": "GPT-4",
-    "gpt-4-mobile": "GPT-4 móvil V2"
+    "gpt-4": "GPT-4"
   },
   "geminiApi": {
     "name": "Gemini API",
