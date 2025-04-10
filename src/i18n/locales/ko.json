@@ -314,7 +314,8 @@
   "xaiApi": {
     "name": "xAI API",
     "grok-beta": "Grok Beta",
-    "grok-2-latest": "Grok-2"
+    "grok-2-latest": "Grok-2",
+    "grok-3-beta": "Grok 3"
   },
   "updates": {
     "updateAvailable": "업데이트 가능!",
