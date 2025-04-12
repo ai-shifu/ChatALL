@@ -291,7 +291,8 @@
     "name": "xAI API",
     "grok-beta": "Grok Beta",
     "grok-2-latest": "Grok-2",
-    "grok-3-beta": "Grok 3"
+    "grok-3-beta": "Grok 3",
+    "grok-3-mini-beta": "Grok 3 Mini"
   },
   "updates": {
     "updateAvailable": "Cập nhập mới đã có!",
