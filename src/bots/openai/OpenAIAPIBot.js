@@ -29,7 +29,9 @@ export default class OpenAIAPIBot extends LangChainBot {
       },
       openAIApiKey: store.state.openaiApi.apiKey,
       modelName: this.constructor._model ? this.constructor._model : "",
-      temperature: store.state.openaiApi.temperature,
+      temperature: this.constructor._model.startsWith("o")
+        ? undefined
+        : store.state.openaiApi.temperature,
       streaming: true,
     });
     return chatModel;
