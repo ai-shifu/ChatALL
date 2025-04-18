@@ -4,7 +4,7 @@
 
 [Deutsch](README_DE-DE.md) | [English](README.md) | [Español](README_ES-ES.md) | [Français](README_FR-FR.md) | [Italian](README_IT-IT.md) | [日本語](README_JA-JP.md) | 한국어 | [Русский](README_RU-RU.md) | [Tiếng Việt](README_VI-VN.md) | [简体中文](README_ZH-CN.md)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-shifu/ChatALL)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sunner/ChatALL)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## 기능
 
-대규모 언어 모델(LLMs) 기반 AI 봇은 놀랍습니다. 하지만 봇의 행동은 무작위적일 수 있으며, 봇마다 다른 작업에서 뛰어난 능력을 발휘합니다. 최상의 경험을 원한다면 하나씩 사용해 보지 마세요. ChatALL (중국명: 齐叨)은 여러 AI 봇에 동시에 프롬프트를 전송하여 최상의 결과를 찾을 수 있도록 도와줍니다. [다운로드, 설치](https://github.com/ai-shifu/ChatALL/releases)한 후 물어보기만 하면 됩니다.
+대규모 언어 모델(LLMs) 기반 AI 봇은 놀랍습니다. 하지만 봇의 행동은 무작위적일 수 있으며, 봇마다 다른 작업에서 뛰어난 능력을 발휘합니다. 최상의 경험을 원한다면 하나씩 사용해 보지 마세요. ChatALL (중국명: 齐叨)은 여러 AI 봇에 동시에 프롬프트를 전송하여 최상의 결과를 찾을 수 있도록 도와줍니다. [다운로드, 설치](https://github.com/sunner/ChatALL/releases)한 후 물어보기만 하면 됩니다.
 
 ### 본인인가요?
 
@@ -26,47 +26,47 @@ ChatALL의 일반적인 사용자는 다음과 같습니다:
 
 ### 지원되는 봇
 
-| AI 봇                                                                          | 웹 액세스 | API       | 참고                                                  |
-| ------------------------------------------------------------------------------ | --------- | --------- | ----------------------------------------------------- |
-| [360 AI Brain](https://ai.360.cn/)                                             | 예        | 없음      |                                                       |
+| AI 봇                                                                           | 웹 액세스 | API       | 참고                                       |
+| ------------------------------------------------------------------------------ | ----------- | ----------- | ------------------------------------------- |
+| [360 AI Brain](https://ai.360.cn/)                                             | 예        | API 없음      |                                                       |
 | [Baidu ERNIE](https://yiyan.baidu.com/)                                        | 아니오    | 예        |                                                       |
-| [Character.AI](https://character.ai/)                                          | 예        | 없음      |                                                       |
-| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | 예        | 없음      | 로그인 필요 없음                                      |
-| [ChatGPT](https://chatgpt.com)                                             | 예        | 예        | 웹 브라우징 포함, Azure OpenAI 서비스                 |
+| [Character.AI](https://character.ai/)                                          | 예        | API 없음      |                                                       |
+| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | 예        | API 없음      | 로그인 필요 없음                           |
+| [ChatGPT](https://chat.openai.com)                                             | 예        | 예        | 웹 브라우징, Azure OpenAI 서비스 포함 |
 | [Claude](https://www.anthropic.com/claude)                                     | 예        | 예        |                                                       |
-| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예        | 없음      |                                                       |
-| [Cohere Aya 23](https://cohere.com/blog/aya23)                                 | 아니오    | 예        |                                                       |
-| [Cohere Command R 모델](https://cohere.com/command)                            | 아니오    | 예        |                                                       |
-| [Copilot](https://copilot.microsoft.com/)                                      | 예        | 없음      |                                                       |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | 근일 개봉 | 없음      |                                                       |
-| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | 예        | 없음      |                                                       |
+| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | 예        | API 없음      |                                                       |
+| [Cohere Aya 23](https://cohere.com/blog/aya23)                                 | 아니오          | 예         |                                             |
+| [Cohere Command R 모델](https://cohere.com/command)                                | 아니오     | 예        |                                                       |
+| [Copilot](https://copilot.microsoft.com/)                                      | 예        | API 없음      |                                                       |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | 근일 개봉 | API 없음      |                                                       |
+| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | 예        | API 없음      |                                                       |
 | [Gemini](https://gemini.google.com/)                                           | 예        | 예        |                                                       |
-| [Gemma 2B & 7B](https://blog.google/technology/developers/gemma-open-models/)  | 예        | 없음      |                                                       |
-| [Gradio](https://gradio.app/)                                                  | 예        | 없음      | Hugging Face 공간/자체 배포 모델용                    |
+| [Gemma 2B & 7B](https://blog.google/technology/developers/gemma-open-models/)  | 예        | API 없음      |                                                       |
+| [Gradio](https://gradio.app/)                                                  | 예        | API 없음      | Hugging Face 공간/자체 배포 모델용 |
 | [Groq Cloud](https://console.groq.com/docs/models)                             | 아니오    | 예        |                                                       |
-| [HuggingChat](https://huggingface.co/chat/)                                    | 예        | 없음      |                                                       |
+| [HuggingChat](https://huggingface.co/chat/)                                    | 예        | API 없음      |                                                       |
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | 예        | 근일 개봉 |                                                       |
-| [Kimi](https://kimi.moonshot.cn/)                                              | 예        | 없음      |                                                       |
-| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | 예        | 없음      |                                                       |
-| [MOSS](https://moss.fastnlp.top/)                                              | 예        | 없음      |                                                       |
-| [Perplexity](https://www.perplexity.ai/)                                       | 예        | 없음      |                                                       |
-| [Phind](https://www.phind.com/)                                                | 예        | 없음      |                                                       |
-| [Pi](https://pi.ai)                                                            | 예        | 없음      |                                                       |
+| [Kimi](https://kimi.moonshot.cn/)                                              | 예        | API 없음      |                                                       |
+| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | 예        | API 없음      |                                                       |
+| [MOSS](https://moss.fastnlp.top/)                                              | 예        | API 없음      |                                                       |
+| [Perplexity](https://www.perplexity.ai/)                                       | 예        | API 없음      |                                                       |
+| [Phind](https://www.phind.com/)                                                | 예        | API 없음      |                                                       |
+| [Pi](https://pi.ai)                                                            | 예        | API 없음      |                                                       |
 | [Poe](https://poe.com/)                                                        | 예        | 근일 개봉 |                                                       |
 | [SkyWork](https://neice.tiangong.cn/)                                          | 예        | 근일 개봉 |                                                       |
 | [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | 예        | 근일 개봉 |                                                       |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | 예        | 없음      | 로그인 필요 없음                                      |
-| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | 예        | 없음      |                                                       |
-| [xAI Grok](https://x.ai)                                                       | 아니오    | 예        |                                                       |
-| [YouChat](https://you.com/)                                                    | 예        | 없음      |                                                       |
-| [You](https://you.com/)                                                        | 예        | 없음      |                                                       |
-| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 예        | 없음      |                                                       |
+| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | 예        | API 없음      | 로그인 필요 없음                           |
+| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | 예        | API 없음      |                                                       |
+| [xAI Grok](https://x.ai)                                                       | 아니오          | 예         |                                             |
+| [YouChat](https://you.com/)                                                    | 예        | API 없음      |                                                       |
+| [You](https://you.com/)                                                        | 예        | API 없음      |                                                       |
+| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | 예        | API 없음      |                                                       |
 
-더 많은 것이 오고 있습니다. [이 문제들](https://github.com/ai-shifu/ChatALL/labels/more%20LLMs)에서 좋아하는 봇을 추천하세요.
+더 많은 것이 오고 있습니다. [이 문제들](https://github.com/sunner/ChatALL/labels/more%20LLMs)에서 좋아하는 봇을 추천하세요.
 
-### 웹 기반 AI 봇의 신뢰성 관련 안내
+### 웹 연결 봇 신뢰성에 관한 참고 사항
 
-웹 기반으로 연결되는 AI 봇들("웹 액세스" 지원으로 표시된 봇들)은 본질적으로 신뢰성이 부족하며 안정성 문제가 자주 발생합니다. 이는 서비스 제공업체가 웹 인터페이스와 보안 조치를 수시로 업데이트하며, 이에 따라 리버스 엔지니어링을 통한 유지보수가 필요하기 때문입니다. 이러한 웹 기반 연결은 유지보수가 어렵고 예기치 않게 작동이 중단될 수 있습니다. 보다 안정적이고 신뢰할 수 있는 서비스 이용을 위해 가능한 한 API 액세스를 제공하는 봇의 사용을 적극 권장합니다.
+웹에 연결된 AI 봇 ('웹 액세스'로 표시된 봇)은 본질적으로 신뢰성이 떨어지고 서비스 제공업체가 웹 인터페이스와 보안 조치를 정기적으로 업데이트하기 때문에 안정성 문제에 자주 직면합니다. 이러한 웹 기반 연결은 리버스 엔지니어링에 의존하며 유지 관리가 어렵고 종종 예기치 않게 깨지는 경우가 많습니다. 신뢰할 수 있는 경험을 위해 가능한 한 API 액세스를 제공하는 봇을 사용하는 것을 강력히 권장합니다.
 
 ### 기타 기능
 
@@ -108,7 +108,7 @@ ChatALL은 프록시가 아닌 클라이언트이므로 다음 작업을 수행�
 
 ## 다운로드 / 설치
 
-https://github.com/ai-shifu/ChatALL/releases에서 다운로드
+https://github.com/sunner/ChatALL/releases에서 다운로드
 
 ### Windows에서
 
@@ -149,13 +149,13 @@ ChatALL을 사용하는 동안 문제가 발생하면 다음 방법을 사용하
 - Linux: `/home/<user>/.config/chatall/`
 - macOS: `/Users/<user>/Library/Application Support/chatall/`
 
-문제가 지속되면 [문제 제출](https://github.com/ai-shifu/ChatALL/issues)로 문의해 주세요.
+문제가 지속되면 [문제 제출](https://github.com/sunner/ChatALL/issues)로 문의해 주세요.
 
 ## 개발자용
 
 ### 봇 기부
 
-[가이드](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)가 도움이 될 수 있습니다.
+[가이드](https://github.com/sunner/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA)가 도움이 될 수 있습니다.
 
 ### 실행
 
