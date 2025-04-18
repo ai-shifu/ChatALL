@@ -20,6 +20,9 @@ import OpenAIAPI4Bot from "@/bots/openai/OpenAIAPI4Bot";
 import OpenAIAPI4128KBot from "@/bots/openai/OpenAIAPI4128KBot";
 import OpenAIAPI4oBot from "@/bots/openai/OpenAIAPI4oBot";
 import OpenAIAPI4oMiniBot from "./openai/OpenAIAPI4oMiniBot";
+import OpenAIAPI41Bot from "./openai/OpenAIAPI41Bot";
+import OpenAIAPI41MiniBot from "./openai/OpenAIAPI41MiniBot";
+import OpenAIAPI41NanoBot from "./openai/OpenAIAPI41NanoBot";
 import OpenAIAPIo1Bot from "./openai/OpenAIAPIo1Bot";
 import OpenAIAPIo1MiniBot from "./openai/OpenAIAPIo1MiniBot";
 import OpenAIAPIo3MiniBot from "./openai/OpenAIAPIo3MiniBot";
@@ -101,6 +104,9 @@ const all = [
   OpenAIAPI4128KBot.getInstance(),
   OpenAIAPI4oBot.getInstance(),
   OpenAIAPI4oMiniBot.getInstance(),
+  OpenAIAPI41Bot.getInstance(),
+  OpenAIAPI41MiniBot.getInstance(),
+  OpenAIAPI41NanoBot.getInstance(),
   OpenAIAPIo1Bot.getInstance(),
   OpenAIAPIo1MiniBot.getInstance(),
   OpenAIAPIo3MiniBot.getInstance(),
@@ -192,6 +198,9 @@ export const botTags = {
     bots.getBotByClassName("OpenAIAPI4128KBot"),
     bots.getBotByClassName("OpenAIAPI4oBot"),
     bots.getBotByClassName("OpenAIAPI4oMiniBot"),
+    bots.getBotByClassName("OpenAIAPI41Bot"),
+    bots.getBotByClassName("OpenAIAPI41MiniBot"),
+    bots.getBotByClassName("OpenAIAPI41NanoBot"),
     bots.getBotByClassName("OpenAIAPIo1Bot"),
     bots.getBotByClassName("OpenAIAPIo1MiniBot"),
     bots.getBotByClassName("OpenAIAPIo3MiniBot"),
