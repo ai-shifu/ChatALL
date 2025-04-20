@@ -1,91 +1,89 @@
 <template>
-  <v-dialog
+   <v-dialog
     :model-value="props.open"
     fullscreen
     :scrim="false"
     transition="dialog-bottom-transition"
-  >
-    <v-card class="overflow-hidden">
+    > <v-card class="overflow-hidden"
+      >
       <div class="d-flex flex-column h-screen">
-        <v-toolbar height="100px" dark color="primary">
-          <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title>
-          <v-spacer></v-spacer>
-
-          <v-btn icon dark @click="closeDialog">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </v-toolbar>
-        <v-row style="height: calc(100% - 100px)">
-          <v-col cols="2" class="h-100 overflow-auto pr-0">
-            <v-tabs v-model="tab" direction="vertical" color="primary">
-              <v-tab value="general">{{ $t("settings.general") }}</v-tab>
-              <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab>
-              <v-tab value="chat">{{ $t("chat.name") }}</v-tab>
-              <v-tab
+         <v-toolbar height="100px" dark color="primary"
+          > <v-toolbar-title>{{ $t("settings.title") }}</v-toolbar-title
+          > <v-spacer></v-spacer> <v-btn icon dark @click="closeDialog"
+            > <v-icon>mdi-close</v-icon> </v-btn
+          > </v-toolbar
+        > <v-row style="height: calc(100% - 100px)"
+          > <v-col cols="2" class="h-100 overflow-auto pr-0"
+            > <v-tabs v-model="tab" direction="vertical" color="primary"
+              > <v-tab value="general">{{ $t("settings.general") }}</v-tab
+              > <v-tab value="proxy">{{ $t("proxy.name") }}</v-tab
+              > <v-tab value="chat">{{ $t("chat.name") }}</v-tab
+              > <v-tab
                 v-for="(setting, index) in botSettings"
                 :key="index"
                 :value="index"
+                > {{ $t(`${setting.brand}.name`) }} </v-tab
+              > </v-tabs
+            > </v-col
+          > <v-col class="h-100 overflow-auto"
+            > <v-list lines="two" subheader
               >
-                {{ $t(`${setting.brand}.name`) }}
-              </v-tab>
-            </v-tabs>
-          </v-col>
-          <v-col class="h-100 overflow-auto">
-            <v-list lines="two" subheader>
               <div v-if="tab == 'general'">
-                <v-list-item>
-                  <v-list-item-title>{{
+                 <v-list-item
+                  > <v-list-item-title>{{
                     $t("settings.language")
-                  }}</v-list-item-title>
-                  <v-select
+                  }}</v-list-item-title
+                  > <v-select
                     :items="languages"
                     item-title="name"
                     item-value="code"
                     hide-details
                     :model-value="lang"
                     @update:model-value="setCurrentLanguage($event)"
-                  ></v-select>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-title>{{
+                  ></v-select
+                  > </v-list-item
+                > <v-list-item
+                  > <v-list-item-title>{{
                     $t("settings.theme")
-                  }}</v-list-item-title>
-                  <v-select
+                  }}</v-list-item-title
+                  > <v-select
                     :items="modes"
                     item-title="name"
                     item-value="code"
                     hide-details
                     :model-value="currentMode"
                     @update:model-value="setCurrentMode($event)"
-                  ></v-select>
-                </v-list-item>
-                <CommonBotSettings
+                  ></v-select
+                  > </v-list-item
+                > <CommonBotSettings
                   :settings="settings"
                   brand-id="general"
                   mutation-type="setGeneral"
-                ></CommonBotSettings>
+                ></CommonBotSettings
+                >
               </div>
 
               <div v-if="tab == 'proxy'">
-                <component :is="proxy"></component>
+                 <component :is="proxy"></component>
               </div>
 
               <div v-if="tab == 'chat'">
-                <component :is="chat" @close-dialog="closeDialog"></component>
+                 <component :is="chat" @close-dialog="closeDialog"></component>
               </div>
-
-              <template v-for="(setting, index) in botSettings" :key="index">
-                <component
+               <template v-for="(setting, index) in botSettings" :key="index"
+                > <component
                   v-if="tab == index"
                   :is="setting.component"
-                ></component>
-              </template>
-            </v-list>
-          </v-col>
-        </v-row>
+                ></component
+                > </template
+              > </v-list
+            > </v-col
+          > </v-row
+        >
       </div>
-    </v-card>
-  </v-dialog>
+       </v-card
+    > </v-dialog
+  >
 </template>
 
 <script setup>
@@ -242,3 +240,4 @@ watch(
   text-transform: none !important;
 }
 </style>
+

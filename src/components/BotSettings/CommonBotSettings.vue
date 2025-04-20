@@ -1,16 +1,13 @@
 <template>
-  <v-list-item>
-    <template v-for="setting in settings" :key="setting.name">
-      <v-list-item-title v-if="setting.title">
-        <!-- falcon.temperature -->
-        {{ $t(setting.title) }}</v-list-item-title
-      >
-      <v-list-item-subtitle v-if="setting.description">
-        <!-- falcon.temperaturePrompt -->
-        {{ $t(setting.description) }}</v-list-item-subtitle
-      >
-
-      <v-text-field
+   <v-list-item
+    > <template v-for="setting in settings" :key="setting.name"
+      > <v-list-item-title v-if="setting.title"
+        > <!-- falcon.temperature --> {{ $t(setting.title) }}</v-list-item-title
+      > <v-list-item-subtitle v-if="setting.description"
+        > <!-- falcon.temperaturePrompt --> {{
+          $t(setting.description)
+        }}</v-list-item-subtitle
+      > <v-text-field
         v-if="setting.type === Type.Text"
         v-model="settingState[setting.name]"
         outlined
@@ -22,8 +19,8 @@
           /* setFalcon({ temperature: $event }) */
           store.commit(mutationType, { [setting.name]: $event })
         "
-      ></v-text-field>
-      <v-select
+      ></v-text-field
+      > <v-select
         v-else-if="setting.type === Type.Select"
         v-model="settingState[setting.name]"
         outlined
@@ -36,8 +33,8 @@
           /* setFalcon({ temperature: $event }) */
           store.commit(mutationType, { [setting.name]: $event })
         "
-      ></v-select>
-      <v-slider
+      ></v-select
+      > <v-slider
         v-else-if="setting.type === Type.Slider"
         v-model="settingState[setting.name] /* falcon.temperature */"
         color="primary"
@@ -54,9 +51,8 @@
           /* setFalcon({ temperature: $event }) */
           store.commit(mutationType, { [setting.name]: $event })
         "
-      >
-        <template v-slot:append>
-          <v-text-field
+        > <template v-slot:append
+          > <v-text-field
             v-model="settingState[setting.name] /* falcon.temperature */"
             :ref="
               (el) => {
@@ -74,10 +70,10 @@
                 [setting.name]: validateSliderInput(setting, $event),
               })
             "
-          ></v-text-field>
-        </template>
-      </v-slider>
-      <v-combobox
+          ></v-text-field
+          > </template
+        > </v-slider
+      > <v-combobox
         v-else-if="setting.type === Type.Combobox"
         v-model="settingState[setting.name]"
         outlined
@@ -89,8 +85,8 @@
         @update:model-value="
           store.commit(mutationType, { [setting.name]: $event })
         "
-      ></v-combobox>
-      <v-checkbox
+      ></v-combobox
+      > <v-checkbox
         v-else-if="setting.type === Type.Checkbox"
         v-model="settingState[setting.name]"
         outlined
@@ -102,9 +98,10 @@
         @update:model-value="
           store.commit(mutationType, { [setting.name]: $event })
         "
-      ></v-checkbox>
-    </template>
-  </v-list-item>
+      ></v-checkbox
+      > </template
+    > </v-list-item
+  >
 </template>
 
 <script setup>
@@ -188,3 +185,4 @@ function getInputElement(ref) {
   return ref.$el.querySelector("input");
 }
 </script>
+

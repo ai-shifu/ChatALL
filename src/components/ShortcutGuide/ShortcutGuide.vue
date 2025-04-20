@@ -1,20 +1,23 @@
 <template>
-  <v-overlay
+   <v-overlay
     :scrim="true"
     :model-value="props.open"
     v-on:after-leave="closeShortcutGuide"
     @click="closeShortcutGuide"
-  >
+    >
     <div
       style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh"
     >
+
       <div
         ref="shortcutGuideContentRef"
         style="position: relative"
         class="markdown-body"
       ></div>
+
     </div>
-  </v-overlay>
+     </v-overlay
+  >
 </template>
 
 <script setup>
@@ -93,6 +96,7 @@ defineExpose({
   toggleShortcutGuide,
 });
 </script>
+
 <style scoped>
 :deep() .shortcut-label {
   position: absolute;
@@ -126,3 +130,4 @@ defineExpose({
   box-shadow: inset 0 -1px 0 rgba(110, 118, 129, 0.4);
 }
 </style>
+

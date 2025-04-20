@@ -1,10 +1,10 @@
 <template>
-  <login-setting :bot="bot"></login-setting>
-  <CommonBotSettings
+   <login-setting :bot="bot"></login-setting> <CommonBotSettings
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setCharacterAI"
-  ></CommonBotSettings>
+  ></CommonBotSettings
+  >
 </template>
 
 <script>
@@ -37,3 +37,4 @@ export default {
   },
 };
 </script>
+

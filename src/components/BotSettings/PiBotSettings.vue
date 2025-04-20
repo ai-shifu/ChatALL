@@ -1,6 +1,4 @@
-<template>
-  <login-setting :bot="bot"></login-setting>
-</template>
+<template> <login-setting :bot="bot"></login-setting> </template>
 
 <script>
 import Bot from "@/bots/PiBot";
@@ -17,3 +15,4 @@ export default {
   },
 };
 </script>
+

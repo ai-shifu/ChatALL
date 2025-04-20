@@ -1,34 +1,31 @@
 <template>
+
   <div id="snackbar" class="text-center">
-    <v-snackbar :vertical="true" :timeout="-1" multi-line v-model="snackbar">
-      <span class="text-center font-weight-bold">
-        {{ $t("updates.updateAvailable") }}
-      </span>
-      <span class="text-center">
-        {{ $t("updates.currentVersion") }}: {{ versions.current }}
-      </span>
-      <span class="text-center">
-        {{ $t("updates.latestVersion") }}: {{ versions.latest }}
-      </span>
-      <v-btn
+     <v-snackbar :vertical="true" :timeout="-1" multi-line v-model="snackbar"
+      > <span class="text-center font-weight-bold"
+        > {{ $t("updates.updateAvailable") }} </span
+      > <span class="text-center"
+        > {{ $t("updates.currentVersion") }}: {{ versions.current }} </span
+      > <span class="text-center"
+        > {{ $t("updates.latestVersion") }}: {{ versions.latest }} </span
+      > <v-btn
         prepend-icon="mdi-github"
         color="primary"
         variant="tonal"
         @click="openReleasePage"
-      >
-        {{ $t("updates.downloadFromGitHub") }}
-      </v-btn>
-      <template v-slot:actions>
-        <v-btn color="primary" @click="skip">
-          {{ $t("updates.skipThisVersion") }}
-        </v-btn>
-        <v-btn color="primary" @click="snackbar = false">
-          {{ $t("updates.close") }}
-        </v-btn>
-      </template>
-    </v-snackbar>
+        > {{ $t("updates.downloadFromGitHub") }} </v-btn
+      > <template v-slot:actions
+        > <v-btn color="primary" @click="skip"
+          > {{ $t("updates.skipThisVersion") }} </v-btn
+        > <v-btn color="primary" @click="snackbar = false"
+          > {{ $t("updates.close") }} </v-btn
+        > </template
+      > </v-snackbar
+    >
   </div>
+
 </template>
+
 <script setup>
 import { ref } from "vue";
 import { compare } from "compare-versions";
@@ -63,6 +60,7 @@ function openReleasePage() {
   shell.openExternal(`https://github.com/ai-shifu/ChatALL/releases/latest`);
 }
 </script>
+
 <style scoped>
 :deep() .v-btn {
   text-transform: none;
@@ -89,3 +87,4 @@ span {
   color: rgb(var(--v-theme-font));
 }
 </style>
+

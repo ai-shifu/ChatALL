@@ -1,6 +1,4 @@
-<template>
-  <login-setting :bot="bot"></login-setting>
-</template>
+<template> <login-setting :bot="bot"></login-setting> </template>
 
 <script>
 const electron = window.require("electron");
@@ -30,3 +28,4 @@ export default {
   },
 };
 </script>
+

@@ -1,29 +1,34 @@
 <template>
-  <v-container v-if="loading" class="ma-0 position-fixed" style="z-index: 1">
-    <v-label class="bg-background" style="opacity: 1">{{
+   <v-container v-if="loading" class="ma-0 position-fixed" style="z-index: 1"
+    > <v-label class="bg-background" style="opacity: 1">{{
       $t("chat.loading")
-    }}</v-label>
-  </v-container>
+    }}</v-label
+    > </v-container
+  >
   <div class="messages">
+
     <div
       class="message-grid"
       :style="{ gridTemplateColumns: gridTemplateColumns }"
     >
-      <template v-for="(message, index) in currentChatMessages" :key="index">
-        <chat-prompt
+       <template v-for="(message, index) in currentChatMessages" :key="index"
+        > <chat-prompt
           v-if="message.type === 'prompt'"
           :columns="columns"
           :message="message"
-        ></chat-prompt>
-        <chat-response
+        ></chat-prompt
+        > <chat-response
           v-else
           :chat="chat"
           :columns="columns"
           :messages="message"
-        ></chat-response>
-      </template>
+        ></chat-response
+        > </template
+      >
     </div>
+
   </div>
+
 </template>
 
 <script setup>
@@ -138,3 +143,4 @@ onMounted(async () => {
   padding: 2rem;
 }
 </style>
+

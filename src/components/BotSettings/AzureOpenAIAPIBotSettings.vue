@@ -1,10 +1,11 @@
 <template>
-  <CommonBotSettings
+   <CommonBotSettings
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setAzureOpenaiApi"
     :watcher="watcher"
-  ></CommonBotSettings>
+  ></CommonBotSettings
+  >
 </template>
 
 <script>
@@ -78,3 +79,4 @@ export default {
   },
 };
 </script>
+

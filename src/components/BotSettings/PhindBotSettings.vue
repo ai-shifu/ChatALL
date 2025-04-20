@@ -1,9 +1,10 @@
 <template>
-  <CommonBotSettings
+   <CommonBotSettings
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setPhind"
-  ></CommonBotSettings>
+  ></CommonBotSettings
+  >
 </template>
 
 <script>
@@ -31,3 +32,4 @@ export default {
   },
 };
 </script>
+

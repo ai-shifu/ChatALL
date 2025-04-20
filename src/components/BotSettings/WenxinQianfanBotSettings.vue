@@ -1,9 +1,10 @@
 <template>
-  <CommonBotSettings
+   <CommonBotSettings
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setWenxinQianfan"
-  ></CommonBotSettings>
+  ></CommonBotSettings
+  >
 </template>
 
 <script>
@@ -49,3 +50,4 @@ export default {
   },
 };
 </script>
+

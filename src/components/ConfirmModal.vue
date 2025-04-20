@@ -1,30 +1,31 @@
 <template>
-  <v-dialog
+   <v-dialog
     v-model="dialog"
     width="auto"
     max-width="80%"
     @click:outside="close(false)"
-  >
-    <v-card :title="_title">
-      <v-card-text>
+    > <v-card :title="_title"
+      > <v-card-text
+        >
         <div v-html="_text"></div>
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn variant="outlined" color="primary" @click="close(false)">{{
-          $t("header.no")
-        }}</v-btn>
-        <v-btn
+         </v-card-text
+      > <v-card-actions
+        > <v-spacer></v-spacer> <v-btn
+          variant="outlined"
+          color="primary"
+          @click="close(false)"
+          >{{ $t("header.no") }}</v-btn
+        > <v-btn
           ref="defaultButton"
           variant="flat"
           color="primary"
           class="bg-primary"
           @click="close(true)"
           >{{ $t("header.yes") }}</v-btn
-        >
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+        > </v-card-actions
+      > </v-card
+    > </v-dialog
+  >
 </template>
 
 <script setup>
@@ -67,3 +68,4 @@ defineExpose({
   close,
 });
 </script>
+

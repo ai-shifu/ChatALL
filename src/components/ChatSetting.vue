@@ -1,112 +1,108 @@
 <template>
-  <CommonBotSettings
+   <CommonBotSettings
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setChat"
-  ></CommonBotSettings>
-  <v-list>
-    <v-list-item>
-      <v-btn
+  ></CommonBotSettings
+  > <v-list
+    > <v-list-item
+      > <v-btn
         color="primary"
         variant="outlined"
         :text="$t('chat.deleteAllChatHistory')"
         @click="deleteChats"
-      ></v-btn>
-    </v-list-item>
-    <br />
-    <v-list-item>
-      <v-list-item-title style="font-size: 1.5rem" class="pb-2">
-        {{ $t("chat.exportImport") }}</v-list-item-title
-      >
-      <v-list-item-subtitle>
-        {{ $t("chat.exportImportDesc") }}</v-list-item-subtitle
+      ></v-btn
+      > </v-list-item
+    > <br /> <v-list-item
+      > <v-list-item-title style="font-size: 1.5rem" class="pb-2"
+        > {{ $t("chat.exportImport") }}</v-list-item-title
+      > <v-list-item-subtitle
+        > {{ $t("chat.exportImportDesc") }}</v-list-item-subtitle
       >
       <div class="pt-2">
-        <v-btn
+         <v-btn
           color="primary"
           variant="outlined"
           :text="$t('chat.export')"
           @click="exportData"
-        ></v-btn>
-        <v-btn
+        ></v-btn
+        > <v-btn
           color="primary"
           variant="outlined"
           :text="$t('chat.import')"
           @click="importData"
           style="margin-left: 10px"
+          > </v-btn
         >
-        </v-btn>
       </div>
-    </v-list-item>
-    <br />
-    <v-list-item>
-      <v-row>
-        <v-col class="align-baseline d-flex" style="font-size: 1.5rem">
-          <label class="pr-3">{{ $t("chat.actions") }}</label>
-          <v-btn
+       </v-list-item
+    > <br /> <v-list-item
+      > <v-row
+        > <v-col class="align-baseline d-flex" style="font-size: 1.5rem"
+          > <label class="pr-3">{{ $t("chat.actions") }}</label
+          > <v-btn
             class="mt-1"
             color="primary"
             variant="outlined"
             prepend-icon="mdi-plus"
             :text="$t('chat.addAction')"
             @click="add"
-          ></v-btn>
-        </v-col>
-      </v-row>
-    </v-list-item>
-    <v-list-item
+          ></v-btn
+          > </v-col
+        > </v-row
+      > </v-list-item
+    > <v-list-item
       v-for="action in userActions"
       density="comfortable"
       :key="action.index"
       :value="action.index"
       :ripple="false"
-    >
+      >
       <div class="align-center d-flex">
-        <v-list-item-title class="pr-5">{{ action.name }}</v-list-item-title>
-        <v-btn
+         <v-list-item-title class="pr-5">{{ action.name }}</v-list-item-title
+        > <v-btn
           flat
           size="x-small"
           icon="mdi-pencil-outline"
           @click="edit(action)"
           style="background-color: transparent"
-        ></v-btn>
-        <v-btn
+        ></v-btn
+        > <v-btn
           flat
           size="x-small"
           icon="mdi-delete-outline"
           @click="deleteAction(action)"
           style="margin: 0; background-color: transparent"
-        ></v-btn>
+        ></v-btn
+        >
       </div>
-    </v-list-item>
-  </v-list>
-  <v-dialog
+       </v-list-item
+    > </v-list
+  > <v-dialog
     persistent
     width="90%"
     height="90%"
     :model-value="isOpenAddEditAction"
     @update:model-value="isOpenAddEditAction = $event"
-  >
-    <v-card>
-      <v-form ref="formRef" class="pa-3" @submit.prevent>
-        <v-text-field
+    > <v-card
+      > <v-form ref="formRef" class="pa-3" @submit.prevent
+        > <v-text-field
           required
           autofocus
           v-model="actionName"
           placeholder="Summarize"
           :label="$t('chat.actionName')"
           :rules="[required]"
-        ></v-text-field>
-        <v-textarea
+        ></v-text-field
+        > <v-textarea
           required
           rows="3"
           v-model="prefix"
           :placeholder="prefixPlaceholder"
           :label="$t('chat.prefix')"
           @input="onInputTemplate"
-        >
-        </v-textarea>
-        <v-textarea
+          > </v-textarea
+        > <v-textarea
           required
           rows="4"
           v-model="template"
@@ -114,9 +110,8 @@
           :label="$t('chat.actionTemplate')"
           :rules="[required]"
           @input="onInputTemplate"
-        >
-          <template v-slot:append-inner>
-            <v-btn
+          > <template v-slot:append-inner
+            > <v-btn
               flat
               size="x-small"
               icon="mdi-help"
@@ -124,87 +119,75 @@
               @click="
                 isShowTemplateParametersDialog = !isShowTemplateGuideTooltip
               "
-            >
-            </v-btn>
-          </template>
-        </v-textarea>
-        <v-textarea
+              > </v-btn
+            > </template
+          > </v-textarea
+        > <v-textarea
           required
           rows="3"
           v-model="suffix"
           :placeholder="suffixPlaceholder"
           :label="$t('chat.suffix')"
           @input="onInputTemplate"
-        >
-        </v-textarea>
-        <label class="pl-4" style="font-size: 1.2rem">{{
+          > </v-textarea
+        > <label class="pl-4" style="font-size: 1.2rem">{{
           $t("chat.preview")
-        }}</label>
-        <chat-prompt
+        }}</label
+        > <chat-prompt
           class="w-100"
           :message="{ content: previewRef }"
           :isThread="false"
           :columns="3"
-        ></chat-prompt>
-      </v-form>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn
+        ></chat-prompt
+        > </v-form
+      > <v-card-actions
+        > <v-spacer></v-spacer> <v-btn
           variant="outlined"
           color="primary"
           @click="isOpenAddEditAction = false"
           >{{ $t("modal.cancel") }}</v-btn
-        >
-        <v-btn variant="flat" class="bg-primary" @click="addEditAction">{{
+        > <v-btn variant="flat" class="bg-primary" @click="addEditAction">{{
           $t("modal.done")
-        }}</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
-  <v-dialog
+        }}</v-btn
+        > </v-card-actions
+      > </v-card
+    > </v-dialog
+  > <v-dialog
     width="auto"
     :model-value="isShowTemplateParametersDialog"
     v-on:after-leave="isShowTemplateParametersDialog = false"
-  >
-    <v-card>
-      <v-md-preview class="pa-4" :text="templateParametersInfo" />
-    </v-card>
-  </v-dialog>
-  <ConfirmModal ref="confirmModal" />
-  <v-snackbar
+    > <v-card
+      > <v-md-preview class="pa-4" :text="templateParametersInfo" /> </v-card
+    > </v-dialog
+  > <ConfirmModal ref="confirmModal" /> <v-snackbar
     v-model="snackbar.show"
     :timeout="snackbar.timeout"
     :color="snackbar.color"
-  >
-    {{ snackbar.text }}
-    <template v-slot:actions>
-      <v-btn variant="text" @click="snackbar.show = false">
-        {{ $t("updates.close") }}
-      </v-btn>
-    </template>
-  </v-snackbar>
-  <v-dialog width="85vw" :model-value="isShowImportProgressDialog" persistent>
-    <v-card>
-      <v-card-title> {{ $t("chat.importLog") }} </v-card-title>
-      <v-textarea
+    > {{ snackbar.text }} <template v-slot:actions
+      > <v-btn variant="text" @click="snackbar.show = false"
+        > {{ $t("updates.close") }} </v-btn
+      > </template
+    > </v-snackbar
+  > <v-dialog width="85vw" :model-value="isShowImportProgressDialog" persistent
+    > <v-card
+      > <v-card-title> {{ $t("chat.importLog") }} </v-card-title> <v-textarea
         readonly
         hide-details
         rows="20"
         v-model="importProgressText"
         id="import-log-textarea"
         :loading="isImportCompleted === false"
-      ></v-textarea>
-      <v-card-actions class="justify-end pr-6 pt-0" style="gap: 0.3rem">
-        <v-btn
+      ></v-textarea
+      > <v-card-actions class="justify-end pr-6 pt-0" style="gap: 0.3rem"
+        > <v-btn
           variant="text"
           @click="isShowImportProgressDialog = false"
           :disabled="isImportCompleted === false"
-        >
-          {{ $t("modal.done") }}
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+          > {{ $t("modal.done") }} </v-btn
+        > </v-card-actions
+      > </v-card
+    > </v-dialog
+  >
 </template>
 
 <script setup>
@@ -807,6 +790,7 @@ async function deleteAction(item) {
   }
 }
 </script>
+
 <style scoped>
 .no-text-transform {
   text-transform: none !important;
@@ -820,3 +804,4 @@ async function deleteAction(item) {
   padding: 0;
 }
 </style>
+

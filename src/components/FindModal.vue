@@ -1,5 +1,5 @@
 <template>
-  <v-form
+   <v-form
     ref="formRef"
     @submit.prevent="true"
     v-shortkey="SHORTCUT_FIND.key"
@@ -12,8 +12,7 @@
       min-width: 200px;
       padding-top: 0.5rem;
     "
-  >
-    <v-text-field
+    > <v-text-field
       id="find-text-field"
       @keydown.enter="() => find()"
       @keydown.esc="closeFindTextField"
@@ -28,62 +27,60 @@
       v-model="findTextModel"
       v-show="isShowFindText"
       prepend-inner-icon="mdi-magnify"
-    >
-      <template v-slot:append-inner>
-        <v-btn-group>
-          <v-btn
+      > <template v-slot:append-inner
+        > <v-btn-group
+          > <v-btn
             size="x-small"
             icon="mdi-chevron-up"
             @click="find(true)"
-          ></v-btn>
-          <v-btn
+          ></v-btn
+          > <v-btn
             size="x-small"
             icon="mdi-chevron-down"
             @click="find(false)"
-          ></v-btn>
-        </v-btn-group>
-        <v-tooltip
+          ></v-btn
+          > </v-btn-group
+        > <v-tooltip
           :text="$t('find.matchCase')"
           location="bottom"
           v-model="isShowMatchCaseTooltip"
-        >
-          <template v-slot:activator="{ props }">
-            <v-btn-toggle v-model="matchCaseToggle">
-              <v-btn
+          > <template v-slot:activator="{ props }"
+            > <v-btn-toggle v-model="matchCaseToggle"
+              > <v-btn
                 :value="MATCH_CASE_VALUE"
                 v-bind="props"
                 size="x-small"
                 icon="mdi-format-letter-case"
-              ></v-btn>
-            </v-btn-toggle>
-          </template>
-        </v-tooltip>
-        <v-tooltip
+              ></v-btn
+              > </v-btn-toggle
+            > </template
+          > </v-tooltip
+        > <v-tooltip
           :text="$t('find.wrapAround')"
           location="bottom"
           v-model="isShowWrapAroundTooltip"
-        >
-          <template v-slot:activator="{ props }">
-            <v-btn-toggle v-model="wrapAroundToggle">
-              <v-btn
+          > <template v-slot:activator="{ props }"
+            > <v-btn-toggle v-model="wrapAroundToggle"
+              > <v-btn
                 :value="WRAP_AROUND_VALUE"
                 v-bind="props"
                 size="x-small"
                 icon="mdi-autorenew"
-              ></v-btn>
-            </v-btn-toggle>
-          </template>
-        </v-tooltip>
-        <v-btn-group>
-          <v-btn
+              ></v-btn
+              > </v-btn-toggle
+            > </template
+          > </v-tooltip
+        > <v-btn-group
+          > <v-btn
             size="x-small"
             icon="mdi-close"
             @click="closeFindTextField"
-          ></v-btn>
-        </v-btn-group>
-      </template>
-    </v-text-field>
-  </v-form>
+          ></v-btn
+          > </v-btn-group
+        > </template
+      > </v-text-field
+    > </v-form
+  >
 </template>
 
 <script setup>
@@ -149,3 +146,4 @@ defineExpose({
   padding-right: 0;
 }
 </style>
+

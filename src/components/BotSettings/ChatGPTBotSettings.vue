@@ -1,20 +1,20 @@
 <template>
-  <v-list-item>
-    <v-alert type="info" outlined>{{ $t("chatGpt.notice") }} </v-alert>
-  </v-list-item>
-  <login-setting :bot="bot"></login-setting>
-  <v-list-item>
-    <v-list-item-title>{{ $t("chatGpt.autoRefresh") }}</v-list-item-title>
-    <v-list-item-subtitle>{{
+   <v-list-item
+    > <v-alert type="info" outlined>{{ $t("chatGpt.notice") }} </v-alert>
+    </v-list-item
+  > <login-setting :bot="bot"></login-setting> <v-list-item
+    > <v-list-item-title>{{ $t("chatGpt.autoRefresh") }}</v-list-item-title
+    > <v-list-item-subtitle>{{
       $t("chatGpt.autoRefreshPrompt")
-    }}</v-list-item-subtitle>
-    <v-checkbox
+    }}</v-list-item-subtitle
+    > <v-checkbox
       v-model="autoRefresh"
       color="primary"
       hideDetails="auto"
       :label="$t('settings.enable')"
-    ></v-checkbox>
-  </v-list-item>
+    ></v-checkbox
+    > </v-list-item
+  >
 </template>
 
 <script>
@@ -56,3 +56,4 @@ export default {
   },
 };
 </script>
+
