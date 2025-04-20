@@ -1,5 +1,5 @@
 <template>
-  <v-list-item
+   <v-list-item
     density="comfortable"
     v-if="!isEditMode"
     :key="`chat-${props.chat.index}`"
@@ -9,28 +9,27 @@
     class="pa-3 pr-0"
     :style="{ cursor: isCursorWait ? 'wait' : 'pointer' }"
     @click="onSelectChat"
-  >
-    <template v-slot:prepend>
-      <v-icon color="primary" class="mr-4"> mdi-message-outline </v-icon>
-    </template>
-    <template #append v-if="props.currentChatIndex === props.chat.index">
-      <v-btn
+    > <template v-slot:prepend
+      > <v-icon color="primary" class="mr-4"> mdi-message-outline </v-icon>
+      </template
+    > <template #append v-if="props.currentChatIndex === props.chat.index"
+      > <v-btn
         flat
         size="x-small"
         icon="mdi-pencil-outline"
         @click="editChat"
         style="background-color: transparent"
-      ></v-btn>
-      <v-btn
+      ></v-btn
+      > <v-btn
         flat
         size="x-small"
         icon="mdi-delete-outline"
         @click="confirmHideChat"
         style="margin: 0; background-color: transparent"
-      ></v-btn>
-    </template>
-  </v-list-item>
-  <v-text-field
+      ></v-btn
+      > </template
+    > </v-list-item
+  > <v-text-field
     autofocus
     :key="`chat-${index}`"
     v-if="isEditMode"
@@ -42,20 +41,19 @@
     style="padding: 6px"
     class="pl-3 pr-0"
     hide-details
-  >
-    <template v-slot:prepend>
-      <v-icon color="primary"> mdi-message-outline </v-icon>
-    </template>
-    <template v-slot:append>
-      <v-btn flat size="x-small" icon="mdi-check" @click="confirmEdit"></v-btn>
-      <v-btn
+    > <template v-slot:prepend
+      > <v-icon color="primary"> mdi-message-outline </v-icon> </template
+    > <template v-slot:append
+      > <v-btn flat size="x-small" icon="mdi-check" @click="confirmEdit"></v-btn
+      > <v-btn
         flat
         size="x-small"
         icon="mdi-close"
         @click="isEditMode = false"
-      ></v-btn>
-    </template>
-  </v-text-field>
+      ></v-btn
+      > </template
+    > </v-text-field
+  >
 </template>
 
 <script setup>
@@ -132,3 +130,4 @@ function onPressEnter(event) {
   display: block;
 }
 </style>
+

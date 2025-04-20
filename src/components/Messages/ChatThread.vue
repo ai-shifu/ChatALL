@@ -1,20 +1,21 @@
 <template>
-  <template v-for="(message, index) in currentChatMessages" :key="index">
-    <chat-prompt
+   <template v-for="(message, index) in currentChatMessages" :key="index"
+    > <chat-prompt
       v-if="message.type === 'prompt'"
       :message="message"
       :columns="1"
       :isThread="true"
-    ></chat-prompt>
-    <chat-response
+    ></chat-prompt
+    > <chat-response
       v-else
       :chat="chat"
       :columns="1"
       :messages="message"
       :messagePromptIndex="messagePromptIndex"
       :isThread="true"
-    ></chat-response>
-  </template>
+    ></chat-response
+    > </template
+  >
 </template>
 
 <script setup>
@@ -81,3 +82,4 @@ const currentChatMessages = useObservable(
   }),
 );
 </script>
+

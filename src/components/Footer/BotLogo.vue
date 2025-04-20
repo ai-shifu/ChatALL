@@ -1,11 +1,12 @@
 <template>
-  <v-avatar
+   <v-avatar
     rounded="rounded"
     :class="{ active: active, invert: isLogoInverted }"
     :image="bot.getLogo()"
     :alt="bot.getFullname()"
     :title="bot.getFullname()"
-  ></v-avatar>
+  ></v-avatar
+  >
 </template>
 
 <script setup>
@@ -36,3 +37,4 @@ const isLogoInverted = computed(() => {
   filter: invert(100%);
 }
 </style>
+

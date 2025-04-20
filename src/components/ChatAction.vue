@@ -1,44 +1,41 @@
 <template>
-  <v-dialog
+   <v-dialog
     height="75%"
     width="80%"
     :model-value="props.open"
     @update:model-value="closeDialog"
-  >
-    <v-card height="100%">
-      <v-card-title>
-        <v-row>
-          <v-col class="d-flex align-center">
-            {{ props.action.name }}
-            <v-btn
+    > <v-card height="100%"
+      > <v-card-title
+        > <v-row
+          > <v-col class="d-flex align-center"
+            > {{ props.action.name }} <v-btn
               flat
               @click="isEdit = !isEdit"
               :icon="isEdit ? 'mdi-eye' : 'mdi-pencil-outline'"
-            ></v-btn>
-          </v-col>
-          <v-col class="d-flex align-center justify-end">
-            <v-label>{{ previewTextarea.length }}</v-label>
-          </v-col>
-        </v-row>
-      </v-card-title>
-      <v-card-text class="pt-0 overflow-auto">
-        <v-textarea
+            ></v-btn
+            > </v-col
+          > <v-col class="d-flex align-center justify-end"
+            > <v-label>{{ previewTextarea.length }}</v-label
+            > </v-col
+          > </v-row
+        > </v-card-title
+      > <v-card-text class="pt-0 overflow-auto"
+        > <v-textarea
           hide-details
           rows="20"
           v-show="isEdit"
           v-model="previewTextarea"
           @input="previewText = previewTextarea"
-        >
-        </v-textarea>
-        <chat-prompt
+          > </v-textarea
+        > <chat-prompt
           v-show="!isEdit"
           :message="{ content: previewText }"
           :isThread="false"
           :columns="3"
-        ></chat-prompt>
-      </v-card-text>
-      <v-card-actions class="justify-end pr-6 pt-0" style="gap: 0.3rem">
-        <v-btn
+        ></chat-prompt
+        > </v-card-text
+      > <v-card-actions class="justify-end pr-6 pt-0" style="gap: 0.3rem"
+        > <v-btn
           class="send-prompt-btn"
           elevation="2"
           :disabled="
@@ -47,11 +44,10 @@
             !chatRef
           "
           @click="send"
+          > {{ $t("footer.sendPrompt") }} </v-btn
         >
-          {{ $t("footer.sendPrompt") }}
-        </v-btn>
         <div class="bot-logos">
-          <BotLogo
+           <BotLogo
             v-for="(bot, index) in favBots"
             :id="`fav-bot-${index + 1}`"
             :key="index"
@@ -62,18 +58,16 @@
             @click="bot.selected = !bot.selected"
           />
         </div>
-        <v-form class="d-flex">
-          <v-radio-group v-model="chatRef" density="compact" hide-details>
-            <v-radio :label="$t('chat.inNewChat')" value="new"></v-radio>
-            <v-radio
-              :label="$t('chat.inCurrentChat')"
-              value="current"
-            ></v-radio>
-          </v-radio-group>
-        </v-form>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+         <v-form class="d-flex"
+          > <v-radio-group v-model="chatRef" density="compact" hide-details
+            > <v-radio :label="$t('chat.inNewChat')" value="new"></v-radio>
+            <v-radio :label="$t('chat.inCurrentChat')" value="current"></v-radio
+            > </v-radio-group
+          > </v-form
+        > </v-card-actions
+      > </v-card
+    > </v-dialog
+  >
 </template>
 
 <script setup>
@@ -196,3 +190,4 @@ function deselectAllResponses() {
   border-radius: 4px !important;
 }
 </style>
+

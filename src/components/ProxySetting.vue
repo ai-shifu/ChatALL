@@ -1,132 +1,110 @@
 <template>
-  <v-list>
-    <v-list-item>
-      <v-list-item-title>{{ $t("proxy.enableProxy") }}</v-list-item-title>
-      <v-checkbox
+   <v-list
+    > <v-list-item
+      > <v-list-item-title>{{ $t("proxy.enableProxy") }}</v-list-item-title
+      > <v-checkbox
         :label="$t('settings.enable')"
         v-model="proxySettings.enableProxy"
         hide-details
-      ></v-checkbox>
-    </v-list-item>
-
-    <v-list-item>
-      <v-list-item-title>{{ $t("proxy.proxyMode") }} </v-list-item-title>
-      <v-radio-group inline hide-details v-model="proxySettings.proxyMode">
-        <v-radio :label="$t('proxy.globalMode')" value="normal"></v-radio>
+      ></v-checkbox
+      > </v-list-item
+    > <v-list-item
+      > <v-list-item-title>{{ $t("proxy.proxyMode") }} </v-list-item-title>
+      <v-radio-group inline hide-details v-model="proxySettings.proxyMode"
+        > <v-radio :label="$t('proxy.globalMode')" value="normal"></v-radio>
         <v-radio :label="$t('proxy.pacFileMode')" value="pacFile"></v-radio>
         <v-radio :label="$t('proxy.pacUrlMode')" value="pacUrl"></v-radio>
-      </v-radio-group>
-    </v-list-item>
-
-    <v-list-item v-if="proxySettings.proxyMode == 'normal'">
-      <v-list-item-title>{{ $t("proxy.address") }}</v-list-item-title>
-      <v-text-field
+        </v-radio-group
+      > </v-list-item
+    > <v-list-item v-if="proxySettings.proxyMode == 'normal'"
+      > <v-list-item-title>{{ $t("proxy.address") }}</v-list-item-title
+      > <v-text-field
         v-model="proxySettings.proxyServer"
         :hint="
           $t('settings.forExample', { example: $t('proxy.addressExample') })
         "
         persistent-hint
-      ></v-text-field>
-      <v-list-item-title>{{ $t("proxy.byPass") }}</v-list-item-title>
-      <v-tabs fixed-tabs v-model="bypassSetMode">
-        <v-tab value="quickSet">
-          {{ $t("proxy.quickSet") }}
-        </v-tab>
-        <v-tab value="fullSet">
-          {{ $t("proxy.fullSet") }}
-        </v-tab>
-      </v-tabs>
-      <v-card>
-        <v-row
+      ></v-text-field
+      > <v-list-item-title>{{ $t("proxy.byPass") }}</v-list-item-title
+      > <v-tabs fixed-tabs v-model="bypassSetMode"
+        > <v-tab value="quickSet"> {{ $t("proxy.quickSet") }} </v-tab> <v-tab
+          value="fullSet"
+          > {{ $t("proxy.fullSet") }} </v-tab
+        > </v-tabs
+      > <v-card
+        > <v-row
           class="align-content-start"
           v-if="bypassSetMode == 'quickSet'"
           dense
-        >
-          <template v-for="(bot, index) in bots" :key="index">
-            <v-col cols="auto" class="pt-2">
-              <v-checkbox
+          > <template v-for="(bot, index) in bots" :key="index"
+            > <v-col cols="auto" class="pt-2"
+              > <v-checkbox
                 v-model="botsProxy"
                 :label="bot.name"
                 :value="bot.name"
                 hide-details
-              ></v-checkbox>
-            </v-col>
-          </template>
-        </v-row>
-      </v-card>
-      <v-card v-if="bypassSetMode == 'fullSet'">
-        <v-textarea
+              ></v-checkbox
+              > </v-col
+            > </template
+          > </v-row
+        > </v-card
+      > <v-card v-if="bypassSetMode == 'fullSet'"
+        > <v-textarea
           v-model="proxySettings.proxyBypassList"
           :hint="$t('proxy.byPassHint')"
           persistent-hint
-        ></v-textarea>
-      </v-card>
-    </v-list-item>
-
-    <v-list-item v-if="proxySettings.proxyMode == 'pacFile'">
-      <v-list-item-title>{{ $t("proxy.pacFile") }}</v-list-item-title>
-      <v-text-field
+        ></v-textarea
+        > </v-card
+      > </v-list-item
+    > <v-list-item v-if="proxySettings.proxyMode == 'pacFile'"
+      > <v-list-item-title>{{ $t("proxy.pacFile") }}</v-list-item-title
+      > <v-text-field
         v-model="proxySettings.pacFile"
         :label="$t('proxy.pacFileUsing')"
         disabled
-      ></v-text-field>
-      <v-file-input
+      ></v-text-field
+      > <v-file-input
         :label="$t('proxy.pacFileNew')"
         @change="onFileChange"
-      ></v-file-input>
-    </v-list-item>
-
-    <v-list-item v-if="proxySettings.proxyMode == 'pacUrl'">
-      <v-list-item-title>{{ $t("proxy.pacUrl") }}</v-list-item-title>
-      <v-text-field
+      ></v-file-input
+      > </v-list-item
+    > <v-list-item v-if="proxySettings.proxyMode == 'pacUrl'"
+      > <v-list-item-title>{{ $t("proxy.pacUrl") }}</v-list-item-title
+      > <v-text-field
         v-model="proxySettings.pacUrl"
         :label="$t('proxy.pacUrl')"
-      ></v-text-field>
-    </v-list-item>
-
-    <v-list-item>
-      <v-btn color="primary" @click="saveAndActive" class="ma-2 pa-2">
-        {{ $t("proxy.saveAndApply") }}
-      </v-btn>
-      <v-btn variant="outlined" color="primary" @click="onlySave">
-        {{ $t("proxy.onlySave") }}
-      </v-btn>
-      <v-btn
+      ></v-text-field
+      > </v-list-item
+    > <v-list-item
+      > <v-btn color="primary" @click="saveAndActive" class="ma-2 pa-2"
+        > {{ $t("proxy.saveAndApply") }} </v-btn
+      > <v-btn variant="outlined" color="primary" @click="onlySave"
+        > {{ $t("proxy.onlySave") }} </v-btn
+      > <v-btn
         variant="outlined"
         color="primary"
         @click="reload"
         class="ma-2 pa-2"
-      >
-        {{ $t("proxy.reload") }}
-      </v-btn>
-      <v-btn variant="outlined" color="primary" @click="resetAll">
-        {{ $t("proxy.reset") }}
-      </v-btn>
-    </v-list-item>
-
-    <v-list-item>
-      <v-divider></v-divider>
-    </v-list-item>
-    <v-list-item>
-      <v-list-item-title>{{ $t("proxy.proxyFilePath") }}</v-list-item-title>
-      <v-text-field
+        > {{ $t("proxy.reload") }} </v-btn
+      > <v-btn variant="outlined" color="primary" @click="resetAll"
+        > {{ $t("proxy.reset") }} </v-btn
+      > </v-list-item
+    > <v-list-item> <v-divider></v-divider> </v-list-item> <v-list-item
+      > <v-list-item-title>{{ $t("proxy.proxyFilePath") }}</v-list-item-title
+      > <v-text-field
         v-model="userDataPath"
         disabled
         :hint="$t('proxy.proxyFilePathHint')"
         persistent-hint
-      ></v-text-field>
-    </v-list-item>
-  </v-list>
-
-  <v-snackbar
+      ></v-text-field
+      > </v-list-item
+    > </v-list
+  > <v-snackbar
     v-model="snackbar.show"
     :timeout="snackbar.timeout"
     :color="snackbar.color"
-  >
-    {{ snackbar.text }}
-  </v-snackbar>
-
-  <ConfirmModal ref="confirmModal" />
+    > {{ snackbar.text }} </v-snackbar
+  > <ConfirmModal ref="confirmModal" />
 </template>
 
 <script setup>
@@ -311,3 +289,4 @@ defineExpose({
   onFileChange,
 });
 </script>
+
