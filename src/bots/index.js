@@ -35,13 +35,15 @@ import WenxinQianfanBot from "@/bots/baidu/WenxinQianfanBot";
 import ChatGLMBot from "@/bots/zhipu/ChatGLMBot";
 import DevBot from "@/bots/DevBot";
 import GradioAppBot from "@/bots/huggingface/GradioAppBot";
-import Gemma7bGroqAPIBot from "@/bots/groq/Gemma7bGroqAPIBot";
+// import Gemma7bGroqAPIBot from "@/bots/groq/Gemma7bGroqAPIBot";
+import Llama370bversatileGroqAPIBot from "@/bots/groq/Llama370bversatileGroqAPIBot";
 import Gemma29bGroqAPIBot from "@/bots/groq/Gemma29bGroqAPIBot";
 import Llama38bGroqAPIBot from "@/bots/groq/Llama38bGroqAPIBot";
 import Llama370bGroqAPIBot from "@/bots/groq/Llama370bGroqAPIBot";
 import Llama4ScoutGroqAPIBot from "@/bots/groq/Llama4ScoutGroqAPIBot";
 import Llama4MaverickGroqAPIBot from "@/bots/groq/Llama4MaverickGroqAPIBot";
-import Mixtral8x7bGroqAPIBot from "@/bots/groq/Mixtral8x7bGroqAPIBot";
+// import Mixtral8x7bGroqAPIBot from "@/bots/groq/Mixtral8x7bGroqAPIBot";
+import Mistral24bGroqAPIBot from "@/bots/groq/Mistral24bGroqAPIBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
 import SkyWorkBot from "./SkyWorkBot";
@@ -116,13 +118,15 @@ const all = [
   OpenAIAPIo4MiniBot.getInstance(),
   OpenAIAPI45Bot.getInstance(),
   GradioAppBot.getInstance(),
-  Gemma7bGroqAPIBot.getInstance(),
+  // Gemma7bGroqAPIBot.getInstance(),
+  Llama370bversatileGroqAPIBot.getInstance(),
   Gemma29bGroqAPIBot.getInstance(),
   Llama38bGroqAPIBot.getInstance(),
   Llama370bGroqAPIBot.getInstance(),
   Llama4ScoutGroqAPIBot.getInstance(),
   Llama4MaverickGroqAPIBot.getInstance(),
-  Mixtral8x7bGroqAPIBot.getInstance(),
+  Mistral24bGroqAPIBot.getInstance(),
+  // Mixtral8x7bGroqAPIBot.getInstance(),
   KimiBot.getInstance(),
   MistralBot.getInstance(),
   MOSSBot.getInstance(),
@@ -225,13 +229,15 @@ export const botTags = {
     bots.getBotByClassName("CohereAPICommandRBot"),
     bots.getBotByClassName("CohereAPICommandRPlusBot"),
     bots.getBotByClassName("CohereAPIAya23Bot"),
-    bots.getBotByClassName("Gemma7bGroqAPIBot"),
+    // bots.getBotByClassName("Gemma7bGroqAPIBot"),
+    bots.getBotByClassName("Llama370bversatileGroqAPIBot"),
     bots.getBotByClassName("Gemma29bGroqAPIBot"),
     bots.getBotByClassName("Llama38bGroqAPIBot"),
     bots.getBotByClassName("Llama370bGroqAPIBot"),
     bots.getBotByClassName("Llama4ScoutGroqAPIBot"),
     bots.getBotByClassName("Llama4MaverickGroqAPIBot"),
-    bots.getBotByClassName("Mixtral8x7bGroqAPIBot"),
+    // bots.getBotByClassName("Mixtral8x7bGroqAPIBot"),
+    bots.getBotByClassName("Mistral24bGroqAPIBot"),
     bots.getBotByClassName("GrokBetaAPIBot"),
     bots.getBotByClassName("Grok2APIBot"),
     bots.getBotByClassName("Grok3APIBot"),
