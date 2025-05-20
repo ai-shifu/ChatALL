@@ -1,9 +1,10 @@
 <template>
-  <CommonBotSettings
+   <CommonBotSettings
     :settings="settings"
     :brand-id="brandId"
     mutation-type="setGradio"
-  ></CommonBotSettings>
+  ></CommonBotSettings
+  >
 </template>
 
 <script>
@@ -43,3 +44,4 @@ export default {
   },
 };
 </script>
+

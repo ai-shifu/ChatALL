@@ -1,7 +1,7 @@
 <template>
-  <v-navigation-drawer permanent :model-value="props.open">
-    <v-list nav>
-      <v-list-item
+   <v-navigation-drawer permanent :model-value="props.open"
+    > <v-list nav
+      > <v-list-item
         :id="SHORTCUT_NEW_CHAT.elementId"
         density="comfortable"
         class="mb-1 border"
@@ -9,15 +9,12 @@
         @click="onAddChat"
         @shortkey="onAddChat"
         v-shortkey="SHORTCUT_NEW_CHAT.key"
-      >
-        <template v-slot:prepend>
-          <v-icon color="primary"> mdi-plus </v-icon>
-        </template>
-      </v-list-item>
-    </v-list>
-
-    <template v-for="chat in drawerItems">
-      <ChatDrawerItem
+        > <template v-slot:prepend
+          > <v-icon color="primary"> mdi-plus </v-icon> </template
+        > </v-list-item
+      > </v-list
+    > <template v-for="chat in drawerItems"
+      > <ChatDrawerItem
         v-if="!chat.hide"
         :key="chat.index"
         :chat="chat"
@@ -26,10 +23,10 @@
         @select-chat="selectChat"
         @edit-chat-title="editChatTitle"
         @focus-textarea="focusTextarea"
-      ></ChatDrawerItem>
-    </template>
-  </v-navigation-drawer>
-  <ConfirmModal ref="confirmModal" />
+      ></ChatDrawerItem
+      > </template
+    > </v-navigation-drawer
+  > <ConfirmModal ref="confirmModal" />
 </template>
 
 <script setup>
@@ -105,8 +102,10 @@ function focusTextarea() {
   });
 }
 </script>
+
 <style scoped>
 :deep() .v-list-item-title {
   font-size: 1rem !important;
 }
 </style>
+

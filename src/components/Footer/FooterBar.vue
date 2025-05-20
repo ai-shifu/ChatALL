@@ -1,12 +1,12 @@
 <template>
-  <v-bottom-navigation
+   <v-bottom-navigation
     class="footer"
     v-shortkey="{
       focusPromptTextarea: SHORTCUT_PROMPT_TEXTAREA.key,
       toggleBotsMenu: SHORTCUT_BOTS_MENU.key,
     }"
     @shortkey="handleShortcut"
-  >
+    >
     <div
       style="
         width: 100%;
@@ -16,7 +16,7 @@
         flex-wrap: wrap;
       "
     >
-      <v-textarea
+       <v-textarea
         :id="SHORTCUT_PROMPT_TEXTAREA.elementId"
         v-model="prompt"
         ref="promptTextArea"
@@ -30,9 +30,8 @@
         autofocus
         @keydown="filterEnterKey"
         style="min-width: 390px"
-      >
-        <template v-slot:append-inner>
-          <v-btn
+        > <template v-slot:append-inner
+          > <v-btn
             :id="SHORTCUT_PROMPT_MANAGEMENT.elementId"
             @click="isPromptManagementOpen = !isPromptManagementOpen"
             color="primary"
@@ -40,10 +39,10 @@
             class="h-100 w-100"
             style="border-radius: 4px; min-width: unset !important"
             icon="mdi-creation-outline"
-          ></v-btn>
-        </template>
-      </v-textarea>
-      <v-btn
+          ></v-btn
+          > </template
+        > </v-textarea
+      > <v-btn
         class="send-prompt-btn"
         elevation="2"
         :disabled="
@@ -51,39 +50,37 @@
           favBots.filter((favBot) => activeBots[favBot.classname]).length === 0
         "
         @click="sendPromptToBots"
+        > {{ $t("footer.sendPrompt") }} </v-btn
       >
-        {{ $t("footer.sendPrompt") }}
-      </v-btn>
       <div
         class="bot-logos"
         ref="favBotLogosRef"
         :key="rerenderFavBotLogos"
         @contextmenu="show"
       >
-        <v-menu
+         <v-menu
           v-model="showMenu"
           class="position-fixed"
           :style="{ left: `${x}px`, top: `${y}px` }"
-        >
-          <v-list>
-            <v-list-item @click="disableAllBots">
-              <v-list-item-title>{{
+          > <v-list
+            > <v-list-item @click="disableAllBots"
+              > <v-list-item-title>{{
                 $t("footer.disableAll")
-              }}</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="enableAllBots">
-              <v-list-item-title>{{
+              }}</v-list-item-title
+              > </v-list-item
+            > <v-list-item @click="enableAllBots"
+              > <v-list-item-title>{{
                 $t("footer.enableAll")
-              }}</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="removeAllBots">
-              <v-list-item-title>{{
+              }}</v-list-item-title
+              > </v-list-item
+            > <v-list-item @click="removeAllBots"
+              > <v-list-item-title>{{
                 $t("footer.removeAll")
-              }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-        <BotLogo
+              }}</v-list-item-title
+              > </v-list-item
+            > </v-list
+          > </v-menu
+        > <BotLogo
           v-for="(bot, index) in favBots"
           :id="`fav-bot-${index + 1}`"
           :key="index"
@@ -96,22 +93,22 @@
           @shortkey="toggleSelected(bot.instance)"
         />
       </div>
-      <BotsMenu
+       <BotsMenu
         style="padding-bottom: 0.5rem; padding-left: 4px"
         :id="SHORTCUT_BOTS_MENU.elementId"
         ref="botsMenuRef"
         :favBots="favBots"
       />
     </div>
-    <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
-    <ConfirmModal ref="confirmModal" />
-    <PromptModal
+     <MakeAvailableModal v-model:open="isMakeAvailableOpen" :bot="clickedBot" />
+    <ConfirmModal ref="confirmModal" /> <PromptModal
       v-shortkey="SHORTCUT_PROMPT_MANAGEMENT.key"
       @shortkey="isPromptManagementOpen = !isPromptManagementOpen"
       v-model:open="isPromptManagementOpen"
       @after-leave="usePrompt"
-    ></PromptModal>
-  </v-bottom-navigation>
+    ></PromptModal
+    > </v-bottom-navigation
+  >
 </template>
 
 <script setup>
@@ -529,3 +526,4 @@ textarea::placeholder {
   padding-top: 0;
 }
 </style>
+

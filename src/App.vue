@@ -1,14 +1,14 @@
 <template>
-  <v-app>
-    <v-container fluid style="padding: 0">
-      <ChatDrawer
+   <v-app
+    > <v-container fluid style="padding: 0"
+      > <ChatDrawer
         ref="chatDrawerRef"
         v-model:open="isChatDrawerOpen"
         @focus-textarea="focusPromptTextarea"
-      ></ChatDrawer>
-      <v-main class="content" :class="{ paddingTopZero: !isShowAppBar }">
-        <v-slide-y-transition>
-          <v-app-bar
+      ></ChatDrawer
+      > <v-main class="content" :class="{ paddingTopZero: !isShowAppBar }"
+        > <v-slide-y-transition
+          > <v-app-bar
             :id="SHORTCUT_APP_BAR.elementId"
             @shortkey="
               isShowAppBar = !isShowAppBar;
@@ -20,29 +20,28 @@
               transform: isShowAppBar ? 'translateY(0)' : 'translateY(-100%)',
             }"
             class="header-content pa-0"
-          >
-            <!-- Start Header  -->
+            > <!-- Start Header  -->
             <div class="header-content" v-show="isSelectedResponsesEmpty">
-              <v-app-bar-nav-icon
+               <v-app-bar-nav-icon
                 :id="SHORTCUT_CHAT_DRAWER.elementId"
                 variant="text"
                 @click.stop="isChatDrawerOpen = !isChatDrawerOpen"
                 @shortkey="isChatDrawerOpen = !isChatDrawerOpen"
                 v-shortkey="SHORTCUT_CHAT_DRAWER.key"
-              >
-              </v-app-bar-nav-icon>
-              <img
+                > </v-app-bar-nav-icon
+              > <img
                 :class="{ 'dark-png': store.state.theme === Theme.DARK }"
                 class="logo"
                 src="@/assets/logo-banner.png"
                 alt="ChatALL"
               />
             </div>
+
             <div
               class="column-icons header-content"
               v-show="isSelectedResponsesEmpty"
             >
-              <img
+               <img
                 v-for="columnCount in 3"
                 :id="`column-${columnCount}`"
                 :key="columnCount"
@@ -56,20 +55,21 @@
                 }"
               />
             </div>
+
             <div
               class="header-content"
               style="padding-right: 16px"
               v-show="isSelectedResponsesEmpty"
             >
-              <v-icon
+               <v-icon
                 :id="SHORTCUT_FIND.elementId"
                 class="cursor-pointer"
                 color="primary"
                 icon="mdi-magnify"
                 size="x-large"
                 @click="openFind()"
-              ></v-icon>
-              <v-icon
+              ></v-icon
+              > <v-icon
                 v-shortkey="SHORTCUT_CLEAR_MESSAGES.key"
                 @shortkey="clearMessages"
                 :id="SHORTCUT_CLEAR_MESSAGES.elementId"
@@ -78,8 +78,8 @@
                 icon="mdi-broom"
                 size="x-large"
                 @click="clearMessages()"
-              ></v-icon>
-              <v-icon
+              ></v-icon
+              > <v-icon
                 v-shortkey="SHORTCUT_SETTINGS.key"
                 @shortkey="openSettingsModal"
                 :id="SHORTCUT_SETTINGS.elementId"
@@ -88,8 +88,8 @@
                 icon="mdi-cog"
                 size="x-large"
                 @click="openSettingsModal()"
-              ></v-icon>
-              <v-icon
+              ></v-icon
+              > <v-icon
                 v-shortkey="SHORTCUT_SHORTCUT_GUIDE.key"
                 @shortkey="toggleShortcutGuide"
                 :id="SHORTCUT_SHORTCUT_GUIDE.elementId"
@@ -98,64 +98,65 @@
                 icon="mdi-help"
                 size="x-large"
                 @click="toggleShortcutGuide()"
-              ></v-icon>
+              ></v-icon
+              >
             </div>
-            <!-- End Header  -->
-            <!-- Start Selected Responses  -->
+             <!-- End Header  --> <!-- Start Selected Responses  -->
             <div
               class="header-content pr-3"
               style="text-wrap: nowrap"
               v-show="!isSelectedResponsesEmpty"
             >
-              <v-btn icon color="primary" @click="deselectAll">
-                <v-icon>mdi-arrow-left</v-icon>
-              </v-btn>
-              {{
+               <v-btn icon color="primary" @click="deselectAll"
+                > <v-icon>mdi-arrow-left</v-icon> </v-btn
+              > {{
                 $t("header.selectedResponsesCount", {
                   selectedCount: store.state.selectedResponses.length,
                 })
               }}
             </div>
+
             <div
               class="header-content overflow-auto"
               v-show="!isSelectedResponsesEmpty"
             >
-              <v-btn
+               <v-btn
                 v-for="action in userActions"
                 color="primary"
                 class="no-text-transform"
                 :text="action.name"
                 :key="action.index"
                 @click="callAction(action)"
-              ></v-btn>
+              ></v-btn
+              >
             </div>
-            <!-- End Selected Responses  -->
-          </v-app-bar>
-        </v-slide-y-transition>
-        <FindModal ref="findRef"></FindModal>
-
-        <ChatMessages :chat="currentChat" :columns="columns"></ChatMessages>
-        <FooterBar
+             <!-- End Selected Responses  --> </v-app-bar
+          > </v-slide-y-transition
+        > <FindModal ref="findRef"></FindModal> <ChatMessages
+          :chat="currentChat"
+          :columns="columns"
+        ></ChatMessages
+        > <FooterBar
           ref="footerBarRef"
           :chat="currentChat"
           @update-active-bots="(bots) => (activeBots = bots)"
-        ></FooterBar>
-      </v-main>
-      <SettingsModal v-model:open="isSettingsOpen" />
-      <ConfirmModal ref="confirmModal" />
-      <UpdateNotification></UpdateNotification>
-      <ShortcutGuide
+        ></FooterBar
+        > </v-main
+      > <SettingsModal v-model:open="isSettingsOpen" /> <ConfirmModal
+        ref="confirmModal"
+      /> <UpdateNotification></UpdateNotification> <ShortcutGuide
         ref="shortcutGuideRef"
         v-model:open="isShortcutGuideOpen"
-      ></ShortcutGuide>
-      <ChatAction
+      ></ShortcutGuide
+      > <ChatAction
         v-model:open="isChatActionOpen"
         :action="action"
         :responses="store.state.selectedResponses"
         :activeBots="activeBots"
-      ></ChatAction>
-    </v-container>
-  </v-app>
+      ></ChatAction
+      > </v-container
+    > </v-app
+  >
 </template>
 
 <script setup>
@@ -421,3 +422,4 @@ img.selected {
   padding-top: 0!important;
 }
 </style>
+

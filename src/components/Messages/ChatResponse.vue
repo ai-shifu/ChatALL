@@ -1,5 +1,5 @@
 <template>
-  <v-card
+   <v-card
     ref="root"
     :class="[
       'message',
@@ -12,16 +12,12 @@
     :flat="props.isThread"
     :ripple="!isSelectedResponsesEmpty"
     @click="!isSelectedResponsesEmpty && select($event)"
-  >
-    <v-card-title class="title">
-      <img
+    > <v-card-title class="title"
+      > <img
         :src="botLogo"
         :class="{ invert: isBotLogoInverted }"
         :alt="botFullname"
-      />
-      {{ botFullname }}
-      <v-spacer></v-spacer>
-      <v-btn
+      /> {{ botFullname }} <v-spacer></v-spacer> <v-btn
         flat
         size="x-small"
         icon
@@ -29,74 +25,65 @@
         :color="isHighlighted ? 'primary' : ''"
         :class="getButtonClass"
         v-show="isSelectedResponsesEmpty"
-      >
-        <v-icon>mdi-lightbulb-on-outline</v-icon>
-      </v-btn>
-      <v-btn
+        > <v-icon>mdi-lightbulb-on-outline</v-icon> </v-btn
+      > <v-btn
         flat
         size="x-small"
         icon
         @click="copyToClipboard"
         v-show="isSelectedResponsesEmpty"
         :class="getButtonClass"
-      >
-        <v-icon>mdi-content-copy</v-icon>
-      </v-btn>
-      <v-btn
+        > <v-icon>mdi-content-copy</v-icon> </v-btn
+      > <v-btn
         flat
         size="x-small"
         v-show="isSelectedResponsesEmpty"
         icon
         @click="hide"
         :class="getButtonClass"
-      >
-        <v-icon>mdi-delete</v-icon>
-      </v-btn>
-      <v-btn
+        > <v-icon>mdi-delete</v-icon> </v-btn
+      > <v-btn
         flat
         size="x-small"
         icon
         :class="getSelectButtonClass"
         @click="select($event)"
-      >
-        <v-icon>{{
+        > <v-icon>{{
           isSelected ? "mdi-check-circle" : "mdi-check-circle-outline"
-        }}</v-icon>
-      </v-btn>
-    </v-card-title>
-    <template v-if="messages && messages.length === 1">
-      <v-md-preview :text="messages[0].content" @click="handleClick" />
-      <template v-if="!isThread && messages.length && messages[0].hasThread">
-        <chat-thread
+        }}</v-icon
+        > </v-btn
+      > </v-card-title
+    > <template v-if="messages && messages.length === 1"
+      > <v-md-preview :text="messages[0].content" @click="handleClick" />
+      <template v-if="!isThread && messages.length && messages[0].hasThread"
+        > <chat-thread
           :chat="chat"
           :messageIndex="messages[0].index"
           :messagePromptIndex="messages[0].promptIndex"
-        ></chat-thread>
-      </template>
-    </template>
-    <v-carousel
+        ></chat-thread
+        > </template
+      > </template
+    > <v-carousel
       v-else
       hide-delimiter-background
       :hide-delimiters="true"
       height="auto"
       :show-arrows="false"
       v-model="carouselModel"
-    >
-      <v-carousel-item v-for="(message, i) in messages" :key="i">
-        <v-md-preview :text="message.content" @click="handleClick" />
-        <template v-if="!isThread && message && message.hasThread">
-          <chat-thread
+      > <v-carousel-item v-for="(message, i) in messages" :key="i"
+        > <v-md-preview :text="message.content" @click="handleClick" />
+        <template v-if="!isThread && message && message.hasThread"
+          > <chat-thread
             :chat="chat"
             :messageIndex="message.index"
             :messagePromptIndex="messages[0].promptIndex"
-          ></chat-thread>
-        </template>
-      </v-carousel-item>
-    </v-carousel>
-    <v-card class="response" style="padding: 0; margin-top: 0.5rem" flat>
-      <v-card-title style="display: flex; padding: 0">
-        <v-spacer></v-spacer>
-        <v-btn
+          ></chat-thread
+          > </template
+        > </v-carousel-item
+      > </v-carousel
+    > <v-card class="response" style="padding: 0; margin-top: 0.5rem" flat
+      > <v-card-title style="display: flex; padding: 0"
+        > <v-spacer></v-spacer> <v-btn
           flat
           icon
           size="x-small"
@@ -104,10 +91,8 @@
           v-if="isShowPagingButton"
           @click="pageLeft"
           :disabled="carouselModel === 0"
-        >
-          <v-icon>mdi-menu-left</v-icon>
-        </v-btn>
-        <v-btn
+          > <v-icon>mdi-menu-left</v-icon> </v-btn
+        > <v-btn
           flat
           icon
           size="x-small"
@@ -115,20 +100,16 @@
           v-if="isShowPagingButton"
           @click="pageRight"
           :disabled="carouselModel === maxPage"
-        >
-          <v-icon>mdi-menu-right</v-icon>
-        </v-btn>
-        <v-btn
+          > <v-icon>mdi-menu-right</v-icon> </v-btn
+        > <v-btn
           flat
           icon
           size="x-small"
           v-if="!(!isShowResendButton && !isShowReplyButton)"
           :style="{ visibility: isShowResendButton ? 'visible' : 'hidden' }"
           @click="resendPrompt(messages[0])"
-        >
-          <v-icon>mdi-refresh</v-icon>
-        </v-btn>
-        <v-btn
+          > <v-icon>mdi-refresh</v-icon> </v-btn
+        > <v-btn
           flat
           icon
           size="x-small"
@@ -136,15 +117,14 @@
           :style="{ visibility: isShowReplyButton ? 'visible' : 'hidden' }"
           :color="isShowReplyTextField ? 'primary' : ''"
           @click="toggleReplyButton"
-        >
-          <v-icon>mdi-reply</v-icon>
-        </v-btn>
-      </v-card-title>
+          > <v-icon>mdi-reply</v-icon> </v-btn
+        > </v-card-title
+      >
       <div
         v-show="isShowReplyTextField && isShowReplyButton"
         style="display: flex; align-items: flex-end; margin-top: 1rem"
       >
-        <v-textarea
+         <v-textarea
           style="
             padding-left: 0.1rem;
             padding-right: 0.5rem;
@@ -160,19 +140,18 @@
           variant="solo"
           :placeholder="`${$t('footer.sendPrompt')} ${botFullname}`"
           @keydown="filterEnterKey"
-        ></v-textarea>
-        <v-btn
+        ></v-textarea
+        > <v-btn
           :disabled="replyModel.trim() === ''"
           color="primary"
           size="small"
           @click="sendPromptToBot"
+          > <v-icon>mdi-send</v-icon> </v-btn
         >
-          <v-icon>mdi-send</v-icon>
-        </v-btn>
       </div>
-    </v-card>
-  </v-card>
-  <ConfirmModal ref="confirmModal" />
+       </v-card
+    > </v-card
+  > <ConfirmModal ref="confirmModal" />
 </template>
 
 <script setup>
@@ -623,3 +602,4 @@ function pageRight() {
     overflow-y: overlay;
 }
 </style>
+

@@ -1,62 +1,54 @@
 <template>
+
   <div class="text-center">
-    <v-menu
+     <v-menu
       v-model="menu"
       :close-on-content-click="false"
       location="top"
       scroll-strategy="block"
       offset="12"
-    >
-      <template v-slot:activator="{ props }">
-        <v-btn
+      > <template v-slot:activator="{ props }"
+        > <v-btn
           v-bind="props"
           size="36"
           color="primary"
           flat
           icon="mdi-dots-horizontal"
-        >
-        </v-btn>
-      </template>
-
-      <v-card>
-        <v-list
+          > </v-btn
+        > </template
+      > <v-card
+        > <v-list
           class="bots-list"
           density="compact"
           :selected="favorited"
           select-strategy="classic"
           nav
-        >
-          <v-list-item
+          > <v-list-item
             v-for="(bot, index) in shownBots"
             :key="index"
             :value="bot.getClassname()"
             color="primary"
             @click="toggleFavorite(bot)"
-          >
-            <template v-slot:prepend="{ isActive }">
-              <v-list-item-action start>
-                <v-checkbox-btn
+            > <template v-slot:prepend="{ isActive }"
+              > <v-list-item-action start
+                > <v-checkbox-btn
                   color="primary"
                   :model-value="isActive"
-                ></v-checkbox-btn>
-              </v-list-item-action>
-            </template>
-            <v-list-item-title>
-              <BotLogo :bot="bot" active="true" size="24"></BotLogo>&nbsp;
-              <span>{{ bot.getFullname() }}</span>
-            </v-list-item-title>
-          </v-list-item>
-        </v-list>
-
-        <v-divider></v-divider>
-
-        <v-list>
-          <v-list-item>
-            <v-list-item-title class="font-weight-black">
-              {{ $t("footer.chooseFavorite") }}
-            </v-list-item-title>
-            <template v-slot:append>
-              <v-btn-toggle
+                ></v-checkbox-btn
+                > </v-list-item-action
+              > </template
+            > <v-list-item-title
+              > <BotLogo :bot="bot" active="true" size="24"></BotLogo>&nbsp;
+              <span>{{ bot.getFullname() }}</span
+              > </v-list-item-title
+            > </v-list-item
+          > </v-list
+        > <v-divider></v-divider> <v-list
+          > <v-list-item
+            > <v-list-item-title class="font-weight-black"
+              > {{ $t("footer.chooseFavorite") }} </v-list-item-title
+            > <template v-slot:append
+              > <v-btn-toggle
                 v-model="selectedTags"
                 divided
                 color="primary"
@@ -64,17 +56,17 @@
                 variant="outlined"
                 rounded="xl"
                 @update:model-value="filterBots($event)"
-              >
-                <v-btn v-for="(tag, index) in tags" :key="index" :value="tag">
-                  {{ $t(`footer.${tag}`) }}
-                </v-btn>
-              </v-btn-toggle>
-            </template>
-          </v-list-item>
-        </v-list>
-      </v-card>
-    </v-menu>
+                > <v-btn v-for="(tag, index) in tags" :key="index" :value="tag"
+                  > {{ $t(`footer.${tag}`) }} </v-btn
+                > </v-btn-toggle
+              > </template
+            > </v-list-item
+          > </v-list
+        > </v-card
+      > </v-menu
+    >
   </div>
+
 </template>
 
 <script setup>
@@ -143,3 +135,4 @@ defineExpose({
   text-transform: none !important;
 }
 </style>
+

@@ -1,13 +1,14 @@
 <template>
-  <v-dialog :model-value="open" persistent width="auto">
-    <v-list v-if="botSettings !== null">
-      <component :is="botSettings" />
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="primary" @click="onDone">{{ $t("modal.done") }}</v-btn>
-      </v-card-actions>
-    </v-list>
-  </v-dialog>
+   <v-dialog :model-value="open" persistent width="auto"
+    > <v-list v-if="botSettings !== null"
+      > <component :is="botSettings" /> <v-card-actions
+        > <v-spacer></v-spacer> <v-btn color="primary" @click="onDone">{{
+          $t("modal.done")
+        }}</v-btn
+        > </v-card-actions
+      > </v-list
+    > </v-dialog
+  >
 </template>
 
 <script setup>
@@ -35,3 +36,4 @@ const onDone = () => {
 </script>
 
 <style scoped></style>
+

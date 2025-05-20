@@ -1,13 +1,13 @@
 <template>
+
   <div>
-    <v-dialog
+     <v-dialog
       :model-value="props.open"
       @update:model-value="closeDialog"
       @after-leave="onDialogCloseTransitionEnded"
-    >
-      <v-card class="justify-center">
-        <v-card-title>
-          <v-text-field
+      > <v-card class="justify-center"
+        > <v-card-title
+          > <v-text-field
             clearable
             v-model="search"
             density="compact"
@@ -16,18 +16,16 @@
             single-line
             hide-details
             autofocus
-          ></v-text-field>
+          ></v-text-field
+          >
           <div class="pt-2 d-flex justify-space-between">
-            <v-btn
+             <v-btn
               class="mt-1"
               prepend-icon="mdi-plus"
               :text="$t('prompt.addPrompt')"
               @click="add"
-            ></v-btn>
-            <v-spacer></v-spacer>
-            <v-spacer></v-spacer>
-
-            <v-select
+            ></v-btn
+            > <v-spacer></v-spacer> <v-spacer></v-spacer> <v-select
               color="primary"
               density="compact"
               :items="prompts.languages"
@@ -36,10 +34,11 @@
               item-value="code"
               :model-value="language"
               @update:model-value="setPromptLanguage($event)"
-            ></v-select>
+            ></v-select
+            >
           </div>
-        </v-card-title>
-        <v-data-table
+           </v-card-title
+        > <v-data-table
           :headers="headers"
           :items="data"
           :search="search"
@@ -48,89 +47,92 @@
           hover
           :no-data-text="$t('find.noMatches')"
           items-per-page="10"
-        >
-          <template v-slot:item="{ item }">
+          > <template v-slot:item="{ item }"
+            >
             <tr>
+
               <td
                 @click="usePrompt(item)"
                 @mouseover="showFullText($event)"
                 @mouseleave="hideFullText($event)"
               >
-                {{ item.title }}
+                 {{ item.title }}
               </td>
+
               <td
                 @click="usePrompt(item)"
                 @mouseover="showFullText($event)"
                 @mouseleave="hideFullText($event)"
               >
-                {{ item.prompt }}
+                 {{ item.prompt }}
               </td>
+
               <td>
-                <v-btn
+                 <v-btn
                   flat
                   size="x-small"
                   :icon="item.isPin ? 'mdi-star' : 'mdi-star-outline'"
                   @click="pin(item)"
-                ></v-btn>
-                <v-btn
+                ></v-btn
+                > <v-btn
                   flat
                   size="x-small"
                   icon="mdi-pencil"
                   @click="edit(item)"
                   v-if="item.index"
-                ></v-btn>
-                <v-btn
+                ></v-btn
+                > <v-btn
                   flat
                   size="x-small"
                   icon="mdi-delete-outline"
                   @click="deletePrompt(item)"
                   v-if="item.index"
-                ></v-btn>
+                ></v-btn
+                >
               </td>
-            </tr>
-          </template>
-        </v-data-table>
-      </v-card>
-    </v-dialog>
 
-    <v-dialog
+            </tr>
+             </template
+          > </v-data-table
+        > </v-card
+      > </v-dialog
+    > <v-dialog
       persistent
       width="50%"
       :model-value="isOpenAddEditPrompt"
       @update:model-value="isOpenAddEditPrompt = $event"
-    >
-      <v-card>
-        <v-form ref="formRef" class="pa-3" @submit.prevent>
-          <v-text-field
+      > <v-card
+        > <v-form ref="formRef" class="pa-3" @submit.prevent
+          > <v-text-field
             required
             :placeholder="$t('prompt.title')"
             v-model="title"
             :rules="requiredRule"
-          ></v-text-field>
-          <v-textarea
+          ></v-text-field
+          > <v-textarea
             required
             :placeholder="$t('prompt.prompt')"
             v-model="prompt"
             :rules="requiredRule"
-          ></v-textarea>
-        </v-form>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
+          ></v-textarea
+          > </v-form
+        > <v-card-actions
+          > <v-spacer></v-spacer> <v-btn
             variant="outlined"
             color="primary"
             @click="isOpenAddEditPrompt = false"
             >{{ $t("modal.cancel") }}</v-btn
-          >
-          <!-- color="primary" not working for nested dialog button -->
-          <v-btn variant="flat" class="bg-primary" @click="addEditPrompt">{{
-            $t("modal.done")
-          }}</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-    <ConfirmModal ref="confirmModal" />
+          > <!-- color="primary" not working for nested dialog button --> <v-btn
+            variant="flat"
+            class="bg-primary"
+            @click="addEditPrompt"
+            >{{ $t("modal.done") }}</v-btn
+          > </v-card-actions
+        > </v-card
+      > </v-dialog
+    > <ConfirmModal ref="confirmModal" />
   </div>
+
 </template>
 
 <script setup>
@@ -313,3 +315,4 @@ td:nth-child(2) {
   background-color: transparent;
 }
 </style>
+

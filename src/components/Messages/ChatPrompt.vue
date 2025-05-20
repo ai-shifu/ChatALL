@@ -1,11 +1,12 @@
 <template>
-  <v-card
+   <v-card
     ref="root"
     class="message prompt"
     :class="isThread ? 'thread-prompt' : ''"
-  >
+    >
     <pre>{{ message ? message.content : "" }}</pre>
-  </v-card>
+     </v-card
+  >
 </template>
 
 <script setup>
@@ -64,3 +65,4 @@ onMounted(() => {
   margin-bottom: 1rem;
 }
 </style>
+

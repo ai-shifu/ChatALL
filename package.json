@@ -84,7 +84,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.5.1",
     "md5": "^2.3.0",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.3",
     "prettier-plugin-vue": "^1.1.6",
     "sse.js": "^2.6.0"
   },
