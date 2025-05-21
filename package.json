@@ -7,6 +7,9 @@
     "email": "sunner@gmail.com",
     "url": "http://sunner.cn"
   },
+  "engines": {
+    "node": "^20"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ai-shifu/ChatALL.git"
