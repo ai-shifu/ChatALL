@@ -318,8 +318,8 @@
   "xaiApi": {
     "name": "xAI API",
     "grok-2-latest": "Grok-2",
-    "grok-3-beta": "Grok 3",
-    "grok-3-mini-beta": "Grok 3 Mini"
+    "grok-3": "Grok 3",
+    "grok-3-mini": "Grok 3 Mini"
   },
   "updates": {
     "updateAvailable": "有更新!",
