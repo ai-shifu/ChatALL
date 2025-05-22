@@ -27,7 +27,7 @@ export default class KnowNothingBot extends Bot {
 
 ### Step 3: Make the code take effect
 
-Fine the `src/bots/index.js` file and modify the following code:
+Find the `src/bots/index.js` file and modify the following code:
 
 ```JavaScript
 // Bots
