@@ -2,7 +2,7 @@ To add a AI chatbot to the project, follow these steps:
 
 1. In the `src/bots/` directory, copy the `TemplateBot.js` file and create a new file named `XXXXBot.js`.
 2. In the `XXXXBot.js` file, implement the `_sendPrompt()` method. 
-3. Add a reference to `XXXXBot.js` in the `src/App.vue` file.
+3. Add a reference to `XXXXBot.js` in the `src/bots/index.js` file.
 
 Below are the detailed steps. Assumed that you have already cloned the latest code. 
 
