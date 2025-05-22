@@ -238,8 +238,8 @@ Reference existing bots depending on your interface type:
 How you send and parse messages depends on the specific chatbot. Once you receive a response or hit an error, do the following: 
 
 1. When receiving partial text, call `onUpdateResponse(callbackParam, {});`. 
-2. If the response only contains new incremental text, and you need to assemble all the text yourself, then call `onUpdateResponse(callbackParam, {content: text, done: false)};`. 
-3. After receiving all the text, call `onUpdateResponse(callbackParam, {content: text, done: true)};` to update all the data. If the text has already been `onUpdateResponse` before, you can just call `onUpdateResponse(callbackParam, {done: true)};`. 
+2. If the response only contains new incremental text, and you need to assemble all the text yourself, then call `onUpdateResponse(callbackParam, {content: text, done: false});`. 
+3. After receiving all the text, call `onUpdateResponse(callbackParam, {content: text, done: true});` to update all the data. If the text has already been `onUpdateResponse` before, you can just call `onUpdateResponse(callbackParam, {done: true});`. 
 4. When ending normally, call `resolve()`. 
 5. If an error occurs, call `reject(error)`. The `error` can be an exception or an error message string. ChatALL will automatically handle it and display it to the user. 
 
