@@ -91,7 +91,7 @@ If you would like to add a new AI bot to ChatALL, please follow these steps:
    }
    ```
 
-For detailed bot development documentation, see [developing_bot.md](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md).
+For detailed bot development documentation, see [docs/developing_bot.md](docs/developing_bot.md).
 
 ### Basic Bot Implementation Example
 

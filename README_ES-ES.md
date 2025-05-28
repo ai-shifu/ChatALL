@@ -155,7 +155,7 @@ Si el problema persiste, [envíe un problema](https://github.com/ai-shifu/ChatAL
 
 ### Contribuir con un bot
 
-[La guía](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md) puede ayudarle.
+[La guía](docs/developing_bot.md) puede ayudarle.
 
 ### Correr
 

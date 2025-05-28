@@ -155,7 +155,7 @@ Si le problème persiste, veuillez [soumettre un problème](https://github.com/a
 
 ### Contribuer à un bot
 
-[Le guide](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md) may help you.
+[Le guide](docs/developing_bot.md) peut vous aider.
 
 ### Lancement
 

@@ -155,7 +155,7 @@ ChatALL을 사용하는 동안 문제가 발생하면 다음 방법을 사용하
 
 ### 봇 기부
 
-[가이드](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md)가 도움이 될 수 있습니다.
+[가이드](docs/developing_bot.md)가 도움이 될 수 있습니다.
 
 ### 실행
 

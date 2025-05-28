@@ -155,7 +155,7 @@ Nếu vấn đề vẫn tiếp tục, vui lòng [gửi issue](https://github.com
 
 ### Đóng góp Bot
 
-[Hướng dẫn](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md) này sẽ giúp bạn.
+[Hướng dẫn](docs/developing_bot.md) này sẽ giúp bạn.
 
 ### Chạy thử
 

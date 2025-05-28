@@ -155,7 +155,7 @@ brew install --cask chatall
 
 ### 贡献新的 AI 机器人
 
-[这份文档](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md)能提供一些帮助。
+[这份文档](docs/developing_bot.md)能提供一些帮助。
 
 ### Run
 

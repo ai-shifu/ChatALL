@@ -155,7 +155,7 @@ brew install --cask chatall
 
 ### Сделать бота
 
-[Этот гайд](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md) может помочь вам.
+[Этот гайд](docs/developing_bot.md) может помочь вам.
 
 ### Запуск
 
