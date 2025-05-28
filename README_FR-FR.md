@@ -26,41 +26,41 @@ Les utilisateurs typiques de ChatALL sont :
 
 ### Bots pris en charge
 
-| AI Bots                                                                        | Accès web     | API           | Notes                                             |
-| ------------------------------------------------------------------------------ | ------------- | ------------- | ------------------------------------------------- |
-| [360 AI Brain](https://ai.360.cn/)                                             | Oui           | Non           |                                                   |
-| [Baidu ERNIE](https://yiyan.baidu.com/)                                        | Non           | Oui           |                                                   |
-| [Character.AI](https://character.ai/)                                          | Oui           | Non           |                                                   |
-| [ChatGLM2 6B & 130B](https://chatglm.cn/)                                      | Oui           | Non           | Pas besoin de compte ou de clé API                |
-| [ChatGPT](https://chatgpt.com)                                                 | Oui           | Oui           | Navigation web, inclut services Azure OpenAI      |
-| [Claude](https://www.anthropic.com/claude)                                     | Oui           | Oui           |                                                   |
-| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/) | Oui           | Non           |                                                   |
-| [Cohere Aya 23](https://cohere.com/blog/aya23)                                 | Non           | Oui           |                                                   |
-| [Cohere Command R Models](https://cohere.com/command)                          | Non           | Oui           |                                                   |
-| [Copilot](https://copilot.microsoft.com/)                                      | Oui           | Non           |                                                   |
-| [Dedao Learning Assistant](https://ai.dedao.cn/)                               | Prochainement | Non           |                                                   |
-| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                  | Oui           | Non           |                                                   |
-| [Gemini](https://gemini.google.com/)                                           | Oui           | Oui           |                                                   |
-| [Gemma 2B & 7B](https://blog.google/technology/developers/gemma-open-models/)  | Oui           | Non           |                                                   |
-| [Gradio](https://gradio.app/)                                                  | Oui           | Non           | Pour les modèles Hugging Face space/self-deployed |
-| [Groq Cloud](https://console.groq.com/docs/models)                             | Non           | Oui           |                                                   |
-| [HuggingChat](https://huggingface.co/chat/)                                    | Oui           | Non           |                                                   |
-| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Oui           | Prochainement |                                                   |
-| [Kimi](https://kimi.moonshot.cn/)                                              | Oui           | Non           |                                                   |
-| [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Oui           | Non           |                                                   |
-| [MOSS](https://moss.fastnlp.top/)                                              | Oui           | Non           |                                                   |
-| [Perplexity](https://www.perplexity.ai/)                                       | Oui           | Non           |                                                   |
-| [Phind](https://www.phind.com/)                                                | Oui           | Non           |                                                   |
-| [Pi](https://pi.ai)                                                            | Oui           | Non           |                                                   |
-| [Poe](https://poe.com/)                                                        | Oui           | Prochainement |                                                   |
-| [SkyWork](https://neice.tiangong.cn/)                                          | Oui           | Prochainement |                                                   |
-| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                    | Oui           | Prochainement |                                                   |
-| [Vicuna 13B & 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                  | Oui           | Non           | Pas besoin de compte ou de clé API                |
-| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                           | Oui           | Non           |                                                   |
-| [xAI Grok](https://x.ai)                                                       | Non           | Oui           |                                                   |
-| [YouChat](https://you.com/)                                                    | Oui           | Non           |                                                   |
-| [You](https://you.com/)                                                        | Oui           | Non           |                                                   |
-| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)              | Oui           | Non           |                                                   |
+| AI Bots                                                                        | Accès web    | API           | Notes                                              |
+| ------------------------------------------------------------------------------ | ------------- | ------------- | -------------------------------------------------- |
+| [360 AI Brain](https://ai.360.cn/)                                                | Oui           | Non           |                                                    |
+| [Baidu ERNIE](https://yiyan.baidu.com/)                                           | Non           | Oui           |                                                    |
+| [Character.AI](https://character.ai/)                                             | Oui           | Non           |                                                    |
+| [ChatGLM2 6B &amp; 130B](https://chatglm.cn/)                                     | Oui           | Non           | Pas besoin de compte ou de clé API                |
+| [ChatGPT](https://chatgpt.com)                                                    | Oui           | Oui           | Navigation web, inclut services Azure OpenAI       |
+| [Claude](https://www.anthropic.com/claude)                                        | Oui           | Oui           |                                                    |
+| [Code Llama](https://ai.meta.com/blog/code-llama-large-language-model-coding/)    | Oui           | Non           |                                                    |
+| [Cohere Aya 23](https://cohere.com/blog/aya23)                                    | Non           | Oui           |                                                    |
+| [Cohere Command R Models](https://cohere.com/command)                             | Non           | Oui           |                                                    |
+| [Copilot](https://copilot.microsoft.com/)                                         | Oui           | Non           |                                                    |
+| [Dedao Learning Assistant](https://ai.dedao.cn/)                                  | Prochainement | Non           |                                                    |
+| [Falcon 180B](https://huggingface.co/tiiuae/falcon-180B-chat)                     | Oui           | Non           |                                                    |
+| [Gemini](https://gemini.google.com/)                                              | Oui           | Oui           |                                                    |
+| [Gemma 2B &amp; 7B](https://blog.google/technology/developers/gemma-open-models/) | Oui           | Non           |                                                    |
+| [Gradio](https://gradio.app/)                                                     | Oui           | Non           | Pour les modèles Hugging Face space/self-deployed |
+| [Groq Cloud](https://console.groq.com/docs/models)                                | Non           | Oui           |                                                    |
+| [HuggingChat](https://huggingface.co/chat/)                                       | Oui           | Non           |                                                    |
+| [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                         | Oui           | Prochainement |                                                    |
+| [Kimi](https://kimi.moonshot.cn/)                                                 | Oui           | Non           |                                                    |
+| [Llama 2 13B &amp; 70B](https://ai.meta.com/llama/)                               | Oui           | Non           |                                                    |
+| [MOSS](https://moss.fastnlp.top/)                                                 | Oui           | Non           |                                                    |
+| [Perplexity](https://www.perplexity.ai/)                                          | Oui           | Non           |                                                    |
+| [Phind](https://www.phind.com/)                                                   | Oui           | Non           |                                                    |
+| [Pi](https://pi.ai)                                                               | Oui           | Non           |                                                    |
+| [Poe](https://poe.com/)                                                           | Oui           | Prochainement |                                                    |
+| [SkyWork](https://neice.tiangong.cn/)                                             | Oui           | Prochainement |                                                    |
+| [Tongyi Qianwen](http://tongyi.aliyun.com/)                                       | Oui           | Prochainement |                                                    |
+| [Vicuna 13B &amp; 33B](https://lmsys.org/blog/2023-03-30-vicuna/)                 | Oui           | Non           | Pas besoin de compte ou de clé API                |
+| [WizardLM 70B](https://github.com/nlpxucan/WizardLM)                              | Oui           | Non           |                                                    |
+| [xAI Grok](https://x.ai)                                                          | Non           | Oui           |                                                    |
+| [YouChat](https://you.com/)                                                       | Oui           | Non           |                                                    |
+| [You](https://you.com/)                                                           | Oui           | Non           |                                                    |
+| [Zephyr](https://huggingface.co/spaces/HuggingFaceH4/zephyr-chat)                 | Oui           | Non           |                                                    |
 
 Et plus...
 
@@ -77,7 +77,7 @@ Les robots IA basés sur le Web (marqués "Accès web") sont intrinsèquement mo
 - Choix de l'affichage en une, deux ou trois colonnes
 - Mise à jour automatique vers la dernière version
 - Mode sombre (contribué par @tanchekwei)
-- Raccourcis clavier. Appuyez sur <kbd>Ctrl</kbd> + <kbd>/</kbd> pour les connaître tous (contribué par @tanchekwei)
+- Raccourcis clavier. Appuyez sur `<kbd>`Ctrl`</kbd>` + `<kbd>`/`</kbd>` pour les connaître tous (contribué par @tanchekwei)
 - Plusieurs chats (contribué par @tanchekwei)
 - Paramètres de proxy (contribué par @msaong)
 - Gestion des invites (contribué par @tanchekwei)
@@ -136,7 +136,7 @@ Autres distributions : Téléchargez le fichier .AppImage, rendez-le exécutable
 
 Si vous rencontrez des problèmes lors de l'utilisation de ChatALL, vous pouvez essayer les méthodes suivantes pour les résoudre :
 
-1. **Rafraîchir** - appuyez sur <kbd>Ctrl</kbd> + <kbd>R</kbd> ou <kbd>⌘</kbd> + <kbd>R</kbd>.
+1. **Rafraîchir** - appuyez sur `<kbd>`Ctrl`</kbd>` + `<kbd>`R`</kbd>` ou `<kbd>`⌘`</kbd>` + `<kbd>`R`</kbd>`.
 2. **Redémarrer** - quittez ChatALL et relancez-le.
 3. **Reconnectez-vous** - cliquez sur le bouton des paramètres en haut à droite, puis cliquez sur le lien de connexion/déconnexion correspondant pour vous reconnecter au site.
 4. **Créer une nouvelle discussion** - cliquez sur le bouton `New Chat` et envoyez l'invite à nouveau.
@@ -155,7 +155,7 @@ Si le problème persiste, veuillez [soumettre un problème](https://github.com/a
 
 ### Contribuer à un bot
 
-[Le guide](https://github.com/ai-shifu/ChatALL/wiki/%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-AI-%E5%AF%B9%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA) may help you.
+[Le guide](https://github.com/ai-shifu/ChatALL/blob/main/doc/developing_bot.md) peut vous aider.
 
 ### Lancement
 
