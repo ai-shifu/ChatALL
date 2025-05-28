@@ -1,7 +1,8 @@
 # Developing Bots for ChatALL
 
 ## Quick Start
-- [Basic bot setup](https://github.com/ai-shifu/ChatALL/blob/main/CONTRIBUTION.md#adding-a-new-ai-bot)
+
+See [Adding a new AI bot](https://github.com/ai-shifu/ChatALL/blob/main/CONTRIBUTION.md#adding-a-new-ai-bot) in `CONTRIBUTION.md`.
 
 ## Advanced Topics  
 
@@ -49,33 +50,33 @@ const all = [
 
 ### Setting component implementation
 
-To fulfill other core functions, you need login functionality, API key configuration, etc. If your bot does not require login or you don't mind putting the key directly in the code (strongly not recommended), you can skip this section.
+To fulfill other core functions, you need login functionality, API key configuration, etc. If your bot does not require login, or you don't mind putting the key directly in the code (strongly not recommended), you can skip this section.
 
 #### Create a settings component
 
 
 In the `src/components/BotSettings/` directory, create a new file named `KnowNothingBotSettings.vue`. 
-\
+
 You can use existing settings components as templates: 
 
 1. If you only need login functionality, just copy `BardBotSettings.vue` and change import Bot from `@/bots/BardBot;` to import Bot from `@/bots/KnowNothingBot;`. 
    - (Note: Some websites have implemented security measures to prevent ChatALL and similar clients from accessing them. If you encounter such situations, you will need to do a lot of hack work.)
 2. If you only need to configure the API key, copy `WenxinQianfanBotSettings.vue` and modify it, but this will require more work.
-3. For complex settings with multiple configurations, you will need to do even more work. 
+3. Complex setups with multiple configuration options require additional implementation steps.
 
 #### Add settings field
 
 ChatALL's settings UI is built using [Vuetify 3](https://vuetifyjs.com/). 
 Refer to the [Vuetify 3 official documentation](https://vuetifyjs.com/en/introduction/why-vuetify/) to see and test the rich components it supports. 
-\
-By referring to the existing code, you can basically get everything workin. No need for further explanation here.
+
+By reviewing the existing implementation, you can adapt the code to suit your bot’s settings.
 
 ChatALL's settings are stored in local storage using the [`vuex-persist`](https://github.com/championswimmer/vuex-persist). It's very handy, though the documentation is not readable enough. 
 Here is a brief introduction on how to use it: 
 
 First, in `src/store/index.js`, add the following code: 
 
-```JavaScript
+```javascript
 export default createStore({
   state: {
     ...
@@ -100,7 +101,7 @@ export default createStore({
 
 Then, in `KnowNothingBotSettings.vue`, add the following code: 
 
-```JavaScript
+```javascript
 export default {
   ...
   methods: {
@@ -126,90 +127,18 @@ export default {
 
 Finally, bind the `v-model` of the Vuetify component to the corresponding `knowNothing.xxx`, and point the action to the corresponding `setXxx()` function. For example: 
 
-```HTML
+```html
 <v-text-field
   v-model="knowNothing.setting1"
-  @change="setSetting1($event.target.value)"
+  @update:model-value="setSetting1"
 ></v-text-field>
 ```
 
 Done! Run the program and open DevTools to check if the values are correctly stored in the "Application" tab. 
 
-In `KnowNothingBot.js`, using the parameters you set is very simple:
+In `KnowNothingBot.js`, using the parameters you set is straightforward:
 
-```JavaScript
-...
-import store from "@/store";
-...
-store.state.knowNothing.setting1
-store.state.knowNothing.setting2
-const { setting1, setting2 } = store.state.knowNothing;
-...
-```
-
-```JavaScript
-export default createStore({
-  state: {
-    ...
-    knowNothing: {
-      setting1: "",
-      setting2: "",
-    },
-    ...
-  },
-  mutations: {
-    ...
-    setKnowNothing(state, { setting1, setting2 }) {
-      state.knowNothing = { setting1, setting2 };
-    },
-    ...
-  },
-  ...
-});
-```
-
-`setting1`, `setting2`, and sub-objects can be added, deleted, or modified as you like. Just make sure the top-level object is `knowNothing`, even if it only has one configuration. 
-
-Then, in `KnowNothingBotSettings.vue`, add the following code: 
-
-```JavaScript
-export default {
-  ...
-  methods: {
-    ...mapMutations(["setKnowNothing"]),
-    setSetting1(value){
-      this.setKnowNothing({
-        ...this.knowNothing,
-        setting1: value
-      })
-    },
-    setSetting2(value){
-      this.setKnowNothing({
-        ...this.knowNothing,
-        setting2: value
-      })
-    },
-  },
-  computed: {
-    ...mapState(["knowNothing"])
-  }
-}
-```
-
-Finally, bind the `v-model` of the Vuetify component to the corresponding `knowNothing.xxx`, and point the action to the corresponding `setXxx()` function. For example: 
-
-```HTML
-<v-text-field
-  v-model="knowNothing.setting1"
-  @change="setSetting1($event.target.value)"
-></v-text-field>
-```
-
-Done! Run the program and open DevTools to check if the values are correctly stored in the "Application" tab. 
-
-In `KnowNothingBot.js`, using the parameters you set is very simple:
-
-```JavaScript
+```javascript
 ...
 import store from "@/store";
 ...
@@ -231,11 +160,10 @@ Reference existing bots depending on your interface type:
 
 How you send and parse messages depends on the specific chatbot. Once you receive a response or hit an error, do the following: 
 
-1. When receiving partial text, call `onUpdateResponse(callbackParam, {});`. 
-2. If the response only contains new incremental text, and you need to assemble all the text yourself, then call `onUpdateResponse(callbackParam, {content: text, done: false)};`. 
-3. After receiving all the text, call `onUpdateResponse(callbackParam, {content: text, done: true)};` to update all the data. If the text has already been `onUpdateResponse` before, you can just call `onUpdateResponse(callbackParam, {done: true)};`. 
-4. When ending normally, call `resolve()`. 
-5. If an error occurs, call `reject(error)`. The `error` can be an exception or an error message string. ChatALL will automatically handle it and display it to the user. 
+1. If the response only contains new incremental text, and you need to assemble all the text yourself, then call `onUpdateResponse(callbackParam, { content: text, done: false });`. 
+2. After receiving all the text, call `onUpdateResponse(callbackParam, { content: text, done: true });` to update all the data. If the text has already been `onUpdateResponse` before, you can just call `onUpdateResponse(callbackParam, { done: true });`. 
+3. When ending normally, call `resolve()`. 
+4. If an error occurs, call `reject(error)`. The `error` can be an exception or an error message string. ChatALL will automatically handle it and display it to the user. 
 
 ### checkAvailability() implementation
 
@@ -249,19 +177,19 @@ In general, it performs these checks:
 
 If everything is good, it should execute:
 
-```JavaScript
+```javascript
 this.constructor._isAvailable = true;
 ```
 
 Otherwise, it should execute:
 
-```JavaScript
+```javascript
 this.constructor._isAvailable = false;
 ```
 
 Finally, always do:
 
-```JavaScript
+```javascript
 return this.isAvailable();
 ```
 
@@ -269,7 +197,7 @@ return this.isAvailable();
 
 Place the icon file in `src/assets/bots/knownothing-logo.png`, and modify `KnowNothingBot.js`:
 
-```JavaScript
+```javascript
 static _logoFilename = "knownothing-logo.png";
 ```
 
@@ -280,23 +208,31 @@ You need to add at least the following for your bot:
 
 `en.json`
 ```json
+{
+    ...
     "knowNothing": {
         "name": "Know Nothing"
     },
+    ...
+}
 ```
 
 `zh.json`
 ```json
+{
+    ...
     "knowNothing": {
         "name": "啥都不懂"
     },
+    ...
+}
 ```
 
-Plus any other strings your bot need.
+Plus any other strings your bot needs.
 
 In JavaScript, you can use the following code to call the multi-language support:
 
-```JavaScript
+```javascript
 import i18n from "@/i18n";
 ...
 i18n.global.t("knowNothing.stringName")
@@ -305,6 +241,6 @@ i18n.global.t("knowNothing.stringName")
 
 In HTML, you can use the following code:
 
-```HTML
+```html
 {{ $t("knowNothing.stringName") }}
 ```
