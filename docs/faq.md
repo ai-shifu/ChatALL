@@ -23,7 +23,7 @@ If you still haven't found the answer you're looking for, please submit an [Issu
    - **Linux**: `~/.config/ChatALL` or check your distribution-specific path
 
 
-### [#236](https://github.com/ai-shifu/ChatALL/issues/236), [#122]
+### [#236](https://github.com/ai-shifu/ChatALL/issues/236), [#122](https://github.com/ai-shifu/ChatALL/issues/122)
 
 #### Entered the API key, but it still doesn’t work.
 
