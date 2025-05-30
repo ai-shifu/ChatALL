@@ -151,7 +151,7 @@ You can reset ChatALL by deleting the following directories:
 
 If the problem persists, please [submit an issue](https://github.com/ai-shifu/ChatALL/issues).
 
-### [Frequently Asked Questions (FAQ)](docs/faq.md)
+### [Frequently Asked Questions (FAQ)](faq.md)
 
 ## For developers
 
