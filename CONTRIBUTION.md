@@ -91,6 +91,8 @@ If you would like to add a new AI bot to ChatALL, please follow these steps:
    }
    ```
 
+For detailed bot development documentation, see [docs/developing_bot.md](docs/developing_bot.md).
+
 ### Basic Bot Implementation Example
 
 This is an example of using LangChainBot. Since LangChainBot uses LangChainJS, it is easy to integrate AI bots that are already supported by LangChainJS. For detailed steps, refer to the "Step-by-Step Guide to Adding a New AI Bot" section below. If you prefer not to use LangChain, you can directly extend the Bot class.
