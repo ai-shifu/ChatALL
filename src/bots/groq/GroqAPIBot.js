@@ -23,7 +23,7 @@ export default class GroqAPIBot extends LangChainBot {
   _setupModel() {
     const chatModel = new ChatGroq({
       apiKey: store.state.groqApi.apiKey,
-      modelName: this.constructor._model ? this.constructor._model : "",
+      model: this.constructor._model ? this.constructor._model : "",
       streaming: true,
       temperature: store.state.groqApi.temperature,
       maxTokens: store.state.groqApi.maxTokens,
