@@ -101,7 +101,9 @@
     "notAvailable": "El bot no está disponible porque no ha iniciado sesión o no está configurado correctamente.",
     "waiting": "Esperando a que se completen otras solicitudes de { botName }...",
     "pastRounds": "¿Cuántas rondas de chats pasados llevar?",
-    "pastRoundsPrompt": "Cuantos más chats históricos se lleven a cabo, mejor será el efecto del diálogo de varias rondas, pero también consumirá más costos."
+    "pastRoundsPrompt": "Cuantos más chats históricos se lleven a cabo, mejor será el efecto del diálogo de varias rondas, pero también consumirá más costos.",
+    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
+    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
   },
   "360AiBrain": {
     "name": "Cerebro de IA 360"
@@ -171,9 +173,7 @@
     "topK": "topP",
     "topKPrompt": "Los tokens se seleccionan desde el más probable hasta el menos probable hasta que la suma de sus probabilidades iguale el valor de topP",
     "topP": "topK",
-    "topPPrompt": "Un topK de 1 significa que el token seleccionado es el más probable entre todos los tokens en el vocabulario del modelo (también llamado decodificación voraz).",
-    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
-    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
+    "topPPrompt": "Un topK de 1 significa que el token seleccionado es el más probable entre todos los tokens en el vocabulario del modelo (también llamado decodificación voraz)."
   },
   "claudeAi": {
     "name": "Claude"

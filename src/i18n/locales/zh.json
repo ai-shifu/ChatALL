@@ -101,7 +101,9 @@
     "notAvailable": "这个对话机器人现在不可用。可能因为未登录，或者配置不正确。",
     "waiting": "等待其它 { botName } 请求结束...",
     "pastRounds": "携带多少轮过去的会话？",
-    "pastRoundsPrompt": "带的历史会话越多，多轮对话效果越好，但也会消耗更多费用"
+    "pastRoundsPrompt": "带的历史会话越多，多轮对话效果越好，但也会消耗更多费用",
+    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash 预览版",
+    "Gemini25ProPreviewBot": "Gemini 2.5 Pro 预览版"
   },
   "360AiBrain": {
     "name": "360 智脑"
@@ -171,9 +173,7 @@
     "topK": "topK",
     "topKPrompt": "topK为1意味着选定的标记在模型词汇中所有标记里是最有可能的（也称为贪婪解码）",
     "topP": "topP",
-    "topPPrompt": "从最可能到最不可能的标记被选出，直到它们的概率总和等于topP值",
-    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash 预览版",
-    "Gemini25ProPreviewBot": "Gemini 2.5 Pro 预览版"
+    "topPPrompt": "从最可能到最不可能的标记被选出，直到它们的概率总和等于topP值"
   },
   "claudeAi": {
     "name": "Claude"

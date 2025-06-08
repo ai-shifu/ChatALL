@@ -96,7 +96,9 @@
     "notAvailable": "Chat bot chưa sẳn sàng vì bạn chưa đăng nhập hoặc chưa cài đặt đúng.",
     "waiting": "Chờ các yêu cầu khác từ { botName } hoàn tất...",
     "pastRounds": "Cần bao nhiêu cuộc trò chuyện trước để thực hiện?",
-    "pastRoundsPrompt": "Càng nhiều cuộc trò chuyện trước để thực hiện, hiệu quả của cuộc đối thoại nhiều vòng càng tốt, nhưng nó cũng sẽ tiêu tốn nhiều chi phí hơn"
+    "pastRoundsPrompt": "Càng nhiều cuộc trò chuyện trước để thực hiện, hiệu quả của cuộc đối thoại nhiều vòng càng tốt, nhưng nó cũng sẽ tiêu tốn nhiều chi phí hơn",
+    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
+    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
   },
   "360AiBrain": {
     "name": "360 AI Brain"
@@ -164,9 +166,7 @@
     "topK": "topK",
     "topKPrompt": "Một topK của 1 có nghĩa là token được chọn là có khả năng cao nhất trong tất cả các token trong từ vựng của mô hình (còn được gọi là giải mã tham lam)",
     "topP": "topP",
-    "topPPrompt": "Các token được chọn từ có khả năng cao nhất đến thấp nhất cho đến khi tổng xác suất của chúng bằng với giá trị topP",
-    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
-    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
+    "topPPrompt": "Các token được chọn từ có khả năng cao nhất đến thấp nhất cho đến khi tổng xác suất của chúng bằng với giá trị topP"
   },
   "claudeAi": {
     "name": "Claude"

@@ -101,7 +101,9 @@
     "notAvailable": "ログインしていないか、正しく設定されていないため、ボットを使用できません。",
     "waiting": "他の{botName}リクエストが完了するのを待っています...",
     "pastRounds": "過去のチャットのラウンド数",
-    "pastRoundsPrompt": "過去のチャットラウンドを多く含めることで、マルチラウンド対話の効果は向上しますが、その分コストも高くなります。"
+    "pastRoundsPrompt": "過去のチャットラウンドを多く含めることで、マルチラウンド対話の効果は向上しますが、その分コストも高くなります。",
+    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
+    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
   },
   "360AiBrain": {
     "name": "360 AI Brain"
@@ -171,9 +173,7 @@
     "topK": "topK",
     "topKPrompt": "topKの1は、モデルの語彙の中で選択されたトークンが最も確からしいことを意味します（貪欲デコードとも呼ばれます）",
     "topP": "topP",
-    "topPPrompt": "トークンは最も確からしいものから最も確からしくないものまで選ばれ、それらの確率の合計がtopPの値に等しくなるまで選択されます",
-    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
-    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
+    "topPPrompt": "トークンは最も確からしいものから最も確からしくないものまで選ばれ、それらの確率の合計がtopPの値に等しくなるまで選択されます"
   },
   "claudeAi": {
     "name": "Claude"
