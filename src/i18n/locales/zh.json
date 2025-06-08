@@ -171,7 +171,9 @@
     "topK": "topK",
     "topKPrompt": "topK为1意味着选定的标记在模型词汇中所有标记里是最有可能的（也称为贪婪解码）",
     "topP": "topP",
-    "topPPrompt": "从最可能到最不可能的标记被选出，直到它们的概率总和等于topP值"
+    "topPPrompt": "从最可能到最不可能的标记被选出，直到它们的概率总和等于topP值",
+    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash 预览版",
+    "Gemini25ProPreviewBot": "Gemini 2.5 Pro 预览版"
   },
   "claudeAi": {
     "name": "Claude"

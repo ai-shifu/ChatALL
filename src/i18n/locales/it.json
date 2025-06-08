@@ -172,7 +172,9 @@
     "topK": "topK",
     "topKPrompt": "Un topK di 1 significa che il token selezionato è il più probabile tra tutti i token nel vocabolario del modello (chiamato anche decodifica avida).",
     "topP": "topP",
-    "topPPrompt": "I token vengono selezionati dal più al meno probabile fino a quando la somma delle loro probabilità eguaglia il valore topP"
+    "topPPrompt": "I token vengono selezionati dal più al meno probabile fino a quando la somma delle loro probabilità eguaglia il valore topP",
+    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
+    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
   },
   "claudeAi": {
     "name": "Claude"

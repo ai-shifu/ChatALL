@@ -4,6 +4,8 @@ import Gemini15ProAPIBot from "@/bots/google/Gemini15ProAPIBot";
 import Gemini15FlashAPIBot from "@/bots/google/Gemini15FlashAPIBot";
 import Gemini20FlashAPIBot from "@/bots/google/Gemini20FlashAPIBot";
 import Gemini20FlashLiteAPIBot from "@/bots/google/Gemini20FlashLiteAPIBot";
+import Gemini25FlashPreviewBot from "./google/Gemini25FlashPreviewBot";
+import Gemini25ProPreviewBot from "./google/Gemini25ProPreviewBot";
 import ChatGPT4Bot from "@/bots/openai/ChatGPT4Bot";
 import CohereAPICommandBot from "@/bots/cohere/CohereAPICommandBot";
 import CohereAPICommandLightBot from "@/bots/cohere/CohereAPICommandLightBot";
@@ -98,6 +100,8 @@ const all = [
   Gemini15FlashAPIBot.getInstance(),
   Gemini20FlashAPIBot.getInstance(),
   Gemini20FlashLiteAPIBot.getInstance(),
+  Gemini25FlashPreviewBot.getInstance(),
+  Gemini25ProPreviewBot.getInstance(),
   AzureOpenAIAPIBot.getInstance(),
   OpenAIAPI35Bot.getInstance(),
   ChatGPT4Bot.getInstance(),
@@ -194,6 +198,8 @@ export const botTags = {
     bots.getBotByClassName("Gemini15FlashAPIBot"),
     bots.getBotByClassName("Gemini20FlashAPIBot"),
     bots.getBotByClassName("Gemini20FlashLiteAPIBot"),
+    bots.getBotByClassName("Gemini25FlashPreviewBot"),
+    bots.getBotByClassName("Gemini25ProPreviewBot"),
     bots.getBotByClassName("AzureOpenAIAPIBot"),
     bots.getBotByClassName("OpenAIAPI35Bot"),
     bots.getBotByClassName("OpenAIAPI4Bot"),

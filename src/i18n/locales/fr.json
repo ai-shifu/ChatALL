@@ -171,7 +171,9 @@
     "topK": "topK",
     "topKPrompt": "Un topK de 1 signifie que le jeton sélectionné est le plus probable parmi tous les jetons dans le vocabulaire du modèle (également appelé décodage gourmand).",
     "topP": "topP",
-    "topPPrompt": "Les jetons sont sélectionnés du plus probable au moins probable jusqu'à ce que la somme de leurs probabilités égale la valeur topP."
+    "topPPrompt": "Les jetons sont sélectionnés du plus probable au moins probable jusqu'à ce que la somme de leurs probabilités égale la valeur topP.",
+    "Gemini25FlashPreviewBot": "Gemini 2.5 Flash Preview",
+    "Gemini25ProPreviewBot": "Gemini 2.5 Pro Preview"
   },
   "claudeAi": {
     "name": "Claude"
