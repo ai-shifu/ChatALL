@@ -41,7 +41,6 @@ import Llama38bGroqAPIBot from "@/bots/groq/Llama38bGroqAPIBot";
 import Llama370bGroqAPIBot from "@/bots/groq/Llama370bGroqAPIBot";
 import Llama4ScoutGroqAPIBot from "@/bots/groq/Llama4ScoutGroqAPIBot";
 import Llama4MaverickGroqAPIBot from "@/bots/groq/Llama4MaverickGroqAPIBot";
-import Mixtral8x7bGroqAPIBot from "@/bots/groq/Mixtral8x7bGroqAPIBot";
 import HuggingChatBot from "@/bots/huggingface/HuggingChatBot";
 import QianWenBot from "./QianWenBot";
 import SkyWorkBot from "./SkyWorkBot";
@@ -121,7 +120,6 @@ const all = [
   Llama370bGroqAPIBot.getInstance(),
   Llama4ScoutGroqAPIBot.getInstance(),
   Llama4MaverickGroqAPIBot.getInstance(),
-  Mixtral8x7bGroqAPIBot.getInstance(),
   KimiBot.getInstance(),
   MistralBot.getInstance(),
   MOSSBot.getInstance(),
@@ -229,7 +227,6 @@ export const botTags = {
     bots.getBotByClassName("Llama370bGroqAPIBot"),
     bots.getBotByClassName("Llama4ScoutGroqAPIBot"),
     bots.getBotByClassName("Llama4MaverickGroqAPIBot"),
-    bots.getBotByClassName("Mixtral8x7bGroqAPIBot"),
     bots.getBotByClassName("Grok2APIBot"),
     bots.getBotByClassName("Grok3APIBot"),
     bots.getBotByClassName("Grok3MiniAPIBot"),
