@@ -171,7 +171,9 @@
     "topK": "topK",
     "topKPrompt": "topK 為 1 表示選定的 token 是模型詞彙中所有 token 中最可能的（也稱為貪婪解碼）",
     "topP": "topP",
-    "topPPrompt": "從最可能到最不可能的 token 被選出，直到它們的概率總和等於 topP 值。"
+    "topPPrompt": "從最可能到最不可能的 token 被選出，直到它們的概率總和等於 topP 值。",
+    "gemini-2.5-pro-latest": "Gemini 2.5 Pro",
+    "gemini-2.5-flash-latest": "Gemini 2.5 Flash"
   },
   "claudeAi": {
     "name": "Claude"

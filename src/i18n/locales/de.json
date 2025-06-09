@@ -171,7 +171,9 @@
     "topK": "topK",
     "topKPrompt": "Ein topK von 1 bedeutet, dass das ausgewählte Token das wahrscheinlichste unter allen Token im Vokabular des Modells ist (auch gieriges Decodieren genannt).",
     "topP": "topP",
-    "topPPrompt": "Token werden vom wahrscheinlichsten bis zum am wenigsten wahrscheinlichen ausgewählt, bis die Summe ihrer Wahrscheinlichkeiten den topP-Wert ergibt."
+    "topPPrompt": "Token werden vom wahrscheinlichsten bis zum am wenigsten wahrscheinlichen ausgewählt, bis die Summe ihrer Wahrscheinlichkeiten den topP-Wert ergibt.",
+    "gemini-2.5-pro-latest": "Gemini 2.5 Pro",
+    "gemini-2.5-flash-latest": "Gemini 2.5 Flash"
   },
   "claudeAi": {
     "name": "Claude"
