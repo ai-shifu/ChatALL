@@ -41,19 +41,28 @@ export default class LangChainBot extends Bot {
     let res = "";
     const model = this.constructor._chatModel;
     messages = await bufferMemory.chatHistory.getMessages();
-    const callbacks = [
-      {
-        handleLLMNewToken(token) {
-          res += token;
-          onUpdateResponse(callbackParam, { content: res, done: false });
-        },
-        handleLLMEnd() {
-          onUpdateResponse(callbackParam, { done: true });
-        },
-      },
-    ];
-    model.callbacks = callbacks;
-    await model.call(messages);
+    // const callbacks = [
+    //   {
+    //     handleLLMNewToken(token) {
+    //       res += token;
+    //       onUpdateResponse(callbackParam, { content: res, done: false });
+    //     },
+    //     handleLLMEnd() {
+    //       onUpdateResponse(callbackParam, { done: true });
+    //     },
+    //   },
+    // ];
+    // model.callbacks = callbacks;
+    // await model.call(messages);
+    const stream = await model.stream(messages);
+    res = ""; // Ensure 'res' is reset or initialized before accumulating stream content
+    for await (const chunk of stream) {
+      if (chunk && chunk.content) { // Check if chunk and chunk.content are not null/undefined
+        res += chunk.content;
+        onUpdateResponse(callbackParam, { content: res, done: false });
+      }
+    }
+    onUpdateResponse(callbackParam, { done: true });
     await bufferMemory.chatHistory.addAIChatMessage(res);
     // Serialize the messages before storing
     messages = messages.map((item) => JSON.stringify(item.toDict()));

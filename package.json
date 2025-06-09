@@ -33,7 +33,7 @@
   "dependencies": {
     "@kangc/v-md-editor": "^2.3.18",
     "@langchain/anthropic": "^0.3.20",
-    "@langchain/cohere": "^0.0.11",
+    "@langchain/cohere": "^0.3.3",
     "@langchain/community": "^0.3.43",
     "@langchain/google-genai": "^0.2.9",
     "@langchain/groq": "^0.2.2",
