@@ -172,8 +172,8 @@
     "topKPrompt": "topKの1は、モデルの語彙の中で選択されたトークンが最も確からしいことを意味します（貪欲デコードとも呼ばれます）",
     "topP": "topP",
     "topPPrompt": "トークンは最も確からしいものから最も確からしくないものまで選ばれ、それらの確率の合計がtopPの値に等しくなるまで選択されます",
-    "gemini-2.5-pro-latest": "Gemini 2.5 Pro",
-    "gemini-2.5-flash-latest": "Gemini 2.5 Flash"
+    "gemini-2.5-pro-preview-06-05": "Gemini 2.5 Pro",
+    "gemini-2.5-flash-preview-05-20": "Gemini 2.5 Flash"
   },
   "claudeAi": {
     "name": "Claude"

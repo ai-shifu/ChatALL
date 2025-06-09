@@ -172,8 +172,8 @@
     "topKPrompt": "topK, равный 1, означает, что выбранный токен является наиболее вероятным среди всех токенов в словаре модели (это также называется жадным декодированием).",
     "topP": "topP",
     "topPPrompt": "Токены выбираются от наиболее вероятного к наименее вероятному до тех пор, пока сумма их вероятностей не станет равной значению topP",
-    "gemini-2.5-pro-latest": "Gemini 2.5 Pro",
-    "gemini-2.5-flash-latest": "Gemini 2.5 Flash"
+    "gemini-2.5-pro-preview-06-05": "Gemini 2.5 Pro",
+    "gemini-2.5-flash-preview-05-20": "Gemini 2.5 Flash"
   },
   "claudeAi": {
     "name": "Claude"

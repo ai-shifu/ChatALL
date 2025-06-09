@@ -172,8 +172,8 @@
     "topKPrompt": "topK가 1이라는 것은 선택된 토큰이 모델의 어휘 중에서 가장 가능성이 높은 것을 의미합니다 (탐욕스러운 디코딩이라고도 함).",
     "topP": "topP",
     "topPPrompt": "토큰은 가장 가능성이 높은 것부터 가장 낮은 것까지 선택되며, 그 확률의 합이 topP 값과 같아질 때까지 선택됩니다",
-    "gemini-2.5-pro-latest": "Gemini 2.5 Pro",
-    "gemini-2.5-flash-latest": "Gemini 2.5 Flash"
+    "gemini-2.5-pro-preview-06-05": "Gemini 2.5 Pro",
+    "gemini-2.5-flash-preview-05-20": "Gemini 2.5 Flash"
   },
   "claudeAi": {
     "name": "Claude"
