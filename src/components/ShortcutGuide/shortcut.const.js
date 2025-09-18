@@ -93,6 +93,15 @@ export const SHORTCUT_PROMPT_MANAGEMENT = {
   flexDirection: "column",
 };
 
+export const SHORTCUT_DELETE_CHAT = {
+  elementId: "delete-chat-btn",
+  key: [modifier, "backspace"],
+  offset: {
+    top: 40,
+  },
+  flexDirection: "column",
+};
+
 export const SHORTCUT_APP_BAR = {
   elementId: "app-bar",
   key: [modifier, "f11"],
@@ -112,6 +121,7 @@ export const SHORTCUT_LIST = [
   SHORTCUT_PROMPT_TEXTAREA,
   SHORTCUT_CHAT_DRAWER,
   SHORTCUT_NEW_CHAT,
+  SHORTCUT_DELETE_CHAT,
   SHORTCUT_PROMPT_MANAGEMENT,
   SHORTCUT_PROMPT_PRE_NEXT,
   SHORTCUT_APP_BAR,
