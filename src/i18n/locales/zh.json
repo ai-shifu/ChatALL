@@ -16,7 +16,8 @@
     "dark": "深色",
     "bots": "AI 模型",
     "api": "API",
-    "showMenuBar": "显示菜单栏"
+    "showMenuBar": "显示菜单栏",
+    "skipDeleteChatConfirm": "删除聊天时无需确认"
   },
   "common": {
     "apiKey": "API 密钥"
