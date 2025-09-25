@@ -110,7 +110,7 @@
     "rules": {}
   },
   "lint-staged": {
-    "*.{js,ts,vue,jsx.tsx}": "npm run lint"
+    "*.{js,ts,vue,jsx,tsx}": "npm run lint"
   },
   "browserslist": [
     "> 1%",
