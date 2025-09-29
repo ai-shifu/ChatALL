@@ -168,6 +168,8 @@
     "gemini-15-flash-latest": "Gemini 1.5 Flash",
     "gemini-20-flash-001": "Gemini 2.0 Flash",
     "gemini-20-flash-lite": "Gemini 2.0 Flash Lite",
+    "gemini-2.5-pro-preview-06-05": "Gemini 2.5 Pro Aperçu",
+    "gemini-2.5-flash-preview-05-20": "Gemini 2.5 Flash Aperçu",
     "topK": "topK",
     "topKPrompt": "Un topK de 1 signifie que le jeton sélectionné est le plus probable parmi tous les jetons dans le vocabulaire du modèle (également appelé décodage gourmand).",
     "topP": "topP",
