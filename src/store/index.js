@@ -150,6 +150,7 @@ export default createStore({
     general: {
       isShowMenuBar: true,
       isShowAppBar: true,
+      isSkipDeleteChatConfirm: false,
     },
   },
   mutations: {

@@ -25,6 +25,9 @@
         size="x-small"
         icon="mdi-delete-outline"
         @click="confirmHideChat"
+        @shortkey="confirmHideChat"
+        v-shortkey="SHORTCUT_DELETE_CHAT.key"
+        :id="SHORTCUT_DELETE_CHAT.elementId"
         style="margin: 0; background-color: transparent"
       ></v-btn
       > </template
@@ -58,6 +61,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { SHORTCUT_DELETE_CHAT } from "@/components/ShortcutGuide/shortcut.const";
 
 const emit = defineEmits([
   "hideChat",

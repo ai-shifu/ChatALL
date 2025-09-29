@@ -65,12 +65,14 @@ async function onAddChat() {
 }
 
 async function hideChat() {
-  const confirm = await confirmModal.value.showModal(
-    i18n.global.t("modal.confirmHideChat"),
-  );
+ const confirm = store.state.general.isSkipDeleteChatConfirm ||
+    await confirmModal.value.showModal(
+        i18n.global.t("modal.confirmHideChat"),
+      );
+
   if (confirm) {
     await Chats.update(store.state.currentChatIndex, { hide: true });
-    selectLatestVisibleChat();
+    await selectLatestVisibleChat();
   }
 }
 

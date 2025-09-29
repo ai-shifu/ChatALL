@@ -218,6 +218,11 @@ const settings = [
     name: "isShowMenuBar",
     label: $t("settings.showMenuBar"),
   },
+  {
+    type: Type.Checkbox,
+    name: "isSkipDeleteChatConfirm",
+    label: $t("settings.skipDeleteChatConfirm"),
+  },
 ];
 
 watch(
