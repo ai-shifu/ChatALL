@@ -48,7 +48,7 @@
     "core-js": "^3.42.0",
     "dexie": "^4.0.11",
     "dexie-export-import": "^4.1.4",
-    "electron-builder": "^25.1.8",
+    "electron-builder": "^26.6.0",
     "jszip": "^3.10.1",
     "katex": "^0.16.22",
     "langchain": "^0.3.27",
