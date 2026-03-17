@@ -317,6 +317,17 @@
     "gemma-7b-it": "Gemma 7b",
     "gemma2-9b-it": "Gemma2 9b"
   },
+  "minimaxApi": {
+    "name": "MiniMax API",
+    "MiniMax-M25": "MiniMax M2.5",
+    "MiniMax-M25-highspeed": "MiniMax M2.5 Highspeed",
+    "alterUrl": "Alternate Base URL",
+    "alterUrlPrompt": "Base URL path for API requests, default is https://api.minimax.io/v1",
+    "temperature": "Temperature",
+    "temperaturePrompt": "Must be between 0.1 and 1.0. Higher values produce more creative but less deterministic responses",
+    "temperature01": "More deterministic",
+    "temperature1": "More creative"
+  },
   "xaiApi": {
     "name": "xAI API",
     "grok-2-latest": "Grok-2",
@@ -396,5 +407,16 @@
   "10": "10",
   "25": "25",
   "50": "50",
-  "100": "100"
+  "100": "100",
+  "minimaxApi": {
+    "name": "MiniMax API",
+    "MiniMax-M25": "MiniMax-M2.5",
+    "MiniMax-M25-highspeed": "MiniMax-M2.5-highspeed",
+    "alterUrl": "API URL",
+    "alterUrlPrompt": "Custom API endpoint URL (default: https://api.minimax.io/v1)",
+    "temperature": "Temperature",
+    "temperaturePrompt": "What sampling temperature to use, between 0.1 and 1",
+    "temperature01": "Precise",
+    "temperature1": "Creative"
+  }
 }

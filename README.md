@@ -48,6 +48,7 @@ Typical users of ChatALL are:
 | [iFLYTEK SPARK](http://xinghuo.xfyun.cn/)                                      | Yes         | Coming soon |                                             |
 | [Kimi](https://kimi.moonshot.cn/               )                               | Yes         | No API      |                                             |
 | [Llama 2 13B & 70B](https://ai.meta.com/llama/)                                | Yes         | No API      |                                             |
+| [MiniMax](https://www.minimax.io/)                                             | No          | Yes         |                                             |
 | [MOSS](https://moss.fastnlp.top/)                                              | Yes         | No API      |                                             |
 | [Perplexity](https://www.perplexity.ai/)                                       | Yes         | No API      |                                             |
 | [Phind](https://www.phind.com/)                                                | Yes         | No API      |                                             |

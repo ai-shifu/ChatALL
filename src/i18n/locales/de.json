@@ -393,5 +393,16 @@
   "10": "10",
   "25": "25",
   "50": "50",
-  "100": "100"
+  "100": "100",
+  "minimaxApi": {
+    "name": "MiniMax API",
+    "MiniMax-M25": "MiniMax-M2.5",
+    "MiniMax-M25-highspeed": "MiniMax-M2.5-highspeed",
+    "alterUrl": "API URL",
+    "alterUrlPrompt": "Custom API endpoint URL (default: https://api.minimax.io/v1)",
+    "temperature": "Temperature",
+    "temperaturePrompt": "What sampling temperature to use, between 0.1 and 1",
+    "temperature01": "Precise",
+    "temperature1": "Creative"
+  }
 }

@@ -48,6 +48,7 @@ ChatALL 的典型用户是：
 | [讯飞星火](http://xinghuo.xfyun.cn/)                                           | 支持     | 即将推出 |                                            |
 | [Kimi](https://kimi.moonshot.cn/)                                              | 支持     | 无 API   |                                            |
 | [Llama 2 13B 和 70B](https://ai.meta.com/llama/)                               | 支持     | 无 API   |                                            |
+| [MiniMax](https://www.minimax.io/)                                             | 不支持   | 支持     |                                            |
 | [MOSS](https://moss.fastnlp.top/)                                              | 支持     | 无 API   |                                            |
 | [Perplexity](https://www.perplexity.ai/)                                       | 支持     | 无       |                                            |
 | [Phind](https://www.phind.com/)                                                | 支持     | 无 API   |                                            |

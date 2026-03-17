@@ -128,6 +128,7 @@ import { resolveTheme, applyTheme, Mode } from "../theme";
 import ClaudeAPIBotSettings from "./BotSettings/ClaudeAPIBotSettings.vue";
 import GroqAPIBotSettings from "./BotSettings/GroqAPIBotSettings.vue";
 import xAIAPIBotSettings from "./BotSettings/xAIAPIBotSettings.vue";
+import MiniMaxAPIBotSettings from "./BotSettings/MiniMaxAPIBotSettings.vue";
 
 const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
@@ -156,6 +157,7 @@ const botSettings = [
   { brand: "huggingChat", component: HuggingChatBotSettings },
   { brand: "kimi", component: KimiBotSettings },
   { brand: "lmsys", component: LMSYSBotSettings },
+  { brand: "minimaxApi", component: MiniMaxAPIBotSettings },
   { brand: "mistral", component: MistralBotSettings },
   { brand: "moss", component: MOSSBotSettings },
   { brand: "openaiApi", component: OpenAIAPIBotSettings },

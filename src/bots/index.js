@@ -66,6 +66,8 @@ import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
 import Grok2APIBot from "./xai/Grok2APIBot";
 import Grok3APIBot from "./xai/Grok3APIBot";
 import Grok3MiniAPIBot from "./xai/Grok3MiniAPIBot";
+import MiniMaxM25Bot from "./minimax/MiniMaxM25Bot";
+import MiniMaxM25HighspeedBot from "./minimax/MiniMaxM25HighspeedBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -134,6 +136,8 @@ const all = [
   Grok2APIBot.getInstance(),
   Grok3APIBot.getInstance(),
   Grok3MiniAPIBot.getInstance(),
+  MiniMaxM25Bot.getInstance(),
+  MiniMaxM25HighspeedBot.getInstance(),
 ];
 
 const disabled = ["HuggingChatBot"];
@@ -230,6 +234,8 @@ export const botTags = {
     bots.getBotByClassName("Grok2APIBot"),
     bots.getBotByClassName("Grok3APIBot"),
     bots.getBotByClassName("Grok3MiniAPIBot"),
+    bots.getBotByClassName("MiniMaxM25Bot"),
+    bots.getBotByClassName("MiniMaxM25HighspeedBot"),
   ],
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),
@@ -243,6 +249,8 @@ export const botTags = {
     bots.getBotByClassName("ChatGLMBot"),
     bots.getBotByClassName("ChatGLM4Bot"),
     bots.getBotByClassName("KimiBot"),
+    bots.getBotByClassName("MiniMaxM25Bot"),
+    bots.getBotByClassName("MiniMaxM25HighspeedBot"),
   ],
 };
 export default bots;
