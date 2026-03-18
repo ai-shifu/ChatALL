@@ -113,7 +113,63 @@ async function run() {
     }
   });
 
-  // ─── Test 2: MiniMax-M2.5-highspeed basic completion ──────────
+  // ─── Test 2: MiniMax-M2.7 basic completion ────────────────────
+  await describe("MiniMax-M2.7 basic chat completion", async () => {
+    try {
+      const result = await chatCompletion("MiniMax-M2.7", [
+        { role: "user", content: "Say hello in exactly one word." },
+      ]);
+
+      assert(result.status === 200, `Status code is 200 (got ${result.status})`);
+      assert(result.body.choices, "Response has choices array");
+      assert(
+        result.body.choices.length > 0,
+        "Response has at least one choice",
+      );
+      assert(
+        result.body.choices[0].message,
+        "First choice has a message",
+      );
+      assert(
+        typeof result.body.choices[0].message.content === "string",
+        "Message content is a string",
+      );
+      assert(
+        result.body.choices[0].message.content.length > 0,
+        `Got response: "${result.body.choices[0].message.content.substring(0, 50)}"`,
+      );
+      assert(
+        result.body.model,
+        `Model in response: ${result.body.model}`,
+      );
+    } catch (err) {
+      assert(false, `Request failed: ${err.message}`);
+    }
+  });
+
+  // ─── Test 3: MiniMax-M2.7-highspeed basic completion ─────────
+  await describe("MiniMax-M2.7-highspeed basic chat completion", async () => {
+    try {
+      const result = await chatCompletion("MiniMax-M2.7-highspeed", [
+        { role: "user", content: "What is 3+3? Answer with just the number." },
+      ]);
+
+      assert(result.status === 200, `Status code is 200 (got ${result.status})`);
+      assert(result.body.choices, "Response has choices array");
+      assert(
+        result.body.choices.length > 0,
+        "Response has at least one choice",
+      );
+      assert(
+        result.body.choices[0].message.content.length > 0,
+        `Got response: "${result.body.choices[0].message.content.substring(0, 50)}"`,
+      );
+    } catch (err) {
+      assert(false, `Request failed: ${err.message}`);
+    }
+  });
+
+  // ─── Test 4: MiniMax-M2.5-highspeed basic completion ──────────
   await describe("MiniMax-M2.5-highspeed basic chat completion", async () => {
     try {
       const result = await chatCompletion("MiniMax-M2.5-highspeed", [
@@ -135,7 +191,7 @@ async function run() {
     }
   });
 
-  // ─── Test 3: Temperature handling ──────────────────────────────
+  // ─── Test 5: Temperature handling ──────────────────────────────
   await describe("Temperature handling", async () => {
     try {
       // Test with valid temperature (1.0)
@@ -164,7 +220,7 @@ async function run() {
     }
   });
 
-  // ─── Test 4: Multi-turn conversation ───────────────────────────
+  // ─── Test 6: Multi-turn conversation ───────────────────────────
   await describe("Multi-turn conversation", async () => {
     try {
       const result = await chatCompletion("MiniMax-M2.5-highspeed", [
@@ -189,7 +245,7 @@ async function run() {
     }
   });
 
-  // ─── Test 5: System message ────────────────────────────────────
+  // ─── Test 7: System message ────────────────────────────────────
   await describe("System message support", async () => {
     try {
       const result = await chatCompletion("MiniMax-M2.5-highspeed", [

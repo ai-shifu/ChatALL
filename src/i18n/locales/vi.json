@@ -377,6 +377,8 @@
     "name": "MiniMax API",
     "MiniMax-M25": "MiniMax-M2.5",
     "MiniMax-M25-highspeed": "MiniMax-M2.5-highspeed",
+    "MiniMax-M27": "MiniMax-M2.7",
+    "MiniMax-M27-highspeed": "MiniMax-M2.7-highspeed",
     "alterUrl": "API URL",
     "alterUrlPrompt": "Custom API endpoint URL (default: https://api.minimax.io/v1)",
     "temperature": "Temperature",

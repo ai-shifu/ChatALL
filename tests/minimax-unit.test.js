@@ -41,6 +41,14 @@ describe("Bot files exist", () => {
     fs.existsSync(path.join(botsDir, "MiniMaxM25HighspeedBot.js")),
     "MiniMaxM25HighspeedBot.js exists",
   );
+  assert(
+    fs.existsSync(path.join(botsDir, "MiniMaxM27Bot.js")),
+    "MiniMaxM27Bot.js exists",
+  );
+  assert(
+    fs.existsSync(path.join(botsDir, "MiniMaxM27HighspeedBot.js")),
+    "MiniMaxM27HighspeedBot.js exists",
+  );
 });
 
 // ─── Bot file contents ────────────────────────────────────────────
@@ -121,6 +129,53 @@ describe("MiniMaxM25HighspeedBot.js contents", () => {
   assert(
     content.includes('static _className = "MiniMaxM25HighspeedBot"'),
     'Class name is "MiniMaxM25HighspeedBot"',
+  );
+});
+
+describe("MiniMaxM27Bot.js contents", () => {
+  const content = fs.readFileSync(
+    path.join(__dirname, "..", "src", "bots", "minimax", "MiniMaxM27Bot.js"),
+    "utf-8",
+  );
+
+  assert(
+    content.includes('static _model = "MiniMax-M2.7"'),
+    'Model is "MiniMax-M2.7"',
+  );
+  assert(
+    content.includes("extends MiniMaxAPIBot"),
+    "Extends MiniMaxAPIBot",
+  );
+  assert(
+    content.includes('static _className = "MiniMaxM27Bot"'),
+    'Class name is "MiniMaxM27Bot"',
+  );
+});
+
+describe("MiniMaxM27HighspeedBot.js contents", () => {
+  const content = fs.readFileSync(
+    path.join(
+      __dirname,
+      "..",
+      "src",
+      "bots",
+      "minimax",
+      "MiniMaxM27HighspeedBot.js",
+    ),
+    "utf-8",
+  );
+
+  assert(
+    content.includes('static _model = "MiniMax-M2.7-highspeed"'),
+    'Model is "MiniMax-M2.7-highspeed"',
+  );
+  assert(
+    content.includes("extends MiniMaxAPIBot"),
+    "Extends MiniMaxAPIBot",
+  );
+  assert(
+    content.includes('static _className = "MiniMaxM27HighspeedBot"'),
+    'Class name is "MiniMaxM27HighspeedBot"',
   );
 });
 
@@ -222,12 +277,32 @@ describe("Bot registration in index.js", () => {
     "MiniMaxM25HighspeedBot is imported",
   );
   assert(
+    indexContent.includes(
+      'import MiniMaxM27Bot from "./minimax/MiniMaxM27Bot"',
+    ),
+    "MiniMaxM27Bot is imported",
+  );
+  assert(
+    indexContent.includes(
+      'import MiniMaxM27HighspeedBot from "./minimax/MiniMaxM27HighspeedBot"',
+    ),
+    "MiniMaxM27HighspeedBot is imported",
+  );
+  assert(
     indexContent.includes("MiniMaxM25Bot.getInstance()"),
     "MiniMaxM25Bot is registered in all array",
   );
   assert(
     indexContent.includes("MiniMaxM25HighspeedBot.getInstance()"),
     "MiniMaxM25HighspeedBot is registered in all array",
+  );
+  assert(
+    indexContent.includes("MiniMaxM27Bot.getInstance()"),
+    "MiniMaxM27Bot is registered in all array",
+  );
+  assert(
+    indexContent.includes("MiniMaxM27HighspeedBot.getInstance()"),
+    "MiniMaxM27HighspeedBot is registered in all array",
   );
 
   // Check API tag
@@ -238,6 +313,14 @@ describe("Bot registration in index.js", () => {
   assert(
     indexContent.includes('bots.getBotByClassName("MiniMaxM25HighspeedBot")'),
     "MiniMaxM25HighspeedBot is in botTags",
+  );
+  assert(
+    indexContent.includes('bots.getBotByClassName("MiniMaxM27Bot")'),
+    "MiniMaxM27Bot is in botTags",
+  );
+  assert(
+    indexContent.includes('bots.getBotByClassName("MiniMaxM27HighspeedBot")'),
+    "MiniMaxM27HighspeedBot is in botTags",
   );
 });
 
@@ -262,6 +345,14 @@ describe("i18n entries", () => {
   assert(
     enLocale.minimaxApi["MiniMax-M25-highspeed"] === "MiniMax-M2.5-highspeed",
     "MiniMax-M2.5-highspeed model name is correct",
+  );
+  assert(
+    enLocale.minimaxApi["MiniMax-M27"] === "MiniMax-M2.7",
+    "MiniMax-M2.7 model name is correct",
+  );
+  assert(
+    enLocale.minimaxApi["MiniMax-M27-highspeed"] === "MiniMax-M2.7-highspeed",
+    "MiniMax-M2.7-highspeed model name is correct",
   );
 
   // Check Chinese locale
