@@ -33,6 +33,8 @@ export default class OpenAIAPIBot extends LangChainBot {
         ? undefined
         : store.state.openaiApi.temperature,
       streaming: true,
+      timeout: 60000,
+      maxRetries: 3,
     });
     return chatModel;
   }

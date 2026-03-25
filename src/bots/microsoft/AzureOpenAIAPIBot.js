@@ -36,6 +36,8 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
       azureOpenAIApiVersion: store.state.azureOpenaiApi.azureOpenAIApiVersion,
       temperature: store.state.azureOpenaiApi.temperature,
       streaming: true,
+      timeout: 60000,
+      maxRetries: 3,
     });
     return chatModel;
   }
