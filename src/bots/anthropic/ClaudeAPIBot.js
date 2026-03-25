@@ -31,6 +31,7 @@ export default class ClaudeAPIBot extends LangChainBot {
       modelName: this.constructor._model ? this.constructor._model : "",
       streaming: true,
       timeout: 60000,
+      maxRetries: 3,
     });
 
     return chatModel;
