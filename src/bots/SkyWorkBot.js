@@ -14,10 +14,6 @@ export default class SkyWorkBot extends Bot {
 
   currentPrompt = ""; // Used by createChatContext() only
 
-  constructor() {
-    super();
-  }
-
   getAuthHeaders() {
     return {
       headers: {

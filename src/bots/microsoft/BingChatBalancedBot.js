@@ -26,8 +26,4 @@ export default class BingChatBalancedBot extends BingChatBot {
     "saharagenconv5",
   ];
   static _tone = "Balanced";
-
-  constructor() {
-    super();
-  }
 }

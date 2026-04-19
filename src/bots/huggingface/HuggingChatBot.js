@@ -12,10 +12,6 @@ export default class HuggingChatBot extends Bot {
   static _model = "OpenAssistant/oasst-sft-6-llama-30b-xor";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
-  constructor() {
-    super();
-  }
-
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.

@@ -6,10 +6,6 @@ export default class ChatGPT4Bot extends ChatGPTBot {
   static _logoFilename = "chatgpt-4-logo.png"; // Place it in public/bots/
   static _model = "gpt-4";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = await super._checkAvailability();
 

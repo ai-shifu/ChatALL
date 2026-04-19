@@ -13,10 +13,6 @@ export default class ChatGLMBot extends Bot {
   static _model = "GLM-3"; // Model name
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
-  constructor() {
-    super();
-  }
-
   getAuthHeader() {
     return {
       headers: {

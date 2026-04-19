@@ -6,10 +6,6 @@ export default class CohereAPIBot extends LangChainBot {
   static _brandId = "cohereApi";
   static _className = "CohereAPIBot";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 

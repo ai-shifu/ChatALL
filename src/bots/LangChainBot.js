@@ -5,10 +5,6 @@ export default class LangChainBot extends Bot {
   static _brandId = "langChainBot";
   static _chatModel = undefined; // ChatModel instance
 
-  constructor() {
-    super();
-  }
-
   async _sendPrompt(prompt, onUpdateResponse, callbackParam) {
     let messages = await this.getChatContext();
     let bufferMemory = new BufferMemory();

@@ -12,10 +12,6 @@ export default class SparkBot extends Bot {
   static _loginUrl = "https://xinghuo.xfyun.cn/";
   static _lock = new AsyncLock(); // All Spark bots share the same lock
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
     try {

@@ -19,10 +19,6 @@ export default class QianWenBot extends Bot {
   static _loginUrl = "https://qianwen.aliyun.com/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
-  constructor() {
-    super();
-  }
-
   getRequestHeaders() {
     return {
       "x-xsrf-token": store.state.qianWen?.xsrfToken,

@@ -14,10 +14,6 @@ export default class LMSYSBot extends GradioBot {
   static _fnIndexes = [41, 42]; // Indexes of the APIs to call in order. Sniffer it by devtools.
   _triggerId = 93; // From devtools
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = await super._checkAvailability();
     if (available) {

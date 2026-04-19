@@ -6,10 +6,6 @@ export default class xAIAPIBot extends LangChainBot {
   static _brandId = "xaiApi";
   static _className = "xAIAPIBot";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 

@@ -13,10 +13,6 @@ export default class MOSSBot extends Bot {
   static _loginUrl = "https://moss.fastnlp.top/moss/";
   static _lock = new AsyncLock();
 
-  constructor() {
-    super();
-  }
-
   getAuthHeader() {
     const token = store.state.moss?.token?.refresh;
     return {

@@ -12,10 +12,6 @@ export default class KimiBot extends Bot {
   static _loginUrl = "https://kimi.moonshot.cn/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
-  constructor() {
-    super();
-  }
-
   getAuthHeader() {
     return {
       headers: {

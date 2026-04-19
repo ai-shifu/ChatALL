@@ -6,10 +6,6 @@ export default class GroqAPIBot extends LangChainBot {
   static _brandId = "groqApi";
   static _className = "GroqAPIBot";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 

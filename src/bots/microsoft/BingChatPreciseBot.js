@@ -29,8 +29,4 @@ export default class BingChatPreciseBot extends BingChatBot {
     "enable_user_consent",
   ];
   static _tone = "Precise";
-
-  constructor() {
-    super();
-  }
 }

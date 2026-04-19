@@ -8,10 +8,6 @@ export default class AzureOpenAIAPIBot extends LangChainBot {
   static _logoFilename = "azure-openai-logo.png";
   static _isDarkLogo = true; // The main color of logo is dark
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
     if (

@@ -9,10 +9,6 @@ export default class MistralBot extends Bot {
   static _logoFilename = "mistral-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://chat.mistral.ai/login";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
     try {

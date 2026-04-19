@@ -19,10 +19,6 @@ export default class PoeBot extends Bot {
     lastMessageId: 0,
   };
 
-  constructor() {
-    super();
-  }
-
   async gqlPost(queryName, variables) {
     const { settings } = this.context;
     const formkey = store.state.poe.formkey;

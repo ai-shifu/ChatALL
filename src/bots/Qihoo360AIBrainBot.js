@@ -8,10 +8,6 @@ export default class Qihoo360AIBrainBot extends Bot {
   static _logoFilename = "360-ai-brain-logo.png";
   static _loginUrl = "https://chat.360.com/";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 
