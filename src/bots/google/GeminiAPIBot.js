@@ -8,10 +8,6 @@ export default class GeminiAPIBot extends LangChainBot {
   static _logoFilename = "gemini-1.0-logo.png"; // Place it in public/bots/
   static _model = "gemini-pro";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 

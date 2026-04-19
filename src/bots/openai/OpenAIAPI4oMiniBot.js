@@ -5,8 +5,4 @@ export default class OpenAIAPI4oMiniBot extends OpenAIAPIBot {
   static _logoFilename = "openai-4o-mini-logo.png"; // Place it in public/bots/
   static _isDarkLogo = true; // The main color of logo is dark
   static _model = "gpt-4o-mini";
-
-  constructor() {
-    super();
-  }
 }

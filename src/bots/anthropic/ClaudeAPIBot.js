@@ -6,10 +6,6 @@ export default class ClaudeAPIBot extends LangChainBot {
   static _brandId = "claudeApi";
   static _className = "ClaudeAPIBot";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 

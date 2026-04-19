@@ -10,10 +10,6 @@ export default class PiBot extends Bot {
   static _loginUrl = "https://pi.ai/";
   static _lock = new AsyncLock(); // AsyncLock for prompt requests
 
-  constructor() {
-    super();
-  }
-
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.

@@ -8,10 +8,6 @@ export default class DevBot extends Bot {
   static _loginUrl = "http://chatall.ai";
   static _isAvailable = true;
 
-  constructor() {
-    super();
-  }
-
   /**
    * Check whether the bot is logged in, settings are correct, etc.
    * @returns {boolean} - true if the bot is available, false otherwise.

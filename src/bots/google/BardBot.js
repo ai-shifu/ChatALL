@@ -149,10 +149,6 @@ export default class BardBot extends Bot {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) chatall/1.29.40 Chrome/114.0.5735.134 Safari/537.36";
   static _lock = new AsyncLock();
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     const context = await this.getChatContext();
     let available = false;

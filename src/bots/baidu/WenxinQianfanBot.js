@@ -10,10 +10,6 @@ export default class WenxinQianfanBot extends LangChainBot {
   static _model = "ERNIE-Bot"; // Model name
   static _lock = new AsyncLock();
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
     const { apiKey, secretKey } = store.state.wenxinQianfan;

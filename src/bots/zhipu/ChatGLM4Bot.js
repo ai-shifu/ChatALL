@@ -7,10 +7,6 @@ export default class ChatGLM4Bot extends ChatGLMBot {
   static _logoFilename = "chatglm-4-logo.png"; // Place it in public/bots/
   static _model = "GLM-4"; // Model name
 
-  constructor() {
-    super();
-  }
-
   /**
    * Send a prompt to the bot and call onResponse(response, callbackParam)
    * when the response is ready.

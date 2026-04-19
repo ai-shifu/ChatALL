@@ -6,10 +6,6 @@ export default class OpenAIAPIBot extends LangChainBot {
   static _brandId = "openaiApi";
   static _className = "OpenAIAPIBot";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 

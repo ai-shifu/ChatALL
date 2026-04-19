@@ -13,10 +13,6 @@ export default class BingChatBot extends Bot {
   static _optionsSets = null; // Set by the subclass
   static _tone = ""; // Set by the subclass
 
-  constructor() {
-    super();
-  }
-
   async createChatContext() {
     const headers = {
       "x-ms-client-request-id": uuidv4(),

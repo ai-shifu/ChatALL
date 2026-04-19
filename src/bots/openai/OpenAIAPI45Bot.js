@@ -5,8 +5,4 @@ export default class OpenAIAPI45Bot extends OpenAIAPIBot {
   static _logoFilename = "openai-45-logo.png"; // Place it in public/bots/
   static _isDarkLogo = true; // The main color of logo is dark
   static _model = "gpt-4.5-preview";
-
-  constructor() {
-    super();
-  }
 }

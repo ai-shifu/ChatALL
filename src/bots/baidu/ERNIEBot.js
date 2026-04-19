@@ -7,10 +7,6 @@ export default class ERNIEBot extends Bot {
   static _logoFilename = "ernie-logo.png"; // Place it in public/bots/
   static _loginUrl = "https://yiyan.baidu.com/";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
 

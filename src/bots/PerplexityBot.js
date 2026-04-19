@@ -11,10 +11,6 @@ export default class PerplexityBot extends Bot {
   static _isDarkLogo = true; // True if the main color of logo is dark
   static _loginUrl = "https://www.perplexity.ai";
 
-  constructor() {
-    super();
-  }
-
   async _checkAvailability() {
     let available = false;
     try {
