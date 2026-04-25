@@ -3,6 +3,7 @@ import Bot from "@/bots/Bot";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import WebSocketAsPromised from "websocket-as-promised";
+import i18n from "@/i18n";
 
 export default class PerplexityBot extends Bot {
   static _brandId = "perplexity";
@@ -174,7 +175,7 @@ export default class PerplexityBot extends Bot {
     return new Promise((resolve, reject) => {
       try {
         const wsp = new WebSocketAsPromised(
-          `wss://www.perplexity.ai/socket.io/?EIO=4&transport=polling&t=${this.t}&sid=${sid}`,
+          `wss://www.perplexity.ai/socket.io/?EIO=4&transport=websocket&t=${this.t}&sid=${sid}`,
           {
             packMessage: (data) => {
               return `42${this.seq++}${JSON.stringify(data)}`;
@@ -309,7 +310,11 @@ export default class PerplexityBot extends Bot {
         wsp.onError.addListener((event) => {
           wsp.removeAllListeners();
           wsp.close();
-          reject(event);
+          reject(
+            i18n.global.t("error.failedConnectUrl", {
+              url: event.target?.url ?? "wss://www.perplexity.ai/socket.io/",
+            }),
+          );
         });
 
         wsp.onClose.addListener(() => {
