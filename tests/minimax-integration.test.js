@@ -79,10 +79,10 @@ async function run() {
     process.exit(1);
   }
 
-  // ─── Test 1: MiniMax-M2.5 basic completion ─────────────────────
-  await describe("MiniMax-M2.5 basic chat completion", async () => {
+  // ─── Test 1: MiniMax-M3 basic completion ─────────────────────
+  await describe("MiniMax-M3 basic chat completion", async () => {
     try {
-      const result = await chatCompletion("MiniMax-M2.5", [
+      const result = await chatCompletion("MiniMax-M3", [
         { role: "user", content: "Say hello in exactly one word." },
       ]);
 
@@ -169,10 +169,10 @@ async function run() {
     }
   });
 
-  // ─── Test 4: MiniMax-M2.5-highspeed basic completion ──────────
-  await describe("MiniMax-M2.5-highspeed basic chat completion", async () => {
+  // ─── Test 4: MiniMax-M2.7-highspeed alternate completion ──────────
+  await describe("MiniMax-M2.7-highspeed alternate basic chat completion", async () => {
     try {
-      const result = await chatCompletion("MiniMax-M2.5-highspeed", [
+      const result = await chatCompletion("MiniMax-M2.7-highspeed", [
         { role: "user", content: "What is 2+2? Answer with just the number." },
       ]);
 
@@ -196,7 +196,7 @@ async function run() {
     try {
       // Test with valid temperature (1.0)
       const result = await chatCompletion(
-        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7-highspeed",
         [{ role: "user", content: "Hi" }],
         { temperature: 1.0, max_tokens: 10 },
       );
@@ -207,7 +207,7 @@ async function run() {
 
       // Test with valid low temperature (0.1)
       const result2 = await chatCompletion(
-        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7-highspeed",
         [{ role: "user", content: "Hi" }],
         { temperature: 0.1, max_tokens: 10 },
       );
@@ -223,7 +223,7 @@ async function run() {
   // ─── Test 6: Multi-turn conversation ───────────────────────────
   await describe("Multi-turn conversation", async () => {
     try {
-      const result = await chatCompletion("MiniMax-M2.5-highspeed", [
+      const result = await chatCompletion("MiniMax-M2.7-highspeed", [
         { role: "user", content: "Remember the number 42." },
         {
           role: "assistant",
@@ -248,7 +248,7 @@ async function run() {
   // ─── Test 7: System message ────────────────────────────────────
   await describe("System message support", async () => {
     try {
-      const result = await chatCompletion("MiniMax-M2.5-highspeed", [
+      const result = await chatCompletion("MiniMax-M2.7-highspeed", [
         {
           role: "system",
           content: "You are a helpful assistant. Always end your response with the word PINEAPPLE.",

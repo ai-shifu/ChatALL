@@ -396,10 +396,9 @@
   "100": "100",
   "minimaxApi": {
     "name": "MiniMax API",
-    "MiniMax-M25": "MiniMax-M2.5",
-    "MiniMax-M25-highspeed": "MiniMax-M2.5-highspeed",
     "MiniMax-M27": "MiniMax-M2.7",
     "MiniMax-M27-highspeed": "MiniMax-M2.7-highspeed",
+    "MiniMax-M3": "MiniMax-M3",
     "alterUrl": "API 地址",
     "alterUrlPrompt": "自定义 API 端点地址（默认：https://api.minimax.io/v1）",
     "temperature": "温度",

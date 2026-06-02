@@ -319,16 +319,15 @@
   },
   "minimaxApi": {
     "name": "MiniMax API",
-    "MiniMax-M25": "MiniMax M2.5",
-    "MiniMax-M25-highspeed": "MiniMax M2.5 Highspeed",
-    "MiniMax-M27": "MiniMax M2.7",
-    "MiniMax-M27-highspeed": "MiniMax M2.7 Highspeed",
-    "alterUrl": "Alternate Base URL",
-    "alterUrlPrompt": "Base URL path for API requests, default is https://api.minimax.io/v1",
+    "MiniMax-M27": "MiniMax-M2.7",
+    "MiniMax-M27-highspeed": "MiniMax-M2.7-highspeed",
+    "MiniMax-M3": "MiniMax-M3",
+    "alterUrl": "API URL",
+    "alterUrlPrompt": "Custom API endpoint URL (default: https://api.minimax.io/v1)",
     "temperature": "Temperature",
-    "temperaturePrompt": "Must be between 0.1 and 1.0. Higher values produce more creative but less deterministic responses",
-    "temperature01": "More deterministic",
-    "temperature1": "More creative"
+    "temperaturePrompt": "What sampling temperature to use, between 0.1 and 1",
+    "temperature01": "Precise",
+    "temperature1": "Creative"
   },
   "xaiApi": {
     "name": "xAI API",
@@ -409,18 +408,5 @@
   "10": "10",
   "25": "25",
   "50": "50",
-  "100": "100",
-  "minimaxApi": {
-    "name": "MiniMax API",
-    "MiniMax-M25": "MiniMax-M2.5",
-    "MiniMax-M25-highspeed": "MiniMax-M2.5-highspeed",
-    "MiniMax-M27": "MiniMax-M2.7",
-    "MiniMax-M27-highspeed": "MiniMax-M2.7-highspeed",
-    "alterUrl": "API URL",
-    "alterUrlPrompt": "Custom API endpoint URL (default: https://api.minimax.io/v1)",
-    "temperature": "Temperature",
-    "temperaturePrompt": "What sampling temperature to use, between 0.1 and 1",
-    "temperature01": "Precise",
-    "temperature1": "Creative"
-  }
+  "100": "100"
 }
