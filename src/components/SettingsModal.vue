@@ -128,6 +128,7 @@ import { resolveTheme, applyTheme, Mode } from "../theme";
 import ClaudeAPIBotSettings from "./BotSettings/ClaudeAPIBotSettings.vue";
 import GroqAPIBotSettings from "./BotSettings/GroqAPIBotSettings.vue";
 import xAIAPIBotSettings from "./BotSettings/xAIAPIBotSettings.vue";
+import AtlasCloudAPIBotSettings from "./BotSettings/AtlasCloudAPIBotSettings.vue";
 
 const { ipcRenderer } = window.require("electron");
 const { t: $t, locale } = useI18n();
@@ -142,6 +143,7 @@ const tab = ref(null);
 const botSettings = [
   { brand: "360AiBrain", component: Qihoo360AIBrainBotSettings },
   { brand: "azureOpenaiApi", component: AzureOpenAIAPIBotSettings },
+  { brand: "atlasCloudApi", component: AtlasCloudAPIBotSettings },
   { brand: "bard", component: BardBotSettings },
   { brand: "bingChat", component: BingChatBotSettings },
   { brand: "characterAI", component: CharacterAIBotSettings },
@@ -240,4 +242,3 @@ watch(
   text-transform: none !important;
 }
 </style>
-

@@ -27,6 +27,8 @@ class Chats {
             { classname: "Grok3MiniAPIBot", selected: false },
             { classname: "Llama4ScoutGroqAPIBot", selected: false },
             { classname: "Llama4MaverickGroqAPIBot", selected: false },
+            { classname: "AtlasCloudQwen35FlashBot", selected: false },
+            { classname: "AtlasCloudDeepSeekV4ProBot", selected: false },
             { classname: "OpenAIAPI41Bot", selected: false },
             { classname: "OpenAIAPI41MiniBot", selected: false },
             { classname: "OpenAIAPI41NanoBot", selected: false },

@@ -66,6 +66,8 @@ import ClaudeAPIHaikuBot from "./anthropic/ClaudeAPIHaikuBot";
 import Grok2APIBot from "./xai/Grok2APIBot";
 import Grok3APIBot from "./xai/Grok3APIBot";
 import Grok3MiniAPIBot from "./xai/Grok3MiniAPIBot";
+import AtlasCloudQwen35FlashBot from "./atlascloud/AtlasCloudQwen35FlashBot";
+import AtlasCloudDeepSeekV4ProBot from "./atlascloud/AtlasCloudDeepSeekV4ProBot";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -134,6 +136,8 @@ const all = [
   Grok2APIBot.getInstance(),
   Grok3APIBot.getInstance(),
   Grok3MiniAPIBot.getInstance(),
+  AtlasCloudQwen35FlashBot.getInstance(),
+  AtlasCloudDeepSeekV4ProBot.getInstance(),
 ];
 
 const disabled = ["HuggingChatBot"];
@@ -230,6 +234,8 @@ export const botTags = {
     bots.getBotByClassName("Grok2APIBot"),
     bots.getBotByClassName("Grok3APIBot"),
     bots.getBotByClassName("Grok3MiniAPIBot"),
+    bots.getBotByClassName("AtlasCloudQwen35FlashBot"),
+    bots.getBotByClassName("AtlasCloudDeepSeekV4ProBot"),
   ],
   madeInChina: [
     bots.getBotByClassName("Qihoo360AIBrainBot"),
