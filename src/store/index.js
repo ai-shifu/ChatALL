@@ -126,6 +126,12 @@ export default createStore({
       apiKey: "",
       pastRounds: 5,
     },
+    atlasCloudApi: {
+      apiKey: "",
+      temperature: 0.7,
+      maxTokens: 1024,
+      pastRounds: 5,
+    },
     currentChatIndex: 0,
     updateCounter: 0,
     theme: undefined,
@@ -276,6 +282,9 @@ export default createStore({
     },
     setXaiApi(state, values) {
       state.xaiApi = { ...state.xaiApi, ...values };
+    },
+    setAtlasCloudApi(state, values) {
+      state.atlasCloudApi = { ...state.atlasCloudApi, ...values };
     },
     setLatestPromptIndex(state, promptIndex) {
       Chats.table.update(state.currentChatIndex, {

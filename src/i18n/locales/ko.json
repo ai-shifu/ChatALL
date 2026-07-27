@@ -317,6 +317,11 @@
     "gemma-7b-it": "Gemma 7b",
     "gemma2-9b-it": "Gemma2 9b"
   },
+  "atlasCloudApi": {
+    "name": "Atlas Cloud API",
+    "qwenqwen35-flash": "Qwen3.5 Flash",
+    "deepseek-aideepseek-v4-pro": "DeepSeek V4 Pro"
+  },
   "xaiApi": {
     "name": "xAI API",
     "grok-2-latest": "Grok-2",
