@@ -24,7 +24,7 @@ export default class AtlasCloudAPIBot extends LangChainBot {
   _setupModel() {
     const chatModel = new ChatOpenAI({
       configuration: {
-        basePath: "https://api.atlascloud.ai/v1",
+        baseURL: "https://api.atlascloud.ai/v1",
       },
       openAIApiKey: store.state.atlasCloudApi.apiKey,
       modelName: this.constructor._model ? this.constructor._model : "",
@@ -36,8 +36,6 @@ export default class AtlasCloudAPIBot extends LangChainBot {
   }
 
   getPastRounds() {
-    return store.state.atlasCloudApi.pastRounds
-      ? store.state.atlasCloudApi.pastRounds
-      : 5;
+    return store.state.atlasCloudApi.pastRounds ?? 5;
   }
 }

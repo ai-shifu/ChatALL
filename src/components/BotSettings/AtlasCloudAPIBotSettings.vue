@@ -4,8 +4,7 @@
     :brand-id="brandId"
     mutation-type="setAtlasCloudApi"
     :watcher="watcher"
-  ></CommonBotSettings
-  >
+  />
 </template>
 
 <script>
@@ -68,8 +67,9 @@ export default {
     watcher() {
       _bots.all
         .filter((bot) => bot instanceof Bot)
-        .map((bot) => bot.setupModel());
+        .forEach((bot) => bot.setupModel());
     },
   },
 };
 </script>
+
