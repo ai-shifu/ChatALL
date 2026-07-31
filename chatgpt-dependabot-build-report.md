@@ -1,6 +1,6 @@
 # Dependabot PR build report
 
-Generated: 2026-07-31T19:42:33.713027+00:00
+Generated: 2026-07-31T19:43:00.060825+00:00
 
 Environment: GitHub-hosted Ubuntu runner, Node.js 20, clean `npm ci`.
 
@@ -107,7 +107,7 @@ npm error
 npm error aliases: clean-install, ic, install-clean, isntall-clean
 npm error
 npm error Run "npm help ci" for more info
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-31T19_30_25_852Z-debug-0.log
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-31T19_35_14_782Z-debug-0.log
 ```
 
 ### web 1072: build
@@ -146,7 +146,7 @@ Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
 Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
- ERROR  Failed to compile with 1 error7:35:03 PM
+ ERROR  Failed to compile with 1 error7:39:10 PM
 
  error  in ./src/bots/baidu/WenxinQianfanBot.js
 
@@ -253,6 +253,6 @@ npm error
 npm error aliases: clean-install, ic, install-clean, isntall-clean
 npm error
 npm error Run "npm help ci" for more info
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-31T19_31_25_669Z-debug-0.log
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-31T19_35_36_284Z-debug-0.log
 ```
 
