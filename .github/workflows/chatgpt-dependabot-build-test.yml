@@ -1,4 +1,4 @@
-name: ChatGPT Dependabot build test
+name: ChatGPT Dependabot Electron test
 
 on:
   push:
@@ -6,18 +6,20 @@ on:
       - chatgpt/dependabot-build-test
     paths-ignore:
       - chatgpt-dependabot-build-report.md
+      - chatgpt-dependabot-electron-report.md
   pull_request:
     branches:
       - main
     paths-ignore:
       - chatgpt-dependabot-build-report.md
+      - chatgpt-dependabot-electron-report.md
 
 permissions:
   contents: read
 
 jobs:
-  web-build:
-    name: "web ${{ matrix.target }}"
+  electron-linux:
+    name: "electron-linux ${{ matrix.target }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -53,74 +55,7 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install, build, and lint
-        shell: bash
-        env:
-          TARGET: ${{ matrix.target }}
-          HUSKY: "0"
-        run: |
-          mkdir -p ci-result
-          install=success
-          build=skipped
-          lint=skipped
-
-          npm ci >ci-result/install.log 2>&1 || install=failure
-          if [[ "$install" == success ]]; then
-            build=success
-            npm run build >ci-result/build.log 2>&1 || build=failure
-
-            lint=success
-            npm run lint >ci-result/lint.log 2>&1 || lint=failure
-          fi
-
-          export INSTALL_STATUS="$install" BUILD_STATUS="$build" LINT_STATUS="$lint"
-          export TARGET_SHA="$(git rev-parse HEAD)"
-          python3 - <<'PY'
-          import json, os
-          result = {
-              "kind": "web",
-              "target": os.environ["TARGET"],
-              "sha": os.environ["TARGET_SHA"],
-              "install": os.environ["INSTALL_STATUS"],
-              "build": os.environ["BUILD_STATUS"],
-              "lint": os.environ["LINT_STATUS"],
-          }
-          with open("ci-result/result.json", "w", encoding="utf-8") as f:
-              json.dump(result, f, indent=2)
-          PY
-
-      - name: Upload web result
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: web-result-${{ matrix.target }}
-          path: ci-result/
-          retention-days: 1
-
-  electron-linux-package:
-    name: "electron-linux ${{ matrix.target }}"
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        target:
-          - main
-          - "1068"
-          - "1043"
-    steps:
-      - name: Check out target
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ matrix.target == 'main' && 'main' || format('refs/pull/{0}/head', matrix.target) }}
-          persist-credentials: false
-
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install and package Linux Electron app
+      - name: Install, package, and launch
         shell: bash
         env:
           TARGET: ${{ matrix.target }}
@@ -130,6 +65,7 @@ jobs:
           mkdir -p ci-result
           install=success
           package=skipped
+          smoke=skipped
 
           npm ci >ci-result/install.log 2>&1 || install=failure
           if [[ "$install" == success ]]; then
@@ -137,22 +73,52 @@ jobs:
             npm run electron:build -- --linux --dir -p never >ci-result/package.log 2>&1 || package=failure
           fi
 
-          export INSTALL_STATUS="$install" PACKAGE_STATUS="$package"
+          if [[ "$package" == success ]]; then
+            exe="dist_electron/linux-unpacked/ChatALL"
+            if [[ ! -x "$exe" ]]; then
+              exe="$(find dist_electron -path '*/linux-unpacked/*' -maxdepth 4 -type f -perm -111 2>/dev/null | grep -Ev '/(chrome-sandbox|chrome_crashpad_handler|libEGL|libGLES|libffmpeg|snapshot_blob|v8_context_snapshot)' | head -n 1 || true)"
+            fi
+
+            if [[ -z "$exe" || ! -x "$exe" ]]; then
+              smoke=failure
+              echo "Could not locate packaged executable." >ci-result/smoke.log
+            else
+              if ! command -v xvfb-run >/dev/null 2>&1; then
+                sudo apt-get update >ci-result/xvfb-install.log 2>&1
+                sudo apt-get install -y xvfb >>ci-result/xvfb-install.log 2>&1
+              fi
+
+              smoke=success
+              setsid xvfb-run -a "$exe" --no-sandbox --disable-gpu >ci-result/smoke.log 2>&1 &
+              pid=$!
+              sleep 12
+              if kill -0 "$pid" 2>/dev/null; then
+                kill -TERM -- "-$pid" 2>/dev/null || true
+                wait "$pid" 2>/dev/null || true
+              else
+                wait "$pid" || rc=$?
+                echo "Application exited before the 12-second smoke window (status ${rc:-0})." >>ci-result/smoke.log
+                smoke=failure
+              fi
+            fi
+          fi
+
+          export INSTALL_STATUS="$install" PACKAGE_STATUS="$package" SMOKE_STATUS="$smoke"
           export TARGET_SHA="$(git rev-parse HEAD)"
           python3 - <<'PY'
           import json, os
           result = {
-              "kind": "electron-linux",
               "target": os.environ["TARGET"],
               "sha": os.environ["TARGET_SHA"],
               "install": os.environ["INSTALL_STATUS"],
               "package": os.environ["PACKAGE_STATUS"],
+              "smoke": os.environ["SMOKE_STATUS"],
           }
           with open("ci-result/result.json", "w", encoding="utf-8") as f:
               json.dump(result, f, indent=2)
           PY
 
-      - name: Upload Electron result
+      - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -161,11 +127,10 @@ jobs:
           retention-days: 1
 
   report:
-    name: Compile build report
+    name: Compile Electron report
     if: always()
     needs:
-      - web-build
-      - electron-linux-package
+      - electron-linux
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -175,13 +140,7 @@ jobs:
         with:
           ref: chatgpt/dependabot-build-test
 
-      - name: Download web results
-        uses: actions/download-artifact@v4
-        with:
-          pattern: web-result-*
-          path: ci-results/web
-
-      - name: Download Electron results
+      - name: Download results
         uses: actions/download-artifact@v4
         with:
           pattern: electron-result-*
@@ -197,90 +156,56 @@ jobs:
           import json
           from pathlib import Path
 
-          web_order = [
+          order = [
               "main", "1073", "1072", "1071", "1068", "1067", "1066",
               "1065", "1064", "1063", "1062", "1061", "1060", "1059",
               "1055", "1043", "1040",
           ]
-          electron_order = ["main", "1068", "1043"]
 
-          def load_results(root: str) -> dict[str, tuple[dict, Path]]:
-              loaded = {}
-              for result_file in Path(root).glob("**/result.json"):
-                  data = json.loads(result_file.read_text(encoding="utf-8"))
-                  loaded[data["target"]] = (data, result_file.parent)
-              return loaded
+          results = {}
+          for result_file in Path("ci-results/electron").glob("**/result.json"):
+              data = json.loads(result_file.read_text(encoding="utf-8"))
+              results[data["target"]] = (data, result_file.parent)
 
-          web = load_results("ci-results/web")
-          electron = load_results("ci-results/electron")
           lines = [
-              "# Dependabot PR build report",
+              "# Dependabot PR Electron report",
               "",
               f"Generated: {datetime.datetime.now(datetime.timezone.utc).isoformat()}",
               "",
-              "Environment: GitHub-hosted Ubuntu runner, Node.js 20, clean `npm ci`.",
+              "Environment: GitHub-hosted Ubuntu runner, Node.js 20, clean `npm ci`, unpacked Linux Electron package, 12-second Xvfb launch smoke test.",
               "",
-              "The repository has no automated test script. The checks below cover dependency installation, Vue production build, ESLint, and selected Linux Electron packaging.",
-              "",
-              "## Web build and lint",
-              "",
-              "| Target | Commit | `npm ci` | `npm run build` | `npm run lint` |",
+              "| Target | Commit | `npm ci` | Electron package | Launch smoke |",
               "|---|---|---|---|---|",
           ]
 
-          for target in web_order:
-              item = web.get(target)
+          for target in order:
+              item = results.get(target)
               if not item:
                   lines.append(f"| {target} | — | missing | missing | missing |")
                   continue
               data, _ = item
               lines.append(
-                  f"| {target} | `{data['sha'][:12]}` | {data['install']} | {data['build']} | {data['lint']} |"
+                  f"| {target} | `{data['sha'][:12]}` | {data['install']} | {data['package']} | {data['smoke']} |"
               )
 
-          lines.extend([
-              "",
-              "## Linux Electron packaging",
-              "",
-              "| Target | Commit | `npm ci` | unpacked Linux package |",
-              "|---|---|---|---|",
-          ])
-          for target in electron_order:
-              item = electron.get(target)
-              if not item:
-                  lines.append(f"| {target} | — | missing | missing |")
-                  continue
-              data, _ = item
-              lines.append(
-                  f"| {target} | `{data['sha'][:12]}` | {data['install']} | {data['package']} |"
-              )
-
-          failures: list[tuple[str, str, str, Path]] = []
-          for target, (data, folder) in web.items():
-              for step in ("install", "build", "lint"):
+          failures = []
+          for target, (data, folder) in results.items():
+              for step in ("install", "package", "smoke"):
                   if data.get(step) == "failure":
-                      failures.append(("web", target, step, folder / f"{step}.log"))
-          for target, (data, folder) in electron.items():
-              for step, filename in (("install", "install.log"), ("package", "package.log")):
-                  if data.get(step) == "failure":
-                      failures.append(("electron-linux", target, step, folder / filename))
+                      failures.append((target, step, folder / f"{step}.log"))
 
           if failures:
               lines.extend(["", "## Failure excerpts", ""])
-              for kind, target, step, logfile in sorted(failures):
-                  lines.append(f"### {kind} {target}: {step}")
-                  lines.append("")
+              for target, step, logfile in sorted(failures):
+                  lines.extend([f"### {target}: {step}", "", "```text"])
                   if logfile.exists():
                       text = logfile.read_text(encoding="utf-8", errors="replace").splitlines()
-                      excerpt = text[-100:]
-                      lines.append("```text")
-                      lines.extend(excerpt)
-                      lines.append("```")
+                      lines.extend(text[-120:])
                   else:
                       lines.append("Log file was not produced.")
-                  lines.append("")
+                  lines.extend(["```", ""])
 
-          Path("chatgpt-dependabot-build-report.md").write_text(
+          Path("chatgpt-dependabot-electron-report.md").write_text(
               "\n".join(lines) + "\n", encoding="utf-8"
           )
           PY
@@ -290,8 +215,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add chatgpt-dependabot-build-report.md
+          git add chatgpt-dependabot-electron-report.md
           if ! git diff --cached --quiet; then
-            git commit -m "ci: record Dependabot build results"
+            git commit -m "ci: record Dependabot Electron results"
             git push origin HEAD:chatgpt/dependabot-build-test
           fi
