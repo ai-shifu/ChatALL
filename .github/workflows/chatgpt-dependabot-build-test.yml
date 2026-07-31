@@ -1,0 +1,124 @@
+name: ChatGPT Dependabot build test
+
+on:
+  push:
+    branches:
+      - chatgpt/dependabot-build-test
+
+permissions:
+  contents: read
+
+jobs:
+  web-build:
+    name: "web ${{ matrix.target }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - main
+          - "1073"
+          - "1072"
+          - "1071"
+          - "1068"
+          - "1067"
+          - "1066"
+          - "1065"
+          - "1064"
+          - "1063"
+          - "1062"
+          - "1061"
+          - "1060"
+          - "1059"
+          - "1055"
+          - "1043"
+          - "1040"
+    steps:
+      - name: Check out target
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.target == 'main' && 'main' || format('refs/pull/{0}/head', matrix.target) }}
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        id: install
+        continue-on-error: true
+        run: npm ci
+
+      - name: Build web bundle
+        id: build
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run build
+
+      - name: Run lint
+        id: lint
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run lint
+
+      - name: Record result
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## ${{ matrix.target }}"
+            echo "- install: ${{ steps.install.outcome }}"
+            echo "- web build: ${{ steps.build.outcome }}"
+            echo "- lint: ${{ steps.lint.outcome }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+          test "${{ steps.install.outcome }}" = success
+          test "${{ steps.build.outcome }}" = success
+          test "${{ steps.lint.outcome }}" = success
+
+  electron-linux-package:
+    name: "electron-linux ${{ matrix.target }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - main
+          - "1068"
+          - "1043"
+    steps:
+      - name: Check out target
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.target == 'main' && 'main' || format('refs/pull/{0}/head', matrix.target) }}
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        id: install
+        continue-on-error: true
+        run: npm ci
+
+      - name: Build unpacked Linux Electron app
+        id: package
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: npm run electron:build -- --linux --dir -p never
+
+      - name: Record result
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## ${{ matrix.target }}"
+            echo "- install: ${{ steps.install.outcome }}"
+            echo "- Electron Linux package: ${{ steps.package.outcome }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+          test "${{ steps.install.outcome }}" = success
+          test "${{ steps.package.outcome }}" = success
