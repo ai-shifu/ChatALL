@@ -1,6 +1,6 @@
 # Dependabot PR Electron report
 
-Generated: 2026-07-31T19:46:29.789305+00:00
+Generated: 2026-07-31T19:46:51.405492+00:00
 
 Environment: GitHub-hosted Ubuntu runner, Node.js 20, clean `npm ci`, unpacked Linux Electron package, 12-second Xvfb launch smoke test.
 
@@ -63,7 +63,7 @@ Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
 Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
- ERROR  Failed to compile with 1 error7:42:48 PM
+ ERROR  Failed to compile with 1 error7:46:05 PM
 
  error  in ./src/bots/baidu/WenxinQianfanBot.js
 
@@ -141,6 +141,6 @@ npm error
 npm error aliases: clean-install, ic, install-clean, isntall-clean
 npm error
 npm error Run "npm help ci" for more info
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-31T19_38_20_792Z-debug-0.log
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-31T19_42_48_151Z-debug-0.log
 ```
 
