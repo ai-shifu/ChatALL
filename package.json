@@ -50,7 +50,7 @@
     "dexie-export-import": "^4.1.4",
     "electron-builder": "^25.1.8",
     "jszip": "^3.10.1",
-    "katex": "^0.16.22",
+    "katex": "^0.18.2",
     "langchain": "^0.3.27",
     "localforage": "^1.10.0",
     "material-design-icons": "^3.0.1",
